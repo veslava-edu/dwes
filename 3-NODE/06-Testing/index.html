@@ -1,0 +1,2286 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/06-Testing/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>06 Testing - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion-al-testing-con-jest-y-supertest" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06 Testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jest
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ul>
+<li><a href="#introducción-al-testing-con-jest-y-supertest">Introducción al testing con Jest y Supertest</a></li>
+<li><a href="#jest">Jest</a></li>
+<li><a href="#introducción-a-las-pruebas-de-unidad-en-javascript-con-jest">Introducción a las Pruebas de Unidad en JavaScript con Jest</a></li>
+<li><a href="#qué-es-jest">¿Qué es Jest?</a></li>
+<li><a href="#estructura-de-las-pruebas">Estructura de las Pruebas</a></li>
+<li><a href="#aserciones">Aserciones</a></li>
+<li><a href="#inicialización-y-finalización">Inicialización y Finalización</a></li>
+<li><a href="#tests-de-código-asíncrono">Tests de código asíncrono</a></li>
+<li><a href="#mocking">Mocking</a><ul>
+<li><a href="#mockeando-objetos-para-testear-dependencias">Mockeando objetos para testear dependencias.</a></li>
+</ul>
+</li>
+<li><a href="#supertest">Supertest</a></li>
+<li><a href="#testeado-en-netsjs">Testeado en Netsjs</a></li>
+<li><a href="#testeado-los-servicios-o-providers">Testeado los servicios o providers</a></li>
+<li><a href="#testeando-el-controlador">Testeando el controlador</a><ul>
+<li><a href="#probando-el-controlador-con-supertest">Probando el controlador con Supertest</a></li>
+</ul>
+</li>
+<li><a href="#práctica-de-clase-testing">Práctica de clase: Testing</a></li>
+<li><a href="#proyecto">Proyecto</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/06-banner.jpg"><img alt="" src="../images/06-banner.jpg"/></a></p>
+<h1 id="introduccion-al-testing-con-jest-y-supertest">Introducción al testing con Jest y Supertest</h1>
+<h2 id="jest">Jest</h2>
+<p>Estoy asumiendo que quieres aprender sobre el testeo en JavaScript, específicamente usando las bibliotecas Jest o Mocha/Chai. Aquí te preparé un sencillo tutorial.</p>
+<h1 id="introduccion-a-las-pruebas-de-unidad-en-javascript-con-jest">Introducción a las Pruebas de Unidad en JavaScript con Jest</h1>
+<h2 id="que-es-jest">¿Qué es Jest?</h2>
+<p><a href="https://jestjs.io/es-ES/">Jest</a> es una biblioteca de JavaScript desarrollada por Facebook para llevar a cabo pruebas de unidad y de integración en proyectos de JavaScript. Jest es bien conocido por su facilidad de configuración y por las características que ofrece, como la generación de snapshots, pruebas de instantáneas, entre otros.</p>
+<h2 id="estructura-de-las-pruebas">Estructura de las Pruebas</h2>
+<p>Una prueba típica con Jest implica el uso de <code>describe</code> y <code>it</code>.</p>
+<p><strong>describe:</strong> Este es un método de Jest, que se utiliza principalmente para agrupar pruebas relacionadas. Cada descripción puede contener uno o más <code>it</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'Grupo de pruebas'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>it:</strong> Este es otro método de Jest que se emplea para una prueba individual. Cada <code>it</code> debe estar contenido en un <code>describe</code>, aunque Jest permite pruebas <code>it</code> independientes.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'Grupo de pruebas'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'debería hacer esto'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'debería hacer aquello'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="aserciones">Aserciones</h2>
+<p>Las aserciones, también conocidas como "matchers" en el dominio de las pruebas, son funciones que permiten comparar el valor resultante de una operación con un valor esperado. Jest proporciona una <a href="https://jestjs.io/es-ES/docs/using-matchers">amplia variedad de matchers</a> para cubrir cualquier caso de prueba necesario.</p>
+<p>Veamos algunos ejemplos de los matchers que proporciona Jest:</p>
+<p><strong>1. toBe</strong></p>
+<p>Comprueba la igualdad estricta (===). Es apropiado para comparar valores primitivos.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'Comparación con toBe'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>2. toEqual</strong></p>
+<p>Comprueba la igualdad de valor y estructura. Es apropiado para comparar arrays u objetos.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'Comparación con toEqual'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">uno</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">dos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">};</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({</span><span class="nx">uno</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">dos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>3. toBeNull, toBeUndefined, toBeDefined, toBeTruthy, toBeFalsy</strong></p>
+<p>Estos matchers son útiles para trabajar con valores booleanos o nulos.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'isNull'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">n</span><span class="p">).</span><span class="nx">toBeNull</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'isUndefined'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">z</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">z</span><span class="p">).</span><span class="nx">toBeUndefined</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'isDefined'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">z</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'isTruthy'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">truthy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"algo que no es falsy"</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">truthy</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'isFalsy'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">falsy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">falsy</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>4. toBeGreaterThan, toBeGreaterThanOrEqual, toBeLessThan, toBeLessThanOrEqual</strong></p>
+<p>Estos son para comparaciones numéricas.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'Comparación mayor/menor que'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeGreaterThanOrEqual</span><span class="p">(</span><span class="mf">3.5</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeLessThan</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBeLessThanOrEqual</span><span class="p">(</span><span class="mf">4.5</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>5. toMatch</strong></p>
+<p>Es útil para comparar cadenas de texto (incluso usando expresiones regulares).</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'string matching'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="s1">'equipo'</span><span class="p">).</span><span class="nx">toMatch</span><span class="p">(</span><span class="sr">/quipo/</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>6. toContain</strong></p>
+<p>Es útil para comprobar si un elemento se encuentra en una lista (Array).</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="p">(</span><span class="s1">'Comprobando elementos en array'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">listaCompras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">'leche'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'queso'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'mantequilla'</span>
+<span class="w">  </span><span class="p">];</span>
+
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">listaCompras</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'queso'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>7. toThrow</strong></p>
+<p>Este matcher es útil si quieres comprobar que una función específica lanza un error.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">compileAndroidCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'¡Error de compilación!'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'Compilar Android lanza un error'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">compileAndroidCode</span><span class="p">()).</span><span class="nx">toThrow</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Estos son solo algunos ejemplos de los "matchers" o aserciones disponibles en Jest. Puedes encontrar una lista completa de todos los matchers disponibles en la <a href="https://jestjs.io/docs/expect">documentación oficial de Jest</a>.</p>
+<h2 id="inicializacion-y-finalizacion">Inicialización y Finalización</h2>
+<p>En ocasiones, las pruebas requieren preparación previa de estado o limpieza posterior para poder ejecutarse correctamente. Jest proporciona <a href="https://jestjs.io/es-ES/docs/setup-teardown">varios métodos</a> para ayudarte con esto:</p>
+<ul>
+<li><code>beforeAll</code>: Este método se ejecuta una vez antes de todas las pruebas que componen un bloque <code>describe</code>. Es útil cuando tienes una operación costosa que no necesita ser ejecutada antes de cada prueba individual, sino solamente una vez antes de todas.</li>
+<li><code>afterAll</code>: Este método se ejecuta una vez después de todas las pruebas de un bloque <code>describe</code>, cuando todas las pruebas han concluido. Es útil para la limpieza de recursos que fueron inicializados en <code>beforeAll</code>.</li>
+<li><code>beforeEach</code>: Este método se ejecuta antes de cada prueba dentro de un bloque <code>describe</code>. Es útil para inicializar el estado antes de cada prueba.</li>
+<li><code>afterEach</code>: Este método se ejecuta después de cada prueba dentro de un bloque <code>describe</code>. Es útil para la limpieza de cualquier alteración del estado realizada durante la ejecución de una prueba.</li>
+</ul>
+<p>Aquí tienes un ejemplo en código que ilustra cómo funcionan estos métodos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Mock de base de datos</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">'Pruebas con inicialización y finalización'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">beforeAll</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Este código se ejecutará una vez antes de todas las pruebas</span>
+<span class="w">    </span><span class="nx">database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'usuario1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'usuario2'</span><span class="p">,</span><span class="w"> </span><span class="s1">'usuario3'</span><span class="p">];</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">afterAll</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Este código se ejecutará una vez después de todas las pruebas</span>
+<span class="w">    </span><span class="nx">database</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c1">// limpiamos la base de datos</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Este código se ejecutará antes de cada prueba. </span>
+<span class="w">    </span><span class="nx">database</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'usuario4'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">afterEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Este código se ejecutará después de cada prueba.</span>
+<span class="w">    </span><span class="nx">database</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'debería contener usuarios'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">database</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'usuario1'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">database</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s1">'usuario4'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// Otros tests…</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>El código anterior crea una base de datos ficticia con tres usuarios. Antes de cada prueba, añade un cuarto usuario, y después de cada prueba, elimina ese cuarto usuario de la base de datos. Finalmente, después de que todas las pruebas han sido realizadas, se restaura la base de datos a su estado inicial (vacia).</p>
+<h2 id="tests-de-codigo-asincrono">Tests de código asíncrono</h2>
+<p>Los tests asíncronos pueden ser un poco más complicados debido a que necesitas asegurarte de que Jest espera el resultado de tu prueba antes de continuar. Aquí están <a href="https://jestjs.io/es-ES/docs/asynchronous">algunas formas en las que puedes manejar el código asíncrono</a> en tus tests con Jest:</p>
+<p><strong>1. Devolver una Promesa</strong></p>
+<p>Si devuelves una Promesa desde tu test, Jest automáticamente esperará que esa promesa se resuelva. Si la promesa es rechazada, la prueba fallará.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">'la promesa debería ser resuelta con éxito'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">promiseFunc</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">'hola'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>2. Usar async/await</strong></p>
+<p>Puedes usar async/await para escribir pruebas más legibles cuando estás trabajando con código asíncrono (te lo recomiendo).</p>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">'debería esperar un valor'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">'hola'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>3. Usar el argumento 'done'</strong></p>
+<p>Jest provee un argumento <code>done</code> en el callback del test. Puedes llamar a esta función cuando tu código asíncrono ha completado, de esta manera le indicas a Jest que tu test ha terminado. Si no llamas a <code>done</code> dentro del test, Jest asumirá que el test ha terminado apenas termine de ejecutarse la función de pruebas síncrona y continuará con los siguientes tests.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">'callback ha sido llamado'</span><span class="p">,</span><span class="w"> </span><span class="nx">done</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">'hola'</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">done</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">done</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w">  </span><span class="c1">// Esto hace fallar la prueba si hay error</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">callbackFunc</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Recuerda que tienes que manejar los errores en tu código asíncrono correctamente, de otra manera, los errores podrían no ser capturados por Jest y tus pruebas podrían pasar cuando en realidad deberían fallar. Así que siempre asegúrate de usar <code>.catch</code> en tus promesas o try/catch al usar async/await.</p>
+<h2 id="mocking">Mocking</h2>
+<p>Puedes simular funciones y módulos para aislar el código de prueba de otras partes del sistema. Esto hace que las pruebas unitarias sean realmente "unitarias". Aquí te muestro cómo hcacerlo con <a href="https://jestjs.io/es-ES/docs/mock-functions">Jest</a>.</p>
+<p><strong>Mock de una función:</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">mockFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span><span class="w"> </span><span class="c1">// crea una función simulada</span>
+<span class="nx">mockFunc</span><span class="p">.</span><span class="nx">mockReturnValue</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// hace que la función simulada devuelva 42</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mockFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// 42 </span>
+</code></pre></div></p>
+<p><strong>Mock de un módulo:</strong></p>
+<p>Imagina que tienes un módulo llamado <code>suma</code> que quieres simular.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// __mocks__/suma.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span>
+</code></pre></div>
+<p>Entonces, puedes usar <code>jest.mock</code> para simularlo.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">'./suma'</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Mock de métodos individuales:</strong></p>
+<p>Imagina que tienes una clase con varios métodos. Quieres simular solo uno de ellos.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">math</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./math'</span><span class="p">);</span>
+<span class="nx">math</span><span class="p">.</span><span class="nx">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">42</span><span class="p">);</span><span class="w"> </span><span class="c1">// mockea la función</span>
+<span class="nx">math</span><span class="p">.</span><span class="nx">subtract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">8</span><span class="p">);</span><span class="w"> </span><span class="c1">// mockea la función</span>
+</code></pre></div>
+<p>Esto es solo el comienzo de lo que puedes hacer con Jest. Te recomendaría leer más acerca de las pruebas en general y las funcionalidades que Jest tiene para ofrecer. También hay otros frameworks y librerías de pruebas en JavaScript, como Mocha y Jasmine, que podrías considerar explorar para entender mejor cómo funciona el testeo en JavaScript.</p>
+<h3 id="mockeando-objetos-para-testear-dependencias">Mockeando objetos para testear dependencias.</h3>
+<p>Las burlas (mocks) son una técnica esencial en las pruebas unitarias y Jest proporciona numerosas utilidades para controlar el comportamiento de las funciones y verificar cómo se utilizan. Aquí te mostraré cómo puedes mockear los métodos de objeto, comprobar si se han llamado y cómo usar <code>.mockReturnThis</code> y <code>.mockReturnOnce</code>.</p>
+<p><strong>1. Mockear los métodos de un objeto</strong></p>
+<p>Puedes crear un objeto mock con Jest utilizando <code>jest.mock()</code> y luego definir el comportamiento de las funciones individuales mediante <code>.mockImplementation()</code> o simplemente devolviendo un valor específico con <code>.mockReturnValue</code>.</p>
+<p>Por ejemplo, si tienes un objeto <code>repositorio</code> que tiene un método <code>obtenerUsuarios</code>, puedes mockear este método de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">repositorio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">obtenerUsuarios</span><span class="o">:</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+<span class="p">};</span>
+
+<span class="nx">repositorio</span><span class="p">.</span><span class="nx">obtenerUsuarios</span><span class="p">.</span><span class="nx">mockReturnValue</span><span class="p">(</span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">([</span><span class="s1">'usuario1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'usuario2'</span><span class="p">]));</span>
+</code></pre></div>
+<p><strong>2. Comprobar si un método mock se ha llamado</strong></p>
+<p>Una vez que has creado tu mock, puedes comprobar si se ha llamado utilizando <code>.toHaveBeenCalled()</code> y cuántas veces se ha llamado con <code>.toHaveBeenCalledTimes(n)</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Imagina que tu función de servicio llama a repositorio.obtenerUsuarios</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">servicio</span><span class="p">.</span><span class="nx">funcion</span><span class="p">();</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">repositorio</span><span class="p">.</span><span class="nx">obtenerUsuarios</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">repositorio</span><span class="p">.</span><span class="nx">obtenerUsuarios</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>3. Diferencia entre .mockReturnThis() y .mockReturnOnce()</strong></p>
+<p><code>.mockReturnThis()</code> es un método en un objeto mock de Jest que hace que la función mock devuelva <code>this</code>, es útil cuando estás testeando una cadena de métodos de un objeto.</p>
+<p><code>.mockReturnOnce()</code> es otro método en un objeto mock de Jest que hace que la función devuelva un valor específico (que le pases como argumento) la próxima vez que se llame.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">mockFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnOnce</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span><span class="w">   </span><span class="c1">// Primera llamada</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnOnce</span><span class="p">(</span><span class="s1">'world'</span><span class="p">)</span><span class="w">   </span><span class="c1">// Segunda llamada</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnThis</span><span class="p">();</span><span class="w">         </span><span class="c1">// Todas las demás llamadas</span>
+
+<span class="c1">// Usando la función mock</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mockFunc</span><span class="p">());</span><span class="w">     </span><span class="c1">// 'hello'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mockFunc</span><span class="p">());</span><span class="w">     </span><span class="c1">// 'world'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mockFunc</span><span class="p">());</span><span class="w">     </span><span class="c1">// mockFunc {}</span>
+</code></pre></div>
+<p>En el caso de tu repositorio, si quisieras que los métodos de un objeto se comporten de manera diferente en cada llamada, podrías usar algo similar a esto:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Mock del comportamiento del método y además este puede ser asíncrono, por eso las promesas!!</span>
+<span class="nx">repositorio</span><span class="p">.</span><span class="nx">obtenerUsuarios</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnValueOnce</span><span class="p">(</span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">([</span><span class="s1">'usuario1'</span><span class="p">]))</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnValueOnce</span><span class="p">(</span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">([</span><span class="s1">'usuario2'</span><span class="p">]))</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">mockReturnValueOnce</span><span class="p">(</span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">([</span><span class="s1">'usuario3'</span><span class="p">]));</span>
+
+<span class="c1">// Llamada del servicio</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuarios1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">servicio</span><span class="p">.</span><span class="nx">funcion</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuarios2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">servicio</span><span class="p">.</span><span class="nx">funcion</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuarios3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">servicio</span><span class="p">.</span><span class="nx">funcion</span><span class="p">();</span>
+
+<span class="c1">// Verificación del comportamiento esperado</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">usuarios1</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span><span class="s1">'usuario1'</span><span class="p">]);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">usuarios2</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span><span class="s1">'usuario2'</span><span class="p">]);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">usuarios3</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span><span class="s1">'usuario3'</span><span class="p">]);</span>
+</code></pre></div>
+<p>Por último, si te interesa comprobar los argumentos con los que se llama a una función mock, puedes utilizar <code>.toHaveBeenCalledWith(arg1, arg2, ...)</code>. Este método te permite verificar que la función mock se llamó con los argumentos específicos al menos una vez.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">service</span><span class="p">.</span><span class="nx">funcion</span><span class="p">(</span><span class="s1">'test'</span><span class="p">);</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">repositorio</span><span class="p">.</span><span class="nx">obtenerUsuarios</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="s1">'test'</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="supertest">Supertest</h2>
+<p><a href="https://github.com/ladjs/supertest">Supertest</a> es una biblioteca extremadamente útil para realizar pruebas de API HTTP en Node.js usando la biblioteca de pruebas Mocha o Jest. Se basa en el módulo Superagent para proporcionar una interfaz de alto nivel para probar las respuestas HTTP.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'Tests del API'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// La petición GET</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'GET / debería responder con hola mundo'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'hola mundo'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// La petición POST</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'POST / debería responder con 201'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'John Doe'</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'john.doe@example.com'</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/'</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">201</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Puedes hacer más aserciones sobre res.body si deseas</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// La petición PUT</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'PUT /:id debería responder con 200'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Jane Doe'</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">'jane.doe@example.com'</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">put</span><span class="p">(</span><span class="s1">'/1'</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Puedes hacer más aserciones sobre res.body si deseas</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// La petición DELETE</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'DELETE /:id debería responder con 200'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="ow">delete</span><span class="p">(</span><span class="s1">'/1'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h1 id="testeado-en-netsjs">Testeado en Netsjs</h1>
+<p>Nestjs viene con amplias utiliades para reaizar test adaptado a su forma de crear los componentes y módulos. Puedes ver más en su <a href="https://docs.nestjs.com/fundamentals/testing">documentación</a>.</p>
+<h2 id="testeado-los-servicios-o-providers">Testeado los servicios o providers</h2>
+<ul>
+<li>beforeEach: Esto se llama antes de cada prueba. Se utiliza para configurar cualquier cosa que tus pruebas individuales puedan necesitar. Aquí se está creando una instancia de un módulo de prueba que contiene ciertos proveedores que tus pruebas podrían necesitar, incluyendo servicios u otros providers, CategoriasMapper y un repositorio para CategoriaEntity.</li>
+<li>Test.createTestingModule: Esto es específico de NestJS. Se utiliza para crear un módulo de prueba que puede tener sus propios proveedores y control inyectados. </li>
+<li>getRepositoryToken: Esta es una función auxiliar de NestJS que se utiliza para obtener el token de inyección de dependencias para un repositorio TypeORM. Se usa para poder "mockear" el repositorio en el módulo de prueba.</li>
+<li>service = module.get<categoriasservice>(CategoriasService): Se obtiene una instancia del servicio testado. También se genera una instancia del repositorio, que se usará para hacer mock de los métodos del repositorio como find, findOneBy, save y remove.</categoriasservice></li>
+<li>Otra forma: para haver el test unitario de controladores, lo que también podemos es cargar nuestro controlador y servicio en el módulo de test y luego hacer mocks, con la función spy con mockImplementation de los métodos del servicio. Usamos un describe por cada método is este tiene distintos resultados (correcto o excepciones)
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should return a not acceptable exception'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockUSer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">surname</span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// Creamos un mock del metodo create del servicio, cuando se llame al método create del servicio</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">userService</span><span class="p">,</span><span class="w"> </span><span class="s1">'create'</span><span class="p">).</span><span class="nx">mockImplementation</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">mockUSer</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">// Llamamos al metodo create del controlador y comprbamos que se lanza una excepción</span>
+<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">mockUSer</span><span class="p">)</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Comprobamos que el mensaje de la excepción sea el esperado</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">'invalid user data'</span><span class="p">)</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div></li>
+</ul>
+<p>Aquí te muestro un ejemplo de las forma recomendada o más sencilla para ti ahora mientras aprendes:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'CategoriasService'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">mapper</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasMapper</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasService</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">repo</span><span class="o">:</span><span class="w"> </span><span class="kt">Repository</span><span class="o">&lt;</span><span class="nx">CategoriaEntity</span><span class="o">&gt;</span>
+
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">categoriasMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">convertToEntity</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">convertToDto</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">      </span><span class="c1">// También puedes agregar todas las otras funciones del mapper que puedas necesitar en tus pruebas</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// Creamos un módulo de prueba de NestJS que nos permitirá crear una instancia de nuestro servicio.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="kt">TestingModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Test</span><span class="p">.</span><span class="nx">createTestingModule</span><span class="p">({</span>
+<span class="w">      </span><span class="c1">// Proporcionamos una lista de dependencias que se inyectarán en nuestro servicio.</span>
+<span class="w">      </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nx">CategoriasService</span><span class="p">,</span><span class="w"> </span><span class="c1">// El servicio que lo necesito</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasMapper</span><span class="p">,</span><span class="w"> </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">categoriasMapper</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// Usamos el objeto mock que acabamos de crear</span>
+<span class="w">        </span><span class="c1">// CategoriasMapper, // El mapeador! (también podemos mockearlo)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">getRepositoryToken</span><span class="p">(</span><span class="nx">CategoriaEntity</span><span class="p">),</span><span class="w"> </span><span class="c1">// Obtenemos el token de la entidad CategoriaEntity para inyectarlo en el servicio.</span>
+<span class="w">          </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">Repository</span><span class="p">,</span><span class="w"> </span><span class="c1">// Creamos una instancia de la clase Repository para inyectarla en el servicio</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">compile</span><span class="p">()</span><span class="w"> </span><span class="c1">// Compilamos el módulo de prueba.</span>
+
+<span class="w">    </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasService</span><span class="p">)</span><span class="w"> </span><span class="c1">// Obtenemos una instancia de nuestro servicio.</span>
+<span class="w">    </span><span class="c1">// getRepositoryToken es una función de NestJS que se utiliza para generar un token de inyección de dependencias para un repositorio de TypeORM.</span>
+<span class="w">    </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasService</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">Repository</span><span class="o">&lt;</span><span class="nx">CategoriaEntity</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="nx">getRepositoryToken</span><span class="p">(</span><span class="nx">CategoriaEntity</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">mapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasMapper</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasMapper</span><span class="p">);</span><span class="c1">// Asegúrate de obtener la instancia del mapper</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should be defined'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">()</span><span class="w"> </span><span class="c1">// para ver si se ha creado...</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'findAll'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should return all categories'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCategories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaEntity</span><span class="p">()]</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCategoriaDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaDto</span><span class="p">()</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">repo</span><span class="p">,</span><span class="w"> </span><span class="s1">'find'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">testCategories</span><span class="p">)</span>
+<span class="w">       </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">mapper</span><span class="p">,</span><span class="w"> </span><span class="s1">'convertToDto'</span><span class="p">).</span><span class="nx">mockReturnValue</span><span class="p">(</span><span class="nx">testCategoryDto</span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// expect that the service will return all categories</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">([</span><span class="nx">testCategoriaDto</span><span class="p">])</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'findOne'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should return a single category'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCategory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaEntity</span><span class="p">();</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCategoryDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaDto</span><span class="p">();</span><span class="w"> </span><span class="c1">// Suponiendo que tienes una clase CategoriaDto</span>
+
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">repo</span><span class="p">,</span><span class="w"> </span><span class="s1">'findOne'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">testCategory</span><span class="p">);</span><span class="w"> </span><span class="c1">// Bott usamos findOne en lugar de findOneBy para más generalidad</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">mapper</span><span class="p">,</span><span class="w"> </span><span class="s1">'convertToDto'</span><span class="p">).</span><span class="nx">mockReturnValue</span><span class="p">(</span><span class="nx">testCategoryDto</span><span class="p">);</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">'1'</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">testCategoryDto</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mapper</span><span class="p">.</span><span class="nx">convertToDto</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">testCategory</span><span class="p">);</span><span class="w"> </span><span class="c1">// Verifica que el mapper se usó correctamente</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should throw an error if the category does not exist'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">repo</span><span class="p">,</span><span class="w"> </span><span class="s1">'findOneBy'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="s1">'1'</span><span class="p">)).</span><span class="nx">rejects</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">(</span><span class="nx">NotFoundException</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="c1">// Resto de los test!!</span>
+<span class="p">})</span>
+</code></pre></div>
+<h2 id="testeando-el-controlador">Testeando el controlador</h2>
+<p>Podemos testear el controlador siguiendo la misma idea que con el servicio y sus dependencias. Pero esta vez crearemos mocks de las funciones que vayamos a usar del servicio. Podemos crear un objeto para proveerlo y usar el mock, o definirlo sobre la marcha. Esta vez para ver otra forma alternativa lo haremos de la segunda forma:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'CategoriasController'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">controller</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasController</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasService</span>
+
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Creamos un módulo de prueba de NestJS que nos permitirá crear una instancia de nuestro controlador.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="kt">TestingModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Test</span><span class="p">.</span><span class="nx">createTestingModule</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CategoriasController</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasService</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">findAll</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">findOne</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">removeSoft</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">compile</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasController</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasController</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasService</span><span class="p">)</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should be defined'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">controller</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">()</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'findAll'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should get all categorias'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockResult</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="nx">CategoriaEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="s1">'findAll'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">mockResult</span><span class="p">)</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">findAll</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toBeInstanceOf</span><span class="p">(</span><span class="nb">Array</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'findOne'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should get one categoria'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'uuid'</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockResult</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriaEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaEntity</span><span class="p">()</span>
+
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="s1">'findOne'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">mockResult</span><span class="p">)</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">findOne</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockResult</span><span class="p">).</span><span class="nx">toBeInstanceOf</span><span class="p">(</span><span class="nx">CategoriaEntity</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should throw NotFoundException if categoria does not exist'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'a uuid'</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="s1">'findOne'</span><span class="p">).</span><span class="nx">mockRejectedValue</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">NotFoundException</span><span class="p">())</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">controller</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">)).</span><span class="nx">rejects</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">(</span><span class="nx">NotFoundException</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'create'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should create a categoria'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">dto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCategoriaDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'test'</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockResult</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriaEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CategoriaEntity</span><span class="p">()</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="s1">'create'</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">mockResult</span><span class="p">)</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">dto</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">create</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span><span class="nx">dto</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="c1">// reto de métodos</span>
+<span class="p">})</span>
+</code></pre></div>
+<h3 id="probando-el-controlador-con-supertest">Probando el controlador con Supertest</h3>
+<p>Podemos hacer test e2e con supertest, pero además si queremos podemos mockear las dependencias que use. De esta manera no será un test de integración al uso, porque para eso usaremos Postman, pero si nos servirá para ver si actuamos correctamente (y para practicar).</p>
+<p>De nuevo podemos hacer un mock de servicio o servicios que usemos y sus métodos y esta vez lo vamos a subreescribir para usarlo.</p>
+<p>Te dejo un ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// https://blog.logrocket.com/end-end-testing-nestjs-typeorm/</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">'CategoriasController (e2e)'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">INestApplication</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">myEndpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`/categorias`</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">myCategoria</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriaEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">'7958ef01-9fe0-4f19-a1d5-79c917290ddf'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'nombre'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">isDeleted</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">updatedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">productos</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">createCategoriaDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'nombre'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">updateCategoriaDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'nombre'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">isDeleted</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Mock de servicio y sus metodos</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockCategoriasService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">findAll</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">findOne</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">remove</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">removeSoft</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Cargamos solo el controlador y el servicio que vamos a probar, no el módulo que arrastra con todo</span>
+<span class="w">    </span><span class="c1">// No es de integración si no e2e, con mocks</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="kr">module</span><span class="nx">Fixture</span><span class="o">:</span><span class="w"> </span><span class="nx">TestingModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Test</span><span class="p">.</span><span class="nx">createTestingModule</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CategoriasController</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nx">CategoriasService</span><span class="p">,</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CategoriasService</span><span class="p">,</span><span class="w"> </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">mockCategoriasService</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">      </span><span class="c1">// Le decimos a Nest que inyecte nuestro mock de servicio en lugar del servicio real.</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">overrideProvider</span><span class="p">(</span><span class="nx">CategoriasService</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">useValue</span><span class="p">(</span><span class="nx">mockCategoriasService</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">compile</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">Fixture.createNestApplication</span><span class="p">()</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">init</span><span class="p">()</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">afterAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'GET /categorias'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should return an array of categorias'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Configurar el mock para devolver un resultado específico</span>
+<span class="w">      </span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">.</span><span class="nx">mockResolvedValue</span><span class="p">([</span><span class="nx">myCategoria</span><span class="p">])</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">getHttpServer</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">myEndpoint</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span><span class="nx">myCategoria</span><span class="p">])</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'GET /categorias/:id'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should return a single categoria'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">.</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">myCategoria</span><span class="p">)</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">getHttpServer</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">myEndpoint</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">myCategoria</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">200</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">myCategoria</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should throw an error if the category does not exist'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">.</span><span class="nx">mockRejectedValue</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">NotFoundException</span><span class="p">())</span>
+
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">getHttpServer</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">myEndpoint</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">myCategoria</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">404</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s1">'POST /categorias'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">it</span><span class="p">(</span><span class="s1">'should create a new categoria'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">myCategoria</span><span class="p">)</span>
+
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">getHttpServer</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">myEndpoint</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">createCategoriaDto</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mf">201</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">myCategoria</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">mockCategoriasService</span><span class="p">.</span><span class="nx">create</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">createCategoriaDto</span><span class="p">,</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="c1">// Resto de test</span>
+<span class="p">})</span>
+</code></pre></div>
+<h1 id="practica-de-clase-testing">Práctica de clase: Testing</h1>
+<ol>
+<li>Realiza los test unitarios de tus servicios, mapeadores y controladores de funkos y categorías, mockeando las dependencias necesarias.</li>
+<li>Crea el test del edpoint de categorías usando supertest mockeando los elementos necesarios.</li>
+</ol>
+<h1 id="proyecto">Proyecto</h1>
+<p>Puedes consultar esta parte en <a href="https://github.com/joseluisgs/DesarrolloWebEntornosServidor-03-Proyecto-2023-2024/releases/tag/productos_categorias">el proyecto de ejemplo</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

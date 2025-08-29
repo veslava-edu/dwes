@@ -1,0 +1,1699 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" rel="canonical"/>
+<link href="../UD1.2-Virtualizacion-Docker/" rel="prev"/>
+<link href="../../2-PHP/01-Introduccion/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>03 - Control-Versiones-GIT - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#control-de-versiones-con-git-y-github">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              03 - Control-Versiones-GIT
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-git-el-adn-de-tu-codigo">
+<span class="md-ellipsis">
+      ¿Qué es Git? El ADN de tu Código
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-funciona-git-un-vistazo-bajo-el-capo">
+<span class="md-ellipsis">
+      ¿Cómo Funciona Git? Un Vistazo Bajo el Capó
+    </span>
+</a>
+<nav aria-label="¿Cómo Funciona Git? Un Vistazo Bajo el Capó" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-viaje-del-codigo-los-tres-estados">
+<span class="md-ellipsis">
+      El Viaje del Código: Los Tres Estados
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-vs-github-el-duo-dinamico">
+<span class="md-ellipsis">
+      Git vs. GitHub: El Dúo Dinámico
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dominando-la-interfaz-de-github-tu-primer-flujo-de-trabajo-web">
+<span class="md-ellipsis">
+      Dominando la Interfaz de GitHub: Tu Primer Flujo de Trabajo Web
+    </span>
+</a>
+<nav aria-label="Dominando la Interfaz de GitHub: Tu Primer Flujo de Trabajo Web" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-1-crear-tu-cuenta-y-tu-primer-repositorio-el-garaje-digital">
+<span class="md-ellipsis">
+      Paso 1: Crear tu Cuenta y tu Primer Repositorio (El Garaje Digital)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-2-el-corazon-de-la-colaboracion-el-pull-request">
+<span class="md-ellipsis">
+      Paso 2: El Corazón de la Colaboración: El Pull Request
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-flujo-de-trabajo-basico-tu-ejemplo-practico">
+<span class="md-ellipsis">
+      Git -&gt; Flujo de Trabajo Básico: Tu Ejemplo Práctico
+    </span>
+</a>
+<nav aria-label="Git -&gt; Flujo de Trabajo Básico: Tu Ejemplo Práctico" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion">
+<span class="md-ellipsis">
+      Instalación
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-inicial-solo-una-vez">
+<span class="md-ellipsis">
+      Configuración Inicial (¡Solo una vez!)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestro-primer-proyecto-miportfolio">
+<span class="md-ellipsis">
+      Creando nuestro primer proyecto "MiPortfolio"
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ciclo-sagrado-add-commit-push">
+<span class="md-ellipsis">
+      El Ciclo Sagrado: add, commit, push
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sincronizando-con-el-equipo-git-pull">
+<span class="md-ellipsis">
+      Sincronizando con el Equipo: git pull
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ramificaciones-creando-universos-paralelos-con-branch">
+<span class="md-ellipsis">
+      Ramificaciones: Creando Universos Paralelos con branch
+    </span>
+</a>
+<nav aria-label="Ramificaciones: Creando Universos Paralelos con branch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-practico-anadiendo-un-fichero-de-estilos">
+<span class="md-ellipsis">
+      Ejemplo Práctico: Añadiendo un Fichero de Estilos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ecosistema-git-ventajas-desventajas-y-alternativas">
+<span class="md-ellipsis">
+      El Ecosistema Git: Ventajas, Desventajas y Alternativas
+    </span>
+</a>
+<nav aria-label="El Ecosistema Git: Ventajas, Desventajas y Alternativas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pros-y-contras">
+<span class="md-ellipsis">
+      Pros y Contras
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cuando-usar-que">
+<span class="md-ellipsis">
+      ¿Cuándo Usar Qué?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#competidores-y-alternativas">
+<span class="md-ellipsis">
+      Competidores y Alternativas
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-git-el-adn-de-tu-codigo">
+<span class="md-ellipsis">
+      ¿Qué es Git? El ADN de tu Código
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#como-funciona-git-un-vistazo-bajo-el-capo">
+<span class="md-ellipsis">
+      ¿Cómo Funciona Git? Un Vistazo Bajo el Capó
+    </span>
+</a>
+<nav aria-label="¿Cómo Funciona Git? Un Vistazo Bajo el Capó" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-viaje-del-codigo-los-tres-estados">
+<span class="md-ellipsis">
+      El Viaje del Código: Los Tres Estados
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-vs-github-el-duo-dinamico">
+<span class="md-ellipsis">
+      Git vs. GitHub: El Dúo Dinámico
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dominando-la-interfaz-de-github-tu-primer-flujo-de-trabajo-web">
+<span class="md-ellipsis">
+      Dominando la Interfaz de GitHub: Tu Primer Flujo de Trabajo Web
+    </span>
+</a>
+<nav aria-label="Dominando la Interfaz de GitHub: Tu Primer Flujo de Trabajo Web" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-1-crear-tu-cuenta-y-tu-primer-repositorio-el-garaje-digital">
+<span class="md-ellipsis">
+      Paso 1: Crear tu Cuenta y tu Primer Repositorio (El Garaje Digital)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-2-el-corazon-de-la-colaboracion-el-pull-request">
+<span class="md-ellipsis">
+      Paso 2: El Corazón de la Colaboración: El Pull Request
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-flujo-de-trabajo-basico-tu-ejemplo-practico">
+<span class="md-ellipsis">
+      Git -&gt; Flujo de Trabajo Básico: Tu Ejemplo Práctico
+    </span>
+</a>
+<nav aria-label="Git -&gt; Flujo de Trabajo Básico: Tu Ejemplo Práctico" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion">
+<span class="md-ellipsis">
+      Instalación
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-inicial-solo-una-vez">
+<span class="md-ellipsis">
+      Configuración Inicial (¡Solo una vez!)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestro-primer-proyecto-miportfolio">
+<span class="md-ellipsis">
+      Creando nuestro primer proyecto "MiPortfolio"
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ciclo-sagrado-add-commit-push">
+<span class="md-ellipsis">
+      El Ciclo Sagrado: add, commit, push
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sincronizando-con-el-equipo-git-pull">
+<span class="md-ellipsis">
+      Sincronizando con el Equipo: git pull
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ramificaciones-creando-universos-paralelos-con-branch">
+<span class="md-ellipsis">
+      Ramificaciones: Creando Universos Paralelos con branch
+    </span>
+</a>
+<nav aria-label="Ramificaciones: Creando Universos Paralelos con branch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-practico-anadiendo-un-fichero-de-estilos">
+<span class="md-ellipsis">
+      Ejemplo Práctico: Añadiendo un Fichero de Estilos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ecosistema-git-ventajas-desventajas-y-alternativas">
+<span class="md-ellipsis">
+      El Ecosistema Git: Ventajas, Desventajas y Alternativas
+    </span>
+</a>
+<nav aria-label="El Ecosistema Git: Ventajas, Desventajas y Alternativas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pros-y-contras">
+<span class="md-ellipsis">
+      Pros y Contras
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cuando-usar-que">
+<span class="md-ellipsis">
+      ¿Cuándo Usar Qué?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#competidores-y-alternativas">
+<span class="md-ellipsis">
+      Competidores y Alternativas
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="control-de-versiones-con-git-y-github">Control de Versiones con Git y GitHub</h1>
+<p>Bienvenidos al que, posiblemente, sea uno de los temas más cruciales de vuestra carrera profesional. Hoy no vamos a hablar de un lenguaje de programación, sino de una herramienta que os salvará de innumerables apocalipsis de código, os permitirá trabajar en equipo como los Vengadores y, en esencia, os dará superpoderes. Hablamos del <strong>control de versiones</strong>, y de sus dos protagonistas principales: <strong>Git</strong> y <strong>GitHub</strong>.</p>
+<p>Imagínate que estás construyendo una maqueta de LEGO increíblemente compleja. Llevas horas, y de repente, al poner una pieza, se derrumba una sección entera. ¿Qué haces? ¿Te rindes? ¡No! Si tuvieras un manual de construcción mágico que guardara una foto de tu maqueta cada vez que añades una pieza importante, podrías simplemente volver a la "versión" anterior al desastre y probar otra cosa.</p>
+<p>Git es ese manual de construcción mágico para tu código. Es una <strong>máquina del tiempo</strong> que te permite viajar al pasado de tu proyecto, ver quién cambió qué, por qué, y recuperar cualquier cosa. Y GitHub... GitHub es la biblioteca universal donde todos los desarrolladores guardan sus manuales mágicos para compartirlos, mejorarlos en equipo y construir cosas asombrosas juntos.</p>
+<p>Si estáis pensando "Bah, yo guardo mi código en una carpeta llamada <code>proyecto_final_final_ESTE_SI.zip</code>", preparaos para cambiar de vida. Dominar Git no es una opción, es una necesidad. Es el carnet de conducir del desarrollador profesional. ¡Así que abrochaos los cinturones, que despegamos!</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de ponernos a teclear comandos como si no hubiera un mañana, necesitamos entender el "qué" y el "porqué". Aquí tenéis los términos clave que se convertirán en vuestro pan de cada día.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Sistema de Control de Versiones (VCS)</p>
+<p>Es un sistema que registra los cambios realizados en un archivo o conjunto de archivos a lo largo del tiempo para que puedas recuperar versiones específicas más adelante. Aunque se puede usar para cualquier tipo de archivo, en nuestro mundo es la piedra angular para gestionar el código fuente.</p>
+</div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/git1.avif"><img alt="Git" src="../images/git1.avif" width="600"/></a></p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Repositorio (Repo)</p>
+<p>Es la carpeta de tu proyecto que está siendo "vigilada" por Git. Contiene todos los archivos de tu proyecto (código, imágenes, etc.) y, lo más importante, una subcarpeta oculta llamada <code>.git</code> que almacena todo el historial de cambios. Es el universo completo de tu proyecto en un solo lugar.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Commit</p>
+<p>Es una "instantánea" o un "punto de guardado" en la historia de tu repositorio. Cada vez que realizas un cambio significativo y lo confirmas, creas un <code>commit</code>. Cada commit tiene un identificador único y un mensaje que describe los cambios realizados. Es como guardar la partida en un videojuego antes de enfrentarte al jefe final.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Rama (Branch)</p>
+<p>Una rama es una línea de desarrollo independiente. Imagina que quieres añadir una nueva funcionalidad (como un formulario de contacto) sin romper el código principal que ya funciona. Creas una nueva rama, trabajas en ella de forma aislada y, cuando todo está perfecto, la "fusionas" de nuevo con la rama principal. La rama principal por defecto casi siempre se llama <code>main</code>.</p>
+</div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/git2.avif"><img alt="Git" src="../images/git2.avif" width="600"/></a>
+<br/><hr/></p>
+<h2 id="que-es-git-el-adn-de-tu-codigo">¿Qué es Git? El ADN de tu Código</h2>
+<p>En esencia, Git es un sistema de control de versiones con dos superpoderes clave: es <strong>distribuido</strong> y es de <strong>código abierto</strong>. Creado por el mismísimo Linus Torvalds (el padre de Linux), se ha convertido en el estándar indiscutible de la industria.</p>
+<p>Piensa en Git como el <strong>historial médico completo</strong> de tu proyecto. No solo registra la versión final, sino cada cambio, cada "operación" (fusión de código), cada "diagnóstico" (corrección de error) y quién fue el "cirujano" (desarrollador) que lo realizó. Su flexibilidad es tal que es la navaja suiza que encontrarás en el cinturón de cualquier profesional, desde desarrolladores de apps hasta científicos de datos que trabajan con AWS o Azure DevOps.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Sistema de Control de Versiones Distribuido (DVCS)</p>
+<p>A diferencia de los sistemas centralizados antiguos, donde el historial completo vivía en un solo servidor, en un sistema distribuido como Git, <strong>cada desarrollador tiene una copia completa del historial del proyecto en su propia máquina</strong>. Esto te permite trabajar de forma autónoma, hacer commits, y revisar la historia sin conexión a internet.</p>
+</div>
+<p>Las ventajas de usar Git son tan abrumadoras que es más fácil preguntar qué <em>no</em> te da:</p>
+<ul>
+<li><strong>Seguimiento de Cambios (La Máquina del Tiempo):</strong> Te permite ver la evolución de tu código, identificar cuándo se introdujo un error y volver a un estado anterior que funcionaba con una facilidad pasmosa.</li>
+<li><strong>Colaboración sin Caos (El Director de Orquesta):</strong> Gracias a las ramas, varios desarrolladores pueden trabajar en paralelo en distintas funcionalidades sin estorbarse. Git proporciona las herramientas para luego fusionar todo ese trabajo de forma ordenada.</li>
+<li><strong>Integración Universal (El Camaleón):</strong> Git se integra a la perfección con casi todos los Entornos de Desarrollo Integrado (IDEs) modernos como Visual Studio Code, PhpStorm o JupyterLab.</li>
+<li><strong>Trabajo Offline (El Superpoder del Modo Avión):</strong> Al tener el repositorio completo en tu máquina, puedes seguir trabajando, haciendo commits y viendo el historial aunque estés en un tren sin Wi-Fi. Solo necesitas conexión para sincronizarte con el equipo.</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    subgraph "Equipo de Desarrollo"
+        A[Desarrollador 1 - Copia Local Completa]
+        B[Desarrollador 2 - Copia Local Completa]
+        C[Desarrollador 3 - Copia Local Completa]
+    end
+
+    subgraph "Servidor Remoto (p.ej. GitHub)"
+        R[Repositorio Central]
+    end
+
+    A &lt;--&gt;|Sincronización| R
+    B &lt;--&gt;|Sincronización| R
+    C &lt;--&gt;|Sincronización| R
+
+    style R fill:#f9f,stroke:#333,stroke-width:2px
+</code></pre>
+<h2 id="como-funciona-git-un-vistazo-bajo-el-capo">¿Cómo Funciona Git? Un Vistazo Bajo el Capó</h2>
+<p>Si Git es una máquina del tiempo, ¿cómo funciona? No es magia, es un sistema ingenioso basado en <strong>instantáneas (snapshots)</strong> y un flujo de trabajo muy concreto. Cada vez que haces un <code>commit</code>, Git no guarda los cambios, sino que toma una foto del aspecto de <em>todos</em> tus archivos en ese preciso instante y la almacena con un identificador único (un hash).</p>
+<p>Estas instantáneas se conectan entre sí, creando una cadena que forma el historial de tu proyecto. Es como una tira de fotogramas de una película; puedes examinar cada fotograma o rebobinar hasta el que quieras.</p>
+<h3 id="el-viaje-del-codigo-los-tres-estados">El Viaje del Código: Los Tres Estados</h3>
+<p>Todo archivo en tu repositorio Git se encuentra en uno de estos tres estados. Entender este viaje es clave para entender Git.</p>
+<ol>
+<li><strong>Directorio de Trabajo (Workspace):</strong> Aquí es donde vives y respiras, tu editor de código. Cualquier archivo que creas o modificas está aquí. Git lo ve, pero lo considera "trabajo en curso". Es un archivo <strong>modificado</strong>.</li>
+<li><strong>Área de Preparación (Staging Area):</strong> Esta es la sala de espera, la rampa de lanzamiento. Antes de hacer una foto (commit), tienes que decirle a Git <em>exactamente</em> qué archivos quieres que salgan en esa foto. Al usar <code>git add</code>, mueves los archivos del Workspace al Staging Area. Un archivo aquí está <strong>preparado (staged)</strong>.</li>
+<li><strong>Repositorio Local (.git directory):</strong> Este es el álbum de fotos, el archivo histórico. Cuando haces <code>git commit</code>, todos los archivos que estaban en el Staging Area se empaquetan en una instantánea permanente y se guardan en tu repositorio local. Un archivo aquí está <strong>confirmado (committed)</strong>.</li>
+</ol>
+<pre class="mermaid"><code>graph LR
+    A[Directorio de Trabajo: Modificas 'index.php'] -- "git add index.php" --&gt; B[Área de Preparación: 'index.php' listo para el commit]
+    B -- "git commit -m 'mensaje'" --&gt; C[Repositorio Local: ¡Instantánea guardada!]
+    C -- "git reset HEAD~1" ---&gt; B
+    B -- "git restore --staged index.php" --&gt; A
+</code></pre>
+<h2 id="git-vs-github-el-duo-dinamico">Git vs. GitHub: El Dúo Dinámico</h2>
+<p>Es una de las confusiones más comunes para los principiantes. Aclarémoslo de una vez por todas con una analogía que os va a encantar.</p>
+<p><strong>Git es el motor. GitHub es el coche y el garaje.</strong></p>
+<ul>
+<li><strong>Git</strong> es la tecnología subyacente, el software que instalas en tu ordenador y que hace todo el trabajo pesado de controlar las versiones. Funciona localmente, en tu máquina, sin necesidad de Internet. Es el motor potente que te da la capacidad de viajar en el tiempo con tu código.</li>
+<li><strong>GitHub</strong> (y sus alternativas como GitLab o Bitbucket) es una plataforma web, un servicio en la nube, que aloja tus repositorios de Git. Es el coche que usa el motor Git para llevar tu código a todas partes, y el garaje donde lo guardas de forma segura y colaboras con otros. GitHub añade una capa social y de herramientas encima de Git (gestión de proyectos, revisión de código, etc.).</li>
+</ul>
+<div class="admonition info inline">
+<p class="admonition-title">En resumen</p>
+<p><strong>Git</strong> es la herramienta. <strong>GitHub</strong> es el servicio de alojamiento para los repositorios de Git. No puedes ser un maestro de GitHub sin entender Git.</p>
+</div>
+<p>Aquí tenéis una tabla para que no os queden dudas:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Git</th>
+<th style="text-align: left;">GitHub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Naturaleza</strong></td>
+<td style="text-align: left;">Software de control de versiones (herramienta)</td>
+<td style="text-align: left;">Plataforma de alojamiento para repositorios Git (servicio web)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ubicación</strong></td>
+<td style="text-align: left;">Funciona localmente en tu máquina.</td>
+<td style="text-align: left;">Está en la nube. Requiere conexión a Internet.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Función Principal</strong></td>
+<td style="text-align: left;">Rastrear y gestionar cambios en el código.</td>
+<td style="text-align: left;">Alojar repositorios, facilitar la colaboración y la gestión de proyectos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Colaboración</strong></td>
+<td style="text-align: left;">Se realiza mediante la sincronización de repositorios.</td>
+<td style="text-align: left;">Se potencia con herramientas como <em>Pull Requests</em>, revisión de código, etc.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Propiedad</strong></td>
+<td style="text-align: left;">Código abierto, mantenido por la Linux Foundation.</td>
+<td style="text-align: left;">Propiedad de Microsoft.</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>graph TD
+    subgraph "Tu Ordenador (Local)"
+        A[Git &lt;br/&gt;&lt;i&gt;El motor que controla las versiones&lt;/i&gt;]
+        B[Repositorio Local]
+        A -- Gestiona --&gt; B
+    end
+
+    subgraph "Internet (Remoto)"
+        C[GitHub &lt;br/&gt;&lt;i&gt;La plataforma que aloja y conecta&lt;/i&gt;]
+        D[Repositorio Remoto]
+        C -- Contiene --&gt; D
+    end
+
+    B &lt;--&gt;|'git push' / 'git pull'| D
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>Si borras tu cuenta de GitHub, ¿pierdes el historial de Git que tienes en tu ordenador? ¿Por qué?</li>
+<li>¿Puedes usar Git sin tener conexión a Internet? ¿Y GitHub?</li>
+<li>Imagina que trabajas en un proyecto ultrasecreto para una empresa que no confía en servicios en la nube. ¿Podrían usar Git? ¿Qué necesitarían para colaborar entre ellos?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="dominando-la-interfaz-de-github-tu-primer-flujo-de-trabajo-web">Dominando la Interfaz de GitHub: Tu Primer Flujo de Trabajo Web</h2>
+<p>Hasta ahora, hemos hablado de Git como el motor que funciona en la oscuridad de nuestra terminal, con comandos que son como hechizos mágicos (<code>git commit</code>, <code>git push</code>...). Pero, ¿y GitHub? Si Git es el motor, <strong>GitHub es el elegante salpicadero de nuestro coche</strong>: una interfaz gráfica, intuitiva y potente que nos permite gestionar nuestro proyecto, colaborar y realizar muchas de las mismas acciones sin tener que escribir una sola línea de código.</p>
+<p>Para cambios rápidos, revisiones o para cuando estás lejos de tu ordenador de desarrollo, dominar la interfaz web de GitHub es una habilidad tremendamente útil. Vamos a recorrer el ciclo de vida completo de una contribución directamente desde el navegador.</p>
+<h3 id="paso-1-crear-tu-cuenta-y-tu-primer-repositorio-el-garaje-digital">Paso 1: Crear tu Cuenta y tu Primer Repositorio (El Garaje Digital)</h3>
+<p>Lo primero es lo primero: necesitas tener tu propio espacio en este gran universo de código. Si ya tienes cuenta, puedes saltar este paso, pero si no, es tan sencillo como registrarse en cualquier otra red social.</p>
+<ol>
+<li>
+<p><strong>El Registro:</strong> Ve a <a href="https://github.com/">GitHub.com</a> y crea tu cuenta. Elegirás un nombre de usuario (¡que será tu marca personal!), una contraseña y un plan.
+    !!! tip "Plan Gratuito: Más que Suficiente"
+    Para empezar, y sinceramente, para la gran mayoría de tu carrera profesional, el plan gratuito de GitHub es increíblemente generoso. Te ofrece repositorios públicos y privados ilimitados, así que no te preocupes por los planes de pago por ahora.</p>
+</li>
+<li>
+<p><strong>Crear un Nuevo Repositorio:</strong> Una vez dentro, busca el icono <code>+</code> en la esquina superior derecha y selecciona "New repository". Aquí es donde construyes un nuevo "garaje" para tu proyecto.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github1.png"><img alt="GitHub Nuevo Repositorio" src="../images/github1.png" width="800"/></a>
+<br/></p>
+<p><pre class="mermaid"><code>graph TD
+    A[Crear Repositorio] --&gt; B{Nombre: mi-proyecto-web}
+    A --&gt; C{Descripción: Un proyecto increíble para demostrar mis habilidades}
+    A --&gt; D[Visibilidad]
+    D --&gt; E[Pública: ¡Ideal para tu portfolio! Visible para todo el mundo.]
+    D --&gt; F[Privada: Para tus experimentos secretos o trabajo en equipo cerrado.]
+    A --&gt; G[Extras Opcionales Iniciales]
+    G --&gt; H[README.md]
+    G --&gt; I[.gitignore]
+    G --&gt; J[Licencia]
+</code></pre>
+<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github2.png"><img alt="GitHub Nuevo Repositorio" src="../images/github2.png" width="700"/></a></p>
+<p>Tras realizar el paso a paso indicado anteriormente, verás una ventana que muestra una configuración rápida, normalmente para un nuevo repositorio. Puedes iniciar esta configuración creando un nuevo archivo o subiendo un archivo existente al nuevo repositorio.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github3.png"><img alt="GitHub Nuevo Repositorio" src="../images/github3.png" width="1024"/></a></p>
+<p>Subir el archivo es tan sencillo como arrastrarlo a la zona de subida y hacer clic en el botón "Commit Changes".</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github4.png"><img alt="GitHub Subir Ficheros" src="../images/github4.png" width="1024"/></a></p>
+<p>Una vez subido, aparecerá listado en la pantalla del proyecto.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github5.png"><img alt="GitHub Pantalla Proyecto" src="../images/github5.png" width="1024"/></a></p>
+<div class="admonition info">
+<p class="admonition-title">Los Tres Archivos Mágicos Iniciales</p>
+<ul>
+<li><strong>README.md:</strong> Es la portada de tu proyecto. Un buen <code>README</code> explica qué hace tu proyecto, cómo instalarlo y cómo usarlo. Es tu carta de presentación.</li>
+<li><strong>.gitignore:</strong> Una lista de archivos y carpetas que Git debe ignorar. Imprescindible para no subir archivos de configuración con contraseñas, dependencias de <code>vendor</code> o archivos temporales del sistema.</li>
+<li><strong>Licencia:</strong> Define las reglas legales de tu código. Indica cómo otros pueden usar, modificar y distribuir tu proyecto.</li>
+</ul>
+</div>
+<p>Tras hacer clic en "Create repository", serás llevado a la página principal de tu nuevo y reluciente proyecto. ¡Es hora de ponerle algo dentro!</p>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>¿Por qué es una buena práctica añadir siempre un archivo <code>README.md</code> a tus repositorios públicos?</li>
+<li>Estás trabajando en un proyecto PHP con Laravel. ¿Qué carpetas importantes añadirías al archivo <code>.gitignore</code>? (Pista: <code>vendor</code> es una de ellas).</li>
+<li>Busca en internet qué es una licencia "MIT". ¿Por qué es una de las más populares para proyectos de código abierto?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-2-el-corazon-de-la-colaboracion-el-pull-request">Paso 2: El Corazón de la Colaboración: El Pull Request</h3>
+<p>En un entorno de equipo, rara vez (o nunca) subirás cambios directamente a la rama <code>main</code>. El flujo de trabajo profesional se centra en una herramienta llamada <strong>Pull Request (PR)</strong>.</p>
+<p>La analogía es esta: imagina que el proyecto es un libro de texto que estáis escribiendo en clase. La rama <code>main</code> es la versión final impresa. Si quieres añadir un nuevo capítulo (una nueva funcionalidad), no escribes directamente sobre el libro impreso. Lo que haces es:</p>
+<ol>
+<li>
+<p>Haces una fotocopia de la última versión (<code>crear una rama</code>).</p>
+</li>
+<li>
+<p>Escribes tu capítulo en la fotocopia (<code>hacer commits en tu rama</code>).</p>
+</li>
+<li>
+<p>Cuando terminas, le entregas tu capítulo al profesor y le dices: "Por favor, ¿podrías revisar esto y, si está bien, añadirlo al libro oficial?". Eso, amigos míos, es un <strong>Pull Request</strong>.</p>
+</li>
+</ol>
+<p>Vamos a simular este proceso desde la interfaz de GitHub.</p>
+<ol>
+<li>
+<p><strong>Crear una Rama (Tu Borrador Seguro):</strong></p>
+<ul>
+<li>
+<p>En tu repositorio, verás un desplegable que probablemente diga <code>main</code>. Haz clic en él.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch1.png"><img alt="GitHub Ramas del Proyecto" src="../images/github-branch1.png" width="1024"/></a>
+<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch2.png"><img alt="GitHub Crear Rama" src="../images/github-branch2.png" width="1024"/></a></p>
+</li>
+<li>
+<p>Escribe un nombre para tu nueva rama (p. ej., <code>feature/NewContent</code>) y haz clic en "Create branch".</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch3.png"><img alt="GitHub Nombre Rama" src="../images/github-branch3.png"/></a>
+<br/>
+    *   ¡Listo! GitHub te ha movido automáticamente a esta nueva rama. Ahora estás en un entorno seguro para hacer cambios.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch4.png"><img alt="GitHub Listado de Ramas" src="../images/github-branch4.png" width="1024"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch5.png"><img alt="GitHub Rama de Trabajo" src="../images/github-branch5.png" width="1024"/></a></p>
+<ol>
+<li>
+<p><strong>Hacer Commits (Guardar tu Progreso):</strong></p>
+<ul>
+<li>Navega a un archivo que quieras modificar o haz clic en "Add file" &gt; "Create new file" para añadir uno nuevo (p. ej., <code>new-file</code>).
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch6.png"><img alt="GitHub Rama de Trabajo" src="../images/github-branch6.png" width="1024"/></a> </li>
+<li>GitHub te presentará un editor de texto directamente en el navegador. Haz tus cambios.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch7.png"><img alt="GitHub Rama de Trabajo" src="../images/github-branch7.png" width="1024"/></a></li>
+<li>Cuando termines, desplázate hacia abajo. Verás la sección "Commit changes". Escribe un mensaje de commit claro y descriptivo.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-branch8.png"><img alt="GitHub Rama de Trabajo" src="../images/github-branch8.png"/></a></li>
+<li>Asegúrate de que estás haciendo el commit en tu nueva rama (<code>feature/NewContent</code>) y haz clic en "Commit changes".</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Editor Web vs. Desarrollo Local</p>
+</div>
+<p>Editar archivos directamente en GitHub es genial para corregir una errata rápida o para un cambio muy pequeño. Para el trabajo de desarrollo real, siempre es mejor seguir el ciclo local (<code>clonar</code>, <code>editar en VSCode</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>) que vimos antes. Es mucho más potente y rápido.</p>
+</li>
+<li>
+<p><strong>Abrir el Pull Request (Pedir la Revisión):</strong></p>
+<ul>
+<li>Una vez que has subido tus commits a tu rama, GitHub es muy listo. Normalmente te mostrará un banner amarillo que dice "feature/NewContent had recent pushes" con un botón verde "Compare &amp; pull request". ¡Hazle caso y haz clic!
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-pull2.png"><img alt="GitHub Rama de Trabajo" src="../images/github-pull2.png" width="1024"/></a></li>
+<li>Si no aparece, ve a la pestaña "Pull requests" y haz clic en "New pull request".</li>
+<li>Asegúrate de que la <code>base</code> branch es <code>main</code> y la <code>compare</code> branch es la tuya (<code>feature/NewContent</code>).</li>
+<li>Escribe un título claro para tu PR y una descripción detallada de los cambios que has hecho. Esta es tu oportunidad de explicar a tu equipo <em>qué</em> has hecho y <em>por qué</em>.<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-pull3.png"><img alt="GitHub Rama de Trabajo" src="../images/github-pull3.png" width="1024"/></a></li>
+</ul>
+</li>
+<li>
+<p><strong>Revisar y Fusionar (El Visto Bueno Final):</strong></p>
+<ul>
+<li>En un equipo real, ahora le pasarías el enlace de tu PR a un compañero para que lo revise. Podría dejar comentarios en líneas específicas de tu código y pedirte cambios.</li>
+<li>Una vez que el PR tiene la aprobación (o si estás trabajando solo), verás un gran botón verde que dice <strong>"Merge pull request"</strong>.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-pull4.png"><img alt="GitHub Rama de Trabajo" src="../images/github-pull4.png" width="1024"/></a></li>
+<li>Al hacer clic, se te pedirá que confirmes. ¡Hazlo sin miedo!</li>
+<li>¡Felicidades! Tus cambios de la rama <code>feature/NewContent</code> ahora forman parte de la rama <code>main</code>.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/github-final.png"><img alt="GitHub Rama de Trabajo" src="../images/github-final.png" width="1024"/></a></li>
+</ul>
+</li>
+</ol>
+<p><br/>
+Resumen gráfico del proceso: 
+<br/></p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desarrollador
+    participant GitHub
+    participant Main as Rama 'main'
+    participant Feature as Rama 'feature'
+
+    Dev-&gt;&gt;GitHub: Crea la rama 'feature' desde 'main'
+    Note over Dev,Feature: Trabaja en la nueva&lt;br&gt;funcionalidad (hace commits)
+    Dev-&gt;&gt;GitHub: Abre un Pull Request (feature -&gt; main)
+    Note over GitHub: Se inician las discusiones,&lt;br&gt;revisiones, y tests automáticos.
+    participant Revisor as Otro Desarrollador
+    Revisor-&gt;&gt;GitHub: Revisa el código y aprueba el PR
+    Dev-&gt;&gt;GitHub: Fusiona (Merge) el Pull Request
+    GitHub-&gt;&gt;Main: Los cambios de 'feature' se incorporan a 'main'
+    GitHub--&gt;&gt;Dev: ¡Fusión completada!</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">¡Mantén Limpia la Casa!</p>
+<p>Después de fusionar un Pull Request, la rama <code>feature</code> ya no es necesaria. GitHub te ofrecerá un práctico botón para "Delete branch". Es una excelente práctica hacerlo para mantener tu repositorio limpio y ordenado.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>¿Cuál es la principal diferencia entre un <code>commit</code> y un <code>pull request</code>?</li>
+<li>Estás a punto de fusionar un Pull Request y GitHub te avisa: "This branch has conflicts that must be resolved". ¿Qué crees que ha pasado? (¡Búscalo! Es el día a día del desarrollador).</li>
+<li>¿Por qué es tan importante escribir un buen título y una buena descripción en un Pull Request en un entorno de equipo?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="git-flujo-de-trabajo-basico-tu-ejemplo-practico">Git -&gt; Flujo de Trabajo Básico: Tu Ejemplo Práctico</h2>
+<p>Basta de teoría. Vamos a crear un proyecto de ejemplo, paso a paso, como lo haríais en clase o en vuestro primer trabajo. Crearemos una simple página web con PHP.</p>
+<p>Antes de poder usar la máquina del tiempo, necesitas construirla. La instalación de Git es sencilla y es el primer paso para convertirte en un profesional.</p>
+<h3 id="instalacion">Instalación</h3>
+<p>Git es compatible con todos los sistemas operativos principales. El proceso varía ligeramente:</p>
+<ul>
+<li><strong>Windows:</strong><ol>
+<li>Ve a la página oficial de <a href="https://git-scm.com/download/win">Git para Windows</a>.</li>
+<li>Descarga el instalador y ejecútalo.</li>
+<li>Durante la instalación, te hará muchas preguntas. Para empezar, <strong>puedes dejar todas las opciones por defecto</strong>. Son sensatas y funcionan bien. La opción más importante es la que te permite usar "Git Bash", una terminal muy potente.</li>
+<li>Si eres un usuario avanzado y tienes <code>winget</code>, puedes instalarlo desde PowerShell:
+    <div class="highlight"><pre><span></span><code><span class="n">winget</span> <span class="n">install</span> <span class="p">-</span><span class="n">-id</span> <span class="n">Git</span><span class="p">.</span><span class="n">Git</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-source</span> <span class="n">winget</span>
+</code></pre></div></li>
+</ol>
+</li>
+</ul>
+<h3 id="configuracion-inicial-solo-una-vez">Configuración Inicial (¡Solo una vez!)</h3>
+<p>Antes de nada, Git necesita saber quién eres para firmar tus "commits". Abre una terminal (Git Bash en Windows, o la terminal en Mac/Linux) y preséntate. <strong>Solo tienes que hacer esto una vez en tu vida por cada ordenador que uses.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Configura tu nombre de usuario para todos tus repositorios</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Tu Nombre Apellido"</span>
+
+<span class="c1"># Configura tu email (el mismo que usarás en GitHub)</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"tu.email@ejemplo.com"</span>
+</code></pre></div>
+<h3 id="creando-nuestro-primer-proyecto-miportfolio">Creando nuestro primer proyecto "MiPortfolio"</h3>
+<p><strong>Paso 1: Crear el repositorio remoto en GitHub</strong></p>
+<ol>
+<li>Ve a <a href="https://github.com">GitHub.com</a> y regístrate si no lo has hecho.</li>
+<li>Haz clic en "New" o "Create a new repository".</li>
+<li>Dale un nombre: <code>mi-portfolio-daw</code>.</li>
+<li>Añade una descripción: "Mi primer proyecto de portfolio para la clase de DAW".</li>
+<li>Déjalo <strong>Público</strong>.</li>
+<li><strong>¡Muy importante!</strong> Marca la casilla que dice "<strong>Add a README file</strong>". Esto inicializa el repositorio con un archivo, haciendo las cosas más fáciles.</li>
+<li>Haz clic en "Create repository". ¡Listo! Ya tienes tu garaje en la nube.</li>
+</ol>
+<p><strong>Paso 2: Clonar el repositorio a tu máquina local</strong></p>
+<p>Ahora vamos a traer ese repositorio de la nube a tu ordenador. A esto se le llama "clonar".</p>
+<ol>
+<li>En la página de tu repositorio en GitHub, haz clic en el botón verde que dice "<strong>&lt;&gt; Code</strong>".</li>
+<li>Asegúrate de que está seleccionada la pestaña <strong>HTTPS</strong> y copia la URL (debería ser algo como <code>https://github.com/tu-usuario/mi-portfolio-daw.git</code>).</li>
+<li>En tu terminal, navega a la carpeta donde guardas tus proyectos (p. ej., <code>cd Documents/ProyectosDAW</code>).</li>
+<li>Ejecuta el comando <code>git clone</code> pegando la URL que copiaste:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clona el repositorio remoto a una nueva carpeta local llamada "mi-portfolio-daw"</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tu-usuario/mi-portfolio-daw.git
+</code></pre></div>
+<p>¡Felicidades! Ahora tienes una carpeta <code>mi-portfolio-daw</code> en tu ordenador que está conectada mágicamente a su gemela en GitHub.</p>
+<h3 id="el-ciclo-sagrado-add-commit-push">El Ciclo Sagrado: <code>add</code>, <code>commit</code>, <code>push</code></h3>
+<p>Este es el flujo de trabajo que repetirás cientos de veces. Imagínalo como un proceso de empaquetado y envío en tres pasos.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    Workspace: Directorio de Trabajo &lt;br/&gt; (Archivos sin seguimiento)
+    Staging: Área de Preparación &lt;br/&gt; (Archivos listos para empaquetar)
+    LocalRepo: Repositorio Local &lt;br/&gt; (Paquetes confirmados)
+    RemoteRepo: Repositorio Remoto &lt;br/&gt; (Paquetes enviados)
+
+    [*] --&gt; Workspace: Modificas/creas archivos
+
+    Workspace --&gt; Staging: 'git add &lt;archivo&gt;'
+    Staging --&gt; Workspace: Deshaces 'add'
+
+    Staging --&gt; LocalRepo: 'git commit -m "mensaje"'
+    LocalRepo --&gt; Staging: Deshaces 'commit'
+
+    LocalRepo --&gt; RemoteRepo: 'git push'</code></pre>
+<p><strong>Paso 3: Realizar y confirmar nuestro primer cambio</strong></p>
+<ol>
+<li>Con la terminal, entra en la nueva carpeta: <code>cd mi-portfolio-daw</code>.</li>
+<li>Abre la carpeta con tu editor de código favorito (p. ej., Visual Studio Code). Verás que solo contiene el archivo <code>README.md</code>.</li>
+<li>Crea un nuevo archivo llamado <code>index.php</code> y añade algo de código:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// index.php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mi Portfolio DAW&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;¡Hola, Mundo!&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Bienvenido a mi increíble portfolio. Próximamente, más contenido.&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">"&lt;p&gt;La fecha de hoy es "</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"d-m-Y"</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<ol>
+<li>Ahora, volvamos a la terminal. Usa <code>git status</code> para que Git te diga qué ha cambiado:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pregunta a Git por el estado actual del repositorio</span>
+git<span class="w"> </span>status
+</code></pre></div>
+<p>Git te responderá algo como: <code>Untracked files: (use "git add &lt;file&gt;..." to include in what will be committed) index.php</code>. Te está diciendo: "Oye, he visto un archivo nuevo, <code>index.php</code>, pero no le estoy haciendo seguimiento. ¿Quieres que lo prepare para el próximo envío?".</p>
+<ol>
+<li><strong>Preparamos el archivo para el envío (<code>git add</code>)</strong>. Le decimos a Git que queremos incluir <code>index.php</code> en nuestro próximo "paquete" (commit).</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Añade el archivo index.php al "Staging Area" o área de preparación.</span>
+git<span class="w"> </span>add<span class="w"> </span>index.php
+
+<span class="c1"># Si quieres añadir todos los archivos modificados a la vez:</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+<ol>
+<li><strong>Empaquetamos los cambios (<code>git commit</code>)</strong>. Ahora que los archivos están en el área de preparación, creamos el paquete (commit) con un mensaje descriptivo.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">¡Pésima Práctica!</p>
+<p>Nunca, jamás, escribas mensajes de commit como "cambios", "asdasd" o "arreglado". ¡Sé descriptivo! Tu "yo" del futuro y tus compañeros de equipo te lo agradecerán. Un buen mensaje sería: <em>"feat: Añade la estructura inicial de index.php con saludo"</em> o <em>"fix: Corrige el cálculo de impuestos en la factura"</em>.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crea un commit con un mensaje claro y descriptivo</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: Añade el fichero inicial index.php con un saludo"</span>
+</code></pre></div>
+<ol>
+<li><strong>Enviamos el paquete a GitHub (<code>git push</code>)</strong>. El commit solo existe en tu repositorio local. Para que el mundo (y tu equipo) lo vea, tienes que "empujarlo" al repositorio remoto en GitHub.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Empuja los commits de tu rama local 'main' a la rama remota 'origin'</span>
+git<span class="w"> </span>push
+</code></pre></div>
+<p>¡Y ya está! Si ahora refrescas la página de tu repositorio en GitHub, verás tu <code>index.php</code> allí. ¡Acabas de completar tu primer ciclo de desarrollo con Git!</p>
+<h3 id="sincronizando-con-el-equipo-git-pull">Sincronizando con el Equipo: <code>git pull</code></h3>
+<p>Imagina que un compañero ha subido cambios al repositorio mientras tú no mirabas. Para obtener la última versión del proyecto, usas <code>git pull</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Trae los cambios del repositorio remoto y los fusiona con tu repositorio local</span>
+git<span class="w"> </span>pull
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Buena Práctica Profesional</p>
+<p>Antes de empezar a trabajar cada día, o antes de hacer un <code>push</code>, haz siempre un <code>git pull</code> para asegurarte de que tienes la versión más reciente del código. Esto te evitará muchos problemas y conflictos.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>¿Qué diferencia hay entre <code>git add</code> y <code>git commit</code>? Usa una analogía (p. ej., una cesta de la compra).</li>
+<li>Has modificado 3 archivos, pero solo quieres incluir 2 en tu próximo commit. ¿Qué comandos usarías?</li>
+<li>Haces un <code>commit</code> pero se te olvida hacer <code>push</code>. Apagas el ordenador y al día siguiente se rompe. ¿Has perdido tu trabajo? ¿Dónde está ese <code>commit</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="ramificaciones-creando-universos-paralelos-con-branch">Ramificaciones: Creando Universos Paralelos con <code>branch</code></h2>
+<p>Las ramas son, sin duda, una de las características más potentes de Git. Son la clave para un trabajo en equipo ordenado y para poder experimentar sin miedo.</p>
+<p>La analogía es simple: la rama <code>main</code> es la versión oficial y estable de tu proyecto, la que podrías enseñar a un cliente. Cuando quieres trabajar en algo nuevo (una <code>feature</code>) o arreglar un error (<code>bugfix</code>), creas una copia (una nueva rama) a partir de <code>main</code>, trabajas en esa copia y, solo cuando está terminada y probada, la incorporas de nuevo a <code>main</code>.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBFc3RyYXRlZ2lhIGRlIFJhbWFzIChHaXQgRmxvdyBTaW1wbGlmaWNhZG8pCgojIyBtYWluCi0gQ8OzZGlnbyBlc3RhYmxlIHkgZW4gcHJvZHVjY2nDs24uCi0gwqFOdW5jYSBzZSB0cmFiYWphIGRpcmVjdGFtZW50ZSBhcXXDrSEKCiMjIGRldmVsb3AKLSBSYW1hIGRlIGludGVncmFjacOzbi4KLSBSZWZsZWphIGxhcyBwcsOzeGltYXMgZnVuY2lvbmFsaWRhZGVzLgoKIyMgZmVhdHVyZS8qCi0gU2UgY3JlYW4gYSBwYXJ0aXIgZGUgYGRldmVsb3BgLgotICoqRWplbXBsb3MqKjogYGZlYXR1cmUvbG9naW5gLCBgZmVhdHVyZS91c2VyLXByb2ZpbGVgCi0gVW5hIHZleiB0ZXJtaW5hZGFzLCBzZSBmdXNpb25hbiBkZSB2dWVsdGEgZW4gYGRldmVsb3BgLgoKIyMgYnVnZml4LyoKLSBTZSBjcmVhbiBhIHBhcnRpciBkZSBgbWFpbmAgbyBgZGV2ZWxvcGAgcGFyYSBhcnJlZ2xhciBlcnJvcmVzLgotICoqRWplbXBsbyoqOiBgYnVnZml4L3R5cG8tZW4tdGl0dWxvYAotIFNlIGZ1c2lvbmFuIGRlIHZ1ZWx0YSBsbyBhbnRlcyBwb3NpYmxlLg==</markmap-data></div>
+<h3 id="ejemplo-practico-anadiendo-un-fichero-de-estilos">Ejemplo Práctico: Añadiendo un Fichero de Estilos</h3>
+<p>Vamos a añadir un <code>style.css</code> a nuestro proyecto <code>mi-portfolio-daw</code>, pero siguiendo las buenas prácticas: en una rama separada.</p>
+<ol>
+<li><strong>Asegúrate de estar en la rama principal y tenerlo todo actualizado.</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Cambia a la rama main (aunque ya deberías estar ahí)</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># Baja los últimos cambios por si acaso</span>
+git<span class="w"> </span>pull
+</code></pre></div>
+<ol>
+<li><strong>Crea y muévete a tu nueva rama.</strong> Vamos a llamarla <code>feature/añadir-estilos</code>.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Crea la nueva rama y salta a ella en un solo paso</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/añadir-estilos
+</code></pre></div>
+Git te dirá: <code>Switched to a new branch 'feature/añadir-estilos'</code>. ¡Ya estás en tu universo paralelo! Cualquier cosa que hagas aquí no afectará a <code>main</code> hasta que tú lo decidas.</p>
+<ol>
+<li>
+<p><strong>Trabaja en la nueva rama.</strong> Crea un archivo <code>css/style.css</code> y modifica <code>index.php</code> para enlazarlo.</p>
+<ul>
+<li>
+<p>Crea una carpeta <code>css</code> y dentro un archivo <code>style.css</code>:
+<div class="highlight"><pre><span></span><code><span class="c">/* css/style.css */</span>
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f8ff</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#005a9c</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Modifica <code>index.php</code> para que incluya la hoja de estilos:
+<div class="highlight"><pre><span></span><code><span class="x">// ... en la sección &lt;head&gt; de index.php</span>
+<span class="x">&lt;link rel="stylesheet" href="css/style.css"&gt;</span>
+</code></pre></div></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Confirma los cambios EN LA RAMA NUEVA.</strong> Sigue el ciclo que ya conoces: <code>add</code> y <code>commit</code>.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Añade todos los nuevos cambios (la carpeta css y la modificación de index.php)</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+
+<span class="c1"># Confirma los cambios en la rama 'feature/añadir-estilos'</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"feat: Añade fichero CSS y lo enlaza desde el index"</span>
+</code></pre></div>
+<ol>
+<li><strong>Sube tu rama a GitHub.</strong> La primera vez que subes una nueva rama, la sintaxis de <code>push</code> es un poco diferente.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sube la nueva rama a GitHub y la configura para el seguimiento</span>
+git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>feature/añadir-estilos
+</code></pre></div>
+<ol>
+<li><strong>Fusiona los cambios de vuelta a <code>main</code> (Merge).</strong> ¡La nueva funcionalidad está lista! Es hora de incorporarla a la rama principal.</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 1. Vuelve a la rama principal, la que va a recibir los cambios</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># 2. Asegúrate de que está actualizada</span>
+git<span class="w"> </span>pull
+
+<span class="c1"># 3. Fusiona los cambios de tu rama 'feature' DENTRO de 'main'</span>
+git<span class="w"> </span>merge<span class="w"> </span>feature/añadir-estilos
+</code></pre></div>
+Git te mostrará los archivos que han cambiado. ¡La fusión ha sido un éxito!</p>
+<ol>
+<li><strong>Sube los cambios a <code>main</code> y limpia.</strong> Ahora tu rama <code>main</code> local tiene los nuevos estilos, pero la <code>main</code> de GitHub todavía no.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sube la rama 'main' actualizada a GitHub</span>
+git<span class="w"> </span>push
+
+<span class="c1"># (Opcional pero recomendado) Borra la rama que ya no necesitas</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/añadir-estilos
+</code></pre></div>
+<p>Este es el flujo de trabajo que usarás constantemente en un entorno profesional.</p>
+<pre class="mermaid"><code>gitGraph
+    commit id: "Init"
+    branch "feature/añadir-estilos"
+    checkout "feature/añadir-estilos"
+    commit id: "Añade CSS"
+    checkout main
+    merge "feature/añadir-estilos"
+    commit id: "Push a main"</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>¿Por qué es una mala idea trabajar siempre directamente sobre la rama <code>main</code>?</li>
+<li>Has creado una rama para una nueva funcionalidad, pero al final el cliente dice que no la quiere. ¿Qué haces con esa rama? ¿Afecta en algo al proyecto principal?</li>
+<li>¿Qué es un "Pull Request" o "Merge Request" en GitHub/GitLab? (¡Búscalo! Es el siguiente paso lógico a lo que acabamos de ver).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="el-ecosistema-git-ventajas-desventajas-y-alternativas">El Ecosistema Git: Ventajas, Desventajas y Alternativas</h2>
+<p>Elegir las herramientas adecuadas es fundamental. Aunque Git y GitHub son el estándar de facto, es importante entender por qué y qué otras opciones existen.</p>
+<h3 id="pros-y-contras">Pros y Contras</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Plataforma</th>
+<th style="text-align: left;">Ventajas (Pros)</th>
+<th style="text-align: left;">Desventajas (Contras)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Git</strong></td>
+<td style="text-align: left;"><strong>Control Total:</strong> Eres el dueño absoluto de tu historial. <br/> <strong>Offline-Friendly:</strong> Puedes trabajar en cualquier lugar. <br/> <strong>Rendimiento:</strong> Es increíblemente rápido. <br/> <strong>Flexible:</strong> Se adapta a cualquier flujo de trabajo.</td>
+<td style="text-align: left;"><strong>Curva de Aprendizaje:</strong> Requiere tiempo dominarlo. <br/> <strong>Aislado por Defecto:</strong> No incluye herramientas de colaboración visuales.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GitHub</strong></td>
+<td style="text-align: left;"><strong>Colaboración Superior:</strong> Los Pull Requests y la revisión de código son geniales. <br/> <strong>Ecosistema Enorme:</strong> Integración con miles de servicios (CI/CD, etc.). <br/> <strong>Tu Portfolio Público:</strong> Es el escaparate perfecto para mostrar tu trabajo.</td>
+<td style="text-align: left;"><strong>Dependencia de Internet:</strong> Necesitas conexión para sincronizar. <br/> <strong>Propiedad Corporativa:</strong> Aunque es genial, tus repositorios están en servidores de Microsoft. <br/> <strong>Limitaciones en Planes Gratuitos:</strong> Algunas funciones avanzadas son de pago.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cuando-usar-que">¿Cuándo Usar Qué?</h3>
+<ul>
+<li><strong>Usa Git SIEMPRE:</strong> No hay excusa. Para cualquier proyecto, incluso uno personal que nunca saldrá de tu ordenador, Git te ofrece una red de seguridad indispensable.</li>
+<li><strong>Usa Git + GitHub (o similar) cuando:</strong></li>
+<li>Necesitas una <strong>copia de seguridad</strong> remota de tu proyecto.</li>
+<li>Quieres <strong>colaborar</strong> con otros desarrolladores.</li>
+<li>Quieres <strong>contribuir a proyectos de código abierto</strong>.</li>
+<li>Necesitas <strong>integrar herramientas de automatización</strong> (CI/CD) que se activen cuando subes código.</li>
+<li>Quieres construir tu <strong>marca como desarrollador</strong>.</li>
+</ul>
+<p>Este enfoque híbrido (control local con Git, colaboración en la nube con GitHub) es el que utiliza el 99.9% de la industria.</p>
+<h3 id="competidores-y-alternativas">Competidores y Alternativas</h3>
+<p>Aunque GitHub es el rey, no es el único jugador en el campo del alojamiento de repositorios:</p>
+<ul>
+<li><strong>GitLab:</strong> Es la alternativa más potente. Ofrece un producto muy completo que incluye, desde el principio, herramientas de CI/CD integradas de forma nativa. Muchas empresas lo prefieren porque pueden alojarlo en sus propios servidores (auto-alojamiento), dándoles un control total sobre su código.</li>
+<li><strong>Bitbucket:</strong> De la empresa Atlassian (creadores de Jira y Trello), se integra a la perfección con su ecosistema de herramientas de gestión de proyectos. Es muy popular en el mundo corporativo.</li>
+<li><strong>AWS CodeCommit y Azure DevOps:</strong> Son las soluciones de Amazon y Microsoft, respectivamente. Ofrecen una integración muy profunda con sus propias nubes, lo que puede ser una gran ventaja si tu infraestructura ya depende de ellas.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Preguntas de Reflexión</p>
+<ol>
+<li>Estás haciendo un pequeño script en tu casa para automatizar una tarea personal. ¿Usarías Git? ¿Y GitHub? Justifica tu respuesta.</li>
+<li>Tu empresa desarrolla una aplicación bancaria y por política de seguridad, el código no puede estar alojado en servidores de terceros. ¿Qué plataforma de las mencionadas podría ser la más adecuada y por qué?</li>
+<li>¿Crees que la "propiedad corporativa" de GitHub es realmente una desventaja para un desarrollador junior que está construyendo su portfolio?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Dominar Git lleva tiempo y práctica, pero es una de las inversiones más rentables que harás en tu carrera. Cuando te sientas cómodo con lo que hemos visto, te animo a explorar más a fondo.</p>
+<ul>
+<li><a href="https://git-scm.com/book/es/v2"><strong>Documentación Oficial de Git (en español)</strong></a>: La fuente de la verdad. Es densa, pero increíblemente completa. Ideal como referencia.</li>
+<li><a href="https://learngitbranching.js.org/?locale=es_ES"><strong>Learn Git Branching</strong></a>: Un tutorial interactivo y visual absolutamente fantástico para entender cómo funcionan las ramas, los <code>merge</code>, los <code>rebase</code> y mucho más. ¡Muy recomendado!</li>
+<li><a href="https://www.atlassian.com/es/git/tutorials"><strong>Atlassian Git Tutorial (en español)</strong></a>: Tutoriales de alta calidad de los creadores de Bitbucket. Cubren desde lo más básico hasta flujos de trabajo avanzados.</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

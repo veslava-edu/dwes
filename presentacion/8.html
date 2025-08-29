@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criterios de Calificación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+            background-color: #f5f9fc;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #263238;
+        }
+        .header {
+            background-color: #0277bd;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 30px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+        .grading-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 25px;
+            height: 100%;
+        }
+        .grading-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .grading-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .system-icon {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .recovery-icon {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .rules-icon {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .scale-icon {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .card-content {
+            flex-grow: 1;
+        }
+        .item-list {
+            list-style-type: none;
+        }
+        .item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .item:last-child {
+            margin-bottom: 0;
+        }
+        .item-bullet {
+            margin-right: 10px;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .system-bullet {
+            color: #0277bd;
+        }
+        .recovery-bullet {
+            color: #2e7d32;
+        }
+        .rules-bullet {
+            color: #e65100;
+        }
+        .scale-bullet {
+            color: #7b1fa2;
+        }
+        .item-content {
+            flex: 1;
+        }
+        .item-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .item-desc {
+            font-size: 14px;
+            color: #546e7a;
+        }
+        .formula {
+            background-color: #f5f9fc;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            display: inline-block;
+            color: #0277bd;
+            font-weight: 600;
+        }
+        .grade-scale {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .grade-bar {
+            flex-grow: 1;
+            height: 20px;
+            background: linear-gradient(to right, #f44336, #ff9800, #4caf50);
+            border-radius: 10px;
+            position: relative;
+        }
+        .grade-markers {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 5px;
+        }
+        .grade-marker {
+            font-size: 12px;
+            color: #546e7a;
+            text-align: center;
+        }
+        .footer {
+            padding: 15px 70px;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            font-size: 16px;
+            color: #546e7a;
+        }
+        .highlight {
+            color: #0277bd;
+            font-weight: 600;
+        }
+    </style>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita barras de scroll innecesarias */
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Criterios de Calificación</h1>
+        </div>
+        
+        <div class="content">
+            <div class="grading-grid">
+                <!-- Sistema de Calificación -->
+                <div class="grading-card">
+                    <div class="card-header">
+                        <div class="card-icon system-icon">
+                            <i class="fas fa-calculator fa-lg"></i>
+                        </div>
+                        <div class="card-title">Sistema de Calificación</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="item-list">
+                            <li class="item">
+                                <div class="item-bullet system-bullet"><i class="fas fa-percentage"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Evaluación Trimestral</div>
+                                    <div class="item-desc">Prueba: 80% | Actividades: 20%</div>
+                                    <div class="formula">Nota = 0.80×Prueba + 0.20×Actividades</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet system-bullet"><i class="fas fa-award"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Calificación Final</div>
+                                    <div class="item-desc">Centro: 80% | F. Empresa: 20%</div>
+                                    <div class="formula">Final = 0.80×Media + 0.20×FE</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet system-bullet"><i class="fas fa-star"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Ampliación</div>
+                                    <div class="item-desc">Hasta +1 punto para notas ≥5</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Procedimiento de Recuperación -->
+                <div class="grading-card">
+                    <div class="card-header">
+                        <div class="card-icon recovery-icon">
+                            <i class="fas fa-redo fa-lg"></i>
+                        </div>
+                        <div class="card-title">Recuperación y Convocatorias</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="item-list">
+                            <li class="item">
+                                <div class="item-bullet recovery-bullet"><i class="fas fa-sync-alt"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Evaluación Continua</div>
+                                    <div class="item-desc">Sin recuperación trimestral</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet recovery-bullet"><i class="fas fa-calendar-day"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Ordinaria (Junio)</div>
+                                    <div class="item-desc">Prueba final sobre contenidos suspensos</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet recovery-bullet"><i class="fas fa-calendar-check"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Extraordinaria (Julio)</div>
+                                    <div class="item-desc">Prueba única con todos los contenidos</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Normas Adicionales -->
+                <div class="grading-card">
+                    <div class="card-header">
+                        <div class="card-icon rules-icon">
+                            <i class="fas fa-clipboard-list fa-lg"></i>
+                        </div>
+                        <div class="card-title">Normas Adicionales</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="item-list">
+                            <li class="item">
+                                <div class="item-bullet rules-bullet"><i class="fas fa-clock"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Plazos de Entrega</div>
+                                    <div class="item-desc">Fuera de plazo = 0</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet rules-bullet"><i class="fas fa-ban"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Actividades no Recuperables</div>
+                                    <div class="item-desc">Prácticas no aprobadas</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-bullet rules-bullet"><i class="fas fa-robot"></i></div>
+                                <div class="item-content">
+                                    <div class="item-title">Uso de IA y Repositorios</div>
+                                    <div class="item-desc">No autorizado = 0</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Escala de Calificación -->
+                <div class="grading-card">
+                    <div class="card-header">
+                        <div class="card-icon scale-icon">
+                            <i class="fas fa-chart-bar fa-lg"></i>
+                        </div>
+                        <div class="card-title">Escala de Calificación</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="grade-scale">
+                            <div style="width: 100%;">
+                                <div class="grade-bar"></div>
+                                <div class="grade-markers">
+                                    <div class="grade-marker">0<br>Suspenso</div>
+                                    <div class="grade-marker">5<br>Aprobado</div>
+                                    <div class="grade-marker">7<br>Notable</div>
+                                    <div class="grade-marker">9<br>Sobresaliente</div>
+                                    <div class="grade-marker">10<br>Matrícula</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="item-list" style="margin-top: 20px;">
+                            <li class="item">
+                                <div class="item-bullet scale-bullet"><i class="fas fa-check-circle"></i></div>
+                                <div class="item-content">
+                                    <div class="item-desc">Para superar el módulo: <span class="highlight">calificación final ≥5</span> y <span class="highlight">todos los RA superados</span></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</div>
+            <div class="footer-text">Curso 2025-2026</div>
+        </div>
+    </div>
+</body>
+</html>

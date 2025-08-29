@@ -1,0 +1,2089 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/01-IntroNodeJS/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>01 IntroNodeJS - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#que-es-nodejs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 IntroNodeJS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es Node.js?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es Node.js?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-que-se-usa-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Para qué se usa Node.js?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-node-package-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      npm (Node Package Manager)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="npm (Node Package Manager)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packagejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      package.json
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de paquetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-para-paquetes-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones para paquetes de desarrollo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opciones-de-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opciones de npm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de npm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npm-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      npm start
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm-run-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      npm run dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-del-comando-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso del comando "run"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npx" class="md-nav__link">
+    <span class="md-ellipsis">
+      npx
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otras-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Otras utilidades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Otras utilidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eslint" class="md-nav__link">
+    <span class="md-ellipsis">
+      ESLint
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ESLint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-configuracion-de-eslint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de configuración de ESLint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prettier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prettier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prettier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-prettier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de Prettier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-uso-de-prettier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de uso de Prettier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-de-clase-configuracion-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Práctica de clase: Configuración Node.js
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ul>
+<li><a href="#qué-es-nodejs">¿Qué es Node.js?</a></li>
+<li><a href="#para-qué-se-usa-nodejs">¿Para qué se usa Node.js?</a></li>
+<li><a href="#npm-node-package-manager">npm (Node Package Manager)</a></li>
+<li><a href="#packagejson">package.json</a></li>
+<li><a href="#instalación-de-paquetes">Instalación de paquetes</a></li>
+<li><a href="#opciones-para-paquetes-de-desarrollo">Opciones para paquetes de desarrollo</a></li>
+<li><a href="#opciones-de-npm">Opciones de npm</a><ul>
+<li><a href="#npm-start">npm start</a></li>
+<li><a href="#npm-run-dev">npm run dev</a></li>
+<li><a href="#uso-del-comando-run">Uso del comando "run"</a></li>
+<li><a href="#npx">npx</a></li>
+</ul>
+</li>
+<li><a href="#otras-utilidades">Otras utilidades</a></li>
+<li><a href="#eslint">ESLint</a><ul>
+<li><a href="#ejemplo-de-configuración-de-eslint">Ejemplo de configuración de ESLint</a></li>
+</ul>
+</li>
+<li><a href="#prettier">Prettier</a><ul>
+<li><a href="#uso-de-prettier">Uso de Prettier</a></li>
+<li><a href="#ejemplo-de-uso-de-prettier">Ejemplo de uso de Prettier</a></li>
+</ul>
+</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/nodelogo.png"><img alt="" src="../images/nodelogo.png"/></a></p>
+<h2 id="que-es-nodejs">¿Qué es Node.js?</h2>
+<p>Node.js es un entorno de ejecución de JavaScript del lado del servidor, construido sobre el motor de JavaScript V8 de Google Chrome. A diferencia de JavaScript en el navegador, que se ejecuta en un entorno de cliente, Node.js te permite ejecutar JavaScript en el servidor. Esto significa que puedes construir aplicaciones web y servidores utilizando JavaScript tanto en el cliente como en el servidor.</p>
+<h3 id="para-que-se-usa-nodejs">¿Para qué se usa Node.js?</h3>
+<p>Node.js es ampliamente utilizado para construir aplicaciones web escalables y de alto rendimiento. Algunos casos de uso comunes de Node.js incluyen:</p>
+<ol>
+<li>
+<p>Desarrollo de servidores web: Node.js proporciona un entorno rápido y eficiente para construir servidores web. Puedes crear fácilmente aplicaciones web en tiempo real, API RESTful, servidores de chat y mucho más.</p>
+</li>
+<li>
+<p>Construcción de herramientas de línea de comandos: Node.js te permite crear herramientas de línea de comandos utilizando JavaScript. Esto es útil para automatizar tareas, procesar archivos y realizar diversas operaciones en la línea de comandos.</p>
+</li>
+<li>
+<p>Aplicaciones de red: Node.js es ideal para construir aplicaciones de red, como servidores de tiempo real, servidores de chat, servidores de juegos y cualquier aplicación que requiera una comunicación bidireccional y en tiempo real.</p>
+</li>
+</ol>
+<h2 id="npm-node-package-manager">npm (Node Package Manager)</h2>
+<p>npm es el administrador de paquetes de Node.js. Viene incluido con la instalación de Node.js y te permite instalar, administrar y compartir paquetes de código reutilizables. Los paquetes son módulos de código que contienen funcionalidades específicas y pueden ser utilizados en tus proyectos.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/npmlogo.png"><img alt="" src="../images/npmlogo.png"/></a></p>
+<h3 id="packagejson">package.json</h3>
+<p>El archivo <code>package.json</code> es un archivo de configuración importante en un proyecto de Node.js. Contiene metadatos sobre el proyecto, como el nombre, la versión, las dependencias y los scripts personalizados.</p>
+<p>Puedes crear un archivo <code>package.json</code> en tu proyecto ejecutando el siguiente comando en la línea de comandos:</p>
+<div class="highlight"><pre><span></span><code>npm init
+</code></pre></div>
+<p>A continuación, se te guiará a través de una serie de preguntas para configurar el archivo <code>package.json</code>. Puedes proporcionar los detalles solicitados o simplemente presionar Enter para aceptar los valores predeterminados.</p>
+<h3 id="instalacion-de-paquetes">Instalación de paquetes</h3>
+<p>Para instalar paquetes en tu proyecto de Node.js, utiliza el comando <code>npm install</code>. Por ejemplo, si deseas instalar el paquete <code>express</code>, ejecuta el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>npm install express
+</code></pre></div>
+<p>Esto descargará e instalará el paquete <code>express</code> en la carpeta <code>node_modules</code> de tu proyecto. El archivo <code>package.json</code> también se actualizará automáticamente con la información del paquete instalado.</p>
+<h3 id="opciones-para-paquetes-de-desarrollo">Opciones para paquetes de desarrollo</h3>
+<p>Además de las dependencias de producción, puedes tener dependencias de desarrollo en tu proyecto. Estas son herramientas y bibliotecas que solo necesitas durante el desarrollo, como linters, compiladores, pruebas unitarias, etc.</p>
+<p>Para instalar una dependencia de desarrollo, utiliza el comando <code>npm install</code> con la opción <code>--save-dev</code>. Por ejemplo, si deseas instalar el paquete <code>nodemon</code> para reiniciar automáticamente tu servidor durante el desarrollo, ejecuta el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code>npm install nodemon --save-dev
+</code></pre></div>
+<p>Esto instalará el paquete <code>nodemon</code> como una dependencia de desarrollo y lo agregará al archivo <code>package.json</code> bajo la sección "devDependencies".</p>
+<p>¡Claro! Aquí tienes información adicional sobre cómo crear distintas opciones en npm, como <code>npm start</code> y <code>npm run dev</code>, y por qué se utiliza el comando <code>run</code>.</p>
+<h3 id="opciones-de-npm">Opciones de npm</h3>
+<h4 id="npm-start">npm start</h4>
+<p>El comando <code>npm start</code> es una convención común utilizada en proyectos de Node.js para iniciar la aplicación. Por defecto, <code>npm start</code> ejecuta el script definido en el archivo <code>package.json</code> bajo la clave <code>"scripts"</code> y el nombre <code>"start"</code>.</p>
+<p>Para definir el script de inicio en el archivo <code>package.json</code>, agrega lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este ejemplo, el comando <code>npm start</code> ejecutará el archivo <code>index.js</code> utilizando Node.js. Puedes personalizar el script de inicio según las necesidades de tu proyecto.</p>
+<h4 id="npm-run-dev">npm run dev</h4>
+<p>El comando <code>npm run dev</code> es una convención común utilizada para ejecutar el entorno de desarrollo de una aplicación. Al igual que con <code>npm start</code>, puedes definir el script de desarrollo en el archivo <code>package.json</code> bajo la clave <code>"scripts"</code> y el nombre <code>"dev"</code>.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon index.js"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este caso, <code>npm run dev</code> ejecutará el archivo <code>index.js</code> utilizando <code>nodemon</code>, una herramienta que reinicia automáticamente la aplicación cuando detecta cambios en los archivos. Esto es útil durante el desarrollo, ya que no tendrás que reiniciar manualmente el servidor cada vez que realices cambios en el código.</p>
+<h4 id="uso-del-comando-run">Uso del comando "run"</h4>
+<p>El comando <code>run</code> se utiliza en <code>npm</code> para ejecutar los scripts definidos en el archivo <code>package.json</code>. Al utilizar <code>npm run</code>, le estás indicando a npm que ejecute un script específico en lugar de buscar un paquete instalado globalmente con ese nombre.</p>
+<p>Por ejemplo, si tienes un script llamado <code>"dev"</code> definido en el archivo <code>package.json</code>, puedes ejecutarlo con el comando <code>npm run dev</code>. Esto asegura que npm busque y ejecute el script definido en tu proyecto en lugar de buscar un paquete global llamado <code>dev</code>.</p>
+<p>La ventaja de utilizar <code>npm run</code> es que puedes ejecutar scripts personalizados y definidos por el usuario en el archivo <code>package.json</code>. Esto te permite automatizar tareas, como ejecutar pruebas, compilar el código fuente, limpiar archivos temporales y más.</p>
+<p>Recuerda que para utilizar el comando <code>run</code>, no es necesario incluirlo explícitamente en los scripts definidos en el archivo <code>package.json</code>. Por ejemplo, en lugar de <code>"dev": "npm run nodemon index.js"</code>, puedes simplemente escribir <code>"dev": "nodemon index.js"</code>.</p>
+<h4 id="npx">npx</h4>
+<p>Cuando ejecutas un comando con NPX, este busca el paquete en el registro npm y lo instala temporalmente en una ubicación local dentro de tu proyecto. Luego, ejecuta el comando del paquete instalado.</p>
+<p>La principal ventaja de NPX es que te permite ejecutar comandos de paquetes sin tener que preocuparte por las versiones instaladas globalmente o los conflictos entre ellas. Además, también te permite probar rápidamente paquetes sin tener que instalarlos globalmente.</p>
+<p>Aquí tienes algunos ejemplos de cómo puedes usar NPX:</p>
+<ol>
+<li>
+<p>Ejecutar un comando de un paquete específico sin instalarlo globalmente:
+<div class="highlight"><pre><span></span><code>npx package-name command
+</code></pre></div></p>
+</li>
+<li>
+<p>Ejecutar un script definido en el archivo <code>package.json</code> de tu proyecto:
+<div class="highlight"><pre><span></span><code>npx run-script script-name
+</code></pre></div></p>
+</li>
+<li>
+<p>Ejecutar un paquete específico en una versión determinada:
+<div class="highlight"><pre><span></span><code>npx package-name@version command
+</code></pre></div></p>
+</li>
+<li>
+<p>Ejecutar un paquete desde un repositorio Git:
+<div class="highlight"><pre><span></span><code>npx git+https://github.com/user/repo.git command
+</code></pre></div></p>
+</li>
+</ol>
+<p>NPX también proporciona otras funcionalidades, como la ejecución de comandos binarios locales o la ejecución de scripts de un paquete sin necesidad de especificar el nombre del paquete.</p>
+<p>En resumen, NPX es una herramienta útil para ejecutar comandos de paquetes de Node.js de forma temporal y localizada en tu proyecto, sin necesidad de instalarlos globalmente. Esto simplifica el manejo de dependencias y evita conflictos entre versiones.</p>
+<h2 id="otras-utilidades">Otras utilidades</h2>
+<h3 id="eslint">ESLint</h3>
+<p>ESLint es una herramienta de linting de código para JavaScript. Su objetivo principal es detectar y reportar patrones de código problemáticos o sospechosos en tu código fuente. Te ayuda a mantener un código limpio, legible y consistente en tus proyectos.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/eslintlogo.png"><img alt="" src="../images/eslintlogo.png"/></a></p>
+<p>Algunas de las características y beneficios de ESLint son:</p>
+<ul>
+<li>
+<p><strong>Detección de errores y problemas</strong>: ESLint analiza tu código en busca de errores comunes, como variables no utilizadas, variables no declaradas, uso incorrecto de funciones, entre otros.</p>
+</li>
+<li>
+<p><strong>Consistencia de código</strong>: ESLint te permite definir y aplicar reglas de estilo de código personalizadas o utilizar conjuntos de reglas predefinidas (como las de Airbnb, Google, Standard, etc.) para mantener la consistencia en tu código.</p>
+</li>
+<li>
+<p><strong>Integración con herramientas de desarrollo</strong>: ESLint se puede integrar con tu editor de código favorito o con tu flujo de trabajo de desarrollo, lo que te permite recibir retroalimentación instantánea sobre problemas de código mientras escribes.</p>
+</li>
+</ul>
+<p>A continuación, te explico cómo instalar y configurar ESLint en tu proyecto:</p>
+<ol>
+<li>
+<p><strong>Instalación</strong>: Puedes instalar ESLint localmente en tu proyecto ejecutando el siguiente comando en la terminal, dentro de la carpeta raíz de tu proyecto:
+<div class="highlight"><pre><span></span><code>npm install eslint --save-dev
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Configuración</strong>: Después de la instalación, necesitarás configurar ESLint. Puedes generar un archivo de configuración inicial ejecutando el siguiente comando:
+<div class="highlight"><pre><span></span><code>npx eslint --init
+</code></pre></div>
+Esto abrirá un asistente interactivo que te guiará a través de la configuración. Puedes seleccionar un conjunto de reglas predefinidas o personalizar tus propias reglas.</p>
+</li>
+<li>
+<p><strong>Uso</strong>: Una vez que hayas configurado ESLint, puedes ejecutarlo en tu proyecto utilizando el siguiente comando:
+<div class="highlight"><pre><span></span><code>npx eslint your-file.js
+</code></pre></div>
+Reemplaza <code>your-file.js</code> con la ruta al archivo o carpeta que deseas analizar. ESLint mostrará los problemas encontrados en tu código y te sugerirá cómo solucionarlos.</p>
+</li>
+<li>
+<p><strong>Integración con editores de código</strong>: Para obtener una experiencia de desarrollo más fluida, puedes integrar ESLint con tu editor de código. La mayoría de los editores populares tienen extensiones o complementos disponibles para ESLint. Estas extensiones pueden mostrar los problemas de ESLint directamente en tu editor y proporcionar sugerencias mientras escribes.</p>
+</li>
+<li>
+<p><strong>Personalización</strong>: Puedes personalizar las reglas de ESLint según tus preferencias o necesidades. Puedes editar el archivo de configuración <code>.eslintrc.js</code> o <code>.eslintrc.json</code> generado en el paso 2 para agregar, modificar o desactivar reglas específicas.</p>
+</li>
+</ol>
+<p>Recuerda que la configuración de ESLint puede variar según tus necesidades y el tipo de proyecto en el que estés trabajando. Puedes consultar la documentación oficial de ESLint para obtener más información sobre las opciones de configuración y las reglas disponibles.</p>
+<h4 id="ejemplo-de-configuracion-de-eslint">Ejemplo de configuración de ESLint</h4>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">browser</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">es2021</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">extends</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">'eslint:recommended'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'plugin:prettier/recommended'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">parserOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ecmaVersion</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sourceType</span><span class="o">:</span><span class="w"> </span><span class="s1">'module'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Reglas personalizadas</span>
+<span class="w">    </span><span class="s1">'no-console'</span><span class="o">:</span><span class="w"> </span><span class="s1">'warn'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'no-unused-vars'</span><span class="o">:</span><span class="w"> </span><span class="s1">'error'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>En este ejemplo:</p>
+<ul>
+<li>La propiedad <code>env</code> establece el entorno en el que se ejecutará el código (navegador, ES2021 y Node.js).</li>
+<li>La propiedad <code>extends</code> especifica las configuraciones predefinidas que se utilizarán. En este caso, se utiliza <code>eslint:recommended</code> que incluye las reglas recomendadas por ESLint y <code>plugin:prettier/recommended</code> que integra ESLint con Prettier para formatear el código automáticamente.</li>
+<li>La propiedad <code>parserOptions</code> especifica las opciones del analizador de código. Aquí se establece la versión de ECMAScript (ES2021) y el tipo de módulo (module).</li>
+<li>La propiedad <code>rules</code> define las reglas personalizadas. En este ejemplo, se establecen dos reglas: <code>no-console</code> que muestra una advertencia si se utiliza <code>console.log</code> en el código y <code>no-unused-vars</code> que muestra un error si se declaran variables no utilizadas.</li>
+</ul>
+<p>Puedes agregar, modificar o desactivar reglas según tus necesidades. Además, puedes consultar la documentación oficial de ESLint para obtener más información sobre las opciones de configuración y las reglas disponibles.</p>
+<h3 id="prettier">Prettier</h3>
+<p>Prettier es una herramienta de formateo de código que te ayuda a mantener un estilo de código consistente en tus proyectos. Su objetivo principal es eliminar las discusiones sobre la forma en que se debe formatear el código, ya que Prettier aplica automáticamente un estilo de formato consistente en todo el código.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/prettierlogo.png"><img alt="" src="../images/prettierlogo.png"/></a></p>
+<h4 id="uso-de-prettier">Uso de Prettier</h4>
+<ol>
+<li>Instalación: Primero, debes instalar Prettier en tu proyecto. Puedes hacerlo ejecutando el siguiente comando en la terminal:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>prettier
+</code></pre></div>
+<ol>
+<li>Configuración: Prettier se puede configurar utilizando un archivo de configuración <code>.prettierrc</code> en formato JSON o YAML, o mediante la sección <code>"prettier"</code> en el archivo <code>package.json</code>.</li>
+</ol>
+<p>Ejemplo de archivo <code>.prettierrc</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"semi"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"singleQuote"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"tabWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"printWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este ejemplo, se configuran algunas opciones como el uso de punto y coma, comillas simples, tamaño de tabulación y ancho de línea de 80 caracteres.</p>
+<ol>
+<li>Ejecución: Puedes ejecutar Prettier para formatear tu código utilizando el siguiente comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>prettier<span class="w"> </span>--write<span class="w"> </span>.
+</code></pre></div>
+<p>El argumento <code>--write</code> indica que Prettier debe aplicar los cambios directamente en los archivos.</p>
+<h4 id="ejemplo-de-uso-de-prettier">Ejemplo de uso de Prettier</h4>
+<p>Supongamos que tienes un archivo JavaScript llamado <code>index.js</code> con el siguiente código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="mf">10</span><span class="p">));</span>
+</code></pre></div>
+<p>Después de ejecutar Prettier, el código se formateará automáticamente de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span>
+</code></pre></div>
+<p>Prettier ajusta automáticamente la indentación, agrega espacios alrededor de los operadores y coloca correctamente los paréntesis.</p>
+<p>Recuerda que Prettier se puede integrar con ESLint para obtener un formateo de código aún más completo y consistente.</p>
+<h1 id="practica-de-clase-configuracion-nodejs">Práctica de clase: Configuración Node.js</h1>
+<ol>
+<li>Instala Nodejs, y crea un hola mundo en javascript.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,3157 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>08 Gestión de estado Cookies Sesiones Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-de-consolidacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              08 Gestión de estado Cookies Sesiones Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puntos-clave-esperados-en-la-investigacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puntos Clave Esperados en la Investigación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-codigo-vulnerable-a-fijacion-de-sesion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Código Vulnerable a Fijación de Sesión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-propuesta-para-la-revision-por-pares" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solución Propuesta para la Revisión por Pares
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>08 Gestión de estado Cookies Sesiones Ejercicios</h1>
+
+<!-- T08-Ejercicios-Gestion-Estado-PHP-Sesiones-Cookies.md -->
+<p>¡Equipo, a programar!</p>
+<p>Después de asentar las bases teóricas de la <strong>gestión de estado con Cookies y Sesiones</strong>, es hora de poner a prueba vuestras habilidades. En esta serie de ejercicios, trabajaréis como desarrolladores en <strong>"Innovate Solutions"</strong>, una empresa tecnológica en plena expansión. Vuestra misión es implementar y mejorar funcionalidades clave de su portal interno, <strong>"NexusHub"</strong>.</p>
+<p>Este portal es la espina dorsal de la empresa: gestiona desde las preferencias de los empleados hasta el control de acceso a áreas restringidas. Cada ejercicio os acercará más a construir una aplicación web robusta, segura y profesional.</p>
+<p>¡Manos al teclado y a darle memoria a NexusHub!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos ejercicios están diseñados para afianzar los conceptos fundamentales. Son el cimiento sobre el que construiremos funcionalidades más complejas.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) Bienvenida Personalizada: El Tema Visual de NexusHub | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Crear una cookie para almacenar una preferencia de usuario y leerla para alterar la visualización de la página.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Crea dos ficheros: <code>selector_tema.php</code> y <code>estilo.css</code>.</p>
+<p><strong><code>estilo.css</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">body</span><span class="p">.</span><span class="nc">light</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f0f0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">body</span><span class="p">.</span><span class="nc">dark</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f0f0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ccc</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>En <code>selector_tema.php</code>, crea un formulario sencillo con un <code>select</code> que permita al usuario elegir entre un tema "Claro" (valor <code>light</code>) y un tema "Oscuro" (valor <code>dark</code>).</li>
+<li>Cuando el usuario envíe el formulario, captura el valor y guárdalo en una cookie llamada <code>tema_preferido</code> que dure 30 días.</li>
+<li>Cada vez que la página se cargue, PHP debe leer el valor de la cookie <code>tema_preferido</code>.</li>
+<li>Añade la clase CSS correspondiente (<code>light</code> o <code>dark</code>) a la etiqueta <code>&lt;body&gt;</code> de la página. Si la cookie no existe, usa "light" por defecto.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la técnica exacta que usan innumerables sitios web para recordar si prefieres el modo oscuro, un tamaño de fuente específico o cualquier otra preferencia visual, mejorando drásticamente la experiencia de usuario.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>selector_tema.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Por defecto, el tema es claro</span>
+<span class="nv">$tema_actual</span> <span class="o">=</span> <span class="s1">'light'</span><span class="p">;</span>
+
+<span class="c1">// Si se envía el formulario, actualizamos la cookie</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'tema'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$tema_seleccionado</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'tema'</span><span class="p">];</span>
+    <span class="c1">// Validamos que sea una opción válida</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$tema_seleccionado</span> <span class="o">===</span> <span class="s1">'light'</span> <span class="o">||</span> <span class="nv">$tema_seleccionado</span> <span class="o">===</span> <span class="s1">'dark'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Creamos la cookie por 30 días, con HttpOnly por seguridad</span>
+        <span class="nb">setcookie</span><span class="p">(</span><span class="s1">'tema_preferido'</span><span class="p">,</span> <span class="nv">$tema_seleccionado</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">),</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$tema_actual</span> <span class="o">=</span> <span class="nv">$tema_seleccionado</span><span class="p">;</span>
+
+        <span class="c1">// Redirigimos para limpiar el POST y ver el cambio</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: selector_tema.php"</span><span class="p">);</span>
+        <span class="k">exit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'tema_preferido'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// Si no hay envío, pero existe la cookie, la leemos</span>
+    <span class="nv">$tema_actual</span> <span class="o">=</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'tema_preferido'</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Selector de Tema - NexusHub&lt;/title&gt;</span>
+<span class="x">    &lt;link rel="stylesheet" href="estilo.css"&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body class="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$tema_actual</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">    &lt;div class="container"&gt;</span>
+<span class="x">        &lt;h1&gt;Preferencias de NexusHub&lt;/h1&gt;</span>
+<span class="x">        &lt;p&gt;Actualmente estás usando el tema </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$tema_actual</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">.&lt;/p&gt;</span>
+<span class="x">        &lt;form action="selector_tema.php" method="post"&gt;</span>
+<span class="x">            &lt;label for="tema"&gt;Elige tu tema visual:&lt;/label&gt;</span>
+<span class="x">            &lt;select name="tema" id="tema"&gt;</span>
+<span class="x">                &lt;option value="light" </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$tema_actual</span> <span class="o">===</span> <span class="s1">'light'</span><span class="p">)</span> <span class="k">echo</span> <span class="s1">'selected'</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&gt;Claro&lt;/option&gt;</span>
+<span class="x">                &lt;option value="dark" </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$tema_actual</span> <span class="o">===</span> <span class="s1">'dark'</span><span class="p">)</span> <span class="k">echo</span> <span class="s1">'selected'</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&gt;Oscuro&lt;/option&gt;</span>
+<span class="x">            &lt;/select&gt;</span>
+<span class="x">            &lt;button type="submit"&gt;Guardar&lt;/button&gt;</span>
+<span class="x">        &lt;/form&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) ¡Cookie Rota! El Bug del Saludo | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Depurar un fragmento de código PHP donde una cookie no se está creando correctamente, entendiendo la regla fundamental del envío de cabeceras.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Analiza el siguiente código. Al ejecutarlo, la cookie <code>nombre_usuario</code> nunca se guarda en el navegador.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: saludo_bug.php</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Intentamos establecer la cookie después de haber enviado salida HTML</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">"Innovator"</span><span class="p">;</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="nv">$nombre</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3600</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'nombre_usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Hola de nuevo, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'nombre_usuario'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"!&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Bienvenido a NexusHub!&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;/body&gt;&lt;/html&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Identifica por qué la función <code>setcookie()</code> está fallando.</li>
+<li>Corrige el código para que la cookie se cree correctamente en la primera visita y el saludo personalizado aparezca en las visitas posteriores.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El error "Cannot modify header information - headers already sent" es uno de los más comunes para los desarrolladores PHP principiantes. Entender su causa es fundamental para evitar horas de frustración.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>La Causa del Error:</strong>
+La función <code>setcookie()</code> falla porque intenta enviar una cabecera HTTP <em>después</em> de que el script ya ha comenzado a enviar el cuerpo de la respuesta al navegador (con la instrucción <code>echo "&lt;!DOCTYPE html&gt;..."</code>). Las cabeceras HTTP siempre deben enviarse antes de cualquier contenido.</p>
+<p><strong>Código Corregido:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: saludo_corregido.php</span>
+
+<span class="c1">// 1. Lógica de la cookie ANTES de cualquier salida HTML</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'nombre_usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">"Innovator"</span><span class="p">;</span>
+    <span class="nb">setcookie</span><span class="p">(</span><span class="s2">"nombre_usuario"</span><span class="p">,</span> <span class="nv">$nombre</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3600</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Ahora podemos empezar a enviar el HTML</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;Bienvenida Correcta&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'nombre_usuario'</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"Hola de nuevo, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'nombre_usuario'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"!"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Este mensaje solo se verá la primerísima vez, antes de recargar.</span>
+            <span class="k">echo</span> <span class="s2">"Bienvenido a NexusHub! Recarga para ver la magia."</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/h1&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Guardián de la Sesión: Acceso a RRHH | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Crear una página protegida que solo sea accesible si una variable de sesión específica existe.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Crea tres ficheros: <code>portal_rrhh.php</code>, <code>login_rrhh.php</code> y <code>logout_rrhh.php</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong><code>login_rrhh.php</code></strong>: Este fichero simulará un inicio de sesión exitoso. Debe iniciar una sesión y crear una variable de sesión, por ejemplo, <code>$_SESSION['rol'] = 'rrhh';</code>. Después, debe redirigir al usuario a <code>portal_rrhh.php</code>.</li>
+<li><strong><code>portal_rrhh.php</code></strong>: Esta es la página protegida. Al principio del script, debe iniciar la sesión y comprobar si <code>$_SESSION['rol']</code> existe y es igual a <code>'rrhh'</code>.<ul>
+<li>Si es correcto, mostrará un mensaje "Bienvenido al portal de Recursos Humanos." y un enlace para cerrar sesión (<code>logout_rrhh.php</code>).</li>
+<li>Si no es correcto, debe mostrar un mensaje de error "Acceso denegado" y un enlace a <code>login_rrhh.php</code> para "iniciar sesión".</li>
+</ul>
+</li>
+<li><strong><code>logout_rrhh.php</code></strong>: Este fichero debe destruir la sesión completamente y redirigir al usuario de vuelta a <code>portal_rrhh.php</code> (donde ahora verá el mensaje de acceso denegado).</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es el esqueleto de cualquier sistema de control de acceso basado en roles, fundamental en aplicaciones empresariales para proteger información sensible.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>login_rrhh.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'rrhh'</span><span class="p">;</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: portal_rrhh.php'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong><code>portal_rrhh.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Portal de RRHH&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'rrhh'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">'&lt;h1&gt;Bienvenido al portal de Recursos Humanos.&lt;/h1&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;p&gt;Aquí encontrarás información confidencial.&lt;/p&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;a href="logout_rrhh.php"&gt;Cerrar Sesión&lt;/a&gt;'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">'&lt;h1&gt;Acceso Denegado&lt;/h1&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;p&gt;No tienes permisos para ver esta página.&lt;/p&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;a href="login_rrhh.php"&gt;Iniciar Sesión&lt;/a&gt;'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>logout_rrhh.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$_SESSION</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">ini_get</span><span class="p">(</span><span class="s2">"session.use_cookies"</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$params</span> <span class="o">=</span> <span class="nb">session_get_cookie_params</span><span class="p">();</span>
+    <span class="nb">setcookie</span><span class="p">(</span><span class="nb">session_name</span><span class="p">(),</span> <span class="s1">''</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">42000</span><span class="p">,</span>
+        <span class="nv">$params</span><span class="p">[</span><span class="s2">"path"</span><span class="p">],</span> <span class="nv">$params</span><span class="p">[</span><span class="s2">"domain"</span><span class="p">],</span>
+        <span class="nv">$params</span><span class="p">[</span><span class="s2">"secure"</span><span class="p">],</span> <span class="nv">$params</span><span class="p">[</span><span class="s2">"httponly"</span><span class="p">]</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">session_destroy</span><span class="p">();</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: portal_rrhh.php'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) El Contador de Actualizaciones | Nivel: Fácil</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Utilizar una variable de sesión para llevar la cuenta de cuántas veces un usuario ha realizado una acción específica dentro de una misma sesión.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Crea un fichero <code>panel_control.php</code>. Esta página tendrá un simple formulario con un botón "Actualizar Datos".
+1.  Cada vez que el usuario pulse el botón, la página se recargará.
+2.  Usa una variable de sesión <code>$_SESSION['updates']</code> para contar cuántas veces se ha enviado el formulario.
+3.  Muestra un mensaje en la página que diga: "Has actualizado los datos X veces en esta sesión."
+4.  Añade un enlace que permita reiniciar el contador (destruyendo solo esa variable de sesión con <code>unset()</code>).</p>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este mecanismo se puede usar para limitar el número de intentos de login, controlar la frecuencia de envío de formularios o simplemente para rastrear la actividad del usuario durante una visita.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>panel_control.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// Reiniciar el contador si se pide</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'reiniciar'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'updates'</span><span class="p">]);</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: panel_control.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Incrementar el contador si el formulario se ha enviado</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'updates'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'updates'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'updates'</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Obtener el valor actual para mostrarlo</span>
+<span class="nv">$contador</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'updates'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Panel de Control - NexusHub&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Panel de Actividad&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Has actualizado los datos &lt;strong&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$contador</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/strong&gt; veces en esta sesión.&lt;/p&gt;</span>
+<span class="x">    &lt;form action="panel_control.php" method="post"&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Actualizar Datos&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">    &lt;br&gt;</span>
+<span class="x">    &lt;a href="panel_control.php?reiniciar=1"&gt;Reiniciar contador&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) Recordando el Nombre de Usuario | Nivel: Fácil</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Combinar un formulario con una cookie para que un campo de texto recuerde el último valor introducido por el usuario, incluso después de cerrar el navegador.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea una página <code>login_recordado.php</code> con un formulario de login que pida "Nombre de Usuario".</li>
+<li>Cuando el usuario envíe el formulario, guarda su nombre en una cookie llamada <code>ultimo_usuario</code> que dure un año.</li>
+<li>Cada vez que la página se cargue, comprueba si la cookie <code>ultimo_usuario</code> existe.</li>
+<li>Si existe, usa su valor para pre-rellenar el campo de texto del nombre de usuario.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es una mejora de usabilidad muy común en casi todos los formularios de login del mundo, ahorrando tiempo a los usuarios recurrentes.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>login_recordado.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$ultimo_usuario</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$usuario_actual</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$usuario_actual</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">setcookie</span><span class="p">(</span><span class="s1">'ultimo_usuario'</span><span class="p">,</span> <span class="nv">$usuario_actual</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">365</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+        <span class="nv">$ultimo_usuario</span> <span class="o">=</span> <span class="nv">$usuario_actual</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'ultimo_usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$ultimo_usuario</span> <span class="o">=</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'ultimo_usuario'</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Login - NexusHub&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Acceso a NexusHub&lt;/h1&gt;</span>
+<span class="x">    &lt;form action="login_recordado.php" method="post"&gt;</span>
+<span class="x">        &lt;label for="usuario"&gt;Nombre de Usuario:&lt;/label&gt;</span>
+<span class="x">        &lt;input type="text" id="usuario" name="usuario" value="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$ultimo_usuario</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Entrar&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Formulario enviado. Usuario '</span><span class="si">{</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span><span class="si">}</span><span class="s2">' guardado en cookie.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) Cuestionario rápido | Nivel: Fácil</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Validar la comprensión teórica sobre las diferencias fundamentales entre cookies y sesiones.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>Responde a las siguientes preguntas:
+1. ¿Dónde se almacena la información de una <code>$_SESSION</code>? ¿Y la de una <code>$_COOKIE</code>?
+2. ¿Qué es más seguro para guardar el ID de un usuario autenticado, una cookie o una sesión? ¿Por qué?
+3. Si un usuario borra las cookies de su navegador, ¿qué pasa con la información que tenías guardada en <code>$_SESSION</code> para él?
+4. ¿Cuál es el nombre por defecto de la cookie que PHP usa para gestionar las sesiones?
+5. ¿Por qué la función <code>session_start()</code> debe llamarse antes de cualquier salida HTML?</p>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Saber responder a estas preguntas es esencial en cualquier entrevista de trabajo para un puesto de desarrollador backend junior. Demuestra que entiendes los fundamentos de la seguridad y el funcionamiento de la web.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong>Almacenamiento:</strong> La información de <code>$_SESSION</code> se almacena en el <strong>servidor</strong>. La de <code>$_COOKIE</code> se almacena en el <strong>cliente</strong> (el navegador del usuario).</li>
+<li><strong>Seguridad:</strong> Es mucho más seguro usar una <strong>sesión</strong>. La sesión guarda el ID de usuario en el servidor, fuera del alcance del cliente. El cliente solo almacena un identificador de sesión aleatorio y sin significado, que es mucho más difícil de explotar que el ID real.</li>
+<li><strong>Borrado de cookies:</strong> Si el usuario borra sus cookies, borrará la cookie que contiene el ID de sesión. Aunque los datos de la sesión (el carrito, el login, etc.) todavía existen físicamente en el servidor por un tiempo, el servidor ya no tiene forma de asociar al usuario que vuelve con su sesión anterior. Para el usuario, en la práctica, es como si la sesión se hubiera destruido.</li>
+<li><strong>Nombre por defecto:</strong> <code>PHPSESSID</code>.</li>
+<li><strong><code>session_start()</code>:</strong> Porque esta función necesita enviar cabeceras HTTP (como la cookie <code>PHPSESSID</code>) y leer las que envía el cliente. El protocolo HTTP exige que todas las cabeceras se envíen antes que el cuerpo del mensaje (el contenido HTML).</li>
+</ol>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Ahora subimos un poco la dificultad. Estos ejercicios requieren combinar conceptos y una planificación un poco más elaborada.</p>
+<div class="admonition warning">
+<p class="admonition-title">7) El Historial de Navegación: Módulo 'Vistos Recientemente' | Nivel: Medio</p>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Gestionar un array dentro de una cookie usando JSON para implementar una funcionalidad de "vistos recientemente".</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Imagina que en NexusHub hay una sección de artículos de ayuda. Tienes 3 artículos:
+*   <code>articulo.php?id=1</code> (Título: "Cómo configurar tu VPN")
+*   <code>articulo.php?id=2</code> (Título: "Política de Vacaciones")
+*   <code>articulo.php?id=3</code> (Título: "Uso de la impresora 3D")</p>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea el fichero <code>articulo.php</code>. Esta página recibirá un <code>id</code> por GET.</li>
+<li>Cada vez que un usuario visite una de estas páginas, debes añadir el <code>id</code> y el <code>titulo</code> del artículo a una cookie llamada <code>historial_visitas</code>.</li>
+<li>Esta cookie debe almacenar un máximo de 3 artículos. Si el usuario visita un cuarto artículo, el más antiguo debe ser eliminado de la lista.</li>
+<li>
+<p>En la misma página <code>articulo.php</code>, en un lateral, muestra la lista de "Artículos Vistos Recientemente" leída desde la cookie.</p>
+</li>
+<li>
+<p><strong>Pista 1:</strong> Como no puedes guardar un array directamente en una cookie, necesitarás serializarlo. Usa <code>json_encode()</code> para convertir el array en un string antes de guardarlo en la cookie, y <code>json_decode()</code> para convertir el string de vuelta a un array cuando lo leas.</p>
+</li>
+<li><strong>Pista 2:</strong> Para gestionar la lista de 3 elementos, puedes usar funciones de array como <code>array_unshift()</code> para añadir un elemento al principio y <code>array_slice()</code> para quedarte solo con los 3 primeros.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la lógica exacta que usan Amazon, Netflix o cualquier e-commerce para mostrarte los productos o películas que has visto recientemente, una potente herramienta de marketing y usabilidad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>articulo.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Simulación de una base de datos de artículos</span>
+<span class="nv">$articulos_db</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s2">"Cómo configurar tu VPN"</span><span class="p">,</span>
+    <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s2">"Política de Vacaciones"</span><span class="p">,</span>
+    <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s2">"Uso de la impresora 3D"</span><span class="p">,</span>
+    <span class="mi">4</span> <span class="o">=&gt;</span> <span class="s2">"Normativa de la Cafetería"</span>
+<span class="p">];</span>
+
+<span class="c1">// Validar el ID del artículo actual</span>
+<span class="nv">$id_actual</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="o">?</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="nv">$id_actual</span><span class="p">,</span> <span class="nv">$articulos_db</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Artículo no encontrado."</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$titulo_actual</span> <span class="o">=</span> <span class="nv">$articulos_db</span><span class="p">[</span><span class="nv">$id_actual</span><span class="p">];</span>
+
+<span class="c1">// --- Lógica de la Cookie de Historial ---</span>
+
+<span class="nv">$cookie_name</span> <span class="o">=</span> <span class="s1">'historial_visitas'</span><span class="p">;</span>
+<span class="nv">$historial</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 1. Leer la cookie existente si hay una</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$historial</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">],</span> <span class="k">true</span><span class="p">);</span>
+    <span class="c1">// Asegurarse de que es un array</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$historial</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$historial</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Eliminar el artículo actual del historial si ya estaba (para moverlo al principio)</span>
+<span class="nv">$historial</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$historial</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id_actual</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$id_actual</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Añadir el artículo actual al principio del historial</span>
+<span class="nb">array_unshift</span><span class="p">(</span><span class="nv">$historial</span><span class="p">,</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id_actual</span><span class="p">,</span> <span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="nv">$titulo_actual</span><span class="p">]);</span>
+
+<span class="c1">// 4. Asegurarse de que el historial no tenga más de 3 elementos</span>
+<span class="nv">$historial</span> <span class="o">=</span> <span class="nb">array_slice</span><span class="p">(</span><span class="nv">$historial</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// 5. Guardar el historial actualizado en la cookie</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="nv">$cookie_name</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$historial</span><span class="p">),</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">365</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="s2">"/"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$titulo_actual</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> - NexusHub&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .container { display: flex; }</span>
+<span class="x">        .main { flex-grow: 1; padding-right: 20px; }</span>
+<span class="x">        .sidebar { width: 200px; border-left: 1px solid #ccc; padding-left: 20px; }</span>
+<span class="x">        .sidebar ul { padding-left: 20px; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;div class="container"&gt;</span>
+<span class="x">        &lt;div class="main"&gt;</span>
+<span class="x">            &lt;h1&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$titulo_actual</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">            &lt;p&gt;Contenido del artículo ID </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id_actual</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">...&lt;/p&gt;</span>
+<span class="x">            &lt;hr&gt;</span>
+<span class="x">            &lt;a href="articulo.php?id=1"&gt;Ver Artículo 1&lt;/a&gt; |</span>
+<span class="x">            &lt;a href="articulo.php?id=2"&gt;Ver Artículo 2&lt;/a&gt; |</span>
+<span class="x">            &lt;a href="articulo.php?id=3"&gt;Ver Artículo 3&lt;/a&gt; |</span>
+<span class="x">            &lt;a href="articulo.php?id=4"&gt;Ver Artículo 4&lt;/a&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;div class="sidebar"&gt;</span>
+<span class="x">            &lt;h3&gt;Vistos Recientemente&lt;/h3&gt;</span>
+<span class="x">            &lt;ul&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$historial</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$historial</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">echo</span> <span class="s1">'&lt;li&gt;&lt;a href="articulo.php?id='</span> <span class="o">.</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">.</span> <span class="s1">'"&gt;'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="o">.</span> <span class="s1">'&lt;/a&gt;&lt;/li&gt;'</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">echo</span> <span class="s2">"&lt;li&gt;Aún no has visitado artículos.&lt;/li&gt;"</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="cp">?&gt;</span>
+<span class="x">            &lt;/ul&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">8) Encuesta de Satisfacción en Dos Pasos | Nivel: Medio</p>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Usar sesiones para mantener la información de un formulario a través de múltiples páginas hasta su envío final.</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<p>Crea una encuesta de satisfacción para NexusHub que conste de dos pasos.
+1.  <strong><code>paso1.php</code></strong>: Un formulario que pregunta al usuario su "Departamento" (texto) y su "Nivel de Satisfacción General" (escala del 1 al 5 con radio buttons).
+    *   Al enviarlo, los datos se guardan en <code>$_SESSION['encuesta']</code> y se redirige al usuario a <code>paso2.php</code>.
+2.  <strong><code>paso2.php</code></strong>: Un formulario con un <code>textarea</code> para "Comentarios Adicionales".
+    *   Al enviarlo, se recuperan los datos del paso 1 de la sesión, se junta todo y se muestra un resumen final en una página <code>gracias.php</code>.
+3.  <strong><code>gracias.php</code></strong>: Muestra un mensaje "¡Gracias por tu feedback!" seguido de toda la información recopilada (Departamento, Satisfacción y Comentarios). Después de mostrar los datos, debe limpiar la información de la encuesta de la sesión para que no pueda reenviarse.</p>
+<ul>
+<li><strong>Pista:</strong> En <code>paso2.php</code> y <code>gracias.php</code>, siempre comprueba primero que los datos de la sesión del paso anterior existen. Si un usuario intenta acceder a <code>paso2.php</code> directamente, deberías redirigirlo a <code>paso1.php</code>.</li>
+</ul>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los procesos de "checkout" en e-commerce, los formularios de registro complejos o cualquier asistente online ("wizard") se basan en esta técnica para ofrecer una experiencia de usuario fluida sin perder datos.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>paso1.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">][</span><span class="s1">'departamento'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'departamento'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">;</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">][</span><span class="s1">'satisfaccion'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'satisfaccion'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">;</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: paso2.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Encuesta (Paso 1 de 2)&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Encuesta de Satisfacción - Paso 1&lt;/h1&gt;</span>
+<span class="x">    &lt;form action="paso1.php" method="post"&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="departamento"&gt;Tu departamento:&lt;/label&gt;</span>
+<span class="x">            &lt;input type="text" name="departamento" required&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;Nivel de Satisfacción (1=Malo, 5=Excelente):&lt;br&gt;</span>
+<span class="x">            &lt;label&gt;&lt;input type="radio" name="satisfaccion" value="1" required&gt; 1&lt;/label&gt;</span>
+<span class="x">            &lt;label&gt;&lt;input type="radio" name="satisfaccion" value="2"&gt; 2&lt;/label&gt;</span>
+<span class="x">            &lt;label&gt;&lt;input type="radio" name="satisfaccion" value="3"&gt; 3&lt;/label&gt;</span>
+<span class="x">            &lt;label&gt;&lt;input type="radio" name="satisfaccion" value="4"&gt; 4&lt;/label&gt;</span>
+<span class="x">            &lt;label&gt;&lt;input type="radio" name="satisfaccion" value="5"&gt; 5&lt;/label&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Siguiente&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>paso2.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="c1">// Proteger la página: si no hay datos del paso 1, fuera.</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">][</span><span class="s1">'departamento'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: paso1.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">][</span><span class="s1">'comentarios'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'comentarios'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'Sin comentarios.'</span><span class="p">;</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: gracias.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Encuesta (Paso 2 de 2)&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Encuesta de Satisfacción - Paso 2&lt;/h1&gt;</span>
+<span class="x">    &lt;form action="paso2.php" method="post"&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="comentarios"&gt;Comentarios adicionales (opcional):&lt;/label&gt;&lt;br&gt;</span>
+<span class="x">            &lt;textarea name="comentarios" id="comentarios" cols="30" rows="5"&gt;&lt;/textarea&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Finalizar Encuesta&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>gracias.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="c1">// Proteger la página</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: paso1.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Recopilar todos los datos para mostrarlos</span>
+<span class="nv">$datos_finales</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">];</span>
+
+<span class="c1">// Limpiar la sesión para evitar reenvíos</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'encuesta'</span><span class="p">]);</span>
+<span class="c1">// session_destroy(); // Sería demasiado agresivo si hay otros datos en la sesión</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;¡Gracias!&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;¡Gracias por tu feedback!&lt;/h1&gt;</span>
+<span class="x">    &lt;h2&gt;Resumen de tu encuesta:&lt;/h2&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        &lt;li&gt;&lt;strong&gt;Departamento:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$datos_finales</span><span class="p">[</span><span class="s1">'departamento'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;&lt;strong&gt;Satisfacción:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$datos_finales</span><span class="p">[</span><span class="s1">'satisfaccion'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"> / 5&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;&lt;strong&gt;Comentarios:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$datos_finales</span><span class="p">[</span><span class="s1">'comentarios'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">    &lt;a href="paso1.php"&gt;Realizar otra encuesta&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">9) Login Persistente con 'Recuérdame' | Nivel: Medio</p>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Combinar sesiones y cookies para implementar una funcionalidad de "Recuérdame" de forma segura.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<p>Mejora un sistema de login para que, si el usuario marca una casilla "Recuérdame", no tenga que volver a iniciar sesión la próxima vez que visite la web (durante 7 días).
+1.  <strong><code>login.php</code></strong>: Un formulario de login con campos para usuario, contraseña y una casilla "Recuérdame".
+2.  <strong><code>procesar_login.php</code></strong>:
+    *   Valida al usuario (puedes usar un usuario/contraseña fijos como "admin"/"1234").
+    *   Si la validación es correcta, inicia una sesión y guarda el nombre de usuario.
+    *   <strong>Si la casilla "Recuérdame" está marcada</strong>, genera un token aleatorio (<code>$token = bin2hex(random_bytes(16));</code>). Guarda este token en una cookie (<code>cookie_token</code>) que dure 7 días y también en una "base de datos" (puedes simularla con un fichero de texto o un array) asociado al usuario.
+    *   Redirige a <code>area_privada.php</code>.
+3.  <strong><code>area_privada.php</code></strong>:
+    *   Primero, comprueba si hay una sesión activa. Si la hay, da la bienvenida al usuario.
+    *   <strong>Si NO hay sesión activa</strong>, comprueba si existe la cookie <code>cookie_token</code>.
+    *   Si la cookie existe, busca el token en tu "base de datos". Si lo encuentras, inicia sesión para ese usuario (crea la variable de sesión) y dale la bienvenida.
+    *   Si no hay sesión ni cookie válida, redirige al <code>login.php</code>.</p>
+<ul>
+<li><strong>Pista de Seguridad:</strong> Nunca guardes el nombre de usuario o la contraseña en la cookie. Usa un token aleatorio de un solo uso (o de larga duración) que actúe como una "llave" secundaria.</li>
+</ul>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es una implementación simplificada de la funcionalidad "Keep me logged in" que usan la mayoría de servicios web. Entenderla es clave para balancear usabilidad y seguridad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><em>Nota: Esta solución usa un array para simular la base de datos de tokens. En un entorno real, esto iría en una tabla SQL.</em></p>
+<p><strong><code>login.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="c1">// Si el usuario ya está logueado por sesión, lo llevamos al área privada</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: area_privada.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Login con Recuérdame&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Login a NexusHub&lt;/h1&gt;</span>
+<span class="x">    &lt;form action="procesar_login.php" method="post"&gt;</span>
+<span class="x">        &lt;input type="text" name="usuario" placeholder="Usuario (admin)" required&gt;&lt;br&gt;</span>
+<span class="x">        &lt;input type="password" name="password" placeholder="Contraseña (1234)" required&gt;&lt;br&gt;</span>
+<span class="x">        &lt;label&gt;&lt;input type="checkbox" name="recuerdame"&gt; Recuérdame&lt;/label&gt;&lt;br&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Entrar&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>procesar_login.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$usuario_valido</span> <span class="o">=</span> <span class="s2">"admin"</span><span class="p">;</span>
+<span class="nv">$password_valida</span> <span class="o">=</span> <span class="s2">"1234"</span><span class="p">;</span>
+
+<span class="nv">$usuario_form</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$password_form</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$usuario_form</span> <span class="o">===</span> <span class="nv">$usuario_valido</span> <span class="o">&amp;&amp;</span> <span class="nv">$password_form</span> <span class="o">===</span> <span class="nv">$password_valida</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Login correcto</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$usuario_valido</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'recuerdame'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$token</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nb">random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+        <span class="c1">// En una app real, guardaríamos $token en la BBDD asociado a $usuario_valido</span>
+        <span class="c1">// Aquí lo simulamos guardándolo en otra cookie (NO SEGURO EN PRODUCCIÓN, pero vale para el ejemplo)</span>
+        <span class="nb">setcookie</span><span class="p">(</span><span class="s1">'token_recuerdame'</span><span class="p">,</span> <span class="nv">$token</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">);</span>
+        <span class="nb">setcookie</span><span class="p">(</span><span class="s1">'usuario_recuerdame'</span><span class="p">,</span> <span class="nv">$usuario_valido</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: area_privada.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Login incorrecto</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: login.php?error=1'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong><code>area_privada.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$usuario_logueado</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="c1">// Opción 1: El usuario ya tiene una sesión activa</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$usuario_logueado</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">];</span>
+<span class="p">}</span> 
+<span class="c1">// Opción 2: No hay sesión, pero quizás hay una cookie de "recuérdame"</span>
+<span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'token_recuerdame'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'usuario_recuerdame'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// En una app real, buscaríamos el token en la BBDD para el usuario_recuerdame.</span>
+    <span class="c1">// Aquí, como es una simulación, confiamos en la cookie (de nuevo, NO SEGURO).</span>
+    <span class="nv">$usuario_logueado</span> <span class="o">=</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">'usuario_recuerdame'</span><span class="p">];</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$usuario_logueado</span><span class="p">;</span> <span class="c1">// Creamos la sesión para él</span>
+<span class="p">}</span>
+
+<span class="c1">// Si después de todo no tenemos un usuario, lo expulsamos</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$usuario_logueado</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: login.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Área Privada&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Bienvenido, </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$usuario_logueado</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">!&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Este es tu espacio privado en NexusHub.&lt;/p&gt;</span>
+<span class="x">    &lt;a href="logout.php"&gt;Cerrar Sesión&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<em>Faltaría un <code>logout.php</code> que borre la sesión y las cookies de "recuérdame".</em></p>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Es hora de volar solos. Estos retos son más abiertos y simulan tareas de desarrollo reales que requieren investigación, diseño y toma de decisiones.</p>
+<div class="admonition danger">
+<p class="admonition-title">10) La Tienda de Innovate: Carrito de la Compra con Sesiones | Nivel: Alto</p>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Diseñar e implementar un carrito de la compra funcional usando sesiones para gestionar su estado.</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>Crea un pequeño e-commerce para la tienda de merchandising de "Innovate Solutions".
+1.  <strong><code>tienda.php</code></strong>: Muestra una lista de 3 productos (ej: "Taza", "Camiseta", "Sudadera") con su precio. Cada producto debe tener un botón "Añadir al carrito".
+2.  <strong><code>carrito.php</code></strong>: Este fichero actuará como controlador. No tendrá HTML. Recibirá por <code>POST</code> el <code>id</code> y <code>nombre</code> del producto a añadir. La lógica debe:
+    *   Crear un array <code>$_SESSION['carrito']</code> si no existe.
+    *   Añadir el nuevo producto al carrito. Si el producto ya existe, debe incrementar su cantidad en lugar de añadirlo de nuevo.
+    *   Redirigir al usuario a <code>ver_carrito.php</code>.
+3.  <strong><code>ver_carrito.php</code></strong>: Muestra el contenido del carrito en una tabla: producto, precio, cantidad y subtotal.
+    *   Debe mostrar el total del pedido.
+    *   Debe incluir un enlace para "Vaciar carrito" que destruya los datos del carrito en la sesión.
+    *   <strong>Reto extra:</strong> Añade un pequeño formulario en cada fila que permita actualizar la cantidad de ese producto.</p>
+<ul>
+<li><strong>Diseño:</strong> Antes de escribir código, piensa en la estructura de datos. ¿Cómo organizarías el array <code>$_SESSION['carrito']</code>? Una buena opción es usar el ID del producto como clave del array.</li>
+</ul>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es, sin duda, una de las aplicaciones más universales de las sesiones en el desarrollo web y un pilar de todo el comercio electrónico.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><em>Esta solución implementa el reto extra de actualizar y eliminar productos individuales.</em></p>
+<p><strong><code>tienda.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$productos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'prod01'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Taza Innovate'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">10.50</span><span class="p">],</span>
+    <span class="s1">'prod02'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Camiseta NexusHub'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">22.99</span><span class="p">],</span>
+    <span class="s1">'prod03'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Sudadera "Code Mode"'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">45.00</span><span class="p">],</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Tienda Innovate&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Merchandising de Innovate Solutions&lt;/h1&gt;</span>
+<span class="x">    &lt;a href="ver_carrito.php"&gt;Ver Carrito (</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">]</span> <span class="o">??</span> <span class="p">[]);</span> <span class="cp">?&gt;</span><span class="x">)&lt;/a&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$productos</span> <span class="k">as</span> <span class="nv">$id</span> <span class="o">=&gt;</span> <span class="nv">$producto</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;div&gt;</span>
+<span class="x">            &lt;h2&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$producto</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">            &lt;p&gt;Precio: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$producto</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/p&gt;</span>
+<span class="x">            &lt;form action="carrito.php" method="post"&gt;</span>
+<span class="x">                &lt;input type="hidden" name="id" value="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                &lt;input type="hidden" name="accion" value="anadir"&gt;</span>
+<span class="x">                &lt;label for="cantidad_</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">"&gt;Cantidad:&lt;/label&gt;</span>
+<span class="x">                &lt;input type="number" name="cantidad" id="cantidad_</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">" value="1" min="1" style="width: 50px;"&gt;</span>
+<span class="x">                &lt;button type="submit"&gt;Añadir al carrito&lt;/button&gt;</span>
+<span class="x">            &lt;/form&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;hr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>carrito.php</code> (El controlador):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="c1">// Base de datos simulada de productos</span>
+<span class="nv">$productos_db</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'prod01'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Taza Innovate'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">10.50</span><span class="p">],</span>
+    <span class="s1">'prod02'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Camiseta NexusHub'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">22.99</span><span class="p">],</span>
+    <span class="s1">'prod03'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Sudadera "Code Mode"'</span><span class="p">,</span> <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">45.00</span><span class="p">],</span>
+<span class="p">];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+    <span class="nv">$accion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'accion'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'anadir'</span><span class="p">;</span>
+    <span class="nv">$cantidad</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">])</span> <span class="o">?</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">]</span> <span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Validar que el producto exista</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$productos_db</span><span class="p">))</span> <span class="p">{</span>
+         <span class="k">switch</span> <span class="p">(</span><span class="nv">$accion</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s1">'anadir'</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">]))</span> <span class="p">{</span>
+                    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">][</span><span class="s1">'cantidad'</span><span class="p">]</span> <span class="o">+=</span> <span class="nv">$cantidad</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="nv">$productos_db</span><span class="p">[</span><span class="nv">$id</span><span class="p">][</span><span class="s1">'nombre'</span><span class="p">],</span>
+                        <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="nv">$productos_db</span><span class="p">[</span><span class="nv">$id</span><span class="p">][</span><span class="s1">'precio'</span><span class="p">],</span>
+                        <span class="s1">'cantidad'</span> <span class="o">=&gt;</span> <span class="nv">$cantidad</span>
+                    <span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">'actualizar'</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$cantidad</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">][</span><span class="s1">'cantidad'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$cantidad</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">]);</span> <span class="c1">// Eliminar si la cantidad es 0</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">'eliminar'</span><span class="o">:</span>
+                <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">][</span><span class="nv">$id</span><span class="p">]);</span>
+                <span class="k">break</span><span class="p">;</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'accion'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'accion'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'vaciar'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: ver_carrito.php'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong><code>ver_carrito.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="nv">$carrito</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'carrito'</span><span class="p">]</span> <span class="o">??</span> <span class="p">[];</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Tu Carrito&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Tu Carrito de la Compra&lt;/h1&gt;</span>
+<span class="x">    &lt;a href="tienda.php"&gt;Seguir comprando&lt;/a&gt; | &lt;a href="carrito.php?accion=vaciar"&gt;Vaciar Carrito&lt;/a&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$carrito</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;p&gt;Tu carrito está vacío.&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;table border="1" cellpadding="5" cellspacing="0"&gt;</span>
+<span class="x">            &lt;thead&gt;</span>
+<span class="x">                &lt;tr&gt;</span>
+<span class="x">                    &lt;th&gt;Producto&lt;/th&gt;</span>
+<span class="x">                    &lt;th&gt;Precio&lt;/th&gt;</span>
+<span class="x">                    &lt;th&gt;Cantidad&lt;/th&gt;</span>
+<span class="x">                    &lt;th&gt;Subtotal&lt;/th&gt;</span>
+<span class="x">                    &lt;th&gt;Acciones&lt;/th&gt;</span>
+<span class="x">                &lt;/tr&gt;</span>
+<span class="x">            &lt;/thead&gt;</span>
+<span class="x">            &lt;tbody&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$carrito</span> <span class="k">as</span> <span class="nv">$id</span> <span class="o">=&gt;</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                    </span><span class="cp">&lt;?php</span> <span class="nv">$subtotal</span> <span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">]</span> <span class="o">*</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">];</span> <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$subtotal</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;tr&gt;</span>
+<span class="x">                        &lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                        &lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/td&gt;</span>
+<span class="x">                        &lt;td&gt;</span>
+<span class="x">                            &lt;form action="carrito.php" method="post" style="display:inline;"&gt;</span>
+<span class="x">                                &lt;input type="hidden" name="id" value="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                                &lt;input type="hidden" name="accion" value="actualizar"&gt;</span>
+<span class="x">                                &lt;input type="number" name="cantidad" value="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'cantidad'</span><span class="p">];</span> <span class="cp">?&gt;</span><span class="x">" min="0" style="width:50px;"&gt;</span>
+<span class="x">                                &lt;button type="submit"&gt;OK&lt;/button&gt;</span>
+<span class="x">                            &lt;/form&gt;</span>
+<span class="x">                        &lt;/td&gt;</span>
+<span class="x">                        &lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$subtotal</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/td&gt;</span>
+<span class="x">                        &lt;td&gt;</span>
+<span class="x">                            &lt;form action="carrito.php" method="post" style="display:inline;"&gt;</span>
+<span class="x">                                 &lt;input type="hidden" name="id" value="</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                                 &lt;input type="hidden" name="accion" value="eliminar"&gt;</span>
+<span class="x">                                 &lt;button type="submit"&gt;Eliminar&lt;/button&gt;</span>
+<span class="x">                            &lt;/form&gt;</span>
+<span class="x">                        &lt;/td&gt;</span>
+<span class="x">                    &lt;/tr&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;/tbody&gt;</span>
+<span class="x">            &lt;tfoot&gt;</span>
+<span class="x">                &lt;tr&gt;</span>
+<span class="x">                    &lt;th colspan="3"&gt;TOTAL&lt;/th&gt;</span>
+<span class="x">                    &lt;th colspan="2"&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$total</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/th&gt;</span>
+<span class="x">                &lt;/tr&gt;</span>
+<span class="x">            &lt;/tfoot&gt;</span>
+<span class="x">        &lt;/table&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">11) El Sistema de Notificaciones 'Flash' | Nivel: Alto</p>
+<h5 id="objetivo_10"><strong>Objetivo:</strong></h5>
+<p>Crear un sistema de notificaciones "flash", que muestra un mensaje al usuario una sola vez y luego se autodestruye.</p>
+<h5 id="tarea-a-realizar_10"><strong>Tarea a realizar:</strong></h5>
+<p>Desarrolla una función <code>set_flash_message($message, $type = 'info')</code> y una función <code>display_flash_message()</code>.
+1.  <strong><code>set_flash_message()</code></strong>: Esta función recibirá un mensaje y un tipo (ej: 'success', 'error', 'info'). Guardará esta información en una variable de sesión, por ejemplo, <code>$_SESSION['flash_message']</code>.
+2.  <strong><code>display_flash_message()</code></strong>: Esta función comprobará si existe un mensaje flash en la sesión.
+    *   Si existe, lo mostrará en un <code>div</code> con una clase CSS correspondiente al tipo (ej: <code>&lt;div class="flash-success"&gt;...&lt;/div&gt;</code>).
+    *   Inmediatamente después de mostrarlo, <strong>debe eliminar el mensaje de la sesión</strong> para que no vuelva a aparecer en la siguiente recarga.
+3.  <strong>Crea una prueba</strong>: Un fichero <code>procesar_algo.php</code> que, tras una operación simulada, llame a <code>set_flash_message("Operación completada con éxito.", "success")</code> y redirija a <code>dashboard.php</code>.
+4.  <strong><code>dashboard.php</code></strong>: Esta página llamará a <code>display_flash_message()</code> en la parte superior para mostrar la notificación. Si recargas <code>dashboard.php</code>, el mensaje ya no debería aparecer.</p>
+<h5 id="aplicacion-en-el-mundo-real_10"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este patrón es extremadamente común en aplicaciones web después de realizar una acción (CRUD). Permite dar feedback al usuario sobre el resultado de su operación de una manera limpia y no intrusiva. Frameworks como Laravel o Symfony traen sistemas de "flash messages" incorporados.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong><code>flash_system.php</code> (fichero con las funciones):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">set_flash_message</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$message</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s1">'info'</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">session_status</span><span class="p">()</span> <span class="o">===</span> <span class="nx">PHP_SESSION_NONE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">session_start</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">,</span>
+        <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nv">$type</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">display_flash_message</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">session_status</span><span class="p">()</span> <span class="o">===</span> <span class="nx">PHP_SESSION_NONE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">session_start</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$flash</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">];</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flash</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]);</span>
+        <span class="nv">$type</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flash</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]);</span>
+
+        <span class="c1">// Estilos básicos para el ejemplo</span>
+        <span class="nv">$style</span> <span class="o">=</span> <span class="s2">"padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px;"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$type</span> <span class="o">===</span> <span class="s1">'success'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$style</span> <span class="o">.=</span> <span class="s2">"color: #155724; background-color: #d4edda; border-color: #c3e6cb;"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$type</span> <span class="o">===</span> <span class="s1">'error'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$style</span> <span class="o">.=</span> <span class="s2">"color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$style</span> <span class="o">.=</span> <span class="s2">"color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb;"</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">echo</span> <span class="s2">"&lt;div style='</span><span class="si">{</span><span class="nv">$style</span><span class="si">}</span><span class="s2">'&gt;</span><span class="si">{</span><span class="nv">$message</span><span class="si">}</span><span class="s2">&lt;/div&gt;"</span><span class="p">;</span>
+
+        <span class="c1">// Eliminar el mensaje para que no se muestre de nuevo</span>
+        <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong><code>procesar_algo.php</code> (fichero de prueba):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'flash_system.php'</span><span class="p">;</span>
+<span class="nb">session_start</span><span class="p">();</span> <span class="c1">// Necesario antes de llamar a set_flash_message si no lo hiciera ella</span>
+
+<span class="c1">// 1. Simular una operación</span>
+<span class="nv">$operacion_exitosa</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Cambiar a false para probar el mensaje de error</span>
+
+<span class="c1">// 2. Establecer el mensaje flash</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$operacion_exitosa</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">set_flash_message</span><span class="p">(</span><span class="s1">'El perfil se ha actualizado correctamente.'</span><span class="p">,</span> <span class="s1">'success'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">set_flash_message</span><span class="p">(</span><span class="s1">'Error: No se pudo guardar el perfil.'</span><span class="p">,</span> <span class="s1">'error'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. Redirigir al dashboard</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: dashboard.php'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong><code>dashboard.php</code> (página que muestra el mensaje):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'flash_system.php'</span><span class="p">;</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Dashboard - NexusHub&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="c1">// Llamamos a la función que mostrará (y luego borrará) el mensaje</span>
+    <span class="nx">display_flash_message</span><span class="p">();</span>
+    <span class="cp">?&gt;</span>
+<span class="x">    &lt;h1&gt;Dashboard Principal&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Bienvenido a tu panel de control.&lt;/p&gt;</span>
+<span class="x">    &lt;p&gt;</span>
+<span class="x">        &lt;a href="procesar_algo.php"&gt;Simular una operación para ver el mensaje flash.&lt;/a&gt;</span>
+<span class="x">    &lt;/p&gt;</span>
+<span class="x">    &lt;p&gt;Recarga esta página después de ver el mensaje. Verás que ya no aparece.&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">12) Tarea de Investigación y Peer Review: Asegurando las Sesiones | Nivel: Alto</p>
+<h5 id="objetivo_11"><strong>Objetivo:</strong></h5>
+<p>Investigar vulnerabilidades comunes relacionadas con la gestión de sesiones en PHP y proponer soluciones, fomentando la revisión de código entre pares.</p>
+<h5 id="tarea-a-realizar_11"><strong>Tarea a realizar:</strong></h5>
+<p><strong>Parte 1: Investigación Individual</strong>
+1.  Cada alumno debe investigar dos vulnerabilidades de seguridad comunes en PHP:
+    *   <strong>Fijación de Sesión (Session Fixation)</strong>
+    *   <strong>Secuestro de Sesión (Session Hijacking)</strong>
+2.  Debes crear un documento Markdown breve que explique:
+    *   En qué consiste cada ataque, con un ejemplo de escenario.
+    *   Cuál es la <strong>principal contramedida</strong> en PHP para mitigar cada uno (ej: funciones específicas, directivas de <code>php.ini</code>).
+3.  Crea un pequeño script PHP vulnerable a <strong>Fijación de Sesión</strong>. El script debe ser simple, por ejemplo, un login que no regenera el ID de sesión. Comenta el código explicando dónde reside la vulnerabilidad.</p>
+<p><strong>Parte 2: Revisión por Pares (Peer Review)</strong>
+1.  Intercambia tu investigación y tu código vulnerable con un compañero.
+2.  Tu tarea es revisar el trabajo de tu compañero y proporcionarle feedback constructivo:
+    *   ¿La explicación de los ataques es clara y correcta?
+    *   ¿El código de ejemplo es realmente vulnerable a Fijación de Sesión?
+    *   ¿Propone una solución correcta para el código? (es decir, ¿sugiere usar <code>session_regenerate_id(true)</code> en el lugar adecuado?).
+3.  Entrega tu trabajo original junto con la revisión que has hecho del trabajo de tu compañero.</p>
+<h5 id="aplicacion-en-el-mundo-real_11"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La seguridad no es una opción, es un requisito. Entender cómo los atacantes explotan las debilidades en la gestión de estado es el primer paso para escribir código seguro. Las revisiones de código (Code Reviews) son una práctica estándar en todos los equipos de desarrollo profesionales para mejorar la calidad y la seguridad del software.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<h4 id="puntos-clave-esperados-en-la-investigacion">Puntos Clave Esperados en la Investigación</h4>
+<p><strong>Fijación de Sesión (Session Fixation)</strong>
+*   <strong>Escenario:</strong> Un atacante engaña a una víctima para que use un ID de sesión que el atacante ya conoce. Por ejemplo, el atacante envía un enlace a la víctima como <code>http://nexus-hub.com/login.php?PHPSESSID=12345</code>. La víctima hace clic, introduce sus credenciales y se loguea. Como la aplicación no ha cambiado el ID de sesión <code>12345</code> tras el login, el atacante puede ahora usar ese mismo ID para acceder a la sesión autenticada de la víctima.
+*   <strong>Contramedida Principal:</strong> La función <code>session_regenerate_id(true)</code>. Debe llamarse <strong>inmediatamente después</strong> de que un usuario valide sus credenciales con éxito (es decir, cuando su nivel de privilegio cambia). Esta función crea un nuevo ID de sesión, invalida el antiguo y mantiene los datos de la sesión, rompiendo la conexión con el ID que el atacante conocía.</p>
+<p><strong>Secuestro de Sesión (Session Hijacking)</strong>
+*   <strong>Escenario:</strong> Un atacante consigue robar un ID de sesión válido de una víctima. Puede hacerlo de varias maneras:
+    *   <strong>Sniffing de red:</strong> Si la conexión no es HTTPS, el ID de sesión (que viaja en una cookie) puede ser capturado.
+    *   <strong>Ataque XSS (Cross-Site Scripting):</strong> Un atacante inyecta JavaScript en la página que roba la cookie de sesión (<code>document.cookie</code>) y la envía a su propio servidor.
+    *   <strong>Acceso físico:</strong> El atacante accede al ordenador de la víctima y copia el valor de la cookie del navegador.
+*   <strong>Contramedidas Principales:</strong>
+    1.  <strong>Usar HTTPS siempre:</strong> Cifra toda la comunicación, impidiendo el sniffing.
+    2.  <strong>Flag <code>HttpOnly</code> en las cookies de sesión:</strong> La directiva <code>session.cookie_httponly = 1</code> en <code>php.ini</code> hace que la cookie de sesión no sea accesible a través de JavaScript, mitigando el robo por XSS.
+    3.  <strong>Regenerar el ID de sesión periódicamente:</strong> Además del login, regenerar el ID cada cierto tiempo o tras acciones críticas reduce la ventana de oportunidad para un atacante.
+    4.  <strong>Validación extra:</strong> Almacenar en la sesión el User-Agent y la dirección IP del usuario cuando se loguea y comprobarlos en cada petición posterior. Si cambian, la sesión podría estar siendo secuestrada y debería invalidarse.</p>
+<h4 id="ejemplo-de-codigo-vulnerable-a-fijacion-de-sesion">Ejemplo de Código Vulnerable a Fijación de Sesión</h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// login_vulnerable.php</span>
+
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// Supongamos que un atacante ha forzado a la víctima a usar este script</span>
+<span class="c1">// con un enlace como: login_vulnerable.php?PHPSESSID=atacante_conoce_esto</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'victima'</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'pass123'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'logueado'</span><span class="p">]</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'victima'</span><span class="p">;</span>
+
+    <span class="c1">// ---&gt; VULNERABILIDAD AQUÍ &lt;---</span>
+    <span class="c1">// El script no regenera el ID de la sesión después del login.</span>
+    <span class="c1">// Por lo tanto, el ID que el atacante fijó sigue siendo válido</span>
+    <span class="c1">// pero ahora está asociado a una sesión autenticada.</span>
+
+    <span class="k">echo</span> <span class="s2">"Login correcto. Bienvenido, "</span> <span class="o">.</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">];</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;form method="post"&gt;</span>
+<span class="x">    &lt;input type="text" name="usuario" value="victima"&gt;&lt;br&gt;</span>
+<span class="x">    &lt;input type="password" name="password" value="pass123"&gt;&lt;br&gt;</span>
+<span class="x">    &lt;button type="submit"&gt;Login&lt;/button&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<h4 id="solucion-propuesta-para-la-revision-por-pares">Solución Propuesta para la Revisión por Pares</h4>
+<p>El compañero debería sugerir añadir <code>session_regenerate_id(true);</code> justo después de establecer las variables de sesión tras un login exitoso.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// ...</span>
+<span class="x">if (isset($_POST['usuario']) &amp;&amp; $_POST['usuario'] === 'victima' &amp;&amp; $_POST['password'] === 'pass123') {</span>
+<span class="x">    $_SESSION['logueado'] = true;</span>
+<span class="x">    $_SESSION['usuario'] = 'victima';</span>
+
+<span class="x">    // ---&gt; SOLUCIÓN &lt;---</span>
+<span class="x">    session_regenerate_id(true); // Se genera un nuevo ID, el antiguo se invalida.</span>
+
+<span class="x">    echo "Login correcto. Bienvenido, " . $_SESSION['usuario'];</span>
+<span class="x">    exit();</span>
+<span class="x">}</span>
+<span class="x">// ...</span>
+</code></pre></div>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

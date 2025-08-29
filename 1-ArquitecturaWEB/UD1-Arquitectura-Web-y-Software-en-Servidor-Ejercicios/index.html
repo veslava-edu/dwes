@@ -1,0 +1,2586 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>UD1 Arquitectura Web y Software en Servidor Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actividades-practicas-arquitectura-web" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD1 Arquitectura Web y Software en Servidor Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-de-peer-review-revision-por-pares" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea de Peer Review (Revisión por Pares):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documento-de-diseno-sistema-de-reserva-de-salas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documento de Diseño: Sistema de Reserva de Salas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documento de Diseño: Sistema de Reserva de Salas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa-de-arquitecturas-p2p-vs-microservicios-para-nexus-share" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparativa de Arquitecturas: P2P vs. Microservicios para "Nexus Share"
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparativa de Arquitecturas: P2P vs. Microservicios para &#34;Nexus Share&#34;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-de-peer-review-revision-por-pares_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea de Peer Review (Revisión por Pares):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: T01-Ejercicios-Arquitectura-Web-y-Software-en-Servidor.md -->
+<h1 id="actividades-practicas-arquitectura-web">Actividades Prácticas: Arquitectura Web</h1>
+<p>¡Bienvenido al equipo de desarrollo de <strong>Nexus Dynamics</strong>! Estamos a punto de empezar a construir "Nexus Hub", nuestro nuevo y flamante portal corporativo interno. Para asegurarnos de que todos partimos de la misma base técnica, hemos preparado una serie de ejercicios que te ayudarán a familiarizarte con los principios de arquitectura que guían nuestro trabajo.</p>
+<p>Tu misión como nuevo desarrollador del equipo es completar estas tareas para demostrar tu comprensión de los cimientos sobre los que construiremos el proyecto. ¡Vamos a ello!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos ejercicios iniciales están diseñados para asentar los conceptos clave que viste en la documentación.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Inducción en Nexus Dynamics: El Glosario Esencial | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Validar la comprensión de los términos fundamentales de la arquitectura web (Cliente, Servidor, Estático vs. Dinámico, Arquitectura Cliente-Servidor).</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Responde a las siguientes preguntas basándote en el material didáctico y tu propia investigación. Sé conciso y claro, como si se lo explicaras a un nuevo becario del departamento de marketing.</p>
+<ol>
+<li>Si un empleado usa Chrome en su portátil para acceder a "Nexus Hub", ¿qué rol juega Chrome en la arquitectura cliente-servidor?</li>
+<li>Cuando "Nexus Hub" muestre una página con las ofertas de menú del día de la cafetería, que cambian cada día, ¿será una página estática o dinámica? Justifica tu respuesta.</li>
+<li>Describe con tus propias palabras el flujo de una petición HTTP cuando un usuario solicita ver su perfil personalizado en la intranet "Nexus Hub". ¿Quién "cocina" la respuesta?</li>
+<li>¿Por qué el navegador de un usuario nunca ve el código PHP de una página dinámica?</li>
+<li>En la arquitectura de 3 capas de "Nexus Hub", ¿qué capa sería la responsable de conectarse a la base de datos para obtener la lista de empleados?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este conocimiento es la base de cualquier conversación técnica en un equipo de desarrollo. Usar los términos correctamente evita malentendidos y demuestra profesionalidad al discutir cómo implementar nuevas funcionalidades.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>1. Rol de Chrome:</strong>
+Chrome actúa como el <strong>Cliente</strong>. Es el software que inicia la petición para obtener la página web de la intranet.</p>
+<p><strong>2. Menú del día:</strong>
+Sería una <strong>página dinámica</strong>. Aunque el contenido no es personalizado por usuario, cambia con el tiempo (diariamente). El servidor necesita ejecutar un script (ej. en PHP) para leer el menú de hoy (desde una base de datos o un fichero) y generar el HTML correspondiente. Una página estática sería la misma para todos, siempre.</p>
+<p><strong>3. Flujo de perfil personalizado:</strong>
+El flujo de una petición HTTP cuando un usuario solicita ver su perfil personalizado sería el siguiente:
+*   El <strong>Cliente</strong> (navegador) envía una petición HTTP (ej: <code>GET /perfil.php</code>).
+*   El <strong>Servidor Web</strong> recibe la petición. Ve que es un fichero <code>.php</code> y se lo pasa al intérprete de PHP.
+*   El script PHP (la <strong>Capa de Negocio</strong>) se ejecuta. Probablemente, se conecte a la <strong>Capa de Datos</strong> (base de datos) para buscar la información del usuario que ha iniciado sesión.
+*   Con los datos obtenidos, PHP "construye" un documento HTML a medida.
+*   El Servidor Web envía ese HTML generado como respuesta al Cliente.
+*   El Cliente (navegador) renderiza el HTML para que el usuario lo vea.</p>
+<p>El que "cocina" la respuesta es el <strong>servidor</strong>, específicamente el software del lado del servidor (el intérprete de PHP en este caso).</p>
+<p><strong>4. Código PHP invisible:</strong>
+El navegador nunca ve el código PHP porque este se ejecuta <strong>exclusivamente en el servidor</strong>. El servidor procesa el script y lo único que envía de vuelta al cliente es el <strong>resultado</strong> de esa ejecución, que es un texto plano en formato HTML.</p>
+<p><strong>5. Capa responsable de los datos:</strong>
+La <strong>Capa de Datos</strong> (o de Persistencia) es la única responsable de interactuar con la base de datos.</p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Análisis de Requisitos: ¿Estático o Dinámico para el 'Nexus Hub'? | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Diferenciar entre la necesidad de una página estática y una dinámica en un contexto de proyecto real.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>El equipo de producto de "Nexus Hub" ha definido las siguientes páginas. Para cada una, determina si debe ser implementada como una página estática o dinámica y justifica brevemente tu elección.</p>
+<ol>
+<li><strong><code>politica_de_privacidad.html</code></strong>: Página con el texto legal sobre la política de privacidad de la empresa.</li>
+<li><strong><code>organigrama.php</code></strong>: Página que muestra la estructura jerárquica de la empresa, la cual se actualiza cada vez que hay un nuevo fichaje o una promoción.</li>
+<li><strong><code>mis_vacaciones.php</code></strong>: Un panel donde cada empleado ve los días de vacaciones que le quedan.</li>
+<li><strong><code>contacto.html</code></strong>: Una página con la dirección de las oficinas y un mapa incrustado.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Tomar esta decisión correctamente al inicio del desarrollo de una funcionalidad ahorra tiempo y recursos. Usar un enfoque dinámico donde no es necesario añade complejidad y consumo de servidor innecesarios.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong><code>politica_de_privacidad.html</code> (Estática):</strong> El contenido es el mismo para todos y solo cambia muy de vez en cuando. No requiere procesamiento en el servidor.</li>
+<li><strong><code>organigrama.php</code> (Dinámica):</strong> La información debe obtenerse de una base de datos que se actualiza constantemente. La página se debe generar "al vuelo" para reflejar siempre el estado actual.</li>
+<li><strong><code>mis_vacaciones.php</code> (Dinámica):</strong> Es el caso más claro. El contenido es altamente personalizado para cada usuario. El servidor debe identificar al usuario y consultar sus datos específicos en la base de datos.</li>
+<li><strong><code>contacto.html</code> (Estática):</strong> Al igual que la política de privacidad, esta información es general y no cambia con frecuencia. Es un candidato perfecto para una página estática simple.</li>
+</ol>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Diagrama de Flujo: La Petición de un Perfil de Usuario | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Visualizar la arquitectura de 3 capas y el flujo de comunicación entre ellas para una petición web dinámica.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>Usando la sintaxis de <a href="https://mermaid.js.org/syntax/graph.html">Mermaid.js</a> que viste en la documentación, crea un diagrama de flujo (<code>graph TD</code>) que represente la secuencia de eventos cuando un usuario solicita su página de perfil en "Nexus Hub". El diagrama debe mostrar claramente las tres capas (Presentación, Lógica/Negocio, Datos) y los componentes involucrados (Navegador, Servidor Web, Servidor de BBDD).</p>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los diagramas de arquitectura son una herramienta de comunicación fundamental en los equipos de software para explicar, discutir y documentar cómo funcionan los sistemas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<pre class="mermaid"><code>graph TD
+    subgraph "Capa de Presentación"
+        A[Usuario en su Navegador]
+    end
+
+    subgraph "Capa de Lógica/Negocio"
+        B[Servidor Web/PHP]
+    end
+
+    subgraph "Capa de Datos"
+        C[Servidor de Base de Datos]
+    end
+
+    A --&gt;|1. Petición HTTP para ver mi perfil| B
+    B --&gt;|2. Consulta SQL para datos del usuario| C
+    C --&gt;|3. Devuelve los datos| B
+    B --&gt;|4. Genera HTML y lo envía como respuesta HTTP| A</code></pre>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Organizando el Legado: Desmontando un Script 'Espagueti' | Nivel: Fácil</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Identificar las responsabilidades de cada componente del patrón MVC (Modelo, Vista, Controlador) dentro de un código desorganizado.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>El siguiente script PHP funciona, pero mezcla todas las responsabilidades, creando "código espagueti".</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// 1. Conexión a la base de datos</span>
+<span class="nv">$db_conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"pass"</span><span class="p">,</span> <span class="s2">"nexus_hub_db"</span><span class="p">);</span>
+
+<span class="c1">// 2. Obtener el ID de empleado de la URL (lógica de controlador)</span>
+<span class="nv">$employeeId</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+
+<span class="c1">// 3. Preparar y ejecutar la consulta (lógica de modelo)</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="s2">"SELECT name, position FROM employees WHERE id = "</span> <span class="o">.</span> <span class="nv">$employeeId</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$db_conn</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$query</span><span class="p">);</span>
+<span class="nv">$employee</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">();</span>
+
+<span class="c1">// 4. Mostrar la información en HTML (lógica de vista)</span>
+<span class="k">echo</span> <span class="s2">"&lt;html&gt;&lt;head&gt;&lt;title&gt;Perfil de Empleado&lt;/title&gt;&lt;/head&gt;&lt;body&gt;"</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$employee</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$employee</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Cargo: "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$employee</span><span class="p">[</span><span class="s1">'position'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Empleado no encontrado&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;/body&gt;&lt;/html&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Analiza el script anterior y clasifica cada una de las 4 secciones numeradas (comentarios) según al componente del patrón MVC al que debería pertenecer su lógica: <strong>Modelo</strong>, <strong>Vista</strong> o <strong>Controlador</strong>.</p>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Saber identificar qué parte del código hace qué es el primer paso para poder refactorizarlo, es decir, reorganizarlo en una estructura limpia (como MVC) que sea mantenible y escalable.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ul>
+<li><strong>Sección 1 (Conexión a la base de datos):</strong> Pertenece al <strong>Modelo</strong>. La gestión de la conexión y el acceso a los datos es su responsabilidad exclusiva.</li>
+<li><strong>Sección 2 (Obtener el ID de la URL):</strong> Pertenece al <strong>Controlador</strong>. Es el que recibe la entrada del usuario (en este caso, un parámetro en la URL) y decide qué hacer.</li>
+<li><strong>Sección 3 (Preparar y ejecutar la consulta):</strong> Pertenece al <strong>Modelo</strong>. Es la lógica pura de acceso a datos: cómo buscar y obtener la información de la base de datos.</li>
+<li><strong>Sección 4 (Mostrar la información en HTML):</strong> Pertenece a la <strong>Vista</strong>. Su única función es presentar los datos en formato HTML. No debería contener lógica de negocio ni de acceso a datos.</li>
+</ul>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Bug Hunt: El Widget de Bienvenida no Muestra la Hora | Nivel: Fácil</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Practicar la depuración de un error común en un script del lado del servidor.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero ha creado este pequeño widget para la página de inicio de "Nexus Hub", pero no funciona. Cuando se carga, en lugar de la hora, muestra el texto sin procesar o un error.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Fichero: welcome_widget.php --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"widget"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Bienvenido a Nexus Hub<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Este párrafo es HTML estático.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="cp">&lt;?</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Hora actual del servidor: "</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="err">'</span><span class="nx">Y</span><span class="o">-</span><span class="nx">m</span><span class="o">-</span><span class="nx">d</span> <span class="nx">H</span><span class="o">:</span><span class="nx">i</span><span class="o">:</span><span class="nx">s</span><span class="p">);</span>
+    <span class="cp">?&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<p>Revisa el fragmento de código PHP. Hay un error de sintaxis que impide que se ejecute correctamente. Identifícalo y corrígelo.</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La depuración es una de las tareas más comunes de un programador. Encontrar errores de sintaxis, lógicos o de configuración es el día a día en el desarrollo de software.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>El error es un punto y coma (<code>;</code>) que falta al final de la instrucción <code>echo</code>.</p>
+<p>El código corregido es:
+<code>html+php
+&lt;!-- Fichero: welcome_widget.php --&gt;
+&lt;div class="widget"&gt;
+    &lt;h2&gt;Bienvenido a Nexus Hub&lt;/h2&gt;
+    &lt;p&gt;Este párrafo es HTML estático.&lt;/p&gt;
+    &lt;?php // Se recomienda usar la etiqueta de apertura completa
+        echo "&lt;p&gt;Hora actual del servidor: " . date('Y-m-d H:i:s') . "&lt;/p&gt;";
+    ?&gt;
+&lt;/div&gt;</code>        Además del punto y coma, se ha añadido el <code>&lt;/p&gt;</code> para que el HTML sea válido y se ha cambiado <code>&lt;?</code> por <code>&lt;?php</code>, que es la práctica recomendada y garantiza la compatibilidad.</p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Plan de Escalabilidad: Eligiendo la Arquitectura Correcta | Nivel: Fácil</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Asociar diferentes arquitecturas de servidor con las necesidades de un proyecto en distintas fases de crecimiento.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>"Nexus Hub" va a ser desplegado en tres fases. Basándote en la documentación sobre arquitecturas con servidor de aplicaciones, relaciona cada fase con el modelo de arquitectura más apropiado y justifica tu elección.</p>
+<ul>
+<li><strong>Fase 1 (Piloto):</strong> El portal se despliega para un solo departamento de 50 personas para recoger feedback. El tráfico será bajo.</li>
+<li><strong>Fase 2 (Lanzamiento Nacional):</strong> El portal se abre para todos los 5.000 empleados de la empresa en el país. El tráfico será considerablemente mayor.</li>
+<li><strong>Fase 3 (Expansión Global):</strong> El portal dará servicio a 30.000 empleados en diferentes continentes 24/7. La alta disponibilidad y el rendimiento son críticos.</li>
+</ul>
+<p><strong>Arquitecturas a elegir:</strong>
+*   A) Servidor de aplicaciones y servidor web en la misma máquina.
+*   B) Servidor de aplicaciones externo.
+*   C) Múltiples servidores de aplicaciones con balanceador de carga.</p>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Elegir la infraestructura adecuada (arquitectura física) es clave para controlar costes y garantizar un buen rendimiento. No se usa la misma arquitectura para un blog personal que para Amazon.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ul>
+<li><strong>Fase 1 (Piloto) -&gt; Arquitectura A (Todo en la misma máquina):</strong> Para un tráfico bajo y una prueba piloto, esta es la solución más simple y económica. No se justifica una infraestructura compleja.</li>
+<li><strong>Fase 2 (Lanzamiento Nacional) -&gt; Arquitectura B (Servidor de aplicaciones externo):</strong> Con un aumento significativo del tráfico, tiene sentido separar el servidor web del de aplicaciones. El servidor web puede dedicarse a servir rápidamente los recursos estáticos (imágenes, CSS) y el de aplicaciones a gestionar la lógica de negocio, optimizando el uso de recursos de cada máquina.</li>
+<li><strong>Fase 3 (Expansión Global) -&gt; Arquitectura C (Múltiples servidores con balanceador de carga):</strong> Para un tráfico masivo y global, es la única opción viable. Un solo servidor de aplicaciones no podría soportar la carga. El balanceador de carga distribuye las peticiones entre varios servidores idénticos, garantizando que si uno falla, los demás sigan prestando servicio (alta disponibilidad) y que el rendimiento sea óptimo.</li>
+</ul>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Estos ejercicios te guiarán en la construcción de pequeños componentes, aplicando los patrones de arquitectura de forma práctica.</p>
+<div class="admonition warning">
+<p class="admonition-title">El Guardián de los Datos: Creando tu Primer 'Modelo' | Nivel: Medio</p>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Implementar una clase PHP simple que represente un "Modelo" en el patrón MVC, encapsulando la lógica de acceso a datos.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Vamos a crear un modelo para gestionar los datos de los empleados. Por ahora, no nos conectaremos a una base de datos real; usaremos un array para simularla.</p>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un fichero llamado <code>UserModel.php</code>.</li>
+<li>Dentro, define una clase llamada <code>UserModel</code>.</li>
+<li>Crea una propiedad privada <code>$mockDatabase</code> que sea un array de arrays asociativos, simulando una tabla de usuarios. Cada usuario debe tener <code>id</code>, <code>name</code> y <code>position</code>.
+    <div class="highlight"><pre><span></span><code><span class="x">private $mockDatabase = [</span>
+<span class="x">    ['id' =&gt; 1, 'name' =&gt; 'Ana García', 'position' =&gt; 'Desarrolladora Backend'],</span>
+<span class="x">    ['id' =&gt; 2, 'name' =&gt; 'Carlos Pérez', 'position' =&gt; 'Diseñador UX/UI'],</span>
+<span class="x">    // ... añade un par más</span>
+<span class="x">];</span>
+</code></pre></div></li>
+<li>Crea un método público <code>getAllUsers()</code> que devuelva el array completo <code>$mockDatabase</code>.</li>
+<li>
+<p>Crea un método público <code>getUserById($id)</code> que busque en el array un usuario con el <code>$id</code> proporcionado y lo devuelva. Si no lo encuentra, debe devolver <code>null</code>.</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Para <code>getUserById</code>, puedes usar un bucle <code>foreach</code> para recorrer <code>$this-&gt;mockDatabase</code> y comprobar el <code>id</code> en cada iteración.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta estructura es la base de todos los modelos en un framework moderno. La única diferencia es que en lugar de un array, los métodos interactuarían con un sistema de bases de datos real como MySQL.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: UserModel.php</span>
+
+<span class="k">class</span> <span class="nc">UserModel</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$mockDatabase</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Ana García'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="o">=&gt;</span> <span class="s1">'Desarrolladora Backend'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Carlos Pérez'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="o">=&gt;</span> <span class="s1">'Diseñador UX/UI'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Lucía Martín'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="o">=&gt;</span> <span class="s1">'Jefa de Proyecto'</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'Javier Rodríguez'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="o">=&gt;</span> <span class="s1">'Administrador de Sistemas'</span><span class="p">],</span>
+    <span class="p">];</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Devuelve todos los usuarios de la base de datos simulada.</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAllUsers</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mockDatabase</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Busca un usuario por su ID.</span>
+<span class="sd">     * @param int $id El ID del usuario a buscar.</span>
+<span class="sd">     * @return array|null El array del usuario si se encuentra, o null si no.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUserById</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mockDatabase</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Mecánica Interna: El Dúo Dinámico Apache y PHP | Nivel: Medio</p>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Investigar y explicar la relación funcional entre un servidor web y un intérprete de lenguaje de servidor.</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Investiga la relación entre un servidor web como <strong>Apache</strong> y el intérprete de <strong>PHP</strong>.</li>
+<li>
+<p>Escribe una explicación breve (2-3 párrafos) que responda a las siguientes preguntas:</p>
+<ul>
+<li>¿Cuál es el rol principal de Apache en una petición web?</li>
+<li>¿Cuál es el rol principal de PHP?</li>
+<li>¿Cómo se "pasan la pelota" el uno al otro cuando llega una petición para un fichero <code>.php</code>? Describe el proceso a alto nivel.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pista:</strong> Busca términos como "Apache module mod_php" o la comunicación vía "FastCGI (PHP-FPM)". Piensa en quién recibe la petición HTTP del cliente y quién es el responsable de ejecutar el código que has escrito.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Entender cómo interactúan estos componentes es crucial para diagnosticar problemas de rendimiento o de configuración en un entorno de servidor real.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>El rol principal de <strong>Apache</strong> es actuar como servidor web: su trabajo es escuchar las peticiones HTTP que llegan de los clientes (navegadores) y servirles los recursos que solicitan. Cuando la petición es para un fichero estático (como un HTML, una imagen o un CSS), Apache simplemente lo localiza en el disco y lo envía de vuelta.</p>
+<p>El rol de <strong>PHP</strong> es ser un lenguaje de programación y un intérprete. Su trabajo no es escuchar peticiones de internet, sino ejecutar código que puede realizar tareas complejas, como conectarse a bases de datos, procesar datos y, fundamentalmente, generar texto como salida, que habitualmente es HTML.</p>
+<p>Cuando llega una petición para un fichero <code>.php</code>, Apache se da cuenta de que no puede servirlo directamente. En su lugar, y gracias a su configuración (por ejemplo, a través del módulo <code>mod_php</code>), pasa la petición y el contenido del fichero al intérprete de PHP. PHP ejecuta el script. Una vez que el script de PHP termina, devuelve el resultado (el HTML generado) a Apache. Finalmente, Apache toma esa salida y la envía como respuesta HTTP al cliente que la solicitó. En resumen, Apache gestiona la comunicación, mientras que PHP "cocina" el contenido dinámico.</p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">El Director de Orquesta: Implementando un 'Controlador' Básico | Nivel: Medio</p>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Crear un script que actúe como "Controlador", coordinando el Modelo y la (futura) Vista.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Usa el fichero <code>UserModel.php</code> que creaste en el ejercicio de refuerzo anterior.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo fichero llamado <code>user_profile.php</code>.</li>
+<li>Dentro de este fichero, incluye (<code>require_once</code>) el fichero <code>UserModel.php</code>.</li>
+<li>Crea una instancia de la clase <code>UserModel</code>.</li>
+<li>Simula la entrada del usuario. Crea una variable <code>$requestedUserId</code> y asígnale un valor numérico (por ejemplo, <code>3</code>).</li>
+<li>Llama al método <code>getUserById()</code> de tu modelo, pasándole <code>$requestedUserId</code>, y guarda el resultado en una variable <code>$user</code>.</li>
+<li>Comprueba si <code>$user</code> no es nulo.</li>
+<li>Si no es nulo, imprime en pantalla (con <code>echo</code>) un título <code>&lt;h1&gt;</code> con el nombre del usuario y un párrafo <code>&lt;p&gt;</code> con su cargo.</li>
+<li>
+<p>Si es nulo, imprime un <code>&lt;h1&gt;</code> que diga "Usuario no encontrado".</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Este script está actuando como un Controlador. Recibe la entrada (paso 4), le pide datos al Modelo (paso 5) y luego se encarga de la lógica para generar la salida (pasos 6-8).</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la esencia de un controlador. En un framework real, el paso 4 vendría de la URL, y los pasos 7-8 no usarían <code>echo</code>, sino que cargarían un fichero de plantilla (la Vista) y le pasarían la variable <code>$user</code>.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: user_profile.php (actúa como Controlador)</span>
+
+<span class="c1">// Incluimos la definición de nuestro Modelo</span>
+<span class="k">require_once</span> <span class="s1">'UserModel.php'</span><span class="p">;</span>
+
+<span class="c1">// 1. Instanciamos el Modelo</span>
+<span class="nv">$userModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserModel</span><span class="p">();</span>
+
+<span class="c1">// 2. Simulamos la entrada del usuario (ej: de /user_profile.php?id=3)</span>
+<span class="nv">$requestedUserId</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="c1">// 3. El Controlador le pide los datos al Modelo</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nv">$userModel</span><span class="o">-&gt;</span><span class="na">getUserById</span><span class="p">(</span><span class="nv">$requestedUserId</span><span class="p">);</span>
+
+<span class="c1">// 4. El Controlador decide qué mostrar (lógica de presentación)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// En un framework real, aquí se cargaría una Vista</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">'name'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Cargo:&lt;/strong&gt; "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">'position'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// En un framework real, aquí se cargaría una vista de error</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Usuario no encontrado&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Estos retos son más abiertos y te animan a investigar y a diseñar soluciones como lo harías en un entorno profesional.</p>
+<div class="admonition danger">
+<p class="admonition-title">Diseño de Arquitectura: El Sistema de Reserva de Salas | Nivel: Alto</p>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Diseñar la arquitectura de software (MVC) y de datos para una nueva funcionalidad compleja.</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>El equipo de "Nexus Hub" necesita una nueva funcionalidad: un <strong>sistema de reserva de salas de reuniones</strong>. Debes crear un documento de diseño técnico breve. No necesitas escribir el código, sino planificar su estructura. El documento debe detallar:</p>
+<ol>
+<li><strong>Modelo(s):</strong> Describe qué clases Modelo necesitarías. ¿Qué propiedades tendrían? (Ej: <code>BookingModel</code>, <code>RoomModel</code>).</li>
+<li><strong>Vista(s):</strong> Describe qué vistas principales necesitaría el usuario. (Ej: una vista de calendario semanal, un formulario de reserva).</li>
+<li><strong>Controlador(es):</strong> Enumera las acciones principales que un <code>BookingController</code> debería manejar. (Ej: <code>showCalendarForWeek</code>, <code>handleBookingRequest</code>, <code>cancelBooking</code>).</li>
+<li><strong>Esquema de Base de Datos:</strong> Propón un diseño simple para 1 o 2 tablas SQL (<code>CREATE TABLE ...</code>) que necesitarías para almacenar las salas y las reservas. Piensa en las columnas y en cómo se relacionarían.</li>
+</ol>
+<h5 id="tarea-de-peer-review-revision-por-pares"><strong>Tarea de Peer Review (Revisión por Pares):</strong></h5>
+<p>Intercambia tu documento de diseño con un compañero. Revisa su propuesta y ofrécele feedback constructivo por escrito. ¿Su diseño es lógico? ¿Ha olvidado algún componente o dato importante? ¿Su esquema de base de datos es coherente?</p>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este proceso de diseño previo es fundamental en proyectos serios. Evita empezar a programar sin un plan, lo que a la larga ahorra muchísimo tiempo y previene errores de arquitectura graves.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<h4 id="documento-de-diseno-sistema-de-reserva-de-salas">Documento de Diseño: Sistema de Reserva de Salas</h4>
+<p><strong>1. Modelo(s):</strong>
+*   <strong><code>RoomModel</code></strong>: Se encargaría de la lógica de las salas.
+    *   Propiedades: <code>id</code>, <code>name</code>, <code>capacity</code>, <code>has_projector</code>.
+    *   Métodos: <code>getRoom($id)</code>, <code>getAllRooms()</code>.
+*   <strong><code>BookingModel</code></strong>: Se encargaría de la lógica de las reservas.
+    *   Propiedades: <code>id</code>, <code>room_id</code> (clave foránea a Room), <code>user_id</code>, <code>start_time</code>, <code>end_time</code>, <code>purpose</code>.
+    *   Métodos: <code>getBookingsForRoomByDate($roomId, $date)</code>, <code>createBooking($data)</code>, <code>deleteBooking($id)</code>.</p>
+<p><strong>2. Vista(s):</strong>
+*   <strong><code>calendarView.php</code></strong>: Mostraría una tabla con los días/horas y las reservas existentes para una sala o un conjunto de salas.
+*   <strong><code>bookingForm.php</code></strong>: Un formulario para crear o editar una reserva, con campos para elegir sala, fecha, hora y motivo.
+*   <strong><code>myBookingsView.php</code></strong>: Una vista de lista simple donde el usuario ve sus próximas reservas.</p>
+<p><strong>3. Controlador(es):</strong>
+*   <strong><code>BookingController</code></strong>:
+    *   <code>showCalendar()</code>: Obtiene las salas y las reservas del modelo y carga la <code>calendarView</code>.
+    *   <code>showNewBookingForm()</code>: Carga la <code>bookingForm</code>.
+    *   <code>createBooking()</code>: Recibe los datos del POST del formulario, los valida y llama a <code>BookingModel-&gt;createBooking()</code>. Redirige al calendario.
+    *   <code>cancelBooking($bookingId)</code>: Llama a <code>BookingModel-&gt;deleteBooking()</code> y redirige.</p>
+<p><strong>4. Esquema de Base de Datos:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">rooms</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">capacity</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">has_projector</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">bookings</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">room_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">user_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">start_time</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">end_time</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">purpose</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">room_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">rooms</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">-- En una app real, user_id sería FK a una tabla de usuarios.</span>
+<span class="p">);</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Arquitecturas en la Nube: ¿P2P o Microservicios? | Nivel: Alto</p>
+<h5 id="objetivo_10"><strong>Objetivo:</strong></h5>
+<p>Investigar y comparar dos arquitecturas avanzadas, aplicando el razonamiento a un caso de uso práctico.</p>
+<h5 id="tarea-a-realizar_10"><strong>Tarea a realizar:</strong></h5>
+<p>Se está evaluando una nueva funcionalidad para "Nexus Hub" llamada <strong>"Nexus Share"</strong>, un sistema interno para que los empleados compartan archivos grandes directamente entre ellos, al estilo de Dropbox o WeTransfer.</p>
+<ol>
+<li>Investiga la <strong>arquitectura P2P</strong> (descrita en la documentación) y la <strong>arquitectura de microservicios</strong> (investigación propia).</li>
+<li>Prepara una breve presentación o un documento (3-4 párrafos) comparando ambas arquitecturas. Destaca 2 pros y 2 contras de cada una en el contexto de "Nexus Share".</li>
+<li>Concluye con una recomendación razonada: ¿qué arquitectura sería más adecuada para implementar "Nexus Share" en un entorno corporativo y por qué?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_10"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las decisiones sobre arquitecturas de alto nivel (como monolito vs. microservicios) tienen un impacto enorme en la escalabilidad, el coste y la organización de los equipos de desarrollo de una empresa.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<h4 id="comparativa-de-arquitecturas-p2p-vs-microservicios-para-nexus-share">Comparativa de Arquitecturas: P2P vs. Microservicios para "Nexus Share"</h4>
+<p>La <strong>arquitectura P2P</strong> (Peer-to-Peer) es un modelo descentralizado donde cada participante (peer) actúa como cliente y servidor. En contraste, la <strong>arquitectura de microservicios</strong> es un enfoque del lado del servidor donde una aplicación grande se descompone en servicios pequeños e independientes, cada uno con su propia lógica y base de datos, que se comunican a través de APIs.</p>
+<p><strong>Arquitectura P2P:</strong>
+*   <strong>Pros:</strong>
+    1.  <strong>Escalabilidad de Ancho de Banda:</strong> A medida que más usuarios comparten un archivo, la carga de subida se distribuye entre ellos, mejorando la velocidad de descarga para todos.
+    2.  <strong>Robustez:</strong> No depende de un servidor central para la transferencia de datos. Si el servidor de "coordinación" cae, las transferencias en curso pueden continuar.
+*   <strong>Contras:</strong>
+    1.  <strong>Seguridad y Control:</strong> En un entorno corporativo, es muy difícil controlar quién accede a qué. La información reside en las máquinas de los empleados, lo cual es un riesgo de seguridad y cumplimiento normativo.
+    2.  <strong>Fiabilidad:</strong> La disponibilidad de un archivo depende de que los "peers" que lo tienen estén conectados. Si un empleado apaga su ordenador, el archivo deja de estar disponible.</p>
+<p><strong>Arquitectura de Microservicios:</strong>
+*   <strong>Pros:</strong>
+    1.  <strong>Control Centralizado y Seguridad:</strong> Se pueden implementar políticas de seguridad robustas. Un microservicio de "Autenticación" gestionaría los permisos, y un servicio de "Auditoría" registraría cada acceso a los archivos, algo esencial en una empresa.
+    2.  <strong>Escalabilidad y Mantenimiento Selectivo:</strong> Si, por ejemplo, la función de transcodificación de vídeo se usa mucho, se puede escalar solo ese microservicio. El resto de la aplicación no se ve afectada.
+*   <strong>Contras:</strong>
+    1.  <strong>Coste de Infraestructura:</strong> Requiere un almacenamiento centralizado (como AWS S3) que puede ser costoso para archivos grandes, y servidores para ejecutar los microservicios. La transferencia de datos depende del ancho de banda del servidor central.
+    2.  <strong>Complejidad Operacional:</strong> Gestionar múltiples servicios, su comunicación y su despliegue es inherentemente más complejo que un sistema monolítico o P2P puro.</p>
+<p><strong>Recomendación:</strong>
+Para un entorno corporativo como "Nexus Share", la <strong>arquitectura de microservicios es claramente superior</strong>. A pesar de su mayor coste de infraestructura, los beneficios en <strong>seguridad, control de acceso y auditoría</strong> son requisitos no negociables en una empresa. La capacidad de gestionar los datos de forma centralizada y aplicar políticas de seguridad anula por completo las ventajas de rendimiento descentralizado que ofrecería el P2P, cuyos riesgos de seguridad y falta de control son inaceptables para datos corporativos.</p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Crisis de Rendimiento: Optimizando la Capa de Datos | Nivel: Alto</p>
+<h5 id="objetivo_11"><strong>Objetivo:</strong></h5>
+<p>Investigar y proponer soluciones a un problema de rendimiento común en aplicaciones web a gran escala: el cuello de botella en la base de datos.</p>
+<h5 id="tarea-a-realizar_11"><strong>Tarea a realizar:</strong></h5>
+<p>"Nexus Hub" ha crecido y es un éxito, pero ahora es lento. El balanceador de carga funciona bien y los servidores de aplicaciones tienen capacidad de sobra. El monitoreo indica que el problema es la <strong>base de datos</strong>, que está sobrecargada por la cantidad de lecturas (consultas <code>SELECT</code>).</p>
+<ol>
+<li>Investiga estrategias para optimizar el rendimiento de una base de datos sobrecargada de lecturas.</li>
+<li>Propón <strong>tres estrategias distintas</strong> que el equipo de Nexus Dynamics podría implementar para solucionar o mitigar este problema.</li>
+<li>Para cada estrategia, describe brevemente en qué consiste y cuál sería su principal ventaja.</li>
+</ol>
+<h5 id="tarea-de-peer-review-revision-por-pares_1"><strong>Tarea de Peer Review (Revisión por Pares):</strong></h5>
+<p>Evalúa las tres estrategias propuestas por un compañero. ¿Son adecuadas para un problema de sobrecarga de lecturas? ¿Son prácticas de implementar? ¿Podrías sugerir una cuarta estrategia o una mejora a una de las suyas?</p>
+<h5 id="aplicacion-en-el-mundo-real_11"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El cuello de botella de la base de datos es un problema clásico al escalar aplicaciones. Saber identificarlo y conocer el abanico de soluciones posibles (desde optimización de consultas hasta arquitecturas de datos complejas) es una habilidad muy valorada en desarrolladores senior.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>Aquí hay tres estrategias efectivas para mitigar un cuello de botella en la base de datos causado por un exceso de lecturas:</p>
+<p><strong>Estrategia 1: Optimización de Índices y Consultas</strong>
+*   <strong>Descripción:</strong> Consiste en analizar las consultas más lentas y frecuentes (usando herramientas como <code>EXPLAIN</code> en SQL) y asegurarse de que están utilizando índices de base de datos adecuados. Un índice es una estructura de datos que mejora la velocidad de las operaciones de búsqueda. También implica reescribir consultas para que sean más eficientes, por ejemplo, seleccionando solo las columnas necesarias en lugar de <code>SELECT *</code>.
+*   <strong>Ventaja Principal:</strong> Es la solución "más barata" y el primer paso lógico. A menudo, se pueden lograr mejoras de rendimiento enormes sin cambiar la arquitectura, simplemente mejorando cómo se le pide la información a la base de datos.</p>
+<p><strong>Estrategia 2: Implementación de una Capa de Caché</strong>
+*   <strong>Descripción:</strong> Consiste en introducir un sistema de caché en memoria, como Redis o Memcached. Cuando se solicita una información que no cambia a menudo (ej: el perfil de un usuario, una noticia), la aplicación primero busca en la caché. Si está allí, la devuelve rapidísimo sin tocar la base de datos. Si no, la pide a la BBDD y la guarda en la caché para la próxima vez.
+*   <strong>Ventaja Principal:</strong> Reduce drásticamente la carga de lectura en la base de datos para los datos más solicitados, liberándola para que pueda atender las operaciones de escritura y las lecturas "impredecibles". La velocidad de acceso a la memoria es órdenes de magnitud más rápida que al disco.</p>
+<p><strong>Estrategia 3: Réplicas de Lectura (Read Replicas)</strong>
+*   <strong>Descripción:</strong> Esta es una solución a nivel de arquitectura de base de datos. Se configura un clúster de bases de datos con una BBDD principal (maestra) y varias copias exactas (réplicas). Todas las operaciones de escritura (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) se dirigen a la maestra. La aplicación se reconfigura para que todas las operaciones de lectura (<code>SELECT</code>) se distribuyan entre las múltiples réplicas.
+*   <strong>Ventaja Principal:</strong> Permite escalar la capacidad de lectura de la base de datos de forma horizontal. Si las lecturas vuelven a ser un problema, simplemente se añade otra réplica al clúster. Es una estrategia muy robusta para aplicaciones con un volumen de lecturas muy superior al de escrituras.</p>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

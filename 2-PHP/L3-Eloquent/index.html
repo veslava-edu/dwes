@@ -1,0 +1,2013 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/L3-Eloquent/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Eloquent ORM: Migraciones y Modelos - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eloquent-orm-migraciones-y-modelos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Eloquent ORM: Migraciones y Modelos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eloquent-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eloquent ORM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos-y-migraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelos y Migraciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos y Migraciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relaciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seeders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seeders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scopes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="eloquent-orm-migraciones-y-modelos">Eloquent ORM: Migraciones y Modelos</h1>
+<ul>
+<li><a href="#eloquent-orm-migraciones-y-modelos">Eloquent ORM: Migraciones y Modelos</a></li>
+<li><a href="#eloquent-orm">Eloquent ORM</a></li>
+<li><a href="#modelos-y-migraciones">Modelos y Migraciones</a><ul>
+<li><a href="#relaciones">Relaciones</a></li>
+</ul>
+</li>
+<li><a href="#seeders">Seeders</a></li>
+<li><a href="#scopes">Scopes</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/01-laravel.png"><img alt="logo" src="../images/01-laravel.png"/></a></p>
+<h2 id="eloquent-orm">Eloquent ORM</h2>
+<p>Eloquent ORM (Object-Relational Mapping) es el sistema de mapeo objeto-relacional incluido en el framework Laravel. Proporciona una forma elegante y sencilla de interactuar con la base de datos utilizando objetos y métodos en lugar de escribir consultas SQL directamente.</p>
+<p>Eloquent permite definir modelos que representan tablas en la base de datos. Cada modelo está asociado con una tabla y permite realizar operaciones de lectura, escritura, actualización y eliminación de registros de manera intuitiva y expresiva.</p>
+<p>Algunas características y beneficios de Eloquent ORM son:</p>
+<ol>
+<li>
+<p>Abstracción de la base de datos: Eloquent abstrae los detalles de la base de datos subyacente, lo que significa que puedes cambiar fácilmente entre diferentes sistemas de gestión de bases de datos (como MySQL, PostgreSQL, SQLite, etc.) sin tener que modificar tu código.</p>
+</li>
+<li>
+<p>Relaciones entre tablas: Eloquent facilita la definición y el manejo de relaciones entre tablas en la base de datos, como relaciones uno a uno, uno a muchos y muchos a muchos. Puedes definir estas relaciones en tus modelos y acceder a los registros relacionados de manera sencilla.</p>
+</li>
+<li>
+<p>Consultas fluidas: Eloquent utiliza una sintaxis de consulta fluida que te permite construir consultas complejas utilizando métodos encadenados. Esto hace que las consultas a la base de datos sean más legibles y fáciles de mantener.</p>
+</li>
+<li>
+<p>Acceso a los datos: Eloquent proporciona métodos y propiedades para acceder a los datos de los registros de la base de datos de forma sencilla. Puedes acceder a los campos de la tabla como propiedades en el objeto del modelo y utilizar métodos para realizar operaciones como guardar, actualizar y eliminar registros.</p>
+</li>
+<li>
+<p>Eventos del ciclo de vida del modelo: Eloquent ofrece eventos que se disparan en diferentes etapas del ciclo de vida del modelo, como antes de guardar, después de guardar, antes de eliminar, etc. Esto te permite ejecutar lógica personalizada en respuesta a estos eventos.</p>
+</li>
+</ol>
+<h2 id="modelos-y-migraciones">Modelos y Migraciones</h2>
+<p>Los modelos en Laravel son clases que representan tablas específicas de la base de datos. Cada modelo se asocia con una tabla y proporciona una interfaz para interactuar con los registros de esa tabla. Los modelos se utilizan para realizar operaciones de consulta, inserción, actualización y eliminación en la base de datos de manera sencilla y orientada a objetos.</p>
+<p>Los modelos en Laravel se encuentran en el directorio <code>app</code> por defecto y generalmente se crean en el espacio de nombres <code>App\Models</code>. Cada modelo extiende la clase base <code>Illuminate\Database\Eloquent\Model</code>, que proporciona una variedad de métodos y funcionalidades.</p>
+<p>Al crear un modelo en Laravel, puedes definir relaciones con otros modelos, como relaciones uno a uno, uno a muchos y muchos a muchos. Esto permite establecer conexiones entre tablas y acceder a los registros relacionados de manera sencilla.</p>
+<p>Además de las operaciones básicas de CRUD (crear, leer, actualizar y eliminar), los modelos también pueden contener métodos personalizados para realizar consultas más complejas, aplicar filtros, ordenar resultados y realizar otras lógicas relacionadas con los datos.</p>
+<p>Las <a href="https://laravel.com/docs/10.x/migrations">migraciones</a> en Laravel son archivos que se utilizan para definir y modificar la estructura de la base de datos de manera programática. En lugar de escribir consultas SQL directamente, las migraciones te permiten utilizar una sintaxis de alto nivel para crear, modificar o eliminar tablas, columnas e índices en la base de datos.</p>
+<p>Las migraciones se encuentran en el directorio <code>database/migrations</code> y se crean utilizando el generador de migraciones de Laravel. Cada migración es una clase que extiende la clase base <code>Illuminate\Database\Migrations\Migration</code> y contiene dos métodos principales: <code>up</code> y <code>down</code>.</p>
+<p>El método <code>up</code> define las acciones que se deben realizar al ejecutar la migración, como crear tablas o agregar columnas. El método <code>down</code> define las acciones que se deben realizar al revertir la migración, como eliminar tablas o deshacer cambios en la estructura de la base de datos.</p>
+<div class="highlight"><pre><span></span><code>artisan<span class="w"> </span>make:model<span class="w"> </span>Producto<span class="w"> </span>-m<span class="w"> </span><span class="c1"># Crea el modelo y la migración</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CreateProductsTable</span> <span class="k">extends</span> <span class="nx">Migration</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'products'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">(</span><span class="s1">'description'</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">decimal</span><span class="p">(</span><span class="s1">'price'</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">timestamps</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">dropIfExists</span><span class="p">(</span><span class="s1">'products'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Product</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'description'</span><span class="p">,</span> <span class="s1">'price'</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este ejemplo, el modelo Product está asociado con la tabla "products" en la base de datos. La propiedad $fillable especifica los campos que se pueden asignar masivamente (es decir, se pueden establecer en masa utilizando el método create() o update()).</p>
+<p>Ejecutar migraciones: Para aplicar la migración y crear la tabla "products" en la base de datos, ejecuta el siguiente comando en la terminal:</p>
+<div class="highlight"><pre><span></span><code>artisan<span class="w"> </span>migrate<span class="w">  </span><span class="c1"># o migrate:fresh si quieres que se ejecute todo de manera limpia perdiendo la info que ya haya y partiendo desde cero</span>
+</code></pre></div>
+<h3 id="relaciones">Relaciones</h3>
+<p>En Laravel, puedes definir relaciones entre modelos utilizando Eloquent ORM. Hay varias tipos de relaciones disponibles, como las relaciones uno a uno, uno a muchos y muchos a muchos. En tu ejemplo de Productos y Categorías, se puede establecer una relación de uno a muchos, donde una categoría tiene muchos productos y un producto pertenece a una categoría.</p>
+<p>Aquí tienes un ejemplo de cómo definir y utilizar esta relación en Laravel:</p>
+<ol>
+<li>En el modelo <code>Producto</code>:
+<div class="highlight"><pre><span></span><code><span class="x">namespace App\Models;</span>
+
+<span class="x">use Illuminate\Database\Eloquent\Model;</span>
+
+<span class="x">class Producto extends Model</span>
+<span class="x">{</span>
+<span class="x">    protected $fillable = ['nombre', 'descripcion', 'precio'];</span>
+
+<span class="x">    public function categoria()</span>
+<span class="x">    {</span>
+<span class="x">        return $this-&gt;belongsTo(Categoria::class);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></li>
+</ol>
+<p>En este ejemplo, se define el método <code>categoria()</code> en el modelo <code>Producto</code>. Este método utiliza el método <code>belongsTo()</code> de Eloquent para establecer la relación de pertenencia a una categoría. La función <code>belongsTo()</code> especifica que un producto pertenece a una categoría. </p>
+<ol>
+<li>En el modelo <code>Categoria</code>:
+<div class="highlight"><pre><span></span><code><span class="x">namespace App\Models;</span>
+
+<span class="x">use Illuminate\Database\Eloquent\Model;</span>
+
+<span class="x">class Categoria extends Model</span>
+<span class="x">{</span>
+<span class="x">    protected $fillable = ['nombre'];</span>
+
+<span class="x">    public function productos()</span>
+<span class="x">    {</span>
+<span class="x">        return $this-&gt;hasMany(Producto::class);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></li>
+</ol>
+<p>En el modelo <code>Categoria</code>, se define el método <code>productos()</code> que utiliza el método <code>hasMany()</code> para establecer la relación de uno a muchos con el modelo <code>Producto</code>. Esto indica que una categoría puede tener muchos productos.</p>
+<p><strong><em>Obviamente se debe crear las migraciones para tener este tipo de relaciones en cuenta:</em></strong>
+<div class="highlight"><pre><span></span><code>artisan<span class="w"> </span>make:model<span class="w"> </span>Producto<span class="w"> </span>-m<span class="w"> </span><span class="c1"># Crea el modelo y la migración</span>
+artisan<span class="w"> </span>make:model<span class="w"> </span>Categoria<span class="w"> </span>-m<span class="w"> </span><span class="c1"># Crea el modelo y la migración</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="x">Schema::create('categorias', function (Blueprint $table) {</span>
+<span class="x">    $table-&gt;id();</span>
+<span class="x">    $table-&gt;string('nombre');</span>
+<span class="x">    // Otros campos de la categoría</span>
+<span class="x">    $table-&gt;timestamps();</span>
+<span class="x">});</span>
+
+
+<span class="x">Schema::create('productos', function (Blueprint $table) {</span>
+<span class="x">    $table-&gt;id();</span>
+<span class="x">    $table-&gt;string('nombre');</span>
+<span class="x">    // Otros campos del producto</span>
+<span class="x">    $table-&gt;unsignedBigInteger('categoria_id');</span>
+<span class="x">    $table-&gt;foreign('categoria_id')-&gt;references('id')-&gt;on('categorias');</span>
+<span class="x">    $table-&gt;timestamps();</span>
+<span class="x">});</span>
+</code></pre></div>
+<ol>
+<li>Utilizando las relaciones:
+Una vez definidas las relaciones, puedes utilizarlas para acceder a los productos de una categoría o la categoría de un producto. Por ejemplo:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="x">// Obtener todos los productos de una categoría</span>
+<span class="x">$categoria = Categoria::find(1);</span>
+<span class="x">$productos = $categoria-&gt;productos;</span>
+
+<span class="x">// Obtener la categoría de un producto</span>
+<span class="x">$producto = Producto::find(1);</span>
+<span class="x">$categoria = $producto-&gt;categoria;</span>
+</code></pre></div>
+<ol>
+<li>Relación uno a uno:
+Supongamos que tienes un modelo <code>Usuario</code> y un modelo <code>Perfil</code>, donde un usuario tiene un único perfil asociado. Puedes definir la relación uno a uno de la siguiente manera:</li>
+</ol>
+<p>En el modelo <code>Usuario</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function perfil()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;hasOne(Perfil::class);</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p>En el modelo <code>Perfil</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function usuario()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;belongsTo(Usuario::class);</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<ol>
+<li>Relación muchos a muchos:
+Supongamos que tienes un modelo <code>Etiqueta</code> y un modelo <code>Articulo</code>, donde un artículo puede tener múltiples etiquetas y una etiqueta puede estar asociada a varios artículos. Puedes definir la relación muchos a muchos de la siguiente manera:</li>
+</ol>
+<p>En el modelo <code>Articulo</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function etiquetas()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;belongsToMany(Etiqueta::class);</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p>En el modelo <code>Etiqueta</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function articulos()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;belongsToMany(Articulo::class);</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<ol>
+<li>Relación polimórfica:
+Supongamos que tienes un modelo <code>Comentario</code> que puede estar asociado tanto a un modelo <code>Articulo</code> como a un modelo <code>Foto</code>. Puedes definir una relación polimórfica de la siguiente manera:</li>
+</ol>
+<p>En el modelo <code>Comentario</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function comentable()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;morphTo();</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p>En el modelo <code>Articulo</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function comentarios()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;morphMany(Comentario::class, 'comentable');</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p>En el modelo <code>Foto</code>:
+<div class="highlight"><pre><span></span><code><span class="x">public function comentarios()</span>
+<span class="x">{</span>
+<span class="x">    return $this-&gt;morphMany(Comentario::class, 'comentable');</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<h2 id="seeders">Seeders</h2>
+<p>Los <a href="https://laravel.com/docs/10.x/seeding">Seeders</a> son clases que se utilizan para poblar la base de datos con datos de prueba o datos iniciales. Los seeders son útiles cuando necesitas tener datos predefinidos en tu base de datos, como registros de usuarios, categorías, productos, etc. Puedes usar seeders para crear estos registros automáticamente en lugar de tener que ingresarlos manualmente.</p>
+<p>Los seeders se encuentran en el directorio <code>database/seeders</code> y se crean utilizando el generador de seeders de Laravel. Cada seeder es una clase que extiende la clase base <code>Illuminate\Database\Seeder</code> y contiene un método <code>run()</code> que se ejecuta cuando se ejecuta el seeder.</p>
+<div class="highlight"><pre><span></span><code>artisan<span class="w"> </span>make:seeder<span class="w"> </span>ProductosTableSeeder
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">use Illuminate\Database\Seeder;</span>
+<span class="x">use App\Models\Producto;</span>
+
+<span class="x">class ProductosTableSeeder extends Seeder</span>
+<span class="x">{</span>
+<span class="x">    public function run()</span>
+<span class="x">    {</span>
+<span class="x">        Producto::create([</span>
+<span class="x">            'nombre' =&gt; 'Producto 1',</span>
+<span class="x">            'precio' =&gt; 10.99,</span>
+<span class="x">        ]);</span>
+
+<span class="x">        Producto::create([</span>
+<span class="x">            'nombre' =&gt; 'Producto 2',</span>
+<span class="x">            'precio' =&gt; 19.99,</span>
+<span class="x">        ]);</span>
+
+<span class="x">        // Agrega más registros de productos si es necesario</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Para ejecutar los seeders, hacemos
+<div class="highlight"><pre><span></span><code>artisan<span class="w"> </span>db:seed<span class="w"> </span>--class<span class="o">=</span>ProductosTableSeeder
+</code></pre></div></p>
+<p>Podemos agrupar todos los seeders en un solo seeder, por ejemplo, <code>DatabaseSeeder</code>. El seeder <code>DatabaseSeeder</code> es un seeder especial en Laravel que se utiliza para agrupar todos los otros seeders. Sirve como punto de entrada para ejecutar múltiples seeders a la vez. En lugar de ejecutar cada seeder individualmente, puedes ejecutar el <code>DatabaseSeeder</code> y Laravel se encargará de ejecutar todos los seeders que hayas definido dentro de él.</p>
+<p>Dentro del <code>DatabaseSeeder</code>, puedes definir los seeders que deseas ejecutar utilizando el método <code>call()</code>. Por ejemplo, si tienes un seeder llamado <code>UsersTableSeeder</code>, puedes llamarlo dentro de <code>DatabaseSeeder</code> de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function run()</span>
+<span class="x">{</span>
+<span class="x">    $this-&gt;call(UsersTableSeeder::class);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>De esta manera, cuando ejecutes el comando <code>php artisan db:seed</code>, Laravel ejecutará el <code>DatabaseSeeder</code> y, a su vez, ejecutará el <code>UsersTableSeeder</code> y cualquier otro seeder que hayas definido dentro de él.</p>
+<p>Esto proporciona una forma conveniente de organizar y ejecutar múltiples seeders al mismo tiempo, lo que facilita la inicialización de la base de datos con datos de prueba o predefinidos.</p>
+<h2 id="scopes">Scopes</h2>
+<p>Los <a href="https://laravel.com/docs/10.x/eloquent#query-scopes">scopes</a> son métodos que se utilizan para reutilizar consultas comunes en tus modelos. Los scopes te permiten definir consultas comunes que se pueden reutilizar en diferentes partes de tu aplicación. Esto te permite mantener tu código DRY (Don't Repeat Yourself) y evitar la repetición de código.</p>
+<p>En Laravel, un "scope" se refiere a una restricción que se define dentro de un modelo de Eloquent que permite especificar, reutilizar y encadenar condiciones de consulta comunes a la base de datos. Los scopes permiten definir consultas complejas de forma legible y reutilizable, y pueden ser "locales" o "globales".</p>
+<p><strong>Scopes Locales</strong>: Son métodos que definen una restricción de consulta particular que puedes encadenar a otras consultas de Eloquent dentro de tus modelos. Para definir un scope local, simplemente crea un método en tu modelo Eloquent que sea precedido por la palabra <code>scope</code>.</p>
+<p>Aquí tienes un ejemplo de cómo definir y usar un scope local:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class Post extends Model</span>
+<span class="x">{</span>
+<span class="x">    /**</span>
+<span class="x">     * Scope a query to only include popular posts.</span>
+<span class="x">     *</span>
+<span class="x">     * @param \Illuminate\Database\Eloquent\Builder $query</span>
+<span class="x">     * @return \Illuminate\Database\Eloquent\Builder</span>
+<span class="x">     */</span>
+<span class="x">    public function scopePopular($query)</span>
+<span class="x">    {</span>
+<span class="x">        return $query-&gt;where('views', '&gt;', 100);</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Scope a query to only include active posts.</span>
+<span class="x">     *</span>
+<span class="x">     * @param \Illuminate\Database\Eloquent\Builder $query</span>
+<span class="x">     * @return \Illuminate\Database\Eloquent\Builder</span>
+<span class="x">     */</span>
+<span class="x">    public function scopeActive($query)</span>
+<span class="x">    {</span>
+<span class="x">        return $query-&gt;where('is_active', '=', 1);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// Uso de los scopes definidos en el modelo Post</span>
+<span class="x">$popularPosts = Post::popular()-&gt;get();</span>
+<span class="x">$activePopularPosts = Post::popular()-&gt;active()-&gt;get();</span>
+</code></pre></div>
+<p>En el ejemplo, <code>Post::popular()</code> utiliza el scope <code>popular</code> para obtener solo los posts que tienen más de 100 vistas. También puedes encadenar scopes, como en <code>Post::popular()-&gt;active()</code>, que obtendrá posts que son populares y activos al mismo tiempo.</p>
+<p><strong>Scopes Globales</strong>: Permiten definir restricciones de consulta que se aplican automáticamente a todas las operaciones de Eloquent relacionadas con ese modelo. Los scopes globales son útiles cuando tienes ciertas condiciones que siempre quieres aplicar a un modelo cuando realizas consultas.</p>
+<p>Para definir un scope global, puedes usar el método <code>addGlobalScope</code> en el modelo. Aquí tienes un ejemplo de cómo implementar un scope global:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class Post extends Model</span>
+<span class="x">{</span>
+<span class="x">    protected static function booted()</span>
+<span class="x">    {</span>
+<span class="x">        static::addGlobalScope('age', function (Builder $builder) {</span>
+<span class="x">            $builder-&gt;where('created_at', '&gt;', now()-&gt;subYears(1));</span>
+<span class="x">        });</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// Cuando consultes el modelo Post, el scope global se aplicará automáticamente</span>
+<span class="x">$recentPosts = Post::all(); // Solo devolverá posts creados en el último año</span>
+</code></pre></div>
+<p>En este ejemplo, todos los posts que se consulten a través del modelo <code>Post</code> deberán haber sido creados en el último año. No necesitas llamar explícitamente al scope global; se aplica automáticamente a todas las consultas del modelo.</p>
+<p>Los scopes son una herramienta muy poderosa en Laravel que te permite encapsular la lógica de las consultas de forma que tu código sea más limpio, más expresivo y más fácil de mantener.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

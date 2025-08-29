@@ -1,0 +1,2981 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/04-Arrays-Funciones-Strings-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>04 Arrays Funciones Strings Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proyecto-nexuscore-kit-de-herramientas-de-desarrollo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 Arrays Funciones Strings Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-codigo-con-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial (Código con bug):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar-parte-1-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar (Parte 1 - Individual):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-codigo-a-refactorizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial (Código a refactorizar):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar-parte-2-peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar (Parte 2 - Peer Review):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: T04-Ejercicios-Arrays-Funciones-Strings.md -->
+<h1 id="proyecto-nexuscore-kit-de-herramientas-de-desarrollo">Proyecto NexusCore: Kit de Herramientas de Desarrollo</h1>
+<p>¡Equipo! Bienvenidos al <em>sprint</em> de desarrollo del <strong>Proyecto NexusCore</strong>, nuestra nueva plataforma interna de gestión en DevCore. Durante este <em>sprint</em>, nos enfocaremos en construir y refinar los componentes base de la aplicación. Para ello, aplicaremos nuestros conocimientos en las tres herramientas fundamentales de PHP: <strong>Arrays</strong>, para gestionar nuestros datos; <strong>Funciones</strong>, para crear lógica reutilizable; y <strong>Cadenas</strong>, para manipular toda la información textual.</p>
+<p>Cada ejercicio que completéis será un módulo o una utilidad que se integrará directamente en NexusCore. ¡Manos al código!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos ejercicios están diseñados para asentar los conceptos clave que hemos visto en la unidad. Son los cimientos sobre los que construiremos funcionalidades más complejas.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) Gestor del Equipo de Desarrollo | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Demostrar la capacidad de crear y manipular un array multidimensional asociativo para gestionar una colección de datos estructurados.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Partimos de un array que representa al equipo inicial del proyecto NexusCore.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$equipoDevCore</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Ana Garrido'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Lead Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Symfony'</span><span class="p">,</span> <span class="s1">'MySQL'</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">102</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Luis Campos'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Frontend Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'JavaScript'</span><span class="p">,</span> <span class="s1">'Vue.js'</span><span class="p">,</span> <span class="s1">'CSS'</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">103</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Sara Pineda'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Laravel'</span><span class="p">,</span> <span class="s1">'Docker'</span><span class="p">]</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Añade un nuevo miembro al equipo:</strong> Crea un array asociativo para un nuevo miembro (ID: 104, Nombre: 'Carlos Rivas', Rol: 'DevOps', Tecnologías: ['Docker', 'AWS', 'Bash']) y añádelo al final del array <code>$equipoDevCore</code>.</li>
+<li><strong>Muestra la lista del equipo:</strong> Recorre el array <code>$equipoDevCore</code> con un bucle <code>foreach</code> y muestra una lista HTML (<code>&lt;ul&gt;</code>) donde cada elemento (<code>&lt;li&gt;</code>) sea <code>"Nombre (Rol)"</code>. Por ejemplo: <code>"Ana Garrido (Lead Developer)"</code>.</li>
+<li><strong>Busca las tecnologías de un miembro:</strong> Accede directamente al segundo miembro del equipo (<code>$equipoDevCore[1]</code>) y muestra su nombre y la primera tecnología de su lista de habilidades.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En cualquier aplicación (un CMS, un eCommerce, una red social), es fundamental gestionar listas de entidades: usuarios, productos, posts, etc. Estas listas casi siempre se representan en PHP como arrays de arrays asociativos obtenidos de una base de datos.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Setup Inicial</span>
+<span class="nv">$equipoDevCore</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Ana Garrido'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Lead Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Symfony'</span><span class="p">,</span> <span class="s1">'MySQL'</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">102</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Luis Campos'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Frontend Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'JavaScript'</span><span class="p">,</span> <span class="s1">'Vue.js'</span><span class="p">,</span> <span class="s1">'CSS'</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">103</span><span class="p">,</span>
+        <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Sara Pineda'</span><span class="p">,</span>
+        <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Developer'</span><span class="p">,</span>
+        <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Laravel'</span><span class="p">,</span> <span class="s1">'Docker'</span><span class="p">]</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+
+<span class="c1">// 1. Añadir un nuevo miembro</span>
+<span class="nv">$nuevoMiembro</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">104</span><span class="p">,</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Carlos Rivas'</span><span class="p">,</span>
+    <span class="s1">'rol'</span> <span class="o">=&gt;</span> <span class="s1">'DevOps'</span><span class="p">,</span>
+    <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Docker'</span><span class="p">,</span> <span class="s1">'AWS'</span><span class="p">,</span> <span class="s1">'Bash'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="nv">$equipoDevCore</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$nuevoMiembro</span><span class="p">;</span> <span class="c1">// o array_push($equipoDevCore, $nuevoMiembro);</span>
+
+<span class="c1">// 2. Mostrar la lista del equipo</span>
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Equipo de Desarrollo de NexusCore:&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$equipoDevCore</span> <span class="k">as</span> <span class="nv">$miembro</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span> <span class="o">.</span> <span class="nv">$miembro</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" ("</span> <span class="o">.</span> <span class="nv">$miembro</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">")&lt;/li&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+
+<span class="c1">// 3. Buscar tecnologías específicas</span>
+<span class="nv">$miembroFrontend</span> <span class="o">=</span> <span class="nv">$equipoDevCore</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nv">$primeraTecnologia</span> <span class="o">=</span> <span class="nv">$miembroFrontend</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;El desarrollador "</span> <span class="o">.</span> <span class="nv">$miembroFrontend</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" tiene como primera habilidad: "</span> <span class="o">.</span> <span class="nv">$primeraTecnologia</span> <span class="o">.</span> <span class="s2">".&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Para verificar la estructura final del array</span>
+<span class="c1">// echo "&lt;pre&gt;";</span>
+<span class="c1">// print_r($equipoDevCore);</span>
+<span class="c1">// echo "&lt;/pre&gt;";</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Normalizador de Nombres de Usuario | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Utilizar funciones de manipulación de cadenas para limpiar y estandarizar datos de entrada, una tarea de seguridad y consistencia de datos fundamental.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>Un usuario se registra en NexusCore a través de un formulario. El nombre que introduce es <code>"  elena vázquez  "</code>. Antes de guardarlo, necesitamos normalizarlo. Realiza los siguientes pasos:
+1.  Usa <code>trim()</code> para eliminar los espacios en blanco innecesarios al principio y al final.
+2.  Usa <code>strtolower()</code> para convertir toda la cadena a minúsculas.
+3.  Usa <code>ucwords()</code> (¡investígalo!) para poner en mayúscula la primera letra de cada palabra.
+4.  Muestra el nombre original y el nombre normalizado.</p>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Nunca se debe confiar en los datos que introduce un usuario. La "sanitización" o "limpieza" de entradas es el primer paso para prevenir errores, inconsistencias en la base de datos y ciertos tipos de ataques de seguridad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$nombreUsuarioInput</span> <span class="o">=</span> <span class="s2">"  elena vázquez  "</span><span class="p">;</span>
+
+<span class="c1">// 1. Limpiar espacios</span>
+<span class="nv">$nombreLimpio</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$nombreUsuarioInput</span><span class="p">);</span>
+
+<span class="c1">// 2. Convertir a minúsculas</span>
+<span class="nv">$nombreMinusculas</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$nombreLimpio</span><span class="p">);</span>
+
+<span class="c1">// 3. Poner en mayúscula las iniciales</span>
+<span class="nv">$nombreNormalizado</span> <span class="o">=</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$nombreMinusculas</span><span class="p">);</span>
+
+<span class="c1">// 4. Mostrar resultados</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Nombre original: '</span><span class="si">$nombreUsuarioInput</span><span class="s2">'&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Nombre normalizado: '</span><span class="si">$nombreNormalizado</span><span class="s2">'&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida: 'Elena Vázquez'</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) Generador de IDs de Incidencia | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Crear una función reutilizable que encapsule una lógica de negocio específica, aceptando parámetros y devolviendo un valor formateado.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>En NexusCore, necesitamos un sistema para generar identificadores únicos para las incidencias de soporte. El formato debe ser <code>NEXUS-XXXX</code>, donde <code>XXXX</code> es el número de la incidencia, rellenado con ceros a la izquierda hasta tener 4 dígitos.
+1.  Define una función <code>generarIdIncidencia(int $numero): string</code>.
+2.  Dentro de la función, utiliza la función de cadena <code>str_pad()</code> (¡investígala!) para formatear el número.
+3.  La función debe devolver el ID completo (ej: <code>NEXUS-0042</code>).
+4.  Llama a la función con los números <code>7</code>, <code>123</code> y <code>1500</code> y muestra los resultados.</p>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las empresas tienen reglas de negocio por todas partes: cómo formatear una factura (FACT-2024-001), cómo generar un código de cupón, etc. Encapsular estas reglas en funciones hace que el código sea mantenible, legible y evita errores al no repetir la lógica en múltiples sitios.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * Genera un ID de incidencia formateado.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param int $numero El número de la incidencia.</span>
+<span class="sd"> * @return string El ID formateado (ej: NEXUS-0042).</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">generarIdIncidencia</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$numero</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="c1">// Rellena el número con ceros a la izquierda hasta que tenga 4 caracteres de longitud</span>
+    <span class="nv">$numeroFormateado</span> <span class="o">=</span> <span class="nb">str_pad</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span><span class="nv">$numero</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="nx">STR_PAD_LEFT</span><span class="p">);</span>
+    <span class="k">return</span> <span class="s2">"NEXUS-"</span> <span class="o">.</span> <span class="nv">$numeroFormateado</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Pruebas de la función</span>
+<span class="nv">$id1</span> <span class="o">=</span> <span class="nx">generarIdIncidencia</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+<span class="nv">$id2</span> <span class="o">=</span> <span class="nx">generarIdIncidencia</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+<span class="nv">$id3</span> <span class="o">=</span> <span class="nx">generarIdIncidencia</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;ID para incidencia 7: </span><span class="si">$id1</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>       <span class="c1">// Salida: NEXUS-0007</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;ID para incidencia 123: </span><span class="si">$id2</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>      <span class="c1">// Salida: NEXUS-0123</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;ID para incidencia 1500: </span><span class="si">$id3</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>     <span class="c1">// Salida: NEXUS-1500</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) Creador de Informes de Proyecto | Nivel: Fácil</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Combinar el recorrido de arrays, la manipulación de cadenas y la lógica de funciones para generar una salida estructurada (HTML) a partir de un conjunto de datos.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Crea una función <code>generarInforme(array $proyecto): string</code> que reciba un array asociativo con los datos de un proyecto y devuelva un <code>string</code> con un mini-informe en HTML.
+1.  <strong>Define la función</strong> que acepta un array <code>$proyecto</code>.
+2.  Dentro de la función, construye una cadena HTML. El informe debe incluir:
+    *   Un título <code>&lt;h3&gt;</code> con el nombre del proyecto.
+    *   Un párrafo <code>&lt;p&gt;</code> que diga "Estado: [estado]".
+    *   Una lista <code>&lt;ul&gt;</code> con los miembros del equipo.
+3.  <strong>Llama a la función</strong> con el array de ejemplo y muestra el resultado con <code>echo</code>.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$datosProyecto</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Lanzamiento de NexusCore v1.0'</span><span class="p">,</span>
+    <span class="s1">'estado'</span> <span class="o">=&gt;</span> <span class="s1">'En Progreso'</span><span class="p">,</span>
+    <span class="s1">'equipo'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Ana Garrido'</span><span class="p">,</span> <span class="s1">'Luis Campos'</span><span class="p">,</span> <span class="s1">'Sara Pineda'</span><span class="p">,</span> <span class="s1">'Carlos Rivas'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la esencia de la programación web dinámica. Tomas datos de una fuente (array, base de datos) y los transformas en una representación visual (HTML) para el usuario. Esta función podría ser parte de un sistema que genera PDFs o envía emails de reporte.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Setup Inicial</span>
+<span class="nv">$datosProyecto</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Lanzamiento de NexusCore v1.0'</span><span class="p">,</span>
+    <span class="s1">'estado'</span> <span class="o">=&gt;</span> <span class="s1">'En Progreso'</span><span class="p">,</span>
+    <span class="s1">'equipo'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'Ana Garrido'</span><span class="p">,</span> <span class="s1">'Luis Campos'</span><span class="p">,</span> <span class="s1">'Sara Pineda'</span><span class="p">,</span> <span class="s1">'Carlos Rivas'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Genera un informe de proyecto en HTML a partir de un array de datos.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param array $proyecto Array asociativo con los datos del proyecto.</span>
+<span class="sd"> * @return string Bloque de HTML con el informe.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">generarInforme</span><span class="p">(</span><span class="k">array</span> <span class="nv">$proyecto</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="c1">// Iniciar la cadena del informe</span>
+    <span class="nv">$informe</span> <span class="o">=</span> <span class="s2">"&lt;h3&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$proyecto</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/h3&gt;"</span><span class="p">;</span>
+    <span class="nv">$informe</span> <span class="o">.=</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Estado:&lt;/strong&gt; "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$proyecto</span><span class="p">[</span><span class="s1">'estado'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="nv">$informe</span> <span class="o">.=</span> <span class="s2">"&lt;h4&gt;Equipo asignado:&lt;/h4&gt;"</span><span class="p">;</span>
+    <span class="nv">$informe</span> <span class="o">.=</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// Recorrer el array del equipo y añadir cada miembro a la lista</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$proyecto</span><span class="p">[</span><span class="s1">'equipo'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$miembro</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$informe</span> <span class="o">.=</span> <span class="s2">"&lt;li&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$miembro</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$informe</span> <span class="o">.=</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nv">$informe</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Llamar a la función y mostrar el resultado</span>
+<span class="k">echo</span> <span class="nx">generarInforme</span><span class="p">(</span><span class="nv">$datosProyecto</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) Depuración: El Validador de Permisos Roto | Nivel: Fácil</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Identificar y corregir un error común en PHP relacionado con la búsqueda en cadenas y la comparación estricta.</p>
+<h5 id="setup-inicial-codigo-con-bug"><strong>Setup Inicial (Código con bug):</strong></h5>
+<p>Esta función debería devolver <code>true</code> si el permiso 'admin' está en la lista de permisos, pero no funciona correctamente cuando 'admin' es el primer permiso de la lista.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">tienePermisoAdmin</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$permisosCSV</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+<span class="p">{</span>
+    <span class="c1">// strpos puede devolver 0 (la posición), que PHP interpreta como `false` en una comparación débil.</span>
+    <span class="c1">// El error está en la siguiente línea.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$permisosCSV</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">)</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$permisosUsuario1</span> <span class="o">=</span> <span class="s2">"admin,editor,viewer"</span><span class="p">;</span>
+<span class="nv">$permisosUsuario2</span> <span class="o">=</span> <span class="s2">"editor,viewer"</span><span class="p">;</span>
+<span class="nv">$permisosUsuario3</span> <span class="o">=</span> <span class="s2">"viewer,editor,admin"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 1 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario1</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida incorrecta: No</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 2 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario2</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida correcta: No</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 3 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario3</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida correcta: Sí</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Analiza por qué la llamada con <code>$permisosUsuario1</code> falla. Lee la documentación de <code>strpos()</code> si es necesario y presta atención a sus posibles valores de retorno.</li>
+<li>Corrige la condición <code>if</code> para que la función se comporte como se espera en todos los casos.</li>
+<li>Añade un comentario en el código explicando por qué la versión original fallaba y por qué tu corrección funciona.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los bugs de comparación (usar <code>==</code> donde se necesita <code>===</code>) son una fuente común de errores sutiles y difíciles de encontrar en lenguajes con tipado débil. Aprender a detectarlos es una habilidad de depuración crucial.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * Comprueba si un usuario tiene el permiso 'admin' en una cadena de permisos.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $permisosCSV Una cadena con permisos separados por comas.</span>
+<span class="sd"> * @return bool True si 'admin' se encuentra, false en caso contrario.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">tienePermisoAdmin</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$permisosCSV</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+<span class="p">{</span>
+    <span class="c1">// CORRECCIÓN:</span>
+    <span class="c1">// El problema original era usar `== false`. La función strpos() devuelve la posición</span>
+    <span class="c1">// numérica de la subcadena, o `false` si no la encuentra. Si la subcadena 'admin'</span>
+    <span class="c1">// está al principio, su posición es 0. En una comparación débil (`==`), PHP</span>
+    <span class="c1">// considera que 0 es igual a false, lo que provocaba el bug.</span>
+    <span class="c1">// La solución es usar una comparación estricta (`===` o `!==`) para diferenciar</span>
+    <span class="c1">// el booleano `false` del entero `0`.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$permisosCSV</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">)</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Una versión más corta sería: return strpos($permisosCSV, 'admin') !== false;</span>
+<span class="p">}</span>
+
+<span class="nv">$permisosUsuario1</span> <span class="o">=</span> <span class="s2">"admin,editor,viewer"</span><span class="p">;</span>
+<span class="nv">$permisosUsuario2</span> <span class="o">=</span> <span class="s2">"editor,viewer"</span><span class="p">;</span>
+<span class="nv">$permisosUsuario3</span> <span class="o">=</span> <span class="s2">"viewer,editor,admin"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 1 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario1</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 2 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario2</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Usuario 3 tiene permiso de admin: "</span> <span class="o">.</span> <span class="p">(</span><span class="nx">tienePermisoAdmin</span><span class="p">(</span><span class="nv">$permisosUsuario3</span><span class="p">)</span> <span class="o">?</span> <span class="s1">'Sí'</span> <span class="o">:</span> <span class="s1">'No'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) Calculadora de Métricas del Sprint | Nivel: Fácil</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Utilizar funciones de arrays para realizar cálculos agregados sobre un conjunto de datos numéricos.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>Se nos ha proporcionado un array con las horas que cada desarrollador ha dedicado a las tareas del sprint actual. Necesitamos una función que calcule y devuelva las métricas clave.
+1.  Crea una función <code>calcularMetricas(array $horas)</code> que reciba una lista de horas.
+2.  Dentro de la función, calcula:
+    *   El número total de tareas (<code>count</code>).
+    *   El total de horas dedicadas (<code>array_sum</code>).
+    *   La media de horas por tarea (total horas / total tareas).
+3.  La función debe devolver un <strong>array asociativo</strong> con estas métricas: <code>['total_tareas' =&gt; ..., 'total_horas' =&gt; ..., 'media_horas' =&gt; ...]</code>.
+4.  Llama a la función y muestra los resultados de forma clara.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$horasTareasSprint</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">];</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El análisis de datos es una tarea diaria en el desarrollo de software, desde calcular la media de precios en un catálogo de productos hasta obtener estadísticas de uso de una web. Conocer las funciones de agregación de PHP ahorra mucho tiempo.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$horasTareasSprint</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">];</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Calcula métricas clave sobre una lista de horas de tareas.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param array $horas Array numérico con las horas.</span>
+<span class="sd"> * @return array Array asociativo con las métricas calculadas.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">calcularMetricas</span><span class="p">(</span><span class="k">array</span> <span class="nv">$horas</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$horas</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">'total_tareas'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'total_horas'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'media_horas'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="nv">$totalTareas</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$horas</span><span class="p">);</span>
+    <span class="nv">$totalHoras</span> <span class="o">=</span> <span class="nb">array_sum</span><span class="p">(</span><span class="nv">$horas</span><span class="p">);</span>
+    <span class="nv">$mediaHoras</span> <span class="o">=</span> <span class="nv">$totalHoras</span> <span class="o">/</span> <span class="nv">$totalTareas</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">'total_tareas'</span> <span class="o">=&gt;</span> <span class="nv">$totalTareas</span><span class="p">,</span>
+        <span class="s1">'total_horas'</span> <span class="o">=&gt;</span> <span class="nv">$totalHoras</span><span class="p">,</span>
+        <span class="s1">'media_horas'</span> <span class="o">=&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$mediaHoras</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// Redondeamos para un resultado limpio</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nv">$metricas</span> <span class="o">=</span> <span class="nx">calcularMetricas</span><span class="p">(</span><span class="nv">$horasTareasSprint</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Métricas del Sprint Actual&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;Número de tareas completadas: "</span> <span class="o">.</span> <span class="nv">$metricas</span><span class="p">[</span><span class="s1">'total_tareas'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;Total de horas registradas: "</span> <span class="o">.</span> <span class="nv">$metricas</span><span class="p">[</span><span class="s1">'total_horas'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" horas&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;Media de horas por tarea: "</span> <span class="o">.</span> <span class="nv">$metricas</span><span class="p">[</span><span class="s1">'media_horas'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" horas&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Estos ejercicios te guiarán a través de problemas ligeramente más complejos, dándote pistas para que puedas conectar los conceptos y construir soluciones más robustas.</p>
+<div class="admonition warning">
+<p class="admonition-title">7) Gestor de Configuración de la Aplicación | Nivel: Medio</p>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Crear una función que lea y modifique un array de configuración, demostrando el paso de argumentos por referencia.</p>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<p>NexusCore necesita un sistema de configuración flexible. Tenemos una configuración base y queremos una función que aplique una configuración específica del entorno (por ejemplo, 'desarrollo' o 'producción') a la configuración principal.
+1.  Crea una función <code>aplicarConfiguracion(array &amp;$configBase, array $configEntorno)</code>. Fíjate en el <code>&amp;</code>.
+2.  Dentro de la función, utiliza la función <code>array_merge()</code> para fusionar la <code>$configEntorno</code> sobre la <code>$configBase</code>. Esto sobrescribirá o añadirá las claves de la configuración del entorno.
+3.  Llama a la función. Después de llamarla, imprime el array <code>$configuracionBase</code> para demostrar que ha sido modificado directamente.</p>
+<ul>
+<li><strong>Pista:</strong> El paso por referencia (<code>&amp;</code>) hace que la función modifique la variable original que le pasaste, en lugar de una copia. <code>array_merge()</code> combina arrays, y si las claves son iguales, el valor del segundo array sobrescribe al del primero.</li>
+</ul>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Configuración por defecto para NexusCore</span>
+<span class="nv">$configuracionBase</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'db_host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+    <span class="s1">'db_user'</span> <span class="o">=&gt;</span> <span class="s1">'user_prod'</span><span class="p">,</span>
+    <span class="s1">'debug_mode'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="s1">'log_level'</span> <span class="o">=&gt;</span> <span class="s1">'error'</span>
+<span class="p">];</span>
+
+<span class="c1">// Configuración específica para el entorno de desarrollo</span>
+<span class="nv">$configuracionDesarrollo</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'db_host'</span> <span class="o">=&gt;</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span>
+    <span class="s1">'db_user'</span> <span class="o">=&gt;</span> <span class="s1">'dev_user'</span><span class="p">,</span>
+    <span class="s1">'debug_mode'</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las aplicaciones modernas (como las basadas en Symfony o Laravel) gestionan múltiples entornos (desarrollo, pruebas, producción). Cargan una configuración base y luego la "sobrescriben" con la configuración del entorno específico en el que se están ejecutando.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Setup Inicial</span>
+<span class="nv">$configuracionBase</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'db_host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+    <span class="s1">'db_user'</span> <span class="o">=&gt;</span> <span class="s1">'user_prod'</span><span class="p">,</span>
+    <span class="s1">'debug_mode'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="s1">'log_level'</span> <span class="o">=&gt;</span> <span class="s1">'error'</span>
+<span class="p">];</span>
+
+<span class="nv">$configuracionDesarrollo</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'db_host'</span> <span class="o">=&gt;</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span>
+    <span class="s1">'db_user'</span> <span class="o">=&gt;</span> <span class="s1">'dev_user'</span><span class="p">,</span>
+    <span class="s1">'debug_mode'</span> <span class="o">=&gt;</span> <span class="k">true</span>
+<span class="p">];</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Aplica una configuración de entorno a una configuración base.</span>
+<span class="sd"> * La configuración base es modificada por referencia.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param array &amp;$configBase La configuración principal (será modificada).</span>
+<span class="sd"> * @param array $configEntorno La configuración del entorno a aplicar.</span>
+<span class="sd"> * @return void</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">aplicarConfiguracion</span><span class="p">(</span><span class="k">array</span> <span class="o">&amp;</span><span class="nv">$configBase</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$configEntorno</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="nv">$configBase</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$configBase</span><span class="p">,</span> <span class="nv">$configEntorno</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h4&gt;Configuración Original:&lt;/h4&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$configuracionBase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Aplicamos la configuración de desarrollo</span>
+<span class="nx">aplicarConfiguracion</span><span class="p">(</span><span class="nv">$configuracionBase</span><span class="p">,</span> <span class="nv">$configuracionDesarrollo</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;hr&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;h4&gt;Configuración Modificada para Desarrollo:&lt;/h4&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$configuracionBase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">8) Generador de Slugs para Artículos del Blog | Nivel: Medio</p>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Combinar múltiples funciones de cadena y array para resolver un problema común en los CMS: la creación de URLs amigables (slugs).</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<p>Crea una función <code>crearSlug(string $titulo): string</code> que convierta un título de artículo en un "slug" válido para una URL. Un slug solo debe contener letras minúsculas, números y guiones.
+1.  <strong>Define la función</strong> <code>crearSlug</code>.
+2.  Dentro de la función, aplica la siguiente secuencia de transformaciones al <code>$titulo</code>:
+    *   Conviértelo a minúsculas (<code>strtolower</code>).
+    *   Reemplaza los espacios por guiones (<code>str_replace</code>).
+    *   <strong>Reto:</strong> Elimina cualquier caracter que no sea letra, número o guión. Para esto, tendrás que investigar la función <code>preg_replace()</code> con una expresión regular simple.
+3.  Llama a la función con el título de ejemplo y muestra el slug resultante.</p>
+<ul>
+<li><strong>Pista 1:</strong> Para el reemplazo de espacios, <code>str_replace(' ', '-', $titulo)</code> es tu amigo.</li>
+<li><strong>Pista 2:</strong> La expresión regular para "cualquier cosa que NO sea a-z, 0-9 o guión" es <code>/[^a-z0-9-]+/</code>. <code>preg_replace</code> puede reemplazar todo lo que coincida con esa expresión por una cadena vacía.</li>
+</ul>
+<h5 id="setup-inicial_4"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tituloArticulo</span> <span class="o">=</span> <span class="s2">"¡Nuevo Framework de PHP en 2025! ¿Cuál elegir?"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>WordPress, Drupal, y casi cualquier CMS, utilizan una función como esta para generar las URLs de las páginas a partir de su título. URLs limpias como <code>/mi-articulo-genial</code> son mejores para el SEO y para los usuarios que <code>/page.php?id=123</code>.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tituloArticulo</span> <span class="o">=</span> <span class="s2">"¡Nuevo Framework de PHP en 2025! ¿Cuál elegir?"</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Crea un slug amigable para URL a partir de un título.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $titulo El título del artículo.</span>
+<span class="sd"> * @return string El slug generado.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">crearSlug</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$titulo</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="c1">// 1. Convertir a minúsculas</span>
+    <span class="nv">$slug</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$titulo</span><span class="p">);</span>
+
+    <span class="c1">// 2. Reemplazar espacios y otros caracteres por guiones</span>
+    <span class="c1">// (una expresión regular es más potente aquí)</span>
+    <span class="nv">$slug</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">'/[\s_]+/'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="nv">$slug</span><span class="p">);</span>
+
+    <span class="c1">// 3. Eliminar cualquier caracter que no sea letra, número o guión</span>
+    <span class="nv">$slug</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">'/[^a-z0-9-]+/'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nv">$slug</span><span class="p">);</span>
+
+    <span class="c1">// 4. (Opcional) Eliminar guiones duplicados</span>
+    <span class="nv">$slug</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">'/-+/'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="nv">$slug</span><span class="p">);</span>
+
+    <span class="c1">// 5. (Opcional) Eliminar guiones al principio o al final</span>
+    <span class="nv">$slug</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$slug</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$slug</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$slugGenerado</span> <span class="o">=</span> <span class="nx">crearSlug</span><span class="p">(</span><span class="nv">$tituloArticulo</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Título original: '"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$tituloArticulo</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"'&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Slug generado: '</span><span class="si">$slugGenerado</span><span class="s2">'&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida esperada: nuevo-framework-de-php-en-2025-cual-elegir</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">9) Parser de Logs del Sistema | Nivel: Medio</p>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Procesar una cadena de texto multilínea (un log), dividiéndola en partes manejables (un array) y extrayendo información estructurada de cada parte.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<p>Tenemos un log de accesos en formato <code>[FECHA_HORA] [NIVEL] MENSAJE</code>. Queremos crear una tabla HTML que muestre solo los logs de nivel <code>ERROR</code>.
+1.  Usa <code>explode()</code> con el delimitador <code>\n</code> (salto de línea) para convertir el string del log en un array de líneas.
+2.  Recorre el array de líneas con <code>foreach</code>.
+3.  Dentro del bucle, por cada línea:
+    *   Usa <code>strpos()</code> para comprobar si la línea contiene la subcadena <code>[ERROR]</code>.
+    *   Si es un error, usa <code>explode()</code> o <code>preg_match()</code> para separar la fecha, el nivel y el mensaje.
+    *   Imprime una fila <code>&lt;tr&gt;</code> de una tabla con los datos extraídos.</p>
+<ul>
+<li><strong>Pista:</strong> Después de hacer <code>explode("\n", $log)</code>, recorre el array resultante. Dentro del bucle, un simple <code>if (strpos($linea, '[ERROR]') !== false)</code> te permitirá filtrar las líneas que te interesan.</li>
+</ul>
+<h5 id="setup-inicial_5"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$logData</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">LOG</span>
+<span class="s">[2025-07-28 10:00:00] [INFO] User 'ana' logged in successfully.</span>
+<span class="s">[2025-07-28 10:01:15] [DEBUG] Database query executed.</span>
+<span class="s">[2025-07-28 10:02:30] [ERROR] Failed to connect to payment gateway.</span>
+<span class="s">[2025-07-28 10:03:00] [INFO] User 'luis' updated his profile.</span>
+<span class="s">[2025-07-28 10:05:00] [ERROR] Division by zero in financial report generator.</span>
+<span class="dl">LOG</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los desarrolladores pasan mucho tiempo analizando ficheros de log para depurar problemas. Escribir pequeños scripts para filtrar y formatear estos logs es una habilidad increíblemente útil que automatiza una tarea manual y tediosa.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$logData</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">LOG</span>
+<span class="s">[2025-07-28 10:00:00] [INFO] User 'ana' logged in successfully.</span>
+<span class="s">[2025-07-28 10:01:15] [DEBUG] Database query executed.</span>
+<span class="s">[2025-07-28 10:02:30] [ERROR] Failed to connect to payment gateway.</span>
+<span class="s">[2025-07-28 10:03:00] [INFO] User 'luis' updated his profile.</span>
+<span class="s">[2025-07-28 10:05:00] [ERROR] Division by zero in financial report generator.</span>
+<span class="dl">LOG</span><span class="p">;</span>
+
+<span class="c1">// 1. Dividir el log en líneas</span>
+<span class="nv">$lineas</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="nv">$logData</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Reporte de Errores Críticos&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;table border='1' style='width:100%; border-collapse: collapse;'&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Fecha y Hora&lt;/th&gt;&lt;th&gt;Mensaje de Error&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;tbody&gt;"</span><span class="p">;</span>
+
+<span class="c1">// 2. Recorrer cada línea</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$lineas</span> <span class="k">as</span> <span class="nv">$linea</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Ignorar líneas vacías</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$linea</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 3. Filtrar solo las que contienen [ERROR]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$linea</span><span class="p">,</span> <span class="s1">'[ERROR]'</span><span class="p">)</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Extracción de datos usando una expresión regular (más robusto)</span>
+        <span class="nb">preg_match</span><span class="p">(</span><span class="s1">'/\[(.*?)\] \[ERROR\] (.*)/'</span><span class="p">,</span> <span class="nv">$linea</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">);</span>
+
+        <span class="c1">// $matches[0] es la cadena completa</span>
+        <span class="c1">// $matches[1] es la primera captura (la fecha)</span>
+        <span class="c1">// $matches[2] es la segunda captura (el mensaje)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="o">===</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$fecha</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+            <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+            <span class="k">echo</span> <span class="s2">"&lt;tr&gt;"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"&lt;td style='padding: 5px; font-family: monospace;'&gt;"</span> <span class="o">.</span> <span class="nv">$fecha</span> <span class="o">.</span> <span class="s2">"&lt;/td&gt;"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"&lt;td style='padding: 5px; color: red;'&gt;"</span> <span class="o">.</span> <span class="nv">$mensaje</span> <span class="o">.</span> <span class="s2">"&lt;/td&gt;"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"&lt;/tr&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;/tbody&gt;&lt;/table&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Estos son retos abiertos que te invitan a investigar, diseñar tu propia solución y, finalmente, colaborar con tus compañeros. Aquí es donde demuestras tu dominio y creatividad.</p>
+<div class="admonition danger">
+<p class="admonition-title">10) Procesador de Datos CSV | Nivel: Alto</p>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Diseñar e implementar un sistema robusto para procesar datos en formato CSV (valores separados por comas), aplicando validaciones y transformaciones para convertirlo en un array PHP limpio y estructurado.</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>Recibes una cadena que simula el contenido de un fichero CSV con datos de nuevos empleados. Tu tarea es convertir esta cadena en un array de usuarios bien formado, como el que usamos en el ejercicio 1.
+1.  <strong>Crea una función <code>procesarCSV(string $csvContent): array</code></strong>.
+2.  <strong>Paso 1: Parsear el CSV.</strong>
+    *   Divide el string en un array de líneas.
+    *   Extrae la primera línea, que contiene las cabeceras (<code>explode</code>).
+    *   Recorre las líneas de datos restantes. Por cada línea, conviértela en un array de valores.
+    *   Crea un array asociativo para cada usuario, usando las cabeceras como claves y los valores de la línea actual como valores (<code>array_combine</code>).
+3.  <strong>Paso 2: Validar y Limpiar.</strong>
+    *   Dentro del bucle, por cada usuario creado:
+        *   Valida que el email contenga un <code>@</code> (<code>strpos</code>). Si no, salta este usuario o márcalo como inválido.
+        *   Limpia el nombre y el rol usando <code>trim()</code>.
+        *   Convierte la cadena de tecnologías en un array de tecnologías (<code>explode</code> por ';').
+4.  La función debe devolver un array de todos los usuarios válidos y procesados.</p>
+<h5 id="setup-inicial_6"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$csvData</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">CSV</span>
+<span class="s">nombre,email,rol,tecnologias</span>
+<span class="s">David Roca, david.r@devcore.com , Frontend Developer, "HTML;CSS;React"</span>
+<span class="s">Maria Fuentes, maria.fuentes@devcore.com, Backend Developer, "PHP;PostgreSQL"</span>
+<span class="s">Juan Abad, juan.abad@, Project Manager, "Jira;Scrum"</span>
+<span class="dl">CSV</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La importación/exportación de datos en formato CSV es una funcionalidad estándar en la mayoría de aplicaciones empresariales. Poder procesar estos datos, validarlos y transformarlos es una tarea de backend extremadamente común.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$csvData</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">CSV</span>
+<span class="s">nombre,email,rol,tecnologias</span>
+<span class="s">David Roca, david.r@devcore.com , Frontend Developer, "HTML;CSS;React"</span>
+<span class="s">Maria Fuentes, maria.fuentes@devcore.com, Backend Developer, "PHP;PostgreSQL"</span>
+<span class="s">Juan Abad, juan.abad@, Project Manager, "Jira;Scrum"</span>
+<span class="dl">CSV</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Procesa una cadena en formato CSV y la convierte en un array estructurado de usuarios.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $csvContent El contenido del CSV.</span>
+<span class="sd"> * @return array Un array de usuarios válidos, cada uno un array asociativo.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">procesarCSV</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$csvContent</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+<span class="p">{</span>
+    <span class="nv">$usuariosValidos</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="nv">$lineas</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$csvContent</span><span class="p">));</span>
+
+    <span class="c1">// Extraer cabeceras y eliminarlas de las líneas de datos</span>
+    <span class="nv">$cabeceras</span> <span class="o">=</span> <span class="nb">str_getcsv</span><span class="p">(</span><span class="nb">array_shift</span><span class="p">(</span><span class="nv">$lineas</span><span class="p">));</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$lineas</span> <span class="k">as</span> <span class="nv">$linea</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$linea</span><span class="p">)))</span> <span class="k">continue</span><span class="p">;</span>
+
+        <span class="nv">$valores</span> <span class="o">=</span> <span class="nb">str_getcsv</span><span class="p">(</span><span class="nv">$linea</span><span class="p">);</span>
+
+        <span class="c1">// Combinar cabeceras y valores para crear un array asociativo</span>
+        <span class="nv">$usuario</span> <span class="o">=</span> <span class="nb">array_combine</span><span class="p">(</span><span class="nv">$cabeceras</span><span class="p">,</span> <span class="nv">$valores</span><span class="p">);</span>
+
+        <span class="c1">// Validar email</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'email'</span><span class="p">],</span> <span class="s1">'@'</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Opcional: registrar el error</span>
+            <span class="c1">// echo "&lt;p&gt;Email inválido para: " . $usuario['nombre'] . ". Saltando usuario.&lt;/p&gt;";</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Limpiar y transformar datos</span>
+        <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]);</span>
+        <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]);</span>
+        <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'rol'</span><span class="p">]);</span>
+
+        <span class="c1">// Convertir la cadena de tecnologías en un array, eliminando las comillas</span>
+        <span class="nv">$tecnologiasStr</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">],</span> <span class="s1">'"'</span><span class="p">);</span>
+        <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">';'</span><span class="p">,</span> <span class="nv">$tecnologiasStr</span><span class="p">);</span>
+
+        <span class="c1">// Añadir el usuario procesado a la lista final</span>
+        <span class="nv">$usuariosValidos</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$usuariosValidos</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$equipoProcesado</span> <span class="o">=</span> <span class="nx">procesarCSV</span><span class="p">(</span><span class="nv">$csvData</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Equipo importado desde CSV:&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$equipoProcesado</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">11) Refactorización y Revisión por Pares (Peer Review) | Nivel: Alto</p>
+<h5 id="objetivo_10"><strong>Objetivo:</strong></h5>
+<p>Mejorar un código existente (refactorizar) y luego analizar el código de un compañero, una práctica esencial en equipos de desarrollo profesionales.</p>
+<h5 id="tarea-a-realizar-parte-1-individual"><strong>Tarea a realizar (Parte 1 - Individual):</strong></h5>
+<p>Abajo tienes una función <code>generarResumenUsuario</code> que funciona, pero es poco eficiente y difícil de leer. Tu tarea es <strong>refactorizarla</strong>:
+1.  Crea una nueva versión de la función que sea más clara y eficiente.
+2.  Utiliza <code>implode()</code> en lugar de un bucle <code>foreach</code> para unir las tecnologías.
+3.  Usa concatenación o, mejor aún, la interpolación de cadenas de comillas dobles para construir el string final de una forma más legible.
+4.  Asegúrate de que la nueva función siga pasando las pruebas.</p>
+<h5 id="setup-inicial-codigo-a-refactorizar"><strong>Setup Inicial (Código a refactorizar):</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">generarResumenUsuario</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="s2">"Resumen del Usuario:</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="nv">$resumen</span> <span class="o">.</span> <span class="s2">"ID: "</span> <span class="o">.</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="nv">$resumen</span> <span class="o">.</span> <span class="s2">"Nombre: "</span> <span class="o">.</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="nv">$resumen</span> <span class="o">.</span> <span class="s2">"Email: "</span> <span class="o">.</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="nv">$resumen</span> <span class="o">.</span> <span class="s2">"Habilidades: "</span><span class="p">;</span>
+    <span class="nv">$habilidades_str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$tec</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$habilidades_str</span> <span class="o">=</span> <span class="nv">$habilidades_str</span> <span class="o">.</span> <span class="nv">$tec</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$habilidades_str</span> <span class="o">=</span> <span class="nv">$habilidades_str</span> <span class="o">.</span> <span class="s2">", "</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="nv">$resumen</span> <span class="o">.</span> <span class="nv">$habilidades_str</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$resumen</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$miembro</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span> <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Ana Garrido'</span><span class="p">,</span> <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'ana.g@devcore.com'</span><span class="p">,</span>
+    <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Symfony'</span><span class="p">,</span> <span class="s1">'MySQL'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="c1">// echo "&lt;pre&gt;" . generarResumenUsuario($miembro) . "&lt;/pre&gt;";</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar-parte-2-peer-review"><strong>Tarea a realizar (Parte 2 - Peer Review):</strong></h5>
+<ol>
+<li>Intercambia tu solución refactorizada con un compañero.</li>
+<li>Revisa su código y proporciona feedback constructivo sobre estos puntos:<ul>
+<li><strong>Claridad:</strong> ¿Es el código fácil de entender a simple vista?</li>
+<li><strong>Eficiencia:</strong> ¿Ha utilizado las funciones de PHP adecuadas para la tarea (ej: <code>implode</code>)?</li>
+<li><strong>Buenas prácticas:</strong> ¿Usa tipado de parámetros y de retorno? ¿El nombre de la función y las variables son descriptivos?</li>
+</ul>
+</li>
+<li>Prepara un pequeño resumen de tu revisión para discutirlo con tu compañero.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_10"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El Peer Review (o revisión de código) es un pilar de los equipos de software de calidad. Ayuda a detectar bugs, a compartir conocimiento y a mantener un estándar de código alto en todo el proyecto.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * Versión refactorizada de la función para generar un resumen de usuario.</span>
+<span class="sd"> * Utiliza tipado, interpolación de cadenas y `implode` para mayor claridad y eficiencia.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param array $usuario Array asociativo con los datos del usuario.</span>
+<span class="sd"> * @return string Un resumen formateado de los datos del usuario.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">generarResumenUsuarioRefactorizado</span><span class="p">(</span><span class="k">array</span> <span class="nv">$usuario</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="c1">// Validar que las claves esperadas existen para evitar errores</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'N/A'</span><span class="p">;</span>
+    <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'N/A'</span><span class="p">;</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'N/A'</span><span class="p">;</span>
+    <span class="nv">$tecnologias</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'tecnologias'</span><span class="p">]</span> <span class="o">??</span> <span class="p">[];</span>
+
+    <span class="c1">// Usar implode() para unir las tecnologías. Es más eficiente y legible.</span>
+    <span class="nv">$habilidades</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">', '</span><span class="p">,</span> <span class="nv">$tecnologias</span><span class="p">);</span>
+
+    <span class="c1">// Usar interpolación de cadenas con comillas dobles para un formato más limpio.</span>
+    <span class="nv">$resumen</span> <span class="o">=</span> <span class="s2">"Resumen del Usuario:</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">.=</span> <span class="s2">"-------------------</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">.=</span> <span class="s2">"ID:        </span><span class="si">$id</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">.=</span> <span class="s2">"Nombre:    </span><span class="si">$nombre</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">.=</span> <span class="s2">"Email:     </span><span class="si">$email</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$resumen</span> <span class="o">.=</span> <span class="s2">"Habilidades: </span><span class="si">$habilidades</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nv">$resumen</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Datos de prueba</span>
+<span class="nv">$miembro</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Ana Garrido'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'ana.g@devcore.com'</span><span class="p">,</span>
+    <span class="s1">'tecnologias'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'PHP'</span><span class="p">,</span> <span class="s1">'Symfony'</span><span class="p">,</span> <span class="s1">'MySQL'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// Ejecutar y mostrar el resultado</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span> <span class="o">.</span> <span class="nx">generarResumenUsuarioRefactorizado</span><span class="p">(</span><span class="nv">$miembro</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">12) Mini Motor de Plantillas | Nivel: Alto</p>
+<h5 id="objetivo_11"><strong>Objetivo:</strong></h5>
+<p>Construir una función avanzada que simule el comportamiento de un motor de plantillas básico (como Twig o Blade), reemplazando marcadores de posición en una cadena con datos de un array.</p>
+<h5 id="tarea-a-realizar_10"><strong>Tarea a realizar:</strong></h5>
+<p>Crea una función <code>render(string $plantilla, array $datos): string</code>.
+1.  La función recibirá una cadena <code>$plantilla</code> que contiene marcadores de posición con el formato <code>{{clave}}</code>.
+2.  También recibirá un array asociativo <code>$datos</code> donde las claves coinciden con los nombres de los marcadores de posición.
+3.  Tu misión es reemplazar cada marcador <code>{{clave}}</code> en la plantilla por su valor correspondiente en el array <code>$datos</code>.
+4.  La función debe devolver la plantilla "renderizada" como un string.</p>
+<ul>
+<li><strong>Pista:</strong> La forma más elegante de hacer esto es con un bucle <code>foreach</code> sobre el array <code>$datos</code>. En cada iteración, usa <code>str_replace()</code> para reemplazar el marcador <code>{{$clave}}</code> por el <code>$valor</code>.</li>
+</ul>
+<h5 id="setup-inicial_7"><strong>Setup Inicial:</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$plantillaEmail</span> <span class="o">=</span> <span class="s2">"Hola, {{nombre}}.</span><span class="se">\n\n</span><span class="s2">Te informamos que tu solicitud de vacaciones para las fechas {{fechas}} ha sido {{estado}}.</span><span class="se">\n\n</span><span class="s2">Gracias,</span><span class="se">\n</span><span class="s2">El equipo de NexusCore."</span><span class="p">;</span>
+
+<span class="nv">$datosParaEmail</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Luis Campos'</span><span class="p">,</span>
+    <span class="s1">'fechas'</span> <span class="o">=&gt;</span> <span class="s1">'del 01/08 al 15/08'</span><span class="p">,</span>
+    <span class="s1">'estado'</span> <span class="o">=&gt;</span> <span class="s1">'aprobada'</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_11"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la base conceptual de todos los motores de plantillas modernos que separan la lógica (PHP) de la presentación (HTML). Aunque las implementaciones reales son mucho más complejas, el principio de "buscar y reemplazar marcadores" es el mismo. Crear esta función te dará una comprensión profunda de cómo funcionan herramientas como Twig, Blade o Smarty.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$plantillaEmail</span> <span class="o">=</span> <span class="s2">"Hola, {{nombre}}.</span><span class="se">\n\n</span><span class="s2">Te informamos que tu solicitud de vacaciones para las fechas {{fechas}} ha sido {{estado}}.</span><span class="se">\n\n</span><span class="s2">Gracias,</span><span class="se">\n</span><span class="s2">El equipo de NexusCore."</span><span class="p">;</span>
+
+<span class="nv">$datosParaEmail</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Luis Campos'</span><span class="p">,</span>
+    <span class="s1">'fechas'</span> <span class="o">=&gt;</span> <span class="s1">'del 01/08 al 15/08'</span><span class="p">,</span>
+    <span class="s1">'estado'</span> <span class="o">=&gt;</span> <span class="s1">'aprobada'</span>
+<span class="p">];</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Reemplaza marcadores de posición en una plantilla con datos de un array.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $plantilla La cadena de la plantilla con marcadores {{clave}}.</span>
+<span class="sd"> * @param array  $datos     Un array asociativo con los datos a reemplazar.</span>
+<span class="sd"> * @return string La plantilla renderizada.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$plantilla</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$datos</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="nv">$contenidoRenderizado</span> <span class="o">=</span> <span class="nv">$plantilla</span><span class="p">;</span>
+
+    <span class="c1">// Recorrer cada dato y reemplazar su marcador correspondiente en la plantilla</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$datos</span> <span class="k">as</span> <span class="nv">$clave</span> <span class="o">=&gt;</span> <span class="nv">$valor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$marcador</span> <span class="o">=</span> <span class="s1">'{{'</span> <span class="o">.</span> <span class="nv">$clave</span> <span class="o">.</span> <span class="s1">'}}'</span><span class="p">;</span>
+        <span class="nv">$contenidoRenderizado</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="nv">$marcador</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$valor</span><span class="p">,</span> <span class="nv">$contenidoRenderizado</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$contenidoRenderizado</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$emailFinal</span> <span class="o">=</span> <span class="nx">render</span><span class="p">(</span><span class="nv">$plantillaEmail</span><span class="p">,</span> <span class="nv">$datosParaEmail</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Email Generado:&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$emailFinal</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,2220 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/05-POO/" rel="canonical"/>
+<link href="../04-Arrays-Funciones-Strings/" rel="prev"/>
+<link href="../06-Include/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>05 - POO - Programación Orientada a Objetos - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tema-5-programacion-orientada-a-objetos-en-php-construyendo-tu-fabrica-de-codigo">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              05 - POO - Programación Orientada a Objetos
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-la-poo">
+<span class="md-ellipsis">
+      ¿Qué es la POO?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-de-la-poo">
+<span class="md-ellipsis">
+      Ventajas de la POO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desventajas-de-la-poo">
+<span class="md-ellipsis">
+      Desventajas de la POO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-generales-de-la-poo">
+<span class="md-ellipsis">
+      Conceptos Generales de la POO
+    </span>
+</a>
+<nav aria-label="Conceptos Generales de la POO" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clase">
+<span class="md-ellipsis">
+      Clase
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objeto">
+<span class="md-ellipsis">
+      Objeto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clases-y-objetos-definicion-y-ejemplos">
+<span class="md-ellipsis">
+      Clases y Objetos: Definición y Ejemplos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identificacion-de-objetos">
+<span class="md-ellipsis">
+      Identificación de Objetos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetos-y-atributos">
+<span class="md-ellipsis">
+      Objetos y Atributos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetos-y-comportamientos">
+<span class="md-ellipsis">
+      Objetos y Comportamientos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#caracteristicas-de-la-poo">
+<span class="md-ellipsis">
+      Características de la POO
+    </span>
+</a>
+<nav aria-label="Características de la POO" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstraccion">
+<span class="md-ellipsis">
+      Abstracción
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#encapsulamiento">
+<span class="md-ellipsis">
+      Encapsulamiento
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mensajes">
+<span class="md-ellipsis">
+      Mensajes
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#especificacion-de-clases">
+<span class="md-ellipsis">
+      Especificación de Clases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clases-y-objetos-el-corazon-de-la-fabrica">
+<span class="md-ellipsis">
+      Clases y Objetos: El Corazón de la Fábrica
+    </span>
+</a>
+<nav aria-label="Clases y Objetos: El Corazón de la Fábrica" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modificadores-de-visibilidad">
+<span class="md-ellipsis">
+      Modificadores de Visibilidad
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-constructor-la-secuencia-de-arranque">
+<span class="md-ellipsis">
+      El Constructor: La Secuencia de Arranque
+    </span>
+</a>
+<nav aria-label="El Constructor: La Secuencia de Arranque" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-revolucion-de-php-8-promocion-de-propiedades-del-constructor">
+<span class="md-ellipsis">
+      La Revolución de PHP 8: Promoción de Propiedades del Constructor
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#herencia-creando-especializaciones">
+<span class="md-ellipsis">
+      Herencia: Creando Especializaciones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstraccion-y-contratos-interfaces-y-clases-abstractas">
+<span class="md-ellipsis">
+      Abstracción y Contratos: Interfaces y Clases Abstractas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reutilizacion-de-codigo-horizontal-traits">
+<span class="md-ellipsis">
+      Reutilización de Código Horizontal: Traits
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-errores-excepciones">
+<span class="md-ellipsis">
+      Gestión de Errores: Excepciones
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real-el-patron-modelo-vista-controlador-mvc">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real: El Patrón Modelo-Vista-Controlador (MVC)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#php-avanzado">
+<span class="md-ellipsis">
+      PHP AVANZADO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-la-poo">
+<span class="md-ellipsis">
+      ¿Qué es la POO?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-de-la-poo">
+<span class="md-ellipsis">
+      Ventajas de la POO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desventajas-de-la-poo">
+<span class="md-ellipsis">
+      Desventajas de la POO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-generales-de-la-poo">
+<span class="md-ellipsis">
+      Conceptos Generales de la POO
+    </span>
+</a>
+<nav aria-label="Conceptos Generales de la POO" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clase">
+<span class="md-ellipsis">
+      Clase
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objeto">
+<span class="md-ellipsis">
+      Objeto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clases-y-objetos-definicion-y-ejemplos">
+<span class="md-ellipsis">
+      Clases y Objetos: Definición y Ejemplos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identificacion-de-objetos">
+<span class="md-ellipsis">
+      Identificación de Objetos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetos-y-atributos">
+<span class="md-ellipsis">
+      Objetos y Atributos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetos-y-comportamientos">
+<span class="md-ellipsis">
+      Objetos y Comportamientos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#caracteristicas-de-la-poo">
+<span class="md-ellipsis">
+      Características de la POO
+    </span>
+</a>
+<nav aria-label="Características de la POO" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstraccion">
+<span class="md-ellipsis">
+      Abstracción
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#encapsulamiento">
+<span class="md-ellipsis">
+      Encapsulamiento
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mensajes">
+<span class="md-ellipsis">
+      Mensajes
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#especificacion-de-clases">
+<span class="md-ellipsis">
+      Especificación de Clases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clases-y-objetos-el-corazon-de-la-fabrica">
+<span class="md-ellipsis">
+      Clases y Objetos: El Corazón de la Fábrica
+    </span>
+</a>
+<nav aria-label="Clases y Objetos: El Corazón de la Fábrica" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modificadores-de-visibilidad">
+<span class="md-ellipsis">
+      Modificadores de Visibilidad
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-constructor-la-secuencia-de-arranque">
+<span class="md-ellipsis">
+      El Constructor: La Secuencia de Arranque
+    </span>
+</a>
+<nav aria-label="El Constructor: La Secuencia de Arranque" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-revolucion-de-php-8-promocion-de-propiedades-del-constructor">
+<span class="md-ellipsis">
+      La Revolución de PHP 8: Promoción de Propiedades del Constructor
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#herencia-creando-especializaciones">
+<span class="md-ellipsis">
+      Herencia: Creando Especializaciones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstraccion-y-contratos-interfaces-y-clases-abstractas">
+<span class="md-ellipsis">
+      Abstracción y Contratos: Interfaces y Clases Abstractas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reutilizacion-de-codigo-horizontal-traits">
+<span class="md-ellipsis">
+      Reutilización de Código Horizontal: Traits
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-errores-excepciones">
+<span class="md-ellipsis">
+      Gestión de Errores: Excepciones
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real-el-patron-modelo-vista-controlador-mvc">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real: El Patrón Modelo-Vista-Controlador (MVC)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#php-avanzado">
+<span class="md-ellipsis">
+      PHP AVANZADO
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- Nombre de archivo sugerido: 05-POO.md -->
+<h1 id="tema-5-programacion-orientada-a-objetos-en-php-construyendo-tu-fabrica-de-codigo">Tema 5: Programación Orientada a Objetos en PHP: Construyendo tu Fábrica de Código</h1>
+<p>¡Hola, equipo! Bienvenidos de nuevo al corazón de la ingeniería en DevCore. En la <a href="04-Arrays-Funciones-Strings/">UD4: Arrays, Funciones y Cadenas</a>, llenamos nuestra caja de herramientas. Aprendimos a organizar datos en <strong>arrays</strong>, a crear herramientas personalizadas con <strong>funciones</strong> y a manipular texto con precisión milimétrica usando las funciones de <strong>cadenas</strong>. Ya sois artesanos capaces de construir scripts complejos y útiles.</p>
+<p>Ahora, vamos a dar el siguiente gran salto. Dejaremos de ser un taller de artesanos para convertirnos en una <strong>fábrica de software</strong> de alta tecnología. La Programación Orientada a Objetos (POO) es el paradigma que nos permitirá hacer precisamente eso. Ya no construiremos cada pieza a mano; ahora diseñaremos <strong>planos (clases)</strong> para producir en masa componentes complejos, fiables y reutilizables: nuestros <strong>objetos</strong>.</p>
+<p>Si las funciones fueron nuestras herramientas eléctricas personalizadas, las clases son los planos para construir robots de ensamblaje completos. Cada robot (objeto) tendrá sus propias herramientas (métodos) y materiales (propiedades) para realizar tareas complejas de forma autónoma. ¿Listos para diseñar vuestra primera línea de producción? ¡Vamos allá!</p>
+<h2 id="que-es-la-poo">¿Qué es la POO?</h2>
+<p>La Programación Orientada a Objetos (POO) es un <strong>paradigma de programación</strong> que se basa en el concepto de "clases" y "objetos". Este modelo de programación permite estructurar un programa de software en piezas simples y reutilizables de planos de código (clases) para crear instancias individuales de objetos.</p>
+<p>En el paradigma de objetos, solo hay objetos y mensajes (que también son objetos). Un programa en POO es un conjunto de objetos que colaboran enviándose mensajes.</p>
+<pre class="mermaid"><code>graph TD
+    A[ENTRADA] --&gt; B{Objeto A};
+    B -- Atributos y Métodos --&gt; C{Objeto B};
+    C -- Atributos y Métodos --&gt; D{Objeto C};
+    B -- Atributos y Métodos --&gt; D;
+    D -- Atributos y Métodos --&gt; E[SALIDA];
+
+    subgraph "Proceso"
+        B;
+        C;
+        D;
+    end</code></pre>
+<h2 id="ventajas-de-la-poo">Ventajas de la POO</h2>
+<p>La Programación Orientada a Objetos ofrece varias ventajas significativas para el desarrollo de software:</p>
+<ul>
+<li><strong>Reutilización de Código</strong>: Facilita la reutilización de código a través de conceptos como la herencia y la composición, permitiendo aprovechar clases existentes para crear nuevas, lo que ahorra tiempo y esfuerzo. </li>
+<li><strong>Organización del Código</strong>: Proporciona una estructura organizada para el código al dividirlo en clases y objetos, mejorando la modularidad y facilitando la comprensión y el mantenimiento del software. </li>
+<li><strong>Abstracción</strong>: Permite abstraer detalles complejos, centrándose en la representación de objetos del mundo real, lo que facilita la comprensión del sistema y la resolución de problemas. </li>
+<li><strong>Mantenibilidad</strong>: La modularidad y la estructura organizada facilitan la identificación y corrección de errores. Los cambios y actualizaciones se pueden realizar de manera más eficiente sin afectar otras partes del sistema.</li>
+<li><strong>Escalabilidad</strong>: Facilita la escalabilidad del software al permitir la adición de nuevas funcionalidades mediante la creación de nuevas clases o la extensión de clases existentes. </li>
+</ul>
+<h2 id="desventajas-de-la-poo">Desventajas de la POO</h2>
+<p>A pesar de sus ventajas, la POO también presenta algunas desventajas:</p>
+<ul>
+<li><strong>Cambio en la forma de pensar</strong>: Requiere un cambio de mentalidad con respecto a la programación tradicional o estructurada. </li>
+<li><strong>Ejecución más lenta</strong>: La ejecución de programas orientados a objetos puede ser más lenta en comparación con otros paradigmas. </li>
+<li><strong>Complejidad para adaptarse</strong>: La curva de aprendizaje puede ser más pronunciada para los programadores que no están familiarizados con el paradigma.</li>
+<li><strong>Dificultad en la abstracción</strong>: Diseñar una jerarquía de clases y objetos efectiva puede ser un desafío.</li>
+</ul>
+<h2 id="conceptos-generales-de-la-poo">Conceptos Generales de la POO</h2>
+<h3 id="clase">Clase</h3>
+<p>Una <strong>clase</strong> es una plantilla mediante la cual se crean los diferentes objetos requeridos para la solución del problema. Los objetos son instancias de las clases. Una clase se compone de:</p>
+<ul>
+<li><strong>Información</strong>: Campos (atributos, propiedades).</li>
+<li><strong>Comportamiento</strong>: Métodos (operaciones, funciones).</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    subgraph "Clase"
+        direction LR
+        A[ATRIBUTOS] --&gt; B[propiedad1];
+        A --&gt; C[propiedad2];
+        A --&gt; D[propiedad3];
+
+        E[MÉTODOS] --&gt; F[metodo1];
+        E --&gt; G[metodo2];
+        E --&gt; H[metodo3];
+    end</code></pre>
+<h3 id="objeto">Objeto</h3>
+<p>Un <strong>objeto</strong> es una instancia de una clase. Por lo tanto, los objetos hacen uso de los <strong>Atributos</strong> (variables) y <strong>Métodos</strong> (funciones y procedimientos) de su correspondiente clase. Es una variable de tipo clase y permite modelar entidades del mundo real.</p>
+<h3 id="clases-y-objetos-definicion-y-ejemplos">Clases y Objetos: Definición y Ejemplos</h3>
+<p>En POO, una <strong>clase</strong> es un plano para crear objetos, mientras que un <strong>objeto</strong> es una instancia específica de una clase. Las clases definen atributos y métodos comunes para los objetos.</p>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/clase-objeto.png"><img alt="Clase VS Objeto" src="../images/clase-objeto.png"/></a></div>
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li>
+<p>Una clase <strong>'Vehículo'</strong> puede tener:</p>
+<ul>
+<li><strong>atributos</strong> como 'color' y 'modelo'.</li>
+<li><strong>métodos</strong> como 'arrancar' y 'parar'.</li>
+</ul>
+</li>
+<li>
+<p>Una clase <strong>'Persona'</strong> puede tener:</p>
+<ul>
+<li><strong>atributos</strong> como 'nombre', 'apellido', 'edad', 'género'.</li>
+<li><strong>métodos</strong> como 'esMayorEdad'.</li>
+</ul>
+</li>
+</ul>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/clase-objeto-ejemplo.png"><img alt="Ejemplo de Clase y Objeto" src="../images/clase-objeto-ejemplo.png"/></a></div>
+<h3 id="identificacion-de-objetos">Identificación de Objetos</h3>
+<p>La primera tarea de un programador en POO es la identificación de los objetos inmersos en el problema a solucionar. Generalmente se ubican en las siguientes categorías:</p>
+<ul>
+<li><strong>Cosas tangibles</strong>: árbol, auto, etc.</li>
+<li><strong>Cosas intangibles</strong>: emociones, marca.</li>
+<li><strong>Organizaciones o entidades</strong>: universidad, empresa de transporte.</li>
+<li><strong>Roles</strong>: alumno, profesor, etc.</li>
+</ul>
+<h3 id="objetos-y-atributos">Objetos y Atributos</h3>
+<p>Los <strong>atributos</strong> determinan el estado interno de un objeto.</p>
+<p><strong>Ejemplo:</strong> Sea la clase PERSONA y el objeto ANA:<br/>
+*   El <strong>nombre</strong> de Ana es Ana María.<br/>
+*   El <strong>apellido</strong> de Ana es Rodríguez.<br/>
+*   La <strong>edad</strong> de Ana es 27.<br/>
+*   El <strong>género</strong> de Ana es Femenino.</p>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/Objeto-Atributos.png"><img alt="Objeto y Atributos" src="../images/Objeto-Atributos.png"/></a></div>
+<h3 id="objetos-y-comportamientos">Objetos y Comportamientos</h3>
+<p>El <strong>comportamiento</strong> determina el protocolo del objeto.</p>
+<p><strong>Ejemplo:</strong> Sea la clase PERSONA y el objeto ANA:<br/>
+*   Ana es mayor de edad.<br/>
+*   Ana habla.<br/>
+*   Ana compra tickets.<br/>
+*   Ana viaja en avión.<br/>
+*   Ana entra a un hotel.</p>
+<h2 id="caracteristicas-de-la-poo">Características de la POO</h2>
+<p>Las principales características de la Programación Orientada a Objetos son:</p>
+<ul>
+<li>Abstracción</li>
+<li>Encapsulamiento</li>
+<li>Mensajes</li>
+<li>Polimorfismo</li>
+<li>Herencia</li>
+</ul>
+<h3 id="abstraccion">Abstracción</h3>
+<p>Es una de las principales características a tener en cuenta, ya que permite vislumbrar los diferentes agentes u objetos implicados en un problema. Consiste en:</p>
+<ul>
+<li>Captar los atributos y métodos que conforman cada objeto y la relación que existen entre ellos.</li>
+<li>Resolver el problema en subproblemas donde cada objeto se haga cargo de cada subproblema.</li>
+<li>La comunicación entre objetos genera la solución general a todo el problema (Divide y vencerás).</li>
+</ul>
+<h3 id="encapsulamiento">Encapsulamiento</h3>
+<p>Permite la ocultación de la información, es decir, permite asegurar que el contenido de un objeto se pueda ocultar del mundo exterior, dejándose ver solo lo que cada objeto necesite hacer público. </p>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/Encapsulamiento.png"><img alt="Encapsulamiento" src="../images/Encapsulamiento.png"/></a></div>
+<h3 id="mensajes">Mensajes</h3>
+<p>Un objeto sin comunicación con el mundo exterior no es de utilidad. Los objetos deben relacionarse e interactúan entre ellos mediante mensajes. Cuando un objeto A quiere que otro objeto B ejecute una de sus funciones o procedimientos (métodos de B), el objeto A manda un mensaje al objeto B.</p>
+<p>Un mensaje consta de 3 partes:
+1.  <strong>Identidad del receptor</strong>: Nombre del objeto que contiene el método a ejecutar.
+2.  <strong>Nombre del método a ejecutar</strong>: Solo los métodos declarados públicos.
+3.  <strong>Lista de Parámetros</strong>: que recibe el método (cero o más parámetros).</p>
+<pre class="mermaid"><code>graph TD
+    A(Objeto Emisor) --&gt; B(Objeto Receptor);
+    B --&gt; A;</code></pre>
+<h2 id="especificacion-de-clases">Especificación de Clases</h2>
+<p>Las clases se especifican por medio de un nombre, el estado o estructura interna que tendrán sus instancias y los métodos asociados que definen el comportamiento.</p>
+<pre class="mermaid"><code>classDiagram
+    class Auto {
+        -marca: string
+        -modelo: string
+        -combustible: int
+        +arrancar()
+        +propietario(unaPersona)
+        +kilometraje()
+        +cargar(combustible)
+    }</code></pre>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de trazar nuestro primer plano, debemos entender el lenguaje de la ingeniería de software. Estos son los conceptos clave que son el pilar de la POO en PHP y en cualquier otro lenguaje.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Clase</p>
+<p>Una <strong>Clase</strong> es un <strong>plano</strong> o una plantilla. Define un conjunto de propiedades (qué datos almacena) y métodos (qué acciones puede realizar) que tendrán los objetos creados a partir de ella. La clase en sí no hace nada; es solo la definición.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Objeto</p>
+<p>Un <strong>Objeto</strong> es una <strong>instancia</strong> de una clase. Es el producto final construido a partir del plano. Si la clase <code>Coche</code> es el plano, un <code>new Coche("rojo", "Toyota")</code> es un coche real y tangible con el que podemos interactuar. Puedes crear tantos objetos como quieras a partir de una única clase.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Propiedad (o Atributo)</p>
+<p>Una <strong>Propiedad</strong> es una variable que pertenece a una clase. Almacena el estado o las características de un objeto. En nuestro plano del <code>Coche</code>, las propiedades serían <code>$color</code>, <code>$marca</code> o <code>$velocidadActual</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Método</p>
+<p>Un <strong>Método</strong> es una <strong>función</strong> que pertenece a una clase. Define el comportamiento o las acciones que un objeto puede realizar. Para nuestro <code>Coche</code>, los métodos serían <code>acelerar()</code>, <code>frenar()</code> o <code>describir()</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Encapsulación</p>
+<p>Es el principio de agrupar datos (propiedades) y los métodos que operan sobre esos datos dentro de una misma unidad (la clase). Además, implica ocultar la complejidad interna del objeto y exponer solo lo necesario. Protegemos los datos para que no se modifiquen de forma indebida, como si selláramos el motor del coche bajo el capó, dejando acceso solo al volante y los pedales.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Herencia</p>
+<p>Es la capacidad de crear una nueva clase (clase hija o subclase) a partir de una clase existente (clase padre o superclase). La clase hija hereda todas las propiedades y métodos de la padre, permitiéndonos reutilizar código y crear especializaciones. Por ejemplo, las clases <code>Camion</code> y <code>Deportivo</code> pueden heredar de una clase genérica <code>Vehiculo</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Polimorfismo</p>
+<p>Literalmente "muchas formas". Es la capacidad de que objetos de diferentes clases respondan al mismo mensaje (la misma llamada a un método) de maneras distintas y específicas para cada uno. Si llamas al método <code>hacerSonido()</code> en un objeto <code>Perro</code> sonará "Guau", pero si lo llamas en un objeto <code>Gato</code> sonará "Miau".</p>
+</div>
+<h2 id="desarrollo-y-ejemplos-practicos">Desarrollo y Ejemplos Prácticos</h2>
+<p>Con los planos conceptuales en mente, es hora de ponernos el casco de ingeniero y empezar a construir.</p>
+<h3 id="clases-y-objetos-el-corazon-de-la-fabrica">Clases y Objetos: El Corazón de la Fábrica</h3>
+<p>Todo comienza con el diseño de un plano. Una clase agrupa estado (propiedades) y comportamiento (métodos). La buena práctica, dictada por el estándar <strong>PSR-12</strong>, nos dice que cada clase debe vivir en su propio fichero, nombrado igual que la clase (ej: <code>Usuario.php</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Fichero: Usuario.php</span>
+<span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Usuario</span>
+<span class="p">{</span>
+    <span class="c1">// Propiedades: almacenan los datos del usuario</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$nombre</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
+    <span class="k">private</span> <span class="o">?</span><span class="nx">DateTime</span> <span class="nv">$fechaNacimiento</span><span class="p">;</span> <span class="c1">// Puede ser nulo</span>
+
+    <span class="c1">// Métodos: definen lo que el objeto puede hacer</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saludar</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"¡Hola, mi nombre es "</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">.</span> <span class="s2">"!"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEdad</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fechaNacimiento</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$hoy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+        <span class="nv">$diferencia</span> <span class="o">=</span> <span class="nv">$hoy</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fechaNacimiento</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$diferencia</span><span class="o">-&gt;</span><span class="na">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Una vez tenemos el plano, podemos crear los objetos (instancias) usando la palabra clave <code>new</code>. Para interactuar con ellos, usamos el operador flecha <code>-&gt;</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Fichero: index.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'Usuario.php'</span><span class="p">;</span>
+
+<span class="c1">// Creamos nuestro primer objeto (instancia) a partir de la clase Usuario</span>
+<span class="nv">$usuario1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Usuario</span><span class="p">();</span>
+<span class="nv">$usuario1</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">=</span> <span class="s2">"Marta"</span><span class="p">;</span>
+<span class="nv">$usuario1</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="s2">"marta.g@nexus.com"</span><span class="p">;</span>
+<span class="c1">// $usuario1-&gt;fechaNacimiento = new DateTime('1995-05-10'); // ¡Error! Es privada</span>
+
+<span class="c1">// Creamos un segundo objeto, totalmente independiente del primero</span>
+<span class="nv">$usuario2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Usuario</span><span class="p">();</span>
+<span class="nv">$usuario2</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">=</span> <span class="s2">"Javier"</span><span class="p">;</span>
+<span class="nv">$usuario2</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="s2">"javier.r@nexus.com"</span><span class="p">;</span>
+
+<span class="c1">// Usamos sus métodos</span>
+<span class="k">echo</span> <span class="nv">$usuario1</span><span class="o">-&gt;</span><span class="na">saludar</span><span class="p">();</span> <span class="c1">// Salida: ¡Hola, mi nombre es Marta!</span>
+<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$usuario2</span><span class="o">-&gt;</span><span class="na">saludar</span><span class="p">();</span> <span class="c1">// Salida: ¡Hola, mi nombre es Javier!</span>
+</code></pre></div>
+<h4 id="modificadores-de-visibilidad">Modificadores de Visibilidad</h4>
+<p>La encapsulación se logra controlando el acceso a propiedades y métodos. Es como decidir qué partes de nuestro robot son para uso público y cuáles son solo para sus mecanismos internos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Visibilidad</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Analogía (Coche)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>public</code></strong></td>
+<td style="text-align: left;">Accesible desde cualquier lugar: dentro de la clase, en clases hijas y desde fuera del objeto.</td>
+<td style="text-align: left;">El volante, los pedales, la radio. Cualquiera puede usarlos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>protected</code></strong></td>
+<td style="text-align: left;">Accesible solo dentro de la propia clase y en las clases que hereden de ella.</td>
+<td style="text-align: left;">El sistema de inyección de combustible. Solo los ingenieros (la clase) y mecánicos especializados (clases hijas) pueden tocarlo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>private</code></strong></td>
+<td style="text-align: left;">Accesible <strong>únicamente</strong> desde la propia clase donde se definió. Ni siquiera las clases hijas pueden acceder.</td>
+<td style="text-align: left;">El número de serie secreto del motor. Solo se conoce en la fábrica original (la clase) y no se puede ver ni cambiar desde fuera.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Encapsulación es Clave</p>
+<p>Por regla general, <strong>todas las propiedades deben ser <code>private</code> o <code>protected</code></strong>. Esto te obliga a crear métodos públicos (conocidos como <em>getters</em> y <em>setters</em>) para controlar cómo se accede y se modifica el estado de un objeto, previniendo así usos indebidos y facilitando el mantenimiento.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">CuentaBancaria</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$titular</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">float</span> <span class="nv">$saldo</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+
+    <span class="c1">// Getter para obtener el saldo (no hay setter para que no se pueda cambiar desde fuera)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSaldo</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">saldo</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Método público para interactuar de forma controlada</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">depositar</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$cantidad</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cantidad</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">saldo</span> <span class="o">+=</span> <span class="nv">$cantidad</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">retirar</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$cantidad</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cantidad</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">saldo</span> <span class="o">&gt;=</span> <span class="nv">$cantidad</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">saldo</span> <span class="o">-=</span> <span class="nv">$cantidad</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Retirada exitosa</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// No hay saldo suficiente</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$miCuenta</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CuentaBancaria</span><span class="p">();</span>
+<span class="c1">// $miCuenta-&gt;saldo = 1000000; // ¡Error Fatal! La propiedad saldo es privada.</span>
+<span class="nv">$miCuenta</span><span class="o">-&gt;</span><span class="na">depositar</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="nv">$miCuenta</span><span class="o">-&gt;</span><span class="na">retirar</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"El saldo actual de la cuenta es: "</span> <span class="o">.</span> <span class="nv">$miCuenta</span><span class="o">-&gt;</span><span class="na">getSaldo</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"€"</span><span class="p">;</span> <span class="c1">// Salida: 400€</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Piensa en una clase <code>Post</code> para un blog. ¿Qué propiedades crees que debería tener (<code>titulo</code>, <code>contenido</code>, <code>autor</code>, etc.)? ¿Qué visibilidad le darías a cada una y por qué?</li>
+<li>¿Qué métodos tendría la clase <code>Post</code>? Piensa en acciones como <code>publicar()</code>, <code>obtenerExtracto()</code>, <code>anyadirComentario()</code>.</li>
+<li>La variable <code>$this</code> se usa dentro de una clase. ¿Qué representa exactamente? ¿Por qué es fundamental para que los objetos funcionen?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="el-constructor-la-secuencia-de-arranque">El Constructor: La Secuencia de Arranque</h3>
+<p>Crear un objeto con <code>new</code> y luego asignar sus propiedades una por una es tedioso y propenso a errores. El <strong>constructor</strong> es un método mágico, <code>__construct()</code>, que se ejecuta automáticamente al crear un nuevo objeto, permitiéndonos inicializarlo en un solo paso.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Producto</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$nombre</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">float</span> <span class="nv">$precio</span><span class="p">;</span>
+
+    <span class="c1">// Este método se llama automáticamente con 'new'</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$nombre</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$precio</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;em&gt;Creando un nuevo producto...&lt;/em&gt;&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">=</span> <span class="nv">$nombre</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">precio</span> <span class="o">=</span> <span class="nv">$precio</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;em&gt;Destruyendo el producto </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="si">}</span><span class="s2">...&lt;/em&gt;&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Ahora creamos e inicializamos en un solo paso</span>
+<span class="nv">$portatil</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Producto</span><span class="p">(</span><span class="s2">"Portátil Pro M4"</span><span class="p">,</span> <span class="mf">1599.99</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"Producto: </span><span class="si">{</span><span class="nv">$portatil</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="si">}</span><span class="s2">, Precio: </span><span class="si">{</span><span class="nv">$portatil</span><span class="o">-&gt;</span><span class="na">precio</span><span class="si">}</span><span class="s2">€"</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="la-revolucion-de-php-8-promocion-de-propiedades-del-constructor">La Revolución de PHP 8: Promoción de Propiedades del Constructor</h4>
+<p>PHP 8 introdujo una sintaxis mucho más corta y legible para los constructores, que declara las propiedades y las asigna a la vez.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Sintaxis Clásica (PHP 7 y anteriores)</th>
+<th style="text-align: left;">Sintaxis con Promoción (PHP 8+)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>php class Punto { private float $x; private float $y; public function __construct(float $x, float $y) { $this-&gt;x = $x; $this-&gt;y = $y; } }</code></td>
+<td style="text-align: left;"><code>php class Punto { public function __construct( private float $x, private float $y ) {} }</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Adopta PHP 8+</p>
+<p>La promoción de propiedades del constructor no es solo "azúcar sintáctico". Reduce drásticamente el código repetitivo (<em>boilerplate</em>), haciendo las clases más limpias y fáciles de leer. ¡Es la forma recomendada de escribir constructores hoy en día!</p>
+</div>
+<p>Otros métodos mágicos útiles:
+*   <code>__destruct()</code>: Se ejecuta cuando un objeto va a ser destruido (por ejemplo, al final del script). Útil para cerrar conexiones a bases de datos o ficheros.
+*   <code>__toString()</code>: Se ejecuta cuando intentas usar un objeto como si fuera una cadena (ej: <code>echo $objeto;</code>). Debe devolver un <code>string</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Vector2D</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">float</span> <span class="nv">$x</span><span class="p">,</span> <span class="k">private</span> <span class="nx">float</span> <span class="nv">$y</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Se invoca cuando hacemos, por ejemplo, `echo $miVector;`</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Vector(</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">x</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">y</span><span class="si">}</span><span class="s2">)"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$vector</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vector2D</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"La posición actual es: "</span> <span class="o">.</span> <span class="nv">$vector</span><span class="p">;</span> <span class="c1">// Salida: La posición actual es: Vector(10.5, -3.2)</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Si una clase no define un <code>__construct()</code>, ¿qué ocurre cuando haces <code>new Clase()</code>?</li>
+<li>¿Puede una clase tener múltiples métodos <code>__construct()</code>? ¿Por qué? (Pista: piensa en la sobrecarga de métodos en PHP).</li>
+<li>Imagina la clase <code>ConexionDB</code>. ¿Para qué usarías su método <code>__construct()</code> y para qué usarías su método <code>__destruct()</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="herencia-creando-especializaciones">Herencia: Creando Especializaciones</h3>
+<p>La herencia es uno de los pilares de la POO. Nos permite crear una jerarquía de clases, partiendo de una general y creando especializaciones. Se usa la palabra clave <code>extends</code>.</p>
+<pre class="mermaid"><code>classDiagram
+    class Vehiculo {
+        +string marca
+        #int velocidad
+        +acelerar()
+        +frenar()
+    }
+
+    class Coche {
+        +int numPuertas
+        +abrirMaletero()
+    }
+
+    class Moto {
+        +bool tieneSidecar
+        +hacerCaballito()
+    }
+
+    Vehiculo &lt;|-- Coche
+    Vehiculo &lt;|-- Moto</code></pre>
+<div class="highlight"><pre><span></span><code><span class="x">// Fichero: Vehiculo.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Vehiculo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">protected</span> <span class="nx">string</span> <span class="nv">$marca</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">acelerar</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"El vehículo está acelerando."</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: Coche.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'Vehiculo.php'</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Coche</span> <span class="k">extends</span> <span class="nx">Vehiculo</span>
+<span class="p">{</span>
+    <span class="c1">// Sobrescribimos el método del padre para especializarlo</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">acelerar</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="c1">// Podemos llamar a la implementación original con parent::</span>
+        <span class="nv">$accionPadre</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">acelerar</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$accionPadre</span> <span class="o">.</span> <span class="s2">" ¡El coche ruge!"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: Moto.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'Vehiculo.php'</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Moto</span> <span class="k">extends</span> <span class="nx">Vehiculo</span>
+<span class="p">{</span>
+    <span class="c1">// Constructor de la clase hija</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$marca</span><span class="p">,</span> <span class="k">private</span> <span class="nx">string</span> <span class="nv">$tipo</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Es crucial llamar al constructor del padre</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$marca</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTipo</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tipo</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: index.php</span>
+<span class="nv">$miCoche</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coche</span><span class="p">(</span><span class="s2">"Ferrari"</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$miCoche</span><span class="o">-&gt;</span><span class="na">acelerar</span><span class="p">();</span> <span class="c1">// Salida: El vehículo está acelerando. ¡El coche ruge!</span>
+
+<span class="nv">$miMoto</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Moto</span><span class="p">(</span><span class="s2">"Harley-Davidson"</span><span class="p">,</span> <span class="s2">"Custom"</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$miMoto</span><span class="o">-&gt;</span><span class="na">acelerar</span><span class="p">();</span> <span class="c1">// Salida: El vehículo está acelerando.</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Constructores y Herencia</p>
+<p>Si una clase hija define su propio <code>__construct()</code>, el constructor de la clase padre <strong>NO</strong> se ejecuta automáticamente. Es tu responsabilidad llamarlo explícitamente usando <code>parent::__construct()</code> si necesitas que la lógica del padre se ejecute. Generalmente, esta es la primera línea en el constructor del hijo.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Si la clase <code>Vehiculo</code> tuviera una propiedad <code>private $numeroChasis</code>, ¿podría la clase <code>Coche</code> acceder a ella directamente? ¿Y si fuera <code>protected</code>?</li>
+<li>Estás construyendo un videojuego con clases <code>Personaje</code>, <code>Guerrero</code> y <code>Mago</code>. ¿Cuál sería la clase padre? ¿Qué propiedades y métodos pondrías en la clase padre y cuáles en las clases hijas?</li>
+<li>¿Qué significa el polimorfismo en el contexto del método <code>acelerar()</code> de <code>Vehiculo</code> y <code>Coche</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="abstraccion-y-contratos-interfaces-y-clases-abstractas">Abstracción y Contratos: Interfaces y Clases Abstractas</h3>
+<p>A veces, queremos definir un "esqueleto" o un "contrato" que otras clases deban seguir, sin que el esqueleto en sí pueda ser instanciado. Para eso tenemos las clases abstractas y las interfaces.</p>
+<ul>
+<li><strong>Clase Abstracta (<code>abstract</code>)</strong>: Una clase que no se puede instanciar. Sirve como base para otras clases. Puede tener métodos normales (con código) y métodos abstractos (sin código), que las clases hijas están <strong>obligadas</strong> a implementar.</li>
+<li><strong>Interfaz (<code>interface</code>)</strong>: Un contrato 100% puro. Solo define qué métodos públicos debe tener una clase, pero no cómo se implementan. Una clase puede implementar (<code>implements</code>) múltiples interfaces, lo que permite a PHP simular una especie de "herencia múltiple de comportamiento".</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Clase Abstracta</th>
+<th style="text-align: left;">Interfaz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Instanciable</strong></td>
+<td style="text-align: left;">No (<code>new ClaseAbstracta()</code> da error)</td>
+<td style="text-align: left;">No (<code>new Interfaz()</code> da error)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Heredar de ella</strong></td>
+<td style="text-align: left;">Sí, con <code>extends</code> (herencia simple)</td>
+<td style="text-align: left;">No se hereda, se implementa con <code>implements</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Implementar varias</strong></td>
+<td style="text-align: left;">No (una clase solo puede extender de una)</td>
+<td style="text-align: left;">Sí (una clase puede implementar muchas)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Puede tener propiedades</strong></td>
+<td style="text-align: left;">Sí (public, protected, private)</td>
+<td style="text-align: left;">No (solo constantes públicas)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Métodos con cuerpo</strong></td>
+<td style="text-align: left;">Sí, puede tener métodos ya implementados</td>
+<td style="text-align: left;">No, todos los métodos son solo firmas públicas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cuándo usarla</strong></td>
+<td style="text-align: left;">Para crear una clase base con código común y forzar a los hijos a rellenar los huecos (métodos abstractos).</td>
+<td style="text-align: left;">Para definir un contrato o capacidad que distintas clases no relacionadas pueden compartir (ej: <code>Loggable</code>, <code>Cacheable</code>, <code>Renderable</code>).</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="x">// Fichero: Almacenable.php (Interfaz)</span>
+<span class="cp">&lt;?php</span>
+<span class="k">interface</span> <span class="nx">Almacenable</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">guardar</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">cargar</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: Documento.php (Clase Abstracta)</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Documento</span> <span class="k">implements</span> <span class="nx">Almacenable</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$contenido</span><span class="p">;</span>
+
+    <span class="c1">// Método concreto, compartido por todos los hijos</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setContenido</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$texto</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contenido</span> <span class="o">=</span> <span class="nv">$texto</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Método abstracto, cada hijo DEBE implementarlo</span>
+    <span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">renderizar</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: PaginaWeb.php (Clase Concreta)</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">PaginaWeb</span> <span class="k">extends</span> <span class="nx">Documento</span>
+<span class="p">{</span>
+    <span class="c1">// Obligado a implementar por la clase abstracta</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">renderizar</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"&lt;html&gt;&lt;body&gt;</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contenido</span><span class="si">}</span><span class="s2">&lt;/body&gt;&lt;/html&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Obligado a implementar por la interfaz</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">guardar</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span> <span class="cm">/* ... lógica para guardar en fichero ... */</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">cargar</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... lógica para cargar de fichero ... */</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Final: Lo Opuesto a Abstracto</p>
+<p>Con la palabra clave <code>final</code>, puedes evitar que una clase sea heredada o que un método sea sobrescrito. Es útil para "sellar" una clase cuando estás seguro de que no debe tener descendencia. <code>final class Configuracion {}</code>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Si tienes varias clases como <code>FacturaPDF</code>, <code>FacturaHTML</code>, <code>TicketSimple</code>, y todas deben poder ser "imprimibles", ¿crearías una interfaz <code>Imprimible</code> o una clase abstracta <code>DocumentoImprimible</code>? Justifica tu respuesta.</li>
+<li>¿Puede una clase abstracta implementar una interfaz? ¿Puede una interfaz extender otra interfaz?</li>
+<li>¿Por qué PHP no permite la herencia múltiple de clases, pero sí la implementación múltiple de interfaces? ¿Qué problema se evita? (Pista: busca "problema del diamante").</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="reutilizacion-de-codigo-horizontal-traits">Reutilización de Código Horizontal: Traits</h3>
+<p>¿Qué pasa si tienes varias clases no relacionadas (<code>Usuario</code>, <code>Producto</code>, <code>Pedido</code>) que necesitan la misma funcionalidad (por ejemplo, registrar logs), pero no comparten una clase padre común? La herencia no te sirve. Las interfaces te obligarían a repetir el código de logging en cada clase.</p>
+<p>La solución de PHP para esto son los <strong>Traits</strong>. Un Trait es un conjunto de métodos que puedes "copiar y pegar" en cualquier clase. Es un mecanismo de reutilización de código horizontal.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBUcmFpdHMgZW4gUEhQCgojIyDCv1F1w6kgc29uPwotIDxici8+IlN0aWNrZXIgUGFja3MiIGRlIGZ1bmNpb25hbGlkYWQuCi0gPGJyLz5SZXV0aWxpemFjacOzbiBkZSBjw7NkaWdvIHNpbiBoZXJlbmNpYS4KLSA8YnIvPlNvbHVjaW9uYW4gbGEgbGltaXRhY2nDs24gPGJyLz5kZSBsYSBoZXJlbmNpYSBzaW1wbGUuCgojIyDCv0PDs21vIHNlIHVzYW4/CjEuICoqRGVmaW5pcioqIGVsIFRyYWl0CiAgIC0gPGJyLz5gdHJhaXQgTWlGdW5jaW9uYWxpZGFkIHsgLi4uIH1gCjIuICoqVXNhcioqIGVsIFRyYWl0IGVuIHVuYSBDbGFzZQogICAtIDxici8+YGNsYXNzIE1pQ2xhc2UgeyB1c2UgTWlGdW5jaW9uYWxpZGFkOyB9YAoKIyMgR2VzdGnDs24gQXZhbnphZGEKLSA8YnIvPjxici8+KipNw7psdGlwbGVzIFRyYWl0cyoqOiBgdXNlIFRyYWl0QSwgVHJhaXRCO2AKLSAqKlJlc29sdWNpw7NuIGRlIENvbmZsaWN0b3MqKjoKICAtIDxici8+YGluc3RlYWRvZmA6IFBhcmEgZWxlZ2lyIHF1w6kgbcOpdG9kbzxici8+IHVzYXIgc2kgdGllbmVuIGVsIG1pc21vIG5vbWJyZS4KICAtIDxici8+YGFzYDogUGFyYSByZW5vbWJyYXIgdW4gbcOpdG9kbzxici8+IHkgZXZpdGFyIGVsIGNvbmZsaWN0by4=</markmap-data></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: Logger.php (Trait)</span>
+<span class="k">trait</span> <span class="nx">Logger</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">log</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$mensaje</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// En un caso real, escribiría en un fichero</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;LOG:&lt;/strong&gt; ["</span><span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y-m-d H:i:s'</span><span class="p">)</span> <span class="o">.</span><span class="s2">"] </span><span class="si">$mensaje</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">GestorUsuarios</span>
+<span class="p">{</span>
+    <span class="c1">// "Pegamos" la funcionalidad del Logger aquí</span>
+    <span class="k">use</span> <span class="nx">Logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">crearUsuario</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$nombre</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// ... lógica para crear el usuario ...</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">"Usuario '</span><span class="si">$nombre</span><span class="s2">' creado."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">ProcesadorPagos</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">Logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">procesar</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$cantidad</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// ... lógica para procesar el pago ...</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">"Procesado un pago de </span><span class="si">{</span><span class="nv">$cantidad</span><span class="si">}</span><span class="s2">€."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$gestor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GestorUsuarios</span><span class="p">();</span>
+<span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">crearUsuario</span><span class="p">(</span><span class="s2">"nuevo_user"</span><span class="p">);</span>
+
+<span class="nv">$procesador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ProcesadorPagos</span><span class="p">();</span>
+<span class="nv">$procesador</span><span class="o">-&gt;</span><span class="na">procesar</span><span class="p">(</span><span class="mf">99.99</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Si un <code>Trait</code> y una clase que lo usa definen un método con el mismo nombre, ¿cuál de los dos tiene prioridad?</li>
+<li>Imagina que tienes dos <code>Traits</code>, <code>TraitA</code> y <code>TraitB</code>, y ambos tienen un método llamado <code>hacerAlgo()</code>. Si una clase intenta hacer <code>use TraitA, TraitB;</code>, ¿qué ocurrirá? ¿Cómo lo solucionarías?</li>
+<li>¿Podrías usar un Trait para compartir propiedades entre clases, además de métodos?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="gestion-de-errores-excepciones">Gestión de Errores: Excepciones</h3>
+<p>En la programación procedural, un error a menudo resulta en un <code>warning</code> o <code>fatal error</code> que detiene el script. La POO nos ofrece un mecanismo mucho más elegante y controlado: las <strong>Excepciones</strong>.</p>
+<p>Una excepción es un objeto que se "lanza" (<code>throw</code>) cuando ocurre una condición de error. El flujo normal del programa se interrumpe y PHP busca un "capturador" (<code>catch</code>) que sepa cómo manejar ese tipo específico de error.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Codigo as "Código Principal (try)"
+    participant Funcion as "dividir(10, 0)"
+    participant BloqueCatch as "Bloque catch"
+    participant BloqueFinally as "Bloque finally"
+
+    Codigo-&gt;&gt;Funcion: Intentar ejecutar dividir(10, 0)
+    Funcion-&gt;&gt;Funcion: Detecta división por cero
+    Funcion--&gt;&gt;Codigo: Lanza (throw) new DivisionByZeroError()
+    Note over Codigo,BloqueCatch: El flujo del bloque 'try' se detiene. PHP busca un 'catch' compatible.
+
+    Codigo-&gt;&gt;BloqueCatch: Pasa la excepción al bloque catch
+    BloqueCatch-&gt;&gt;BloqueCatch: Ejecuta el código de manejo de error (ej: mostrar un mensaje)
+
+    alt Bloque 'finally' existe
+        BloqueCatch-&gt;&gt;BloqueFinally: Ejecuta el bloque 'finally'
+        BloqueFinally-&gt;&gt;Codigo: Continúa la ejecución normal después del try/catch/finally
+    else Bloque 'finally' no existe
+        BloqueCatch-&gt;&gt;Codigo: Continúa la ejecución normal después del try/catch
+    end
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Definimos una excepción personalizada para nuestra aplicación</span>
+<span class="k">class</span> <span class="nc">ErrorDeRed</span> <span class="k">extends</span> <span class="nx">Exception</span> <span class="p">{}</span>
+
+<span class="k">function</span> <span class="nf">descargarDatos</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Simulamos un error de conexión</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="s1">'sitio-caido.com'</span><span class="p">)</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Lanzamos una excepción en lugar de morir</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">ErrorDeRed</span><span class="p">(</span><span class="s2">"No se pudo conectar a la URL: </span><span class="si">$url</span><span class="s2">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="s2">"Contenido de la URL </span><span class="si">$url</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Código "peligroso" que podría fallar</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Intentando descargar de un sitio bueno...&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="nv">$datos1</span> <span class="o">=</span> <span class="nx">descargarDatos</span><span class="p">(</span><span class="s1">'https://google.com'</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Éxito: "</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$datos1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"...&lt;/p&gt;"</span><span class="p">;</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Intentando descargar de un sitio malo...&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="nv">$datos2</span> <span class="o">=</span> <span class="nx">descargarDatos</span><span class="p">(</span><span class="s1">'https://sitio-caido.com'</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Éxito: </span><span class="si">$datos2</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Esta línea nunca se ejecutará</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ErrorDeRed</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Este bloque solo se ejecuta si se lanza una ErrorDeRed</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p style='color:red;'&gt;&lt;strong&gt;Error de Aplicación Capturado:&lt;/strong&gt; "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Este bloque captura cualquier otra excepción genérica</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p style='color:orange;'&gt;&lt;strong&gt;Error Genérico Capturado:&lt;/strong&gt; "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="c1">// Este bloque se ejecuta SIEMPRE, haya habido excepción o no.</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;--- Operación de descarga finalizada ---&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>¿Cuál es la diferencia entre capturar <code>MiExcepcion</code> y capturar <code>Exception</code>? ¿En qué orden deberías poner los bloques <code>catch</code>?</li>
+<li>¿Para qué es útil el bloque <code>finally</code>? Piensa en un escenario de manejo de ficheros o conexiones a base de datos.</li>
+<li>Investiga la interfaz <code>Throwable</code> de PHP. ¿Qué relación tiene con <code>Exception</code> y <code>Error</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real-el-patron-modelo-vista-controlador-mvc">Aplicación en el Mundo Real: El Patrón Modelo-Vista-Controlador (MVC)</h2>
+<p>La Programación Orientada a Objetos no es solo una forma de escribir código, es la base para organizar arquitecturas de software complejas. El patrón de diseño más extendido en el desarrollo web, el <strong>MVC</strong>, depende por completo de la POO.</p>
+<ul>
+<li><strong>Modelo (Model):</strong> Un conjunto de clases que representan los datos de tu aplicación y la lógica de negocio. Tu clase <code>Usuario</code>, <code>Producto</code> o <code>Pedido</code> son parte del Modelo. Se encargan de hablar con la base de datos.</li>
+<li><strong>Vista (View):</strong> La parte de la presentación. Son las plantillas (HTML, etc.) que muestran los datos al usuario. En un sistema puro, la Vista es "tonta", solo sabe mostrar los datos que le dan.</li>
+<li><strong>Controlador (Controller):</strong> Es el director de orquesta. Recibe las peticiones del usuario (ej: "quiero ver mi perfil"), le pide los datos al Modelo (<code>$usuario = Usuario::find(1);</code>), y luego le pasa esos datos a la Vista para que los renderice y los devuelva al navegador.</li>
+</ul>
+<p>Frameworks como <strong>Laravel</strong>, <strong>Symfony</strong> y <strong>CakePHP</strong> son, en esencia, implementaciones robustas del patrón MVC que nos dan una estructura de clases y objetos para construir aplicaciones web a gran escala. Usar POO de forma efectiva es el primer paso para poder utilizar estas herramientas profesionales.</p>
+<h2 id="php-avanzado">PHP AVANZADO</h2>
+<ul>
+<li><strong><a href="05-POO-avanzado/">Conceptos Adicionales y Casos de Uso</a></strong>.</li>
+<li><strong><a href="05-POO-arquitectura/">Arquitectura y Temas Avanzados</a></strong>.</li>
+</ul>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>La POO es un universo profundo. Para seguir explorando, aquí tienes recursos de alta calidad:</p>
+<ol>
+<li><strong>Documentación Oficial de PHP sobre POO</strong>: La fuente de la verdad. Completa, precisa y con ejemplos para cada concepto. <a href="https://www.php.net/manual/es/language.oop5.php">Manual de Clases y Objetos en PHP.net</a>.</li>
+<li><strong>PHP The Right Way - OOP</strong>: Un recurso comunitario excelente que resume las mejores prácticas de la POO en PHP moderno. <a href="https://phptherightway.com/#object_oriented_programming">PHP The Right Way - Object-Oriented Programming</a>.</li>
+<li><strong>Design Patterns for Humans (PHP)</strong>: Una explicación súper clara y con ejemplos de los patrones de diseño más importantes (como Factory, Singleton, Strategy), que son el siguiente nivel de la POO. <a href="https://github.com/kamranahmedse/design-patterns-for-humans">Repositorio en GitHub</a>.</li>
+</ol>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<h1 id="ejercicios-practicos-de-programacion-orientada-a-objetos">Ejercicios Prácticos de Programación Orientada a Objetos</h1>
+<p><strong>Contexto del Proyecto:</strong> ¡Felicidades, equipo! Tras dominar los fundamentos de la POO, habéis sido asignados al nuevo proyecto estratégico de DevCore: <strong>"NexusProjectManager"</strong>. Se trata de una herramienta interna para la gestión de proyectos, tareas y equipos. Vuestra misión es construir los componentes modulares y reutilizables que formarán el corazón de esta aplicación, aplicando las mejores prácticas de la POO que acabáis de estudiar. ¡Es hora de pasar de los planos a la construcción!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Plano del Proyecto: Diseñando la Clase <code>Project</code> | Nivel: Fácil</p>
+<h5 id="objetivo">Objetivo</h5>
+<p>Crear la estructura de datos fundamental para cualquier proyecto en la aplicación, utilizando la sintaxis moderna de PHP 8 para definir una clase limpia y concisa.</p>
+<h5 id="tarea-a-realizar">Tarea a realizar</h5>
+<ol>
+<li>Crea un fichero llamado <code>Project.php</code>.</li>
+<li>Dentro, define una clase <code>Project</code>.</li>
+<li>Utiliza la <strong>promoción de propiedades del constructor</strong> de PHP 8 para definir las siguientes propiedades públicas en el constructor:<ul>
+<li><code>id</code> (int)</li>
+<li><code>name</code> (string)</li>
+<li><code>status</code> (string, con un valor por defecto de "Pending")</li>
+</ul>
+</li>
+<li>Crea un segundo fichero, <code>index.php</code>, que incluya <code>Project.php</code>.</li>
+<li>En <code>index.php</code>, instancia dos objetos diferentes de la clase <code>Project</code>:<ul>
+<li>Uno para el proyecto "Nexus API Refactor" con ID 1.</li>
+<li>Otro para el proyecto "Onboarding Overhaul" con ID 2 y estado "In Progress".</li>
+</ul>
+</li>
+<li>Imprime el nombre y el estado de cada proyecto para verificar que los objetos se han creado correctamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h5>
+<p>Las clases que representan entidades de negocio (como un proyecto, un usuario o una factura) son la base de casi cualquier aplicación. Definirlas correctamente es el primer paso para un sistema bien estructurado.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) El Miembro del Equipo: La Clase <code>TeamMember</code> | Nivel: Fácil</p>
+<h5 id="objetivo_1">Objetivo</h5>
+<p>Definir una clase que no solo almacene datos, sino que también contenga comportamiento (métodos) para operar con esos datos.</p>
+<h5 id="tarea-a-realizar_1">Tarea a realizar</h5>
+<ol>
+<li>Crea un fichero <code>TeamMember.php</code>.</li>
+<li>Define una clase <code>TeamMember</code> con las siguientes propiedades públicas: <code>name</code>, <code>email</code>, y <code>role</code>. Usa la sintaxis clásica para definirlas y un constructor para inicializarlas.</li>
+<li>Añade un método público llamado <code>getProfile()</code> que no reciba argumentos y devuelva un <code>string</code> con el formato: <code>"[ROL]: Nombre (email)"</code>. Por ejemplo: <code>"[Developer]: Ana García (ana.g@nexus.com)"</code>.</li>
+<li>En <code>index.php</code>, crea una instancia de <code>TeamMember</code> y luego imprime el resultado de llamar a su método <code>getProfile()</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1">Aplicación en el Mundo Real</h5>
+<p>Los objetos no son solo contenedores de datos; su verdadero poder reside en los métodos que encapsulan la lógica de negocio, como formatear información para mostrarla o realizar cálculos.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Gestor de Tareas: La Clase <code>Task</code> y su Ciclo de Vida | Nivel: Fácil</p>
+<h5 id="objetivo_2">Objetivo</h5>
+<p>Modelar un objeto cuyo estado interno puede ser modificado a través de sus métodos, representando un ciclo de vida simple.</p>
+<h5 id="tarea-a-realizar_2">Tarea a realizar</h5>
+<ol>
+<li>Crea un fichero <code>Task.php</code>.</li>
+<li>Define una clase <code>Task</code> utilizando la promoción de propiedades del constructor para estas propiedades:<ul>
+<li><code>description</code> (string, pública)</li>
+<li><code>isCompleted</code> (bool, privada, con valor por defecto <code>false</code>)</li>
+</ul>
+</li>
+<li>Añade un método público <code>completeTask()</code> que no tome argumentos, no devuelva nada (<code>void</code>), y cambie el valor de la propiedad <code>isCompleted</code> a <code>true</code>.</li>
+<li>Añade un método público <code>getStatus()</code> que devuelva el string <code>"Completed"</code> si la tarea está completa, o <code>"Pending"</code> en caso contrario.</li>
+<li>En <code>index.php</code>, crea una tarea, muestra su estado inicial, márcala como completa y muestra su estado final.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2">Aplicación en el Mundo Real</h5>
+<p>Muchos objetos en una aplicación representan entidades con un estado que cambia con el tiempo (un pedido, una suscripción, una tarea). Los métodos son la forma controlada de gestionar estas transiciones de estado.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) La Caja Fuerte: Encapsulando el Presupuesto del Proyecto | Nivel: Medio</p>
+<h5 id="objetivo_3">Objetivo</h5>
+<p>Practicar el principio de encapsulación utilizando propiedades <code>private</code> y métodos públicos (getters/setters) para proteger el estado de un objeto y validar los datos.</p>
+<h5 id="tarea-a-realizar_3">Tarea a realizar</h5>
+<ol>
+<li>Crea una clase <code>ProjectBudget</code>.</li>
+<li>Define dos propiedades <strong>privadas</strong>: <code>$totalBudget</code> (float) y <code>$expenses</code> (float, inicializada a 0.0).</li>
+<li>Crea un constructor que acepte el presupuesto total (<code>$totalBudget</code>) e inicialice la propiedad.</li>
+<li>Crea un método público <code>addExpense(float $amount): void</code>. Este método solo debe añadir el gasto a <code>$expenses</code> si <code>$amount</code> es un número positivo.</li>
+<li>Crea un método público <code>getRemainingBudget(): float</code> que devuelva la diferencia entre el presupuesto total y los gastos.</li>
+<li><strong>No crees un setter para <code>$totalBudget</code> ni para <code>$expenses</code></strong>. El presupuesto solo se puede fijar al crear el objeto, y los gastos solo se pueden añadir, no modificar directamente.</li>
+<li>En <code>index.php</code>, crea un presupuesto de 1000€, añade dos gastos (uno de 250 y otro de 100), intenta añadir un gasto negativo y finalmente imprime el presupuesto restante.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3">Aplicación en el Mundo Real</h5>
+<p>La encapsulación es clave para la robustez del software. Evita que partes del código modifiquen datos de forma inesperada, lo que podría llevar a errores graves. Forzar la interacción a través de métodos permite mantener el control y la integridad de los datos del objeto.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) La Tarjeta de Visita: Resumen Rápido con <code>__toString</code> | Nivel: Fácil</p>
+<h5 id="objetivo_4">Objetivo</h5>
+<p>Implementar el método mágico <code>__toString()</code> para proporcionar una representación en cadena de un objeto, facilitando su depuración e impresión.</p>
+<h5 id="tarea-a-realizar_4">Tarea a realizar</h5>
+<ol>
+<li>Toma la clase <code>Project</code> del primer ejercicio.</li>
+<li>Añádele un método mágico <code>__toString()</code>:
+    <div class="highlight"><pre><span></span><code><span class="x">public function __toString(): string</span>
+</code></pre></div></li>
+<li>Este método debe devolver una cadena con el formato: <code>Project #ID: NAME (Status: STATUS)</code>.</li>
+<li>En <code>index.php</code>, crea una instancia de <code>Project</code> y luego imprímela directamente con <code>echo</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4">Aplicación en el Mundo Real</h5>
+<p>El método <code>__toString()</code> es extremadamente útil para logs, depuración y cualquier contexto donde necesites una "vista rápida" de un objeto sin tener que llamar a un método específico de formateo. Frameworks como Laravel lo usan extensivamente.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) Caza de Errores: El Perfil de Usuario Defectuoso | Nivel: Medio</p>
+<h5 id="objetivo_5">Objetivo</h5>
+<p>Depurar un fragmento de código PHP con errores comunes de POO, como problemas de visibilidad y lógica incorrecta dentro de un método.</p>
+<h5 id="setup-inicial">Setup Inicial</h5>
+<p>A continuación se muestra una clase <code>UserProfile</code> con errores y un script que intenta usarla. El objetivo es que el script se ejecute sin errores fatales y que la edad se calcule correctamente.</p>
+<p><strong>Código con errores:</strong>
+<div class="highlight"><pre><span></span><code><span class="x">// Fichero: UserProfile.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">UserProfile</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">DateTime</span> <span class="nv">$birthDate</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$birthDateString</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">birthDate</span> <span class="o">=</span> <span class="nv">$birthDateString</span><span class="p">;</span> <span class="c1">// Error 1: Tipo incorrecto</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSummary</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="nv">$age</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">calculateAge</span><span class="p">();</span> <span class="c1">// Error 2: Llamada incorrecta</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="si">}</span><span class="s2"> (Edad: </span><span class="si">{</span><span class="nv">$age</span><span class="si">}</span><span class="s2">)"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">calculateAge</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="nv">$today</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+        <span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">birthDate</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$today</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Fichero: index.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'UserProfile.php'</span><span class="p">;</span>
+
+<span class="nv">$profile</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserProfile</span><span class="p">(</span><span class="s1">'Carlos'</span><span class="p">,</span> <span class="s1">'1990-10-20'</span><span class="p">);</span>
+<span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">calculateAge</span><span class="p">();</span> <span class="c1">// Error 3: Visibilidad</span>
+<span class="k">echo</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getSummary</span><span class="p">();</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_5">Tarea a realizar</h5>
+<ol>
+<li>Identifica los 3 errores descritos en los comentarios del código.</li>
+<li><strong>Error 1:</strong> El constructor está asignando un <code>string</code> a una propiedad <code>DateTime</code>. Debes crear un objeto <code>DateTime</code> a partir del string.</li>
+<li><strong>Error 2:</strong> <code>self::</code> se usa para miembros estáticos. <code>calculateAge</code> es un método de instancia. Debes usar <code>$this-&gt;</code>.</li>
+<li><strong>Error 3:</strong> El script <code>index.php</code> intenta llamar a un método <code>private</code> desde fuera de la clase. Elimina esa línea.</li>
+<li>Corrige el código para que <code>index.php</code> muestre el resumen del perfil correctamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5">Aplicación en el Mundo Real</h5>
+<p>La depuración es una habilidad diaria para cualquier programador. Aprender a identificar errores de visibilidad, de tipo o de contexto (<code>$this</code> vs <code>self</code>) es fundamental para ser eficiente.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">7) La Jerarquía de la Empresa: <code>Manager</code> y <code>Developer</code> | Nivel: Medio</p>
+<h5 id="objetivo_6">Objetivo</h5>
+<p>Aplicar el concepto de herencia para crear clases especializadas a partir de una clase base común, reutilizando código y sobrescribiendo comportamiento.</p>
+<h5 id="tarea-a-realizar_6">Tarea a realizar</h5>
+<ol>
+<li>Crea una clase base <code>Employee</code> con un constructor que acepte <code>name</code> y <code>role</code> (usando promoción de propiedades <code>protected</code>).</li>
+<li>Añade un método <code>getRoleDescription()</code> a <code>Employee</code> que devuelva "This is a general employee.".</li>
+<li>Crea una clase <code>Manager</code> que <strong>extienda</strong> de <code>Employee</code>.</li>
+<li>El constructor de <code>Manager</code> debe aceptar <code>name</code> y <code>teamSize</code> (int). Debe llamar al constructor del padre (<code>parent::__construct</code>) pasándole el nombre y el rol fijo "Manager".</li>
+<li><strong>Sobrescribe</strong> el método <code>getRoleDescription()</code> en <code>Manager</code> para que devuelva "Manages a team of [teamSize] people.".</li>
+<li>Crea una clase <code>Developer</code> que extienda de <code>Employee</code>. Su constructor solo debe aceptar <code>name</code> y llamar al constructor del padre con el rol fijo "Developer". No necesita sobrescribir ningún método.</li>
+<li>
+<p>En <code>index.php</code>, crea una instancia de <code>Manager</code> y otra de <code>Developer</code> y muestra la descripción de su rol.</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Recuerda que si una clase hija tiene su propio <code>__construct</code>, es tu responsabilidad llamar a <code>parent::__construct()</code> para asegurarte de que la clase padre se inicializa correctamente.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6">Aplicación en el Mundo Real</h5>
+<p>La herencia es fundamental para modelar relaciones "es un/a" (un Mánager <em>es un</em> Empleado). Permite evitar la duplicación de código y crear jerarquías lógicas que son más fáciles de entender y mantener.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">8) El Contrato: Objetos <code>Reportable</code> | Nivel: Medio</p>
+<h5 id="objetivo_7">Objetivo</h5>
+<p>Utilizar interfaces para definir un "contrato" de comportamiento que clases no relacionadas pueden compartir, permitiendo el polimorfismo.</p>
+<h5 id="tarea-a-realizar_7">Tarea a realizar</h5>
+<ol>
+<li>Crea una <code>interface</code> llamada <code>Reportable</code> en un fichero <code>Reportable.php</code>.</li>
+<li>Esta interfaz debe definir un único método público: <code>generateReport(): array</code>. Este método debe devolver un array asociativo.</li>
+<li>Modifica tus clases <code>Project</code> (del ejercicio 1) y <code>TeamMember</code> (del ejercicio 2) para que ambas <strong>implementen</strong> la interfaz <code>Reportable</code>.</li>
+<li>Implementa el método <code>generateReport()</code> en cada clase:<ul>
+<li>En <code>Project</code>, debe devolver <code>['type' =&gt; 'Project', 'id' =&gt; $this-&gt;id, 'name' =&gt; $this-&gt;name, 'status' =&gt; $this-&gt;status]</code>.</li>
+<li>En <code>TeamMember</code>, debe devolver <code>['type' =&gt; 'Member', 'name' =&gt; $this-&gt;name, 'role' =&gt; $this-&gt;role]</code>.</li>
+</ul>
+</li>
+<li>En <code>index.php</code>, crea un array que contenga un objeto <code>Project</code> y un objeto <code>TeamMember</code>.</li>
+<li>
+<p>Recorre el array con un <code>foreach</code> y, para cada elemento, llama a su método <code>generateReport()</code> e imprime el resultado (puedes usar <code>print_r</code>).</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Una interfaz es un contrato puro. Solo dice <em>qué</em> métodos debe tener una clase, no <em>cómo</em> deben estar implementados. Esto garantiza que cualquier objeto <code>Reportable</code> tendrá, sin duda, un método <code>generateReport()</code>.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7">Aplicación en el Mundo Real</h5>
+<p>Las interfaces son la base del código desacoplado. Permiten escribir funciones que operan sobre un "tipo" de comportamiento (cualquier cosa que sea <code>Reportable</code>, <code>Cacheable</code>, <code>Serializable</code>) en lugar de sobre una clase concreta. Esto hace que el código sea mucho más flexible y reutilizable.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">9) El Especialista: La Clase Abstracta <code>Contractor</code> | Nivel: Medio</p>
+<h5 id="objetivo_8">Objetivo</h5>
+<p>Usar una clase abstracta para definir una plantilla base que proporciona funcionalidad común y a la vez obliga a las clases hijas a implementar ciertos métodos.</p>
+<h5 id="tarea-a-realizar_8">Tarea a realizar</h5>
+<ol>
+<li>Crea una <code>abstract class Contractor</code> en <code>Contractor.php</code>.</li>
+<li>Esta clase debe tener una propiedad <code>protected $name</code> y un constructor que la inicialice.</li>
+<li>Añade un método <strong>concreto</strong> (implementado) a <code>Contractor</code> llamado <code>sendInvoice(float $hours)</code> que devuelva un string como: <code>"Invoice for [horas] hours sent by [nombre]."</code>.</li>
+<li>Añade un método <strong>abstracto</strong> a <code>Contractor</code> llamado <code>getWorkType(): string</code>. Un método abstracto no tiene cuerpo, solo firma.</li>
+<li>Crea una clase concreta <code>ExternalDesigner</code> que <strong>extienda</strong> de <code>Contractor</code>.</li>
+<li>Implementa el método <code>getWorkType()</code> en <code>ExternalDesigner</code> para que devuelva <code>"Designs visual assets"</code>.</li>
+<li>
+<p>En <code>index.php</code>, intenta instanciar <code>Contractor</code> directamente (debería dar un error). Luego, comenta esa línea, instancia <code>ExternalDesigner</code> y llama a sus métodos <code>sendInvoice()</code> y <code>getWorkType()</code>.</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Una clase abstracta es como un híbrido: puede tener código que se hereda (métodos concretos) y "huecos" que las clases hijas están obligadas a rellenar (métodos abstractos).</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8">Aplicación en el Mundo Real</h5>
+<p>Las clases abstractas son perfectas para definir la base de un conjunto de clases relacionadas que comparten mucha lógica, pero difieren en detalles de implementación específicos. Por ejemplo, una clase <code>AbstractPaymentGateway</code> con métodos concretos para manejar la moneda y métodos abstractos como <code>processPayment()</code>.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">10) La Navaja Suiza: El Trait <code>Loggable</code> | Nivel: Alto</p>
+<h5 id="objetivo_9">Objetivo</h5>
+<p>Implementar un Trait para añadir una funcionalidad común (logging) a clases que no comparten una línea de herencia directa, promoviendo la reutilización de código horizontal.</p>
+<h5 id="tarea-a-realizar_9">Tarea a realizar</h5>
+<ol>
+<li>Crea un <code>trait</code> llamado <code>Loggable</code> en <code>Loggable.php</code>.</li>
+<li>El trait debe contener un método <code>log(string $message): void</code>. La implementación de este método es abierta, pero para este ejercicio, puede simplemente hacer un <code>echo</code> de un mensaje formateado, como: <code>"[LOG - Y-m-d H:i:s]: mensaje"</code>.</li>
+<li>Elige dos o más clases de las que has creado anteriormente (ej: <code>Project</code>, <code>Task</code>, <code>ProjectBudget</code>).</li>
+<li>Importa y <strong>usa</strong> (<code>use</code>) el trait <code>Loggable</code> en estas clases.</li>
+<li>Modifica los métodos existentes de esas clases para que llamen a <code>$this-&gt;log()</code> en puntos clave. Por ejemplo:<ul>
+<li>En <code>Project</code>, al cambiar de estado.</li>
+<li>En <code>Task</code>, al completarla (<code>completeTask</code>).</li>
+<li>En <code>ProjectBudget</code>, al añadir un gasto (<code>addExpense</code>).</li>
+</ul>
+</li>
+<li>Escribe un script en <code>index.php</code> que ejecute estas acciones y demuestre que los logs se están generando desde las diferentes clases.</li>
+</ol>
+<h5 id="revision-por-pares-peer-review">Revisión por Pares (Peer Review)</h5>
+<p>Intercambia tu solución con un compañero. Revisa su código buscando lo siguiente:
+1.  ¿El trait <code>Loggable</code> está bien definido y es autocontenido?
+2.  ¿Las clases usan el trait correctamente?
+3.  ¿Las llamadas a <code>log()</code> se hacen en lugares lógicos que aportan valor?
+4.  <strong>Reto:</strong> ¿Cómo modificarías el trait para que, en lugar de hacer <code>echo</code>, escribiera los logs a un fichero <code>nexus_app.log</code>? Discute la implementación con tu compañero.</p>
+<h5 id="aplicacion-en-el-mundo-real_9">Aplicación en el Mundo Real</h5>
+<p>Los Traits son la solución de PHP para la reutilización de código cuando la herencia no es una opción. Son extremadamente populares en frameworks como Laravel para añadir "capacidades" a las clases, como <code>SoftDeletes</code>, <code>Notifiable</code>, etc.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">11) Freno de Emergencia: Gestionando Errores con Excepciones | Nivel: Alto</p>
+<h5 id="objetivo_10">Objetivo</h5>
+<p>Crear y lanzar excepciones personalizadas para gestionar los errores de la aplicación de una manera controlada y predecible, separando el flujo normal del código del manejo de errores.</p>
+<h5 id="tarea-a-realizar_10">Tarea a realizar</h5>
+<ol>
+<li>Crea dos clases de excepciones personalizadas que extiendan de <code>Exception</code>: <code>BudgetExceededException</code> y <code>InvalidExpenseException</code>.</li>
+<li>Modifica la clase <code>ProjectBudget</code> del ejercicio de consolidación.</li>
+<li>En el método <code>addExpense(float $amount)</code>:<ul>
+<li>Si <code>$amount</code> es menor o igual a cero, <strong>lanza</strong> (<code>throw</code>) una <code>new InvalidExpenseException("Expense amount must be positive.")</code>.</li>
+<li>Si añadir <code>$amount</code> hace que los gastos superen el presupuesto total, <strong>lanza</strong> una <code>new BudgetExceededException("Cannot add expense, budget will be exceeded.")</code>.</li>
+<li>Si todo va bien, añade el gasto.</li>
+</ul>
+</li>
+<li>En <code>index.php</code>, envuelve el código que interactúa con el <code>ProjectBudget</code> en un bloque <code>try...catch</code>.</li>
+<li>Añade bloques <code>catch</code> específicos para <code>InvalidExpenseException</code> y <code>BudgetExceededException</code>. Cada bloque debe imprimir un mensaje de error amigable para el usuario.</li>
+<li>Añade un bloque <code>catch</code> genérico para <code>Exception</code> al final, por si ocurre otro error.</li>
+<li>Prueba tu código intentando añadir un gasto válido, uno negativo y uno que exceda el presupuesto.</li>
+</ol>
+<h5 id="revision-por-pares-peer-review_1">Revisión por Pares (Peer Review)</h5>
+<p>Intercambia tu solución con un compañero.
+1.  ¿Las excepciones se lanzan en las condiciones correctas?
+2.  ¿Los bloques <code>catch</code> están en el orden correcto (del más específico al más genérico)?
+3.  ¿Los mensajes de error capturados son informativos?
+4.  <strong>Reto:</strong> ¿Qué pasaría si <code>BudgetExceededException</code> heredara de <code>InvalidExpenseException</code>? ¿Cómo cambiaría el orden de los <code>catch</code>?</p>
+<h5 id="aplicacion-en-el-mundo-real_10">Aplicación en el Mundo Real</h5>
+<p>El manejo de excepciones es fundamental para crear aplicaciones robustas. Permite gestionar errores sin detener la ejecución del script, registrar fallos de forma detallada y presentar mensajes de error limpios al usuario, en lugar de una página en blanco o un error fatal de PHP.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">12) El Dilema del Arquitecto: Investigando Patrones de Diseño | Nivel: Alto</p>
+<h5 id="objetivo_11">Objetivo</h5>
+<p>Investigar, comprender y explicar dos patrones de diseño de software fundamentales (Singleton y Factory) y proponer una implementación básica en el contexto del proyecto.</p>
+<h5 id="tarea-a-realizar_11">Tarea a realizar</h5>
+<p>En el equipo de desarrollo de "NexusProjectManager" han surgido dos necesidades recurrentes:
+A.  Asegurarse de que solo existe <strong>una única conexión a la base de datos</strong> en toda la aplicación para ahorrar recursos.
+B.  Crear un método centralizado para construir diferentes <strong>tipos de documentos</strong> (<code>PDFReport</code>, <code>CSVExport</code>, etc.) sin que el código principal sepa los detalles de cómo se crea cada uno.</p>
+<ol>
+<li><strong>Investigación:</strong> Investiga los patrones de diseño <strong>Singleton</strong> (para el problema A) y <strong>Factory Method</strong> (para el problema B). Utiliza los enlaces del material didáctico o fuentes fiables.</li>
+<li><strong>Informe Escrito:</strong> Escribe un breve informe en un fichero markdown (<code>PATRONES.md</code>) que explique:<ul>
+<li>Para Singleton: ¿Qué problema resuelve? ¿Cuáles son sus componentes clave (constructor privado, método estático <code>getInstance</code>)? ¿Cuál es una crítica común a este patrón?</li>
+<li>Para Factory Method: ¿Qué problema resuelve? ¿Cómo promueve el código desacoplado?</li>
+</ul>
+</li>
+<li><strong>Implementación:</strong> Crea un fichero <code>patterns.php</code> con un ejemplo de código simple para cada patrón:<ul>
+<li>Una clase <code>DatabaseConnection</code> que implemente el patrón Singleton.</li>
+<li>Una <code>DocumentFactory</code> con un método <code>createDocument(string $type)</code> que devuelva objetos <code>PDFReport</code> o <code>CSVExport</code> (puedes crear estas clases vacías, solo para demostrar la estructura).</li>
+</ul>
+</li>
+<li><strong>Presentación:</strong> Prepara una mini-exposición de 5 minutos para explicar a tus compañeros el patrón <strong>Factory Method</strong>. Usa tu código como ejemplo.</li>
+</ol>
+<h5 id="revision-por-pares-peer-review_2">Revisión por Pares (Peer Review)</h5>
+<p>Asiste a las presentaciones de tus compañeros y ofrece feedback constructivo:
+1.  ¿La explicación del problema que resuelve el patrón fue clara?
+2.  ¿El ejemplo de código era fácil de entender y demostraba el patrón correctamente?
+3.  ¿Se explicaron bien los beneficios de usar el patrón (ej: desacoplamiento)?</p>
+<h5 id="aplicacion-en-el-mundo-real_11">Aplicación en el Mundo Real</h5>
+<p>Los patrones de diseño son soluciones probadas y reutilizables a problemas comunes en el diseño de software. Conocerlos es lo que diferencia a un programador junior de un arquitecto de software. Frameworks como Symfony y Laravel están repletos de implementaciones de estos patrones.</p>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

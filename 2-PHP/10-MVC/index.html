@@ -1,0 +1,1816 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/10-MVC/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>10 MVC - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#php-modelo-vista-controlador-mvc">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              10 MVC
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#patrones-de-diseno">
+<span class="md-ellipsis">
+      Patrones de Diseño
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitecturas-de-software">
+<span class="md-ellipsis">
+      Arquitecturas de Software
+    </span>
+</a>
+<nav aria-label="Arquitecturas de Software" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-practico-netflix">
+<span class="md-ellipsis">
+      Ejemplo Práctico: Netflix
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitectura-de-una-aplicacion-web">
+<span class="md-ellipsis">
+      Arquitectura de una Aplicación Web
+    </span>
+</a>
+<nav aria-label="Arquitectura de una Aplicación Web" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#capas-fisicas-tiers-vs-capas-logicas-layers">
+<span class="md-ellipsis">
+      Capas Físicas (Tiers) vs. Capas Lógicas (Layers)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modelo-mvc">
+<span class="md-ellipsis">
+      Modelo MVC
+    </span>
+</a>
+<nav aria-label="Modelo MVC" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-componentes">
+<span class="md-ellipsis">
+      4.1 - Componentes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-ventajas">
+<span class="md-ellipsis">
+      4.2 - Ventajas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-ejemplo-evolutivo">
+<span class="md-ellipsis">
+      4.3 - Ejemplo evolutivo
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#de-monolito-a-mvc-una-evolucion-paso-a-paso">
+<span class="md-ellipsis">
+      De Monolito a MVC: Una Evolución Paso a Paso
+    </span>
+</a>
+<nav aria-label="De Monolito a MVC: Una Evolución Paso a Paso" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-0-el-caos-organizado-el-codigo-monolitico">
+<span class="md-ellipsis">
+      Paso 0: El Caos Organizado - El Código Monolítico
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-1-la-primera-division-controlador-vista">
+<span class="md-ellipsis">
+      Paso 1: La Primera División - Controlador + Vista
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-2-la-santisima-trinidad-modelo-vista-y-controlador">
+<span class="md-ellipsis">
+      Paso 2: La Santísima Trinidad - Modelo, Vista y Controlador
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-3-el-plan-de-contingencia-anadiendo-una-capa-de-abstraccion-de-datos">
+<span class="md-ellipsis">
+      Paso 3: El Plan de Contingencia - Añadiendo una Capa de Abstracción de Datos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-4-montando-la-fabrica-clases-y-reutilizacion">
+<span class="md-ellipsis">
+      Paso 4: Montando la Fábrica - Clases y Reutilización
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-5-el-santo-grial-el-modelo-generico">
+<span class="md-ellipsis">
+      Paso 5: El Santo Grial - El Modelo Genérico
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<p>Vamos a desgranar uno de los conceptos más cruciales que te encontrarás en tu carrera: el patrón <strong>Modelo-Vista-Controlador (MVC)</strong> en PHP. Olvida todo lo que crees que sabes sobre organizar código; estamos a punto de entrar en una nueva dimensión de orden y eficiencia, como pasar de jugar al Tetris a diseñar los planos de un rascacielos.</p>
+<p>Coge tu café, abre tu editor de código y prepárate, porque lo que vamos a ver hoy es el pan de cada día en el 99% de las aplicaciones web profesionales. ¡Empezamos!</p>
+<!-- Tema: PHP - MVC -->
+<h1 id="php-modelo-vista-controlador-mvc">PHP - Modelo-Vista-Controlador (MVC)</h1>
+<p>Imagina que quieres montar el restaurante más exitoso de la ciudad. No pondrías al chef a tomar las comandas, ni al camarero a fregar los platos, ¿verdad? Sería un caos. Cada persona tiene su especialidad y su lugar. El chef (el <strong>Modelo</strong>) es el maestro de los datos y la lógica, sabe cómo preparar cada plato a la perfección. El camarero (el <strong>Controlador</strong>) es el intermediario, toma las peticiones del cliente y se comunica con la cocina. Y finalmente, la presentación del plato y la decoración del local (la <strong>Vista</strong>) es lo que el cliente ve y con lo que interactúa.</p>
+<p>En el desarrollo web, durante mucho tiempo, programábamos como si el chef, el camarero y el decorador fueran la misma persona. El resultado era lo que llamamos "código espagueti": un lío de HTML, lógica de negocio y consultas a la base de datos, todo en el mismo archivo. Cambiar el color de un botón podía, por arte de magia negra, romper la forma en que se calculaban los precios.</p>
+<p>El patrón <strong>MVC</strong> viene a poner orden en este caos. Es una filosofía, un <strong>patrón de arquitectura de software</strong> que nos obliga a separar nuestra aplicación en esas tres partes especializadas: Modelo, Vista y Controlador. Al igual que en nuestro restaurante, cada componente tiene una única responsabilidad, haciendo que nuestra aplicación sea más organizada, más fácil de mantener y, sobre todo, más escalable. ¡Es la receta secreta para no volverte loco en proyectos grandes!</p>
+<h2 id="patrones-de-diseno">Patrones de Diseño</h2>
+<p>Antes de meternos de lleno con el MVC, tenemos que entender de dónde viene. El MVC es un tipo de <strong>patrón de diseño</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Patrón de Diseño</p>
+<p>Un patrón de diseño es como una receta de cocina probada y perfeccionada por miles de chefs antes que tú. No es un trozo de código que copias y pegas, sino una <strong>solución general y reutilizable a un problema común</strong> en el diseño de software. Te dan un esquema, una estrategia probada para resolver problemas recurrentes, mejorando la calidad y flexibilidad de tu código.</p>
+</div>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/patrones.png"><img alt="Patrones de diseño" src="../images/patrones.png"/></a></div>
+<p>Los patrones son el destilado de años de experiencia de la comunidad de desarrolladores. Se clasifican en varias categorías, cada una enfocada en un tipo de problema:</p>
+<table>
+<thead>
+<tr>
+<th>Categoría</th>
+<th>Propósito</th>
+<th>Ejemplo del mundo real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Creacionales</strong></td>
+<td>Se centran en cómo se crean los objetos, dándote flexibilidad en el proceso.</td>
+<td>Como una máquina de vending: tú pides "refresco", y ella se encarga de crear y darte una Coca-Cola, sin que sepas los detalles internos.</td>
+</tr>
+<tr>
+<td><strong>Estructurales</strong></td>
+<td>Se ocupan de cómo se componen las clases y los objetos para formar estructuras más grandes y flexibles.</td>
+<td>Como un adaptador de enchufe universal: te permite conectar tu dispositivo (que tiene una estructura) a un enchufe de pared (con otra estructura), aunque sean incompatibles.</td>
+</tr>
+<tr>
+<td><strong>De Comportamiento</strong></td>
+<td>Se centran en la comunicación e interacción entre objetos, definiendo cómo colaboran.</td>
+<td>Como la suscripción a un canal de YouTube: cuando el YouTuber (sujeto) sube un vídeo nuevo, notifica automáticamente a todos sus suscriptores (observadores).</td>
+</tr>
+</tbody>
+</table>
+<p>El patrón MVC, en concreto, es un <strong>patrón arquitectónico</strong>, ya que define la estructura a gran escala de todo nuestro sistema.</p>
+<div class="admonition tip inline end">
+<p class="admonition-title">Refactoring Guru</p>
+<p>Uno de los mejores sitios para aprender sobre patrones de diseño, con explicaciones visuales y ejemplos de código en múltiples lenguajes, es <a href="https://refactoring.guru/es/design-patterns">Refactoring Guru</a>. ¡Guárdalo en tus favoritos!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Piensa en el sistema de "login con Google/Facebook" que ves en muchas webs. ¿Qué tipo de patrón crees que podría estar implicado para manejar diferentes proveedores de autenticación de una manera unificada?</li>
+<li>Cuando usas un framework como Laravel o Symfony, no creas los objetos principales directamente, sino que pides al framework que te los dé (por ejemplo, el objeto <code>Request</code>). ¿Qué categoría de patrón te recuerda esto?</li>
+<li>¿Por qué crees que se insiste tanto en "soluciones probadas"? ¿Qué riesgos corres al inventar tu propia "solución" desde cero para un problema común?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="arquitecturas-de-software">Arquitecturas de Software</h2>
+<p>Si los patrones de diseño son recetas, la <strong>arquitectura de software</strong> es el plano completo de la cocina de nuestro restaurante. Define la estructura fundamental de todo el sistema: cómo se dividen, organizan y comunican los grandes componentes.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Arquitectura de Software</p>
+<p>Es el conjunto de estructuras de alto nivel de un sistema de software. Define los componentes principales, sus relaciones y las reglas que gobiernan su diseño y evolución. Es el "big picture", la decisión más importante y difícil de cambiar en un proyecto.</p>
+</div>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/arquitecturas.png"><img alt="Arquitecturas software" src="../images/arquitecturas.png"/></a></div>
+<p>En el desarrollo backend, han evolucionado varias arquitecturas principales a lo largo del tiempo.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBBcnF1aXRlY3R1cmFzIEJhY2tlbmQKCiMjIE1vbm9sw610aWNhCi0gVG9kbyBlbiB1biBzb2xvIGJsb3F1ZQotICoqUHJvcyoqOgogIC0gU2ltcGxlIGRlIGVtcGV6YXIKICAtIEbDoWNpbCBkZSBkZXNwbGVnYXIgKGFsIHByaW5jaXBpbykKLSAqKkNvbnRyYXMqKjoKICAtIERpZsOtY2lsIGRlIGVzY2FsYXIKICAtICJCaWcgQmFsbCBvZiBNdWQiIChCb2xhIGRlIGxvZG8pCiAgLSBVbiBmYWxsbyBwdWVkZSB0dW1iYXIgdG9kbwoKIyMgQ2FwYXMgKE4tTGF5ZXIpCi0gU2VwYXJhY2nDs24gcG9yIGZ1bmNpw7NuIChQcmVzZW50YWNpw7NuLCBOZWdvY2lvLCBEYXRvcykKLSAqKlByb3MqKjoKICAtIE1vZHVsYXJpZGFkCiAgLSBNYW50ZW5pbWllbnRvIG3DoXMgc2VuY2lsbG8KLSAqKkNvbnRyYXMqKjoKICAtIFB1ZWRlIHNlciByw61naWRhCgojIyBNaWNyb3NlcnZpY2lvcwotIEV2b2x1Y2nDs24gZGUgbG9zIHNlcnZpY2lvcwotIENvbGVjY2nDs24gZGUgcGVxdWXDsW9zIHNlcnZpY2lvcyBhdXTDs25vbW9zCi0gKipQcm9zKio6CiAgLSBFc2NhbGFiaWxpZGFkIGdyYW51bGFyCiAgLSBFcXVpcG9zIGluZGVwZW5kaWVudGVzCiAgLSBGbGV4aWJpbGlkYWQgdGVjbm9sw7NnaWNhCi0gKipDb250cmFzKio6CiAgLSBDb21wbGVqaWRhZCBvcGVyYWNpb25hbAogIC0gR2VzdGnDs24gZGUgZGF0b3MgZGlzdHJpYnVpZGE=</markmap-data></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Arquitectura</th>
+<th style="text-align: left;">Analogía</th>
+<th style="text-align: left;">Ideal para...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Monolítica</strong></td>
+<td style="text-align: left;">Un robot de cocina "todo en uno". Bate, pica, amasa... todo en el mismo cacharro.</td>
+<td style="text-align: left;">Proyectos pequeños, prototipos, MVPs (Minimum Viable Products). Cuando la velocidad de desarrollo inicial es clave.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Capas</strong></td>
+<td style="text-align: left;">Una cadena de montaje. Cada estación tiene una tarea específica y pasa el producto a la siguiente.</td>
+<td style="text-align: left;">Aplicaciones empresariales estándar donde la estructura y la separación de responsabilidades son importantes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Microservicios</strong></td>
+<td style="text-align: left;">Un centro comercial. Cada tienda es independiente, tiene su propio stock y personal, pero todas colaboran para ofrecer una experiencia completa al cliente.</td>
+<td style="text-align: left;">Grandes plataformas como Netflix, Amazon, Spotify. Sistemas complejos que requieren alta escalabilidad y agilidad.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-practico-netflix">Ejemplo Práctico: Netflix</h3>
+<p>La arquitectura de Netflix es el ejemplo paradigmático de <strong>microservicios</strong>. No tienen una gigantesca aplicación "Netflix". Tienen cientos de pequeños servicios que se comunican entre sí. Hay un servicio para gestionar el catálogo de películas, otro para las cuentas de usuario, otro para las recomendaciones, otro para el streaming de vídeo, etc.</p>
+<div class="admonition info">
+<p class="admonition-title">Ventaja Competitiva</p>
+<p>Esta arquitectura les permite que un equipo en California pueda actualizar el algoritmo de recomendación sin afectar al equipo de Ámsterdam que está optimizando la compresión de vídeo. Si el servicio de recomendaciones falla, puedes seguir viendo tu serie, aunque no te aparezcan sugerencias nuevas.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Una tienda online pequeña (un e-commerce para una pastelería local). ¿Qué arquitectura elegirías y por qué?</li>
+<li>La aplicación de gestión académica de la universidad (matrículas, notas, horarios). ¿Qué arquitectura te parece más sensata?</li>
+<li>Si tuvieras que construir una aplicación como Twitter, ¿qué problemas te encontrarías a largo plazo si eligieras una arquitectura monolítica?</li>
+</ol>
+</div>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/netflix.gif"><img alt="La arquitectura de Netflix" src="../images/netflix.gif"/></a></div>
+<p><br/><hr/></p>
+<h2 id="arquitectura-de-una-aplicacion-web">Arquitectura de una Aplicación Web</h2>
+<p>Centrándonos en las aplicaciones web, es vital distinguir entre la organización física y la lógica de nuestra arquitectura. Suelen confundirse, pero son dos conceptos distintos.</p>
+<h3 id="capas-fisicas-tiers-vs-capas-logicas-layers">Capas Físicas (Tiers) vs. Capas Lógicas (Layers)</h3>
+<div class="admonition note">
+<p class="admonition-title">Definición: Tier vs Layer</p>
+<ul>
+<li><strong>Tier (Capa Física):</strong> Se refiere a una separación física, a hardware distinto. Un servidor web en una máquina y un servidor de base de datos en otra máquina constituyen una arquitectura de 2-tiers.</li>
+<li><strong>Layer (Capa Lógica):</strong> Se refiere a una separación conceptual dentro del código, a cómo organizas tus clases y módulos según su función (presentación, negocio, datos).</li>
+</ul>
+</div>
+<p>Puedes tener una arquitectura de 3 capas lógicas (presentación, negocio, datos) corriendo en una sola capa física (un único servidor). Esto es muy común en proyectos pequeños y medianos.</p>
+<p><strong>Arquitectura 3-Tier (3 Capas Físicas)</strong></p>
+<p>Es un estándar en la industria para aplicaciones robustas y seguras.</p>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/tier3.png"><img alt="Arquitectura de tres capas físicas" src="../images/tier3.png"/></a></div>
+<ol>
+<li><strong>Servidor Web (Capa de Presentación):</strong> Es la máquina que está de cara al público. Recibe las peticiones HTTP de los usuarios y ejecuta el código que genera el HTML.</li>
+<li><strong>Servidor de Aplicaciones (Capa de Lógica/Negocio):</strong> Máquina interna donde reside la "magia". Aquí corre PHP, se ejecuta la lógica de negocio compleja, se toman decisiones. No es directamente accesible desde Internet.</li>
+<li><strong>Servidor de Base de Datos (Capa de Datos):</strong> La máquina más protegida. Alberga la base de datos y solo acepta conexiones desde el servidor de aplicaciones.</li>
+</ol>
+<pre class="mermaid"><code>graph TD
+    subgraph "Internet (Público)"
+        U[Usuario]
+    end
+
+    subgraph "DMZ (Zona Desmilitarizada)"
+        FW1[Firewall]
+        SW[Servidor Web - Tier 1]
+    end
+
+    subgraph "Red Interna (Privada)"
+        FW2[Firewall]
+        SA[Servidor de Aplicaciones - Tier 2]
+        SBD[Servidor de Base de Datos - Tier 3]
+    end
+
+    U --&gt; FW1 --&gt; SW
+    SW --&gt; FW2 --&gt; SA
+    SA --&gt; SBD
+    SBD -- Datos --&gt; SA
+    SA -- Lógica procesada --&gt; SW
+    SW -- HTML/CSS/JS --&gt; U</code></pre>
+<div class="center"><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/tierlayer.png"><img alt="Arquitectura de tres capas lógicas" src="../images/tierlayer.png"/></a></div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Qué ventajas de seguridad evidentes ofrece una arquitectura de 3-tiers frente a tenerlo todo en un solo servidor?</li>
+<li>Si tu aplicación web se vuelve extremadamente popular y el servidor empieza a ir lento, ¿qué capa (tier) sería la primera que necesitarías "escalar" (añadir más máquinas) y por qué?</li>
+<li>¿Podrías tener una arquitectura de 3 capas lógicas (layers) en tu propio portátil usando XAMPP? Razona tu respuesta.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="modelo-mvc">Modelo MVC</h2>
+<p>Y llegamos al corazón del tema. El patrón Modelo-Vista-Controlador (MVC) es una implementación específica y muy popular de una <strong>arquitectura de 3 capas lógicas</strong>. Es la forma estandarizada de organizar el código en la mayoría de aplicaciones web modernas.</p>
+<h3 id="41-componentes">4.1 - Componentes</h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/mvc.jpg"><img _="&amp;" align="right" alt="MVC" src="../images/mvc.jpg" width="500"/></a></p>
+<p>El patrón divide la aplicación en tres componentes interconectados:</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Modelo</p>
+<p><strong>El Cerebro y los Músculos.</strong> Representa la información y las reglas de negocio de la aplicación. Es responsable de acceder y manipular los datos (normalmente de una base de datos). No tiene ni idea de cómo se van a mostrar esos datos. Su única preocupación es la integridad y la lógica de los datos. <em>Ejemplo en PHP: Una clase <code>UserModel.php</code> con métodos como <code>getUserById($id)</code> o <code>createUser($data)</code>.</em></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Vista</p>
+<p><strong>La Cara Bonita.</strong> Es la responsable de la presentación de los datos. Es lo que el usuario ve en el navegador. Debería ser "tonta", es decir, contener la menor cantidad de lógica posible. Su trabajo es mostrar la información que le entrega el Controlador, usando HTML, CSS y JavaScript. <em>Ejemplo en PHP: Un archivo <code>user_profile_view.php</code> que contiene principalmente HTML y bucles <code>foreach</code> para mostrar datos.</em></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Controlador</p>
+<p><strong>El Director de Orquesta.</strong> Actúa como el intermediario entre el Modelo y la Vista. Recibe las peticiones del usuario (por ejemplo, un clic en un enlace), decide qué hacer, pide al Modelo los datos necesarios, y luego le dice a la Vista cuál debe mostrarse con esos datos. Es el que gestiona el flujo de la aplicación. <em>Ejemplo en PHP: Una clase <code>UserController.php</code> con métodos como <code>showProfile($id)</code> o <code>registerUser()</code>.</em></p>
+</div>
+<p><br/></p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant C as Controlador
+    participant M as Modelo
+    participant V as Vista
+
+    U-&gt;&gt;C: Petición HTTP (ej: /user/profile/123)
+    C-&gt;&gt;M: ¡Necesito los datos del usuario 123! (llama a getUserById(123))
+    M-&gt;&gt;M: Consulta la Base de Datos
+    M--&gt;&gt;C: Aquí tienes los datos del usuario
+    C-&gt;&gt;V: ¡Muestra esta vista con estos datos! (carga la vista del perfil y le pasa los datos)
+    V--&gt;&gt;U: Responde con el HTML generado</code></pre>
+<h3 id="42-ventajas">4.2 - Ventajas</h3>
+<p>Adoptar MVC no es un capricho, es una decisión estratégica que aporta enormes beneficios:</p>
+<ul>
+<li><strong>Organización del código:</strong> Adiós al "código espagueti". Cada cosa está en su sitio, facilitando la lectura y la comprensión del proyecto.</li>
+<li><strong>Desarrollo en paralelo:</strong> El equipo de <em>front-end</em> puede trabajar en las Vistas (HTML/CSS) al mismo tiempo que el equipo de <em>back-end</em> trabaja en los Modelos y Controladores (PHP/SQL), ya que las capas son independientes.</li>
+<li><strong>Reutilización de código:</strong> Un mismo Modelo puede ser utilizado por múltiples Controladores y Vistas. Por ejemplo, el modelo de usuario puede ser usado para mostrar el perfil, para el proceso de login o para un panel de administración.</li>
+<li><strong>Mantenimiento sencillo:</strong> Si necesitas cambiar cómo se muestran los datos, solo tocas la Vista. Si cambia una regla de negocio, solo tocas el Modelo. Un cambio en una capa no debería romper las otras.</li>
+<li><strong>Facilita las pruebas (Testing):</strong> Es mucho más fácil hacer pruebas unitarias de la lógica de negocio en los Modelos de forma aislada, sin tener que lidiar con la interfaz de usuario.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">El error más común</p>
+<p>El error de novato más frecuente es poner consultas a la base de datos (<code>SELECT</code>, <code>INSERT</code>, etc.) dentro de la Vista. ¡Nunca, jamás, hagas eso! La Vista solo pide y muestra datos. El Modelo es el único que habla con la base de datos.</p>
+</div>
+<h3 id="43-ejemplo-evolutivo">4.3 - Ejemplo evolutivo</h3>
+<p>¡Excelente! Me parece una idea fantástica. Coger un ejemplo teórico y reconstruirlo desde cero en un nuevo contexto es la mejor manera de interiorizar de verdad un patrón de diseño. Es como aprender una receta y luego intentar hacerla tuya cambiando los ingredientes.</p>
+<p>Vamos a dejar aparcados los artículos del blog y nos vamos a meter en un terreno que seguro que controlas: <strong>una colección de videojuegos</strong>. La funcionalidad será la misma: listar los juegos que tenemos guardados en nuestra base de datos. Verás cómo, aunque cambiemos de tema, los problemas de organización del código son universales, y la solución MVC sigue siendo igual de elegante.</p>
+<p>Prepárate para ver cómo transformamos un simple script para listar juegos en una estructura profesional y escalable, paso a paso.</p>
+<h2 id="de-monolito-a-mvc-una-evolucion-paso-a-paso">De Monolito a MVC: Una Evolución Paso a Paso</h2>
+<p>Imagina que empiezas a programar una pequeña app para llevar la cuenta de tu colección de videojuegos. Al principio, como solo quieres ver una lista, lo más rápido es meter todo el código en un único archivo. Funciona, sí, pero es el equivalente a tirar todos tus juegos, consolas y cables en una misma caja. Mientras tengas 3 juegos, no hay problema. Cuando tengas 50, encontrar el que buscas será una pesadilla.</p>
+<p>Vamos a empezar con esa "caja de sastre" y, poco a poco, la iremos ordenando con estanterías, etiquetas y un sistema de inventario.</p>
+<h3 id="paso-0-el-caos-organizado-el-codigo-monolitico">Paso 0: El Caos Organizado - El Código Monolítico</h3>
+<p>Esta es la primera aproximación, la más directa. Un único archivo <code>listado_juegos.php</code> que se encarga de todo: conectar a la base de datos, consultar los datos y mostrarlos en una tabla HTML.</p>
+<div class="admonition danger">
+<p class="admonition-title">Código Espagueti</p>
+<p>A esta práctica de mezclar lógica de datos, control y presentación se le conoce como "código espagueti". Si tiras de un hilo (intentas cambiar algo), se enreda todo el plato.</p>
+</div>
+<p><strong><code>listado_juegos.php</code></strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Declara el uso estricto de tipos para mayor seguridad.</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// --- LÓGICA DE DATOS (Responsabilidad del MODELO) ---</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s1">'mysql:host=localhost;dbname=mi_coleccion_juegos'</span><span class="p">;</span>
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+<span class="nv">$contrasena</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="nv">$contrasena</span><span class="p">);</span>
+    <span class="c1">// Preparamos y ejecutamos la consulta para evitar inyección SQL.</span>
+    <span class="nv">$consulta</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">'SELECT nombre, plataforma, anio_lanzamiento FROM videojuegos'</span><span class="p">);</span>
+    <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+    <span class="nv">$videojuegos</span> <span class="o">=</span> <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// En un caso real, manejaríamos el error de forma más elegante.</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error de conexión a la base de datos: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// --- LÓGICA DE PRESENTACIÓN (Responsabilidad de la VISTA) ---</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mi Colección de Videojuegos&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt; /* Estilos básicos para que no se vea tan mal */</span>
+<span class="x">        table { width: 100%; border-collapse: collapse; }</span>
+<span class="x">        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }</span>
+<span class="x">        th { background-color: #f2f2f2; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Mi Colección de Videojuegos&lt;/h1&gt;</span>
+<span class="x">    &lt;table&gt;</span>
+<span class="x">        &lt;thead&gt;</span>
+<span class="x">            &lt;tr&gt;</span>
+<span class="x">                &lt;th&gt;Nombre&lt;/th&gt;</span>
+<span class="x">                &lt;th&gt;Plataforma&lt;/th&gt;</span>
+<span class="x">                &lt;th&gt;Año de Lanzamiento&lt;/th&gt;</span>
+<span class="x">            &lt;/tr&gt;</span>
+<span class="x">        &lt;/thead&gt;</span>
+<span class="x">        &lt;tbody&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$videojuegos</span> <span class="k">as</span> <span class="nv">$juego</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;tr&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'anio_lanzamiento'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                &lt;/tr&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/tbody&gt;</span>
+<span class="x">    &lt;/table&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<pre class="mermaid"><code>graph TD
+    subgraph "listado_juegos.php"
+        A[Lógica de Datos &lt;br/&gt; Conexión y Consulta SQL]
+        B[Lógica de Control &lt;br/&gt; Bucle foreach]
+        C[Lógica de Presentación &lt;br/&gt; HTML y CSS]
+    end
+    A --&gt; B --&gt; C</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Qué pasaría si ahora quisieras mostrar esta misma lista de juegos en otra página pero ordenada por año? ¿Cuánto código tendrías que duplicar?</li>
+<li>Si un diseñador web que no sabe PHP quisiera cambiar el estilo de la tabla, ¿qué riesgos correría al modificar este archivo?</li>
+<li>¿Por qué se usa <code>htmlspecialchars()</code>? ¿Qué problema de seguridad previene?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-1-la-primera-division-controlador-vista">Paso 1: La Primera División - Controlador + Vista</h3>
+<p>El primer paso para poner orden es obvio: separar la "lista de la compra" (el HTML) de la acción de "ir a comprar" (la lógica PHP). Vamos a dividir el código monolítico en dos archivos:</p>
+<ul>
+<li><strong><code>index.php</code> (Controlador):</strong> Se encargará de toda la lógica: hablar con la base de datos y preparar los datos.</li>
+<li><strong><code>vista_lista_juegos.php</code> (Vista):</strong> Un archivo "tonto" que solo contiene HTML y el código mínimo para pintar los datos que le dé el controlador.</li>
+</ul>
+<p><strong><code>index.php</code> (Controlador)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// --- LÓGICA DE DATOS Y CONTROL ---</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s1">'mysql:host=localhost;dbname=mi_coleccion_juegos'</span><span class="p">;</span>
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+<span class="nv">$contrasena</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="nv">$contrasena</span><span class="p">);</span>
+    <span class="nv">$consulta</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">'SELECT nombre, plataforma, anio_lanzamiento FROM videojuegos'</span><span class="p">);</span>
+    <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+    <span class="c1">// Preparamos los datos para la vista</span>
+    <span class="nv">$videojuegos</span> <span class="o">=</span> <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error de conexión a la base de datos: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Incluimos la vista al final, dándole acceso a la variable $videojuegos</span>
+<span class="k">require</span> <span class="s1">'vista_lista_juegos.php'</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong><code>vista_lista_juegos.php</code> (Vista)</strong>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mi Colección de Videojuegos&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt; /* Estilos básicos */</span>
+<span class="x">        table { width: 100%; border-collapse: collapse; }</span>
+<span class="x">        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }</span>
+<span class="x">        th { background-color: #f2f2f2; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Mi Colección de Videojuegos&lt;/h1&gt;</span>
+<span class="x">    &lt;table&gt;</span>
+<span class="x">        &lt;thead&gt;</span>
+<span class="x">            &lt;tr&gt;</span>
+<span class="x">                &lt;th&gt;Nombre&lt;/th&gt;</span>
+<span class="x">                &lt;th&gt;Plataforma&lt;/th&gt;</span>
+<span class="x">                &lt;th&gt;Año de Lanzamiento&lt;/th&gt;</span>
+<span class="x">            &lt;/tr&gt;</span>
+<span class="x">        &lt;/thead&gt;</span>
+<span class="x">        &lt;tbody&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$videojuegos</span> <span class="k">as</span> <span class="nv">$juego</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;tr&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                    &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'anio_lanzamiento'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">                &lt;/tr&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/tbody&gt;</span>
+<span class="x">    &lt;/table&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p>Ya hemos ganado mucho. El diseñador puede tocar la vista sin miedo, y nosotros podemos cambiar la consulta en el controlador sin afectar al HTML.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "index.php (Controlador)"
+        A[Lógica de Datos y Control]
+    end
+
+    subgraph "vista_lista_juegos.php (Vista)"
+        B[Lógica de Presentación &lt;br/&gt; HTML y bucles]
+    end
+
+    A -- "Prepara $videojuegos y luego hace require" --&gt; B</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Aunque hemos separado los archivos, ¿qué responsabilidad sigue mezclada en <code>index.php</code>?</li>
+<li>Si otra parte de tu aplicación necesitara también obtener la lista de todos los videojuegos, ¿cómo lo harías con esta estructura? ¿Ves algún problema?</li>
+<li>La variable <code>$videojuegos</code> se pasa "mágicamente" a la vista. ¿Qué ventajas e inconvenientes tiene este acoplamiento implícito?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-2-la-santisima-trinidad-modelo-vista-y-controlador">Paso 2: La Santísima Trinidad - Modelo, Vista y Controlador</h3>
+<p>Este es el salto cualitativo. Ahora aplicamos el patrón MVC completo. La lógica de datos que aún reside en el controlador la vamos a extraer a su propio componente: el <strong>Modelo</strong>.</p>
+<ul>
+<li><strong><code>index.php</code> (Controlador):</strong> Su única misión es hacer de intermediario. Pide los datos al Modelo y se los pasa a la Vista.</li>
+<li><strong><code>JuegoModel.php</code> (Modelo):</strong> Una clase dedicada exclusivamente a interactuar con la tabla <code>videojuegos</code>.</li>
+<li><strong><code>vista_lista_juegos.php</code> (Vista):</strong> Sigue siendo nuestro archivo de presentación, no cambia.</li>
+</ul>
+<p><strong><code>index.php</code> (Controlador)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Incluimos la clase del modelo</span>
+<span class="k">require_once</span> <span class="s1">'JuegoModel.php'</span><span class="p">;</span>
+
+<span class="c1">// Creamos una instancia del modelo</span>
+<span class="nv">$juegoModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JuegoModel</span><span class="p">();</span>
+<span class="c1">// El controlador pide los datos al modelo</span>
+<span class="nv">$videojuegos</span> <span class="o">=</span> <span class="nv">$juegoModel</span><span class="o">-&gt;</span><span class="na">getAll</span><span class="p">();</span>
+
+<span class="c1">// El controlador carga la vista y le pasa los datos</span>
+<span class="k">require</span> <span class="s1">'vista_lista_juegos.php'</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong><code>JuegoModel.php</code> (Modelo)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">JuegoModel</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">PDO</span> <span class="nv">$pdo</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$dsn</span> <span class="o">=</span> <span class="s1">'mysql:host=localhost;dbname=mi_coleccion_juegos'</span><span class="p">;</span>
+        <span class="nv">$usuario</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+        <span class="nv">$contrasena</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$usuario</span><span class="p">,</span> <span class="nv">$contrasena</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">die</span><span class="p">(</span><span class="s1">'Error de conexión: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Devuelve un array con todos los videojuegos.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$consulta</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">'SELECT nombre, plataforma, anio_lanzamiento FROM videojuegos'</span><span class="p">);</span>
+        <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>¡Perfecto! Ahora cada componente tiene una única responsabilidad. El controlador es simple, el modelo se centra en los datos y la vista en la presentación.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Controlador (index.php)
+    participant M as Modelo (JuegoModel)
+    participant V as Vista (vista_lista_juegos.php)
+
+    C-&gt;&gt;M: new JuegoModel()
+    C-&gt;&gt;M: getAll()
+    M--&gt;&gt;C: Devuelve array de videojuegos
+    C-&gt;&gt;V: require 'vista_lista_juegos.php' (pasa el array)</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Si ahora quisieras añadir una función para buscar juegos por plataforma, ¿en qué archivo la crearías? ¿Y cómo la llamarías desde el controlador?</li>
+<li>¿Por qué es una buena práctica que el constructor del Modelo (<code>__construct</code>) establezca la conexión a la base de datos?</li>
+<li>¿Qué problema fundamental persiste en la clase <code>JuegoModel</code> si en el futuro decidimos migrar nuestra base de datos de MySQL a PostgreSQL?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-3-el-plan-de-contingencia-anadiendo-una-capa-de-abstraccion-de-datos">Paso 3: El Plan de Contingencia - Añadiendo una Capa de Abstracción de Datos</h3>
+<p>Nuestro <code>JuegoModel</code> está genial, pero tiene un problema: está "casado" con <code>PDO</code> y la sintaxis de MySQL. Si el día de mañana la empresa decide usar Oracle o PostgreSQL, tendríamos que reescribir todos nuestros modelos.</p>
+<p>La solución es crear una <strong>capa de abstracción de datos</strong>: una clase genérica que actúa como un "traductor" universal para la base de datos. Nuestros modelos hablarán con este traductor, y solo el traductor hablará el "idioma" específico de la base de datos (MySQL, PostgreSQL, etc.).</p>
+<ul>
+<li><strong><code>Database.php</code> (Capa de Abstracción):</strong> Una clase envoltorio (wrapper) para las operaciones de base de datos.</li>
+<li><strong><code>JuegoModel.php</code> (Modelo):</strong> Ahora usará nuestra clase <code>Database</code> en lugar de <code>PDO</code> directamente.</li>
+</ul>
+<p><strong><code>Database.php</code> (Capa de Abstracción de Datos)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Database</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">PDO</span> <span class="nv">$pdo</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$host</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$dbName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$pass</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:host=</span><span class="si">$host</span><span class="s2">;dbname=</span><span class="si">$dbName</span><span class="s2">;charset=utf8mb4"</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdo</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">die</span><span class="p">(</span><span class="s1">'Error de conexión: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Ejecuta una consulta SELECT y devuelve todos los resultados.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">query</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$sql</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[])</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Podríamos añadir métodos para INSERT, UPDATE, DELETE...</span>
+    <span class="c1">// public function execute(string $sql, array $params = []): int { ... }</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>JuegoModel.php</code> (Modelo, ahora usando la capa de abstracción)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">require_once</span> <span class="s1">'Database.php'</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JuegoModel</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">Database</span> <span class="nv">$db</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// El modelo ya no sabe los detalles de la conexión, solo pide un objeto Database.</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Database</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="s1">'mi_coleccion_juegos'</span><span class="p">,</span> <span class="s1">'root'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// El modelo usa el método genérico de la capa de abstracción.</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'SELECT nombre, plataforma, anio_lanzamiento FROM videojuegos'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>El controlador y la vista no han cambiado en absoluto. Hemos hecho una mejora interna masiva y el resto de la aplicación ni se ha enterado. ¡Ese es el poder de la encapsulación!</p>
+<pre class="mermaid"><code>graph TD
+    C(Controlador) --&gt; M(JuegoModel)
+    M -- Llama a --&gt; DAL(Database.php)
+    DAL -- Habla con --&gt; DB[(Base de Datos &lt;br/&gt; MySQL)]
+
+    subgraph "Capa Lógica del Modelo"
+        M
+    end
+
+    subgraph "Capa de Abstracción de Datos"
+        DAL
+    end</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Si quisiéramos cambiar a PostgreSQL, ¿qué único archivo tendríamos que modificar?</li>
+<li>En la clase <code>Database</code>, el método <code>query</code> usa sentencias preparadas (<code>prepare</code> y <code>execute</code>). ¿Por qué es esto crucial para la seguridad de la aplicación?</li>
+<li>La creación del objeto <code>Database</code> sigue estando "hardcodeada" dentro del <code>JuegoModel</code>. ¿Cómo podrías mejorar esto para que el modelo sea aún más independiente? (Pista: Inyección de Dependencias).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-4-montando-la-fabrica-clases-y-reutilizacion">Paso 4: Montando la Fábrica - Clases y Reutilización</h3>
+<p>Nuestro código es modular, pero la ejecución todavía es un poco "procedural". El <code>index.php</code> hace <code>require</code> de archivos y ejecuta código directamente. Vamos a dar el siguiente paso y empaquetarlo todo en una estructura de clases más robusta y reutilizable, con un <strong>Controlador Frontal</strong>.</p>
+<ul>
+<li><strong><code>index.php</code> (Controlador Frontal):</strong> Su única misión es recibir TODAS las peticiones y redirigirlas al controlador y método adecuados basándose en parámetros de la URL (ej: <code>?controller=juego&amp;action=listar</code>).</li>
+<li><strong><code>JuegoController.php</code> (Clase Controlador):</strong> Ahora es una clase con métodos que corresponden a las acciones del usuario.</li>
+<li><strong><code>View.php</code> (Clase Vista):</strong> Una clase que se encarga de renderizar las vistas, permitiéndonos reutilizar cabeceras y pies de página fácilmente.</li>
+</ul>
+<p><strong><code>index.php</code> (Controlador Frontal)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Definimos el controlador y la acción por defecto</span>
+<span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'controller'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'Juego'</span><span class="p">;</span>
+<span class="nv">$actionName</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'action'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'listar'</span><span class="p">;</span>
+
+<span class="c1">// Construimos el nombre del controlador y del archivo</span>
+<span class="nv">$controllerClassName</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s1">'Controller'</span><span class="p">;</span>
+<span class="nv">$controllerFile</span> <span class="o">=</span> <span class="s1">'controllers/'</span> <span class="o">.</span> <span class="nv">$controllerClassName</span> <span class="o">.</span> <span class="s1">'.php'</span><span class="p">;</span>
+
+<span class="c1">// Comprobamos si el controlador existe y lo cargamos</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$controllerFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">require_once</span> <span class="nv">$controllerFile</span><span class="p">;</span>
+    <span class="c1">// Creamos la instancia y llamamos a la acción</span>
+    <span class="nv">$controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nv">$controllerClassName</span><span class="p">();</span>
+    <span class="nv">$controller</span><span class="o">-&gt;</span><span class="nv">$actionName</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Controlador no encontrado."</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>controllers/JuegoController.php</code></strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">require_once</span> <span class="s1">'models/JuegoModel.php'</span><span class="p">;</span>
+<span class="k">require_once</span> <span class="s1">'views/View.php'</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JuegoController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">listar</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$juegoModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JuegoModel</span><span class="p">();</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">'videojuegos'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$juegoModel</span><span class="o">-&gt;</span><span class="na">getAll</span><span class="p">();</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Mi Colección de Videojuegos'</span><span class="p">;</span>
+
+        <span class="c1">// Usamos la clase Vista para renderizar</span>
+        <span class="nx">View</span><span class="o">::</span><span class="na">render</span><span class="p">(</span><span class="s1">'lista_juegos'</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Aquí podríamos añadir más acciones:</span>
+    <span class="c1">// public function ver($id) { ... }</span>
+    <span class="c1">// public function crear() { ... }</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>views/View.php</code></strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">View</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$viewName</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$data</span> <span class="o">=</span> <span class="p">[])</span>
+    <span class="p">{</span>
+        <span class="c1">// Convertimos el array asociativo en variables</span>
+        <span class="nb">extract</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+        <span class="k">require</span> <span class="s2">"templates/header.php"</span><span class="p">;</span>
+        <span class="k">require</span> <span class="s2">"templates/</span><span class="si">{</span><span class="nv">$viewName</span><span class="si">}</span><span class="s2">_view.php"</span><span class="p">;</span>
+        <span class="k">require</span> <span class="s2">"templates/footer.php"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Ahora tenemos una mini-estructura de framework. Añadir nuevas páginas o funcionalidades es tan fácil como añadir un nuevo método al controlador (o un controlador nuevo) sin tocar el <code>index.php</code>.</p>
+<pre class="mermaid"><code>graph TD
+    Request[Petición URL &lt;br/&gt; index.php?controller=juego&amp;action=listar] --&gt; index(index.php &lt;br/&gt; Controlador Frontal)
+
+    index -- "Carga e instancia" --&gt; JC(JuegoController)
+    JC -- "Llama al método" --&gt; listar("listar()")
+
+    subgraph JuegoController
+        listar
+    end
+
+    listar --&gt; JM(JuegoModel)
+    JM -- "Devuelve datos" --&gt; listar
+    listar -- "Llama a" --&gt; V(View::render)
+    V -- "Incluye" --&gt; Header[templates/header.php]
+    V -- "Incluye" --&gt; Body[templates/lista_juegos_view.php]
+    V -- "Incluye" --&gt; Footer[templates/footer.php]
+
+    Body -- "Renderiza HTML" --&gt; Response[Respuesta HTML]</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Qué ventaja principal ofrece el <code>index.php</code> como Controlador Frontal único?</li>
+<li>La clase <code>View</code> usa <code>extract($data)</code>. Esta función puede ser controvertida. ¿Qué riesgos de seguridad o claridad de código podría introducir? ¿Qué alternativa propondrías?</li>
+<li>¿Cómo modificarías el <code>index.php</code> para manejar URLs "amigables" como <code>/juego/listar</code> en lugar de <code>/index.php?controller=juego&amp;action=listar</code>? (Pista: <code>.htaccess</code> y <code>mod_rewrite</code> en Apache).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-5-el-santo-grial-el-modelo-generico">Paso 5: El Santo Grial - El Modelo Genérico</h3>
+<p>Hemos llegado al nivel profesional. Si nuestra aplicación crece, tendremos más modelos (<code>PlataformaModel</code>, <code>GeneroModel</code>, etc.), y nos daremos cuenta de que repetimos el mismo código una y otra vez: <code>getAll()</code>, <code>getById()</code>, <code>delete()</code>, <code>save()</code>.</p>
+<p>La solución es crear un <strong>Modelo Genérico</strong> (o <code>BaseModel</code>) con toda esa lógica común, y hacer que nuestros modelos específicos <strong>hereden</strong> de él.</p>
+<ul>
+<li><strong><code>models/BaseModel.php</code>:</strong> Contendrá los métodos CRUD genéricos.</li>
+<li><strong><code>models/JuegoModel.php</code>:</strong> Ahora será una clase casi vacía que hereda toda la funcionalidad.</li>
+</ul>
+<p><strong><code>models/BaseModel.php</code> (Modelo Genérico)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">require_once</span> <span class="s1">'Database.php'</span><span class="p">;</span>
+
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">BaseModel</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nx">Database</span> <span class="nv">$db</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$table</span><span class="p">;</span> <span class="c1">// Cada modelo hijo debe definir su tabla</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Database</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="s1">'mi_coleccion_juegos'</span><span class="p">,</span> <span class="s1">'root'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">table</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getById</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">table</span><span class="si">}</span><span class="s2"> WHERE id = :id"</span><span class="p">,</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="nv">$result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">??</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// Devuelve el primer resultado o null</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="c1">// Nuestro método de DB 'execute' debería devolver las filas afectadas</span>
+        <span class="c1">// return $this-&gt;db-&gt;execute("DELETE FROM {$this-&gt;table} WHERE id = :id", ['id' =&gt; $id]);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Simulación</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>models/JuegoModel.php</code> (Modelo Específico, ¡ahora súper simple!)</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">require_once</span> <span class="s1">'BaseModel.php'</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">JuegoModel</span> <span class="k">extends</span> <span class="nx">BaseModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Le decimos al padre con qué tabla trabajamos</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">table</span> <span class="o">=</span> <span class="s1">'videojuegos'</span><span class="p">;</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ¡Ya tenemos getAll(), getById(), delete()... gratis!</span>
+
+    <span class="c1">// Aquí solo añadimos métodos específicos para videojuegos, si los hubiera.</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findByPlatform</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$platform</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT * FROM </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">table</span><span class="si">}</span><span class="s2"> WHERE plataforma = :platform"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="p">[</span><span class="s1">'platform'</span> <span class="o">=&gt;</span> <span class="nv">$platform</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Hemos reducido la duplicación de código al mínimo. Crear un nuevo modelo para otra tabla (<code>PlataformaModel</code>) ahora es cuestión de crear una clase que herede de <code>BaseModel</code> y defina su <code>$table</code>. ¡Es la magia de la herencia y la Programación Orientada a Objetos aplicada a la arquitectura!</p>
+<pre class="mermaid"><code>classDiagram
+    class BaseModel {
+        &lt;&lt;abstract&gt;&gt;
+        #db: Database
+        #table: string
+        +getAll(): array
+        +getById(int id): array
+        +delete(int id): int
+    }
+
+    class JuegoModel {
+        +__construct()
+        +findByPlatform(string platform): array
+    }
+
+    class PlataformaModel {
+        +__construct()
+    }
+
+    BaseModel &lt;|-- JuegoModel
+    BaseModel &lt;|-- PlataformaModel</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>El <code>BaseModel</code> es <code>abstract</code>. ¿Qué significa y por qué es una buena decisión de diseño en este caso?</li>
+<li>El método <code>findByPlatform</code> en <code>JuegoModel</code> es un ejemplo de un método que no pertenece al <code>BaseModel</code>. ¿Por qué es importante que solo esté en <code>JuegoModel</code>?</li>
+<li>El <code>BaseModel</code> asume que todas las tablas tienen una clave primaria llamada <code>id</code>. ¿Cómo modificarías el <code>BaseModel</code> para que sea más flexible y pueda trabajar con tablas que tengan claves primarias con otros nombres (ej: <code>juego_id</code>)?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Prácticamente <strong>todos los frameworks modernos de PHP se basan en el patrón MVC</strong> o en una variación del mismo.</p>
+<ul>
+<li><strong>Laravel:</strong> Es uno de los frameworks PHP más populares y sigue una implementación muy clara de MVC. Tiene directorios para <code>Models</code>, <code>Views</code> y <code>Controllers</code>, y su sistema de enrutamiento (<code>routes/web.php</code>) actúa como un potente controlador frontal.</li>
+<li><strong>Symfony:</strong> Otro gigante del ecosistema PHP. Aunque es más modular y a veces se describe como un framework "Request-Response", la estructura fundamental que promueve para las aplicaciones web es MVC.</li>
+<li><strong>Laminas (antes Zend Framework):</strong> También se basa fuertemente en MVC, proporcionando componentes para cada parte del patrón.</li>
+</ul>
+<p>Entender MVC no es solo un ejercicio académico; es el requisito indispensable para poder trabajar con estas herramientas profesionales. Te da el mapa mental para entender cómo están organizados estos frameworks y cómo construir aplicaciones complejas sobre ellos. Cuando una empresa te pida "experiencia en Laravel", lo que realmente está evaluando es si entiendes la filosofía MVC que hay detrás.</p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Si te ha picado la curiosidad y quieres profundizar, aquí tienes algunos recursos de altísima calidad:</p>
+<ol>
+<li><strong>Documentación de Laravel - The Basics:</strong> La documentación oficial de Laravel tiene una de las mejores introducciones prácticas a los conceptos de MVC, aunque centrada en su framework. <a href="https://laravel.com/docs/11.x/lifecycle">Échale un vistazo aquí</a>.</li>
+<li><strong>Artículo de SitePoint - "MVC for Noobs":</strong> Un artículo clásico, pero todavía muy relevante, que explica los fundamentos de MVC en PHP desde cero, de una forma muy amigable. <a href="https://www.sitepoint.com/mvc-for-noobs/">Leer el artículo (en inglés)</a>.</li>
+<li><strong>Video-Tutorial - "MVC from Scratch" por Traversy Media:</strong> Si eres más de aprender en vídeo, este tutorial te guía paso a paso en la creación de un pequeño framework MVC en PHP desde un archivo en blanco. Imprescindible para asentar los conceptos. <a href="https://www.youtube.com/watch?v=6ERdu4k62wI">Ver el vídeo en YouTube (en inglés)</a>.</li>
+</ol>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<h1 id="ejercicios-practicos-arquitectura-mvc-con-php">Ejercicios Prácticos: Arquitectura MVC con PHP</h1>
+<h2 id="introduccion-al-proyecto-gamehub">Introducción al Proyecto: "GameHub"</h2>
+<p>¡Enhorabuena, equipo! Hemos sido "contratados" para desarrollar el prototipo de <strong>"GameHub"</strong>, una nueva aplicación web para que los gamers puedan catalogar, consultar y gestionar su colección de videojuegos. Este proyecto es la excusa perfecta para aplicar las mejores prácticas de arquitectura de software desde el principio. Empezaremos construyendo el núcleo de la aplicación, aplicando el patrón MVC para asegurarnos de que nuestro código sea limpio, ordenado y escalable. ¡Manos al código!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Plano de GameHub: Identificando Componentes | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Asegurar la comprensión teórica de las responsabilidades de cada componente del patrón MVC en el contexto de nuestro proyecto.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Imagina que la aplicación "GameHub" ya está parcialmente construida. Responde a las siguientes preguntas, indicando qué componente MVC (Modelo, Vista o Controlador) sería el responsable principal de cada tarea.</p>
+<ol>
+<li>Cuando un usuario hace clic en "Ver detalles del 'The Witcher 3'", ¿qué componente es el primero en recibir esa petición y decidir qué hacer?</li>
+<li>Para mostrar la carátula, el título y la descripción del juego en la página de detalles, ¿qué componente se encarga de escribir las etiquetas HTML (<code>&lt;img&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>)?</li>
+<li>¿Qué componente contendría la lógica para ejecutar la consulta <code>SELECT * FROM videojuegos WHERE id = 5</code> en la base de datos?</li>
+<li>Si queremos añadir una regla de negocio que impida registrar juegos con un año de lanzamiento futuro, ¿en qué componente implementarías esa validación?</li>
+<li>Un diseñador gráfico quiere rediseñar completamente la página del listado de juegos, cambiando la tabla por una cuadrícula de tarjetas (cards). ¿Qué componente es el único que debería necesitar modificar?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En una reunión de equipo, es fundamental hablar el mismo idioma. Saber qué componente es responsable de qué tarea permite asignar responsabilidades de forma clara ("El equipo de front-end se encarga de la Vista", "El equipo de back-end se enfoca en el Modelo y el Controlador") y agiliza el desarrollo.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Refactorización: Del Caos Monolítico al Orden | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Aplicar el primer paso de la separación de responsabilidades, refactorizando un script monolítico en una estructura Controlador + Vista.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Partimos de un único archivo <code>listado_juegos.php</code> que lo hace todo. Tu misión es dividirlo en dos.</p>
+<p><strong><code>listado_juegos.php</code> (antes de refactorizar):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">'mysql:host=localhost;dbname=gamehub_db'</span><span class="p">,</span> <span class="s1">'root'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$resultado</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">'SELECT nombre, plataforma, anio FROM videojuegos'</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;h1&gt;Mi Ludoteca&lt;/h1&gt;</span>
+<span class="x">&lt;table border="1"&gt;</span>
+<span class="x">    &lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Plataforma&lt;/th&gt;&lt;th&gt;Año&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$resultado</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;tr&gt;</span>
+<span class="x">            &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$fila</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">            &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$fila</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">            &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$fila</span><span class="p">[</span><span class="s1">'anio'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="x">        &lt;/tr&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endwhile</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">&lt;/table&gt;</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un archivo llamado <code>index.php</code> que actuará como <strong>Controlador</strong>. Mueve toda la lógica de PHP (conexión a la BD y consulta) a este archivo.</li>
+<li>Crea un archivo llamado <code>vista_juegos.php</code> que actuará como <strong>Vista</strong>. Mueve todo el HTML a este archivo.</li>
+<li>Asegúrate de que <code>index.php</code>, después de obtener los datos, carga <code>vista_juegos.php</code> y que la lista de juegos se muestra correctamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La refactorización es una tarea diaria en el desarrollo de software. Muchas veces te encontrarás con código "legacy" (antiguo) que necesita ser modernizado y reorganizado para poder mantenerlo y extenderlo sin romper nada.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) ¡Houston, tenemos un problema!: Depuración MVC | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Identificar y corregir un error común que viola los principios del patrón MVC.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero ha intentado implementar la estructura MVC para mostrar los detalles de un solo juego, pero ha cometido un error conceptual. La aplicación no funciona y tienes que arreglarla.</p>
+<p><strong><code>JuegoController.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">JuegoController</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">verDetalle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$idJuego</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="c1">// El controlador NO le pasa datos a la vista. ¡Mal!</span>
+        <span class="k">require</span> <span class="s1">'vista_detalle.php'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>vista_detalle.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// ¡¡¡ERROR GRAVE!!! La vista está consultando la base de datos.</span>
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">'mysql:host=localhost;dbname=gamehub_db'</span><span class="p">,</span> <span class="s1">'root'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$consulta</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">'SELECT * FROM videojuegos WHERE id = ?'</span><span class="p">);</span>
+<span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">??</span> <span class="mi">1</span><span class="p">]);</span> <span class="c1">// La vista depende de $_GET</span>
+<span class="nv">$juego</span> <span class="o">=</span> <span class="nv">$consulta</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Plataforma: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$juego</span><span class="p">[</span><span class="s1">'plataforma'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Identifica la violación del patrón MVC en el código.</li>
+<li>Refactoriza el código para que cada componente cumpla su función:<ul>
+<li>Crea un <code>JuegoModel.php</code> con un método <code>getById(int $id)</code>.</li>
+<li>Modifica el <code>JuegoController.php</code> para que use el modelo para obtener los datos y luego se los pase a la vista.</li>
+<li>Limpia la <code>vista_detalle.php</code> para que solo se encargue de mostrar los datos que recibe, sin acceder a la BD ni a <code>$_GET</code>.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En las revisiones de código (Code Reviews), una de las tareas más importantes es detectar violaciones de la arquitectura establecida. Un código que "funciona" pero rompe las reglas del patrón es una bomba de relojería para el futuro mantenimiento.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">4) Construyendo el Catálogo: El Modelo y su Lógica | Nivel: Medio</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Implementar una clase Modelo completa, utilizando una capa de abstracción de datos para independizarse del motor de base de datos.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Te proporcionamos la clase <code>Database.php</code> que actúa como capa de abstracción.</p>
+<p><strong><code>Database.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// ... (El código de la clase Database del Paso 3 del tema) ...</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea el archivo <code>models/JuegoModel.php</code>.</li>
+<li>
+<p>Dentro de la clase <code>JuegoModel</code>, implementa los siguientes métodos utilizando la clase <code>Database</code>:</p>
+<ul>
+<li><code>__construct()</code>: Debe inicializar la conexión a la base de datos a través de la clase <code>Database</code>.</li>
+<li><code>getAll()</code>: Debe devolver todos los juegos de la tabla <code>videojuegos</code>.</li>
+<li><code>getById(int $id)</code>: Debe devolver un único juego buscando por su <code>id</code>.</li>
+<li><code>findByPlatform(string $plataforma)</code>: Debe devolver todos los juegos que pertenezcan a una plataforma específica.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pista:</strong> Recuerda que ahora tu modelo no usará <code>PDO</code> directamente, sino los métodos que ofrece la clase <code>Database</code>.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los Modelos son el corazón de la aplicación. En sistemas grandes, los modelos (a menudo llamados "Entidades" o "Repositorios") contienen lógica de negocio compleja, validaciones y relaciones con otros modelos, siendo una de las partes más críticas del software.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">5) El Director de Orquesta: Creando el Controlador | Nivel: Medio</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Implementar una clase Controlador que utilice el Modelo para obtener datos y la clase Vista para renderizar la salida.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Ya tienes el <code>JuegoModel.php</code> del ejercicio anterior y la clase <code>View.php</code> del tema.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea el archivo <code>controllers/JuegoController.php</code>.</li>
+<li>
+<p>Dentro de la clase <code>JuegoController</code>, implementa dos métodos (acciones):</p>
+<ul>
+<li><code>listar()</code>: Debe instanciar <code>JuegoModel</code>, llamar al método <code>getAll()</code>, y pasar los datos resultantes a <code>View::render()</code> para mostrar la vista <code>lista_juegos</code>.</li>
+<li><code>ver()</code>: Debe recoger un <code>id</code> de la URL (<code>$_GET['id']</code>). Instanciará <code>JuegoModel</code>, llamará a <code>getById()</code> con ese id, y pasará el juego resultante a <code>View::render()</code> para mostrar la vista <code>detalle_juego</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pista:</strong> No olvides manejar el caso en que <code>getById()</code> no encuentre un juego. Puedes pasar un valor <code>null</code> a la vista y que la vista se encargue de mostrar un mensaje de "Juego no encontrado".</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los controladores son el pegamento de la aplicación. En frameworks como Laravel o Symfony, los controladores gestionan la validación de formularios, la autenticación de usuarios, las redirecciones y toda la lógica de flujo de la aplicación.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">6) Funcionalidad Completa: Implementando el CRUD y Peer Review | Nivel: Alto</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Aplicar el patrón MVC para desarrollar una funcionalidad completa de Crear, Leer, Actualizar y Borrar (CRUD) para la gestión de videojuegos, y evaluar el trabajo de un compañero.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Amplía tu <code>JuegoModel</code></strong> para incluir los siguientes métodos:<ul>
+<li><code>create(array $datos)</code>: Inserta un nuevo juego en la base de datos.</li>
+<li><code>update(int $id, array $datos)</code>: Actualiza un juego existente.</li>
+<li><code>delete(int $id)</code>: Elimina un juego de la base de datos.</li>
+</ul>
+</li>
+<li><strong>Amplía tu <code>JuegoController</code></strong> para incluir los siguientes métodos (acciones):<ul>
+<li><code>mostrarFormularioCrear()</code>: Muestra una vista con un formulario HTML para añadir un nuevo juego.</li>
+<li><code>guardar()</code>: Recibe los datos del formulario (<code>$_POST</code>), los valida mínimamente y llama al método <code>create</code> del modelo. Después, redirige al listado.</li>
+<li><code>editar()</code>: Recibe un <code>id</code> por <code>$_GET</code>, obtiene los datos del juego y muestra el mismo formulario de creación, pero relleno con los datos del juego a editar.</li>
+<li><code>actualizar()</code>: Recibe los datos del formulario de edición (<code>$_POST</code>) y el <code>id</code>, y llama al método <code>update</code> del modelo. Redirige al listado.</li>
+<li><code>eliminar()</code>: Recibe un <code>id</code> por <code>$_GET</code> y llama al método <code>delete</code> del modelo. Redirige al listado.</li>
+</ul>
+</li>
+<li><strong>Crea las Vistas necesarias:</strong><ul>
+<li>Una vista <code>formulario_juego.php</code> que pueda servir tanto para crear como para editar un juego.</li>
+<li>Modifica la vista <code>lista_juegos.php</code> para añadir enlaces de "Editar" y "Borrar" para cada juego, y un botón de "Añadir Nuevo Juego".</li>
+</ul>
+</li>
+</ol>
+<h5 id="peer-review-revision-por-pares"><strong>Peer Review (Revisión por Pares):</strong></h5>
+<p>Una vez completado, intercambia tu código con un compañero. Revisa su solución y contesta a las siguientes preguntas, proporcionándole feedback constructivo:
+*   ¿Se respeta estrictamente la separación de responsabilidades? ¿Hay alguna consulta a la BD en el Controlador o la Vista?
+*   ¿La lógica de validación de datos está en el Controlador o en el Modelo? ¿Dónde crees que debería estar y por qué?
+*   ¿El código es legible y sigue los estándares de estilo PSR-12?
+*   Sugiere al menos una mejora que podría hacerse a su código.</p>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 90% del trabajo en aplicaciones de gestión (ERPs, CRMs, etc.) consiste en implementar pantallas CRUD. Dominar este flujo con MVC es una de las habilidades más fundamentales y demandadas para un desarrollador backend. La revisión por pares es una práctica estándar en equipos profesionales para mejorar la calidad del código y compartir conocimiento.</p>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

@@ -1,0 +1,2011 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/10-BasesDatos/" rel="canonical"/>
+<link href="../09-Ficheros/" rel="prev"/>
+<link href="../11-Navegacion/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>10 - Bases de Datos - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#php-y-el-arte-de-hablar-con-bases-de-datos">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              10 - Bases de Datos
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+<nav aria-label="Conceptos Fundamentales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-dilema-mysqli-o-pdo">
+<span class="md-ellipsis">
+      El Dilema: ¿mysqli o PDO?
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestro-campo-de-juego-la-base-de-datos-frikigaleria">
+<span class="md-ellipsis">
+      Creando Nuestro Campo de Juego: La Base de Datos "FrikiGalería"
+    </span>
+</a>
+<nav aria-label='Creando Nuestro Campo de Juego: La Base de Datos "FrikiGalería"' class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-la-base-de-datos">
+<span class="md-ellipsis">
+      Diagrama de la Base de Datos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pdo-el-interprete-universal-en-accion">
+<span class="md-ellipsis">
+      PDO: El Intérprete Universal en Acción
+    </span>
+</a>
+<nav aria-label="PDO: El Intérprete Universal en Acción" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-estableciendo-la-conexion-la-llamada-a-la-puerta">
+<span class="md-ellipsis">
+      1. Estableciendo la Conexión: La Llamada a la Puerta
+    </span>
+</a>
+<nav aria-label="1. Estableciendo la Conexión: La Llamada a la Puerta" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#anatomia-de-un-dsn-la-direccion-exacta">
+<span class="md-ellipsis">
+      Anatomía de un DSN: La Dirección Exacta
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ejemplo-definitivo-conexion-robusta">
+<span class="md-ellipsis">
+      El Ejemplo Definitivo: Conexión Robusta
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#manipulando-la-conexion-getattribute-y-setattribute">
+<span class="md-ellipsis">
+      Manipulando la Conexión: getAttribute y setAttribute
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-crud-las-cuatro-operaciones-sagradas">
+<span class="md-ellipsis">
+      2. CRUD: Las Cuatro Operaciones Sagradas
+    </span>
+</a>
+<nav aria-label="2. CRUD: Las Cuatro Operaciones Sagradas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-read-leer-consultar-datos">
+<span class="md-ellipsis">
+      A. Read (Leer / Consultar Datos)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desgranando-los-resultados-la-clase-pdostatement">
+<span class="md-ellipsis">
+      Desgranando los Resultados: La Clase PDOStatement
+    </span>
+</a>
+<nav aria-label="Desgranando los Resultados: La Clase PDOStatement" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#los-modos-de-fetch">
+<span class="md-ellipsis">
+      Los Modos de fetch()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#b-create-crear-insertar-datos">
+<span class="md-ellipsis">
+      B. Create (Crear / Insertar Datos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c-update-actualizar-datos">
+<span class="md-ellipsis">
+      C. Update (Actualizar Datos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#d-delete-borrar-datos">
+<span class="md-ellipsis">
+      D. Delete (Borrar Datos)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-muralla-de-seguridad-consultas-preparadas">
+<span class="md-ellipsis">
+      La Muralla de Seguridad: Consultas Preparadas
+    </span>
+</a>
+<nav aria-label="La Muralla de Seguridad: Consultas Preparadas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametros-posicionales-vs-nombrados-nombre">
+<span class="md-ellipsis">
+      Parámetros: Posicionales (?) vs. Nombrados (:nombre)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#todo-o-nada-el-poder-de-las-transacciones">
+<span class="md-ellipsis">
+      Todo o Nada: El Poder de las Transacciones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cerrando-la-conexion-ser-un-buen-invitado">
+<span class="md-ellipsis">
+      Cerrando la Conexión: Ser un Buen Invitado
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+<nav aria-label="Conceptos Fundamentales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-dilema-mysqli-o-pdo">
+<span class="md-ellipsis">
+      El Dilema: ¿mysqli o PDO?
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestro-campo-de-juego-la-base-de-datos-frikigaleria">
+<span class="md-ellipsis">
+      Creando Nuestro Campo de Juego: La Base de Datos "FrikiGalería"
+    </span>
+</a>
+<nav aria-label='Creando Nuestro Campo de Juego: La Base de Datos "FrikiGalería"' class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-la-base-de-datos">
+<span class="md-ellipsis">
+      Diagrama de la Base de Datos
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pdo-el-interprete-universal-en-accion">
+<span class="md-ellipsis">
+      PDO: El Intérprete Universal en Acción
+    </span>
+</a>
+<nav aria-label="PDO: El Intérprete Universal en Acción" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-estableciendo-la-conexion-la-llamada-a-la-puerta">
+<span class="md-ellipsis">
+      1. Estableciendo la Conexión: La Llamada a la Puerta
+    </span>
+</a>
+<nav aria-label="1. Estableciendo la Conexión: La Llamada a la Puerta" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#anatomia-de-un-dsn-la-direccion-exacta">
+<span class="md-ellipsis">
+      Anatomía de un DSN: La Dirección Exacta
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ejemplo-definitivo-conexion-robusta">
+<span class="md-ellipsis">
+      El Ejemplo Definitivo: Conexión Robusta
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#manipulando-la-conexion-getattribute-y-setattribute">
+<span class="md-ellipsis">
+      Manipulando la Conexión: getAttribute y setAttribute
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-crud-las-cuatro-operaciones-sagradas">
+<span class="md-ellipsis">
+      2. CRUD: Las Cuatro Operaciones Sagradas
+    </span>
+</a>
+<nav aria-label="2. CRUD: Las Cuatro Operaciones Sagradas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-read-leer-consultar-datos">
+<span class="md-ellipsis">
+      A. Read (Leer / Consultar Datos)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desgranando-los-resultados-la-clase-pdostatement">
+<span class="md-ellipsis">
+      Desgranando los Resultados: La Clase PDOStatement
+    </span>
+</a>
+<nav aria-label="Desgranando los Resultados: La Clase PDOStatement" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#los-modos-de-fetch">
+<span class="md-ellipsis">
+      Los Modos de fetch()
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#b-create-crear-insertar-datos">
+<span class="md-ellipsis">
+      B. Create (Crear / Insertar Datos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c-update-actualizar-datos">
+<span class="md-ellipsis">
+      C. Update (Actualizar Datos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#d-delete-borrar-datos">
+<span class="md-ellipsis">
+      D. Delete (Borrar Datos)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-muralla-de-seguridad-consultas-preparadas">
+<span class="md-ellipsis">
+      La Muralla de Seguridad: Consultas Preparadas
+    </span>
+</a>
+<nav aria-label="La Muralla de Seguridad: Consultas Preparadas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametros-posicionales-vs-nombrados-nombre">
+<span class="md-ellipsis">
+      Parámetros: Posicionales (?) vs. Nombrados (:nombre)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#todo-o-nada-el-poder-de-las-transacciones">
+<span class="md-ellipsis">
+      Todo o Nada: El Poder de las Transacciones
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cerrando-la-conexion-ser-un-buen-invitado">
+<span class="md-ellipsis">
+      Cerrando la Conexión: Ser un Buen Invitado
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="php-y-el-arte-de-hablar-con-bases-de-datos">PHP y el Arte de Hablar con Bases de Datos</h1>
+<p>¡Hola, futuros cracks del desarrollo web! Hasta ahora, hemos construido páginas que son como carteles estáticos: muestran información, pero no interactúan realmente con datos que cambian. Hoy vamos a dar un salto de gigante. Vamos a convertir nuestras aplicaciones en organismos vivos que recuerdan, almacenan y gestionan información.</p>
+<p>Pensemos en una aplicación como Instagram. No es una sola página, es un universo de datos: millones de usuarios, miles de millones de fotos, comentarios, likes... ¿Dónde vive toda esa información? No está escrita en el código PHP, ¡eso sería una locura! Vive en una <strong>base de datos</strong>.</p>
+<p>Nuestra misión de hoy es aprender a ser el intermediario, el diplomático que consigue que nuestro código PHP y la base de datos hablen el mismo idioma y trabajen juntos. Seremos como un bibliotecario experto en una biblioteca infinita: sabremos exactamente cómo pedir un libro (un dato), dónde guardarlo, cómo actualizar su ficha y cómo, si es necesario, retirarlo de la circulación.</p>
+<p>Dominar el acceso a datos es lo que diferencia una simple web de una aplicación potente y dinámica. ¿Listos para obtener la llave de la sala de los secretos de la web? ¡Vamos a ello!</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de lanzarnos a escribir código, necesitamos tener claros algunos términos. Son los cimientos sobre los que construiremos todo lo demás.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Base de Datos (BBDD)</p>
+<p>Imagina una hoja de cálculo de Excel gigante y supervitaminada. Es un sistema organizado para almacenar, gestionar y recuperar grandes cantidades de información de forma eficiente y estructurada. En lugar de hojas, usamos <strong>tablas</strong>; en lugar de columnas, <strong>campos</strong>; y en lugar de filas, <strong>registros</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: SGBD (Sistema Gestor de Bases de Datos)</p>
+<p>Es el software que controla la base de datos, el "cerebro" de la operación. Se encarga de la seguridad, de optimizar las consultas y de asegurarse de que todo funcione como un reloj. Los más populares en el mundo del desarrollo web son <strong>MySQL</strong>, <strong>MariaDB</strong> (un "hijo" de MySQL) y <strong>PostgreSQL</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: SQL (Structured Query Language)</p>
+<p>Es el idioma universal para hablar con las bases de datos relacionales. Es un lenguaje declarativo con el que le decimos a la base de datos <em>qué</em> queremos, no <em>cómo</em> debe hacerlo. Las órdenes más comunes son <code>SELECT</code> (seleccionar datos), <code>INSERT</code> (insertar nuevos datos), <code>UPDATE</code> (actualizar datos) y <code>DELETE</code> (borrar datos).</p>
+</div>
+<h3 id="el-dilema-mysqli-o-pdo">El Dilema: ¿<code>mysqli</code> o <code>PDO</code>?</h3>
+<p>Históricamente, PHP ofrecía una extensión llamada <code>mysql</code> para hablar con bases de datos MySQL. ¡Está <strong>obsoleta</strong> y no debes usarla nunca en proyectos nuevos! Luego llegó su sucesora, <code>mysqli</code> (MySQL Improved), que sigue siendo funcional. Sin embargo, el estándar profesional hoy en día es <strong>PDO</strong>.</p>
+<p><strong>PDO (PHP Data Objects)</strong> es una capa de abstracción. Imagina que es un traductor universal. Aprender a usar PDO te permite hablar con MySQL hoy, pero si mañana tu empresa decide cambiarse a PostgreSQL, ¡tu código seguirá funcionando con cambios mínimos!</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;"><code>mysqli</code> (MySQL Improved)</th>
+<th style="text-align: left;"><code>PDO</code> (PHP Data Objects)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Bases de Datos Soportadas</strong></td>
+<td style="text-align: left;">Solo MySQL/MariaDB.</td>
+<td style="text-align: left;">Más de 12, incluyendo MySQL, PostgreSQL, SQLite, Oracle, etc.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estilo de Programación</strong></td>
+<td style="text-align: left;">Admite tanto un estilo procedural como orientado a objetos.</td>
+<td style="text-align: left;">Exclusivamente orientado a objetos. ¡Más moderno y limpio!</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sentencias Preparadas</strong></td>
+<td style="text-align: left;">Las soporta, pero la sintaxis puede ser algo más verbosa.</td>
+<td style="text-align: left;">Soporte nativo y muy claro para sentencias preparadas, tanto con <code>?</code> como con parámetros con nombre (<code>:nombre</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Manejo de Errores</strong></td>
+<td style="text-align: left;">Principalmente a través de funciones que comprueban errores.</td>
+<td style="text-align: left;">Utiliza <strong>excepciones</strong> (<code>PDOException</code>), el método moderno y robusto para gestionar errores.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Portabilidad</strong></td>
+<td style="text-align: left;">Nula. Si cambias de BBDD, tienes que reescribir todo el acceso a datos.</td>
+<td style="text-align: left;"><strong>Alta</strong>. Es su principal ventaja. Cambiar de SGBD es trivial.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">Veredicto</p>
+<p>Aunque <code>mysqli</code> puede ser un poco más rápido en benchmarks muy específicos con MySQL, la flexibilidad, seguridad y modernidad de <strong>PDO</strong> lo convierten en la elección predilecta para cualquier proyecto profesional hoy en día. <strong>En este curso, nos centraremos en PDO.</strong></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Imagina que estás creando una aplicación para una startup que empieza usando MariaDB por su bajo coste, pero que planea migrar a un sistema más robusto como PostgreSQL si tiene éxito. ¿Qué extensión de PHP te ahorraría un dolor de cabeza monumental en el futuro? ¿Por qué?</li>
+<li>Piensa en la app de tu banco. ¿Qué operaciones crees que equivaldrían a un <code>SELECT</code>, un <code>INSERT</code>, un <code>UPDATE</code> y un <code>DELETE</code> en su base de datos?</li>
+<li>¿Por qué crees que es importante que el "idioma" para hablar con la base de datos (SQL) sea un estándar?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="creando-nuestro-campo-de-juego-la-base-de-datos-frikigaleria">Creando Nuestro Campo de Juego: La Base de Datos "FrikiGalería"</h2>
+<p>Para no trabajar en el vacío, vamos a crear nuestra propia base de datos. La llamaremos <code>frikigaleria</code>, y servirá para catalogar una colección de artículos de cultura pop: videojuegos, cómics, figuras de acción, etc.</p>
+<div class="admonition info">
+<p class="admonition-title">¡Manos a la obra!</p>
+<p>Puedes ejecutar este código directamente en la pestaña <strong>SQL</strong> de tu <strong>phpMyAdmin</strong> para crear y poblar la base de datos que usaremos en todos los ejemplos.</p>
+</div>
+<p>Aquí tienes el código SQL para levantar la estructura y llenarla con datos iniciales.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- --------------------------------------------------------</span>
+<span class="c1">-- Creamos la base de datos si no existe</span>
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="o">`</span><span class="n">frikigaleria</span><span class="o">`</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+<span class="n">USE</span><span class="w"> </span><span class="o">`</span><span class="n">frikigaleria</span><span class="o">`</span><span class="p">;</span>
+
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="c1">-- Estructura de tabla para la tabla `categorias`</span>
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">categorias</span><span class="o">`</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">nombre</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="c1">-- Volcado de datos para la tabla `categorias`</span>
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">categorias</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">nombre</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">'Videojuegos'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'Cómics'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'Figuras de Acción'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">'Juegos de Mesa'</span><span class="p">);</span>
+
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="c1">-- Estructura de tabla para la tabla `items`</span>
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">items</span><span class="o">`</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">nombre</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">descripcion</span><span class="o">`</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">fecha_adquisicion</span><span class="o">`</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">precio</span><span class="o">`</span><span class="w"> </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">id_categoria</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span>
+<span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">fk_items_categorias</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id_categoria</span><span class="o">`</span><span class="p">),</span>
+<span class="w">  </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="o">`</span><span class="n">fk_items_categorias</span><span class="o">`</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id_categoria</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="o">`</span><span class="n">categorias</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="c1">-- Volcado de datos para la tabla `items`</span>
+<span class="c1">-- --------------------------------------------------------</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">items</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">nombre</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">descripcion</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">fecha_adquisicion</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">precio</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">id_categoria</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">'The Legend of Zelda: Breath of the Wild'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Juego para Nintendo Switch. Mundo abierto y exploración sin límites.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2017-03-03'</span><span class="p">,</span><span class="w"> </span><span class="mi">59</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'Figura Funko POP! de The Mandalorian'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Figura de vinilo del protagonista de la serie de Star Wars.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2020-11-15'</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">.</span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'Saga Completa de Watchmen'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Novela gráfica de Alan Moore y Dave Gibbons. Un clásico.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2018-05-20'</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">.</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">'Catán'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Juego de mesa de estrategia y gestión de recursos. Para 3-4 jugadores.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2019-12-24'</span><span class="p">,</span><span class="w"> </span><span class="mi">39</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">'Cyberpunk 2077'</span><span class="p">,</span><span class="w"> </span><span class="s1">'RPG de acción en un futuro distópico. Edición de lanzamiento.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2020-12-10'</span><span class="p">,</span><span class="w"> </span><span class="mi">49</span><span class="p">.</span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">'Batman: The Killing Joke'</span><span class="p">,</span><span class="w"> </span><span class="s1">'La icónica historia del Joker escrita por Alan Moore.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2021-02-01'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="diagrama-de-la-base-de-datos">Diagrama de la Base de Datos</h3>
+<p>Un diagrama Entidad-Relación nos ayuda a visualizar cómo se conectan nuestras tablas.</p>
+<pre class="mermaid"><code>erDiagram
+    CATEGORIAS {
+        int id PK "ID Categoría"
+        varchar(50) nombre "Nombre de la Categoría"
+    }
+    ITEMS {
+        int id PK "ID Item"
+        varchar(100) nombre "Nombre del Item"
+        text descripcion "Descripción"
+        date fecha_adquisicion "Fecha de Compra"
+        decimal precio "Precio (€)"
+        int id_categoria FK "ID Categoría"
+    }
+    CATEGORIAS ||--o{ ITEMS : "contiene"</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Si quisieras añadir una tabla para registrar los "fabricantes" de las figuras de acción (por ejemplo, "Funko", "Hasbro"), ¿qué campos le pondrías a esa nueva tabla?</li>
+<li>¿Cómo modificarías la tabla <code>items</code> para que se relacione con la nueva tabla <code>fabricantes</code>?</li>
+<li>Escribe la sentencia <code>INSERT</code> para añadir un nuevo videojuego: "Elden Ring", que costó 69.95€ y se compró hoy.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="pdo-el-interprete-universal-en-accion">PDO: El Intérprete Universal en Acción</h2>
+<p>Ahora que tenemos nuestra base de datos, vamos a conectar PHP con ella. A partir de ahora, todo el código que veas será PHP 8, siguiendo las buenas prácticas de PSR-12.</p>
+<h3 id="1-estableciendo-la-conexion-la-llamada-a-la-puerta">1. Estableciendo la Conexión: La Llamada a la Puerta</h3>
+<p>Lo primero es lo primero: necesitamos "llamar a la puerta" de la base de datos y que nos deje pasar. En el mundo de PDO, esta llamada se realiza instanciando un objeto de la clase <code>PDO</code>. Piensa en <code>new PDO(...)</code> como el acto de marcar un número de teléfono muy específico, proporcionar tus credenciales y establecer una línea de comunicación directa y segura.</p>
+<p>El constructor de la clase <code>PDO</code> es el guardián de la puerta y requiere que le proporciones la información correcta para dejarte entrar. Admite hasta cuatro parámetros:</p>
+<ul>
+<li><strong><code>DSN (Data Source Name)</code></strong>: <strong>(Obligatorio)</strong>. Es una cadena de texto que funciona como la dirección completa y detallada de la base de datos. Le dice a PHP qué "idioma" hablar (MySQL, PostgreSQL, etc.) y dónde encontrar al interlocutor.</li>
+<li><strong><code>Usuario</code></strong>: <strong>(Opcional)</strong>. El nombre de usuario que tiene permisos para acceder a esa base de datos.</li>
+<li><strong><code>Contraseña</code></strong>: <strong>(Opcional)</strong>. La contraseña asociada a ese usuario.</li>
+<li><strong><code>Opciones</code></strong>: <strong>(Opcional)</strong>. Un array asociativo que permite ajustar el comportamiento de la conexión. Es aquí donde afinamos detalles como el manejo de errores o el juego de caracteres.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// La sintaxis fundamental</span>
+<span class="x">$conexion = new PDO($dsn, $usuario, $contraseña, $opciones);</span>
+
+<span class="x">// Un ejemplo real y funcional con las credenciales de nuestro proyecto</span>
+<span class="x">$conexion = new PDO('mysql:host=localhost;dbname=frikigaleria', 'root', '');</span>
+</code></pre></div>
+<p><br/></p>
+<h4 id="anatomia-de-un-dsn-la-direccion-exacta">Anatomía de un DSN: La Dirección Exacta</h4>
+<p>El DSN es la pieza más importante y su formato es crucial. Su estructura general es <code>driver:parametro1=valor1;parametro2=valor2;...</code>.</p>
+<p>Para el driver que nos interesa, <strong>MySQL/MariaDB</strong> (<code>mysql:</code>), los parámetros más comunes que usarás son:</p>
+<ul>
+<li><code>host</code>: El nombre del servidor o su dirección IP. Normalmente, en un entorno de desarrollo local, será <code>localhost</code>.</li>
+<li><code>dbname</code>: El nombre de la base de datos específica a la que quieres conectarte. ¡Es fundamental! Si no la especificas, te conectarás al servidor, pero no a una base de datos en particular.</li>
+<li><code>port</code>: El puerto en el que el servidor de base de datos está "escuchando". El puerto por defecto para MySQL es el <code>3306</code>. Solo necesitas especificarlo si tu servidor está configurado en un puerto diferente.</li>
+<li><code>charset</code>: Indica el juego de caracteres que PHP debe usar para comunicarse con la base de datos. Es <strong>altamente recomendable</strong> establecerlo a <code>utf8mb4</code> para asegurar la compatibilidad con cualquier tipo de carácter, incluidos los emojis 😉.</li>
+<li><code>unix_socket</code>: En sistemas *nix (Linux, macOS), a veces la conexión no se hace por red (host y puerto) sino a través de un fichero especial llamado socket, que es más rápido. Solo se usa en casos específicos y es incompatible con <code>host</code> y <code>port</code>.</li>
+</ul>
+<p><br/>
+<strong>DSN</strong>: La Dirección de la BBDD: 
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBgbXlzcWw6aG9zdD1sb2NhbGhvc3Q7ZGJuYW1lPWZyaWtpZ2FsZXJpYTtjaGFyc2V0PXV0ZjhtYjRgCi0gKipgbXlzcWw6YCoqCiAgICAtIDxici8+RWwgImlkaW9tYSIgcXVlIGhhYmxhcmVtb3MuCiAgICAtIExlIGRpY2UgYSBQRE8gcXXDqSAqZHJpdmVyKiB1c2FyLgotICoqYGhvc3Q9bG9jYWxob3N0YCoqCiAgICAtIDxici8+TGEgImRpcmVjY2nDs24iIGRlbCBlZGlmaWNpby4KICAgIC0gRMOzbmRlIGVzdMOhIGVsIHNlcnZpZG9yIE15U1FMLgotICoqYGRibmFtZT1mcmlraWdhbGVyaWFgKioKICAgIC0gPGJyLz5FbCAicGlzbyB5IHB1ZXJ0YSIuCiAgICAtIFF1w6kgYmFzZSBkZSBkYXRvcyBlc3BlY8OtZmljYSBxdWVyZW1vcy4KLSAqKmBjaGFyc2V0PXV0ZjhtYjRgKioKICAgIC0gPGJyLz5FbCAianVlZ28gZGUgY2FyYWN0ZXJlcyIuCiAgICAtIEPDs21vIGludGVycHJldGFyIGFjZW50b3MgeSBlbW9qaXMu</markmap-data></div></p>
+<p>Aquí tienes varios ejemplos de DSNs que te puedes encontrar:</p>
+<div class="highlight"><pre><span></span><code>// Conexión estándar en un entorno local
+mysql:host=localhost;dbname=testdb
+
+// Conexión a un servidor que usa un puerto no estándar (ej: 3307)
+mysql:host=localhost;port=3307;dbname=testdb
+
+// Conexión avanzada usando un socket Unix
+mysql:unix_socket=/tmp/mysql.sock;dbname=testdb
+</code></pre></div>
+<h4 id="el-ejemplo-definitivo-conexion-robusta">El Ejemplo Definitivo: Conexión Robusta</h4>
+<p>Ahora, juntemos todas las piezas para crear el bloque de conexión que usaremos en nuestro proyecto <code>frikigaleria</code>. Este código no solo conecta, sino que lo hace de forma segura y predecible.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: conexion.php</span>
+
+<span class="c1">// 1. Parámetros de la conexión</span>
+<span class="nv">$host</span> <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+<span class="nv">$db</span>   <span class="o">=</span> <span class="s1">'frikigaleria'</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span> <span class="c1">// Usuario por defecto en XAMPP</span>
+<span class="nv">$pass</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>     <span class="c1">// Contraseña por defecto en XAMPP</span>
+<span class="nv">$charset</span> <span class="o">=</span> <span class="s1">'utf8mb4'</span><span class="p">;</span>
+
+<span class="c1">// 2. Construimos el DSN (Data Source Name)</span>
+<span class="c1">// Le decimos que use el driver mysql, apuntando al host y dbname definidos,</span>
+<span class="c1">// y que la comunicación sea en el charset utf8mb4.</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:host=</span><span class="si">$host</span><span class="s2">;dbname=</span><span class="si">$db</span><span class="s2">;charset=</span><span class="si">$charset</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// 3. Configuramos el array de opciones para el comportamiento de PDO</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">// Queremos que PDO lance excepciones si hay un error. Es el modo más robusto.</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span>            <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">,</span>
+    <span class="c1">// Queremos que los resultados por defecto vengan como arrays asociativos. ¡Más claro!</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_DEFAULT_FETCH_MODE</span> <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
+    <span class="c1">// Desactiva la emulación de sentencias preparadas para usar las nativas de MySQL.</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_EMULATE_PREPARES</span>   <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="c1">// 4. Intentamos la conexión dentro de un bloque try...catch</span>
+<span class="k">try</span> <span class="p">{</span>
+     <span class="c1">// Instanciamos el objeto PDO con toda nuestra configuración</span>
+     <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+     <span class="c1">// Si llegamos aquí, ¡la conexión ha sido un éxito!</span>
+     <span class="c1">// echo "¡Conexión exitosa a la FrikiGalería!";</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// Si algo sale mal (contraseña incorrecta, db no existe...), se captura la excepción.</span>
+     <span class="c1">// En una aplicación real, no mostraríamos el error al usuario final.</span>
+     <span class="c1">// Registraríamos el error en un log y mostraríamos un mensaje genérico.</span>
+     <span class="nb">error_log</span><span class="p">(</span><span class="s1">'Error de conexión a la BBDD: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+     <span class="k">die</span><span class="p">(</span><span class="s1">'Error: No se pudo establecer conexión con la base de datos. Por favor, intente más tarde.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">¡Nunca subas tus credenciales a un repositorio!</p>
+<p>Reiteramos esta regla de oro. Las credenciales de la base de datos son información ultrasensible. La práctica profesional estándar es guardarlas en un fichero de configuración fuera del control de versiones (por ejemplo, en un fichero <code>.env</code> que se carga en el script) y que esté añadido al fichero <code>.gitignore</code> de tu proyecto.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Estás intentando conectar a una base de datos en un servidor remoto cuya IP es <code>192.168.1.100</code> y el administrador te ha dicho que MySQL está en el puerto <code>3307</code>. La base de datos se llama <code>produccion</code>. Escribe la cadena DSN que necesitarías.</li>
+<li>Un compañero te pasa un script que conecta a la base de datos pero no especifica el <code>dbname</code>. ¿Podrá ejecutar consultas como <code>SELECT * FROM usuarios</code>? ¿Por qué?</li>
+<li>¿Qué ventaja principal le ves a configurar <code>PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION</code> en las opciones en lugar de estar comprobando si hay errores después de cada consulta?</li>
+</ol>
+</div>
+<pre class="mermaid"><code>sequenceDiagram
+    participant ScriptPHP as "Tu Script PHP"
+    participant PDO as "Objeto PDO"
+    participant MySQL as "Base de Datos MySQL"
+
+    ScriptPHP-&gt;&gt;PDO: new PDO(dsn, user, pass, options)
+    activate PDO
+    PDO-&gt;&gt;MySQL: Intento de conexión
+    activate MySQL
+    alt Conexión Exitosa
+        MySQL--&gt;&gt;PDO: Conexión Aceptada
+        PDO--&gt;&gt;ScriptPHP: Devuelve objeto PDO conectado
+    else Error en la Conexión
+        MySQL--&gt;&gt;PDO: Error (ej: contraseña incorrecta)
+        deactivate MySQL
+        PDO-xScriptPHP: Lanza PDOException
+        Note right of ScriptPHP: El bloque 'catch' se ejecuta
+    end
+    deactivate PDO</code></pre>
+<p><br/><hr/></p>
+<h3 id="manipulando-la-conexion-getattribute-y-setattribute">Manipulando la Conexión: <code>getAttribute</code> y <code>setAttribute</code></h3>
+<p>Una vez que tienes tu objeto <code>$pdo</code> conectado, no es una caja negra. Puedes "conversar" con él para entender cómo está configurado o para cambiar su comportamiento sobre la marcha. Para esto sirven los métodos <code>getAttribute</code> y <code>setAttribute</code>.</p>
+<div class="admonition info inline">
+<p class="admonition-title">Preguntar y Ordenar</p>
+<p>Piensa en <code>getAttribute</code> como preguntarle a tu traductor (PDO): "¿Qué versión del dialecto 'MySQL' estás usando?". Y en <code>setAttribute</code> como darle una orden: "A partir de ahora, quiero que me traduzcas todos los sustantivos a mayúsculas".</p>
+</div>
+<p><strong><code>getAttribute</code></strong>: Se usa para obtener información sobre la conexión o el driver de la base de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span> <span class="c1">// Nuestro fichero de conexión que crea $pdo</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$versionServidor</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">getAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_SERVER_VERSION</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"Versión del servidor de BBDD: "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$versionServidor</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Error: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong><code>setAttribute</code></strong>: Permite modificar el comportamiento del objeto PDO para todas las consultas futuras.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Ordenamos que los nombres de las columnas se devuelvan en mayúsculas.</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_CASE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">CASE_UPPER</span><span class="p">);</span>
+
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT nombre, precio FROM items WHERE id = 1"</span><span class="p">);</span>
+    <span class="nv">$item</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+
+    <span class="c1">// Ahora, las claves del array asociativo estarán en mayúsculas.</span>
+    <span class="c1">// print_r($item) mostraría: Array ( [NOMBRE] =&gt; 'The Legend of Zelda...', [PRECIO] =&gt; 59.99 )</span>
+    <span class="k">echo</span> <span class="s2">"Nombre: "</span> <span class="o">.</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'NOMBRE'</span><span class="p">];</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Error: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Para qué podría ser útil obtener el <code>PDO::ATTR_DRIVER_NAME</code> antes de ejecutar una consulta? Pista: piensa en escribir código que deba funcionar tanto en MySQL como en SQLite.</li>
+<li>Si <code>PDO::ATTR_DEFAULT_FETCH_MODE</code> se puede establecer en las opciones del constructor, ¿en qué situación querrías cambiarlo a mitad de un script usando <code>setAttribute</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="2-crud-las-cuatro-operaciones-sagradas">2. CRUD: Las Cuatro Operaciones Sagradas</h3>
+<p>CRUD son las siglas de <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, <strong>D</strong>elete. Son las cuatro operaciones básicas que podemos realizar sobre los datos. Vamos a ver cómo hacer un CRUD completo para gestionar nuestros <code>items</code>.</p>
+<h4 id="a-read-leer-consultar-datos">A. Read (Leer / Consultar Datos)</h4>
+<p>Es la operación más común. Queremos mostrar los datos que ya existen.</p>
+<p><strong>Ejemplo 2: Listar todos los items de la galería</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: listar_items.php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span> <span class="c1">// Reutilizamos nuestro código de conexión</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// 1. Preparamos la consulta SQL.</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT items.*, categorias.nombre AS categoria_nombre FROM items JOIN categorias ON items.id_categoria = categorias.id ORDER BY fecha_adquisicion DESC"</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Mi FrikiGalería&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// 2. Ejecutamos y recorremos los resultados.</span>
+    <span class="c1">// fetch() va cogiendo una fila en cada iteración del bucle.</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">" ("</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'categoria_nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">") - "</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"Comprado por "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"€ el "</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">'fecha_adquisicion'</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Error al consultar los datos: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// La conexión se cierra automáticamente cuando el script termina.</span>
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">htmlspecialchars()</p>
+<p>Es una función de seguridad <strong>esencial</strong> en PHP. Convierte caracteres especiales como <code>&lt;</code> y <code>&gt;</code> en sus equivalentes de entidad HTML (<code>&amp;lt;</code> y <code>&amp;gt;</code>). Esto previene ataques de tipo <strong>XSS (Cross-Site Scripting)</strong>, donde un atacante podría inyectar código HTML o JavaScript malicioso en tu página a través de los datos. ¡Úsala siempre que vayas a imprimir datos en pantalla!</p>
+</div>
+<p><br/><hr/></p>
+<h3 id="desgranando-los-resultados-la-clase-pdostatement">Desgranando los Resultados: La Clase <code>PDOStatement</code></h3>
+<p>Cuando ejecutas una consulta que devuelve datos (como un <code>SELECT</code>) con <code>$pdo-&gt;query()</code> o <code>$stmt-&gt;execute()</code>, no obtienes los datos directamente. Lo que obtienes es un objeto especial de la clase <code>PDOStatement</code>.</p>
+<p>Este objeto es como un "cursor" o un puntero a los resultados que están en el servidor de la base de datos. Contiene toda la información y nos ofrece varios métodos para acceder a ella fila por fila, o toda de golpe.</p>
+<p>Los métodos más importantes de <code>PDOStatement</code> son:</p>
+<ul>
+<li><strong><code>rowCount()</code></strong>: Devuelve el número de filas afectadas por la última consulta <code>DELETE</code>, <code>INSERT</code>, o <code>UPDATE</code>.
+    !!! warning "¡Ojo con <code>rowCount()</code> y <code>SELECT</code>!"
+        Para <code>SELECT</code>, <code>rowCount()</code> no siempre devuelve el número de filas encontradas en todas las bases de datos. La forma más fiable de contar filas es ejecutar un <code>SELECT COUNT(*)</code>.</li>
+<li><strong><code>fetch()</code></strong>: Es el método más versátil. Recupera <strong>una sola fila</strong> del conjunto de resultados y avanza el puntero a la siguiente, para que la próxima llamada a <code>fetch()</code> coja la siguiente fila. Devuelve <code>false</code> cuando no hay más filas.</li>
+<li><strong><code>fetchObject()</code></strong>: Similar a <code>fetch()</code>, pero en lugar de un array, devuelve un objeto anónimo (<code>stdClass</code>) donde las propiedades del objeto son los nombres de las columnas.</li>
+<li><strong><code>fetchAll()</code></strong>: ¡El método "impaciente"! Recupera <strong>todas</strong> las filas del conjunto de resultados a la vez y las devuelve como un array de arrays.</li>
+</ul>
+<h4 id="los-modos-de-fetch">Los Modos de <code>fetch()</code></h4>
+<p>El método <code>fetch()</code> puede devolver la fila en diferentes formatos, según el parámetro que le pases. Esto nos da una flexibilidad enorme.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Modo</th>
+<th style="text-align: left;">Constante PDO</th>
+<th style="text-align: left;">Resultado</th>
+<th style="text-align: left;">Ejemplo de Salida para una fila</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mixto (por defecto)</strong></td>
+<td style="text-align: left;"><code>PDO::FETCH_BOTH</code></td>
+<td style="text-align: left;">Un array con índices numéricos y asociativos (nombres de columna).</td>
+<td style="text-align: left;"><code>['nombre' =&gt; 'Catán', 0 =&gt; 'Catán']</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Asociativo</strong></td>
+<td style="text-align: left;"><code>PDO::FETCH_ASSOC</code></td>
+<td style="text-align: left;">Un array donde las claves son los nombres de las columnas. <strong>El más usado y recomendado.</strong></td>
+<td style="text-align: left;"><code>['nombre' =&gt; 'Catán']</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Numérico</strong></td>
+<td style="text-align: left;"><code>PDO::FETCH_NUM</code></td>
+<td style="text-align: left;">Un array donde las claves son índices numéricos (0, 1, 2...).</td>
+<td style="text-align: left;"><code>[0 =&gt; 'Catán']</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objeto</strong></td>
+<td style="text-align: left;"><code>PDO::FETCH_OBJ</code></td>
+<td style="text-align: left;">Un objeto <code>stdClass</code> donde las propiedades públicas son los nombres de las columnas.</td>
+<td style="text-align: left;"><code>$fila-&gt;nombre</code> es 'Catán'</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo Práctico: Comparando los modos de <code>fetch</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Demostración de modos de fetch&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT nombre, precio FROM items WHERE id = 4"</span><span class="p">;</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="c1">// Usamos fetch() para obtener la única fila que devuelve la consulta</span>
+<span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;PDO::FETCH_ASSOC (Asociativo):&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"Nombre: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">", Precio: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$fila</span><span class="p">);</span> <span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Para volver a leer, tenemos que re-ejecutar la consulta</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;PDO::FETCH_NUM (Numérico):&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"Nombre: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">", Precio: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$fila</span><span class="p">);</span> <span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="nv">$fila</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_OBJ</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;PDO::FETCH_OBJ (Objeto):&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"Nombre: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">.</span> <span class="s2">", Precio: "</span> <span class="o">.</span> <span class="nv">$fila</span><span class="o">-&gt;</span><span class="na">precio</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$fila</span><span class="p">);</span> <span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="b-create-crear-insertar-datos">B. Create (Crear / Insertar Datos)</h4>
+<p>Ahora vamos a añadir un nuevo item a nuestra colección. Aquí es donde las <strong>sentencias preparadas</strong> entran en juego. Son la forma más segura de insertar datos que vienen del exterior (como un formulario).</p>
+<p><strong>Ejemplo 3: Formulario y script para añadir un nuevo item</strong></p>
+<p><code>formulario_nuevo.html</code>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Añadir Nuevo Item<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Añadir Nuevo Item a la FrikiGalería<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"crear_item.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Nombre: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Descripción: <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">name</span><span class="o">=</span><span class="s">"descripcion"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Fecha Adquisición: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"date"</span> <span class="na">name</span><span class="o">=</span><span class="s">"fecha_adquisicion"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Precio: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">step</span><span class="o">=</span><span class="s">"0.01"</span> <span class="na">name</span><span class="o">=</span><span class="s">"precio"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Categoría:
+                <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">"id_categoria"</span> <span class="na">required</span><span class="p">&gt;</span>
+                    <span class="cm">&lt;!-- Este select se podría rellenar dinámicamente desde la BBDD --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"1"</span><span class="p">&gt;</span>Videojuegos<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"2"</span><span class="p">&gt;</span>Cómics<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"3"</span><span class="p">&gt;</span>Figuras de Acción<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"4"</span><span class="p">&gt;</span>Juegos de Mesa<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Añadir Item<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><code>crear_item.php</code>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// Comprobamos que el formulario se ha enviado</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"REQUEST_METHOD"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"POST"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">];</span>
+    <span class="nv">$descripcion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">];</span>
+    <span class="nv">$fecha_adquisicion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'fecha_adquisicion'</span><span class="p">];</span>
+    <span class="nv">$precio</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">];</span>
+    <span class="nv">$id_categoria</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">];</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// 1. Preparamos la sentencia SQL con "placeholders"</span>
+        <span class="c1">// Usamos parámetros con nombre (:nombre) para mayor claridad.</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"INSERT INTO items (nombre, descripcion, fecha_adquisicion, precio, id_categoria) VALUES (:nombre, :descripcion, :fecha_adquisicion, :precio, :id_categoria)"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+        <span class="c1">// 2. Vinculamos los valores a los placeholders y ejecutamos</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">':nombre'</span> <span class="o">=&gt;</span> <span class="nv">$nombre</span><span class="p">,</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$descripcion</span><span class="p">,</span>
+            <span class="s1">':fecha_adquisicion'</span> <span class="o">=&gt;</span> <span class="nv">$fecha_adquisicion</span><span class="p">,</span>
+            <span class="s1">':precio'</span> <span class="o">=&gt;</span> <span class="nv">$precio</span><span class="p">,</span>
+            <span class="s1">':id_categoria'</span> <span class="o">=&gt;</span> <span class="nv">$id_categoria</span>
+        <span class="p">]);</span>
+
+        <span class="k">echo</span> <span class="s2">"¡Nuevo item añadido con éxito!"</span><span class="p">;</span>
+        <span class="c1">// Podríamos redirigir al usuario al listado</span>
+        <span class="c1">// header('Location: listar_items.php');</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error al insertar el item: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="c-update-actualizar-datos">C. Update (Actualizar Datos)</h4>
+<p>Actualizar es una mezcla de Leer y Crear. Primero leemos los datos del item que queremos modificar para mostrarlos en un formulario, y luego usamos una sentencia <code>UPDATE</code> para guardar los cambios.</p>
+<p><strong>Ejemplo 4: Script para editar un item</strong>
+(El formulario sería muy similar a <code>formulario_nuevo.html</code>, pero con los campos rellenos con los datos actuales del item y un campo oculto con el <code>id</code>).</p>
+<p><code>editar_item.php</code> (lógica para procesar el formulario de edición):
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"REQUEST_METHOD"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"POST"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span> <span class="c1">// Asumimos que viene de un &lt;input type="hidden" name="id"&gt;</span>
+    <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">];</span>
+    <span class="nv">$descripcion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">];</span>
+    <span class="nv">$precio</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">];</span>
+    <span class="nv">$id_categoria</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">];</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"UPDATE items SET nombre = :nombre, descripcion = :descripcion, precio = :precio, id_categoria = :id_categoria WHERE id = :id"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">':nombre'</span> <span class="o">=&gt;</span> <span class="nv">$nombre</span><span class="p">,</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$descripcion</span><span class="p">,</span>
+            <span class="s1">':precio'</span> <span class="o">=&gt;</span> <span class="nv">$precio</span><span class="p">,</span>
+            <span class="s1">':id_categoria'</span> <span class="o">=&gt;</span> <span class="nv">$id_categoria</span><span class="p">,</span>
+            <span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+        <span class="p">]);</span>
+
+        <span class="k">echo</span> <span class="s2">"Item actualizado correctamente."</span><span class="p">;</span>
+        <span class="c1">// header('Location: listar_items.php');</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error al actualizar el item: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="d-delete-borrar-datos">D. Delete (Borrar Datos)</h4>
+<p>Borrar es la operación más delicada. Siempre debemos asegurarnos de que el usuario realmente quiere hacerlo.</p>
+<p><strong>Ejemplo 5: Script para borrar un item</strong>
+(Normalmente, vendría de un enlace como <code>borrar_item.php?id=5</code> y tendría una confirmación con JavaScript).</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// ¡Siempre con sentencias preparadas, incluso para borrar!</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"DELETE FROM items WHERE id = :id"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+
+        <span class="k">echo</span> <span class="s2">"Item eliminado con éxito."</span><span class="p">;</span>
+        <span class="c1">// header('Location: listar_items.php');</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error al eliminar el item: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"ID de item no especificado."</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBDUlVEIGNvbiBQRE8KCiMjIENyZWF0ZSAoSU5TRVJUKQotIGBmb3JtYCBjb24gYG1ldGhvZD0icG9zdCJgCi0gYGNyZWFyX2l0ZW0ucGhwYAotIGBwcmVwYXJlKClgIGNvbiBgSU5TRVJUIElOVE8gLi4uYAotIGBleGVjdXRlKClgIGNvbiBsb3MgZGF0b3MgZGVsIGAkX1BPU1RgCgojIyBSZWFkIChTRUxFQ1QpCi0gYGxpc3Rhcl9pdGVtcy5waHBgCi0gYCRwZG8tPnF1ZXJ5KClgIHBhcmEgY29uc3VsdGFzIHNpbXBsZXMKLSBgcHJlcGFyZSgpYCB5IGBleGVjdXRlKClgIHBhcmEgY29uc3VsdGFzIGNvbiBgV0hFUkVgCi0gUmVjb3JyZXIgY29uIGB3aGlsZSAoJHJvdyA9ICRzdG10LT5mZXRjaCgpKWAKLSBgaHRtbHNwZWNpYWxjaGFycygpYCBhbCBpbXByaW1pcgoKIyMgVXBkYXRlIChVUERBVEUpCi0gRm9ybXVsYXJpbyBwcmVjYXJnYWRvIGNvbiBkYXRvcwotIGA8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJpZCI+YAotIGBlZGl0YXJfaXRlbS5waHBgCi0gYHByZXBhcmUoKWAgY29uIGBVUERBVEUgLi4uIFNFVCAuLi4gV0hFUkUgaWQgPSA6aWRgCi0gYGV4ZWN1dGUoKWAKCiMjIERlbGV0ZSAoREVMRVRFKQotIGBib3JyYXJfaXRlbS5waHA/aWQ9WGAKLSAqKsKhQ29uZmlybWFjacOzbiEqKgotIGBwcmVwYXJlKClgIGNvbiBgREVMRVRFIEZST00gLi4uIFdIRVJFIGlkID0gOmlkYAotIGBleGVjdXRlKClg</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>En <code>listar_items.php</code>, ¿qué cambiarías en la consulta SQL para que los items se ordenaran por precio, del más barato al más caro?</li>
+<li>¿Por qué es una buena idea usar <code>prepare()</code> y <code>execute()</code> para una sentencia <code>DELETE</code> si el <code>id</code> que se recibe es solo un número? ¿Qué podría pasar si no lo hiciéramos y concatenáramos directamente el <code>$_GET['id']</code> en la consulta? (Pista: <code>?id=5; DROP TABLE users;--</code>)</li>
+<li>¿Cómo modificarías la lógica de <code>crear_item.php</code> para que, después de insertar el item, redirija automáticamente al usuario a <code>listar_items.php</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="la-muralla-de-seguridad-consultas-preparadas">La Muralla de Seguridad: Consultas Preparadas</h3>
+<p>Ya lo mencionamos, pero es tan crucial que merece su propia sección. Las consultas preparadas son la defensa número uno contra el ataque más común y peligroso en aplicaciones web: la <strong>Inyección SQL</strong>.</p>
+<p>El proceso es como un diálogo en dos pasos con la base de datos:</p>
+<ol>
+<li><strong><code>prepare()</code></strong>: PHP envía la "plantilla" de la consulta a la base de datos, usando marcadores de posición (<code>?</code> o <code>:nombre</code>) en lugar de los datos reales. La base de datos analiza esta plantilla, la compila y la deja lista, sabiendo perfectamente qué partes son código SQL y qué partes serán datos.</li>
+<li><strong><code>execute()</code></strong>: PHP envía los datos por separado. La base de datos simplemente "rellena los huecos" de la plantilla ya compilada con estos datos, tratándolos siempre como simple texto, nunca como código ejecutable.</li>
+</ol>
+<pre class="mermaid"><code>graph TD
+    subgraph "Tu Script PHP"
+        A["Datos de Usuario (ej: $_POST['nombre'])"]
+        B["\$sql = '... WHERE nombre = :nombre'"]
+        C["\$stmt = \$pdo-&gt;prepare(\$sql)"]
+        D["\$stmt-&gt;execute([':nombre' =&gt; \$datos])"]
+    end
+
+    subgraph "Servidor MySQL"
+        E["1 - Compilar Plantilla SQL"]
+        F["2 - Recibir y Escapar Datos"]
+        G["3 - Ejecutar de Forma Segura"]
+    end
+
+    A --&gt; D
+    B --&gt; C
+    C --&gt;|"Envía plantilla"| E
+    D --&gt;|"Envía datos"| F
+    E --&gt; G
+    F --&gt; G</code></pre>
+<h4 id="parametros-posicionales-vs-nombrados-nombre">Parámetros: Posicionales (<code>?</code>) vs. Nombrados (<code>:nombre</code>)</h4>
+<p>PDO ofrece dos sabores para los marcadores de posición.</p>
+<ul>
+<li><strong>Posicionales (<code>?</code>)</strong>: Son rápidos y concisos, pero pueden volverse confusos si tienes muchos parámetros, ya que el orden importa.</li>
+<li><strong>Nombrados (<code>:nombre</code>)</strong>: Son un poco más largos de escribir, pero hacen el código <strong>mucho más legible y mantenible</strong>, ya que no dependen del orden. <strong>Son los más recomendados.</strong></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">No mezclar</p>
+<p>No puedes usar marcadores posicionales y nombrados en la misma consulta. ¡Tienes que elegir uno!</p>
+</div>
+<p><strong>Ejemplo Completo: Buscador de Items por Precio (Seguro)</strong></p>
+<p><code>formulario_buscador.html</code>:
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"buscar_item.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"get"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Mostrar items que cuesten más de:
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">name</span><span class="o">=</span><span class="s">"precio_minimo"</span> <span class="na">value</span><span class="o">=</span><span class="s">"20"</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Buscar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><code>buscar_item.php</code>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'precio_minimo'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$precio_minimo</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'precio_minimo'</span><span class="p">];</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Items que cuestan más de "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$precio_minimo</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"€&lt;/h1&gt;"</span><span class="p">;</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// 1. Preparar la consulta con un marcador de posición nombrado</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT nombre, precio FROM items WHERE precio &gt; :precio_min"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+        <span class="c1">// 2. Vincular el valor y ejecutar</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">':precio_min'</span> <span class="o">=&gt;</span> <span class="nv">$precio_minimo</span><span class="p">]);</span>
+
+        <span class="c1">// 3. Recorrer los resultados</span>
+        <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">" - "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"€&lt;/li&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error en la búsqueda: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">bindParam() vs pasar array a execute()</p>
+<p>Existe otro método llamado <code>bindParam()</code> que es similar a vincular en <code>execute()</code>, pero con una diferencia sutil: <code>bindParam()</code> vincula la <em>variable</em> (por referencia), mientras que <code>execute()</code> vincula el <em>valor</em>. Para la mayoría de los casos, pasar el array a <code>execute()</code> es más simple y directo.</p>
+</div>
+<p><br/><hr/></p>
+<h3 id="todo-o-nada-el-poder-de-las-transacciones">Todo o Nada: El Poder de las Transacciones</h3>
+<p>Imagina una transferencia bancaria. Es una operación que consta de dos pasos:
+1.  Restar 100€ de la cuenta A.
+2.  Sumar 100€ a la cuenta B.</p>
+<p>¿Qué pasa si el paso 1 tiene éxito, pero justo después se cae el sistema y el paso 2 no se ejecuta? ¡El dinero se ha esfumado! Para evitar estas catástrofes, existen las <strong>transacciones</strong>.</p>
+<p>Una transacción es un conjunto de consultas que se tratan como una única unidad de trabajo. <strong>O se ejecutan todas con éxito, o no se ejecuta ninguna.</strong> Es el principio de "todo o nada".</p>
+<div class="admonition warning">
+<p class="admonition-title">InnoDB vs. MyISAM</p>
+<p>No todos los motores de almacenamiento de MySQL soportan transacciones. El motor por defecto moderno, <strong>InnoDB</strong>, sí las soporta. El antiguo, <strong>MyISAM</strong>, no. Asegúrate de que tus tablas usan InnoDB si necesitas transacciones.</p>
+</div>
+<p>Por defecto, PDO trabaja en modo <code>autocommit</code>. Esto significa que cada consulta que ejecutas es una transacción en sí misma y se confirma (se hace permanente) al instante. Para iniciar una transacción, debemos desactivar este comportamiento temporalmente.</p>
+<p>Los tres comandos del ritual de la transacción son:</p>
+<ol>
+<li><strong><code>$pdo-&gt;beginTransaction()</code></strong>: Desactiva <code>autocommit</code> y dice: "Atención, todo lo que venga ahora es parte de un solo paquete".</li>
+<li><strong><code>$pdo-&gt;commit()</code></strong>: Si todo ha ido bien, este comando dice: "Perfecto, haz todos los cambios permanentes".</li>
+<li><strong><code>$pdo-&gt;rollback()</code></strong>: Si algo ha fallado, este es el botón de pánico. Dice: "¡Deshaz todo lo que hemos hecho desde <code>beginTransaction</code> como si nunca hubiera pasado!".</li>
+</ol>
+<p><strong>Ejemplo: Trasladar un cómic de la categoría "Cómics" a "Juegos de Mesa" (absurdo, pero sirve para el ejemplo)</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// ID del cómic a mover y la nueva categoría</span>
+<span class="nv">$id_item_a_mover</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// "Saga Completa de Watchmen"</span>
+<span class="nv">$id_nueva_categoria</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// "Juegos de Mesa"</span>
+
+<span class="c1">// Envolvemos todo en un try/catch para poder hacer rollback si algo falla</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// 1. Iniciar la transacción</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s2">"Transacción iniciada.&lt;br&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// 2. Primera consulta: Actualizar la categoría del item</span>
+    <span class="nv">$sql_update</span> <span class="o">=</span> <span class="s2">"UPDATE items SET id_categoria = :id_cat WHERE id = :id_item"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql_update</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">':id_cat'</span> <span class="o">=&gt;</span> <span class="nv">$id_nueva_categoria</span><span class="p">,</span> <span class="s1">':id_item'</span> <span class="o">=&gt;</span> <span class="nv">$id_item_a_mover</span><span class="p">]);</span>
+    <span class="k">echo</span> <span class="s2">"Item actualizado para moverse a la nueva categoría.&lt;br&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// Simulamos un error. Descomenta la siguiente línea para ver el rollback en acción.</span>
+    <span class="c1">// throw new \Exception("¡Error simulado! La estantería se ha caído.");</span>
+
+    <span class="c1">// 3. Segunda consulta: Podríamos hacer otra cosa, como registrar el movimiento en un log</span>
+    <span class="c1">// ...otra consulta...</span>
+
+    <span class="c1">// 4. Si llegamos aquí, todo ha ido bien. Confirmamos los cambios.</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s2">"¡Transacción completada con éxito! Watchmen ahora es un juego de mesa."</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 5. Si cualquier consulta falla o se lanza una excepción, hacemos rollback</span>
+    <span class="k">echo</span> <span class="s2">"¡Oh no! Algo salió mal: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"Deshaciendo todos los cambios.&lt;br&gt;"</span><span class="p">;</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+Al ejecutar este código, verás que el cambio se realiza. Si descomentas la línea del <code>throw new Exception</code>, el script entrará en el <code>catch</code>, ejecutará el <code>rollback()</code>, y si revisas la base de datos, verás que "Watchmen" sigue en la categoría "Cómics", como si nada hubiera pasado.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Además de una transferencia bancaria, ¿qué otras tres operaciones del mundo real crees que deberían ser manejadas obligatoriamente con transacciones? (Piensa en reservas de vuelos, compras online, sistemas de votación...).</li>
+<li>¿Qué pasaría en nuestro ejemplo si la tabla <code>items</code> fuera de tipo MyISAM? ¿Se produciría un error en <code>beginTransaction()</code>?</li>
+<li>¿Por qué es una buena práctica usar un bloque <code>try...catch</code> para manejar transacciones?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="cerrando-la-conexion-ser-un-buen-invitado">Cerrando la Conexión: Ser un Buen Invitado</h3>
+<p>Al igual que cuelgas el teléfono cuando terminas una llamada, es una buena práctica cerrar la conexión con la base de datos cuando ya no la necesitas.</p>
+<p>PHP es bastante bueno limpiando las cosas por sí mismo: al final de la ejecución de un script, todas las conexiones se cierran automáticamente. Sin embargo, en aplicaciones complejas o scripts que se ejecutan durante mucho tiempo, liberar los recursos de forma explícita es una señal de profesionalidad. Ayuda a que el servidor de base de datos no se sobrecargue con conexiones "zombis".</p>
+<p>El método es simple: para destruir el objeto PDO y cerrar la conexión, simplemente asígnale el valor <code>null</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// ... Hacemos todas nuestras consultas con el objeto $pdo ...</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT nombre FROM items"</span><span class="p">);</span>
+<span class="c1">// ... usamos los resultados ...</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span> <span class="c1">// Buena práctica liberar el cursor del statement</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>         <span class="c1">// Liberamos el objeto statement</span>
+
+<span class="k">echo</span> <span class="s2">"Trabajo terminado. ¡Adiós, base de datos!"</span><span class="p">;</span>
+
+<span class="c1">// Cerramos la conexión principal liberando el objeto PDO</span>
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Liberar Statement y Conexión</p>
+<p>Es importante liberar primero los objetos <code>PDOStatement</code> (<code>$stmt = null</code>) y después el objeto principal <code>PDO</code> (<code>$pdo = null</code>). Esto asegura que todos los recursos se liberan en el orden correcto.</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>La mejor fuente de información siempre será la documentación oficial. Es densa, pero es la verdad absoluta.</p>
+<ol>
+<li><strong>Documentación oficial de PHP sobre PDO</strong>: <a href="https://www.php.net/manual/es/book.pdo.php">https://www.php.net/manual/es/book.pdo.php</a> - El manual de referencia indispensable.</li>
+<li><strong>PHP The Right Way - PDO</strong>: <a href="https://phptherightway.com/#pdo_extension">https://phptherightway.com/#pdo_extension</a> - Un excelente recurso que resume las mejores prácticas de la comunidad PHP, incluida una sección dedicada a PDO.</li>
+<li><strong>Tutorial sobre Sentencias Preparadas en PDO</strong>: <a href="https://phpdelusions.net/pdo/prepared_statements">https://phpdelusions.net/pdo/prepared_statements</a> - Una guía muy completa y con excelentes explicaciones sobre por qué y cómo usar sentencias preparadas.</li>
+</ol>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<!-- Nombre de archivo sugerido: T03-Ejercicios-PHP-Acceso-a-BBDD.md -->
+<h1 id="ejercicios-practicos-acceso-a-bases-de-datos-con-php">Ejercicios Prácticos: Acceso a Bases de Datos con PHP</h1>
+<p>¡Ha llegado el momento de la verdad! Después de sentar las bases teóricas, vamos a remangarnos y aplicar todo lo aprendido. Para estos ejercicios, nos convertiremos en el equipo de desarrollo encargado de construir el sistema de gestión interno para <strong>"FrikiGalería"</strong>, nuestra tienda y catálogo de coleccionismo.</p>
+<p>El objetivo es crear un conjunto de scripts PHP que nos permitan realizar las operaciones básicas (CRUD) sobre la base de datos que ya hemos diseñado. ¡A programar!</p>
+<hr>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos primeros ejercicios están diseñados para asentar los conceptos más fundamentales: conectar, leer y escribir en la base de datos de forma segura.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Catálogo Interactivo: Listando Nuestra Colección | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Validar la capacidad de conectar a la base de datos, ejecutar una consulta <code>SELECT</code> simple y mostrar los resultados de forma segura en una página HTML.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Asegúrate de haber creado y poblado la base de datos <code>frikigaleria</code> utilizando el script SQL proporcionado en el material teórico. Deberás tener también el fichero <code>conexion.php</code> que establece la conexión PDO.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo fichero llamado <code>listar_items.php</code>.</li>
+<li>Dentro de este fichero, incluye (<code>require</code>) el script <code>conexion.php</code> para obtener el objeto <code>$pdo</code>.</li>
+<li>Escribe una consulta SQL que seleccione todos los campos de todos los registros de la tabla <code>items</code>.</li>
+<li>Utiliza el método <code>query()</code> del objeto PDO para ejecutar la consulta.</li>
+<li>Implementa un bucle <code>while</code> que, utilizando el método <code>fetch()</code> en modo <code>PDO::FETCH_ASSOC</code>, recorra todas las filas devueltas.</li>
+<li>Dentro del bucle, muestra por pantalla el nombre, la descripción y el precio de cada item en una lista HTML (<code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code>).</li>
+<li><strong>Importante:</strong> Asegúrate de pasar todos los datos que imprimas por la función <code>htmlspecialchars()</code> para prevenir ataques XSS.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la operación más común en cualquier aplicación web: mostrar una lista de productos en una tienda online, una lista de artículos en un blog, o una lista de amigos en una red social.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Diagnóstico de Conexión: El Bug Misterioso | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Desarrollar la habilidad de depurar problemas de conexión, uno de los errores más comunes al empezar.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero de equipo junior ha subido un fichero de conexión que no funciona y está bloqueado. Tu tarea es encontrar los errores y corregirlos.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>Analiza el siguiente código, identifica los <strong>tres</strong> errores que impiden que funcione correctamente y corrígelos. Explica brevemente por qué cada uno era un error.</p>
+<p><strong>Código defectuoso (<code>conexion_bug.php</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$host</span> <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+<span class="nv">$db</span>   <span class="o">=</span> <span class="s1">'frikigaleria'</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+<span class="nv">$pass</span> <span class="o">=</span> <span class="s1">'una_contraseña_incorrecta'</span><span class="p">;</span> <span class="c1">// Error intencionado</span>
+<span class="nv">$charset</span> <span class="o">=</span> <span class="s1">'utf8mb4'</span><span class="p">;</span>
+
+<span class="c1">// OJO: El nombre del parámetro de la base de datos es incorrecto</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:host=</span><span class="si">$host</span><span class="s2">;database=</span><span class="si">$db</span><span class="s2">;charset=</span><span class="si">$charset</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span>            <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_DEFAULT_FETCH_MODE</span> <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_EMULATE_PREPARES</span>   <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="k">try</span> <span class="p">{</span>
+     <span class="nv">$pdo_conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// OJO: Se está mostrando el objeto de la excepción, no el mensaje.</span>
+     <span class="k">echo</span> <span class="s2">"Error de conexión: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 90% del trabajo de un programador no es escribir código nuevo, sino leer, entender y depurar código existente (propio o de otros). Esta habilidad es fundamental.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Inyector de Novedades: Añadiendo Items de Forma Segura | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Practicar la inserción de datos (<code>INSERT</code>) provenientes de una fuente externa (como un formulario) utilizando sentencias preparadas para prevenir inyecciones SQL.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Utiliza el fichero <code>conexion.php</code> ya corregido. No necesitas crear el formulario HTML, simplemente simula que los datos llegan a través del array <code>$_POST</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un fichero llamado <code>crear_item.php</code>.</li>
+<li>Simula la llegada de datos por POST creando un array asociativo al principio del script. Por ejemplo:
+    <div class="highlight"><pre><span></span><code><span class="x">$_POST = [</span>
+<span class="x">    'nombre' =&gt; 'Figura Articulada de Spider-Man',</span>
+<span class="x">    'descripcion' =&gt; 'Figura de 15cm de la línea Marvel Legends.',</span>
+<span class="x">    'fecha_adquisicion' =&gt; '2023-10-27',</span>
+<span class="x">    'precio' =&gt; 29.99,</span>
+<span class="x">    'id_categoria' =&gt; 3</span>
+<span class="x">];</span>
+</code></pre></div></li>
+<li>Escribe una sentencia SQL de tipo <code>INSERT</code> utilizando <strong>parámetros con nombre</strong> (ej: <code>:nombre</code>, <code>:precio</code>).</li>
+<li>Usa <code>$pdo-&gt;prepare()</code> para preparar la consulta.</li>
+<li>Crea un array asociativo con los datos del <code>$_POST</code> que se corresponda con los parámetros nombrados de tu consulta.</li>
+<li>Ejecuta la consulta con <code>$stmt-&gt;execute()</code>, pasándole el array de datos.</li>
+<li>Envuelve toda la lógica de la base de datos en un bloque <code>try...catch</code> para manejar posibles errores.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es el proceso exacto que se sigue para gestionar un formulario de registro de usuario, la publicación de un comentario en un blog, o el alta de un nuevo producto en un sistema de inventario.</p>
+</div>
+<hr/>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Este ejercicio combina varias técnicas y requiere un flujo de trabajo más completo, similar a una tarea real de mantenimiento de una aplicación.</p>
+<div class="admonition warning">
+<p class="admonition-title">4) El Inventario Dinámico: Edición de un Coleccionable | Nivel: Medio</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Implementar un flujo completo de edición (<code>UPDATE</code>), que implica leer los datos de un registro, mostrarlos, y luego procesar los cambios de forma segura.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Esta tarea se divide en dos partes (dos ficheros).</p>
+<p><strong>Parte 1: Mostrar el formulario de edición (<code>editar_item_form.php</code>)</strong>
+1.  Este script recibirá el ID del item a editar por la URL (ej: <code>editar_item_form.php?id=3</code>). Debes leer este ID de forma segura desde <code>$_GET</code>.
+2.  Conecta a la base de datos y realiza una consulta <code>SELECT</code> para obtener <strong>todos los datos del item con ese ID específico</strong>. Usa una sentencia preparada para evitar inyección SQL en el <code>WHERE</code>.
+3.  Crea un formulario HTML similar al del ejercicio de inserción, pero esta vez, rellena los valores de los <code>input</code> con los datos que has obtenido de la base de datos.
+4.  <strong>Pista:</strong> No olvides incluir un <code>&lt;input type="hidden" name="id"</code> con el ID del item, para que el script de procesamiento sepa qué registro actualizar. El <code>action</code> del formulario debe apuntar a <code>actualizar_item.php</code>.</p>
+<p><strong>Parte 2: Procesar los cambios (<code>actualizar_item.php</code>)</strong>
+1.  Este script recibirá los datos del formulario de edición por <code>$_POST</code>.
+2.  Prepara una sentencia <code>UPDATE</code> que modifique todos los campos del item. La cláusula <code>WHERE</code> debe filtrar por el ID recibido.
+3.  Utiliza parámetros nombrados y <code>execute()</code> para actualizar el registro de forma segura.
+4.  Muestra un mensaje de confirmación al usuario.</p>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta funcionalidad es el núcleo de cualquier panel de administración: editar una entrada de blog, modificar los datos de un cliente, ajustar el precio de un producto, etc.</p>
+</div>
+<hr/>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Este reto final te pide que combines los conceptos más avanzados (transacciones y manejo de errores) para resolver un problema complejo y realista.</p>
+<div class="admonition danger">
+<p class="admonition-title">5) Operación 'Trasvase': Transferencia Atómica de Colecciones | Nivel: Alto</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Implementar una operación compleja que involucra múltiples actualizaciones de base de datos, garantizando la integridad de los datos mediante el uso de transacciones.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>El CEO de "FrikiGalería" ha decidido reorganizar el catálogo. Quiere una herramienta interna para mover <strong>todos</strong> los items de una categoría a otra de forma masiva (por ejemplo, fusionar "Cómics" y "Videojuegos" en una nueva categoría llamada "Ocio Digital"). Esta operación debe ser "atómica": o se mueven todos los items, o no se mueve ninguno.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un script llamado <code>transferir_categoria.php</code>.</li>
+<li>Define dos variables al principio del script: <code>$id_categoria_origen</code> (ej: 2 para 'Cómics') y <code>$id_categoria_destino</code> (ej: 1 para 'Videojuegos').</li>
+<li>Inicia una transacción con <code>$pdo-&gt;beginTransaction()</code>.</li>
+<li>Dentro de un bloque <code>try...catch</code>, prepara y ejecuta una sentencia <code>UPDATE</code> que cambie el <code>id_categoria</code> de <strong>todos</strong> los items que pertenezcan a la categoría de origen al ID de la categoría de destino.</li>
+<li>Para hacer el reto más interesante, vamos a simular que, como parte de la operación, también se debe registrar el cambio en una tabla de <code>logs</code> (que no crearemos, solo simularemos la consulta). Prepara y ejecuta una segunda consulta (puede ser un <code>INSERT</code> simulado).</li>
+<li>Si ambas consultas se ejecutan sin errores, confirma la transacción con <code>$pdo-&gt;commit()</code>.</li>
+<li>Si se produce <strong>cualquier</strong> excepción en el bloque <code>try</code>, el bloque <code>catch</code> debe capturarla y ejecutar un <code>$pdo-&gt;rollback()</code> para deshacer todos los cambios.</li>
+<li>Muestra mensajes informativos al usuario en cada paso (inicio de transacción, éxito, rollback).</li>
+</ol>
+<h5 id="subtarea-revision-por-pares-peer-review"><strong>Subtarea: Revisión por Pares (Peer Review)</strong></h5>
+<p>Intercambia tu solución con un compañero. Revisa su código y responde a estas preguntas:
+*   ¿Se utiliza correctamente el bloque <code>try...catch</code> para encapsular toda la lógica de la transacción?
+*   ¿Se llama a <code>commit()</code> solo si todas las operaciones tienen éxito?
+*   ¿Se garantiza la llamada a <code>rollback()</code> en caso de error?
+*   ¿El código es legible y está bien comentado? Ofrece una sugerencia de mejora.</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este patrón es fundamental en sistemas críticos. Una compra online, por ejemplo, es una transacción que implica: reducir el stock del producto, registrar el pedido, procesar el pago y generar la factura. Si cualquiera de estos pasos falla, la operación completa debe ser revertida para no dejar el sistema en un estado inconsistente.</p>
+</div></hr>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

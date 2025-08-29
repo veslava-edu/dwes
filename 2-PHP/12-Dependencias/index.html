@@ -1,0 +1,1763 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/12-Dependencias/" rel="canonical"/>
+<link href="../11-Navegacion/" rel="prev"/>
+<link href="../13-Servicios-WEB/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>12 - Dependencias - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#php-gestor-de-dependencias-composer-tu-director-de-orquesta">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              12 - Dependencias
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-puesta-en-marcha-que-comience-el-espectaculo">
+<span class="md-ellipsis">
+      1. Puesta en Marcha: ¡Que comience el espectáculo!
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-gestion-de-dependencias-contratando-a-los-musicos">
+<span class="md-ellipsis">
+      2. Gestión de Dependencias: Contratando a los músicos
+    </span>
+</a>
+<nav aria-label="2. Gestión de Dependencias: Contratando a los músicos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#require-anadiendo-nuevas-librerias">
+<span class="md-ellipsis">
+      require: Añadiendo nuevas librerías
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-intringulis-de-las-versiones-semver-al-rescate">
+<span class="md-ellipsis">
+      El intríngulis de las Versiones: SemVer al rescate
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-vs-install-la-eterna-duda">
+<span class="md-ellipsis">
+      update vs install: La eterna duda
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-autoloading-la-magia-de-no-necesitar-require">
+<span class="md-ellipsis">
+      3. Autoloading: La magia de no necesitar require
+    </span>
+</a>
+<nav aria-label="3. Autoloading: La magia de no necesitar require" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#autoloading-para-tu-propio-codigo-psr-4">
+<span class="md-ellipsis">
+      Autoloading para TU propio código (PSR-4)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-consolidacion">
+<span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Consolidación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_1">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_1">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_1">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_2">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-refuerzo">
+<span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+</a>
+<nav aria-label="Ejercicios de Refuerzo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_2">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_1">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_2">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_3">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-ampliacion">
+<span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Ampliación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_3">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_2">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_3">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#revision-por-pares-peer-review">
+<span class="md-ellipsis">
+      Revisión por Pares (Peer Review):
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_4">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-puesta-en-marcha-que-comience-el-espectaculo">
+<span class="md-ellipsis">
+      1. Puesta en Marcha: ¡Que comience el espectáculo!
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-gestion-de-dependencias-contratando-a-los-musicos">
+<span class="md-ellipsis">
+      2. Gestión de Dependencias: Contratando a los músicos
+    </span>
+</a>
+<nav aria-label="2. Gestión de Dependencias: Contratando a los músicos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#require-anadiendo-nuevas-librerias">
+<span class="md-ellipsis">
+      require: Añadiendo nuevas librerías
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-intringulis-de-las-versiones-semver-al-rescate">
+<span class="md-ellipsis">
+      El intríngulis de las Versiones: SemVer al rescate
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-vs-install-la-eterna-duda">
+<span class="md-ellipsis">
+      update vs install: La eterna duda
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-autoloading-la-magia-de-no-necesitar-require">
+<span class="md-ellipsis">
+      3. Autoloading: La magia de no necesitar require
+    </span>
+</a>
+<nav aria-label="3. Autoloading: La magia de no necesitar require" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#autoloading-para-tu-propio-codigo-psr-4">
+<span class="md-ellipsis">
+      Autoloading para TU propio código (PSR-4)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-consolidacion">
+<span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Consolidación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_1">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_1">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_1">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_2">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-refuerzo">
+<span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+</a>
+<nav aria-label="Ejercicios de Refuerzo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_2">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_1">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_2">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_3">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-ampliacion">
+<span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Ampliación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_3">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_2">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_3">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#revision-por-pares-peer-review">
+<span class="md-ellipsis">
+      Revisión por Pares (Peer Review):
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_4">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- 
+Módulo: Desarrollo Web en Entorno Servidor
+Tema: PHP - Gestor de dependencias
+-->
+<h1 id="php-gestor-de-dependencias-composer-tu-director-de-orquesta">PHP - Gestor de dependencias: Composer, tu director de orquesta</h1>
+<p>Hoy vamos a hablar de una herramienta que va a cambiar vuestra forma de trabajar en PHP para siempre. Imaginad que vuestro proyecto es una gran orquesta sinfónica. Tenéis al violinista que se encarga de generar PDFs, al percusionista que gestiona los logs de errores y a la sección de vientos que se conecta con APIs externas. Ahora, ¿quién se encarga de que todos los músicos tengan la partitura correcta, la versión actualizada y estén sentados en su sitio listos para tocar en armonía? Ese es <strong>Composer</strong>, vuestro director de orquesta personal en el mundo de PHP.</p>
+<p>Hasta ahora, quizás estabais acostumbrados a descargar librerías a mano, descomprimirlas y meterlas en vuestro proyecto, cruzando los dedos para que todo funcionara. Era un caos. Un músico podía tener una versión de la partitura y otro, una distinta, provocando un desastre en el concierto (o sea, en producción). Composer llegó para poner orden en este gallinero. Se encarga de gestionar todas esas "piezas de código" externas que vuestro proyecto necesita para funcionar, asegurando que todo el equipo de desarrollo y el servidor de producción usen exactamente las mismas versiones. Se acabó el clásico "¡en mi ordenador sí funciona!".</p>
+<p>En este tema, vamos a desgranar cómo instalar, configurar y usar Composer para que vuestros proyectos sean más profesionales, mantenibles y, sobre todo, para que podáis "subiros a hombros de gigantes", aprovechando el increíble ecosistema de paquetes que la comunidad de PHP ha creado. ¡Afinen sus instrumentos, que empieza el concierto!</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de lanzarnos a escribir comandos como si no hubiera un mañana, vamos a asentar las bases. Entender estos conceptos es clave para dominar Composer y no meter la pata.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Dependencia (o Paquete)</p>
+<p>Una <strong>dependencia</strong> (o paquete) es, simplemente, un trozo de código reutilizable (una librería, un framework, etc.) creado por otro desarrollador que podemos incorporar a nuestro proyecto. Por ejemplo, una librería para enviar emails, generar gráficos o gestionar pagos.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Gestor de Dependencias</p>
+<p>Es una herramienta que automatiza el proceso de instalar, actualizar, configurar y eliminar las dependencias de un proyecto. Composer es el gestor de dependencias por excelencia en el ecosistema PHP.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Packagist</p>
+<p>Es el <strong>repositorio principal</strong> de paquetes de Composer. Imagínalo como la gigantesca biblioteca universal de partituras para PHP. Cuando le pides a Composer que instale <code>monolog/monolog</code>, él va a Packagist, lo busca, lo descarga y lo instala por ti. Puedes explorarlo en <a href="https://packagist.org">packagist.org</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: <code>composer.json</code></p>
+<p>Es el <strong>manifiesto</strong> de tu proyecto. Un archivo en formato JSON que describe tu proyecto y, lo más importante, enumera todas las dependencias que necesita (tanto para producción como para desarrollo) y sus versiones. Es la "lista de músicos" que necesita tu orquesta.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">¡Al control de versiones!</p>
+<p>El archivo <code>composer.json</code> es fundamental y <strong>siempre</strong> debe estar en tu sistema de control de versiones (como Git). Es la receta de tu proyecto.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: <code>vendor/</code></p>
+<p>Es la carpeta donde Composer descarga e instala físicamente todas las dependencias. Es el "backstage" donde esperan todos los músicos antes de salir a escena. Esta carpeta <strong>nunca</strong> debe subirse al control de versiones, por eso es crucial añadirla a tu archivo <code>.gitignore</code>.</p>
+</div>
+<div class="admonition danger inline end">
+<p class="admonition-title">No toques este archivo</p>
+<p>El archivo <code>composer.lock</code> se genera y actualiza automáticamente. <strong>Nunca</strong> debes modificarlo a mano. Y sí, este también va al control de versiones. Ignorarlo es la causa número uno del síndrome "¡en mi máquina funciona!".</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: <code>composer.lock</code></p>
+<p>Este archivo es una "fotografía" exacta de las versiones que se han instalado. Mientras que <code>composer.json</code> puede decir "necesito la versión 2.5 o superior", <code>composer.lock</code> dirá "he instalado <strong>exactamente</strong> la versión 2.8.1". Esto garantiza que cada desarrollador del equipo y el servidor de producción usen las mismas versiones, evitando conflictos.</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="desarrollo-y-ejemplos-practicos">Desarrollo y Ejemplos Prácticos</h2>
+<p>Manos a la obra. Vamos a ver cómo Composer pasa de la teoría a la práctica para convertirse en nuestro mejor amigo.</p>
+<h3 id="1-puesta-en-marcha-que-comience-el-espectaculo">1. Puesta en Marcha: ¡Que comience el espectáculo!</h3>
+<p>Todo gran proyecto empieza con un primer paso. En Composer, ese paso es la inicialización.</p>
+<p>Imagina que eres el mánager de una nueva banda de rock. Lo primero es definir el nombre, el estilo, quiénes son los miembros... <code>composer init</code> es justo eso: una entrevista interactiva que crea el "acta de fundación" de tu proyecto, el <code>composer.json</code>.</p>
+<p><div class="highlight"><pre><span></span><code>composer<span class="w"> </span>init
+</code></pre></div>
+Este comando te guiará con una serie de preguntas:
+*   <strong>Package name (<code>&lt;vendor&gt;/&lt;name&gt;</code>)</strong>: El nombre único de tu proyecto. El <em>vendor</em> suele ser tu nombre de usuario o empresa, y <em>name</em> el del proyecto. Ejemplo: <code>daw-profesor/proyecto-facturacion</code>.
+*   <strong>Description</strong>: Una breve descripción de lo que hace tu proyecto.
+*   <strong>Author</strong>: Tu nombre y email.
+*   <strong>Minimum Stability</strong>: Para definir si aceptas paquetes en desarrollo (dev, alpha, beta). Generalmente se deja en blanco para usar solo versiones estables.
+*   <strong>Package Type</strong>: <code>project</code> es la opción más común para una aplicación.
+*   <strong>License</strong>: La licencia de tu código (ej. <code>MIT</code>).
+*   <strong>Dependencies (<code>require</code>)</strong>: Te preguntará si quieres añadir dependencias. Puedes buscarlas aquí mismo.
+*   <strong>Dev Dependencies (<code>require-dev</code>)</strong>: Lo mismo, pero para dependencias que solo usarás en tu entorno de desarrollo, como librerías de testing.</p>
+<p>Al terminar, tendrás tu primer <code>composer.json</code> y la carpeta <code>vendor</code> si has añadido alguna dependencia.</p>
+<p><strong>Ejemplo 1: Creando un <code>composer.json</code> manualmente</strong></p>
+<p>Aunque <code>composer init</code> es lo recomendable, también puedes crear el archivo <code>composer.json</code> a mano. Por ejemplo, para un proyecto que usará <code>monolog/monolog</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dwes/mi-primer-log"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Un proyecto de prueba para aprender Composer y Monolog"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"monolog/monolog"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.1"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"authors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tu Nombre"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tu.email@ejemplo.com"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Tras crear este archivo, ejecutarías el siguiente comando para que Composer lea el archivo y descargue las dependencias:</p>
+<p><div class="highlight"><pre><span></span><code>composer<span class="w"> </span>install
+</code></pre></div>
+Este comando leerá <code>composer.json</code>, descargará <code>monolog/monolog</code> en la carpeta <code>vendor/</code> y creará el importantísimo archivo <code>composer.lock</code>.</p>
+<pre class="mermaid"><code>graph TD
+    A[Inicio] --&gt; B["¿Existe 'composer.lock'?"]
+    B -- Sí --&gt; C["Lee 'composer.lock'"]
+    B -- No --&gt; D["Lee 'composer.json'"]
+    D --&gt; E["Resuelve dependencias y versiones"]
+    E --&gt; F["Crea 'composer.lock'"]
+    C --&gt; G["Descarga las versiones exactas de 'vendor/'"]
+    F --&gt; G
+    G --&gt; H["Fin"]
+
+    subgraph "Comando: composer install"
+        A
+        B
+        C
+        D
+        E
+        F
+        G
+        H
+    end</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Ejercicios de Reflexión</p>
+<ol>
+<li>Si clonas un proyecto de un compañero que ya tiene <code>composer.json</code> y <code>composer.lock</code>, ¿qué comando deberías ejecutar para empezar a trabajar? ¿<code>composer install</code> o <code>composer update</code>? ¿Por qué?</li>
+<li>Estás empezando un nuevo proyecto personal para gestionar tu colección de videojuegos. ¿Qué <code>package name</code> le pondrías siguiendo las convenciones?</li>
+<li>¿Por qué es una mala práctica subir la carpeta <code>vendor/</code> a un repositorio de Git? ¿Qué problemas podría causar?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="2-gestion-de-dependencias-contratando-a-los-musicos">2. Gestión de Dependencias: Contratando a los músicos</h3>
+<p>Tu proyecto evoluciona y necesitas nuevas funcionalidades (¡nuevos músicos!). Aquí es donde <code>composer require</code> y <code>composer update</code> entran en juego.</p>
+<h4 id="require-anadiendo-nuevas-librerias"><code>require</code>: Añadiendo nuevas librerías</h4>
+<p>Para añadir una nueva dependencia, el comando es <code>composer require</code>. Por ejemplo, si queremos añadir una librería para manejar variables de entorno como <code>vlucas/phpdotenv</code>:</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>vlucas/phpdotenv
+</code></pre></div>
+<p>Composer hará varias cosas:
+1.  Encontrará la última versión estable de <code>vlucas/phpdotenv</code>.
+2.  La añadirá a tu <code>composer.json</code>.
+3.  La descargará e instalará en <code>vendor/</code>.
+4.  Actualizará tu <code>composer.lock</code>.</p>
+<p>A veces, necesitarás herramientas solo para desarrollar, como un framework de testing. Estas no deben instalarse en el servidor de producción. Para eso, usamos el flag <code>--dev</code>:</p>
+<p><div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>phpunit/phpunit
+</code></pre></div>
+Esto añadirá <code>phpunit/phpunit</code> a la sección <code>require-dev</code> de tu <code>composer.json</code>.</p>
+<h4 id="el-intringulis-de-las-versiones-semver-al-rescate">El intríngulis de las Versiones: SemVer al rescate</h4>
+<p>Cuando añades un paquete, verás que Composer usa un <code>^</code> antes del número de versión, por ejemplo <code>^2.1</code>. Esto forma parte del <strong>Versionado Semántico (SemVer)</strong>, un estándar que comunica qué tipo de cambios introduce una nueva versión.</p>
+<div class="admonition info">
+<p class="admonition-title">Versionado Semántico (SemVer): MAYOR.MENOR.PARCHE</p>
+<ul>
+<li><strong>PARCHE (Patch)</strong>: Corrección de errores que no rompe nada (ej. 2.1.0 -&gt; 2.1.1).</li>
+<li><strong>MENOR (Minor)</strong>: Nuevas funcionalidades que no rompen nada de lo anterior (ej. 2.1.1 -&gt; 2.2.0).</li>
+<li><strong>MAYOR (Major)</strong>: Cambios que <strong>rompen la compatibilidad</strong> con versiones anteriores (ej. 2.2.0 -&gt; 3.0.0).</li>
+</ul>
+</div>
+<p>Composer usa operadores para definir rangos de versiones aceptables:</p>
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Ejemplo</th>
+<th>Significado</th>
+<th>Ideal para...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caret <code>^</code></td>
+<td><code>^2.1.5</code></td>
+<td><code>&gt;=2.1.5 &lt;3.0.0</code> (Permite parches y versiones menores)</td>
+<td>La opción por defecto. Segura y recibe mejoras.</td>
+</tr>
+<tr>
+<td>Tilde <code>~</code></td>
+<td><code>~2.1.5</code></td>
+<td><code>&gt;=2.1.5 &lt;2.2.0</code> (Solo permite nuevos parches)</td>
+<td>Proyectos muy sensibles a cambios.</td>
+</tr>
+<tr>
+<td>Comodín <code>*</code></td>
+<td><code>2.1.*</code></td>
+<td><code>&gt;=2.1.0 &lt;2.2.0</code> (Similar a la tilde)</td>
+<td>Ser un poco más explícito que con la tilde.</td>
+</tr>
+<tr>
+<td>Exacta</td>
+<td><code>2.1.5</code></td>
+<td>Solo y exclusivamente la versión 2.1.5</td>
+<td>Cuando una versión posterior introduce un bug.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="update-vs-install-la-eterna-duda"><code>update</code> vs <code>install</code>: La eterna duda</h4>
+<p>Esta es una de las mayores fuentes de confusión para los principiantes. Aclarémoslo con una tabla.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>¿Qué archivo lee primero?</th>
+<th>¿Qué hace?</th>
+<th>¿Cuándo usarlo?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>composer install</code></td>
+<td><code>composer.lock</code> (si existe)</td>
+<td>Instala las versiones <strong>exactas</strong> especificadas en el <code>.lock</code>. Si no existe, lo crea desde el <code>.json</code>.</td>
+<td>Al empezar en un proyecto, en el servidor de producción, en CI/CD.</td>
+</tr>
+<tr>
+<td><code>composer update</code></td>
+<td><code>composer.json</code></td>
+<td>Busca las <strong>últimas versiones</strong> que cumplan las restricciones del <code>.json</code> y actualiza el <code>.lock</code>.</td>
+<td>Cuando quieres actualizar tus dependencias a nuevas versiones deliberadamente.</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desarrollador
+    participant Comp as Composer
+    participant Lock as composer.lock
+    participant Json as composer.json
+    participant Packagist
+
+    Dev-&gt;&gt;Comp: composer install
+    Comp-&gt;&gt;Lock: ¿Existes?
+    alt Si existe composer.lock
+        Lock--&gt;&gt;Comp: Sí, aquí están las versiones exactas
+        Comp-&gt;&gt;Packagist: Descarga versiones del .lock
+    else No existe composer.lock
+        Comp-&gt;&gt;Json: Leo tus dependencias
+        Json--&gt;&gt;Comp: Ok, necesito monolog ^2.0
+        Comp-&gt;&gt;Packagist: ¿Cuál es la última para ^2.0?
+        Packagist--&gt;&gt;Comp: La 2.9.1
+        Comp-&gt;&gt;Lock: Creo el .lock con la 2.9.1
+        Comp-&gt;&gt;Packagist: Descarga 2.9.1
+    end
+    Packagist--&gt;&gt;Dev: Dependencias instaladas en `vendor/`
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Regla de Oro</p>
+<p>En tu día a día, si solo quieres instalar lo que ya está definido, usa <code>install</code>. Si quieres buscar actualizaciones de forma proactiva, usa <code>update</code>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Ejercicios de Reflexión</p>
+<ol>
+<li>Tu <code>composer.json</code> requiere una librería con la versión <code>^1.4.0</code>. Las versiones disponibles son <code>1.4.2</code>, <code>1.5.0</code> y <code>2.0.0</code>. ¿Qué versión instalará <code>composer update</code>? ¿Por qué?</li>
+<li>Acabas de añadir una nueva dependencia con <code>composer require</code>. ¿Necesitas ejecutar <code>composer update</code> después? ¿Por qué?</li>
+<li>Estás en un equipo de 3 personas. Tú ejecutas <code>composer update</code> y subes los cambios de <code>composer.json</code> y <code>composer.lock</code> a Git. ¿Qué debe hacer tu compañero cuando descargue los cambios?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="3-autoloading-la-magia-de-no-necesitar-require">3. Autoloading: La magia de no necesitar <code>require</code></h3>
+<p>¿Recuerdas tener que plagar tus archivos PHP con <code>require_once '../../clases/Usuario.php';</code>? Era horrible y propenso a errores. Composer nos soluciona esto de una forma elegante con el <strong>autoloading</strong>.</p>
+<p>Al instalar las dependencias, Composer crea un archivo mágico: <code>vendor/autoload.php</code>. Simplemente incluyendo este archivo al principio de tu script de entrada (normalmente <code>index.php</code>), todas las clases de las librerías que has instalado estarán disponibles para ser usadas.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// En tu archivo principal (ej. public/index.php)</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="c1">// ¡Y ya está! Ahora puedes usar clases de tus dependencias</span>
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'mi-app'</span><span class="p">);</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'app.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">WARNING</span><span class="p">));</span>
+
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'¡Esto es una advertencia!'</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="autoloading-para-tu-propio-codigo-psr-4">Autoloading para TU propio código (PSR-4)</h4>
+<p>Pero la verdadera magia es que Composer también puede autogestionar la carga de <strong>tus propias clases</strong>. Para ello, seguimos el estándar <strong>PSR-4</strong>, que es una convención que mapea un <em>namespace</em> a un directorio.</p>
+<p>Para configurarlo, añadimos la sección <code>autoload</code> a nuestro <code>composer.json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"autoload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"psr-4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"Dwes\\Proyecto\\"</span><span class="p">:</span><span class="w"> </span><span class="s2">"src/"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">},</span>
+</code></pre></div>
+<p>Esto le dice a Composer: "Cualquier clase que empiece con el namespace <code>Dwes\Proyecto\</code> se encuentra dentro de la carpeta <code>src/</code>".</p>
+<p><strong>Ejemplo Práctico:</strong></p>
+<ol>
+<li>
+<p><strong>Estructura de carpetas y archivos:</strong>
+<div class="highlight"><pre><span></span><code>mi-proyecto/
+├── public/
+│   └── index.php
+├── src/
+│   ├── Controller/
+│   │   └── UsuarioController.php
+│   └── Model/
+│       └── Usuario.php
+├── vendor/
+└── composer.json
+</code></pre></div></p>
+</li>
+<li>
+<p><strong><code>composer.json</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dwes/mi-proyecto"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"autoload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"psr-4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"Dwes\\Proyecto\\"</span><span class="p">:</span><span class="w"> </span><span class="s2">"src/"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong><code>src/Model/Usuario.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Dwes\Proyecto\Model</span><span class="p">;</span> <span class="c1">// El namespace coincide con la regla PSR-4</span>
+
+<span class="k">class</span> <span class="nc">Usuario</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">public</span> <span class="nx">string</span> <span class="nv">$nombre</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Después de añadir o modificar la sección <code>autoload</code>, debemos refrescar el autoloader de Composer con el comando <code>dump-autoload</code>. Es como decirle al director de orquesta que actualice su lista de músicos disponibles.</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>dump-autoload
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Alias útil</p>
+<p>Puedes usar <code>composer du</code> como atajo de <code>composer dump-autoload</code>.</p>
+</div>
+</li>
+<li>
+<p><strong><code>public/index.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="c1">// No necesitamos ningún require '..src/Model/Usuario.php'</span>
+<span class="k">use</span> <span class="nx">Dwes\Proyecto\Model\Usuario</span><span class="p">;</span>
+
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Usuario</span><span class="p">(</span><span class="s1">'Goku'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"¡Hola, "</span> <span class="o">.</span> <span class="nv">$usuario</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">.</span> <span class="s2">"!"</span><span class="p">;</span> <span class="c1">// Muestra "¡Hola, Goku!"</span>
+</code></pre></div></p>
+</li>
+</ol>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBFc3RydWN0dXJhIGRlbCBBdXRvbG9hZCBQU1ItNAoKIyMgYGNvbXBvc2VyLmpzb25gCi0gYCJhdXRvbG9hZCI6IHtgCiAgIGAgICAgInBzci00Ijoge2AKICAgICBgICAgICJEd2VzXFxQcm95ZWN0b1xcIjogInNyYy8iYAogICBgICAgIH1gCiBgfWAKCiMjIE1hcGVvCi0gKipOYW1lc3BhY2U6KiogYER3ZXNcUHJveWVjdG9cTW9kZWxcVXN1YXJpb2AKLSAqKlByZWZpam86KiogYER3ZXNcUHJveWVjdG9cYCAtPiBTZSBlbGltaW5hCi0gKipSdXRhIGJhc2U6KiogYHNyYy9gCi0gKipSZXN0byBkZWwgRlFOOioqIGBNb2RlbFxVc3VhcmlvYCAtPiBTZSBjb252aWVydGUgZW4gcnV0YQotICoqUnV0YSBmaW5hbDoqKiBgc3JjL01vZGVsL1VzdWFyaW8ucGhwYA==</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">Ejercicios de Reflexión</p>
+<ol>
+<li>Has creado una nueva clase <code>Factura</code> dentro de una nueva carpeta <code>src/Billing/</code>. Siguiendo la configuración PSR-4 del ejemplo, ¿qué <code>namespace</code> deberías darle a esta clase?</li>
+<li>Después de crear la clase <code>Factura.php</code>, intentas usarla en tu <code>index.php</code> con <code>use Dwes\Proyecto\Billing\Factura;</code> pero te da un error de "Class not found". ¿Qué paso te has olvidado de hacer?</li>
+<li>¿Qué ventajas tiene usar el autoloading de Composer frente al <code>require_once</code> manual? Piensa en términos de mantenimiento, refactorización y orden del código.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Creer que Composer es solo para proyectos grandes es un error. Cualquier proyecto de PHP, por pequeño que sea, se beneficia de su uso. Pero donde realmente brilla es en el desarrollo profesional y en equipo.</p>
+<ul>
+<li><strong>Frameworks Modernos</strong>: Es imposible trabajar con frameworks como <strong>Laravel</strong>, <strong>Symfony</strong> o <strong>Laminas</strong> sin Composer. De hecho, el propio proceso de instalación de estos frameworks se realiza con <code>composer create-project</code>. Ellos mismos son un conjunto de paquetes de Composer interconectados.</li>
+<li><strong>Integración Continua / Despliegue Continuo (CI/CD)</strong>: En entornos profesionales, se usan sistemas automáticos (como GitHub Actions, Jenkins, etc.) para probar y desplegar el código. El primer paso de cualquier pipeline de despliegue es siempre <code>composer install --no-dev --optimize-autoloader</code>.<ul>
+<li><code>--no-dev</code>: Evita instalar las dependencias de desarrollo en el servidor de producción.</li>
+<li><code>--optimize-autoloader</code>: Crea una versión super optimizada del autoloader para un rendimiento máximo en producción.</li>
+</ul>
+</li>
+<li><strong>Ecosistema y Calidad</strong>: Usar Composer te abre las puertas a miles de librerías de alta calidad, testeadas por la comunidad, que te ahorran miles de horas de trabajo. ¿Necesitas generar un QR? ¿Procesar una imagen? ¿Conectarte a la API de Stripe? Hay un paquete para ello. Esto permite a las empresas centrarse en la lógica de negocio, no en reinventar la rueda.</li>
+</ul>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para seguir profundizando y convertirte en un maestro de Composer, aquí tienes algunos recursos de alta calidad.</p>
+<ul>
+<li><strong>Documentación Oficial de Composer (en inglés)</strong>: <a href="https://getcomposer.org/doc/">https://getcomposer.org/doc/</a> - Es la fuente de la verdad. Completa, bien explicada y con todos los detalles que puedas necesitar.</li>
+<li><strong>Packagist</strong>: <a href="https://packagist.org/">https://packagist.org/</a> - El repositorio de paquetes. Dedica tiempo a explorar las librerías más populares, ver cómo están hechas y qué problemas resuelven.</li>
+<li><strong>Composer en Cheatsheet.monster (español)</strong>: <a href="https://cheatsheet.monster/es/composer">https://cheatsheet.monster/es/composer</a> - Una hoja de trucos muy visual y directa para tener los comandos más importantes siempre a mano.</li>
+</ul>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<!-- Nombre de archivo sugerido: T12-Ejercicios-PHP-Gestor_de_dependencias.md -->
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Manifiesto Roto: Arreglando el <code>composer.json</code> de QuantumLeap Store | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Diagnosticar y corregir errores comunes en un archivo <code>composer.json</code>. Esta tarea refuerza la comprensión de la sintaxis JSON y la estructura fundamental de un manifiesto de Composer.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero de equipo, en sus prisas por irse de fin de semana, ha subido un archivo <code>composer.json</code> a vuestro nuevo proyecto "QuantumLeap Store". Al intentar ejecutar <code>composer install</code>, la terminal arroja una serie de errores. Tu tarea es actuar como un "debugger" de configuración.</p>
+<p>Contenido del fichero <code>composer.json</code> defectuoso:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantum-leap/store,</span>
+<span class="s2">    "</span><span class="err">descrip</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="s2">": "</span><span class="err">Backe</span><span class="kc">n</span><span class="err">d</span><span class="w"> </span><span class="err">para</span><span class="w"> </span><span class="err">la</span><span class="w"> </span><span class="kc">t</span><span class="err">ie</span><span class="kc">n</span><span class="err">da</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">gadge</span><span class="kc">ts</span><span class="w"> </span><span class="err">re</span><span class="kc">tr</span><span class="err">o</span><span class="w"> </span><span class="err">Qua</span><span class="kc">ntu</span><span class="err">mLeap</span><span class="s2">",</span>
+<span class="s2">    "</span><span class="kc">t</span><span class="err">ype</span><span class="s2">": "</span><span class="err">projec</span><span class="kc">t</span><span class="s2">"</span>
+<span class="s2">    "</span><span class="err">require</span><span class="s2">": {</span>
+<span class="s2">        "</span><span class="err">php</span><span class="s2">": &gt;=8.1,</span>
+<span class="s2">        "</span><span class="err">mo</span><span class="kc">n</span><span class="err">olog/mo</span><span class="kc">n</span><span class="err">olog</span><span class="s2">": "</span><span class="err">~</span><span class="mf">2.9</span><span class="s2">",</span>
+<span class="s2">        "</span><span class="err">vlucas/phpdo</span><span class="kc">ten</span><span class="err">v</span><span class="s2">": "</span><span class="err">^</span><span class="mf">5.5</span><span class="s2">",</span>
+<span class="s2">    },</span>
+<span class="s2">    "</span><span class="err">require</span><span class="mi">-</span><span class="err">dev</span><span class="s2">": {</span>
+<span class="s2">        "</span><span class="err">phpu</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="err">/phpu</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="s2">": "</span><span class="err">^</span><span class="mf">10.5</span><span class="s2">"</span>
+<span class="s2">        "</span><span class="kc">f</span><span class="err">ilp/whoops</span><span class="s2">": "</span><span class="err">^</span><span class="mf">2.15</span><span class="s2">"</span>
+<span class="s2">    },</span>
+<span class="s2">    "</span><span class="err">au</span><span class="kc">t</span><span class="err">hors</span><span class="s2">": [</span>
+<span class="s2">        {</span>
+<span class="s2">            "</span><span class="kc">na</span><span class="err">me</span><span class="s2">": "</span><span class="err">Dev</span><span class="w"> </span><span class="err">despis</span><span class="kc">ta</span><span class="err">do</span><span class="s2">",</span>
+<span class="s2">            "</span><span class="err">email</span><span class="s2">": "</span><span class="err">dev@qua</span><span class="kc">ntu</span><span class="err">mleap.s</span><span class="kc">t</span><span class="err">ore"</span>
+<span class="err">        }</span>
+<span class="err">    ]</span>
+<span class="err">}</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Copia el contenido anterior en un nuevo archivo <code>composer.json</code>.</li>
+<li>Identifica todos los errores de sintaxis JSON y los errores lógicos en la definición de las dependencias.</li>
+<li>Crea una lista explicando cada error encontrado (ej: "Falta una coma entre la propiedad X y la propiedad Y").</li>
+<li>Escribe la versión corregida del archivo <code>composer.json</code>.</li>
+<li>Ejecuta <code>composer install</code> con tu archivo corregido para verificar que ahora funciona perfectamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Validar y depurar archivos de configuración (<code>.json</code>, <code>.yaml</code>, <code>.xml</code>) es una tarea diaria para un desarrollador. Un error de sintaxis en un fichero de despliegue o de dependencias puede detener por completo el trabajo de todo un equipo o impedir que una aplicación se lance a producción.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Módulo de Logging: Incorporando a Monolog | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Practicar el flujo de trabajo básico de Composer: inicializar un proyecto, añadir una dependencia externa y utilizarla en un script gracias al autoloader.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>La startup "QuantumLeap Store" necesita un sistema de registro de eventos (logging) para monitorizar la actividad de la aplicación. Has elegido <code>monolog/monolog</code>, la librería estándar de logging en PHP.</p>
+<ol>
+<li>Crea un nuevo directorio para el proyecto (ej: <code>quantumleap-logger</code>).</li>
+<li>Dentro de ese directorio, inicializa un nuevo proyecto de Composer de forma interactiva usando <code>composer init</code>. Rellena los datos que se te piden. No añadas ninguna dependencia de forma interactiva todavía.</li>
+<li>Una vez creado el <code>composer.json</code>, añade la librería Monolog al proyecto usando el comando <code>require</code> de Composer.</li>
+<li>Crea un fichero <code>index.php</code>.</li>
+<li>Dentro de <code>index.php</code>, incluye el autoloader de Composer.</li>
+<li>Usando la documentación de Monolog (o el ejemplo del material didáctico), escribe el código necesario para:<ul>
+<li>Crear un nuevo <code>Logger</code> llamado 'quantumleap'.</li>
+<li>Añadirle un <code>StreamHandler</code> que escriba los logs en un fichero llamado <code>logs/app.log</code>.</li>
+<li>Registrar un mensaje de nivel <code>INFO</code> que diga "El módulo de logging ha sido inicializado."</li>
+<li>Registrar un mensaje de nivel <code>ERROR</code> que diga "Fallo crítico en el condensador de fluzo.".</li>
+</ul>
+</li>
+<li>Ejecuta el script desde la terminal (<code>php index.php</code>) y verifica que el fichero <code>logs/app.log</code> se ha creado con los dos mensajes.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es el flujo de trabajo más común al empezar un proyecto o añadir una nueva funcionalidad. Saber buscar, requerir y utilizar un paquete de Packagist de forma autónoma es una de las habilidades más importantes y que más tiempo ahorran en el desarrollo con PHP.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">3) Organizando el Código: Implementando Autoloading PSR-4 | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Configurar el autoloading de Composer para las clases propias del proyecto, siguiendo el estándar PSR-4, eliminando la necesidad de <code>require_once</code> manuales.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>El código de "QuantumLeap Store" está empezando a crecer y tener los ficheros sueltos es un caos. Tu Lead Developer te pide que organices el código en una estructura de directorios lógica y configures Composer para que cargue las clases automáticamente.</p>
+<ol>
+<li>Parte de un proyecto con un <code>composer.json</code> básico.</li>
+<li>Crea la siguiente estructura de directorios y ficheros:
+    <div class="highlight"><pre><span></span><code>quantumleap-psr4/
+├── composer.json
+├── public/
+│   └── index.php
+└── src/
+    └── Domain/
+        └── Product.php
+</code></pre></div></li>
+<li>Contenido de <code>src/Domain/Product.php</code> (fíjate que no tiene namespace):
+    <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Product</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">float</span> <span class="nv">$price</span>
+    <span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInfo</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Producto: </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="si">}</span><span class="s2"> - Precio: </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="si">}</span><span class="s2">€"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>Contenido de <code>public/index.php</code> (este código fallará inicialmente):
+    <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Esto es lo que queremos evitar</span>
+<span class="c1">// require __DIR__ . '/../src/Domain/Product.php';</span>
+
+<span class="nv">$product</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Product</span><span class="p">(</span><span class="s1">'DeLorean Model Kit'</span><span class="p">,</span> <span class="mf">150.50</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">getInfo</span><span class="p">();</span>
+</code></pre></div></li>
+</ol>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Modifica tu <code>composer.json</code> para añadir la sección <code>autoload</code> que mapee el namespace <code>QuantumLeap\Store\</code> a la carpeta <code>src/</code>, siguiendo el estándar PSR-4.</li>
+<li>Modifica el fichero <code>src/Domain/Product.php</code> para añadirle el <code>namespace</code> correcto (<code>QuantumLeap\Store\Domain</code>).</li>
+<li><strong>Pista:</strong> Una vez modificado <code>composer.json</code>, Composer no se entera de los cambios por arte de magia. ¿Qué comando debes ejecutar para que regenere sus "mapas" de autoloading?</li>
+<li>Modifica el fichero <code>public/index.php</code>:<ul>
+<li>Añade el <code>require</code> del autoloader de Composer.</li>
+<li>Añade la sentencia <code>use</code> para importar la clase <code>Product</code>.</li>
+<li>Verifica que ahora el script se ejecuta correctamente.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 100% de las aplicaciones y frameworks modernos de PHP utilizan PSR-4 para la organización y carga de clases. Dominar esta configuración es absolutamente esencial para escribir código limpio, mantenible y compatible con el ecosistema actual de PHP.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">4) Scripts de Composer: Automatizando las Tareas del Proyecto | Nivel: Alto</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Investigar y utilizar la funcionalidad de <code>scripts</code> de Composer para automatizar tareas comunes del ciclo de vida del desarrollo, como pasar tests o revisar la calidad del código.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Tu proyecto "QuantumLeap Store" ya es más profesional. Habéis decidido usar <code>PHPUnit</code> para las pruebas y <code>PHP_CodeSniffer</code> para asegurar que todo el mundo escribe el código siguiendo el estándar PSR-12.</p>
+<ol>
+<li>Crea un proyecto e instala las siguientes dependencias de desarrollo:<ul>
+<li><code>phpunit/phpunit</code></li>
+<li><code>squizlabs/php_codesniffer</code></li>
+</ul>
+</li>
+<li>El comando para ejecutar los tests de PHPUnit es <code>vendor/bin/phpunit</code>.</li>
+<li>El comando para revisar el código de la carpeta <code>src</code> en busca de errores de estilo es <code>vendor/bin/phpcs --standard=PSR12 src</code>.</li>
+</ol>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Investigación:</strong> Lee la <a href="https://getcomposer.org/doc/articles/scripts.md">documentación oficial de Composer sobre <code>scripts</code></a>.</li>
+<li><strong>Implementación:</strong> Modifica tu <code>composer.json</code> para añadir una sección <code>scripts</code> que defina los siguientes atajos:<ul>
+<li>Un script llamado <code>test</code> que ejecute la suite de PHPUnit.</li>
+<li>Un script llamado <code>cs-check</code> que ejecute el chequeo de estilo de CodeSniffer.</li>
+<li>Un script de evento llamado <code>post-install-cmd</code> que muestre un mensaje de bienvenida en la consola, como "¡Entorno listo! Ejecuta 'composer test' para pasar las pruebas.".</li>
+<li>Un script de evento llamado <code>post-update-cmd</code> que ejecute automáticamente el script <code>test</code> después de cada actualización de dependencias.</li>
+</ul>
+</li>
+<li><strong>Explicación:</strong> Escribe un párrafo en un fichero <code>README.md</code> explicando cuál es la diferencia práctica entre los eventos <code>post-install-cmd</code> y <code>post-update-cmd</code>.</li>
+<li><strong>Verificación:</strong> Ejecuta <code>composer install</code>, <code>composer update</code> y tus nuevos scripts <code>composer test</code> y <code>composer cs-check</code> para comprobar que todo funciona como esperas.</li>
+</ol>
+<h5 id="revision-por-pares-peer-review"><strong>Revisión por Pares (Peer Review):</strong></h5>
+<p>Intercambia tu <code>composer.json</code> y tu <code>README.md</code> con un compañero. Revisa su trabajo:
+*   ¿Los atajos a los scripts son correctos y funcionales?
+*   ¿La explicación de la diferencia entre eventos es clara y correcta?
+*   Sugiérele una mejora: ¿cómo podría crear un script "maestro" llamado <code>quality</code> que ejecute <code>cs-check</code> y <code>test</code> con un solo comando (<code>composer quality</code>)?</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En entornos profesionales, nadie ejecuta comandos largos a mano. Se usan <code>scripts</code> de Composer (o <code>Makefile</code>, o scripts de <code>package.json</code> en Node.js) para crear una interfaz de comandos unificada para el proyecto. Esto facilita la integración continua (CI/CD) y el trabajo de los nuevos desarrolladores, que solo necesitan saber un par de comandos para ser productivos.</p>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

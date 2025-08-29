@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporalización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+            background-color: #f5f9fc;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #263238;
+        }
+        .header {
+            background-color: #0277bd;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 40px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+        .schedule-container {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+        }
+        .schedule-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .schedule-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+			
+			
+			
+        }
+        .schedule-image img {
+            max-width: 100%;
+			max-height: 550px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        .total-hours {
+            background-color: #0277bd;
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(2, 119, 189, 0.3);
+        }
+        .total-hours .icon {
+            font-size: 40px;
+            margin-right: 20px;
+        }
+        .total-hours-text {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .total-hours-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        .blocks-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .block-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .block-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        }
+        .block-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .php-icon {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .node-icon {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .other-icon {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .block-icon .icon {
+            font-size: 32px;
+        }
+        .block-info {
+            flex-grow: 1;
+        }
+        .block-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .block-units {
+            font-size: 16px;
+            color: #546e7a;
+        }
+        .block-hours {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-left: 15px;
+        }
+        .php-hours {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .node-hours {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .other-hours {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .footer {
+            padding: 15px 70px;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            font-size: 16px;
+            color: #546e7a;
+        }
+    </style>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita barras de scroll innecesarias */
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Temporalización</h1>
+        </div>
+        
+        <div class="content">
+            <div class="schedule-container">
+                <div class="schedule-info">
+                    <div class="total-hours">
+                        <i class="material-icons icon">schedule</i>
+                        <div class="total-hours-text">Total de horas: <span class="total-hours-number">160</span></div>
+                    </div>
+                    
+                    <div class="blocks-container">
+                        <div class="block-item">
+                            <div class="block-icon php-icon">
+                                <i class="material-icons icon">code</i>
+                            </div>
+                            <div class="block-info">
+                                <div class="block-name">
+                                    Bloque PHP
+                                    <span class="block-hours php-hours">84h</span>
+                                </div>
+                                <div class="block-units">UD1-UD9</div>
+                            </div>
+                        </div>
+                        
+                        <div class="block-item">
+                            <div class="block-icon node-icon">
+                                <i class="material-icons icon">developer_mode</i>
+                            </div>
+                            <div class="block-info">
+                                <div class="block-name">
+                                    Bloque Node.js
+                                    <span class="block-hours node-hours">66h</span>
+                                </div>
+                                <div class="block-units">UD10-UD13</div>
+                            </div>
+                        </div>
+                        
+                        <div class="block-item">
+                            <div class="block-icon other-icon">
+                                <i class="material-icons icon">more_time</i>
+                            </div>
+                            <div class="block-info">
+                                <div class="block-name">
+                                    Otros
+                                    <span class="block-hours other-hours">30h</span>
+                                </div>
+                                <div class="block-units">Proyectos y actividades complementarias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-image">
+                    <img src="images/4-1.jpeg" alt="Plan de trabajo con timeline">
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</div>
+            <div class="footer-text">Curso 2025-2026</div>
+        </div>
+    </div>
+</body>
+</html>

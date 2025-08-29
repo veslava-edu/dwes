@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Aprendizaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+            background-color: #f5f9fc;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #263238;
+        }
+        .header {
+            background-color: #0277bd;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 30px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            height: 100%;
+        }
+        .results-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .results-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .architecture-icon {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .development-icon {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .results-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .result-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .result-number {
+            background-color: #0277bd;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .dev-number {
+            background-color: #2e7d32;
+        }
+        .result-content {
+            flex: 1;
+        }
+        .result-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #0277bd;
+        }
+        .dev-title {
+            color: #2e7d32;
+        }
+        .result-desc {
+            font-size: 14px;
+            color: #546e7a;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #0277bd;
+        }
+        .dev-highlight {
+            color: #2e7d32;
+        }
+        .footer {
+            padding: 15px 70px;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            font-size: 16px;
+            color: #546e7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Resultados de Aprendizaje</h1>
+        </div>
+        
+        <div class="content">
+            <div class="results-grid">
+                <!-- Arquitectura y Tecnologías -->
+                <div class="results-card">
+                    <div class="card-header">
+                        <div class="card-icon architecture-icon">
+                            <i class="fas fa-sitemap fa-2x"></i>
+                        </div>
+                        <div class="card-title">Arquitectura y Tecnologías</div>
+                    </div>
+                    <ul class="results-list">
+                        <li class="result-item">
+                            <div class="result-number">1</div>
+                            <div class="result-content">
+                                <div class="result-title">Selecciona arquitecturas y tecnologías</div>
+                                <div class="result-desc">Analiza capacidades y características de programación Web en entorno servidor</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number">2</div>
+                            <div class="result-content">
+                                <div class="result-title">Escribe sentencias ejecutables</div>
+                                <div class="result-desc">Reconoce y aplica procedimientos de integración del código en lenguajes de marcas</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number">3</div>
+                            <div class="result-content">
+                                <div class="result-title">Escribe bloques de sentencias</div>
+                                <div class="result-desc">Selecciona y utiliza estructuras de programación embebidas en lenguajes de marcas</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number">4</div>
+                            <div class="result-content">
+                                <div class="result-title">Desarrolla aplicaciones Web embebidas</div>
+                                <div class="result-desc">Analiza e incorpora funcionalidades según especificaciones</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Desarrollo Avanzado -->
+                <div class="results-card">
+                    <div class="card-header">
+                        <div class="card-icon development-icon">
+                            <i class="fas fa-code-branch fa-2x"></i>
+                        </div>
+                        <div class="card-title">Desarrollo Avanzado</div>
+                    </div>
+                    <ul class="results-list">
+                        <li class="result-item">
+                            <div class="result-number dev-number">5</div>
+                            <div class="result-content">
+                                <div class="result-title dev-title">Desarrolla aplicaciones Web</div>
+                                <div class="result-desc">Identifica y aplica mecanismos para separar <span class="dev-highlight">presentación</span> y <span class="dev-highlight">lógica de negocio</span></div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number dev-number">6</div>
+                            <div class="result-content">
+                                <div class="result-title dev-title">Desarrolla aplicaciones de acceso a datos</div>
+                                <div class="result-desc">Aplica medidas para mantener la <span class="dev-highlight">seguridad</span> e <span class="dev-highlight">integridad</span> de la información</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number dev-number">7</div>
+                            <div class="result-content">
+                                <div class="result-title dev-title">Desarrolla servicios Web</div>
+                                <div class="result-desc">Analiza su funcionamiento e implanta la estructura de sus componentes</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number dev-number">8</div>
+                            <div class="result-content">
+                                <div class="result-title dev-title">Genera páginas Web dinámicas</div>
+                                <div class="result-desc">Utiliza tecnologías del servidor Web que añadan código al lenguaje de marcas</div>
+                            </div>
+                        </li>
+                        <li class="result-item">
+                            <div class="result-number dev-number">9</div>
+                            <div class="result-content">
+                                <div class="result-title dev-title">Desarrolla aplicaciones Web híbridas</div>
+                                <div class="result-desc">Selecciona y utiliza librerías de código y repositorios heterogéneos</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</div>
+            <div class="footer-text">Curso 2025-2026</div>
+        </div>
+    </div>
+</body>
+</html>

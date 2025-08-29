@@ -1,0 +1,2505 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/01-Introduccion/">
+      
+      
+        <link rel="prev" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+      
+      
+        <link rel="next" href="../02-Sintaxis/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>01 - Introducción - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion-a-php" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 - Introducción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es PHP?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-un-entorno-de-desarrollo-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de un entorno de desarrollo PHP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de un entorno de desarrollo PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-y-configuracion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación y configuración de Apache en Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación y configuración de Apache en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-basica-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración básica de Apache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-y-configuracion-de-apache-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación y configuración de Apache en Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-sistemas-basados-en-unix-linuxmacos" class="md-nav__link">
+    <span class="md-ellipsis">
+      En sistemas basados en Unix (Linux/macOS):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      En Windows:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xampp" class="md-nav__link">
+    <span class="md-ellipsis">
+      XAMPP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-se-usa-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo se usa Composer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principales-usos-de-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales usos de Composer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manejo-de-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejo de Composer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packagist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-packagist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo usar Packagist:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker de Desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker de Desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-web-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de uso de consola de Docker directorio de web php
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-desarrollo-composer-phpunit-o-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de uso de consola de Docker directorio de desarrollo: Composer, PHPUnit o Laravel
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es PHP?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-un-entorno-de-desarrollo-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de un entorno de desarrollo PHP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de un entorno de desarrollo PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-y-configuracion-de-apache-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación y configuración de Apache en Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación y configuración de Apache en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-basica-de-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración básica de Apache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-y-configuracion-de-apache-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación y configuración de Apache en Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-sistemas-basados-en-unix-linuxmacos" class="md-nav__link">
+    <span class="md-ellipsis">
+      En sistemas basados en Unix (Linux/macOS):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      En Windows:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xampp" class="md-nav__link">
+    <span class="md-ellipsis">
+      XAMPP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-se-usa-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo se usa Composer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principales-usos-de-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales usos de Composer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manejo-de-composer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejo de Composer:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packagist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-usar-packagist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cómo usar Packagist:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-de-desarrollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker de Desarrollo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Docker de Desarrollo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-web-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de uso de consola de Docker directorio de web php
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-desarrollo-composer-phpunit-o-laravel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de uso de consola de Docker directorio de desarrollo: Composer, PHPUnit o Laravel
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduccion-a-php">Introducción a PHP</h1>
+<ul>
+<li><a href="#introducción-a-php">Introducción a PHP</a></li>
+<li><a href="#qué-es-php">¿Qué es PHP?</a></li>
+<li><a href="#instalación-de-un-entorno-de-desarrollo-php">Instalación de un entorno de desarrollo PHP</a><ul>
+<li><a href="#instalación-y-configuración-de-apache-en-linux">Instalación y configuración de Apache en Linux</a></li>
+<li><a href="#configuración-básica-de-apache">Configuración básica de Apache</a></li>
+<li><a href="#instalación-y-configuración-de-apache-en-windows">Instalación y configuración de Apache en Windows</a></li>
+<li><a href="#en-sistemas-basados-en-unix-linuxmacos">En sistemas basados en Unix (Linux/macOS):</a></li>
+<li><a href="#en-windows">En Windows:</a></li>
+<li><a href="#xampp">XAMPP</a></li>
+</ul>
+</li>
+<li><a href="#composer">Composer</a><ul>
+<li><a href="#cómo-se-usa-composer">¿Cómo se usa Composer?</a></li>
+<li><a href="#principales-usos-de-composer">Principales usos de Composer:</a></li>
+<li><a href="#manejo-de-composer">Manejo de Composer:</a></li>
+<li><a href="#packagist">Packagist</a></li>
+<li><a href="#cómo-usar-packagist">Cómo usar Packagist:</a></li>
+</ul>
+</li>
+<li><a href="#docker-de-desarrollo">Docker de Desarrollo</a><ul>
+<li><a href="#dockerfile">Dockerfile</a></li>
+<li><a href="#docker-compose">Docker Compose</a></li>
+</ul>
+</li>
+<li><a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-web-php">Ejemplo de uso de consola de Docker directorio de web php</a></li>
+<li><a href="#ejemplo-de-uso-de-consola-de-docker-directorio-de-desarrollo-composer-phpunit-o-laravel">Ejemplo de uso de consola de Docker directorio de desarrollo: Composer, PHPUnit o Laravel</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/01-logo.png"><img alt="logo" src="../images/01-logo.png"/></a></p>
+<h2 id="que-es-php">¿Qué es PHP?</h2>
+<p><a href="https://www.php.net/manual/es/intro-whatis.php">PHP</a> es un lenguaje de programación de código abierto ampliamente utilizado para el desarrollo web. Sus siglas significan "PHP: Hypertext Preprocessor" (PHP: Preprocesador de Hipertexto). Fue creado originalmente por Rasmus Lerdorf en 1994 y desde entonces ha evolucionado y se ha convertido en uno de los lenguajes más populares para construir aplicaciones web dinámicas.</p>
+<p>PHP se ejecuta en el lado del servidor, lo que significa que el código PHP se procesa en el servidor antes de que se envíe el resultado al navegador web del usuario. Esto permite que las páginas web generadas por PHP sean dinámicas, es decir, que puedan mostrar contenido diferente en función de variables, bases de datos, formularios, entre otros.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/php_page_workflow_6.avif"><img alt="php" src="../images/php_page_workflow_6.avif"/></a></p>
+<p>Una de las principales características de PHP es su integración con HTML, lo que facilita la creación de páginas web dinámicas. El código PHP se puede incrustar directamente en el código HTML, lo que permite mezclar la lógica de programación con la presentación visual.</p>
+<p>PHP es compatible con una amplia gama de bases de datos, como MySQL, PostgreSQL, Oracle, entre otras. Esto permite a los desarrolladores almacenar y recuperar datos de manera eficiente para crear aplicaciones web interactivas y con capacidad de gestión.</p>
+<p>Además de su compatibilidad con bases de datos, PHP cuenta con una gran cantidad de extensiones y librerías que facilitan el desarrollo de diferentes tipos de aplicaciones, como sistemas de gestión de contenido (CMS), foros, tiendas en línea y más. También es altamente personalizable y se puede integrar con otros lenguajes y tecnologías web, como HTML, CSS, JavaScript, XML, JSON, entre otros.</p>
+<p>En resumen, PHP es un lenguaje de programación utilizado para desarrollar aplicaciones web dinámicas y altamente personalizables. Su integración con HTML, su compatibilidad con bases de datos y su amplia comunidad de desarrolladores lo convierten en una opción popular para la creación de sitios web interactivos y funcionales.</p>
+<h2 id="instalacion-de-un-entorno-de-desarrollo-php">Instalación de un entorno de desarrollo PHP</h2>
+<h3 id="instalacion-y-configuracion-de-apache-en-linux">Instalación y configuración de Apache en Linux</h3>
+<p>La mayoría de las distribuciones de Linux vienen con Apache disponible en sus repositorios oficiales. Aquí está cómo instalarlo en distribuciones basadas en Debian (como Ubuntu) y en distribuciones basadas en Red Hat (como CentOS).</p>
+<p><strong>En distribuciones basadas en Debian (Ubuntu):</strong></p>
+<ol>
+<li>
+<p>Actualiza el listado de paquetes:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div></p>
+</li>
+<li>
+<p>Instala Apache:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apache2
+</code></pre></div></p>
+</li>
+<li>
+<p>Verifica que Apache se esté ejecutando:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>apache2
+</code></pre></div></p>
+</li>
+</ol>
+<p>Una vez que Apache esté instalado, puedes acceder a él a través de tu navegador web ingresando <code>http://localhost</code> o <code>http://[tu-dirección-IP]</code>. Deberías ver la página predeterminada de Apache, que indica que el servidor está funcionando correctamente.</p>
+<h4 id="configuracion-basica-de-apache">Configuración básica de Apache</h4>
+<p>Los archivos de configuración de Apache se encuentran generalmente en <code>/etc/apache2</code> en Debian/Ubuntu y en <code>/etc/httpd</code> en CentOS/Red Hat.</p>
+<ul>
+<li>
+<p><strong>Configuración global</strong>: El archivo principal de configuración para Apache es <code>apache2.conf</code> en Debian/Ubuntu (<code>httpd.conf</code> en CentOS/Red Hat). Aquí puedes configurar las opciones globales del servidor.</p>
+</li>
+<li>
+<p><strong>Sitios disponibles</strong>: En Debian/Ubuntu, cada sitio web puede tener su propia configuración en un archivo separado dentro del directorio <code>/etc/apache2/sites-available</code>. Puedes habilitar y deshabilitar sitios con los comandos <code>a2ensite</code> y <code>a2dissite</code>.</p>
+</li>
+<li>
+<p><strong>Módulos</strong>: Apache funciona con módulos que puedes habilitar o deshabilitar según tus necesidades. Los comandos <code>a2enmod</code> y <code>a2dismod</code> te permiten gestionar estos módulos en Debian/Ubuntu.</p>
+</li>
+<li>
+<p><strong>Archivos .htaccess</strong>: Puedes usar archivos <code>.htaccess</code> para sobrescribir la configuración de Apache en directorios específicos. Sin embargo, por razones de rendimiento y seguridad, es mejor hacer la mayoría de las configuraciones a nivel de servidor o de sitio.</p>
+</li>
+</ul>
+<p>Después de hacer cambios en la configuración de Apache, siempre debes reiniciar el servicio para aplicarlos:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2<span class="w">   </span><span class="c1"># En Debian/Ubuntu</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>httpd<span class="w">     </span><span class="c1"># En CentOS/Red Hat</span>
+</code></pre></div></p>
+<h3 id="instalacion-y-configuracion-de-apache-en-windows">Instalación y configuración de Apache en Windows</h3>
+<p>La instalación de Apache en Windows es menos común en entornos de producción, pero puede ser útil para desarrollo o pruebas locales.</p>
+<ol>
+<li>
+<p><strong>Descargar Apache</strong>: Ve al sitio web oficial de Apache (httpd.apache.org) o a un sitio de terceros confiable que proporcione binarios para Windows, como Apache Lounge.</p>
+</li>
+<li>
+<p><strong>Instalar Apache</strong>: Extrae los archivos del binario descargado a una carpeta de tu elección, por ejemplo, <code>C:\Apache24</code>.</p>
+</li>
+<li>
+<p><strong>Editar el archivo de configuración</strong>: Abre el archivo <code>conf\httpd.conf</code> en un editor de texto y realiza los ajustes necesarios, como definir el <code>ServerRoot</code>, <code>DocumentRoot</code> y los permisos de directorio.</p>
+</li>
+<li>
+<p><strong>Instalar el servicio de Apache</strong>: Abre un símbolo del sistema con privilegios de administrador y navega hasta el directorio donde instalaste Apache. Ejecuta el siguiente comando para instalar Apache como un servicio de Windows:
+   <div class="highlight"><pre><span></span><code>httpd.exe -k install
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Iniciar el servicio Apache</strong>: Puedes iniciar Apache a través del Administrador de servicios de Windows o utilizando el comando:
+   <div class="highlight"><pre><span></span><code>httpd.exe -k start
+</code></pre></div></p>
+</li>
+</ol>
+<p>Una vez instalado y en ejecución, puedes acceder a Apache en tu navegador local ingresando <code>http://localhost</code>.</p>
+<h3 id="en-sistemas-basados-en-unix-linuxmacos">En sistemas basados en Unix (Linux/macOS):</h3>
+<ol>
+<li><strong>Actualizar el gestor de paquetes:</strong></li>
+<li>En Linux, esto podría ser <code>apt</code> para distribuciones basadas en Debian o <code>yum</code> para distribuciones basadas en RedHat.
+     <div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt upgrade
+</code></pre></div></li>
+<li>
+<p>En macOS, si estás usando Homebrew, sería:
+     <div class="highlight"><pre><span></span><code>brew update
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Instalar PHP:</strong></p>
+</li>
+<li>En Linux:
+     <div class="highlight"><pre><span></span><code>sudo apt install php libapache2-mod-php
+</code></pre></div></li>
+<li>
+<p>En macOS con Homebrew:
+     <div class="highlight"><pre><span></span><code>brew install php
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Verificar la instalación:</strong></p>
+</li>
+<li>
+<p>Puedes verificar que PHP esté instalado correctamente con:
+     <div class="highlight"><pre><span></span><code>php -v
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Configurar PHP con Apache:</strong></p>
+</li>
+<li>Por lo general, al instalar el módulo <code>libapache2-mod-php</code>, Apache se configura automáticamente para trabajar con PHP.</li>
+<li>Reinicia Apache para asegurarte de que los cambios surtan efecto:
+     <div class="highlight"><pre><span></span><code>sudo systemctl restart apache2
+</code></pre></div></li>
+<li>
+<p>En macOS, si estás usando el Apache incorporado, reinicia el servicio con:
+     <div class="highlight"><pre><span></span><code>sudo apachectl restart
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Crear un archivo de prueba PHP:</strong></p>
+</li>
+<li>
+<p>Crea un archivo llamado <code>info.php</code> en el directorio raíz de tu servidor web (por ejemplo, <code>/var/www/html</code> en muchas distribuciones Linux).
+     <div class="highlight"><pre><span></span><code>echo "&lt;?php phpinfo(); ?&gt;" &gt; /var/www/html/info.php
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Probar en el navegador:</strong></p>
+</li>
+<li>Abre tu navegador y ve a <code>http://localhost/info.php</code>. Deberías ver la página de información de PHP, indicando que PHP está funcionando correctamente.</li>
+</ol>
+<h3 id="en-windows">En Windows:</h3>
+<ol>
+<li><strong>Descargar PHP:</strong></li>
+<li>
+<p>Ve al sitio web oficial de PHP (php.net) y descarga la versión de PHP que desees instalar. Es recomendable descargar la versión de "Thread Safe".</p>
+</li>
+<li>
+<p><strong>Extraer los archivos:</strong></p>
+</li>
+<li>
+<p>Extrae los archivos en una carpeta de tu elección, por ejemplo, <code>C:\php</code>.</p>
+</li>
+<li>
+<p><strong>Configurar el archivo <code>php.ini</code>:</strong></p>
+</li>
+<li>Copia <code>php.ini-development</code> o <code>php.ini-production</code> a <code>php.ini</code> y ábrelo con un editor de texto.</li>
+<li>Configura las opciones según sea necesario, como <code>extension_dir</code> para especificar el directorio de extensiones.</li>
+<li>
+<p>Descomenta las extensiones que necesites habilitando la línea correspondiente (quitando el punto y coma al principio).</p>
+</li>
+<li>
+<p><strong>Agregar PHP al PATH de Windows:</strong></p>
+</li>
+<li>Ve a "Sistema" en el Panel de Control, luego a "Configuración avanzada del sistema" y haz clic en "Variables de entorno".</li>
+<li>
+<p>Agrega la ruta del directorio de PHP (por ejemplo, <code>C:\php</code>) a la variable de entorno <code>PATH</code>.</p>
+</li>
+<li>
+<p><strong>Configurar PHP con Apache en Windows:</strong></p>
+</li>
+<li>Si ya tienes Apache</li>
+</ol>
+<p>Para instalar y configurar PHP con Apache de manera manual, debes seguir una serie de pasos que involucran la instalación de ambos componentes y su configuración para que trabajen juntos. Sin embargo, si prefieres una forma más sencilla y rápida de tener un entorno de desarrollo con PHP y Apache, puedes optar por usar XAMPP, que es un paquete que incluye Apache, MariaDB (una alternativa a MySQL), PHP y Perl.</p>
+<p>Primero, te explicaré cómo instalar y configurar PHP con Apache manualmente y luego te hablaré sobre XAMPP.</p>
+<h3 id="xampp">XAMPP</h3>
+<p>XAMPP es una distribución de Apache que incluye MariaDB, PHP y Perl, lo que hace que sea muy fácil de instalar y usar. Aquí hay una guía básica para instalar XAMPP:</p>
+<p><strong>1. Descargar XAMPP:</strong></p>
+<p>Ve al sitio web oficial de XAMPP (https://www.apachefriends.org/index.html) y descarga la versión para tu sistema operativo.</p>
+<p><strong>2. Instalar XAMPP:</strong></p>
+<ul>
+<li>En Windows, ejecuta el instalador que descargaste y sigue las instrucciones.</li>
+<li>En sistemas Unix, es posible que debas dar permisos de ejecución al instalador y ejecutarlo desde la terminal.</li>
+</ul>
+<p><strong>3. Iniciar los módulos Apache y MySQL:</strong></p>
+<p>Después de la instalación, abre el Panel de Control de XAMPP y comienza los módulos Apache y MySQL.</p>
+<p><strong>4. Probar la instalación:</strong></p>
+<p>Abre tu navegador y ve a <code>http://localhost</code>. Deberías ver la página de bienvenida de XAMPP.</p>
+<p><strong>5. Colocar tus archivos PHP:</strong></p>
+<p>Para trabajar en tus proyectos PHP, coloca tus archivos en el subdirectorio <code>htdocs</code> dentro de la carpeta de instalación de XAMPP.</p>
+<p>Con XAMPP, no necesitas configurar manualmente Apache o PHP, ya que el paquete incluye configuraciones predeterminadas que funcionan bien para la mayoría de los entornos de desarrollo. Esto hace que XAMPP sea una opción muy popular para los desarrolladores que desean configurar rápidamente un entorno de desarrollo local.</p>
+<h2 id="composer">Composer</h2>
+<p>Composer es un sistema de gestión de dependencias para PHP. Permite a los desarrolladores declarar las bibliotecas de las que depende su proyecto y las gestiona (instala/actualiza) por ellos. Composer no es un gestor de paquetes en el mismo sentido que Yum o Apt son. Mientras que estos últimos gestionan paquetes en un ámbito global, Composer lo hace en un ámbito por proyecto.</p>
+<h3 id="como-se-usa-composer">¿Cómo se usa Composer?</h3>
+<p><strong>Instalación de Composer:</strong></p>
+<p>Para instalar Composer, necesitas tener PHP instalado en tu sistema. La instalación de Composer puede hacerse de forma global (disponible en todo el sistema) o localmente (dentro de un directorio específico, por proyecto).</p>
+<ol>
+<li>
+<p><strong>Instalación Global en Unix/Linux/macOS:</strong>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>https://getcomposer.org/installer<span class="w"> </span><span class="p">|</span><span class="w"> </span>php
+mv<span class="w"> </span>composer.phar<span class="w"> </span>/usr/local/bin/composer
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Instalación Global en Windows:</strong>
+   Descarga y ejecuta el instalador de Windows desde <a href="https://getcomposer.org/download/">getcomposer.org</a>, que configurará todo automáticamente.</p>
+</li>
+</ol>
+<p><strong>Uso básico de Composer:</strong></p>
+<ol>
+<li>
+<p><strong>Inicializar un nuevo proyecto de PHP con Composer:</strong>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>init
+</code></pre></div>
+   Este comando te guiará a través de la creación de un archivo <code>composer.json</code> para tu proyecto.</p>
+</li>
+<li>
+<p><strong>Añadir dependencias:</strong>
+   Para añadir una nueva dependencia a tu proyecto, usa el comando <code>require</code>:
+   <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>&lt;vendor/package&gt;
+</code></pre></div>
+   Esto actualizará el archivo <code>composer.json</code> y también instalará el paquete y sus dependencias en el directorio <code>vendor</code>.</p>
+</li>
+<li>
+<p><strong>Instalar dependencias:</strong>
+   Si ya tienes un archivo <code>composer.json</code> con dependencias definidas, ejecutar el siguiente comando instalará todas esas dependencias:
+   <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>install
+</code></pre></div>
+   Esto es común cuando clonas un proyecto existente que usa Composer.</p>
+</li>
+<li>
+<p><strong>Actualizar dependencias:</strong>
+   Para actualizar todas tus dependencias a sus últimas versiones (según las restricciones definidas en <code>composer.json</code>), puedes usar:
+   <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>update
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Autoload:</strong>
+   Composer genera automáticamente un archivo de autoload que puedes incluir en tu proyecto para obtener carga automática de clases:
+   <div class="highlight"><pre><span></span><code><span class="x">require 'vendor/autoload.php';</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="principales-usos-de-composer">Principales usos de Composer:</h3>
+<ul>
+<li><strong>Gestión de dependencias:</strong> Composer te permite especificar versiones de paquetes para evitar problemas de incompatibilidad.</li>
+<li><strong>Autoloading:</strong> Composer proporciona un autoloader que es compatible con el estándar PSR-4.</li>
+<li><strong>Versionado semántico:</strong> Composer sigue el versionado semántico, lo que facilita la comprensión de las actualizaciones de las dependencias.</li>
+<li><strong>Entornos coherentes:</strong> Al usar <code>composer.lock</code>, los equipos pueden sincronizar las versiones exactas de las dependencias, asegurando que todos trabajen en un entorno coherente.</li>
+<li><strong>Repositorios de paquetes:</strong> Composer se integra con Packagist, el repositorio principal de paquetes PHP, pero también puede trabajar con repositorios privados o VCS (sistemas de control de versiones).</li>
+</ul>
+<h3 id="manejo-de-composer">Manejo de Composer:</h3>
+<ul>
+<li><strong>composer.json:</strong> Es el archivo de definición de tu proyecto, donde especificas las dependencias y metadatos del proyecto.</li>
+<li><strong>composer.lock:</strong> Es un archivo de bloqueo que se genera después de instalar o actualizar las dependencias, asegurando que todos los miembros del equipo instalen exactamente las mismas versiones.</li>
+<li><strong>vendor/:</strong> Es el directorio donde Composer instala las dependencias del proyecto.</li>
+</ul>
+<p>Es importante entender que Composer se ha convertido en una herramienta esencial para la moderna programación PHP, ya que facilita la gestión de dependencias y el mantenimiento de proyectos grandes y complejos.</p>
+<h3 id="packagist">Packagist</h3>
+<p>Para buscar librerías que puedes gestionar con Composer, el principal repositorio es Packagist. Packagist es el repositorio oficial de paquetes PHP que son utilizables con Composer. Aquí es donde los desarrolladores publican sus paquetes PHP y donde puedes buscar y explorar paquetes disponibles para usar en tus proyectos.</p>
+<h3 id="como-usar-packagist">Cómo usar Packagist:</h3>
+<p><strong>1. Visita el sitio web:</strong>
+   - Ve a <a href="https://packagist.org/">packagist.org</a>.</p>
+<p><strong>2. Busca paquetes:</strong>
+   - Puedes buscar paquetes utilizando el cuadro de búsqueda proporcionando el nombre del paquete, el nombre del vendedor o alguna funcionalidad que estés buscando.
+   - También puedes explorar paquetes por etiquetas, popularidad, tendencias, etc.</p>
+<p><strong>3. Examinar un paquete:</strong>
+   - Una vez encuentres un paquete que te interese, haz clic en él para ver detalles como la descripción, versiones disponibles, dependencias, información de licencia, autores, y más.
+   - En la página del paquete, encontrarás el comando <code>composer require</code> que necesitas para incluir ese paquete en tu proyecto.</p>
+<p><strong>4. Revisar la documentación del paquete:</strong>
+   - Es importante leer la documentación del paquete para entender cómo usarlo correctamente en tu proyecto. La documentación suele incluir ejemplos de uso, opciones de configuración y otros detalles importantes.</p>
+<p><strong>5. Instalar el paquete:</strong>
+   - Para instalar el paquete, puedes utilizar el comando que proporciona Packagist en tu terminal o consola:
+     <div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>vendor/package
+</code></pre></div>
+   - Esto actualizará tu archivo <code>composer.json</code> y descargará el paquete junto con sus dependencias en el directorio <code>vendor</code> de tu proyecto.</p>
+<h2 id="docker-de-desarrollo">Docker de Desarrollo</h2>
+<p>Puedes usar un docker de sarllo usando<code>docker compose</code> y <code>Dockerfile</code> con PHP, Composer y Apache listo y montando los directorios, bases de datos y todo lo necesario para empezar a desarrollar.</p>
+<h3 id="dockerfile">Dockerfile</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Dockerfile</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">php:8.0-apache</span>
+
+<span class="c"># Instala las extensiones pdo_pgsql para PHP y otras extensiones comunes</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--fix-missing<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>libpq-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>libpng-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>libonig-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>libxml2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>zip<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>unzip<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker-php-ext-install<span class="w"> </span>pdo_pgsql<span class="w"> </span>mbstring<span class="w"> </span>exif<span class="w"> </span>pcntl<span class="w"> </span>bcmath<span class="w"> </span>gd
+
+<span class="c"># Instala Composer</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer:latest<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
+
+<span class="c"># Configura el document root</span>
+<span class="k">ENV</span><span class="w"> </span>APACHE_DOCUMENT_ROOT<span class="w"> </span>/var/www/html/public
+
+<span class="c"># Cambia el document root del servidor Apache</span>
+<span class="k">RUN</span><span class="w"> </span>sed<span class="w"> </span>-ri<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g'</span><span class="w"> </span>/etc/apache2/sites-available/*.conf
+<span class="k">RUN</span><span class="w"> </span>sed<span class="w"> </span>-ri<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s!/var/www/!${APACHE_DOCUMENT_ROOT}!g'</span><span class="w"> </span>/etc/apache2/apache2.conf<span class="w"> </span>/etc/apache2/conf-available/*.conf
+
+<span class="c"># Habilita el mod_rewrite para Apache</span>
+<span class="k">RUN</span><span class="w"> </span>a2enmod<span class="w"> </span>rewrite
+</code></pre></div>
+<h3 id="docker-compose">Docker Compose</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.8'</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># PHP with Apache service</span>
+<span class="w">  </span><span class="nt">php-app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php_app</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${APP_PORT}:80"</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src:/var/www/html/public</span><span class="w"> </span><span class="c1"># Usar el directorio ficheros de la aplicación web</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uploads:/var/www/html/public/uploads</span><span class="w">  </span><span class="c1"># Usar el volumen nombrado o usar el directorio local para subir ficheros ./uploads</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./:/home/app</span><span class="w"> </span><span class="c1"># Usar el directorio local para el código fuente de la aplicación y proyecto</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres-db</span>
+<span class="w">    </span><span class="c1"># restart: always</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">DATABASE_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres-db</span>
+<span class="w">      </span><span class="nt">DATABASE_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_USER}</span>
+<span class="w">      </span><span class="nt">DATABASE_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_PASSWORD}</span>
+<span class="w">      </span><span class="nt">DATABASE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_DB}</span>
+<span class="w">      </span><span class="nt">APACHE_DOCUMENT_ROOT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/www/html/public</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tienda-network</span>
+
+<span class="w">  </span><span class="c1"># PostgreSQL service</span>
+<span class="w">  </span><span class="nt">postgres-db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:12-alpine</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres_db</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">    </span><span class="c1"># restart: always</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${POSTGRES_PORT}:5432"</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./database/init.sql:/docker-entrypoint-initdb.d/init.sql</span><span class="w"> </span><span class="c1"># script de inicio sql por si queremos crear tablas o meter datos</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/postgresql/data</span><span class="w"> </span><span class="c1"># Usar el volumen nombrado para persistencia de datos de BD</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_DB}</span>
+<span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_USER}</span>
+<span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_PASSWORD}</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tienda-network</span>
+
+<span class="w">  </span><span class="c1"># Adminer service</span>
+<span class="w">  </span><span class="nt">adminer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminer</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminer</span>
+<span class="w">    </span><span class="c1"># restart: always</span>
+<span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8081:8080"</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres-db</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tienda-network</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">uploads</span><span class="p">:</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tienda-network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</code></pre></div>
+<h2 id="ejemplo-de-uso-de-consola-de-docker-directorio-de-web-php">Ejemplo de uso de consola de Docker directorio de web php</h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/captura01.png"><img alt="" src="../images/captura01.png"/></a></p>
+<h2 id="ejemplo-de-uso-de-consola-de-docker-directorio-de-desarrollo-composer-phpunit-o-laravel">Ejemplo de uso de consola de Docker directorio de desarrollo: Composer, PHPUnit o Laravel</h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/captura02.png"><img alt="" src="../images/captura02.png"/></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

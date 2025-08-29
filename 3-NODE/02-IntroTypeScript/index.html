@@ -1,0 +1,2458 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/02-IntroTypeScript/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>02 IntroTypeScript - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#typescript" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02 IntroTypeScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sistema-de-tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema de tipos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nulabilidad-y-opcionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nulabilidad y Opcionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nulabilidad y Opcionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-chaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Chaining
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programacion-orientada-a-objetos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación Orientada a Objetos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-en-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetos en TypeScript
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Objetos en TypeScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clases-en-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clases en TypeScript
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clases en TypeScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#herencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clases-abstractas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clases abstractas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificadores-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificadores de acceso
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructores-multiples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructores múltiples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-en-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interfaces en TypeScript
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programacion-estructurada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación estructurada
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programación estructurada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condicionales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bucles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bucles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-rest-y-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores Rest y Spread
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadores Rest y Spread">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operador-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operador Rest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operador Spread
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asincronia-en-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asincronía en TypeScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operaciones-con-colecciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones con colecciones
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ul>
+<li><a href="#typescript">TypeScript</a></li>
+<li><a href="#sistema-de-tipos">Sistema de tipos</a></li>
+<li><a href="#nulabilidad-y-opcionales">Nulabilidad y Opcionales</a><ul>
+<li><a href="#optional-chaining">Optional Chaining</a></li>
+</ul>
+</li>
+<li><a href="#programación-orientada-a-objetos">Programación Orientada a Objetos</a></li>
+<li><a href="#objetos-en-typescript">Objetos en TypeScript</a><ul>
+<li><a href="#clases-en-typescript">Clases en TypeScript</a></li>
+<li><a href="#herencia">Herencia</a></li>
+<li><a href="#clases-abstractas">Clases abstractas</a></li>
+<li><a href="#constructores-múltiples">Constructores múltiples</a></li>
+<li><a href="#interfaces-en-typescript">Interfaces en TypeScript</a></li>
+<li><a href="#bucles">Bucles</a></li>
+</ul>
+</li>
+<li><a href="#funciones">Funciones</a></li>
+<li><a href="#operadores-rest-y-spread">Operadores Rest y Spread</a><ul>
+<li><a href="#operador-rest">Operador Rest</a></li>
+<li><a href="#operador-spread">Operador Spread</a></li>
+</ul>
+</li>
+<li><a href="#asincronía-en-typescript">Asincronía en TypeScript</a></li>
+<li><a href="#operaciones-con-colecciones">Operaciones con colecciones</a></li>
+<li><a href="#práctica-de-clase-typescript">Práctica de clase: TypeScript</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/02-banner.png"><img alt="" src="../images/02-banner.png"/></a></p>
+<h1 id="typescript">TypeScript</h1>
+<p>TypeScript es un lenguaje de programación desarrollado por Microsoft que se basa en JavaScript. Añade características de tipado estático, y otras funcionalidades adicionales a JavaScript, lo que permite detectar errores en tiempo de compilación y mejorar la calidad y mantenibilidad del código.</p>
+<p>TypeScript se compila a JavaScript, lo que significa que puedes utilizarlo en cualquier entorno que admita JavaScript, como navegadores web o servidores Node.js, a este proceso también se le llama transpilación.</p>
+<p>TypeScript trata de resolver la mayoría de los problemas con JavaScript centrándose en mejorar la experiencia y la productividad de nosotros, los desarrolladores. Nos permite utilizar técnicas como el tipado estático opcional y/o la encapsulación para generar un código mucho más mantenible y escalable que con JavaScript tradicional, sin perder el carácter dinámico del mismo.</p>
+<h2 id="sistema-de-tipos">Sistema de tipos</h2>
+<p>Además de los tipos String y Number, TypeScript también admite los siguientes tipos básicos:</p>
+<p>Boolean: tipo de dato logico que representa verdadero o falso.
+Array: tipo de dato estructurado que permite almacenar una colección de elementos.
+Tuple: similar al array, pero con un número fijo de elementos escritos.
+Enum: representa al tipo enumeración. Una enumeración es una forma de dar nombres descriptivos a los conjuntos de valores numéricos
+Any: indica que la variable puede ser de cualquier tipo. Es muy útil a la hora de trabajar con librerías externas.
+Void: indica que una función no devolverá ningún valor.
+Never: este tipo representa el tipo de valores que nunca se producen. Por ejemplo para indicar que una función siempre arroja una excepción o que nunca termina su ejecución.</p>
+<p>TypeScript usa inferencia de tipos para inferir los tipos de las variables cuando no se especifican. Por ejemplo, si asignamos un valor a una variable, TypeScript infiere el tipo de la variable en función del tipo del valor asignado.</p>
+<p>Además, TypeScript una variable puede almacenar distintos tipos gracias a |, a esto se le llama unión de tipos. Por ejemplo, si queremos que una variable pueda almacenar un valor de tipo string o number.
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Juan"</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">isStudent</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">numbers</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">nullableValue</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">anyValue</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hola"</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">tupleValue</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">];</span>
+<span class="kd">enum</span><span class="w"> </span><span class="nx">Color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Red</span><span class="p">,</span><span class="w"> </span><span class="nx">Green</span><span class="p">,</span><span class="w"> </span><span class="nx">Blue</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">Color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">Red</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">myFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"param"</span><span class="p">)};</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">unionType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hola"</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="nulabilidad-y-opcionales">Nulabilidad y Opcionales</h2>
+<p>TypeScript permite especificar si una variable puede ser nula o no utilizando el operador null o undefined. Puedes utilizar el símbolo | para combinar varios tipos, incluyendo la posibilidad de ser nulo.
+Claro, puedo explicarte la diferencia entre esas dos declaraciones en TypeScript.</p>
+<ol>
+<li><code>let nullableValue: string | null = null;</code></li>
+</ol>
+<p>En esta declaración, <code>nullableValue</code> es una variable de tipo <code>string | null</code>. Esto significa que puede contener tanto un valor de tipo <code>string</code> como el valor especial <code>null</code>. Al asignar <code>null</code> a <code>nullableValue</code>, estás indicando explícitamente que la variable puede ser nula.</p>
+<p>Ejemplo de uso:
+<div class="highlight"><pre><span></span><code><span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hola"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Asignación válida</span>
+<span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Asignación válida</span>
+<span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error, el tipo number no es compatible con string | null</span>
+</code></pre></div></p>
+<ol>
+<li><code>let nullableValue?: string;</code></li>
+</ol>
+<p>En esta declaración, <code>nullableValue</code> es una variable opcional de tipo <code>string</code>. Esto significa que puede contener un valor de tipo <code>string</code> o <code>undefined</code>. Al marcar la variable como opcional con el operador <code>?</code>, estás indicando que la variable puede no tener un valor asignado.</p>
+<p>Ejemplo de uso:
+<div class="highlight"><pre><span></span><code><span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hola"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Asignación válida</span>
+<span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// Asignación válida</span>
+<span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error, null no es compatible con string | undefined</span>
+<span class="nx">nullableValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">123</span><span class="p">;</span><span class="w"> </span><span class="c1">// Error, el tipo number no es compatible con string | undefined</span>
+</code></pre></div></p>
+<p>En resumen, la diferencia principal entre ambas declaraciones radica en que en la primera (<code>string | null</code>) la variable puede contener tanto un valor de tipo <code>string</code> como <code>null</code>, mientras que en la segunda (<code>string | undefined</code>) la variable puede contener un valor de tipo <code>string</code> o <code>undefined</code>.</p>
+<h3 id="optional-chaining">Optional Chaining</h3>
+<p>El optional chaining es una característica introducida en TypeScript y JavaScript que te permite acceder a propiedades de un objeto de forma segura, incluso si alguna de las propiedades en la cadena de acceso es nula o indefinida.</p>
+<p>Imaginemos que tienes un objeto <code>persona</code> con la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Juan'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">direccion</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">calle</span><span class="o">:</span><span class="w"> </span><span class="s1">'Calle Principal'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ciudad</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ciudad de Ejemplo'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">codigoPostal</span><span class="o">:</span><span class="w"> </span><span class="s1">'12345'</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Si quieres acceder al código postal de la dirección de la persona, normalmente lo harías así:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">codigoPostal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">persona</span><span class="p">.</span><span class="nx">direccion</span><span class="p">.</span><span class="nx">codigoPostal</span><span class="p">;</span>
+</code></pre></div>
+<p>Sin embargo, si por alguna razón el objeto <code>direccion</code> no está definido, obtendrías un error como "Cannot read property 'codigoPostal' of undefined". Aquí es donde entra en juego el optional chaining.</p>
+<p>Usando el optional chaining, puedes acceder de forma segura a la propiedad <code>codigoPostal</code> incluso si <code>direccion</code> es nulo o indefinido. Para hacer esto, simplemente añade un signo de interrogación <code>?</code> después de la propiedad o el objeto que podría ser nulo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">codigoPostal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">persona</span><span class="p">.</span><span class="nx">direccion</span><span class="o">?</span><span class="p">.</span><span class="nx">codigoPostal</span><span class="p">;</span>
+</code></pre></div>
+<p>En este caso, si <code>direccion</code> es nulo o indefinido, la expresión <code>persona.direccion?.codigoPostal</code> evaluará a <code>undefined</code> en lugar de lanzar un error. Esto te permite evitar errores y manejar de manera más segura las propiedades anidadas.</p>
+<p>Si deseas realizar una comprobación adicional, puedes encadenar múltiples propiedades opcionales:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">codigoPostal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">persona</span><span class="o">?</span><span class="p">.</span><span class="nx">direccion</span><span class="o">?</span><span class="p">.</span><span class="nx">codigoPostal</span><span class="p">;</span>
+</code></pre></div>
+<p>En este ejemplo, si <code>persona</code> es nulo o indefinido, o si <code>direccion</code> es nulo o indefinido, la expresión <code>persona?.direccion?.codigoPostal</code> evaluará a <code>undefined</code>.</p>
+<p>El optional chaining también se puede utilizar con métodos y funciones:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">longitudNombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">persona</span><span class="o">?</span><span class="p">.</span><span class="nx">nombre</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+</code></pre></div>
+<p>Aquí, si <code>persona</code> es nulo o indefinido, la expresión <code>persona?.nombre.length</code> evaluará a <code>undefined</code>.</p>
+<p>El optional chaining es una herramienta útil para evitar errores en tiempo de ejecución al acceder a propiedades anidadas de objetos. Te permite escribir código más seguro y robusto al manejar casos en los que las propiedades pueden ser nulas o indefinidas.</p>
+<p>Por otro lado, el operador lógico OR (||) se utiliza para asignar un valor por defecto cuando el valor de la izquierda es falsy (es decir, null, undefined, 0, false o una cadena vacía). Si el valor de la izquierda es falsy, se evaluará y se asignará el valor de la derecha.</p>
+<p>Por ejemplo, si quieres asignar un valor por defecto a una variable si es nula o indefinida, puedes hacerlo así:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">persona</span><span class="p">.</span><span class="nx">nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'Nombre por defecto'</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">person?</span><span class="o">:</span><span class="w"> </span><span class="kt">Person</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">person</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'Guest'</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">person</span><span class="o">?</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">! You are </span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb"> years old.`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">person1</span><span class="o">:</span><span class="w"> </span><span class="kt">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'John'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">person2</span><span class="o">:</span><span class="w"> </span><span class="kt">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span>
+<span class="p">};</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: Hello, John! You are 25 years old.</span>
+<span class="nx">greet</span><span class="p">(</span><span class="nx">person2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: Hello, Guest! You are 30 years old.</span>
+<span class="nx">greet</span><span class="p">();</span><span class="w"> </span><span class="c1">// Output: Hello, Guest! You are 0 years old.</span>
+</code></pre></div>
+<h2 id="programacion-orientada-a-objetos">Programación Orientada a Objetos</h2>
+<h2 id="objetos-en-typescript">Objetos en TypeScript</h2>
+<p>En TypeScript, puedes crear objetos utilizando la sintaxis de JavaScript. Puedes definir las propiedades y sus tipos utilizando la notación de dos puntos (:) después del nombre de la propiedad.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Juan"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="clases-en-typescript">Clases en TypeScript</h3>
+<p>Las clases en TypeScript te permiten definir objetos con propiedades y métodos. Puedes utilizar la palabra clave <code>class</code> para declarar una clase y la palabra clave <code>constructor</code> para definir el constructor de la clase.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">sayHello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, mi nombre es </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> y tengo </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb"> años.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</code></pre></div>
+<p>En el ejemplo anterior, hemos declarado una clase <code>Person</code> con dos propiedades: <code>name</code> y <code>age</code>. El constructor de la clase toma dos parámetros, <code>name</code> y <code>age</code>, y asigna los valores pasados a las propiedades correspondientes utilizando la sintaxis <code>this.nombrePropiedad = valor</code>.</p>
+<p>El método <code>sayHello</code> simplemente imprime un mensaje en la consola utilizando las propiedades <code>name</code> y <code>age</code> de la instancia de la clase.</p>
+<p>Para crear una nueva instancia de la clase <code>Person</code>, utilizamos la palabra clave <code>new</code> seguida del nombre de la clase y los argumentos necesarios para el constructor. En este caso, creamos una nueva instancia de <code>Person</code> con el nombre "Juan" y la edad 25.</p>
+<p>Una vez creada la instancia, podemos llamar al método <code>sayHello</code> utilizando la notación de punto (<code>person.sayHello()</code>), lo que imprimirá el mensaje "Hola, mi nombre es Juan y tengo 25 años." en la consola.</p>
+<h4 id="herencia">Herencia</h4>
+<p>La herencia es un concepto fundamental en la programación orientada a objetos que permite crear nuevas clases basadas en clases existentes. En TypeScript, puedes utilizar la palabra clave <code>extends</code> para establecer una relación de herencia entre dos clases.</p>
+<p>La clase que se hereda se conoce como la clase base o superclase, mientras que la clase que hereda se conoce como la clase derivada o subclase. La clase derivada hereda todas las propiedades y métodos de la clase base y puede agregar nuevos miembros o sobrescribir los existentes.</p>
+<p>Aquí tienes un ejemplo que muestra cómo se utiliza la herencia en TypeScript:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">eat</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> está comiendo.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Dog</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">breed</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">breed</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">breed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">breed</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">bark</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> está ladrando.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">dog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Dog</span><span class="p">(</span><span class="s2">"Max"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Labrador"</span><span class="p">);</span>
+<span class="nx">dog</span><span class="p">.</span><span class="nx">eat</span><span class="p">();</span><span class="w"> </span><span class="c1">// Output: Max está comiendo.</span>
+<span class="nx">dog</span><span class="p">.</span><span class="nx">bark</span><span class="p">();</span><span class="w"> </span><span class="c1">// Output: Max está ladrando.</span>
+</code></pre></div>
+<p>En este ejemplo, tenemos una clase base llamada <code>Animal</code> que tiene una propiedad <code>name</code> y un método <code>eat()</code>. Luego, tenemos una clase derivada llamada <code>Dog</code> que extiende la clase <code>Animal</code>. La clase <code>Dog</code> agrega una propiedad <code>breed</code> y un método <code>bark()</code>.</p>
+<p>Al crear una instancia de <code>Dog</code>, podemos acceder tanto a las propiedades y métodos heredados de la clase <code>Animal</code> (como <code>name</code> y <code>eat()</code>) como a las propiedades y métodos propios de la clase <code>Dog</code> (como <code>breed</code> y <code>bark()</code>).</p>
+<p>El constructor de la clase derivada <code>Dog</code> utiliza la palabra clave <code>super</code> para llamar al constructor de la clase base <code>Animal</code> y pasarle el nombre del perro. Esto asegura que la propiedad <code>name</code> de la clase base se inicialice correctamente.</p>
+<p>La herencia te permite reutilizar código y establecer relaciones jerárquicas entre clases. Puedes crear jerarquías de herencia más complejas con múltiples niveles de clases derivadas y clases base. También puedes sobrescribir métodos de la clase base en la clase derivada para proporcionar una implementación específica para esa clase.</p>
+<h4 id="clases-abstractas">Clases abstractas</h4>
+<p>Clases abstractas
+Este tipo de clases no pueden ser instanciadas ya que se usan para definir comportamientos independientemente de su concreción. Su implementación en typescript es similar a la de una clase normal con la diferencia que hay que anteponer el termino abstract antes de declararlas.</p>
+<div class="highlight"><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Product</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">productName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">price</span><span class="w"> </span><span class="o">:</span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="k">abstract</span><span class="w"> </span><span class="nx">changeName</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">calcPrice</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Mobile</span><span class="w"> </span><span class="k">extends</span><span class="w">  </span><span class="nx">Product</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">changeName</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">productName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">mobProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Mobile</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mobProduct</span><span class="p">);</span>
+<span class="nx">mobProduct</span><span class="p">.</span><span class="nx">changeName</span><span class="p">(</span><span class="s2">"Super It Product"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mobProduct</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="modificadores-de-acceso">Modificadores de acceso</h4>
+<p>En TypeScript, los modificadores de acceso te permiten controlar la visibilidad de las propiedades y métodos de una clase. Hay tres modificadores de acceso disponibles: <code>public</code>, <code>private</code> y <code>protected</code>.</p>
+<ul>
+<li>
+<p><code>public</code>: Es el modificador de acceso por defecto. Las propiedades y métodos marcados como <code>public</code> son accesibles desde cualquier lugar, tanto dentro como fuera de la clase.</p>
+</li>
+<li>
+<p><code>private</code>: Las propiedades y métodos marcados como <code>private</code> son accesibles solo desde dentro de la clase donde se definen. No se pueden acceder ni modificar desde fuera de la clase.</p>
+</li>
+<li>
+<p><code>protected</code>: Las propiedades y métodos marcados como <code>protected</code> son accesibles desde la clase donde se definen y también desde las clases derivadas (herencia). No se pueden acceder ni modificar desde fuera de la clase ni desde clases no derivadas.</p>
+</li>
+</ul>
+<p>Aquí tienes un ejemplo que utiliza modificadores de acceso:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="k">protected</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">sayHello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, mi nombre es </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> y tengo </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb"> años.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">Student</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">grade</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">grade</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">grade</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">showGrade</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Mi calificación es </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">grade</span><span class="si">}</span><span class="sb">.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span><span class="w"> </span><span class="c1">// Error: 'name' es privado en la clase 'Person'</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Student</span><span class="p">(</span><span class="s2">"María"</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">);</span>
+<span class="nx">student</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span><span class="w"> </span><span class="c1">// Acceso permitido</span>
+<span class="nx">student</span><span class="p">.</span><span class="nx">showGrade</span><span class="p">();</span><span class="w"> </span><span class="c1">// Acceso permitido</span>
+</code></pre></div>
+<p>En este ejemplo, hemos modificado la visibilidad de la propiedad <code>name</code> a <code>private</code> y la propiedad <code>age</code> a <code>protected</code>. Esto significa que la propiedad <code>name</code> solo es accesible desde dentro de la clase <code>Person</code>, mientras que la propiedad <code>age</code> es accesible desde la clase <code>Person</code> y desde la clase derivada <code>Student</code>.</p>
+<p>Cuando intentamos acceder a la propiedad <code>name</code> en una instancia de <code>Person</code> desde fuera de la clase, obtenemos un error de compilación. Sin embargo, podemos acceder a la propiedad <code>age</code> y llamar al método <code>sayHello</code> desde la instancia de <code>Student</code>, ya que <code>Student</code> hereda de <code>Person</code>.</p>
+<h4 id="constructores-multiples">Constructores múltiples</h4>
+<p>En TypeScript, puedes definir múltiples constructores en una clase utilizando la técnica de sobrecarga de métodos. Esto te permite crear instancias de la clase con diferentes combinaciones de argumentos.</p>
+<p>Aquí tienes un ejemplo que muestra cómo definir constructores múltiples:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">);</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">sayHello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, mi nombre es </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> y tengo </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb"> años.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">person1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">"Juan"</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">person2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s2">"María"</span><span class="p">);</span>
+
+<span class="nx">person1</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span><span class="w"> </span><span class="c1">// Output: Hola, mi nombre es Juan y tengo 25 años.</span>
+<span class="nx">person2</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span><span class="w"> </span><span class="c1">// Output: Hola, mi nombre es María y tengo 0 años.</span>
+</code></pre></div>
+<p>En este ejemplo, hemos definido dos constructores en la clase <code>Person</code>. El primer constructor toma dos parámetros, <code>name</code> y <code>age</code>, y asigna los valores pasados a las propiedades correspondientes. El segundo constructor toma solo un parámetro, <code>name</code>, y asigna un valor por defecto de 0 a la propiedad <code>age</code>.</p>
+<p>Cuando creamos una nueva instancia de <code>Person</code>, podemos utilizar cualquiera de los constructores según nuestras necesidades. En el caso de <code>person1</code>, utilizamos el primer constructor y proporcionamos tanto el nombre como la edad. En el caso de <code>person2</code>, utilizamos el segundo constructor y proporcionamos solo el nombre, dejando que la edad se establezca en su valor por defecto.</p>
+<p>De esta manera, puedes crear constructores múltiples en una clase en TypeScript para adaptarse a diferentes situaciones en las que necesites diferentes combinaciones de argumentos al crear instancias de la clase.</p>
+<h3 id="interfaces-en-typescript">Interfaces en TypeScript</h3>
+<p>Interfaces en TypeScript Las interfaces en TypeScript definen la estructura de un objeto. Puedes utilizarlas para definir la forma que debe tener un objeto y los tipos de sus propiedades. Aquí tienes un ejemplo. En typeScript, las interfaces se definen con la palabra clave interface y se suelen usar para tipar sin necesidad de crear una clase.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Persona</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">saludar</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">persona1</span><span class="o">:</span><span class="w"> </span><span class="kt">Persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Juan"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, mi nombre es </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">nombre</span><span class="si">}</span><span class="sb"> y tengo </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">edad</span><span class="si">}</span><span class="sb"> años.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">persona1</span><span class="p">.</span><span class="nx">saludar</span><span class="p">();</span><span class="w"> </span><span class="c1">// Salida: Hola, mi nombre es Juan y tengo 25 años.</span>
+</code></pre></div>
+<h2 id="programacion-estructurada">Programación estructurada</h2>
+<h3 id="condicionales">Condicionales</h3>
+<p>En TypeScript, puedes utilizar la palabra clave <code>if</code> para crear una sentencia condicional. La sintaxis de una sentencia condicional es la siguiente:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar si la condición es verdadera</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar si la condición es falsa</span>
+<span class="p">}</span>
+</code></pre></div>
+También podemos usar la palabra clave <code>else if</code> para comprobar múltiples condiciones:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">condition1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar si la condición 1 es verdadera</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">condition2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar si la condición 2 es verdadera</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar si ninguna de las condiciones es verdadera</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Otra opción es <code>switch</code> que nos permite evaluar una expresión y ejecutar un bloque de código dependiendo del valor de la expresión. La sintaxis de un bloque switch es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">expression</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nx">value1</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Código a ejecutar si expression es igual a value1</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nx">value2</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Código a ejecutar si expression es igual a value2</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Código a ejecutar si expression no coincide con ninguno de los valores</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="bucles">Bucles</h3>
+<p>En TypeScript, puedes utilizar la palabra clave <code>for</code> para crear un bucle for. La sintaxis de un bucle for es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nx">initialization</span><span class="p">;</span><span class="w"> </span><span class="nx">condition</span><span class="p">;</span><span class="w"> </span><span class="nx">increment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar en cada iteración</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>También puedes utilizar la palabra clave <code>while</code> para crear un bucle while. La sintaxis de un bucle while es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar en cada iteración</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Puedes utilizar la palabra clave <code>do...while</code> para crear un bucle do...while. La sintaxis de un bucle do...while es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar en cada iteración</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">condition</span><span class="p">);</span>
+</code></pre></div>
+<p>También tenemos un bucle for...of que nos permite iterar sobre los elementos de un array. La sintaxis de un bucle for...of es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar en cada iteración</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>O un bucle for...in que nos permite iterar sobre las propiedades de un objeto. La sintaxis de un bucle for...in es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">property</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar en cada iteración</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="funciones">Funciones</h2>
+<p>En TypeScript, puedes utilizar la palabra clave <code>function</code> para crear una función. La sintaxis de una función es la siguiente:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">functionName</span><span class="p">(</span><span class="nx">parameter1</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">,</span><span class="w"> </span><span class="nx">parameter2</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">returnType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar</span>
+<span class="p">}</span>
+</code></pre></div>
+ Podemos pasar parámetros opcionales
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">functionName</span><span class="p">(</span><span class="nx">parameter1</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">,</span><span class="w"> </span><span class="nx">parameter2?</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">returnType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>También podemos utilizar funciones anónimas, que son funciones sin nombre. Las funciones anónimas se utilizan a menudo como callbacks de otras funciones. La sintaxis de una función anónima es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">parameter1</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">,</span><span class="w"> </span><span class="nx">parameter2</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">returnType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>También podemos utilizar funciones flecha, que son una forma más corta de escribir funciones anónimas. La sintaxis de una función flecha es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nx">parameter1</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">,</span><span class="w"> </span><span class="nx">parameter2</span><span class="o">:</span><span class="w"> </span><span class="kt">type</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">returnType</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Código a ejecutar</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Aquí un ejemplo de una función que suma dos números:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 3</span>
+
+<span class="c1">// Arrow function</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span><span class="w"> </span><span class="c1">// Output: 3</span>
+</code></pre></div>
+<p>Podemos pasar un numero indeterminado de parámetros a una función utilizando el operador rest (...). El operador rest se utiliza para agrupar los parámetros restantes en un array. La sintaxis del operador rest es la siguiente:</p>
+<h2 id="operadores-rest-y-spread">Operadores Rest y Spread</h2>
+<h3 id="operador-rest">Operador Rest</h3>
+<p>El operador <code>rest</code> permite agrupar un número variable de elementos en un array. Se denota con tres puntos (<code>...</code>) seguidos del nombre del parámetro. A continuación, te mostraré cómo utilizarlo en funciones:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">...numeros</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">numero</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">numeros</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resultado</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">numero</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">resultado</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">// Salida: 6</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">));</span><span class="w"> </span><span class="c1">// Salida: 22</span>
+</code></pre></div>
+<p>En el ejemplo anterior, la función <code>sumar</code> acepta un número variable de argumentos y los agrupa en el array <code>numeros</code>. Luego, itera sobre el array y suma todos los números.</p>
+<p>También puedes utilizar el operador <code>rest</code> al desestructurar arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">primerNumero</span><span class="p">,</span><span class="w"> </span><span class="nx">segundoNumero</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">restoNumeros</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numeros</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">primerNumero</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida: 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">segundoNumero</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida: 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">restoNumeros</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida: [3, 4, 5]</span>
+</code></pre></div>
+<p>En este ejemplo, los primeros dos elementos del array <code>numeros</code> se asignan a las variables <code>primerNumero</code> y <code>segundoNumero</code>, respectivamente. El operador <code>rest</code> (<code>...restoNumeros</code>) captura el resto de los elementos en un nuevo array llamado <code>restoNumeros</code>.</p>
+<h3 id="operador-spread">Operador Spread</h3>
+<p>El operador <code>spread</code> permite expandir un array en elementos individuales. También se denota con tres puntos (<code>...</code>). Aquí tienes un ejemplo de cómo utilizarlo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numeros1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">numeros2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">numerosCombinados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">numeros1</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">numeros2</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">numerosCombinados</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida: [1, 2, 3, 4, 5, 6]</span>
+</code></pre></div>
+<p>En este caso, el operador <code>spread</code> se utiliza para combinar los arrays <code>numeros1</code> y <code>numeros2</code> en un nuevo array llamado <code>numerosCombinados</code>.</p>
+<p>También puedes utilizar el operador <code>spread</code> para crear copias de objetos y modificar sus propiedades:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">persona</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Juan'</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">personaModificada</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">persona</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="kt">31</span><span class="w"> </span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">personaModificada</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida: { nombre: 'Juan', edad: 31 }</span>
+</code></pre></div>
+<p>En este ejemplo, el operador <code>spread</code> se utiliza para crear una copia del objeto <code>persona</code> y luego se modifica la propiedad <code>edad</code> en la nueva copia.</p>
+<p>Además puedes usar el operador <code>spread</code> para pasarlos como una lista de argumentos a una función (que puede o no tener un número variable de argumentos):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sumar</span><span class="p">(...</span><span class="nx">numeros</span><span class="p">));</span><span class="w"> </span><span class="c1">// Salida: 6</span>
+</code></pre></div>
+<h2 id="asincronia-en-typescript">Asincronía en TypeScript</h2>
+<p>TypeScript proporciona soporte para programación asíncrona utilizando promesas, async/await y callbacks.
+- Callbacks: Los callbacks son funciones que se pasan como argumentos a otras funciones. Se utilizan para ejecutar código después de que se complete una operación asíncrona. Los callbacks son una forma común de manejar la asincronía en JavaScript, pero pueden conducir a un código anidado y difícil de leer, lo que se conoce como "callback hell".
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="s2">"¡Éxito!"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+- Promesas: Las promesas son objetos que representan el resultado de una operación asíncrona. Puedes utilizarlas para ejecutar código después de que se complete una operación asíncrona o para manejar errores de operaciones asíncronas. Las promesas se introdujeron en ES6 y se han convertido en una forma estándar de manejar la asincronía en JavaScript.
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">promise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"¡Éxito!"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: ¡Éxito!</span>
+<span class="p">});</span>
+</code></pre></div>
+- async/await: El async/await es una característica introducida en ES2017 que te permite escribir código asíncrono como si fuera síncrono. Puedes utilizar la palabra clave async para marcar una función como asíncrona y la palabra clave await para esperar a que se resuelva una promesa. El código dentro de una función async se ejecuta de forma asíncrona, pero se escribe como si fuera síncrono.
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">promise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"¡Éxito!"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">promise</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: ¡Éxito!</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="operaciones-con-colecciones">Operaciones con colecciones</h2>
+<p>Las más destacadas son:</p>
+<ol>
+<li><code>forEach</code>: Este método ejecuta una función proporcionada una vez por cada elemento de la colección.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="nx">numbers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kt">number</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<ol>
+<li><code>map</code>: Este método crea un nuevo array con los resultados de aplicar una función a cada elemento de la colección.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">doubledNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">doubledNumbers</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [2, 4, 6, 8, 10]</span>
+</code></pre></div>
+<ol>
+<li><code>filter</code>: Este método crea un nuevo array con todos los elementos que pasan una prueba (función) proporcionada.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">evenNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evenNumbers</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: [2, 4]</span>
+</code></pre></div>
+<ol>
+<li><code>reduce</code>: Este método aplica una función a un acumulador y a cada elemento de la colección (de izquierda a derecha) para reducirlo a un solo valor.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">accumulator</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">accumulator</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 15</span>
+</code></pre></div>
+<ol>
+<li><code>find</code>: Este método devuelve el primer elemento de la colección que cumple con la condición proporcionada.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">foundNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foundNumber</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: 4</span>
+</code></pre></div>
+<ol>
+<li><code>some</code>: Este método verifica si al menos un elemento de la colección cumple con la condición proporcionada.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">hasEvenNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hasEvenNumber</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: true</span>
+</code></pre></div>
+<ol>
+<li><code>every</code>: Este método verifica si todos los elementos de la colección cumplen con la condición proporcionada.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">allPositive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">allPositive</span><span class="p">);</span><span class="w"> </span><span class="c1">// Output: true</span>
+</code></pre></div>
+<h1 id="practica-de-clase-typescript">Práctica de clase: TypeScript</h1>
+<ol>
+<li>Realiza un programa en TypeScript que haga uso de la clase Funko y luego trabaje con ella usando las funciones de colecciones.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

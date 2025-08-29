@@ -1,0 +1,1946 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/05-POO-avanzado/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Conceptos Adicionales y Casos de Uso - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conceptos-adicionales-y-casos-de-uso" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conceptos Adicionales y Casos de Uso
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clonacion-de-objetos-creando-copias-reales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clonación de Objetos: Creando Copias Reales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparacion-de-objetos-identidad-vs-igualdad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparación de Objetos: Identidad vs. Igualdad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#miembros-estaticos-propiedades-y-metodos-de-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miembros Estáticos: Propiedades y Métodos de Clase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteracion-de-objetos-recorriendo-sus-propiedades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iteración de Objetos: Recorriendo sus Propiedades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="conceptos-adicionales-y-casos-de-uso">Conceptos Adicionales y Casos de Uso</h1>
+<p>¡Excelente trabajo, equipo! En el <a href="05-POO/">Tema 5: Programación Orientada a Objetos en PHP</a>, construimos los cimientos de nuestra fábrica de software. Ya dominamos los planos (<code>clases</code>), los productos (<code>objetos</code>), las líneas de ensamblaje (<code>herencia</code>) y los contratos de calidad (<code>interfaces</code> y <code>clases abstractas</code>).</p>
+<p>Ahora, vamos a profundizar en la maquinaria de precisión. Este tema cubre conceptos más específicos pero igualmente cruciales que nos darán un control total sobre el ciclo de vida, la identidad y el comportamiento de nuestros objetos. Son las herramientas que distinguen a un operario de un ingeniero jefe de la fábrica.</p>
+<hr/>
+<div class="admonition info">
+<p class="admonition-title">Referencia Oficial</p>
+<p>Todos los conceptos explicados aquí están detallados en el manual oficial de PHP. Es tu fuente de consulta principal y más fiable.
+<a href="https://www.php.net/manual/es/language.oop5.php"><strong>Documentación Oficial de PHP sobre Clases y Objetos</strong></a></p>
+</div>
+<h2 id="clonacion-de-objetos-creando-copias-reales">Clonación de Objetos: Creando Copias Reales</h2>
+<p>En PHP, cuando asignas un objeto a una nueva variable, no estás creando una copia. Estás creando otra "etiqueta" o referencia que apunta al <strong>mismo objeto en memoria</strong>. Esto puede llevar a efectos secundarios inesperados. La clonación nos permite crear una copia genuinamente nueva e independiente de un objeto existente.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Clonación</p>
+<p>La <strong>clonación</strong> es el proceso de crear un nuevo objeto que es una copia de un objeto existente. En PHP, esto se logra con la palabra clave <code>clone</code>. Por defecto, <code>clone</code> realiza una <strong>copia superficial (shallow copy)</strong>: las propiedades del objeto son copiadas. Sin embargo, si alguna propiedad es a su vez un objeto, esa propiedad seguirá siendo una referencia al objeto original.</p>
+</div>
+<p>Para obtener un control total sobre el proceso de clonación (por ejemplo, para realizar una <strong>copia profunda</strong> donde los objetos internos también se clonen), PHP nos proporciona el método mágico <code>__clone()</code>. Este método se llama automáticamente en el objeto <strong>recién clonado</strong> después de que la copia inicial se ha realizado.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">FichaPersonaje</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$nombre</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">Atributos</span> <span class="nv">$atributos</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$nombre</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$fuerza</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$destreza</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">=</span> <span class="nv">$nombre</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atributos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Atributos</span><span class="p">(</span><span class="nv">$fuerza</span><span class="p">,</span> <span class="nv">$destreza</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Este método se invoca en el objeto clonado</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__clone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Forzamos que la propiedad 'atributos' también se clone.</span>
+        <span class="c1">// Esto se conoce como una copia profunda (deep copy).</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atributos</span> <span class="o">=</span> <span class="k">clone</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;¡Ficha de </span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="si">}</span><span class="s2"> clonada profundamente!&lt;/strong&gt;&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Atributos</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">int</span> <span class="nv">$fuerza</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">int</span> <span class="nv">$destreza</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$fuerza</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$destreza</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fuerza</span> <span class="o">=</span> <span class="nv">$fuerza</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">destreza</span> <span class="o">=</span> <span class="nv">$destreza</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$guerrero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FichaPersonaje</span><span class="p">(</span><span class="s2">"Krom"</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+
+<span class="c1">// $ladron = $guerrero; // ¡ERROR! Esto es solo una referencia.</span>
+<span class="nv">$ladron</span> <span class="o">=</span> <span class="k">clone</span> <span class="nv">$guerrero</span><span class="p">;</span> <span class="c1">// Creamos una copia real.</span>
+<span class="nv">$ladron</span><span class="o">-&gt;</span><span class="na">nombre</span> <span class="o">=</span> <span class="s2">"Lyss"</span><span class="p">;</span>
+
+<span class="c1">// Modificamos los atributos del ladrón</span>
+<span class="nv">$ladron</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="o">-&gt;</span><span class="na">destreza</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="c1">// Gracias a __clone(), los atributos del guerrero permanecen intactos.</span>
+<span class="k">echo</span> <span class="s2">"Atributos de </span><span class="si">{</span><span class="nv">$guerrero</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="si">}</span><span class="s2">: FUE </span><span class="si">{</span><span class="nv">$guerrero</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="o">-&gt;</span><span class="na">fuerza</span><span class="si">}</span><span class="s2">, DES </span><span class="si">{</span><span class="nv">$guerrero</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="o">-&gt;</span><span class="na">destreza</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// Salida: FUE 18, DES 12</span>
+<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"Atributos de </span><span class="si">{</span><span class="nv">$ladron</span><span class="o">-&gt;</span><span class="na">nombre</span><span class="si">}</span><span class="s2">: FUE </span><span class="si">{</span><span class="nv">$ladron</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="o">-&gt;</span><span class="na">fuerza</span><span class="si">}</span><span class="s2">, DES </span><span class="si">{</span><span class="nv">$ladron</span><span class="o">-&gt;</span><span class="na">atributos</span><span class="o">-&gt;</span><span class="na">destreza</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// Salida: FUE 18, DES 20</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">A reflexionar</p>
+<p>Si comentaras el método <code>__clone()</code> en la clase <code>FichaPersonaje</code>, ¿cuál sería la salida del script? ¿Por qué?</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Referencia Oficial</p>
+<p><a href="https://www.php.net/manual/es/language.oop5.cloning.php"><strong>Manual de PHP sobre Clonación de Objetos</strong></a></p>
+</div>
+<p><br/><hr/></p>
+<h2 id="comparacion-de-objetos-identidad-vs-igualdad">Comparación de Objetos: Identidad vs. Igualdad</h2>
+<p>Una pregunta fundamental al trabajar con objetos es: ¿cuándo son dos variables de objeto "iguales"? PHP nos ofrece dos operadores para responder a esta pregunta, y es vital entender su diferencia.</p>
+<ul>
+<li><strong>Operador de Igualdad (<code>==</code>)</strong>: Dos objetos son considerados iguales si son instancias de la <strong>misma clase</strong> y todas sus <strong>propiedades tienen los mismos valores</strong>.</li>
+<li><strong>Operador de Identidad (<code>===</code>)</strong>: Dos objetos son idénticos si, y solo si, ambas variables <strong>apuntan exactamente a la misma instancia</strong> en memoria.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comparación</th>
+<th style="text-align: left;"><code>==</code> (Igualdad)</th>
+<th style="text-align: left;"><code>===</code> (Identidad)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>¿Qué compara?</strong></td>
+<td style="text-align: left;">Clase y valores de propiedades</td>
+<td style="text-align: left;">Referencia en memoria</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Significado</strong></td>
+<td style="text-align: left;">"¿Son objetos del mismo tipo con el mismo estado?"</td>
+<td style="text-align: left;">"¿Son literalmente el mismo objeto?"</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Color</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">public</span> <span class="nx">int</span> <span class="nv">$r</span><span class="p">,</span> <span class="k">public</span> <span class="nx">int</span> <span class="nv">$g</span><span class="p">,</span> <span class="k">public</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$rojo1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nv">$rojo2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nv">$rojo3</span> <span class="o">=</span> <span class="nv">$rojo1</span><span class="p">;</span> <span class="c1">// $rojo3 es una referencia a $rojo1</span>
+<span class="nv">$azul</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$rojo1</span> <span class="o">==</span> <span class="nv">$rojo2</span><span class="p">);</span> <span class="c1">// bool(true) -&gt; Misma clase, mismas propiedades y valores.</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$rojo1</span> <span class="o">===</span> <span class="nv">$rojo2</span><span class="p">);</span> <span class="c1">// bool(false) -&gt; Son dos objetos distintos en memoria.</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$rojo1</span> <span class="o">==</span> <span class="nv">$rojo3</span><span class="p">);</span> <span class="c1">// bool(true) -&gt; Son iguales.</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$rojo1</span> <span class="o">===</span> <span class="nv">$rojo3</span><span class="p">);</span> <span class="c1">// bool(true) -&gt; Apuntan al mismo objeto.</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$rojo1</span> <span class="o">==</span> <span class="nv">$azul</span><span class="p">);</span> <span class="c1">// bool(false) -&gt; Tienen valores de propiedad diferentes.</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">La regla de oro</p>
+<p>Usa <code>===</code> cuando necesites saber si dos variables manipulan el mismo objeto. Usa <code>==</code> cuando te importe si dos objetos, aunque sean instancias diferentes, representan el mismo "valor" o estado.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Referencia Oficial</p>
+<p><a href="https://www.php.net/manual/es/language.oop5.object-comparison.php"><strong>Manual de PHP sobre Comparación de Objetos</strong></a></p>
+</div>
+<p><br/><hr/></p>
+<h2 id="miembros-estaticos-propiedades-y-metodos-de-clase">Miembros Estáticos: Propiedades y Métodos de Clase</h2>
+<p>Hasta ahora, todas las propiedades y métodos que hemos visto pertenecen a una <em>instancia</em> específica de una clase (un objeto). Para acceder a ellos, siempre necesitamos un objeto (<code>$miObjeto-&gt;miMetodo()</code>). Sin embargo, a veces necesitamos propiedades o métodos que pertenezcan a la <strong>clase en sí</strong>, no a una instancia individual. Estos son los <strong>miembros estáticos</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Miembro Estático</p>
+<p>Un <strong>miembro estático</strong> (propiedad o método), declarado con la palabra clave <code>static</code>, pertenece a la clase en lugar de a una instancia. Se puede acceder a él directamente desde la clase usando el <strong>Operador de Resolución de Ámbito (<code>::</code>)</strong>, también conocido como <em>Paamayim Nekudotayim</em>. Dentro de un método estático, no se puede usar la pseudo-variable <code>$this</code> porque no hay una instancia de objeto asociada.</p>
+</div>
+<p>Los miembros estáticos son útiles para:
+*   Contadores (ej: cuántas instancias de una clase se han creado).
+*   Métodos de utilidad o "helpers" que no dependen del estado de un objeto.
+*   Implementar patrones de diseño como <em>Factory</em> o <em>Singleton</em>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">GestorConexiones</span>
+<span class="p">{</span>
+    <span class="c1">// Propiedad estática para contar las conexiones activas</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="nx">int</span> <span class="nv">$conexionesActivas</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// Propiedad estática para almacenar una instancia (Patrón Singleton)</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="o">?</span><span class="nx">self</span> <span class="nv">$instancia</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="c1">// El constructor es privado para evitar que se creen instancias con `new`</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$conexionesActivas</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Nueva conexión establecida. Activas: "</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$conexionesActivas</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Método estático "Factory" para obtener la única instancia</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">obtenerInstancia</span><span class="p">()</span><span class="o">:</span> <span class="nx">self</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$instancia</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$instancia</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">self</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$instancia</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Un método de instancia normal</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">consultar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Ejecutando la consulta: '</span><span class="si">$query</span><span class="s2">'"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// El destructor también debe actualizar el contador estático</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$conexionesActivas</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Conexión cerrada. Activas: "</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$conexionesActivas</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// No podemos hacer esto:</span>
+<span class="c1">// $conexion = new GestorConexiones(); // Error Fatal: constructor privado</span>
+
+<span class="c1">// Obtenemos la instancia a través del método estático</span>
+<span class="nv">$conexion1</span> <span class="o">=</span> <span class="nx">GestorConexiones</span><span class="o">::</span><span class="na">obtenerInstancia</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$conexion1</span><span class="o">-&gt;</span><span class="na">consultar</span><span class="p">(</span><span class="s2">"SELECT * FROM usuarios"</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;br&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Si lo pedimos de nuevo, nos devuelve la MISMA instancia</span>
+<span class="nv">$conexion2</span> <span class="o">=</span> <span class="nx">GestorConexiones</span><span class="o">::</span><span class="na">obtenerInstancia</span><span class="p">();</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$conexion1</span> <span class="o">===</span> <span class="nv">$conexion2</span><span class="p">);</span> <span class="c1">// bool(true)</span>
+
+<span class="c1">// Podemos acceder a la propiedad estática directamente desde la clase</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Total de conexiones activas: "</span> <span class="o">.</span> <span class="nx">GestorConexiones</span><span class="o">::</span><span class="nv">$conexionesActivas</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida: 1</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Las palabras clave <code>self</code>, <code>parent</code> y <code>static</code></p>
+<p>Dentro de una clase, para hacer referencia a la propia clase, tienes varias opciones:
+*   <code>self::</code>: Se refiere a la clase <strong>actual</strong>, donde se escribió el código.
+*   <code>parent::</code>: Se refiere a la clase <strong>padre</strong> en un contexto de herencia.
+*   <code>static::</code>: Se refiere a la clase que fue <strong>llamada en tiempo de ejecución</strong>. Esto es para el <em>Enlace Estático en Tiempo de Ejecución</em> (Late Static Binding), un concepto más avanzado pero muy potente.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Referencia Oficial</p>
+<p><a href="https://www.php.net/manual/es/language.oop5.static.php"><strong>Manual de PHP sobre la palabra clave <code>static</code></strong></a></p>
+</div>
+<p><br/><hr/></p>
+<h2 id="iteracion-de-objetos-recorriendo-sus-propiedades">Iteración de Objetos: Recorriendo sus Propiedades</h2>
+<p>Por defecto, PHP permite iterar sobre un objeto usando un bucle <code>foreach</code> como si fuera un array asociativo. Este comportamiento nos da una forma sencilla de inspeccionar las propiedades de un objeto.</p>
+<p>Cuando se itera sobre un objeto, el bucle <code>foreach</code> recorrerá todas las propiedades que sean <strong>visibles en el ámbito actual</strong>.</p>
+<ul>
+<li>Desde fuera de la clase, solo se iterará sobre las propiedades <code>public</code>.</li>
+<li>Desde dentro de un método de la clase, se iterará sobre las propiedades <code>public</code>, <code>protected</code> y <code>private</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Configuracion</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$nombreApp</span> <span class="o">=</span> <span class="s2">"Mi Fábrica de Código"</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$version</span> <span class="o">=</span> <span class="s2">"1.0.2"</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$entorno</span> <span class="o">=</span> <span class="s2">"producción"</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$apiKey</span> <span class="o">=</span> <span class="s2">"secreto-12345-xyz"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mostrarVisibles</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;strong&gt;Propiedades visibles desde DENTRO de la clase:&lt;/strong&gt;&lt;br&gt;"</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span> <span class="k">as</span> <span class="nv">$clave</span> <span class="o">=&gt;</span> <span class="nv">$valor</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"- </span><span class="si">$clave</span><span class="s2">: </span><span class="si">$valor</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Configuracion</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;strong&gt;Propiedades visibles desde FUERA de la clase:&lt;/strong&gt;&lt;br&gt;"</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$config</span> <span class="k">as</span> <span class="nv">$clave</span> <span class="o">=&gt;</span> <span class="nv">$valor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"- </span><span class="si">$clave</span><span class="s2">: </span><span class="si">$valor</span><span class="s2"> &lt;br&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;hr&gt;"</span><span class="p">;</span>
+
+<span class="nv">$config</span><span class="o">-&gt;</span><span class="na">mostrarVisibles</span><span class="p">();</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Personalizando la Iteración</p>
+<p>Si necesitas un control más fino sobre cómo se itera tu objeto (por ejemplo, para calcular valores al vuelo o iterar sobre datos privados de forma controlada), puedes hacer que tu clase implemente la interfaz <code>Iterator</code> o <code>IteratorAggregate</code> de PHP. Esto te permite definir exactamente qué sucede en cada paso del bucle <code>foreach</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Referencia Oficial</p>
+<p><a href="https://www.php.net/manual/es/language.oop5.iterations.php"><strong>Manual de PHP sobre Iteración de Objetos</strong></a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

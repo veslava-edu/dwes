@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades Complementarias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+            background-color: #f5f9fc;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #263238;
+        }
+        .header {
+            background-color: #0277bd;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 30px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto 1fr;
+            gap: 25px;
+            height: 100%;
+        }
+        .activities-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .activities-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .objectives-icon {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .types-icon {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .organization-icon {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .benefits-icon {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .card-content {
+            flex-grow: 1;
+        }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .objective-bullet {
+            margin-right: 10px;
+            font-size: 18px;
+            flex-shrink: 0;
+            color: #0277bd;
+            margin-top: 2px;
+        }
+        .objective-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .activities-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .activity-item {
+            display: flex;
+            align-items: center;
+            background-color: #f5f9fc;
+            border-radius: 8px;
+            padding: 12px;
+            transition: transform 0.2s ease;
+        }
+        .activity-item:hover {
+            transform: translateY(-3px);
+            background-color: #e8f5e9;
+        }
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .activity-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .organization-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .org-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 10px;
+        }
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff3e0;
+            color: #e65100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e65100;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 14px;
+            color: #546e7a;
+        }
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .benefit-tag {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-tag i {
+            margin-right: 5px;
+        }
+        .footer {
+            padding: 15px 70px;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            font-size: 16px;
+            color: #546e7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Actividades Complementarias</h1>
+        </div>
+        
+        <div class="content">
+            <div class="activities-grid">
+                <!-- Objetivos -->
+                <div class="activities-card">
+                    <div class="card-header">
+                        <div class="card-icon objectives-icon">
+                            <i class="fas fa-bullseye fa-lg"></i>
+                        </div>
+                        <div class="card-title">Objetivos</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="objectives-grid">
+                            <div class="objective-item">
+                                <div class="objective-bullet"><i class="fas fa-sync-alt"></i></div>
+                                <div class="objective-text">Conectar teoría-práctica</div>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-bullet"><i class="fas fa-building"></i></div>
+                                <div class="objective-text">Ecosistema tecnológico</div>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-bullet"><i class="fas fa-users"></i></div>
+                                <div class="objective-text">Competencias transversales</div>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-bullet"><i class="fas fa-rocket"></i></div>
+                                <div class="objective-text">Aumentar motivación</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tipología de Actividades -->
+                <div class="activities-card">
+                    <div class="card-header">
+                        <div class="card-icon types-icon">
+                            <i class="fas fa-th-large fa-lg"></i>
+                        </div>
+                        <div class="card-title">Tipología</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="activities-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <div class="activity-text">Charlas Técnicas</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="activity-text">Congresos y Ferias</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-door-open"></i>
+                                </div>
+                                <div class="activity-text">Visitas a Empresas</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="activity-text">Hackathones</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Organización -->
+                <div class="activities-card">
+                    <div class="card-header">
+                        <div class="card-icon organization-icon">
+                            <i class="fas fa-cogs fa-lg"></i>
+                        </div>
+                        <div class="card-title">Organización</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="organization-steps">
+                            <div class="org-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="step-title">Planificación</div>
+                                <div class="step-desc">Coordinación por departamento</div>
+                            </div>
+                            <div class="org-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-hand-paper"></i>
+                                </div>
+                                <div class="step-title">Carácter</div>
+                                <div class="step-desc">Voluntario con alto valor formativo</div>
+                            </div>
+                            <div class="org-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="step-title">Reconocimiento</div>
+                                <div class="step-desc">Valorado en calificación</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beneficios -->
+                <div class="activities-card">
+                    <div class="card-header">
+                        <div class="card-icon benefits-icon">
+                            <i class="fas fa-star fa-lg"></i>
+                        </div>
+                        <div class="card-title">Beneficios para tu carrera</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="benefits-list">
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Experiencia práctica
+                            </div>
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Networking
+                            </div>
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Portfolio mejorado
+                            </div>
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Oportunidades laborales
+                            </div>
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Puntos extra
+                            </div>
+                            <div class="benefit-tag">
+                                <i class="fas fa-check-circle"></i> Actualización tecnológica
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <div class="inline-block bg-blue-100 text-blue-800 rounded-lg px-4 py-2 font-bold">
+                                ¡Invierte en tu futuro profesional!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</div>
+            <div class="footer-text">Curso 2025-2026</div>
+        </div>
+    </div>
+</body>
+</html>

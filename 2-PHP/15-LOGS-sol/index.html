@@ -1,0 +1,1642 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/15-LOGS-sol/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>15 LOGS sol - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#php-y-el-arte-de-dejar-rastro-gestion-avanzada-de-logs">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              15 LOGS sol
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales-las-piezas-del-puzzle-de-monolog">
+<span class="md-ellipsis">
+      Conceptos Fundamentales: Las Piezas del Puzzle de Monolog
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos-manos-a-la-obra-con-monolog">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos: Manos a la Obra con Monolog
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos: Manos a la Obra con Monolog" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-y-primer-hola-log">
+<span class="md-ellipsis">
+      Instalación y Primer "Hola Log"
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#niveles-de-criticidad-no-todos-los-fuegos-son-iguales">
+<span class="md-ellipsis">
+      Niveles de Criticidad: No todos los fuegos son iguales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#manejadores-formateadores-y-procesadores-el-equipo-de-tuning">
+<span class="md-ellipsis">
+      Manejadores, Formateadores y Procesadores: El Equipo de Tuning
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#centralizacion-y-buenas-practicas-el-patron-factory">
+<span class="md-ellipsis">
+      Centralización y Buenas Prácticas: El Patrón Factory
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- TEMA: PHP - Gestión de LOGS -->
+<h1 id="php-y-el-arte-de-dejar-rastro-gestion-avanzada-de-logs">PHP y el Arte de Dejar Rastro: Gestión Avanzada de Logs</h1>
+<p>¡Hola! Hoy vamos a hablar de una de las herramientas más subestimadas pero cruciales en el arsenal de un programador: los <strong>logs</strong>.</p>
+<p>Imaginad por un momento que sois los detectives encargados de investigar la misteriosa desaparición de un paquete en un gigantesco almacén de Amazon. Sin un registro de quién movió qué, cuándo y dónde, estaríais completamente a ciegas. Sería una misión imposible.</p>
+<p>En el mundo del software, un log es exactamente eso: <strong>el registro meticuloso de todo lo que sucede en nuestra aplicación</strong>. Es la caja negra de un avión que, tras un desastre, nos cuenta qué falló. Es el diario de a bordo de un capitán que nos permite reconstruir la travesía. Cuando un usuario llama diciendo "la web no me funciona", los logs son vuestro único y mejor testigo para resolver el misterio. Sin ellos, estáis programando a ciegas, y creedme, en la oscuridad digital acechan muchos dragones (y bugs).</p>
+<p>En este tema, vamos a dominar <strong>Monolog</strong>, la librería de logging por excelencia en el ecosistema PHP, utilizada por gigantes como Laravel y Symfony. Aprenderemos a dejar las "migas de pan" correctas para que, cuando llegue el momento de la verdad, podamos seguir el rastro y solucionar cualquier problema como auténticos profesionales.</p>
+<h2 id="conceptos-fundamentales-las-piezas-del-puzzle-de-monolog">Conceptos Fundamentales: Las Piezas del Puzzle de Monolog</h2>
+<p>Antes de escribir nuestra primera línea de log, necesitamos conocer a los protagonistas de esta historia. Monolog, y la mayoría de sistemas de logging, se basan en una serie de conceptos clave que trabajan juntos.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Log</p>
+<p>Un <strong>Log</strong> es, en esencia, un archivo o un flujo de datos donde se registran cronológicamente los eventos que ocurren en una aplicación. Cada evento registrado se conoce como una entrada de log.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Canal (Channel)</p>
+<p>Un <strong>Canal</strong> es una forma de agrupar los logs por su origen o contexto dentro de una aplicación grande. Por ejemplo, podrías tener un canal para <code>ventas</code>, otro para <code>autenticacion</code> y otro para <code>API</code>. Ayuda a no mezclar los registros de partes distintas del sistema.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Nivel de Severidad (Level)</p>
+<p>El <strong>Nivel</strong> indica la importancia de un mensaje de log. No es lo mismo registrar que un usuario ha iniciado sesión (<code>INFO</code>) que registrar que la base de datos es inaccesible (<code>CRITICAL</code>). Usar los niveles correctos es clave para no ahogarse en un mar de información irrelevante.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Manejador (Handler)</p>
+<p>Un <strong>Manejador</strong> es el responsable de tomar un mensaje de log y hacer algo con él: guardarlo en un archivo, enviarlo por email, mandarlo a un servicio externo como Slack, etc. Una misma aplicación puede tener múltiples manejadores.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Formateador (Formatter)</p>
+<p>El <strong>Formateador</strong> define la apariencia del mensaje de log. ¿Quieres una simple línea de texto? ¿Un objeto JSON estructurado? ¿Una bonita tabla HTML? El formateador se encarga de "maquillar" los datos para que sean legibles y útiles.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Procesador (Processor)</p>
+<p>Un <strong>Procesador</strong> es una función que "enriquece" el log añadiendo información extra de forma automática antes de que sea procesado por los manejadores. Por ejemplo, puede añadir la URL de la petición, la dirección IP del usuario o la rama de Git actual.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Contexto (Context)</p>
+<p>El <strong>Contexto</strong> es un array de datos adicionales que pasamos manualmente junto a un mensaje de log para dar más detalles sobre el evento. Por ejemplo, si un producto no se encuentra, el contexto podría contener el ID del producto que se buscaba.</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="desarrollo-y-ejemplos-practicos-manos-a-la-obra-con-monolog">Desarrollo y Ejemplos Prácticos: Manos a la Obra con Monolog</h2>
+<p>Basta de teoría. Vamos a ensuciarnos las manos y ver cómo todas estas piezas encajan en el código.</p>
+<h3 id="instalacion-y-primer-hola-log">Instalación y Primer "Hola Log"</h3>
+<p>Lo primero es añadir Monolog a nuestro proyecto usando Composer, nuestro gestor de dependencias de confianza.</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>monolog/monolog
+</code></pre></div>
+<p>Ahora, creemos nuestro primer script. La estructura básica siempre implica crear un <code>Logger</code> (el canal), y añadirle al menos un <code>Handler</code>.</p>
+<p><strong>Ejemplo 1: El clásico "Hola Mundo" del logging</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// No olvides incluir el autoload de Composer</span>
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="c1">// 1. Creamos el Logger para el canal 'web'.</span>
+<span class="c1">// Imagina que este canal agrupará todos los logs de la parte pública de la web.</span>
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'web'</span><span class="p">);</span>
+
+<span class="c1">// 2. Creamos un Handler. En este caso, un StreamHandler que escribirá</span>
+<span class="c1">// los logs en un fichero llamado 'app.log'.</span>
+<span class="c1">// Le decimos que registre todo a partir del nivel DEBUG (el más bajo).</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/app.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">));</span>
+
+<span class="c1">// 3. ¡A registrar eventos!</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'El usuario ha visitado la página de inicio.'</span><span class="p">);</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'No se pudo cargar la imagen del producto "SuperPocion".'</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"Logs generados en 'logs/app.log'. ¡Ve a verlos!"</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Añadiendo contexto para no perder detalle</strong></p>
+<p>Los mensajes son útiles, pero los datos son la clave. El segundo parámetro de los métodos de logging es un array de contexto.</p>
+<div class="admonition tip">
+<p class="admonition-title">Buena Práctica</p>
+<p>Usa siempre arrays asociativos para el contexto. <code>['userId' =&gt; $id]</code> es infinitamente más claro que <code>[$id]</code>. Tu "yo del futuro" te lo agradecerá cuando estés depurando un error a las 3 de la mañana.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'pagos'</span><span class="p">);</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/pagos.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">));</span>
+
+<span class="nv">$usuario</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Geralt de Rivia'</span><span class="p">];</span>
+<span class="nv">$idPedido</span> <span class="o">=</span> <span class="s1">'PED-XYZ-789'</span><span class="p">;</span>
+
+<span class="c1">// Log informativo con contexto útil</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Intento de pago iniciado.'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'id'</span><span class="p">],</span> 
+    <span class="s1">'pedido'</span> <span class="o">=&gt;</span> <span class="nv">$idPedido</span>
+<span class="p">]);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Simulamos un error en la pasarela de pago</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">'La tarjeta ha sido rechazada por el banco.'</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Log de error con el mensaje de la excepción y datos relevantes</span>
+    <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'Fallo en la pasarela de pago.'</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="nv">$usuario</span><span class="p">[</span><span class="s1">'id'</span><span class="p">],</span>
+        <span class="s1">'pedido'</span> <span class="o">=&gt;</span> <span class="nv">$idPedido</span><span class="p">,</span>
+        <span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span>
+    <span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<pre class="mermaid"><code>graph TD
+    subgraph "Tu Código PHP"
+        A["&lt;code&gt;$log-&gt;warning('Mensaje');&lt;/code&gt;"]
+    end
+
+    subgraph "Monolog"
+        B["Logger 'web'"]
+        C["¿Nivel &gt;= DEBUG?"]
+        D["Handler: StreamHandler"]
+    end
+
+    subgraph "Sistema de Ficheros"
+        E["fichero app.log"]
+    end
+
+    A --&gt; B
+    B --&gt; C
+    C -- Sí --&gt; D
+    D --&gt; E</code></pre>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>¿Por qué es importante incluir el <code>autoload.php</code> de Composer al principio de nuestros scripts?</li>
+<li>Imagina que tienes un log <code>app.log</code> que crece varios megabytes al día. ¿Qué problema podrías tener a largo plazo y cómo se te ocurre que podrías solucionarlo?</li>
+<li>En el Ejemplo 2, ¿por qué es más útil loguear <code>$e-&gt;getMessage()</code> que el objeto <code>$e</code> completo en el contexto? ¿Qué información valiosa podría tener el objeto <code>$e</code> que también nos interesaría registrar?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="niveles-de-criticidad-no-todos-los-fuegos-son-iguales">Niveles de Criticidad: No todos los fuegos son iguales</h3>
+<p>Usar los niveles de log correctamente es como el sistema de triaje de un hospital: nos permite centrarnos en las heridas graves e ignorar los rasguños. Monolog implementa el estándar <a href="https://www.php-fig.org/psr/psr-3/">PSR-3</a>, que define 8 niveles de severidad.</p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Código</th>
+<th>Cuándo usarlo (Analogía Hospitalaria)</th>
+<th>Ejemplo práctico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DEBUG</strong></td>
+<td>100</td>
+<td><strong>Chequeo rutinario:</strong> Información detallada para depurar. Como tomar la tensión y la temperatura.</td>
+<td><code>Valor de la variable $x en el bucle: 42</code></td>
+</tr>
+<tr>
+<td><strong>INFO</strong></td>
+<td>200</td>
+<td><strong>Paciente entra por su pie:</strong> Eventos normales pero interesantes. Como un paciente que llega a su cita.</td>
+<td><code>Usuario 'admin' ha iniciado sesión.</code></td>
+</tr>
+<tr>
+<td><strong>NOTICE</strong></td>
+<td>250</td>
+<td><strong>Observación leve:</strong> Algo que no es un error, pero llama la atención. "Este paciente tose un poco".</td>
+<td><code>La clave 'user_avatar' no existe en el array de la API.</code></td>
+</tr>
+<tr>
+<td><strong>WARNING</strong></td>
+<td>300</td>
+<td><strong>Herida que no sangra:</strong> Un error que no detiene la app, pero hay que vigilar. Una torcedura.</td>
+<td><code>No se pudo conectar al servicio de avatares. Usando imagen por defecto.</code></td>
+</tr>
+<tr>
+<td><strong>ERROR</strong></td>
+<td>400</td>
+<td><strong>Herida sangrante:</strong> Un error de ejecución que debe ser registrado y solucionado. Un hueso roto.</td>
+<td><code>Error al ejecutar la consulta SQL: Columna desconocida.</code></td>
+</tr>
+<tr>
+<td><strong>CRITICAL</strong></td>
+<td>500</td>
+<td><strong>Infarto inminente:</strong> Una condición crítica. Fallo de un componente esencial.</td>
+<td><code>No se pudo establecer conexión con la base de datos.</code></td>
+</tr>
+<tr>
+<td><strong>ALERT</strong></td>
+<td>550</td>
+<td><strong>Llamada a emergencias:</strong> ¡Se necesita acción inmediata! El paciente necesita una ambulancia ¡YA!</td>
+<td><code>El disco duro del servidor está al 99% de su capacidad.</code></td>
+</tr>
+<tr>
+<td><strong>EMERGENCY</strong></td>
+<td>600</td>
+<td><strong>Catástrofe total:</strong> El hospital se está quemando. La aplicación está completamente inutilizable.</td>
+<td><code>System is unusable.</code> (La frase canónica para este nivel)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo 1: Filtrando por nivel mínimo</strong></p>
+<p>Lo más importante en un entorno de producción es no llenarlo todo de logs <code>DEBUG</code>. Cada manejador puede tener un nivel mínimo.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'produccion'</span><span class="p">);</span>
+
+<span class="c1">// Este handler SÓLO escribirá logs a partir de WARNING</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/produccion.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">WARNING</span><span class="p">));</span>
+
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Un usuario ha comprado un producto.'</span><span class="p">);</span> <span class="c1">// &lt;-- Este mensaje será ignorado por el handler</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s1">'Calculando impuestos...'</span><span class="p">);</span> <span class="c1">// &lt;-- Este también será ignorado</span>
+
+<span class="c1">// ¡Este sí se escribirá!</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">'La API de envío tardó 5 segundos en responder.'</span><span class="p">);</span> 
+
+<span class="c1">// Y este, por supuesto, también.</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'El pago con la tarjeta 4111... fue rechazado.'</span><span class="p">);</span> 
+</code></pre></div>
+<p><strong>Ejemplo 2: Combinando handlers para distintos niveles</strong></p>
+<p>Puedes apilar handlers para crear flujos de trabajo de logging muy potentes.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\NativeMailerHandler</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'ecommerce-pro'</span><span class="p">);</span>
+
+<span class="c1">// Handler 1: Registrar TODO (a partir de DEBUG) en un fichero diario.</span>
+<span class="c1">// OJO: Usamos RotatingFileHandler para no tener un fichero gigante.</span>
+<span class="c1">// Creará un fichero por día y guardará los últimos 7.</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\RotatingFileHandler</span><span class="p">;</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">RotatingFileHandler</span><span class="p">(</span><span class="s1">'logs/debug.log'</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">));</span>
+
+<span class="c1">// Handler 2: Registrar solo errores CRÍTICOS o superiores y enviarlos por email al admin.</span>
+<span class="nv">$asunto</span> <span class="o">=</span> <span class="s1">'¡Alerta Crítica en la App!'</span><span class="p">;</span>
+<span class="nv">$emailAdmin</span> <span class="o">=</span> <span class="s1">'admin@miempresa.com'</span><span class="p">;</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">NativeMailerHandler</span><span class="p">(</span><span class="nv">$emailAdmin</span><span class="p">,</span> <span class="nv">$asunto</span><span class="p">,</span> <span class="s1">'noreply@miempresa.com'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">CRITICAL</span><span class="p">));</span>
+
+<span class="c1">// --- Simulamos la operativa de la tienda ---</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Nuevo pedido recibido.'</span><span class="p">);</span> <span class="c1">// Solo va a debug.log</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">'No se pudo procesar la imagen del producto 123.'</span><span class="p">);</span> <span class="c1">// Solo va a debug.log</span>
+
+<span class="c1">// ¡Houston, tenemos un problema!</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span><span class="s1">'¡La conexión con la pasarela de pagos RedSys se ha perdido!'</span><span class="p">);</span> <span class="c1">// Va a debug.log Y se envía por email.</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>En un e-commerce, ¿qué nivel de severidad asignarías a los siguientes eventos y por qué?: a) "Usuario añade producto al carrito", b) "El cupón de descuento 'VERANO2025' ha expirado", c) "Fallo al conectar con el servidor de Redis (caché)".</li>
+<li>¿Por qué es una mala idea poner el nivel <code>Logger::DEBUG</code> en un manejador que envía emails?</li>
+<li>El <code>RotatingFileHandler</code> es una excelente práctica. Investiga qué otros handlers "inteligentes" para manejar ficheros existen en Monolog (pista: busca sobre tamaño o buffers).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="manejadores-formateadores-y-procesadores-el-equipo-de-tuning">Manejadores, Formateadores y Procesadores: El Equipo de Tuning</h3>
+<p>Un log no solo tiene que existir, tiene que ser útil y legible. Aquí es donde entran en juego los manejadores, formateadores y procesadores.</p>
+<div class="admonition info inline">
+<p class="admonition-title">Analogía del Taller</p>
+<p>Piensa en tu <code>Logger</code> como el jefe de un taller de coches.
+- Los <strong>Handlers</strong> son los mecánicos especializados: uno pinta (escribe a fichero), otro arregla motores (envía emails), otro instala radios (manda a Slack).
+- Los <strong>Formatters</strong> son los diseñadores: deciden si el coche sale con pintura mate (texto plano) o metalizada con pegatinas (JSON).
+- Los <strong>Processors</strong> son los de control de calidad: antes de que el coche salga, añaden la matrícula (la IP), la hora de salida (timestamp) y el nombre del operario (script que lo ejecutó).</p>
+</div>
+<p><strong>Tabla de Comparación de Handlers Populares:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Handler</th>
+<th>Destino del Log</th>
+<th>Caso de Uso Típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StreamHandler</code></td>
+<td>Un fichero, <code>php://stdout</code>, etc.</td>
+<td>El más básico. Ideal para desarrollo o logs sencillos.</td>
+</tr>
+<tr>
+<td><code>RotatingFileHandler</code></td>
+<td>Ficheros que rotan (diario, mensual...)</td>
+<td>La mejor opción para logs en ficheros en producción.</td>
+</tr>
+<tr>
+<td><code>NativeMailerHandler</code></td>
+<td>Email</td>
+<td>Notificaciones de errores muy graves a administradores.</td>
+</tr>
+<tr>
+<td><code>SlackWebhookHandler</code></td>
+<td>Un canal de Slack</td>
+<td>Notificaciones en tiempo real al equipo de desarrollo.</td>
+</tr>
+<tr>
+<td><code>BrowserConsoleHandler</code></td>
+<td>La consola del desarrollador en el navegador</td>
+<td>Depuración en vivo durante el desarrollo.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/>
+<strong>Ejemplo 1: Formato JSON y procesador para añadir datos web</strong></p>
+<p>El formato JSON es el estándar de facto para el logging centralizado, ya que es fácilmente parseable por máquinas.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Formatter\JsonFormatter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Processor\WebProcessor</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'api'</span><span class="p">);</span>
+
+<span class="c1">// Creamos un handler que escribirá en un fichero.</span>
+<span class="nv">$handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/api.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">);</span>
+
+<span class="c1">// Le asignamos el formateador JSON.</span>
+<span class="nv">$handler</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="k">new</span> <span class="nx">JsonFormatter</span><span class="p">());</span>
+
+<span class="c1">// Añadimos el handler ya configurado al logger.</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="nv">$handler</span><span class="p">);</span>
+
+<span class="c1">// Añadimos un procesador que incluirá datos de la petición web (IP, URL, método)</span>
+<span class="c1">// a CADA uno de los logs que pasen por este logger.</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushProcessor</span><span class="p">(</span><span class="k">new</span> <span class="nx">WebProcessor</span><span class="p">());</span>
+
+<span class="c1">// Hagamos una prueba</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Petición a /api/users recibida.'</span><span class="p">);</span>
+</code></pre></div>
+<p>Si ejecutas esto desde un navegador, el fichero <code>api.log</code> contendrá algo así:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Petición a /api/users recibida."</span><span class="p">,</span><span class="nt">"context"</span><span class="p">:{},</span><span class="nt">"level"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="nt">"level_name"</span><span class="p">:</span><span class="s2">"INFO"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"api"</span><span class="p">,</span>
+<span class="nt">"datetime"</span><span class="p">:</span><span class="s2">"..."</span><span class="p">,</span><span class="nt">"extra"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"/test.php"</span><span class="p">,</span><span class="nt">"ip"</span><span class="p">:</span><span class="s2">"::1"</span><span class="p">,</span><span class="nt">"http_method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">,</span><span class="nt">"server"</span><span class="p">:</span><span class="s2">"localhost"</span><span class="p">,</span><span class="nt">"referrer"</span><span class="p">:</span><span class="kc">null</span><span class="p">}}</span>
+</code></pre></div></p>
+<p><strong>Ejemplo 2: Notificaciones a Slack para errores importantes</strong></p>
+<p>Una práctica súper extendida. Cuando algo arde en producción, quieres que tu equipo se entere al instante.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\SlackWebhookHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="c1">// Necesitarás una "Incoming Webhook URL" de tu workspace de Slack</span>
+<span class="nv">$webhookUrl</span> <span class="o">=</span> <span class="s1">'https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'</span><span class="p">;</span>
+
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'slack-channel'</span><span class="p">);</span>
+
+<span class="c1">// Handler principal: lo guardamos todo en un fichero.</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/full-app.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">));</span>
+
+<span class="c1">// Handler para Slack: solo enviará logs de nivel ERROR o superior al canal #errores-produccion</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">SlackWebhookHandler</span><span class="p">(</span>
+    <span class="nv">$webhookUrl</span><span class="p">,</span>          <span class="c1">// La URL del webhook</span>
+    <span class="s1">'#errores-produccion'</span><span class="p">,</span><span class="c1">// El canal de Slack</span>
+    <span class="s1">'MonologBot'</span><span class="p">,</span>         <span class="c1">// Nombre del bot que publica</span>
+    <span class="k">true</span><span class="p">,</span>                 <span class="c1">// Usar adjuntos para un formato más bonito</span>
+    <span class="s1">'🚨'</span><span class="p">,</span>                 <span class="c1">// Un emoji para el icono</span>
+    <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span>         <span class="c1">// Nivel mínimo para este handler</span>
+<span class="p">));</span>
+
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"El usuario 25 ha actualizado su perfil."</span><span class="p">);</span> <span class="c1">// No va a Slack</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"Error al procesar el pago del pedido 9876. Time out de la pasarela."</span><span class="p">);</span> <span class="c1">// ¡Esto sí va a Slack!</span>
+</code></pre></div>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBBbmF0b23DrWEgZGUgTW9ub2xvZwoKIyMgTG9nZ2VyIChFbCBDZXJlYnJvKQotICJUaWVuZSB1biAqKkNhbmFsKiogKGVqOiAndmVudGFzJykiCi0gIlRpZW5lIHVuYSBwaWxhIGRlICoqSGFuZGxlcnMqKiIKLSAiUHVlZGUgdGVuZXIgKipQcm9jZXNhZG9yZXMqKiBnbG9iYWxlcyIKCiMjIEhhbmRsZXJzIChMb3MgTcO6c2N1bG9zKQotICIqKkRlc3Rpbm8qKjogRmljaGVybywgRW1haWwsIFNsYWNrLi4uIgotICIqKk5pdmVsIE3DrW5pbW8qKjogwr9RdcOpIHRhbiBpbXBvcnRhbnRlIGRlYmUgc2VyPGJyLz4gdW4gbG9nIHBhcmEgcXVlIGxlIGhhZ2EgY2Fzbz8iCi0gIioqRm9ybWF0ZWFkb3IqKjogwr9Dw7NtbyBkZWJlIHZlcnNlIGVsIGxvZz8iCiAgLSAiTGluZUZvcm1hdHRlciAodGV4dG8pIgogIC0gIkpzb25Gb3JtYXR0ZXIgKMKhcGFyYSBtw6FxdWluYXMhKSIKICAtICJIdG1sRm9ybWF0dGVyIgoKIyMgUHJvY2VzYWRvcmVzIChMb3MgRXh0cmFzKQotICJBw7FhZGVuIGRhdG9zIGF1dG9tw6F0aWNhbWVudGUiCiAgLSAiJ1dlYlByb2Nlc3Nvcic6IElQLCBVUkwuLi4iCiAgLSAiJ0dpdFByb2Nlc3Nvcic6IGJyYW5jaCwgY29tbWl0Li4uIgogIC0gIidJbnRyb3NwZWN0aW9uUHJvY2Vzc29yJzogZmljaGVybywgbMOtbmVhLCBjbGFzZS4uLiI=</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>¿En qué escenario preferirías usar un <code>JsonFormatter</code> en lugar de un <code>LineFormatter</code>? ¿Qué ventajas ofrece?</li>
+<li>El <code>WebProcessor</code> es genial, pero ¿qué riesgo de seguridad o privacidad podría implicar si no se configura con cuidado?</li>
+<li>Imagina que quieres que todos tus logs, sin excepción, incluyan el <code>id</code> del usuario que está autenticado en ese momento. ¿Usarías el array de contexto en cada llamada al log, o se te ocurre una solución más elegante usando un procesador? ¿Cómo lo implementarías?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="centralizacion-y-buenas-practicas-el-patron-factory">Centralización y Buenas Prácticas: El Patrón Factory</h3>
+<p>A medida que tu aplicación crece, te darás cuenta de que instanciar y configurar un <code>Logger</code> en cada clase es repetitivo y una pésima práctica (viola el principio DRY - Don't Repeat Yourself).</p>
+<div class="admonition danger">
+<p class="admonition-title">¡Antipatrón!</p>
+<p>Nunca hagas <code>new Logger(...)</code> dentro de los métodos de tus clases de negocio. La configuración del logging es una responsabilidad de la infraestructura de la aplicación, no de su lógica.</p>
+</div>
+<p>La solución es usar un <strong>Patrón de Diseño Factory</strong>: una clase cuyo único trabajo es crear y configurar objetos complejos, como nuestro logger.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Analogía del Café</p>
+<p>Una <code>LogFactory</code> es como la máquina de café de la oficina. En lugar de que cada empleado se compre y configure su propia cafetera, todos van a la misma máquina centralizada. Pides un "café" (<code>getLogger()</code>) y te da uno perfecto, siempre igual, sin que tengas que saber cómo se muele el grano o se calienta el agua.</p>
+</div>
+<p><strong>Ejemplo 1: Una LogFactory simple</strong></p>
+<p>Creamos una clase estática que nos devolverá siempre una instancia del logger pre-configurada para toda la aplicación.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: src/Util/LogFactory.php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Util</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span> <span class="c1">// ¡Importante!</span>
+
+<span class="k">class</span> <span class="nc">LogFactory</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $channel El nombre del canal para el logger.</span>
+<span class="sd">     * @return LoggerInterface Devuelve una instancia del logger configurado.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getLogger</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel</span> <span class="o">=</span> <span class="s1">'app'</span><span class="p">)</span><span class="o">:</span> <span class="nx">LoggerInterface</span>
+    <span class="p">{</span>
+        <span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="nv">$channel</span><span class="p">);</span>
+        <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/app.log'</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">));</span>
+
+        <span class="c1">// Aquí podríamos añadir más handlers, processors, etc.</span>
+        <span class="c1">// para que estén disponibles en toda la aplicación.</span>
+
+        <span class="k">return</span> <span class="nv">$log</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Fíjate en el <code>return type</code>: <code>LoggerInterface</code>. Esto es <strong>crucial</strong>. Significa que dependemos de un estándar (PSR-3), no de una implementación concreta (Monolog). Si el día de mañana queremos cambiar a otra librería de logging, solo tendremos que modificar la Factory, y el resto de nuestra aplicación seguirá funcionando sin cambios. ¡Magia del desacoplamiento!</p>
+<p><strong>Ejemplo 2: Usando la Factory en una clase de servicio</strong></p>
+<p>Ahora, en lugar de crear el logger, simplemente se lo pedimos a la factoría.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: src/Service/UserService.php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Util\LogFactory</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$log</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Obtenemos una instancia del logger para el canal 'user_service'</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span> <span class="o">=</span> <span class="nx">LogFactory</span><span class="o">::</span><span class="na">getLogger</span><span class="p">(</span><span class="s1">'user_service'</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Servicio de Usuario inicializado.'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findUser</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s1">'Buscando usuario.'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+
+        <span class="c1">// ... lógica para buscar al usuario en la BBDD ...</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Simulamos que no lo encontramos</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="o">-&gt;</span> <span class="na">warning</span><span class="p">(</span><span class="s1">'Usuario no encontrado.'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+            <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John Doe'</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">'Usuario encontrado con éxito.'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso:</span>
+<span class="nv">$userService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserService</span><span class="p">();</span>
+<span class="nv">$userService</span><span class="o">-&gt;</span><span class="na">findUser</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+<span class="nv">$userService</span><span class="o">-&gt;</span><span class="na">findUser</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Inyección de Dependencias: El Siguiente Nivel</p>
+<p>Aunque usar una Factory estática es un gran paso, el estándar de oro en aplicaciones modernas es la <strong>Inyección de Dependencias</strong>. En lugar de que la clase <code>UserService</code> "pida" el logger (<code>LogFactory::getLogger()</code>), el logger se le "inyecta" desde fuera, normalmente en el constructor. Esto hace que las clases sean aún más desacopladas y fáciles de testear. ¡Lo veremos en temas futuros!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>¿Cuál es la principal ventaja de que el método <code>getLogger</code> devuelva <code>LoggerInterface</code> en lugar de <code>Monolog\Logger</code>?</li>
+<li>Si tuvieras que añadir un nuevo <code>Handler</code> que envíe los errores a Slack, ¿en qué único sitio tendrías que hacer el cambio gracias a la Factory?</li>
+<li>¿Cómo modificarías la <code>LogFactory</code> para que acepte un parámetro que determine si la aplicación está en modo 'desarrollo' o 'producción' y configure los handlers de forma diferente (por ejemplo, <code>Logger::DEBUG</code> en desarrollo y <code>Logger::WARNING</code> en producción)?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>No estamos aprendiendo esto por amor al arte. El logging es una práctica empresarial crítica.</p>
+<ul>
+<li><strong>E-commerce (Magento, Shopify):</strong> Rastrean cada paso del usuario: desde la búsqueda de un producto, pasando por los artículos añadidos al carrito, hasta los intentos de pago (fallidos o exitosos). Esto es vital para el análisis de negocio (funnels de conversión) y para dar soporte al cliente ("Vi que su pago fue rechazado por el banco a las 15:32h").</li>
+<li><strong>Plataformas de Contenido (Netflix, Spotify):</strong> Registran qué contenido consumes, cuánto tiempo, desde qué dispositivo, y si hubo errores de buffering. Estos logs alimentan sus potentes motores de recomendación y les ayudan a optimizar la entrega de contenido.</li>
+<li><strong>Finanzas (Bancos, FinTech):</strong> El logging aquí es ley. Se crea una <strong>pista de auditoría (audit trail)</strong> inmutable que registra cada consulta, transacción y modificación de datos. Es un requisito legal y de seguridad indispensable.</li>
+<li><strong>DevOps y SRE (Google, Amazon):</strong> En arquitecturas de microservicios, cada servicio genera sus propios logs. Herramientas como el <strong>Stack ELK (Elasticsearch, Logstash, Kibana)</strong> o servicios como <strong>Datadog</strong> y <strong>New Relic</strong> se usan para agregar todos esos logs en un único lugar centralizado. Esto permite a los ingenieros buscar, visualizar y crear alertas sobre la salud de todo el sistema en tiempo real. Un <code>JsonFormatter</code> no es una opción aquí, ¡es una obligación!</li>
+</ul>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para profundizar y convertirte en un maestro Jedi del logging, te recomiendo estos recursos:</p>
+<ol>
+<li><strong>Documentación Oficial de Monolog:</strong> El punto de partida y la fuente de la verdad. Explora todos los handlers, formatters y processors que existen. <a href="https://github.com/Seldaek/monolog/tree/main/doc">https://github.com/Seldaek/monolog/tree/main/doc</a></li>
+<li><strong>PSR-3: La Especificación de la Interfaz del Logger:</strong> Entiende el "porqué" detrás de los métodos y niveles que usamos. Es una lectura corta y muy instructiva sobre el estándar. <a href="https://www.php-fig.org/psr/psr-3/">https://www.php-fig.org/psr/psr-3/</a></li>
+<li><strong>Artículo sobre Structured Logging (en inglés):</strong> Un excelente artículo que explica por qué registrar en formatos como JSON (logging estructurado) es tan poderoso para el análisis y la monitorización moderna. <a href="https://stackify.com/what-is-structured-logging-and-why-developers-need-it/">https://stackify.com/what-is-structured-logging-and-why-developers-need-it/</a></li>
+</ol>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<h1 id="ejercicios-practicos-gestion-de-logs-con-monolog">Ejercicios Prácticos: Gestión de Logs con Monolog</h1>
+<p>¡Equipo! Bienvenidos al proyecto <strong>"PulseMetrics"</strong>. Somos una startup que está creando un nuevo servicio de monitorización de aplicaciones en tiempo real. Nuestro éxito depende de nuestra capacidad para capturar, procesar y visualizar datos de telemetría de forma fiable y escalable.</p>
+<p>Vuestra primera misión, y la más crucial, es construir el <strong>módulo de logging</strong>. Este no será un simple logger; será la espina dorsal de PulseMetrics, el sistema nervioso que nos informará sobre la salud de las aplicaciones de nuestros clientes. Usaremos <strong>Monolog</strong> para construir un sistema robusto, profesional y preparado para el futuro. ¡Manos al código!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Primer Pulso: Configuración Básica de Logs | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Crear un logger básico con Monolog que registre eventos en un fichero, demostrando la comprensión de los conceptos de <strong>Canal</strong> y <strong>Manejador (Handler)</strong>.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Asegúrate de tener un proyecto con Monolog instalado vía Composer. Crea un fichero <code>ejercicio1.php</code>.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo <code>Logger</code> para un canal llamado <code>auth-service</code>. Este canal se usará para registrar todos los eventos relacionados con la autenticación de usuarios en PulseMetrics.</li>
+<li>Añade un <code>StreamHandler</code> que escriba los logs en un fichero llamado <code>logs/pulse_metrics.log</code>.</li>
+<li>El manejador debe registrar todos los eventos desde el nivel <code>INFO</code> hacia arriba.</li>
+<li>Añade las siguientes entradas de log para simular la operativa:<ul>
+<li>Un mensaje <code>INFO</code> que indique: "Intento de inicio de sesión para el usuario 'admin@pulsemetrics.com'".</li>
+<li>Un mensaje <code>INFO</code> que indique: "Login exitoso para el usuario 'admin@pulsemetrics.com'", pasando en el array de contexto el ID de usuario <code>['userId' =&gt; 1]</code>.</li>
+<li>Un mensaje <code>WARNING</code> para un intento de login fallido: "Contraseña incorrecta para el usuario 'guest@pulsemetrics.com'", pasando en el contexto la dirección IP del intento <code>['ip_address' =&gt; '192.168.1.100']</code>.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es el primer paso fundamental para instrumentar cualquier servicio. Un log de autenticación es vital para la seguridad, permitiendo rastrear quién accede al sistema, cuándo y desde dónde, y para detectar patrones de ataques de fuerza bruta.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: ejercicio1.php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Level</span><span class="p">;</span>
+
+<span class="c1">// 1. Crear el Logger para el canal 'auth-service'</span>
+<span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'auth-service'</span><span class="p">);</span>
+
+<span class="c1">// 2. Crear y añadir el StreamHandler</span>
+<span class="c1">// Se usa Level::Info en lugar de Logger::INFO para seguir las nuevas recomendaciones</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/pulse_metrics.log'</span><span class="p">,</span> <span class="nx">Level</span><span class="o">::</span><span class="na">Info</span><span class="p">));</span>
+
+<span class="k">echo</span> <span class="s2">"Generando logs para el servicio de autenticación...</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// 4. Añadir las entradas de log</span>
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"Intento de inicio de sesión para el usuario 'admin@pulsemetrics.com'"</span><span class="p">);</span>
+
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"Login exitoso para el usuario 'admin@pulsemetrics.com'"</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+<span class="p">]);</span>
+
+<span class="nv">$log</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"Contraseña incorrecta para el usuario 'guest@pulsemetrics.com'"</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'ip_address'</span> <span class="o">=&gt;</span> <span class="s1">'192.168.1.100'</span>
+<span class="p">]);</span>
+
+<span class="k">echo</span> <span class="s2">"Logs generados en 'logs/pulse_metrics.log'.</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Código Rojo: Depurando un Handler Roto | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Desarrollar habilidades de depuración encontrando y corrigiendo los errores en un script de logging preexistente.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Copia el siguiente código en un fichero llamado <code>ejercicio2_bug.php</code>. Contiene varios errores deliberados.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: ejercicio2_bug.php</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+
+<span class="c1">// Se quiere registrar la actividad de la API</span>
+<span class="nv">$apiLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'api'</span><span class="p">);</span>
+
+<span class="c1">// El handler solo debe registrar errores para no llenar el log</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/api_errors.log'</span><span class="p">,</span> <span class="s1">'ERROR'</span><span class="p">));</span>
+
+<span class="c1">// Logs de prueba</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"Recibida petición GET /metrics"</span><span class="p">);</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"El parámetro 'since' está deprecado."</span><span class="p">);</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"Timeout al conectar con el servicio de facturación."</span><span class="p">,</span> <span class="p">[</span><span class="s1">'service'</span> <span class="o">=&gt;</span> <span class="s1">'billing-api'</span><span class="p">]);</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>Al ejecutar <code>php ejercicio2_bug.php</code> desde la terminal, el script falla o no se comporta como se espera. Tu tarea es:
+1.  Identificar por qué el script falla al ejecutarse.
+2.  Corregir el error que impide la ejecución.
+3.  Una vez que se ejecuta, observarás que el fichero <code>api_errors.log</code> se crea, pero el mensaje de <code>ERROR</code> no se escribe. Identifica por qué el mensaje de error no se está registrando.
+4.  Realiza la corrección necesaria para que el log de error se escriba correctamente en el fichero.</p>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Gran parte del tiempo de un desarrollador se invierte en leer y depurar código ajeno (¡o propio de hace meses!). Un logger que no loguea es un problema silencioso y muy común, causado a menudo por una mala configuración de los niveles de severidad o por fallos en la inicialización.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>El código tiene dos errores principales:</p>
+<ol>
+<li><strong>Falta el <code>autoload.php</code>:</strong> El script usa clases de Composer pero nunca las carga. Esto provoca un <code>Fatal error: Uncaught Error: Class "Monolog\Logger" not found</code>.</li>
+<li><strong>Nivel de Log como string:</strong> El nivel en el <code>StreamHandler</code> se pasa como un string <code>'ERROR'</code> en lugar de la constante de Monolog <code>Logger::ERROR</code> (o la más moderna <code>Level::Error</code>). Monolog no interpreta este string y el handler no funciona como se espera para el filtrado de niveles.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: ejercicio2_bug_corregido.php</span>
+
+<span class="c1">// CORRECCIÓN 1: Incluir el autoload de Composer.</span>
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Level</span><span class="p">;</span> <span class="c1">// Es buena práctica usar el Enum de Level</span>
+
+<span class="c1">// Se quiere registrar la actividad de la API</span>
+<span class="nv">$apiLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'api'</span><span class="p">);</span>
+
+<span class="c1">// CORRECCIÓN 2: Usar la constante de Monolog para el nivel, no un string.</span>
+<span class="c1">// Usamos Level::Error, que es la forma moderna en Monolog 3.</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/api_errors.log'</span><span class="p">,</span> <span class="nx">Level</span><span class="o">::</span><span class="na">Error</span><span class="p">));</span>
+
+<span class="k">echo</span> <span class="s2">"Ejecutando logger de API (corregido)...</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// Logs de prueba</span>
+<span class="c1">// Estos dos serán ignorados por el handler, lo cual es correcto según el requisito.</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"Recibida petición GET /metrics"</span><span class="p">);</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"El parámetro 'since' está deprecado."</span><span class="p">);</span>
+
+<span class="c1">// Este mensaje SÍ se registrará ahora.</span>
+<span class="nv">$apiLogger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">"Timeout al conectar con el servicio de facturación."</span><span class="p">,</span> <span class="p">[</span><span class="s1">'service'</span> <span class="o">=&gt;</span> <span class="s1">'billing-api'</span><span class="p">]);</span>
+
+<span class="k">echo</span> <span class="s2">"Script finalizado. Revisa 'logs/api_errors.log'.</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">3) El Vigilante 24/7: Logs a Fichero y Notificaciones Críticas | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Implementar una estrategia de logging de dos niveles: guardar toda la información para análisis posterior y enviar notificaciones inmediatas para eventos que requieren atención urgente.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero <code>ejercicio3.php</code> en tu proyecto con Monolog.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>Configura un <code>Logger</code> para el canal <code>database-connector</code> que utilice <strong>dos handlers simultáneamente</strong>:</p>
+<ol>
+<li>
+<p><strong>Handler 1 (<code>RotatingFileHandler</code>):</strong></p>
+<ul>
+<li>Debe registrar <strong>toda</strong> la actividad (desde el nivel <code>DEBUG</code> en adelante).</li>
+<li>Debe escribir en ficheros de log diarios, cuyo nombre siga el patrón <code>logs/db-yyyy-mm-dd.log</code>.</li>
+<li>Debe conservar los logs de los últimos 10 días como máximo.</li>
+<li><strong>Pista:</strong> La clase <code>RotatingFileHandler</code> es perfecta para esto. Su constructor acepta el nombre del fichero, el número de ficheros a retener y el nivel de log.</li>
+</ul>
+</li>
+<li>
+<p><strong>Handler 2 (Simulación de Email):</strong></p>
+<ul>
+<li>Para no configurar un servidor de correo, simularemos el envío de emails escribiendo en un fichero <code>logs/critical_alerts.log</code>. Usa un <code>StreamHandler</code> para esto.</li>
+<li>Este handler <strong>solo</strong> debe activarse para eventos de nivel <code>CRITICAL</code> o superior.</li>
+<li>Para que la alerta sea más clara, asígnale a este handler un <code>LineFormatter</code> personalizado que siga el formato: <code>[datetime] [level_name]: [message] [context]\n</code>.</li>
+</ul>
+</li>
+<li>
+<p>Añade logs de prueba para verificar que ambos handlers funcionan correctamente:</p>
+<ul>
+<li><code>DEBUG</code>: "Conexión a la BBDD iniciada."</li>
+<li><code>INFO</code>: "Consulta ejecutada con éxito: SELECT * FROM users LIMIT 10."</li>
+<li><code>CRITICAL</code>: "No se pudo establecer conexión con la base de datos 'pulse_db_replica'. Failover activado."</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta arquitectura es un estándar en la industria. Los logs detallados en ficheros rotatorios se usan para depuración y auditoría, mientras que un canal de alertas separado (email, Slack, etc.) asegura que los ingenieros de guardia sean notificados instantáneamente de problemas graves sin ser bombardeados por información de bajo nivel.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: ejercicio3.php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\RotatingFileHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Formatter\LineFormatter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Level</span><span class="p">;</span>
+
+<span class="nv">$dbLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s1">'database-connector'</span><span class="p">);</span>
+
+<span class="c1">// --- Handler 1: Ficheros rotatorios para todo ---</span>
+<span class="nv">$rotatingHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RotatingFileHandler</span><span class="p">(</span><span class="s1">'logs/db.log'</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">Level</span><span class="o">::</span><span class="na">Debug</span><span class="p">);</span>
+<span class="c1">// El nombre del fichero se completará con la fecha automáticamente.</span>
+<span class="nv">$dbLogger</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="nv">$rotatingHandler</span><span class="p">);</span>
+
+
+<span class="c1">// --- Handler 2: Alertas críticas simulando email ---</span>
+<span class="nv">$alertHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/critical_alerts.log'</span><span class="p">,</span> <span class="nx">Level</span><span class="o">::</span><span class="na">Critical</span><span class="p">);</span>
+
+<span class="c1">// Formato personalizado para que la alerta sea más legible</span>
+<span class="nv">$outputFormat</span> <span class="o">=</span> <span class="s2">"[%datetime%] %level_name%: %message% %context% %extra%</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LineFormatter</span><span class="p">(</span><span class="nv">$outputFormat</span><span class="p">,</span> <span class="s1">'Y-m-d H:i:s'</span><span class="p">);</span>
+<span class="nv">$alertHandler</span><span class="o">-&gt;</span><span class="na">setFormatter</span><span class="p">(</span><span class="nv">$formatter</span><span class="p">);</span>
+
+<span class="nv">$dbLogger</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="nv">$alertHandler</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"Generando logs con estrategia de dos niveles...</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// --- Logs de prueba ---</span>
+<span class="nv">$dbLogger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">"Conexión a la BBDD iniciada."</span><span class="p">);</span> <span class="c1">// Solo va al fichero rotatorio</span>
+<span class="nv">$dbLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span>
+    <span class="s2">"Consulta ejecutada con éxito: SELECT * FROM users LIMIT 10."</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">'rows'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="p">);</span> <span class="c1">// Solo va al fichero rotatorio</span>
+
+<span class="nv">$dbLogger</span><span class="o">-&gt;</span><span class="na">critical</span><span class="p">(</span>
+    <span class="s2">"No se pudo establecer conexión con la base de datos 'pulse_db_replica'. Failover activado."</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'10.0.1.25'</span><span class="p">]</span>
+<span class="p">);</span> <span class="c1">// Va a AMBOS ficheros</span>
+
+<span class="k">echo</span> <span class="s2">"Logs generados. Revisa 'logs/db-YYYY-MM-DD.log' y 'logs/critical_alerts.log'.</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">4) El Cerebro Central: Creando una LogFactory Inteligente con Procesadores | Nivel: Alto</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Refactorizar la creación de loggers usando el patrón de diseño <strong>Factory</strong> para centralizar la configuración. Enriquecer los logs automáticamente con información contextual útil usando <strong>Procesadores</strong>.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Crea una estructura de directorios <code>src/PulseMetrics/System/Logging/</code>. Dentro, crea un fichero <code>LogFactory.php</code>.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>
+<p><strong>Crea la <code>LogFactory</code>:</strong></p>
+<ul>
+<li>Dentro del namespace <code>PulseMetrics\System\Logging</code>, crea una clase <code>LogFactory</code>.</li>
+<li>Implementa un método estático público <code>public static function create(string $channel): Psr\Log\LoggerInterface</code>.</li>
+<li>Este método debe crear y devolver una instancia de <code>Monolog\Logger</code> configurada. La factoría debe añadir por defecto un <code>StreamHandler</code> que escriba en <code>logs/app.log</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Añade Procesadores:</strong></p>
+<ul>
+<li>Modifica la factoría para que <strong>automáticamente</strong> añada los siguientes procesadores a cada logger que cree:<ul>
+<li><code>IntrospectionProcessor</code>: Para añadir el fichero, la línea, la clase y el método que originó el log (extremadamente útil para depurar). Solo debe añadir logs de nivel <code>DEBUG</code>.</li>
+<li><code>WebProcessor</code>: Para añadir la IP del cliente, la URL y el método HTTP a todos los logs.</li>
+<li><code>MemoryUsageProcessor</code>: Para añadir el uso de memoria actual en cada log, útil para detectar memory leaks.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Implementación y Prueba:</strong></p>
+<ul>
+<li>Crea un fichero <code>ejercicio4.php</code> fuera del directorio <code>src</code>.</li>
+<li>En este fichero, usa tu <code>LogFactory</code> para obtener un logger para el canal <code>billing</code>.</li>
+<li>Añade un log <code>INFO</code> y otro <code>WARNING</code> con algún dato de contexto.</li>
+<li>Ejecuta el script desde la terminal y desde un navegador para ver cómo el <code>WebProcessor</code> añade datos extra solo en el segundo caso. Observa la riqueza de la información guardada en <code>logs/app.log</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Revisión por Pares (Peer Review):</strong></p>
+<ul>
+<li>Intercambia tu <code>LogFactory.php</code> con un compañero.</li>
+<li>Revisa su código y proporciona feedback sobre los siguientes puntos:<ul>
+<li><strong>Claridad y PSR-12:</strong> ¿El código es fácil de leer y sigue el estándar?</li>
+<li><strong>Correcto Uso de Tipos:</strong> ¿Se usa <code>LoggerInterface</code> como tipo de retorno para promover el desacoplamiento?</li>
+<li><strong>Extensibilidad:</strong> ¿Sería fácil modificar la factoría en el futuro para, por ejemplo, añadir un handler de Slack condicionalmente?</li>
+<li><strong>Documentación:</strong> ¿El método <code>create</code> tiene un DocBlock que explique lo que hace, sus parámetros y lo que devuelve?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En cualquier proyecto de software serio, la configuración del logging NUNCA se duplica. Se centraliza en una factoría o se gestiona a través de un contenedor de Inyección de Dependencias. Esto garantiza la consistencia en toda la aplicación y permite cambiar la estrategia de logging global (por ejemplo, migrar de ficheros a un servicio como Datadog) modificando un único punto del código.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Fichero <code>src/PulseMetrics/System/Logging/LogFactory.php</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">PulseMetrics\System\Logging</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Monolog\Logger</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Handler\StreamHandler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Processor\IntrospectionProcessor</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Processor\WebProcessor</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Processor\MemoryUsageProcessor</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Monolog\Level</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Factoría centralizada para crear instancias de loggers pre-configurados.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">LogFactory</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Crea y configura una nueva instancia de logger para un canal específico.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $channel El nombre del canal del logger.</span>
+<span class="sd">     * @return LoggerInterface Una instancia de logger lista para usar.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel</span><span class="p">)</span><span class="o">:</span> <span class="nx">LoggerInterface</span>
+    <span class="p">{</span>
+        <span class="nv">$log</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="nv">$channel</span><span class="p">);</span>
+
+        <span class="c1">// Configuración de Handlers</span>
+        <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamHandler</span><span class="p">(</span><span class="s1">'logs/app.log'</span><span class="p">,</span> <span class="nx">Level</span><span class="o">::</span><span class="na">Debug</span><span class="p">));</span>
+
+        <span class="c1">// Añadir procesadores para enriquecer todos los logs</span>
+        <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushProcessor</span><span class="p">(</span><span class="k">new</span> <span class="nx">MemoryUsageProcessor</span><span class="p">());</span>
+        <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushProcessor</span><span class="p">(</span><span class="k">new</span> <span class="nx">WebProcessor</span><span class="p">());</span>
+
+        <span class="c1">// El IntrospectionProcessor puede ser "pesado", lo añadimos solo para logs de DEBUG.</span>
+        <span class="nv">$log</span><span class="o">-&gt;</span><span class="na">pushProcessor</span><span class="p">(</span><span class="k">new</span> <span class="nx">IntrospectionProcessor</span><span class="p">(</span><span class="nx">Level</span><span class="o">::</span><span class="na">Debug</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Monolog\\'</span><span class="p">]));</span>
+
+        <span class="k">return</span> <span class="nv">$log</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Fichero <code>ejercicio4.php</code> (en la raíz del proyecto):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="c1">// Importamos nuestra factoría</span>
+<span class="k">use</span> <span class="nx">PulseMetrics\System\Logging\LogFactory</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"Probando la LogFactory...</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// 1. Usar la factoría para obtener un logger</span>
+<span class="nv">$billingLogger</span> <span class="o">=</span> <span class="nx">LogFactory</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">'billing'</span><span class="p">);</span>
+
+<span class="c1">// 2. Usar el logger como de costumbre</span>
+<span class="nv">$billingLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">"Generando factura para el cliente."</span><span class="p">,</span> <span class="p">[</span><span class="s1">'clientId'</span> <span class="o">=&gt;</span> <span class="mi">456</span><span class="p">]);</span>
+
+<span class="nv">$billingLogger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">"El método de pago del cliente ha expirado."</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'clientId'</span> <span class="o">=&gt;</span> <span class="mi">456</span><span class="p">,</span>
+    <span class="s1">'paymentMethodId'</span> <span class="o">=&gt;</span> <span class="s1">'card_123xyz'</span>
+<span class="p">]);</span>
+
+<span class="nv">$billingLogger</span><span class="o">-&gt;</span><span class="na">debug</span><span class="p">(</span><span class="s2">"Calculando impuestos..."</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"Logs generados por la factoría en 'logs/app.log'. ¡Observa toda la información extra!</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+</code></pre></div></p>
+</details>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

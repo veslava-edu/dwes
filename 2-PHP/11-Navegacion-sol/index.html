@@ -1,0 +1,2019 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/11-Navegacion-sol/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>Navegación en PHP: Creando el GPS de tu Aplicación Web - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#navegacion-en-php-creando-el-gps-de-tu-aplicacion-web">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Navegación en PHP: Creando el GPS de tu Aplicación Web
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#navegacion-mediante-enlaces-el-metodo-point-and-click">
+<span class="md-ellipsis">
+      Navegación mediante Enlaces: El método "Point-and-Click"
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#navegacion-mediante-formularios-el-interrogatorio-digital">
+<span class="md-ellipsis">
+      Navegación mediante Formularios: El Interrogatorio Digital
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#navegacion-mediante-redirecciones-el-teletransporte-del-servidor">
+<span class="md-ellipsis">
+      Navegación mediante Redirecciones: El Teletransporte del Servidor
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-consolidacion">
+<span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Consolidación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_1">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_1">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_1">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_1">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_2">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-refuerzo">
+<span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+</a>
+<nav aria-label="Ejercicios de Refuerzo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_2">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_2">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_2">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_3">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-ampliacion">
+<span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Ampliación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_3">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_3">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_3">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_4">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="navegacion-en-php-creando-el-gps-de-tu-aplicacion-web">Navegación en PHP: Creando el GPS de tu Aplicación Web</h1>
+<p>¡Hola, futuros cracks del desarrollo web! Hoy vamos a hablar de algo fundamental: la <strong>navegación</strong>. Si una aplicación web fuera una ciudad, la navegación serían sus calles, avenidas y su sistema de GPS. Es lo que permite a los usuarios moverse de un punto a otro, desde la página de inicio hasta el perfil de un amigo, desde una lista de productos hasta la pasarela de pago. Sin una buena navegación, los usuarios se pierden, se frustran y, como en un videojuego mal diseñado, abandonan la partida.</p>
+<p>Nuestra misión como desarrolladores del lado del servidor con PHP es ser los arquitectos de estas rutas. No solo creamos las páginas (los edificios), sino que también diseñamos las conexiones inteligentes que las unen, decidiendo qué información viaja de un punto a otro y cómo lo hace. ¿Listos para poneros el casco de urbanista digital? ¡Vamos a ello!</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de asfaltar nuestras primeras rutas, aclaremos algunos términos clave. Son los cimientos sobre los que construiremos toda la lógica de navegación.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Petición HTTP</p>
+<p>Es el mensaje que un cliente (normalmente un navegador web) envía a un servidor para solicitar un recurso (como una página web, una imagen o datos). Es el "Oye, servidor, ¿me das esto, por favor?".</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Respuesta HTTP</p>
+<p>Es el paquete que el servidor devuelve al cliente tras recibir y procesar una petición HTTP. Contiene el recurso solicitado (por ejemplo, el código HTML de la página) y un código de estado que indica si todo ha ido bien.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Superglobales de PHP</p>
+<p>Son variables especiales, predefinidas en PHP, que están disponibles en todos los ámbitos a lo largo del script. Para la navegación, las más importantes son <code>$_GET</code>, <code>$_POST</code>, y <code>$_SERVER</code>, que nos permiten acceder a la información enviada desde el cliente. ¡Son como el panel de control de nuestro coche!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: URL (Uniform Resource Locator)</p>
+<p>Es la dirección única que identifica un recurso en la web. Se compone de varias partes: protocolo (<code>https</code>), dominio (<code>google.com</code>), ruta (<code>/search</code>) y, a veces, una <strong>cadena de consulta</strong> o <em>query string</em> (<code>?q=navegacion+php</code>), que es crucial para pasar información.</p>
+</div>
+<h2 id="desarrollo-y-ejemplos-practicos">Desarrollo y Ejemplos Prácticos</h2>
+<p>Ahora que tenemos el mapa, vamos a explorar los tres caminos principales para guiar a nuestros usuarios por la aplicación.</p>
+<h3 id="navegacion-mediante-enlaces-el-metodo-point-and-click">Navegación mediante Enlaces: El método "Point-and-Click"</h3>
+<p>La forma más básica y directa de navegación. Es el equivalente a seguir las señales de tráfico en una ciudad. Se implementa con la etiqueta <code>&lt;a&gt;</code> de HTML, pero el verdadero poder para nosotros, como desarrolladores PHP, está en cómo le añadimos "información extra" a esa señal.</p>
+<p>Esto se logra a través de la <strong>cadena de consulta</strong> (o <em>query string</em>) en la URL, que empieza con un <code>?</code>. Esta es la manera de enviar datos mediante el método <strong>GET</strong>.</p>
+<p><strong>Ejemplo 1: Navegación simple entre un blog y su único post</strong></p>
+<p>Imaginemos un blog muy minimalista. Desde el <code>index.php</code> queremos enlazar a un <code>post.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- index.php --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi Blog Minimalista<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Bienvenido a mi Blog<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Solo tengo un artículo, pero es muy bueno.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"post.php"</span><span class="p">&gt;</span>Leer el único post<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- post.php --&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mi Gran Post&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;El arte de la programación&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Programar es como un superpoder, ¡úsalo con responsabilidad!&lt;/p&gt;</span>
+<span class="x">    &lt;a href="index.php"&gt;Volver al inicio&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Pasando datos con GET para un blog con múltiples posts</strong></p>
+<p>Aquí es donde PHP empieza a brillar. En lugar de una página por cada post, tenemos una única plantilla (<code>post.php</code>) que muestra el contenido correcto según un <code>id</code> que le pasamos por la URL.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- index.php --&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="c1">// En una aplicación real, estos datos vendrían de una base de datos.</span>
+<span class="nv">$posts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Introducción a PHP 8+'</span><span class="p">,</span> <span class="s1">'autor'</span> <span class="o">=&gt;</span> <span class="s1">'Ana'</span><span class="p">],</span>
+    <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'¿Por qué PSR-12 es tu amigo?'</span><span class="p">,</span> <span class="s1">'autor'</span> <span class="o">=&gt;</span> <span class="s1">'Luis'</span><span class="p">],</span>
+    <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'El patrón PRG explicado con gatitos'</span><span class="p">,</span> <span class="s1">'autor'</span> <span class="o">=&gt;</span> <span class="s1">'Carla'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mi Blog con Varios Posts&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Últimos Artículos&lt;/h1&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$posts</span> <span class="k">as</span> <span class="nv">$id</span> <span class="o">=&gt;</span> <span class="nv">$post</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;li&gt;</span>
+<span class="x">                &lt;a href="post.php?id=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$id</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;/a&gt;</span>
+<span class="x">            &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- post.php --&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="c1">// Simulamos de nuevo una base de datos.</span>
+<span class="nv">$posts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'Introducción a PHP 8+'</span><span class="p">,</span> <span class="s1">'contenido'</span> <span class="o">=&gt;</span> <span class="s1">'PHP 8 ha traído muchas novedades...'</span><span class="p">],</span>
+    <span class="mi">2</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'¿Por qué PSR-12 es tu amigo?'</span><span class="p">,</span> <span class="s1">'contenido'</span> <span class="o">=&gt;</span> <span class="s1">'Mantener un código limpio es crucial...'</span><span class="p">],</span>
+    <span class="mi">3</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'titulo'</span> <span class="o">=&gt;</span> <span class="s1">'El patrón PRG explicado con gatitos'</span><span class="p">,</span> <span class="s1">'contenido'</span> <span class="o">=&gt;</span> <span class="s1">'Imagina que un gato envía un formulario...'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// Obtenemos el ID de la URL. ¡Siempre validar y sanitizar!</span>
+<span class="nv">$postId</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="o">?</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// Verificamos si el post existe.</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$posts</span><span class="p">[</span><span class="nv">$postId</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// Si no existe, podemos mostrar un error o redirigir.</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s2">"Location: 404.php"</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$post</span> <span class="o">=</span> <span class="nv">$posts</span><span class="p">[</span><span class="nv">$postId</span><span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$post</span><span class="p">[</span><span class="s1">'contenido'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    &lt;a href="index.php"&gt;Volver al listado de artículos&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">URLs amigables y SEO</p>
+<p>Habrás notado que muchas webs usan URLs como <code>/post/el-titulo-del-post</code> en lugar de <code>post.php?id=2</code>. Esto se conoce como "URL amigable" y es mejor para el SEO y la experiencia de usuario. Se consigue con reescritura de URLs en el servidor (usando <code>.htaccess</code> en Apache o <code>nginx.conf</code>), pero por debajo, el mecanismo sigue siendo el mismo: el servidor traduce esa URL bonita a una que PHP pueda entender, como <code>post.php?slug=el-titulo-del-post</code>.</p>
+</div>
+<div class="admonition question inline">
+<p class="admonition-title">Preguntas para reflexionar</p>
+<ol>
+<li>¿Por qué es una pésima idea de seguridad enviar un dato sensible como una contraseña a través de un parámetro GET en la URL?</li>
+<li>Si estuvieras creando una galería de fotos, ¿cómo usarías los parámetros GET para implementar los botones "Siguiente" y "Anterior"?</li>
+<li>Entra en una web de e-commerce, navega por las categorías y aplica un filtro (por ejemplo, por precio o marca). Observa la URL. ¿Qué parámetros GET puedes identificar y qué crees que hace cada uno?</li>
+<li>¿Por qué en el ejemplo 2 usamos <code>(int)$_GET['id']</code> y <code>htmlspecialchars()</code>? ¿Qué riesgos de seguridad estamos mitigando?</li>
+</ol>
+</div>
+<pre class="mermaid"><code>graph TD
+    subgraph "Cliente (Navegador)"
+        A["Usuario ve index.php"] --&gt;|Clic en 'Leer Post 2'| B["URL: post.php?id=2"]
+    end
+
+    subgraph "Servidor (PHP)"
+        B --&gt; C["Servidor recibe la petición"]
+        C --&gt; D["PHP ejecuta post.php"]
+        D --&gt; E["Lee $_GET['id'] que es '2'"]
+        E --&gt; F["Busca el post con id 2"]
+        F --&gt; G["Genera HTML con el título y contenido del post 2"]
+    end
+
+    subgraph "Respuesta"
+        G --&gt; H["Envía HTML al cliente"]
+    end
+
+    H --&gt; I["El navegador muestra la página del post 2"]</code></pre>
+<p><br/><hr/></p>
+<h3 id="navegacion-mediante-formularios-el-interrogatorio-digital">Navegación mediante Formularios: El Interrogatorio Digital</h3>
+<p>Los formularios son la herramienta principal para que el usuario nos envíe información más compleja o sensible. Piénsalo como rellenar un documento para solicitar algo: un inicio de sesión, un registro, una búsqueda, etc. La etiqueta <code>&lt;form&gt;</code> tiene dos atributos clave: <code>action</code> (el script PHP que procesará los datos) y <code>method</code> (cómo se enviarán los datos). Aquí es donde la batalla <code>GET</code> vs <code>POST</code> cobra protagonismo.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Método GET</th>
+<th style="text-align: left;">Método POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Visibilidad de datos</strong></td>
+<td style="text-align: left;">Los datos se añaden a la URL (visibles, inseguros para datos sensibles).</td>
+<td style="text-align: left;">Los datos se envían en el cuerpo de la petición HTTP (ocultos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Límite de datos</strong></td>
+<td style="text-align: left;">Limitado por la longitud máxima de la URL (aprox. 2000 caracteres).</td>
+<td style="text-align: left;">Prácticamente sin límite, ideal para grandes cantidades de datos o archivos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Marcadores/Historial</strong></td>
+<td style="text-align: left;">La URL resultante se puede guardar en marcadores y queda en el historial.</td>
+<td style="text-align: left;">No se puede guardar en marcadores. Recargar la página puede reenviar los datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso principal</strong></td>
+<td style="text-align: left;">Solicitar datos del servidor (búsquedas, filtros, paginación).</td>
+<td style="text-align: left;">Enviar datos para crear o modificar un recurso (registros, logins, subir archivos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Superglobal PHP</strong></td>
+<td style="text-align: left;"><code>$_GET</code></td>
+<td style="text-align: left;"><code>$_POST</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo 1: Un formulario de búsqueda (usando GET)</strong></p>
+<p>Un formulario de búsqueda es el caso de uso perfecto para GET. La búsqueda es una consulta, y el resultado es una página que el usuario podría querer guardar o compartir.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- index.php --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Buscador de Personajes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Buscador de Personajes de Videojuegos<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"buscar.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"GET"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"termino"</span><span class="p">&gt;</span>Buscar:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"termino"</span> <span class="na">name</span><span class="o">=</span><span class="s">"q"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Ej: Mario, Lara Croft..."</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Buscar"</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- buscar.php --&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="c1">// En un caso real, haríamos una consulta a la base de datos con el término de búsqueda.</span>
+<span class="nv">$personajes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Mario'</span><span class="p">,</span> <span class="s1">'Lara Croft'</span><span class="p">,</span> <span class="s1">'Master Chief'</span><span class="p">,</span> <span class="s1">'Zelda'</span><span class="p">,</span> <span class="s1">'Geralt de Rivia'</span><span class="p">];</span>
+<span class="nv">$resultados</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nv">$terminoBusqueda</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'q'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'q'</span><span class="p">])))</span> <span class="p">{</span>
+    <span class="nv">$terminoBusqueda</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'q'</span><span class="p">]);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personajes</span> <span class="k">as</span> <span class="nv">$personaje</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Búsqueda simple insensible a mayúsculas/minúsculas</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$personaje</span><span class="p">,</span> <span class="nv">$terminoBusqueda</span><span class="p">)</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$resultados</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$personaje</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Resultados de Búsqueda&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Resultados para "</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$terminoBusqueda</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&lt;/h1&gt;</span>
+
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$resultados</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;ul&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$resultados</span> <span class="k">as</span> <span class="nv">$resultado</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;li&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$resultado</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/ul&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">elseif</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$terminoBusqueda</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;p&gt;No se encontraron personajes con ese nombre. ¡Quizás en otro castillo!&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="x">    &lt;p&gt;&lt;a href="index.php"&gt;Realizar otra búsqueda&lt;/a&gt;&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Un formulario de contacto (usando POST)</strong></p>
+<p>Para un formulario de contacto, donde el usuario envía datos personales, <code>POST</code> es la única opción sensata. No queremos que su email y mensaje aparezcan en la URL.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- contacto.php --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Contacto<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Formulario de Contacto<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"procesar_contacto.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Tu Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"mensaje"</span><span class="p">&gt;</span>Mensaje:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Enviar Mensaje"</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- procesar_contacto.php --&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="c1">// Comprobamos si el formulario fue enviado usando el método POST.</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Es crucial validar y limpiar los datos del usuario.</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
+    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'mensaje'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_STRING</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$email</span> <span class="o">&amp;&amp;</span> <span class="nv">$mensaje</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Aquí iría la lógica para enviar el email.</span>
+        <span class="c1">// mail($emailAdmin, "Nuevo mensaje de contacto", $mensaje);</span>
+        <span class="nv">$respuesta</span> <span class="o">=</span> <span class="s2">"Gracias por tu mensaje, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="o">.</span> <span class="s2">". Te responderemos pronto."</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$respuesta</span> <span class="o">=</span> <span class="s2">"Datos inválidos. Por favor, vuelve atrás y rellena el formulario correctamente."</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Si alguien accede a este script directamente, lo mandamos al formulario.</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: contacto.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Mensaje Enviado&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Estado del Envío&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$respuesta</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    &lt;a href="contacto.php"&gt;Enviar otro mensaje&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBHRVQgdnMgUE9TVAoKIyMgR0VUCi0gKipDdcOhbmRvIHVzYXJsbyoqCiAgLSBCw7pzcXVlZGFzCiAgLSBGaWx0cm9zIGRlIHByb2R1Y3RvcwogIC0gUGFnaW5hY2nDs24gKHDDoWdpbmEgMSwgMiwgMy4uLikKLSAqKkNhcmFjdGVyw61zdGljYXMqKgogIC0gSWRlbXBvdGVudGU6IGhhY2VyIGxhIG1pc21hIHBldGljacOzbiB2YXJpYXMgdmVjZXMgZGEgZWwgbWlzbW8gcmVzdWx0YWRvLgogIC0gTG9zIGRhdG9zIHZpYWphbiBlbiBsYSBVUkwuCiAgLSBTZSBwdWVkZSBjYWNoZWFyIHkgZ3VhcmRhciBlbiBtYXJjYWRvcmVzLgoKIyMgUE9TVAotICoqQ3XDoW5kbyB1c2FybG8qKgogIC0gSW5pY2lvcyBkZSBzZXNpw7NuIChMb2dpbnMpCiAgLSBGb3JtdWxhcmlvcyBkZSByZWdpc3RybwogIC0gQ3JlYXIvQWN0dWFsaXphciBkYXRvcyAodW4gbnVldm8gcG9zdCwgdW4gcHJvZHVjdG8uLi4pCiAgLSBTdWJpciBhcmNoaXZvcwotICoqQ2FyYWN0ZXLDrXN0aWNhcyoqCiAgLSBObyBlcyBpZGVtcG90ZW50ZTogcmVlbnZpYXIgbGEgcGV0aWNpw7NuIHB1ZWRlIGNyZWFyIGR1cGxpY2Fkb3MuCiAgLSBMb3MgZGF0b3MgdmlhamFuIGVuIGVsIGN1ZXJwbyAoYm9keSkgZGUgbGEgcGV0aWNpw7NuLgogIC0gTcOhcyBzZWd1cm8gcGFyYSBkYXRvcyBzZW5zaWJsZXMu</markmap-data></div>
+<div class="admonition danger">
+<p class="admonition-title">¡Nunca confíes en los datos del usuario!</p>
+<p>Este es el mandamiento número uno del desarrollo web. <strong>SIEMPRE</strong> valida y sanea cualquier dato que venga del cliente (<code>$_GET</code>, <code>$_POST</code>, <code>$_COOKIE</code>, etc.). Usa funciones como <code>filter_input()</code>, <code>htmlspecialchars()</code>, <code>strip_tags()</code> y sentencias preparadas en tus consultas a la base de datos para prevenir vulnerabilidades como XSS (Cross-Site Scripting) y la Inyección SQL.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Preguntas para reflexionar</p>
+<ol>
+<li>Cuando rellenas un formulario <code>POST</code> y le das a "Refrescar" al navegador, a menudo te sale una advertencia del tipo "¿Desea volver a enviar la información del formulario?". ¿Por qué ocurre esto con <code>POST</code> y no con <code>GET</code>?</li>
+<li>Si tuvieras que implementar un botón de "Eliminar" para un artículo de un blog, ¿deberías usar un enlace (<code>&lt;a&gt;</code>) o un formulario (<code>&lt;form&gt;</code>)? ¿Qué método HTTP sería el más apropiado y por qué?</li>
+<li>La superglobal <code>$_REQUEST</code> contiene los datos de <code>$_GET</code>, <code>$_POST</code> y <code>$_COOKIE</code>. ¿Por qué crees que muchos desarrolladores consideran una mala práctica usar <code>$_REQUEST</code> en lugar de las superglobales específicas?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="navegacion-mediante-redirecciones-el-teletransporte-del-servidor">Navegación mediante Redirecciones: El Teletransporte del Servidor</h3>
+<p>Una redirección es cuando el servidor le dice al navegador: "Oye, lo que buscas no está aquí, vete a esta otra URL". Es una orden directa. En PHP, esto se hace con la función <code>header()</code>.</p>
+<p>La regla de oro: la función <code>header()</code> <strong>DEBE</strong> ser llamada antes de que se envíe cualquier tipo de salida al navegador. Esto incluye etiquetas HTML, espacios en blanco antes de <code>&lt;?php</code>, o incluso un <code>echo</code>. Si no, te encontrarás con el temido error: <strong>"Warning: Cannot modify header information - headers already sent"</strong>.</p>
+<p><strong>El Patrón PRG: Post/Redirect/Get</strong></p>
+<p>Este es uno de los patrones de diseño más importantes en el desarrollo web. Soluciona el problema del reenvío de formularios <code>POST</code> que comentábamos antes. El flujo es el siguiente:
+1.  <strong>POST:</strong> El usuario envía un formulario con el método <code>POST</code>.
+2.  <strong>Redirect:</strong> El servidor procesa los datos (por ejemplo, los guarda en la base de datos). En lugar de mostrar una página de confirmación directamente, envía una respuesta de redirección al navegador, indicándole que vaya a una nueva URL (la página de éxito o de vuelta al formulario).
+3.  <strong>GET:</strong> El navegador recibe la orden de redirección y hace una nueva petición <code>GET</code> a la URL indicada. Ahora está en una página "segura" que puede recargar sin problemas.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Cliente as Navegador del Usuario
+    participant Servidor as Script PHP
+
+    Cliente-&gt;&gt;Servidor: POST /guardar-datos.php (con datos del form)
+    Note right of Cliente: El usuario pulsa "Guardar"
+
+    Servidor-&gt;&gt;Servidor: Procesa los datos (ej: inserta en BBDD)
+    Servidor--&gt;&gt;Cliente: HTTP/1.1 302 Found&lt;br&gt;Location: /exito.php
+    Note left of Servidor: ¡Redirección! No envía HTML.
+
+    Cliente-&gt;&gt;Servidor: GET /exito.php
+    Note right of Cliente: El navegador obedece y pide la nueva página
+
+    Servidor--&gt;&gt;Cliente: HTTP/1.1 200 OK&lt;br&gt;(HTML de la página de éxito)
+    Note left of Servidor: Envía la página de confirmación</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Código HTTP</th>
+<th style="text-align: left;">Nombre</th>
+<th style="text-align: left;">Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>301</strong></td>
+<td style="text-align: left;">Moved Permanently (Movido Permanentemente)</td>
+<td style="text-align: left;">Para indicar a los navegadores y a los motores de búsqueda que una página se ha movido a una nueva URL <strong>para siempre</strong>. Es crucial para el SEO, ya que traspasa el "valor" de la página antigua a la nueva.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>302</strong></td>
+<td style="text-align: left;">Found (Encontrado) / <strong>303</strong> See Other</td>
+<td style="text-align: left;">Para redirecciones <strong>temporales</strong>. El patrón PRG es el caso de uso perfecto. Le dices al navegador que la acción <code>POST</code> fue exitosa y que ahora debe ver (<code>GET</code>) otra página. Por defecto, <code>header('Location: ...')</code> envía un 302.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo 1: Redirección simple para una zona privada</strong></p>
+<p>Si un usuario intenta acceder a <code>dashboard.php</code> sin haber iniciado sesión, lo redirigimos a <code>login.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// dashboard.php</span>
+<span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span> <span class="c1">// Necesitamos sesiones para saber si está logueado</span>
+
+<span class="c1">// Si no existe la variable de sesión 'usuario_id', no ha iniciado sesión</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'usuario_id'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// Redirigimos a la página de login</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: login.php'</span><span class="p">);</span>
+    <span class="c1">// Es VITAL detener la ejecución del script después de una redirección</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Si el script llega hasta aquí, es que el usuario sí está autenticado.</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Mi Panel de Control&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;¡Bienvenido a tu Dashboard!&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Aquí tienes tus cosas super secretas.&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Implementando el patrón PRG</strong></p>
+<p>Este es el ejemplo del formulario de contacto, pero bien hecho, aplicando el patrón PRG para evitar el reenvío de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// procesar_y_redirigir_contacto.php</span>
+<span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'email'</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
+    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'mensaje'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_STRING</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$email</span> <span class="o">&amp;&amp;</span> <span class="nv">$mensaje</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Lógica de envío de email...</span>
+        <span class="c1">// Guardamos un mensaje de éxito en la sesión (flash message)</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"¡Mensaje enviado con éxito! Gracias."</span><span class="p">;</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_type'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"success"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Error: los datos proporcionados no son válidos."</span><span class="p">;</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_type'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"error"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ¡La magia del PRG! Redirigimos de vuelta al formulario.</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: contacto_con_prg.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">// contacto_con_prg.php</span>
+<span class="cp">&lt;?php</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// Comprobamos si hay un "flash message" para mostrar</span>
+<span class="nv">$flashMessage</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$flashMessage</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">],</span>
+        <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_type'</span><span class="p">]</span>
+    <span class="p">];</span>
+    <span class="c1">// Lo borramos para que no se muestre de nuevo si recargan la página</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]);</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_type'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Contacto (con PRG)&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .message { padding: 10px; margin-bottom: 15px; border-radius: 5px; }</span>
+<span class="x">        .success { background-color: #d4edda; color: #155724; }</span>
+<span class="x">        .error { background-color: #f8d7da; color: #721c24; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Formulario de Contacto Mejorado&lt;/h1&gt;</span>
+
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$flashMessage</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;div class="message </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flashMessage</span><span class="p">[</span><span class="s1">'type'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flashMessage</span><span class="p">[</span><span class="s1">'message'</span><span class="p">])</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="x">    &lt;form action="procesar_y_redirigir_contacto.php" method="POST"&gt;</span>
+<span class="x">        &lt;!-- ... campos del formulario ... --&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">exit; es tu mejor amigo</p>
+<p>Lo repetimos porque es causa de incontables bugs y problemas de seguridad: después de llamar a <code>header('Location: ...')</code>, <strong>siempre</strong> llama a <code>exit;</code> o <code>die();</code>. Si no lo haces, el script de PHP continuará ejecutándose. Un atacante podría, en ciertas circunstancias, saltarse la redirección y ejecutar código que no debería.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Preguntas para reflexionar</p>
+<ol>
+<li>Una empresa cambia su nombre de dominio de <code>viejaweb.com</code> a <code>nuevaweb.com</code>. ¿Qué tipo de redirección (301 o 302) deberían usar en el servidor antiguo y por qué es tan importante para su posicionamiento en Google?</li>
+<li>¿Qué crees que pasaría en el ejemplo 2 (<code>contacto_con_prg.php</code>) si nos olvidáramos de hacer <code>unset()</code> a las variables de sesión del <code>flash_message</code>?</li>
+<li>Piensa en el flujo de un carrito de la compra. ¿En qué momentos específicos crees que se utiliza el patrón Post/Redirect/Get?</li>
+<li>¿Por qué crees que el error "headers already sent" es uno de los más comunes para los programadores que empiezan con PHP?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Estas tres técnicas de navegación no son conceptos teóricos; son el pan de cada día en cualquier aplicación web que uses.</p>
+<ul>
+<li><strong>Amazon o cualquier E-commerce:</strong> Cuando haces clic en una categoría de productos, estás usando un <strong>enlace con parámetros GET</strong> (<code>/category?id=electronica</code>). Cuando aplicas un filtro de precio, añades más parámetros GET (<code>...&amp;price_min=100&amp;price_max=500</code>). Cuando añades un producto al carrito, envías un <strong>formulario POST</strong>. Cuando finalizas la compra, el sistema procesa tu pago (<code>POST</code>) y te <strong>redirige</strong> a una página de "Gracias por tu compra".</li>
+<li><strong>WordPress:</strong> Cuando editas una entrada y pulsas "Actualizar", estás enviando un <code>POST</code> con todo el contenido. Una vez guardado, WordPress te <strong>redirige</strong> de nuevo al editor o a la lista de entradas, a menudo con un parámetro <code>GET</code> en la URL (<code>?message=1</code>) para mostrarte el aviso "Entrada actualizada".</li>
+<li><strong>Redes Sociales:</strong> Al hacer clic en el perfil de un usuario, es una navegación por <strong>enlace</strong>. Al publicar un nuevo estado o subir una foto, es un <strong>formulario POST</strong>. Inmediatamente después, la plataforma te <strong>redirige</strong> o actualiza la vista para que veas tu nueva publicación (hoy en día, esto se hace de forma más fluida con JavaScript y AJAX, pero el patrón PRG sigue siendo la base de la operación en el servidor).</li>
+</ul>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Si quieres clavar estos conceptos, te recomiendo encarecidamente que explores estos recursos. ¡La curiosidad es el motor del buen programador!</p>
+<ul>
+<li><strong>Documentación oficial de PHP sobre <code>header()</code>:</strong> <a href="https://www.php.net/manual/es/function.header.php">https://www.php.net/manual/es/function.header.php</a> - La fuente de la verdad. Entender todos sus parámetros te dará un control total sobre las cabeceras HTTP.</li>
+<li><strong>MDN Web Docs sobre Métodos de Petición HTTP:</strong> <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods">https://developer.mozilla.org/es/docs/Web/HTTP/Methods</a> - Una explicación completísima y clara de GET, POST y otros métodos HTTP desde la perspectiva del navegador.</li>
+<li><strong>Artículo sobre el Patrón Post-Redirect-Get (PRG):</strong> <a href="https://www.theserverside.com/news/1365146/Redirect-After-Post">https://www.theserverside.com/news/1365146/Redirect-After-Post</a> (en inglés) - Un artículo técnico que profundiza en el porqué y el cómo del patrón PRG, un pilar de las aplicaciones web robustas.</li>
+</ul>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<!-- Nombre de archivo sugerido: T12-Ejercicios-Navegacion-en-PHP.md -->
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) Bug Hunting: El Enlace Roto de las Charlas | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Depurar un sistema de navegación simple basado en enlaces y parámetros GET, identificando y corrigiendo errores comunes de lógica y seguridad.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>El equipo de desarrollo junior de "EventFlow", nuestra plataforma de gestión de conferencias, ha creado dos ficheros para mostrar la lista de charlas y sus detalles. Sin embargo, algo falla. Al hacer clic en una charla, la página de detalle no muestra la información correcta o da errores. Tu misión es encontrar y aplastar los bugs.</p>
+<p><strong>Fichero <code>index.php</code> (con errores):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Base de datos simulada de charlas para la conferencia "WebDev Summit 2025"</span>
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-101'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'sec-202'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">],</span>
+    <span class="s1">'php-303'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Programa - WebDev Summit 2025&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Programa de Charlas&lt;/h1&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$talks</span> <span class="k">as</span> <span class="nv">$talkId</span> <span class="o">=&gt;</span> <span class="nv">$talk</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;li&gt;</span>
+<span class="x">                &lt;a href="talk_detail.php?id=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$talkId</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$talk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x"> por </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$talk</span><span class="o">-&gt;</span><span class="na">speaker</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;/a&gt;</span>
+<span class="x">            &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong>Fichero <code>talk_detail.php</code> (con errores):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Base de datos simulada (debe ser la misma que en index.php)</span>
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-101'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Un viaje profundo al mundo de las IAs.'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'sec-202'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Aprende a proteger tus aplicaciones.'</span><span class="p">],</span>
+    <span class="s1">'php-303'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'El futuro de PHP es ahora.'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="nv">$talkId</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+<span class="nv">$currentTalk</span> <span class="o">=</span> <span class="nv">$talks</span><span class="p">[</span><span class="s1">'talkId'</span><span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Detalle de la Charla&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$currentTalk</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">        &lt;h3&gt;Ponente: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">        &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'description'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;h1&gt;Charla no encontrada&lt;/h1&gt;</span>
+<span class="x">        &lt;p&gt;El identificador de la charla no es válido. ¿Te has perdido en el hiperespacio?&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    &lt;a href="index.php"&gt;Volver al programa&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Identifica al menos 4 errores en los dos ficheros proporcionados. Los errores pueden ser de sintaxis, de lógica, o de seguridad (como la falta de saneamiento de datos).</li>
+<li>Corrige los errores para que la aplicación funcione como se espera: el <code>index.php</code> debe mostrar una lista de enlaces funcionales y el <code>talk_detail.php</code> debe mostrar los detalles de la charla seleccionada de forma segura.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La depuración es una habilidad diaria fundamental para un desarrollador. Ser capaz de leer código ajeno (o propio después de un tiempo), identificar fallos y aplicar correcciones seguras es lo que diferencia a un programador profesional.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>Se han identificado los siguientes errores:</p>
+<ol>
+<li><strong>Error de Estructura de Datos (<code>index.php</code>):</strong> El array <code>$talks</code> tiene una mezcla de claves numéricas y asociativas. Para que <code>foreach ($talks as $talkId =&gt; $talk)</code> funcione consistentemente, la estructura debe ser homogénea.</li>
+<li><strong>Error de Acceso a Objeto (<code>index.php</code>):</strong> Se intenta acceder a <code>$talk-&gt;speaker</code> como si <code>$talk</code> fuera un objeto, cuando es un array asociativo. El acceso correcto es <code>$talk['speaker']</code>.</li>
+<li><strong>Error de Saneamiento de Salida (<code>index.php</code> y <code>talk_detail.php</code>):</strong> No se está utilizando <code>htmlspecialchars()</code> para mostrar los datos, lo que abre una vulnerabilidad a ataques XSS si los datos provinieran de una fuente no confiable.</li>
+<li><strong>Error de Acceso a <code>$_GET</code> (<code>talk_detail.php</code>):</strong> No se comprueba si <code>$_GET['id']</code> existe con <code>isset()</code> antes de usarlo. Esto generaría un <code>Warning</code> si se accede a la página sin el parámetro.</li>
+<li><strong>Error Lógico al Buscar (<code>talk_detail.php</code>):</strong> La línea <code>$currentTalk = $talks['talkId'];</code> es incorrecta. Intenta buscar una clave literal <code>'talkId'</code> en el array <code>$talks</code>, en lugar de usar el valor de la variable <code>$talkId</code>.</li>
+<li><strong>Error de Condición (<code>talk_detail.php</code>):</strong> La comprobación <code>if ($currentTalk)</code> no es robusta. Debería comprobarse explícitamente si la clave existe en el array.</li>
+</ol>
+<p><strong>Fichero <code>index.php</code> (Corregido):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// PSR-12: El bloque de apertura de PHP debe estar en su propia línea.</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Base de datos simulada de charlas para la conferencia "WebDev Summit 2025"</span>
+<span class="c1">// Corregido: Estructura de datos consistente con claves asociativas para los IDs.</span>
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'ai-101'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">],</span>
+    <span class="s1">'sec-202'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">],</span>
+    <span class="s1">'php-303'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">]</span>
+<span class="p">];</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Programa - WebDev Summit 2025&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Programa de Charlas&lt;/h1&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$talks</span> <span class="k">as</span> <span class="nv">$talkId</span> <span class="o">=&gt;</span> <span class="nv">$talk</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;li&gt;</span>
+<span class="x">                &lt;!-- Corregido: Se usa htmlspecialchars() para sanear la salida --&gt;</span>
+<span class="x">                &lt;a href="talk_detail.php?id=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talkId</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">                    </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x"> por </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">])</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;/a&gt;</span>
+<span class="x">            &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/ul&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong>Fichero <code>talk_detail.php</code> (Corregido):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Base de datos simulada (debe ser la misma que en index.php)</span>
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'ai-101'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Un viaje profundo al mundo de las IAs.'</span><span class="p">],</span>
+    <span class="s1">'sec-202'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Aprende a proteger tus aplicaciones.'</span><span class="p">],</span>
+    <span class="s1">'php-303'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'El futuro de PHP es ahora.'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// Corregido: Se comprueba si el 'id' existe antes de usarlo.</span>
+<span class="nv">$talkId</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="o">?</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">:</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="c1">// Corregido: Se busca correctamente usando la clave y se comprueba si existe.</span>
+<span class="nv">$currentTalk</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="nv">$talkId</span><span class="p">,</span> <span class="nv">$talks</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$currentTalk</span> <span class="o">=</span> <span class="nv">$talks</span><span class="p">[</span><span class="nv">$talkId</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Opcional: Si la charla no existe, podríamos enviar una cabecera 404.</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$currentTalk</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;!-- Corregido: Título dinámico y seguro --&gt;</span>
+<span class="x">    &lt;title&gt;Detalle: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$currentTalk</span> <span class="o">?</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span> <span class="o">:</span> <span class="s1">'Charla no encontrada'</span> <span class="cp">?&gt;</span><span class="x">&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$currentTalk</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;!-- Corregido: Se usa htmlspecialchars() para toda la salida --&gt;</span>
+<span class="x">        &lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">        &lt;h3&gt;Ponente: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">        &lt;p&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$currentTalk</span><span class="p">[</span><span class="s1">'description'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;h1&gt;Charla no encontrada&lt;/h1&gt;</span>
+<span class="x">        &lt;p&gt;El identificador de la charla no es válido. ¿Te has perdido en el hiperespacio?&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;hr&gt;</span>
+<span class="x">    &lt;a href="index.php"&gt;Volver al programa&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Formulario de Registro a Workshop | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Crear un sistema de navegación básico utilizando un formulario HTML y procesando los datos con el método POST en PHP, aplicando validación de datos del lado del servidor.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>"EventFlow" necesita una página simple donde los asistentes puedan registrarse para un workshop exclusivo sobre "Testing de APIs con Postman".</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un fichero <code>register_workshop.php</code>. Este fichero contendrá un formulario HTML con dos campos de texto (<code>name</code> y <code>email</code>) y un botón de envío. El formulario debe enviar sus datos a <code>process_registration.php</code> usando el método <code>POST</code>.</li>
+<li>Crea el fichero <code>process_registration.php</code>. Este script debe hacer lo siguiente:<ul>
+<li>Verificar que la petición se ha recibido por <code>POST</code>.</li>
+<li>Recoger los datos <code>name</code> y <code>email</code>.</li>
+<li>Realizar una validación simple: el nombre no puede estar vacío y el email debe tener un formato válido (puedes usar <code>filter_var</code> con <code>FILTER_VALIDATE_EMAIL</code>).</li>
+<li>Si los datos son válidos, mostrar un mensaje de éxito como: "¡Gracias por registrarte, [Nombre]! Te hemos enviado la confirmación a [Email]."</li>
+<li>Si los datos no son válidos, mostrar un mensaje de error claro.</li>
+</ul>
+</li>
+<li>Asegúrate de sanear siempre la salida con <code>htmlspecialchars()</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Casi todas las aplicaciones web tienen formularios para registrar usuarios, iniciar sesión, enviar comentarios o realizar compras. Entender cómo manejar los datos de un formulario con POST y validarlos en el servidor es una habilidad esencial para crear aplicaciones interactivas y seguras.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Fichero <code>register_workshop.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Registro a Workshop - WebDev Summit<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">input</span><span class="o">,</span><span class="w"> </span><span class="nt">button</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">button</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#007bff</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="k">cursor</span><span class="p">:</span><span class="w"> </span><span class="kc">pointer</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Registro al Workshop: "Testing de APIs con Postman"<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Las plazas son limitadas. ¡Asegura la tuya!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"process_registration.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"name"</span><span class="p">&gt;</span>Nombre Completo:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"name"</span> <span class="na">name</span><span class="o">=</span><span class="s">"name"</span> <span class="na">required</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Correo Electrónico:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Registrarme<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>Fichero <code>process_registration.php</code>:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$pageTitle</span> <span class="o">=</span> <span class="s2">"Estado del Registro"</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="c1">// 1. Verificar que la petición es POST</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 2. Recoger y validar los datos</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s2">"Error: El nombre no puede estar vacío."</span><span class="p">;</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="c1">// Bad Request</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s2">"Error: El formato del correo electrónico no es válido."</span><span class="p">;</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="c1">// Bad Request</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// 3. Si todo es válido, procesar (simulado) y mostrar éxito</span>
+        <span class="c1">// En un caso real, aquí guardaríamos los datos en la base de datos.</span>
+        <span class="nv">$pageTitle</span> <span class="o">=</span> <span class="s2">"¡Registro Exitoso!"</span><span class="p">;</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s2">"¡Gracias por registrarte, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"! "</span> <span class="o">.</span>
+                   <span class="s2">"Te hemos enviado la confirmación a "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"."</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Si no es POST, redirigir al formulario</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: register_workshop.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pageTitle</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; text-align: center; }</span>
+<span class="x">        .message { padding: 20px; border-radius: 5px; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pageTitle</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">    &lt;p class="message"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$message</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    &lt;a href="register_workshop.php"&gt;Volver al formulario&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<p><br/><hr/></p>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">3) Evolución a PRG: El Registro Anti-Duplicados | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Refactorizar una implementación de formulario POST para aplicar el patrón Post/Redirect/Get (PRG), utilizando redirecciones y "flash messages" con sesiones para mejorar la experiencia de usuario y la robustez de la aplicación.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Partimos del ejercicio anterior (<code>register_workshop.php</code> y <code>process_registration.php</code>). El sistema funciona, pero tiene un fallo clásico: si un usuario envía el formulario y luego refresca la página de "Registro Exitoso", el navegador intentará reenviar los datos, creando un registro duplicado. ¡Hay que solucionarlo!</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Activa las sesiones:</strong> En la parte superior de ambos scripts (<code>register_workshop.php</code> y <code>process_registration.php</code>), asegúrate de iniciar la sesión con <code>session_start()</code>.</li>
+<li><strong>Modifica <code>process_registration.php</code>:</strong><ul>
+<li>Después de validar los datos, en lugar de generar un HTML, guarda el mensaje de éxito o error en una variable de sesión (por ejemplo, <code>$_SESSION['flash_message']</code>).</li>
+<li>Una vez guardado el mensaje, <strong>redirige</strong> siempre al usuario de vuelta a <code>register_workshop.php</code> usando <code>header('Location: register_workshop.php');</code>. ¡No olvides el <code>exit;</code>!</li>
+</ul>
+</li>
+<li>
+<p><strong>Modifica <code>register_workshop.php</code>:</strong></p>
+<ul>
+<li>Al principio del script, comprueba si existe la variable de sesión <code>$_SESSION['flash_message']</code>.</li>
+<li>Si existe, muestra su contenido en un lugar visible de la página (por ejemplo, encima del formulario).</li>
+<li><strong>Muy importante:</strong> Después de mostrar el mensaje, bórralo de la sesión (<code>unset($_SESSION['flash_message']);</code>) para que no vuelva a aparecer si el usuario recarga la página de nuevo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pista:</strong> Piensa en la sesión como un "buzón de mensajes" temporal entre dos peticiones. El script que procesa el POST deja una carta en el buzón y el script del formulario la recoge y la muestra, tirándola después a la basura.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El patrón PRG es un estándar de la industria para manejar envíos de formularios que modifican datos. Se utiliza en todas partes: al publicar un comentario, al actualizar un perfil, al realizar una compra online, etc. Dominarlo es esencial para crear aplicaciones web que se comporten de forma predecible y profesional.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Fichero <code>process_registration.php</code> (Refactorizado a PRG):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// 1. Activar las sesiones</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// Verificar que la petición es POST</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 2. Guardar mensaje de error en la sesión</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'error'</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="s1">'Error: El nombre no puede estar vacío.'</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'error'</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="s1">'Error: El formato del correo electrónico no es válido.'</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Lógica de guardado en BBDD aquí...</span>
+
+        <span class="c1">// 2. Guardar mensaje de éxito en la sesión</span>
+        <span class="nv">$successMessage</span> <span class="o">=</span> <span class="s2">"¡Gracias por registrarte, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"! Tu plaza está confirmada."</span><span class="p">;</span>
+        <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'success'</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="nv">$successMessage</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 3. Redirigir de vuelta al formulario</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: register_workshop.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Si no es POST, simplemente redirigir</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: register_workshop.php'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Fichero <code>register_workshop.php</code> (Refactorizado para manejar Flash Messages):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// 1. Activar las sesiones</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// 2. Comprobar, guardar y limpiar el flash message</span>
+<span class="nv">$flashMessage</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$flashMessage</span> <span class="o">=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">];</span>
+    <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">'flash_message'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Registro a Workshop - WebDev Summit&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }</span>
+<span class="x">        input, button { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }</span>
+<span class="x">        button { background-color: #007bff; color: white; border: none; cursor: pointer; }</span>
+<span class="x">        .flash { padding: 15px; margin-bottom: 20px; border-radius: 5px; }</span>
+<span class="x">        .flash.success { background-color: #d4edda; color: #155724; }</span>
+<span class="x">        .flash.error { background-color: #f8d7da; color: #721c24; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Registro al Workshop: "Testing de APIs con Postman"&lt;/h1&gt;</span>
+
+<span class="x">    &lt;!-- 3. Mostrar el flash message si existe --&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$flashMessage</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;div class="flash </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flashMessage</span><span class="p">[</span><span class="s1">'type'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$flashMessage</span><span class="p">[</span><span class="s1">'text'</span><span class="p">])</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="x">    &lt;p&gt;Las plazas son limitadas. ¡Asegura la tuya!&lt;/p&gt;</span>
+<span class="x">    &lt;form action="process_registration.php" method="POST"&gt;</span>
+<span class="x">        &lt;label for="name"&gt;Nombre Completo:&lt;/label&gt;</span>
+<span class="x">        &lt;input type="text" id="name" name="name" required&gt;</span>
+
+<span class="x">        &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;</span>
+<span class="x">        &lt;input type="email" id="email" name="email" required&gt;</span>
+
+<span class="x">        &lt;button type="submit"&gt;Registrarme&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<p><br/><hr/></p>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">4) Reto de Búsqueda Avanzada | Nivel: Alto</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Diseñar e implementar una funcionalidad de búsqueda y filtrado compleja, combinando formularios con el método GET, construcción dinámica de URLs y procesamiento de múltiples parámetros de entrada. Fomentar la colaboración y la crítica constructiva a través de una revisión por pares.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>"EventFlow" quiere ofrecer a sus asistentes una potente página de búsqueda para explorar el programa de la conferencia. Necesitan poder filtrar las charlas por temática (Track), por ponente y por un término de búsqueda libre en el título.</p>
+<p><strong>Datos base (en <code>search.php</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-101'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'AI &amp; ML'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'sec-202'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Cybersecurity'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'php-303'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Development'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-201'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Ética en el Desarrollo de IA'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'AI &amp; ML'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'be-401'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Arquitecturas Serverless con PHP'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Development'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// Extraer opciones únicas para los filtros &lt;select&gt;</span>
+<span class="nv">$speakers</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nb">array_column</span><span class="p">(</span><span class="nv">$talks</span><span class="p">,</span> <span class="s1">'speaker'</span><span class="p">));</span>
+<span class="nv">$tracks</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nb">array_column</span><span class="p">(</span><span class="nv">$talks</span><span class="p">,</span> <span class="s1">'track'</span><span class="p">));</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Crea <code>search.php</code>:</strong> Este fichero contendrá tanto el formulario de búsqueda como la lógica de filtrado y la visualización de resultados.</li>
+<li><strong>El Formulario (método GET):</strong><ul>
+<li>Un campo de texto para buscar por término (<code>q</code>).</li>
+<li>Un menú desplegable (<code>&lt;select&gt;</code>) para filtrar por ponente (<code>speaker</code>). Debe tener una opción por defecto "Todos los ponentes".</li>
+<li>Un menú desplegable (<code>&lt;select&gt;</code>) para filtrar por track (<code>track</code>). Debe tener una opción por defecto "Todas las temáticas".</li>
+</ul>
+</li>
+<li><strong>La Lógica de Filtrado (en el mismo fichero):</strong><ul>
+<li>Recupera los parámetros <code>q</code>, <code>speaker</code> y <code>track</code> de la superglobal <code>$_GET</code>.</li>
+<li>Comienza con la lista completa de <code>$talks</code> y ve aplicando los filtros secuencialmente. Si un filtro no se ha especificado (o su valor es "todos"), no se debe aplicar.</li>
+<li>La búsqueda por término (<code>q</code>) debe ser insensible a mayúsculas/minúsculas y buscar dentro del <code>title</code> de la charla.</li>
+</ul>
+</li>
+<li><strong>Visualización:</strong><ul>
+<li>Muestra los filtros seleccionados actualmente encima de los resultados.</li>
+<li>Muestra la lista de charlas que cumplen los criterios de búsqueda. Si no hay resultados, muestra un mensaje amigable.</li>
+</ul>
+</li>
+<li><strong>Revisión por Pares (Peer Review):</strong><ul>
+<li>Intercambia tu solución (<code>search.php</code>) con un compañero.</li>
+<li>Evalúa su código basándote en los siguientes criterios:<ul>
+<li><strong>Funcionalidad:</strong> ¿Funcionan correctamente todos los filtros, tanto individualmente como combinados?</li>
+<li><strong>Seguridad:</strong> ¿Se utiliza <code>htmlspecialchars()</code> en toda la salida de datos para prevenir XSS?</li>
+<li><strong>Experiencia de Usuario (UX):</strong> ¿El formulario "recuerda" los valores seleccionados después de enviarse? (Pista: necesitas usar PHP para añadir el atributo <code>selected</code> a las opciones <code>&lt;option&gt;</code> correctas).</li>
+<li><strong>Claridad del Código:</strong> ¿El código es legible y está bien comentado?</li>
+</ul>
+</li>
+<li>Proporciona feedback constructivo a tu compañero.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las páginas de búsqueda y filtrado son el corazón de las aplicaciones ricas en contenido como e-commerce (filtrar por marca, precio, talla), portales de noticias o plataformas de streaming. Construirlas de manera eficiente y segura es una tarea de desarrollo backend de alto valor.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Fichero <code>search.php</code> (Solución Completa):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$talks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-101'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'IA Generativa para Desarrolladores'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'AI &amp; ML'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'sec-202'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Defensa contra el Lado Oscuro de la Web (XSS)'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Prof. Alan Turing'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Cybersecurity'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'php-303'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Novedades Asíncronas en PHP 8.3'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Development'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'ai-201'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Ética en el Desarrollo de IA'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Dra. Ada Lovelace'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'AI &amp; ML'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'be-401'</span><span class="p">,</span> <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Arquitecturas Serverless con PHP'</span><span class="p">,</span> <span class="s1">'speaker'</span> <span class="o">=&gt;</span> <span class="s1">'Sr. Rasmus Lerdorf'</span><span class="p">,</span> <span class="s1">'track'</span> <span class="o">=&gt;</span> <span class="s1">'Backend Development'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// Extraer opciones únicas para los filtros &lt;select&gt;</span>
+<span class="nv">$speakers</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nb">array_column</span><span class="p">(</span><span class="nv">$talks</span><span class="p">,</span> <span class="s1">'speaker'</span><span class="p">));</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$speakers</span><span class="p">);</span>
+<span class="nv">$tracks</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nb">array_column</span><span class="p">(</span><span class="nv">$talks</span><span class="p">,</span> <span class="s1">'track'</span><span class="p">));</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$tracks</span><span class="p">);</span>
+
+<span class="c1">// Recuperar los filtros de la URL (GET)</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'q'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$selectedSpeaker</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$selectedTrack</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'track'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="c1">// Lógica de filtrado</span>
+<span class="nv">$filteredTalks</span> <span class="o">=</span> <span class="nv">$talks</span><span class="p">;</span>
+
+<span class="c1">// 1. Filtrar por término de búsqueda (q)</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$query</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$filteredTalks</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$filteredTalks</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$talk</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">stripos</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">],</span> <span class="nv">$query</span><span class="p">)</span> <span class="o">!==</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Filtrar por ponente (speaker)</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$selectedSpeaker</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$filteredTalks</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$filteredTalks</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$talk</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$selectedSpeaker</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$talk</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$selectedSpeaker</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. Filtrar por temática (track)</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$selectedTrack</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$filteredTalks</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$filteredTalks</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$talk</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$selectedTrack</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$talk</span><span class="p">[</span><span class="s1">'track'</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$selectedTrack</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Búsqueda Avanzada - WebDev Summit&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 20px; }</span>
+<span class="x">        form { background-color: #f4f4f4; padding: 20px; border-radius: 5px; margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-end; }</span>
+<span class="x">        form div { flex-grow: 1; }</span>
+<span class="x">        label { display: block; margin-bottom: 5px; font-weight: bold; }</span>
+<span class="x">        input, select, button { width: 100%; padding: 10px; box-sizing: border-box; }</span>
+<span class="x">        button { background: #007bff; color: white; border: 0; cursor: pointer; flex-grow: 0; }</span>
+<span class="x">        ul { list-style: none; padding: 0; }</span>
+<span class="x">        li { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; }</span>
+<span class="x">        li h3 { margin: 0 0 10px 0; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Búsqueda Avanzada de Charlas&lt;/h1&gt;</span>
+
+<span class="x">    &lt;form action="search.php" method="GET"&gt;</span>
+<span class="x">        &lt;div&gt;</span>
+<span class="x">            &lt;label for="q"&gt;Buscar por título:&lt;/label&gt;</span>
+<span class="x">            &lt;input type="text" id="q" name="q" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;div&gt;</span>
+<span class="x">            &lt;label for="speaker"&gt;Ponente:&lt;/label&gt;</span>
+<span class="x">            &lt;select id="speaker" name="speaker"&gt;</span>
+<span class="x">                &lt;option value=""&gt;Todos los ponentes&lt;/option&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$speakers</span> <span class="k">as</span> <span class="nv">$speaker</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;option value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$speaker</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$selectedSpeaker</span> <span class="o">===</span> <span class="nv">$speaker</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;</span>
+<span class="x">                        </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$speaker</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;/option&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;/select&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;div&gt;</span>
+<span class="x">            &lt;label for="track"&gt;Temática:&lt;/label&gt;</span>
+<span class="x">            &lt;select id="track" name="track"&gt;</span>
+<span class="x">                &lt;option value=""&gt;Todas las temáticas&lt;/option&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$tracks</span> <span class="k">as</span> <span class="nv">$track</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;option value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$track</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$selectedTrack</span> <span class="o">===</span> <span class="nv">$track</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;</span>
+<span class="x">                        </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$track</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;/option&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;/select&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Buscar&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+
+<span class="x">    &lt;h2&gt;Resultados (</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$filteredTalks</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">)&lt;/h2&gt;</span>
+
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$filteredTalks</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;p&gt;No se encontraron charlas que coincidan con tus criterios de búsqueda. ¡Intenta con otros filtros!&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;ul&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$filteredTalks</span> <span class="k">as</span> <span class="nv">$talk</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                &lt;li&gt;</span>
+<span class="x">                    &lt;h3&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">                    &lt;p&gt;</span>
+<span class="x">                        &lt;strong&gt;Ponente:&lt;/strong&gt; </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'speaker'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;br&gt;</span>
+<span class="x">                        &lt;strong&gt;Track:&lt;/strong&gt; </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$talk</span><span class="p">[</span><span class="s1">'track'</span><span class="p">])</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;/p&gt;</span>
+<span class="x">                &lt;/li&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;/ul&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

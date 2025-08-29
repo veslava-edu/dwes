@@ -1,0 +1,1156 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" rel="canonical"/>
+<link href="../UD1-Arquitectura-Web-y-Software-en-Servidor/" rel="prev"/>
+<link href="../UD1.2-Virtualizacion-Docker/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>01 - Entorno-WAMP - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#entorno-de-desarrollo-local-montando-tu-propio-laboratorio-con-wampserver">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              01 - Entorno-WAMP
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales-los-ingredientes-de-nuestro-servidor">
+<span class="md-ellipsis">
+      Conceptos Fundamentales: Los Ingredientes de Nuestro Servidor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos-construyendo-el-laboratorio">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos: Construyendo el Laboratorio
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos: Construyendo el Laboratorio" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-1-descarga-e-instalacion">
+<span class="md-ellipsis">
+      Paso 1: Descarga e Instalación
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-2-el-panel-de-control-como-usar-wampserver">
+<span class="md-ellipsis">
+      Paso 2: El Panel de Control - Cómo usar WampServer
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-3-tu-primer-proyecto">
+<span class="md-ellipsis">
+      Paso 3: Tu Primer Proyecto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-4-gestionando-bases-de-datos-con-phpmyadmin">
+<span class="md-ellipsis">
+      Paso 4: Gestionando Bases de Datos con phpMyAdmin
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cambiando-la-version-de-php">
+<span class="md-ellipsis">
+      Cambiando la versión de PHP
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real-el-dia-a-dia-de-un-desarrollador">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real: El Día a Día de un Desarrollador
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-muro-de-los-lamentos-solucion-a-problemas-comunes">
+<span class="md-ellipsis">
+      El Muro de los Lamentos: Solución a Problemas Comunes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alternativas-en-el-ecosistema">
+<span class="md-ellipsis">
+      Alternativas en el Ecosistema
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales-los-ingredientes-de-nuestro-servidor">
+<span class="md-ellipsis">
+      Conceptos Fundamentales: Los Ingredientes de Nuestro Servidor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos-construyendo-el-laboratorio">
+<span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos: Construyendo el Laboratorio
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos: Construyendo el Laboratorio" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-1-descarga-e-instalacion">
+<span class="md-ellipsis">
+      Paso 1: Descarga e Instalación
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-2-el-panel-de-control-como-usar-wampserver">
+<span class="md-ellipsis">
+      Paso 2: El Panel de Control - Cómo usar WampServer
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-3-tu-primer-proyecto">
+<span class="md-ellipsis">
+      Paso 3: Tu Primer Proyecto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#paso-4-gestionando-bases-de-datos-con-phpmyadmin">
+<span class="md-ellipsis">
+      Paso 4: Gestionando Bases de Datos con phpMyAdmin
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cambiando-la-version-de-php">
+<span class="md-ellipsis">
+      Cambiando la versión de PHP
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real-el-dia-a-dia-de-un-desarrollador">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real: El Día a Día de un Desarrollador
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-muro-de-los-lamentos-solucion-a-problemas-comunes">
+<span class="md-ellipsis">
+      El Muro de los Lamentos: Solución a Problemas Comunes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alternativas-en-el-ecosistema">
+<span class="md-ellipsis">
+      Alternativas en el Ecosistema
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- TEMA: Entorno de Desarrollo Local con WampServer -->
+<h1 id="entorno-de-desarrollo-local-montando-tu-propio-laboratorio-con-wampserver">Entorno de Desarrollo Local: Montando tu propio laboratorio con WampServer</h1>
+<p>Antes de lanzar un cohete al espacio, los ingenieros pasan miles de horas en simuladores. Antes de que un chef de estrella Michelin ponga un plato en el menú, lo cocina decenas de veces en su cocina de pruebas. En el desarrollo web, nuestra "cocina de pruebas" es nuestro <strong>entorno de desarrollo local</strong>.</p>
+<p>Imagina que quieres construir una aplicación web increíble. ¿Vas a programar directamente en el servidor final, a la vista de todo el mundo, con el riesgo de que un error <code>Parse error: syntax error...</code> deje la web caída para todos? ¡Ni de broma! Eso es como hacer funambulismo sin red.</p>
+<p>Aquí es donde entra en juego WampServer. Es una herramienta que transforma tu propio ordenador con Windows en un completo servidor web, una réplica en miniatura de lo que tu aplicación encontrará en el mundo real. Es tu laboratorio privado, tu simulador, tu cocina de pruebas. Te permite construir, experimentar, romper y arreglar cosas en un entorno seguro y controlado, sin que nadie más se entere. Hoy vamos a aprender a montar este laboratorio desde cero.</p>
+<p><br/><hr/></p>
+<h2 id="conceptos-fundamentales-los-ingredientes-de-nuestro-servidor">Conceptos Fundamentales: Los Ingredientes de Nuestro Servidor</h2>
+<p>WampServer no es un solo programa, es un "paquete" que instala y configura por nosotros la Santísima Trinidad del desarrollo web del lado del servidor. Su nombre es un acrónimo de los componentes que lo forman:</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: WAMP</p>
+<p>Es el acrónimo que describe la pila de software de un servidor web que se ejecuta en <strong>W</strong>indows.
+*   <strong>W</strong>indows: El sistema operativo sobre el que corre todo.
+*   <strong>A</strong>pache: El servidor web. Es el "camarero" que recibe las peticiones de los navegadores y les sirve las páginas.
+*   <strong>M</strong>ySQL/MariaDB: El sistema gestor de bases de datos. Es el "almacén" donde se guardan todos los datos de forma organizada (usuarios, productos, posts, etc.). MariaDB es un <em>fork</em> (una derivación) de MySQL creado por sus desarrolladores originales, y es totalmente compatible.
+*   <strong>P</strong>HP: El lenguaje de programación del lado del servidor. Es el "cocinero" que toma los ingredientes del almacén (base de datos) y prepara el plato (la página web dinámica) que el camarero (Apache) servirá al cliente.</p>
+</div>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP0.avif"><img alt="Wamp" src="../images/WAMP0.avif"/></a></p>
+<pre class="mermaid"><code>graph TD
+    subgraph "Tu Ordenador (Windows)"
+        A(&lt;b&gt;Apache&lt;/b&gt;&lt;br&gt;El Servidor Web)
+        M(&lt;b&gt;MySQL/MariaDB&lt;/b&gt;&lt;br&gt;La Base de Datos)
+        P(&lt;b&gt;PHP&lt;/b&gt;&lt;br&gt;El Lenguaje de Programación)
+    end
+
+    A --&gt; P;
+    P --&gt; M;
+    M --&gt; P;
+    P --&gt; A;
+
+    subgraph "Internet"
+        U[Tu Navegador]
+    end
+
+    U &lt;--&gt;|Petición/Respuesta HTTP| A
+
+    style A fill:#D22128,stroke:#333,stroke-width:2px,color:#fff
+    style M fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
+    style P fill:#777BB4,stroke:#333,stroke-width:2px,color:#fff</code></pre>
+<p><br/><hr/></p>
+<h2 id="desarrollo-y-ejemplos-practicos-construyendo-el-laboratorio">Desarrollo y Ejemplos Prácticos: Construyendo el Laboratorio</h2>
+<p>Manos a la obra. Montar WampServer es sencillo, pero como construir un mueble de IKEA, hay que seguir las instrucciones al pie de la letra para no acabar con un montón de tornillos sobrantes y un servidor que no funciona.</p>
+<h3 id="paso-1-descarga-e-instalacion">Paso 1: Descarga e Instalación</h3>
+<p>Lo primero es conseguir el instalador.</p>
+<ol>
+<li><strong>Descarga el instalador:</strong> Ve a la <strong><a href="https://www.wampserver.com/en/">página web oficial de WampServer</a></strong>. Verás las opciones de descarga para sistemas de 32 y 64 bits. Hoy en día, casi todos los sistemas son de 64 bits, así que esa será tu elección habitual.
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP1.png"><img alt="Wamp Website" src="../images/WAMP1.png" width="800"/></a></li>
+<li>
+<p><strong>¡ALTO! Antes de instalar - Las dependencias críticas:</strong> WampServer depende de los paquetes de Microsoft Visual C++ para funcionar. Si no los tienes TODOS, la instalación fallará o el servidor no se iniciará.</p>
+<ul>
+<li>El propio instalador de WampServer te avisará de los paquetes que te faltan.</li>
+<li>La forma más segura es ir a la <strong><a href="https://wampserver.aviatechno.net/">página de añadidos de WampServer</a></strong> y, en la sección "Visual C++ Redistribuable Packages", descargar e instalar el paquete "All VC Redistributable Packages (x86_x64)" que los incluye todos.
+<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP10.avif"><img alt="Wamp Website" src="../images/WAMP10.avif"/></a>
+<br/></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">¡Este paso es OBLIGATORIO!</p>
+<p>No te saltes la instalación de los paquetes de Visual C++. Es el motivo número uno por el que WampServer no funciona para los principiantes. Instala el paquete que los contiene todos, reinicia el PC y solo entonces, continúa.</p>
+</div>
+</li>
+<li>
+<p><strong>Ejecuta el instalador:</strong></p>
+<ul>
+<li>Acepta los términos de la licencia.</li>
+<li>
+<p>El instalador te dará información importante. Léela. Te recordará lo de los paquetes VC++ y te aconsejará <strong>no instalar WampServer sobre una versión antigua</strong> y <strong>evitar rutas con espacios o caracteres especiales</strong> como <code>C:\Program Files</code>. La ruta por defecto, <code>C:\wamp64</code>, es perfecta.</p>
+</li>
+<li>
+<p>Sigue los pasos, que te permitirán elegir el navegador y editor de texto por defecto. Puedes dejar Edge y Notepad, o cambiarlos a Chrome y VS Code si lo prefieres.</p>
+</li>
+<li>Finaliza la instalación.</li>
+</ul>
+</li>
+</ol>
+<pre class="mermaid"><code>graph TD
+    A(Inicio) --&gt; B{¿Tengo TODOS los paquetes&lt;br&gt;VC++ instalados?};
+    B -- NO --&gt; C[Ir a wampserver.aviatechno.net];
+    C --&gt; D[Descargar e instalar 'All VC Redistributable Packages'];
+    D --&gt; E[Reiniciar el PC];
+    E --&gt; B;
+    B -- SÍ --&gt; F[Descargar instalador de WampServer];
+    F --&gt; G[Ejecutar como Administrador];
+    G --&gt; H[Aceptar y leer avisos];
+    H --&gt; I{¿Cambiar ruta de instalación?};
+    I -- RECOMENDADO NO --&gt; J[Dejar C:\wamp64];
+    I -- SÍ (NO USAR ESPACIOS) --&gt; J;
+    J --&gt; K[Finalizar instalación];
+    K --&gt; L(¡Laboratorio Montado!);</code></pre>
+<h3 id="paso-2-el-panel-de-control-como-usar-wampserver">Paso 2: El Panel de Control - Cómo usar WampServer</h3>
+<p>Una vez instalado, tendrás un icono de WampServer en tu escritorio o menú de inicio. <br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP2.avif"><img alt="Wamp" src="../images/WAMP2.avif"/></a><br/>
+Al ejecutarlo, aparecerá un nuevo icono en tu barra de tareas, junto al reloj. Este icono es tu panel de control.<br/><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP3.avif"><img alt="Wamp" src="../images/WAMP3.avif"/></a></p>
+<p><strong>El color del icono es VITAL:</strong></p>
+<ul>
+<li><strong>ROJO:</strong> Desastre. WampServer no ha podido iniciar ninguno de sus servicios principales (Apache o MySQL).</li>
+<li><strong>NARANJA:</strong> Algo va mal. Uno de los dos servicios ha arrancado, pero el otro no.</li>
+<li><strong>VERDE:</strong> ¡Éxito! Todo está funcionando correctamente. Tu servidor está online (localmente).</li>
+</ul>
+<p>Un <strong>clic izquierdo</strong> en el icono verde abre el menú principal:</p>
+<ul>
+<li><strong>Servidor virtual / Localhost:</strong> Abre la página de inicio de tu servidor en el navegador.</li>
+<li><strong>phpMyAdmin:</strong> Abre la herramienta gráfica para gestionar tus bases de datos.</li>
+<li><strong>directorio www:</strong> Abre la carpeta <code>C:\wamp64\www</code> en el explorador de archivos. <strong>Aquí es donde vivirán tus proyectos</strong>.</li>
+<li>Menús para Apache, PHP y MySQL que te permiten acceder a sus ficheros de configuración.</li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP4.avif"><img alt="Wamp" src="../images/WAMP4.avif"/></a></p>
+<p>Un <strong>clic derecho</strong> abre un menú con más opciones de configuración y herramientas.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP5.png"><img alt="Wamp" src="../images/WAMP5.png"/></a></p>
+<h3 id="paso-3-tu-primer-proyecto">Paso 3: Tu Primer Proyecto</h3>
+<p>Crear un proyecto es tan fácil como crear una carpeta:</p>
+<ol>
+<li>Ve al directorio <code>www</code> de WampServer (puedes usar el acceso directo del menú).</li>
+<li>Crea una nueva carpeta. El nombre de la carpeta será el nombre de tu proyecto. Por ejemplo: <code>mi-primera-app</code>.</li>
+<li>Dentro de esa carpeta, crea un fichero llamado <code>index.php</code>.</li>
+<li>Abre <code>index.php</code> en tu editor de código y escribe tu primer script:
+    <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: C:\wamp64\www\mi-primera-app\index.php</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;¡Hola, Mundo!&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Mi servidor WampServer funciona perfectamente.&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;La versión de PHP es: "</span> <span class="o">.</span> <span class="nb">phpversion</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></li>
+<li>Guarda el fichero y abre tu navegador. Ve a la dirección <code>http://localhost/mi-primera-app/</code>. ¡Verás tu página en acción!</li>
+</ol>
+<h3 id="paso-4-gestionando-bases-de-datos-con-phpmyadmin">Paso 4: Gestionando Bases de Datos con phpMyAdmin</h3>
+<p>Casi toda aplicación web necesita una base de datos. WampServer te lo pone fácil con phpMyAdmin.</p>
+<ol>
+<li>
+<p>Haz clic izquierdo en el icono de WampServer y selecciona <code>phpMyAdmin</code>.<br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP6.avif"><img alt="Wamp" src="../images/WAMP6.avif"/></a><br/></p>
+</li>
+<li>
+<p>Se abrirá una pestaña en tu navegador con la interfaz de inicio de sesión.</p>
+<ul>
+<li><strong>Usuario:</strong> <code>root</code></li>
+<li><strong>Contraseña:</strong> (déjala en blanco)</li>
+</ul>
+</li>
+<li>¡Ya estás dentro! Desde aquí puedes crear bases de datos, crear tablas, insertar datos, exportar, importar... todo lo que necesites para tu proyecto.</li>
+</ol>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP7.avif"><img alt="Wamp" src="../images/WAMP7.avif"/></a></p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBNZW7DuiBkZSBXYW1wU2VydmVyIChDbGljIEl6cXVpZXJkbykKCiMjIEFjY2VzbyBQcmluY2lwYWwKLSAqKkxvY2FsaG9zdCoqOiBUdSBww6FnaW5hIGRlIGluaWNpby4KLSAqKnBocE15QWRtaW4qKjogR2VzdGnDs24gZGUgQkJERC4KLSAqKkRpcmVjdG9yaW8gd3d3Kio6IExhIGNhcnBldGEgZGUgdHVzIHByb3llY3Rvcy4KCiMjIENvbmZpZ3VyYWNpw7NuIFLDoXBpZGEKLSAqKkFwYWNoZSoqCiAgLSBodHRwZC5jb25mCiAgLSBNw7NkdWxvcwotICoqUEhQKioKICAtIHBocC5pbmkKICAtIEV4dGVuc2lvbmVzCi0gKipNeVNRTCoqCiAgLSBteS5pbmkKICAtIENvbnNvbGEKCiMjIENvbnRyb2wgZGUgU2VydmljaW9zCi0gUmVpbmljaWFyIFNlcnZpY2lvcwotIERldGVuZXIgU2VydmljaW9z</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">Reflexionemos un poco...</p>
+<ol>
+<li>Si al iniciar WampServer, el icono se queda en <strong>naranja</strong>, ¿qué podría estar pasando? ¿Cuál es una de las causas más comunes de que Apache no arranque? (Pista: otro programa usando su "puerta").</li>
+<li>¿Por qué es una mala idea poner tus proyectos en una carpeta fuera del directorio <code>C:\wamp64\www</code>?</li>
+<li>Entra en phpMyAdmin. ¿Cuál es el "collation" (cotejamiento) por defecto al crear una nueva base de datos? Investiga por qué <code>utf8mb4_general_ci</code> es una buena opción para proyectos web.</li>
+<li>WampServer te permite cambiar de versión de PHP con un par de clics. ¿En qué situación real de trabajo crees que esta funcionalidad sería increíblemente útil?</li>
+</ol>
+</div>
+<h3 id="cambiando-la-version-de-php">Cambiando la versión de PHP</h3>
+<p>El beneficio principal de WampServer, sobresaliendo sobre sus competidores (principalmente XAMPP), radica en la sencillez de instalar y usar otra versión de PHP, Apache, MySQL, MariaDB o phpMyAdmin.</p>
+<p>Es tan sencillo, solo necesita visitar la página oficial de añadidos de WampServer, descargar el archivo, instalarlo (Con WampServer cerrado) y al abrirlo nuevamente desde el panel de control, podrá elegir qué versión usar. Si se ha instalado WampServer 64 bits, también se deben instalar los complementos en 64 bits. Esta imagen presenta las versiones de PHP que se encuentran instaladas en la plataforma que se está empleando, y solo necesitamos hacer clic en la versión que deseamos usar. Por ejemplo, tengo instaladas estas:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/WAMP8.avif"><img alt="Wamp" src="../images/WAMP8.avif"/></a></p>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real-el-dia-a-dia-de-un-desarrollador">Aplicación en el Mundo Real: El Día a Día de un Desarrollador</h2>
+<p>Usar un entorno de desarrollo local como WampServer no es solo para aprender. Es una práctica estándar y profesional:</p>
+<ul>
+<li><strong>Desarrollo de temas y plugins de CMS:</strong> Antes de instalar un plugin de WordPress en la web de un cliente, lo pruebas en tu WampServer para asegurarte de que no rompe nada.</li>
+<li><strong>Pruebas y Depuración:</strong> Te permite activar los informes de errores de PHP al máximo nivel (<code>error_reporting(E_ALL)</code>) para ver cada <code>notice</code> y <code>warning</code>, algo que nunca harías en un servidor en producción porque revelaría información sensible.</li>
+<li><strong>Trabajo sin Conexión:</strong> Puedes seguir desarrollando una aplicación web en tu portátil durante un viaje en tren, sin necesidad de conexión a internet.</li>
+<li><strong>Migraciones Seguras:</strong> Cuando un cliente quiere actualizar su web de una versión de PHP antigua (ej. 7.4) a una nueva (ej. 8.2), puedes simular todo el proceso en WampServer, instalar la versión de PHP necesaria, y corregir todos los errores de compatibilidad antes de tocar el servidor real.</li>
+</ul>
+<p><br/><hr/></p>
+<h2 id="el-muro-de-los-lamentos-solucion-a-problemas-comunes">El Muro de los Lamentos: Solución a Problemas Comunes</h2>
+<p>Si WampServer no se pone en verde, no entres en pánico. Estos son los sospechosos habituales:</p>
+<div class="admonition danger">
+<p class="admonition-title">Puerto 80 Ocupado</p>
+<p>Apache necesita el puerto 80 para funcionar. Si otro programa lo está usando (Skype es un culpable clásico), Apache no podrá arrancar.
+<strong>Solución:</strong> Cierra el programa conflictivo o cambia el puerto que usa Apache en el fichero <code>httpd.conf</code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Error en MySQL</p>
+<p>Asegúrate de que no tienes otro servicio de MySQL funcionando de otra instalación previa. Solo puede haber un "sheriff" de MySQL en la ciudad.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Problemas de Permisos</p>
+<p>A veces, Windows es quisquilloso con los permisos.
+<strong>Solución:</strong> Ejecuta siempre WampServer como Administrador (clic derecho -&gt; "Ejecutar como administrador").</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Firewall o Antivirus Bloqueando</p>
+<p>Tu software de seguridad podría ver a Apache como una amenaza e impedirle que acepte conexiones.
+<strong>Solución:</strong> Añade una excepción en tu firewall para permitir el acceso a WampServer y al servicio de Apache (<code>httpd.exe</code>).</p>
+</div>
+<h2 id="alternativas-en-el-ecosistema">Alternativas en el Ecosistema</h2>
+<p>WampServer es fantástico, pero no es el único. Es importante conocer a sus "primos":</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Sistemas Operativos</th>
+<th style="text-align: left;">Enfoque Principal</th>
+<th style="text-align: left;">Característica Destacada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>WampServer</strong></td>
+<td style="text-align: left;">Windows</td>
+<td style="text-align: left;">Flexibilidad y control de versiones.</td>
+<td style="text-align: left;">Cambiar de versión de PHP, Apache o MySQL con un clic.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>XAMPP</strong></td>
+<td style="text-align: left;">Windows, <strong>Mac</strong>, <strong>Linux</strong></td>
+<td style="text-align: left;">Multiplataforma y simplicidad.</td>
+<td style="text-align: left;">El más conocido y versátil. Incluye Perl y Tomcat.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MAMP</strong></td>
+<td style="text-align: left;"><strong>Mac</strong>, Windows</td>
+<td style="text-align: left;">Centrado en la experiencia de usuario de macOS.</td>
+<td style="text-align: left;">Muy popular entre diseñadores y desarrolladores en Mac.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Laragon</strong></td>
+<td style="text-align: left;">Windows</td>
+<td style="text-align: left;">Rapidez, ligereza y auto-configuración.</td>
+<td style="text-align: left;">Extremadamente rápido de iniciar. Crea hosts virtuales automáticamente.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><hr/></p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>¿Quieres profundizar? Aquí tienes material de primera calidad para llevar tu laboratorio al siguiente nivel.</p>
+<ol>
+<li><strong>WampServer Official Forum:</strong> El foro oficial. Si tienes un problema raro, es muy probable que alguien ya lo haya preguntado y resuelto aquí.
+    <a href="http://forum.wampserver.com/list.php?2">http://forum.wampserver.com/list.php?2</a></li>
+<li><strong>Página de Add-ons de WampServer (VC++ y versiones):</strong> La página que ya hemos mencionado para descargar los paquetes de Visual C++ y también versiones adicionales de Apache, PHP y MySQL.
+    <a href="https://wampserver.aviatechno.net/">https://wampserver.aviatechno.net/</a></li>
+<li><strong>Guía completa de XAMPP:</strong> El artículo enlazado en el propio documento original, para que puedas comparar con su principal alternativa.
+    <em>(El documento original menciona una "guía completa de XAMPP", pero no proporciona un enlace. Un buen recurso sería la página oficial de XAMPP o un tutorial de una fuente fiable como DigitalOcean o SitePoint).</em></li>
+</ol>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

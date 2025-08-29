@@ -1,0 +1,2279 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" rel="canonical"/>
+<link href="../UD1.1-Entorno-WAMP/" rel="prev"/>
+<link href="../UD1.3-Control-Versiones-GIT/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>02 - Virtualizacion-Docker - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#virtualizacion-con-docker">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              02 - Virtualizacion-Docker
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-docker">
+<span class="md-ellipsis">
+      1. ¿Qué es Docker?
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es Docker?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-concepto">
+<span class="md-ellipsis">
+      Ejemplo 1: El concepto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-ecosistema">
+<span class="md-ellipsis">
+      Ejemplo 2: El ecosistema
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-docker-vs-maquinas-virtuales">
+<span class="md-ellipsis">
+      2. Docker VS Máquinas virtuales
+    </span>
+</a>
+<nav aria-label="2. Docker VS Máquinas virtuales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-docker-vs-maquinas-virtuales">
+<span class="md-ellipsis">
+      Tabla Comparativa: Docker vs. Máquinas Virtuales
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-ventajas-y-desventajas-de-docker">
+<span class="md-ellipsis">
+      2.1. Ventajas y desventajas de Docker
+    </span>
+</a>
+<nav aria-label="2.1. Ventajas y desventajas de Docker" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-las-razones-de-su-exito">
+<span class="md-ellipsis">
+      Ventajas (¡Las razones de su éxito!)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desventajas-nada-es-perfecto">
+<span class="md-ellipsis">
+      Desventajas (Nada es perfecto)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-resumen-pros-y-contras">
+<span class="md-ellipsis">
+      Tabla Resumen: Pros y Contras
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-como-funciona-docker">
+<span class="md-ellipsis">
+      3. ¿Cómo funciona Docker?
+    </span>
+</a>
+<nav aria-label="3. ¿Cómo funciona Docker?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-docker-engine">
+<span class="md-ellipsis">
+      3.1. Docker Engine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-imagen-docker">
+<span class="md-ellipsis">
+      3.2. Imagen Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-contenedor-docker">
+<span class="md-ellipsis">
+      3.3. Contenedor Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-docker-compose">
+<span class="md-ellipsis">
+      3.4. Docker Compose
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-dockerfile">
+<span class="md-ellipsis">
+      3.5. Dockerfile
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-docker-desktop">
+<span class="md-ellipsis">
+      3.6. Docker Desktop
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#37-docker-hub">
+<span class="md-ellipsis">
+      3.7. Docker Hub
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#38-comandos-usuales">
+<span class="md-ellipsis">
+      3.8. Comandos Usuales
+    </span>
+</a>
+<nav aria-label="3.8. Comandos Usuales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-contenedores">
+<span class="md-ellipsis">
+      Gestión de Contenedores
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-imagenes">
+<span class="md-ellipsis">
+      Gestión de Imágenes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-compose">
+<span class="md-ellipsis">
+      Docker Compose
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-para-que-usar-docker">
+<span class="md-ellipsis">
+      4. ¿Para qué usar Docker?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-instalar-docker">
+<span class="md-ellipsis">
+      5. Instalar Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-ejecutar-un-docker">
+<span class="md-ellipsis">
+      6. Ejecutar un Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-crear-una-imagen-docker">
+<span class="md-ellipsis">
+      7. Crear una imagen Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-volumen-docker-y-persistencia">
+<span class="md-ellipsis">
+      8. Volumen Docker y Persistencia
+    </span>
+</a>
+<nav aria-label="8. Volumen Docker y Persistencia" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-persistencia-de-datos-de-una-base-de-datos-con-volumen">
+<span class="md-ellipsis">
+      Ejemplo 1: Persistencia de datos de una base de datos (con Volumen)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-sincronizacion-de-codigo-en-vivo-con-bind-mount">
+<span class="md-ellipsis">
+      Ejemplo 2: Sincronización de código en vivo (con Bind Mount)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-compilacion-y-despliegue">
+<span class="md-ellipsis">
+      9. Compilación y despliegue
+    </span>
+</a>
+<nav aria-label="9. Compilación y despliegue" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-un-dockerfile-multi-etapa-para-optimizar">
+<span class="md-ellipsis">
+      Usando un Dockerfile Multi-etapa para optimizar
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-de-flujo-de-despliegue">
+<span class="md-ellipsis">
+      Ejemplo de flujo de Despliegue
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-buenas-practicas">
+<span class="md-ellipsis">
+      10. Buenas prácticas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Servicios-WEB/">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-docker">
+<span class="md-ellipsis">
+      1. ¿Qué es Docker?
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es Docker?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-concepto">
+<span class="md-ellipsis">
+      Ejemplo 1: El concepto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-ecosistema">
+<span class="md-ellipsis">
+      Ejemplo 2: El ecosistema
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-docker-vs-maquinas-virtuales">
+<span class="md-ellipsis">
+      2. Docker VS Máquinas virtuales
+    </span>
+</a>
+<nav aria-label="2. Docker VS Máquinas virtuales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-docker-vs-maquinas-virtuales">
+<span class="md-ellipsis">
+      Tabla Comparativa: Docker vs. Máquinas Virtuales
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-ventajas-y-desventajas-de-docker">
+<span class="md-ellipsis">
+      2.1. Ventajas y desventajas de Docker
+    </span>
+</a>
+<nav aria-label="2.1. Ventajas y desventajas de Docker" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-las-razones-de-su-exito">
+<span class="md-ellipsis">
+      Ventajas (¡Las razones de su éxito!)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desventajas-nada-es-perfecto">
+<span class="md-ellipsis">
+      Desventajas (Nada es perfecto)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-resumen-pros-y-contras">
+<span class="md-ellipsis">
+      Tabla Resumen: Pros y Contras
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-como-funciona-docker">
+<span class="md-ellipsis">
+      3. ¿Cómo funciona Docker?
+    </span>
+</a>
+<nav aria-label="3. ¿Cómo funciona Docker?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-docker-engine">
+<span class="md-ellipsis">
+      3.1. Docker Engine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-imagen-docker">
+<span class="md-ellipsis">
+      3.2. Imagen Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-contenedor-docker">
+<span class="md-ellipsis">
+      3.3. Contenedor Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#34-docker-compose">
+<span class="md-ellipsis">
+      3.4. Docker Compose
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#35-dockerfile">
+<span class="md-ellipsis">
+      3.5. Dockerfile
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#36-docker-desktop">
+<span class="md-ellipsis">
+      3.6. Docker Desktop
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#37-docker-hub">
+<span class="md-ellipsis">
+      3.7. Docker Hub
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#38-comandos-usuales">
+<span class="md-ellipsis">
+      3.8. Comandos Usuales
+    </span>
+</a>
+<nav aria-label="3.8. Comandos Usuales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-contenedores">
+<span class="md-ellipsis">
+      Gestión de Contenedores
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-imagenes">
+<span class="md-ellipsis">
+      Gestión de Imágenes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#docker-compose">
+<span class="md-ellipsis">
+      Docker Compose
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-para-que-usar-docker">
+<span class="md-ellipsis">
+      4. ¿Para qué usar Docker?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-instalar-docker">
+<span class="md-ellipsis">
+      5. Instalar Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-ejecutar-un-docker">
+<span class="md-ellipsis">
+      6. Ejecutar un Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-crear-una-imagen-docker">
+<span class="md-ellipsis">
+      7. Crear una imagen Docker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-volumen-docker-y-persistencia">
+<span class="md-ellipsis">
+      8. Volumen Docker y Persistencia
+    </span>
+</a>
+<nav aria-label="8. Volumen Docker y Persistencia" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-persistencia-de-datos-de-una-base-de-datos-con-volumen">
+<span class="md-ellipsis">
+      Ejemplo 1: Persistencia de datos de una base de datos (con Volumen)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-sincronizacion-de-codigo-en-vivo-con-bind-mount">
+<span class="md-ellipsis">
+      Ejemplo 2: Sincronización de código en vivo (con Bind Mount)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-compilacion-y-despliegue">
+<span class="md-ellipsis">
+      9. Compilación y despliegue
+    </span>
+</a>
+<nav aria-label="9. Compilación y despliegue" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-un-dockerfile-multi-etapa-para-optimizar">
+<span class="md-ellipsis">
+      Usando un Dockerfile Multi-etapa para optimizar
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-de-flujo-de-despliegue">
+<span class="md-ellipsis">
+      Ejemplo de flujo de Despliegue
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-buenas-practicas">
+<span class="md-ellipsis">
+      10. Buenas prácticas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="virtualizacion-con-docker">Virtualización con Docker</h1>
+<p>¡Hola, equipo! Hoy vamos a sumergirnos en una de las herramientas más revolucionarias del desarrollo de software moderno: <strong>Docker</strong>. Si alguna vez has dicho la mítica frase "¡en mi máquina funciona!", prepárate, porque Docker ha venido a jubilarla para siempre.</p>
+<p>Imaginen que son los encargados de la logística de una gran flota de barcos. Antes, cada mercancía (ropa, comida, productos electrónicos) se cargaba de cualquier manera. Unas en cajas, otras en sacos, otras sueltas... un auténtico caos. Cada vez que llegaban a puerto, descargar era una pesadilla y las cosas se rompían o se mezclaban. Un día, alguien inventó el <strong>contenedor de transporte estándar</strong>. Da igual lo que metas dentro, todos los contenedores son iguales por fuera, se apilan, se cargan y se descargan de la misma forma en cualquier puerto del mundo. Se acabó el caos.</p>
+<p>Pues bien, <strong>Docker es exactamente eso, pero para el software</strong>. Es el contenedor estándar para nuestras aplicaciones. Metemos nuestra aplicación PHP, con su servidor Apache, su base de datos MariaDB y todas sus dependencias en una "caja" (un contenedor Docker), y a partir de ese momento, esa caja funcionará exactamente igual en nuestro portátil, en el del compañero, en el servidor de pruebas y en el de producción. Se acabó el "¡en mi máquina funciona!".</p>
+<p>A lo largo de este tema, vamos a construir nuestro propio entorno de desarrollo profesional para PHP usando Docker, paso a paso. Veremos cómo empaquetar nuestros proyectos para que sean portátiles, eficientes y escalables. ¡Al lío, que zarpamos!</p>
+<h2 id="1-que-es-docker">1. ¿Qué es Docker?</h2>
+<p>Docker es una plataforma de código abierto que nos permite automatizar el despliegue de aplicaciones dentro de estos contenedores de software aislados.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Docker</p>
+<p>Es una tecnología que "empaqueta" una aplicación y todas sus dependencias (bibliotecas, configuraciones, etc.) en una unidad estandarizada llamada <strong>contenedor</strong>. Este contenedor es portátil y puede ejecutarse en cualquier máquina que tenga Docker instalado, garantizando que la aplicación siempre se comporte de la misma manera.</p>
+</div>
+<p>La idea es simple pero potentísima: creas un entorno una vez y lo replicas infinitas veces, donde quieras. Esto resuelve uno de los mayores dolores de cabeza del desarrollo: la consistencia entre los entornos de desarrollo, pruebas y producción.</p>
+<h3 id="ejemplo-1-el-concepto">Ejemplo 1: El concepto</h3>
+<p>Piensa en una aplicación PHP sencilla. Para que funcione, no solo necesitas el código PHP. Necesitas:
+<br/>1.  Un servidor web (como Apache o Nginx).
+<br/>2.  La versión correcta de PHP (¿la 8.1, 8.2, 8.3?).
+<br/>3.  Extensiones específicas de PHP (<code>pdo_mysql</code>, <code>gd</code>, <code>xdebug</code>).
+<br/>4.  Un servidor de base de datos (MariaDB, MySQL, PostgreSQL).
+<br/>5.  Variables de entorno y ficheros de configuración (<code>php.ini</code>).</p>
+<p>Con Docker, todo esto se define en ficheros de texto y se empaqueta junto, creando un "todo en uno" funcional y portátil.</p>
+<h3 id="ejemplo-2-el-ecosistema">Ejemplo 2: El ecosistema</h3>
+<p>Docker no es solo una herramienta, es un ecosistema que se compone de varias piezas clave que veremos a lo largo del tema:
+<br/><em> </em><em>Dockerfile:</em><em> La "receta" o el plano para construir nuestra caja.
+<br/></em> <strong>Imagen:</strong> La plantilla de solo lectura. Es como el molde del contenedor.
+<br/><em> </em><em>Contenedor:</em><em> La instancia en ejecución de una imagen. Es nuestra aplicación viva y funcionando.
+<br/></em> <strong>Docker Hub:</strong> Un registro público (como un GitHub de imágenes) donde podemos encontrar imágenes pre-hechas para casi cualquier cosa.
+<br/><em> </em><em>Docker Compose:</em>* Una herramienta para orquestar múltiples contenedores que necesitan trabajar juntos (nuestra app PHP, la base de datos, etc.).</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBEb2NrZXIKCiMjIMK/UXXDqSBlcz8KLSBVbmEgcGxhdGFmb3JtYSBwYXJhIGVtcGFxdWV0YXIgPGJyLz55IGVqZWN1dGFyIGFwcHMgZW4gKipjb250ZW5lZG9yZXMqKi4KLSBMYSBzb2x1Y2nDs24gYWwgImVuIG1pIG3DoXF1aW5hIGZ1bmNpb25hIi4KCiMjIENvbXBvbmVudGVzIENsYXZlCi0gPGJyLz4qKkRvY2tlcmZpbGUqKjogTGEgcmVjZXRhLgotICoqSW1hZ2VuKio6IExhIHBsYW50aWxsYS4KLSAqKkNvbnRlbmVkb3IqKjogTGEgYXBwIGVuIGVqZWN1Y2nDs24uCi0gKipEb2NrZXIgQ29tcG9zZSoqOiBFbCBkaXJlY3RvciBkZSBvcnF1ZXN0YS4KLSAqKkRvY2tlciBIdWIqKjogRWwgYWxtYWPDqW4gZGUgaW3DoWdlbmVzLgoKIyMgQmVuZWZpY2lvcwotIDxici8+KipDb25zaXN0ZW5jaWEqKjogTWlzbW8gZW50b3JubyBlbiB0b2RhcyBwYXJ0ZXMuIFsxXQotICoqUG9ydGFiaWxpZGFkKio6IFNlIGVqZWN1dGEgZW4gY3VhbHF1aWVyIG3DoXF1aW5hIGNvbiBEb2NrZXIuIFsxXQotICoqQWlzbGFtaWVudG8qKjogTG9zIGNvbnRlbmVkb3JlcyBubyBzZSBtb2xlc3RhbiBlbnRyZSBzw60uCi0gKipFZmljaWVuY2lhKio6IE3DoXMgbGlnZXJvIHkgcsOhcGlkbyBxdWUgbGFzIG3DoXF1aW5hcyB2aXJ0dWFsZXMu</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Usando la analogía del transporte marítimo, ¿qué sería una <strong>imagen Docker</strong> y qué sería un <strong>contenedor Docker</strong>?</li>
+<li>¿Por qué crees que la frase "en mi máquina funciona" es un problema tan grave en el desarrollo de software profesional?</li>
+<li>Investiga brevemente qué es <strong>Kubernetes</strong> y qué relación tiene con Docker. ¿Sería el gestor del puerto, la naviera, o el capitán del barco?</li>
+<li>¿Qué dependencias podría tener una aplicación como Moodle o WordPress? ¿Cómo ayudaría Docker a instalarla?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="2-docker-vs-maquinas-virtuales">2. Docker VS Máquinas virtuales</h2>
+<p>Es muy común confundir Docker con las Máquinas Virtuales (VMs) tradicionales (como VirtualBox o VMware), ya que ambas tecnologías sirven para aislar entornos. Sin embargo, la forma en que lo hacen es radicalmente diferente, y aquí reside la magia de Docker.</p>
+<p>Imagina que quieres construir dos casas en un terreno.
+*   <strong>El enfoque de la Máquina Virtual:</strong> Sería como construir dos casas completas, cada una con sus propios cimientos, sus propias tuberías, su propio sistema eléctrico y su propio tejado. Funcionan, pero duplicas muchísima infraestructura y gastas muchos más recursos.
+*   <strong>El enfoque de Docker:</strong> Sería como construir un edificio de apartamentos. Hay una única cimentación, unas tuberías y una estructura principal para todos. Luego, cada apartamento (contenedor) está perfectamente aislado, tiene sus propias paredes, muebles y decoración, pero comparte la infraestructura base. Es mucho más eficiente.</p>
+<p>Una máquina virtual <strong>virtualiza el hardware</strong>. Crea un ordenador completo (CPU, RAM, disco, red) de forma simulada, y sobre él instalas un sistema operativo completo (un "SO invitado"). Sobre ese SO, instalas tu aplicación. Un contenedor Docker, en cambio, <strong>virtualiza el sistema operativo</strong>. Todos los contenedores comparten el mismo SO del anfitrión (la máquina real), y Docker se encarga de que los procesos de cada contenedor estén aislados entre sí.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "Máquina Física (Host)"
+        A[Hardware] --&gt; B[Sistema Operativo Anfitrión]
+    end
+
+    subgraph "Enfoque Máquina Virtual"
+        B --&gt; C[Hipervisor]
+        C --&gt; D1[SO Invitado 1]
+        C --&gt; D2[SO Invitado 2]
+        D1 --&gt; E1[Libs/Bins App A]
+        D1 --&gt; F1[App A]
+        D2 --&gt; E2[Libs/Bins App B]
+        D2 --&gt; F2[App B]
+    end
+
+    subgraph "Enfoque Docker"
+        B --&gt; G[Docker Engine]
+        G --&gt; H1[Contenedor A]
+        G --&gt; H2[Contenedor B]
+    end
+
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+    style G fill:#9cf,stroke:#333,stroke-width:2px
+</code></pre>
+<h3 id="tabla-comparativa-docker-vs-maquinas-virtuales">Tabla Comparativa: Docker vs. Máquinas Virtuales</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Máquinas Virtuales (VMs)</th>
+<th style="text-align: left;">Contenedores (Docker)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Aislamiento</strong></td>
+<td style="text-align: left;"><strong>Total</strong>. Virtualización de hardware. Cada VM tiene su propio kernel y SO.</td>
+<td style="text-align: left;"><strong>A nivel de proceso</strong>. Comparten el kernel del SO anfitrión.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Peso</strong></td>
+<td style="text-align: left;">Pesadas (Gigas). Incluyen un SO completo.</td>
+<td style="text-align: left;">Ligeros (Megas). Solo incluyen la app y sus dependencias.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Arranque</strong></td>
+<td style="text-align: left;">Lento (minutos). Tienen que arrancar un SO completo.</td>
+<td style="text-align: left;">Casi instantáneo (segundos o milisegundos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rendimiento</strong></td>
+<td style="text-align: left;">Menor. Hay una capa de sobrecarga (el hipervisor) que consume recursos.</td>
+<td style="text-align: left;">Casi nativo. La sobrecarga es mínima.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso de Recursos</strong></td>
+<td style="text-align: left;">Alto. Cada VM reserva una cantidad fija de RAM y CPU.</td>
+<td style="text-align: left;">Eficiente. Usan los recursos del host de forma dinámica.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Portabilidad</strong></td>
+<td style="text-align: left;">Limitada. Mover una VM entre distintos hipervisores puede ser complejo.</td>
+<td style="text-align: left;">Muy alta. Un contenedor se ejecuta en cualquier Docker.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Seguridad</strong></td>
+<td style="text-align: left;">Muy alta. Un fallo en una VM no afecta a las demás ni al host.</td>
+<td style="text-align: left;">Alta, pero un fallo grave en el kernel del host podría afectar a todos los contenedores.</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dockervsmaquinas.png"><img alt="Git" src="../images/dockervsmaquinas.png" width="800"/></a></p>
+<div class="admonition info">
+<p class="admonition-title">Caso de uso: ¿Cuándo elegir cuál?</p>
+<ul>
+<li><strong>Usa VMs si necesitas</strong>:<ul>
+<li>Ejecutar sistemas operativos diferentes en el mismo hardware (ej. Windows en un Mac).</li>
+<li>Un aislamiento de seguridad máximo, a nivel de hardware.</li>
+<li>Trabajar con aplicaciones antiguas (legacy) que requieren un SO específico.</li>
+</ul>
+</li>
+<li><strong>Usa Docker si necesitas</strong>:<ul>
+<li>Ejecutar múltiples copias de una misma aplicación.</li>
+<li>Microservicios.</li>
+<li>Entornos de desarrollo/producción consistentes y portables.</li>
+<li>Agilidad, rapidez y eficiencia en el uso de recursos.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Cuál es la principal diferencia en el consumo de recursos (RAM, CPU, disco) entre 5 máquinas virtuales y 5 contenedores ejecutando la misma aplicación web?</li>
+<li>Si quisieras probar una aplicación que solo funciona en Windows XP en tu moderno portátil con Windows 11, ¿usarías una VM o un contenedor? ¿Por qué?</li>
+<li>Para una startup que está creando una nueva red social basada en una arquitectura de microservicios (un servicio para usuarios, otro para posts, otro para chats...), ¿qué tecnología recomendarías? Argumenta tu respuesta.</li>
+<li>¿Por qué crees que Docker arranca mucho más rápido que una VM? Explícalo con la analogía de las casas y los apartamentos.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="21-ventajas-y-desventajas-de-docker">2.1. Ventajas y desventajas de Docker</h2>
+<p>Como toda tecnología, Docker tiene sus puntos fuertes y sus áreas de mejora. Es fundamental conocerlos para saber cuándo es la herramienta adecuada para nuestro trabajo.</p>
+<h3 id="ventajas-las-razones-de-su-exito">Ventajas (¡Las razones de su éxito!)</h3>
+<ol>
+<li><strong>Consistencia y Portabilidad ("Build Once, Run Anywhere")</strong>: Esta es la joya de la corona. Creas una imagen una vez y puedes ejecutarla en cualquier máquina con Docker, asegurando que el entorno sea siempre idéntico. Se acabaron las guerras entre desarrollo, testing y producción.</li>
+<li><strong>Eficiencia y Rendimiento</strong>: Los contenedores son mucho más ligeros que las VMs. Al compartir el kernel del sistema anfitrión, consumen menos CPU, RAM y espacio en disco. Esto permite ejecutar muchos más contenedores que VMs en el mismo hardware.</li>
+<li><strong>Velocidad de Despliegue</strong>: Arrancar un contenedor es cuestión de segundos, mientras que una VM puede tardar minutos. Esto acelera brutalmente los ciclos de desarrollo, prueba e implementación.</li>
+<li><strong>Aislamiento</strong>: Cada contenedor se ejecuta en su propio "sandbox" o espacio aislado. Los procesos, redes y sistemas de ficheros están separados, lo que impide que una aplicación interfiera con otra.</li>
+<li><strong>Escalabilidad Sencilla</strong>: ¿Necesitas más capacidad para tu aplicación web porque se acerca el Black Friday? Con Docker, lanzar nuevas réplicas (contenedores) de tu aplicación es tan simple como un comando. Herramientas como Docker Compose y Kubernetes lo hacen aún más fácil.</li>
+<li><strong>Ecosistema y Comunidad Gigantes</strong>: Docker Hub es una inmensa biblioteca de imágenes listas para usar. ¿Necesitas un PHP con Apache? ¿Un Redis? ¿Un servidor de Minecraft? Probablemente ya exista una imagen oficial y optimizada que puedes usar al instante.</li>
+</ol>
+<h3 id="desventajas-nada-es-perfecto">Desventajas (Nada es perfecto)</h3>
+<ol>
+<li><strong>Curva de Aprendizaje</strong>: Aunque los conceptos básicos son sencillos, dominar Docker a nivel profesional requiere tiempo. Hay que aprender sobre redes, volúmenes, seguridad, optimización de imágenes y orquestación.</li>
+<li><strong>Seguridad (El Kernel Compartido)</strong>: La mayor ventaja de Docker (compartir el kernel) es también su principal vector de riesgo. Si una vulnerabilidad permite a un atacante "escapar" de un contenedor y comprometer el kernel del sistema anfitrión, podría afectar a todos los contenedores que se ejecutan en él. Las VMs, al tener un aislamiento a nivel de hardware, son inherentemente más seguras en este aspecto.</li>
+<li><strong>No es para todo</strong>: Docker está pensado para aplicaciones de servidor o de línea de comandos. No es la herramienta adecuada para virtualizar aplicaciones de escritorio con interfaz gráfica (GUI), aunque existen "hacks" para hacerlo.</li>
+<li><strong>Complejidad en Windows y macOS</strong>: Docker es nativo de Linux. En Windows y macOS, funciona creando una pequeña máquina virtual de Linux detrás de escena (usando WSL 2 en Windows o el framework de virtualización de macOS). Aunque la experiencia de usuario es muy buena, añade una capa extra de abstracción que a veces puede dar problemas de rendimiento, sobre todo con el sistema de archivos.</li>
+</ol>
+<h3 id="tabla-resumen-pros-y-contras">Tabla Resumen: Pros y Contras</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Ventajas 👍</th>
+<th style="text-align: left;">Desventajas 👎</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Entornos consistentes y portátiles</td>
+<td style="text-align: left;">Curva de aprendizaje inicial</td>
+</tr>
+<tr>
+<td style="text-align: left;">Eficiencia y alto rendimiento</td>
+<td style="text-align: left;">El kernel compartido es un punto de fallo</td>
+</tr>
+<tr>
+<td style="text-align: left;">Arranque y despliegue ultra rápidos</td>
+<td style="text-align: left;">No ideal para apps con GUI</td>
+</tr>
+<tr>
+<td style="text-align: left;">Aislamiento de aplicaciones</td>
+<td style="text-align: left;">Rendimiento de archivos en Win/Mac</td>
+</tr>
+<tr>
+<td style="text-align: left;">Escalabilidad horizontal sencilla</td>
+<td style="text-align: left;">La persistencia de datos requiere gestión</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ecosistema de imágenes enorme</td>
+<td style="text-align: left;">La gestión de redes puede ser compleja</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Humor de programador</p>
+<p>Usar Docker es como jugar con LEGOS. Al principio, solo sabes hacer una torre simple. Con el tiempo, aprendes a construir naves espaciales con piezas de distintos sets. La desventaja es que, si pisas una pieza descalzo en mitad de la noche, el dolor es igual de real.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Por qué la "consistencia" es tan importante en un equipo de desarrollo con varios programadores?</li>
+<li>Explica con tus palabras el riesgo de seguridad del "kernel compartido". ¿Por qué una VM no tiene este problema?</li>
+<li>Si estás desarrollando en un portátil con pocos recursos (poca RAM), ¿qué tecnología de virtualización sería más recomendable, Docker o una VM? ¿Por qué?</li>
+<li>¿Qué ventaja de Docker crees que es la más atractiva para una empresa como Netflix o Amazon, que necesita gestionar miles de servicios a la vez?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="3-como-funciona-docker">3. ¿Cómo funciona Docker?</h2>
+<p>Para entender cómo Docker hace su magia, necesitamos conocer a los actores principales de esta obra. No te preocupes, no es tan complicado como parece. Pensemos en ello como si estuviéramos montando un PC para gaming por piezas.</p>
+<h3 id="31-docker-engine">3.1. Docker Engine</h3>
+<p>El motor de Docker es el corazón de todo. Es una aplicación cliente-servidor que se instala en la máquina anfitriona y se encarga de todo el trabajo pesado: construir, ejecutar y gestionar los contenedores.</p>
+<p>Se compone de tres partes principales:</p>
+<ol>
+<li><strong>El Demonio (o Servidor) (<code>dockerd</code>):</strong> Es un proceso que se ejecuta constantemente en segundo plano. Escucha las peticiones que le llegan a través de la API y gestiona los objetos de Docker: imágenes, contenedores, redes y volúmenes. Es el cerebro de la operación.</li>
+<li><strong>La API REST:</strong> Es la interfaz que usan los programas para hablar con el demonio. Define cómo se deben hacer las peticiones para pedirle cosas como "crea un contenedor" o "lista las imágenes".</li>
+<li><strong>El Cliente (CLI <code>docker</code>):</strong> Es la herramienta de línea de comandos que usamos nosotros, los humanos, para interactuar con el demonio a través de la API. Cuando escribimos <code>docker run ...</code>, el cliente traduce eso a una petición API y se la envía al demonio.</li>
+</ol>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User as "👨‍💻 Usuario"
+    participant CLI as "Cliente Docker (CLI)"
+    participant API as "API REST"
+    participant Daemon as "Demonio Docker (dockerd)"
+
+    User-&gt;&gt;CLI: Escribe `docker run php`
+    CLI-&gt;&gt;API: Petición HTTP POST /containers/create?image=php
+    API-&gt;&gt;Daemon: Traduce y envía la orden
+    Daemon--&gt;&gt;API: OK, contenedor creado
+    API--&gt;&gt;CLI: Respuesta OK
+    CLI--&gt;&gt;User: Muestra el resultado en la terminal</code></pre>
+<h3 id="32-imagen-docker">3.2. Imagen Docker</h3>
+<p>Una imagen es una plantilla de solo lectura que contiene todo lo necesario para ejecutar nuestra aplicación. Es un paquete que incluye el código, las librerías, las variables de entorno, los ficheros de configuración y el runtime.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Imagen Docker</p>
+<p>Es el <strong>plano</strong> o la <strong>receta</strong> de nuestro contenedor. Es inmutable, lo que significa que una vez creada, no se puede cambiar. Si queremos hacer una modificación, creamos una nueva versión de la imagen.</p>
+</div>
+<p>Las imágenes se organizan en <strong>capas (layers)</strong>. Cada instrucción en nuestro <code>Dockerfile</code> (la receta) crea una nueva capa. Esto es increíblemente eficiente. Si tienes 5 imágenes de PHP que solo se diferencian en el código de tu aplicación, no tendrás 5 copias completas de PHP. Todas compartirán las mismas capas base (el sistema operativo, PHP, Apache...) y solo la última capa, la de tu código, será diferente.</p>
+<p><strong>Ejemplo de capas para una imagen de PHP:</strong></p>
+<ol>
+<li><strong>Capa 1 (Base):</strong> Sistema Operativo mínimo (Ej: Debian).</li>
+<li><strong>Capa 2:</strong> Instalar dependencias del sistema.</li>
+<li><strong>Capa 3:</strong> Instalar PHP.</li>
+<li><strong>Capa 4:</strong> Instalar Apache.</li>
+<li><strong>Capa 5:</strong> Copiar el código de nuestra aplicación.</li>
+</ol>
+<h3 id="33-contenedor-docker">3.3. Contenedor Docker</h3>
+<p>Si la imagen es el plano, el contenedor es la casa ya construida y con la luz encendida.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Contenedor Docker</p>
+<p>Es una <strong>instancia en ejecución</strong> de una imagen. Es la materialización de la plantilla, un entorno vivo, aislado y funcional donde nuestra aplicación se ejecuta. Podemos crear, iniciar, detener, mover y eliminar contenedores.</p>
+</div>
+<p>A partir de una sola imagen, puedes crear docenas de contenedores idénticos. Por ejemplo, con una sola imagen de WordPress, podrías levantar 10 blogs distintos, cada uno en su propio contenedor, totalmente aislado de los demás pero usando la misma plantilla base.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/docker.png"><img alt="Git" src="../images/docker.png" width="800"/></a></p>
+<h3 id="34-docker-compose">3.4. Docker Compose</h3>
+<p>Cuando nuestra aplicación se vuelve un poco más compleja, como casi cualquier aplicación PHP, no nos basta con un solo contenedor. Necesitamos, como mínimo, un contenedor para nuestra aplicación (PHP + Apache) y otro para la base de datos (MariaDB). Y si queremos una interfaz gráfica para la base de datos, ¡un tercero para phpMyAdmin!</p>
+<p>Gestionar estos tres contenedores por separado con comandos <code>docker run</code> sería tedioso y propenso a errores. Aquí es donde entra el director de orquesta.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Docker Compose</p>
+<p>Es una herramienta para definir y ejecutar aplicaciones Docker <strong>multi-contenedor</strong>. Usando un único fichero de configuración en formato <code>YAML</code> (<code>docker-compose.yml</code>), podemos describir todos los servicios que componen nuestra aplicación, cómo se conectan entre ellos, qué puertos exponen y qué volúmenes usan.</p>
+</div>
+<p>Con un solo comando, <code>docker-compose up</code>, levantamos todo nuestro entorno de desarrollo completo. Y con <code>docker-compose down</code>, lo paramos todo. Es la herramienta por excelencia para el desarrollo local.</p>
+<p><strong>Ejemplo de <code>docker-compose.yml</code> para nuestro entorno PHP:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Servicio de la aplicación PHP con Apache</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"> </span><span class="c1"># Construye la imagen a partir del Dockerfile en la misma carpeta</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8080:80"</span><span class="w"> </span><span class="c1"># Mapea el puerto 8080 del host al 80 del contenedor</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src:/var/www/html</span><span class="w"> </span><span class="c1"># Sincroniza nuestro código con el del contenedor</span>
+
+<span class="w">  </span><span class="c1"># Servicio de la Base de Datos</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:10.6</span><span class="w"> </span><span class="c1"># Usa una imagen oficial de MariaDB</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mi_app_db</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span><span class="w"> </span><span class="c1"># Guarda los datos de la BD de forma persistente</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span><span class="w"> </span><span class="c1"># Define el volumen para la persistencia</span>
+</code></pre></div></p>
+<h3 id="35-dockerfile">3.5. Dockerfile</h3>
+<p>El Dockerfile es el fichero de texto que contiene las instrucciones, paso a paso, para construir una imagen de Docker. Es nuestra receta de cocina.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Dockerfile</p>
+<p>Es un script que automatiza la creación de imágenes. Cada línea es una instrucción que Docker ejecutará en orden para ensamblar las capas de la imagen.</p>
+</div>
+<p><strong>Ejemplo de <code>Dockerfile</code> para nuestra aplicación PHP:</strong>
+<div class="highlight"><pre><span></span><code><span class="c"># 1. Partimos de una imagen oficial de PHP con Apache</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-apache</span>
+
+<span class="c"># 2. Instalamos las extensiones de PHP que necesitamos</span>
+<span class="k">RUN</span><span class="w"> </span>docker-php-ext-install<span class="w"> </span>pdo<span class="w"> </span>pdo_mysql
+
+<span class="c"># 3. (Opcional) Copiamos un fichero de configuración personalizado de PHP</span>
+<span class="c"># COPY custom-php.ini /usr/local/etc/php/</span>
+
+<span class="c"># 4. Establecemos el directorio de trabajo</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www/html</span>
+
+<span class="c"># 5. Copiamos el código de nuestra aplicación a la imagen</span>
+<span class="c"># (A menudo esto se maneja con volúmenes en desarrollo, como vimos en Compose)</span>
+<span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>.
+</code></pre></div></p>
+<h3 id="36-docker-desktop">3.6. Docker Desktop</h3>
+<p>Aunque Docker se puede manejar perfectamente desde la línea de comandos, a veces una interfaz gráfica ayuda, sobre todo al principio.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Docker Desktop</p>
+<p>Es una aplicación de escritorio para Windows, macOS y Linux que proporciona una <strong>interfaz gráfica</strong> para gestionar tus contenedores, imágenes, volúmenes y redes. Además, incluye Docker Engine y Docker Compose, por lo que es un "todo en uno" muy cómodo para empezar.</p>
+</div>
+<p>Docker Desktop te permite ver de un vistazo qué contenedores están corriendo, cuántos recursos consumen, ver sus logs, y arrancarlos o pararlos con un solo clic.</p>
+<h3 id="37-docker-hub">3.7. Docker Hub</h3>
+<p>No tenemos que reinventar la rueda cada vez que necesitamos una tecnología. Docker Hub es el lugar donde la comunidad y las empresas comparten sus "ruedas".</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Docker Hub</p>
+<p>Es el <strong>registro de imágenes por defecto</strong> de Docker. Es una plataforma en la nube (un repositorio gigante) donde podemos buscar, descargar (pull) y compartir (push) imágenes de contenedores. Contiene miles de imágenes oficiales y de la comunidad.</p>
+</div>
+<p>¿Necesitas PHP? <code>docker pull php:8.2-apache</code>. ¿MariaDB? <code>docker pull mariadb:10.6</code>. Es el primer sitio al que acudir cuando empiezas un proyecto.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Quién es el "servidor" y quién es el "cliente" en la arquitectura de Docker Engine?</li>
+<li>Si descargas dos imágenes, <code>php:8.2-apache</code> y <code>php:8.3-apache</code>, ¿ocuparán el doble de espacio en disco que una sola de ellas? Razona tu respuesta basándote en el concepto de capas.</li>
+<li>¿Para qué sirve <code>docker-compose.yml</code>? ¿Qué ventajas aporta frente a usar <code>docker run</code> para cada servicio?</li>
+<li>Entra en <a href="https://hub.docker.com/">Docker Hub</a> y busca la imagen oficial de "wordpress". ¿Qué información útil encuentras en su página (versiones, variables de entorno, etc.)?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="38-comandos-usuales">3.8. Comandos Usuales</h2>
+<p>Aunque Docker Desktop es muy útil, todo desarrollador que se precie debe sentirse cómodo en la terminal. La línea de comandos es más rápida, potente y <em>scriptable</em>. Aquí tienes tu chuleta de supervivencia:</p>
+<h3 id="gestion-de-contenedores">Gestión de Contenedores</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>docker run [imagen]</code></td>
+<td style="text-align: left;">Crea y arranca un contenedor a partir de una imagen.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker ps</code></td>
+<td style="text-align: left;">Lista los contenedores que están <strong>en ejecución</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker ps -a</code></td>
+<td style="text-align: left;">Lista <strong>todos</strong> los contenedores (corriendo y detenidos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker stop [id/nombre]</code></td>
+<td style="text-align: left;">Detiene un contenedor en ejecución.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker start [id/nombre]</code></td>
+<td style="text-align: left;">Inicia un contenedor que estaba detenido.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker rm [id/nombre]</code></td>
+<td style="text-align: left;">Elimina un contenedor (debe estar detenido).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker logs [id/nombre]</code></td>
+<td style="text-align: left;">Muestra los logs (salida) de un contenedor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker exec -it [id] bash</code></td>
+<td style="text-align: left;">Abre una terminal interactiva <strong>dentro</strong> de un contenedor. ¡Súper útil para depurar!</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gestion-de-imagenes">Gestión de Imágenes</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>docker images</code></td>
+<td style="text-align: left;">Lista todas las imágenes que tenemos en local.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker pull [imagen]</code></td>
+<td style="text-align: left;">Descarga una imagen de Docker Hub.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker build -t [nombre] .</code></td>
+<td style="text-align: left;">Construye una imagen a partir de un <code>Dockerfile</code> en el directorio actual (<code>.</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker rmi [imagen]</code></td>
+<td style="text-align: left;">Elimina una imagen local.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="docker-compose">Docker Compose</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>docker-compose up</code></td>
+<td style="text-align: left;">Crea e inicia todos los servicios definidos en <code>docker-compose.yml</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker-compose up -d</code></td>
+<td style="text-align: left;">Igual que <code>up</code>, pero en modo <em>detached</em> (en segundo plano). Es el que más usarás.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker-compose down</code></td>
+<td style="text-align: left;">Detiene y elimina los contenedores, redes y volúmenes de la aplicación.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker-compose ps</code></td>
+<td style="text-align: left;">Lista los contenedores del proyecto de Compose.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker-compose logs</code></td>
+<td style="text-align: left;">Muestra los logs de todos los servicios.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>docker-compose exec [servicio] bash</code></td>
+<td style="text-align: left;">Abre una terminal en el contenedor de un servicio específico.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">¡Pro Tip! Ahorra tiempo tecleando</p>
+<p>No hace falta que escribas el ID completo de un contenedor o imagen. Con los 3 o 4 primeros caracteres únicos suele ser suficiente. Docker es listo y sabe a cuál te refieres.</p>
+</div>
+<p><strong>Ejemplo práctico 1: Arrancar un servidor web Nginx temporal</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Descarga y arranca un contenedor con la imagen de nginx</span>
+<span class="c1"># -d: modo detached (segundo plano)</span>
+<span class="c1"># -p 8888:80: mapea el puerto 8888 de tu máquina al 80 del contenedor</span>
+<span class="c1"># --name mi-servidor-web: le da un nombre fácil de recordar</span>
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:80<span class="w"> </span>--name<span class="w"> </span>mi-servidor-web<span class="w"> </span>nginx
+
+<span class="c1"># 2. Comprueba que está corriendo</span>
+docker<span class="w"> </span>ps
+
+<span class="c1"># 3. Abre http://localhost:8888 en tu navegador. ¡Magia!</span>
+
+<span class="c1"># 4. Mira sus logs</span>
+docker<span class="w"> </span>logs<span class="w"> </span>mi-servidor-web
+
+<span class="c1"># 5. Para el contenedor</span>
+docker<span class="w"> </span>stop<span class="w"> </span>mi-servidor-web
+
+<span class="c1"># 6. Elimínalo para no dejar basura</span>
+docker<span class="w"> </span>rm<span class="w"> </span>mi-servidor-web
+</code></pre></div></p>
+<p><strong>Ejemplo práctico 2: Usando Docker Compose</strong>
+(Suponiendo que tienes un <code>docker-compose.yml</code> en tu carpeta de proyecto)
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Levanta todo el entorno en segundo plano</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># 2. Comprueba el estado de tus servicios (app, db, etc.)</span>
+docker-compose<span class="w"> </span>ps
+
+<span class="c1"># 3. Entra en el contenedor de PHP para ejecutar un comando (ej. composer install)</span>
+docker-compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>app<span class="w"> </span>composer<span class="w"> </span>install
+
+<span class="c1"># 4. Cuando termines de trabajar, apaga y limpia todo</span>
+docker-compose<span class="w"> </span>down
+</code></pre></div></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Cuál es la diferencia entre <code>docker stop</code> y <code>docker rm</code>? ¿Qué pasaría si intentas hacer <code>rm</code> a un contenedor en ejecución?</li>
+<li>¿Para qué sirve la opción <code>-it</code> en el comando <code>docker exec</code>? Investígalo.</li>
+<li>¿Qué comando usarías para borrar todas las imágenes que no están siendo usadas por ningún contenedor? (Pista: busca sobre "docker image prune").</li>
+<li>Explica la diferencia entre <code>docker run mi-app</code> y <code>docker-compose up</code>.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="4-para-que-usar-docker">4. ¿Para qué usar Docker?</h2>
+<p>Ya hemos visto el "qué" y el "cómo", pero el "porqué" es lo que realmente nos motiva como desarrolladores. Docker no es solo una moda; resuelve problemas muy reales y tangibles que nos encontramos en el día a día.</p>
+<p><strong>El Escenario Habitual (Sin Docker):</strong>
+Llegas a una empresa nueva. Te dan un portátil y te dicen: "Ok, el proyecto usa PHP 8.0, base de datos PostgreSQL 12, Redis para caché y se ejecuta en un servidor Apache. ¡Ponte a instalar todo!". Empieza la odisea:
+-   Tu sistema operativo ya tiene otra versión de PHP instalada.
+-   Instalas Apache y entra en conflicto con otro servicio que usaba el puerto 80.
+-   La extensión de PostgreSQL para PHP no compila bien.
+-   Después de dos días de peleas, consigues que funcione... pero de una forma ligeramente distinta a como funciona en el servidor de producción. Los bugs extraños no tardarán en aparecer.</p>
+<p><strong>El Escenario Ideal (Con Docker):</strong>
+Llegas a la misma empresa. Te dan un portátil.
+1.  Instalas Docker Desktop.
+2.  Clonas el repositorio del proyecto con <code>git clone</code>.
+3.  Entras en la carpeta y ejecutas <code>docker-compose up -d</code>.
+4.  <strong>En 5 minutos</strong>, tienes una réplica exacta del entorno de producción corriendo en tu máquina. Te pones a programar.</p>
+<p>Este es el poder de Docker. Sus casos de uso principales son:</p>
+<ol>
+<li><strong>Entornos de Desarrollo Locales:</strong> Este es nuestro pan de cada día. Docker nos permite crear entornos de desarrollo idénticos para todo el equipo y que, además, son un espejo del entorno de producción. Esto elimina de raíz los problemas de "en mi máquina funciona".</li>
+<li><strong>Integración Continua y Despliegue Continuo (CI/CD):</strong> Docker es una pieza fundamental en los pipelines de DevOps. Cuando subes tu código a un repositorio como GitHub, se pueden lanzar procesos automáticos que construyen la imagen Docker, pasan tests dentro de un contenedor y, si todo va bien, despliegan la nueva versión a producción. Todo de forma automatizada y fiable.</li>
+<li><strong>Arquitectura de Microservicios:</strong> En lugar de una gran aplicación monolítica, las aplicaciones modernas se suelen construir como un conjunto de servicios más pequeños e independientes (microservicios). Docker es perfecto para esto: cada microservicio vive en su propio contenedor, se puede desarrollar, desplegar y escalar de forma independiente.</li>
+<li><strong>Aislamiento de Dependencias:</strong> ¿Tienes un proyecto antiguo que necesita PHP 5.6 y uno nuevo con PHP 8.3? Sin Docker, mantener ambas versiones en la misma máquina es un infierno. Con Docker, cada proyecto vive en su contenedor con su versión de PHP, totalmente aislados y sin conflictos.</li>
+<li><strong>Testing y Sandboxing:</strong> ¿Quieres probar una nueva base de datos, una nueva herramienta o una librería sin "ensuciar" tu sistema? Levanta un contenedor, haz tus pruebas y, cuando termines, lo destruyes sin dejar rastro.</li>
+</ol>
+<pre class="mermaid"><code>graph TD
+    subgraph Problemas del Desarrollador
+        A["Funciona en mi máquina..."]
+        B["Conflictos de versiones"]
+        C["Instalación manual lenta y compleja"]
+        D["Entornos inconsistentes"]
+    end
+
+    subgraph Soluciones con Docker
+        E["Entornos de desarrollo portátiles"]
+        F["Aislamiento de dependencias"]
+        G["Despliegue rápido y automatizado (CI/CD)"]
+        H["Réplicas exactas de producción"]
+    end
+
+    A --&gt; H
+    B --&gt; F
+    C --&gt; E
+    D --&gt; E
+    D --&gt; H</code></pre>
+<div class="admonition info inline">
+<p class="admonition-title">Caso real: Netflix</p>
+<p>Netflix es uno de los mayores ejemplos del uso de Docker a gran escala. Su plataforma está compuesta por cientos de microservicios. Cada uno está empaquetado en un contenedor Docker. Esto les permite actualizar y desplegar nuevas funcionalidades para partes específicas de su sistema (ej. el sistema de recomendaciones, el de facturación) de forma independiente y sin afectar al resto de la plataforma.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>Describe el proceso que seguirías para empezar a trabajar en un proyecto PHP que ya está "dockerizado".</li>
+<li>¿Cómo soluciona Docker el problema de tener que trabajar en varios proyectos con diferentes versiones de PHP/Node.js/Python en la misma máquina?</li>
+<li>Investiga qué es un "pipeline de CI/CD". ¿Qué papel crees que juegan las imágenes de Docker en este proceso?</li>
+<li>¿Por qué se dice que Docker es ideal para una arquitectura de "microservicios"?</li>
+</ol>
+</div>
+<p><br/><br/><br/><br/><hr/></p>
+<h2 id="5-instalar-docker">5. Instalar Docker</h2>
+<p>Antes de poder empezar a usar contenedores, necesitamos instalar el motor que los mueve. El proceso es bastante sencillo y similar en todos los sistemas operativos gracias a <strong>Docker Desktop</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Docker Desktop: Tu navaja suiza</p>
+<p>Docker Desktop es la forma más fácil de empezar. Es un paquete que incluye:
+- <strong>Docker Engine</strong>: El demonio, la API y el cliente CLI.
+- <strong>Docker Compose</strong>: El orquestador de contenedores.
+- <strong>Una interfaz gráfica (GUI)</strong>: Para gestionar todo de forma visual.
+- <strong>Integración con el SO</strong>: Se encarga de la virtualización necesaria en Windows y macOS.</p>
+</div>
+<p><strong>Pasos generales para la instalación:</strong></p>
+<ol>
+<li><strong>Ve a la web oficial:</strong> Dirígete a <a href="https://www.docker.com/products/docker-desktop/">la página de Docker Desktop</a>.</li>
+<li><strong>Descarga la versión para tu SO:</strong> Elige entre Windows, macOS (Intel o Apple Silicon) o Linux.</li>
+<li><strong>Ejecuta el instalador:</strong> Como cualquier otro programa. Sigue los pasos y acepta las condiciones.</li>
+<li><strong>Configuración en Windows:</strong> Durante la instalación en Windows, te pedirá usar el backend "WSL 2" (Windows Subsystem for Linux). <strong>Asegúrate de que esta opción esté marcada</strong>. Es la forma moderna y más eficiente de ejecutar Docker en Windows. Si no tienes WSL 2, el propio instalador suele guiarte para activarlo.</li>
+<li><strong>Reinicia (si es necesario):</strong> Especialmente en Windows, puede que necesites reiniciar el sistema para completar la instalación de WSL 2.</li>
+<li><strong>Verifica la instalación:</strong> Una vez instalado, abre una terminal (PowerShell en Windows, Terminal en macOS/Linux) y ejecuta el siguiente comando:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>--version
+</code></pre></div>
+Si todo ha ido bien, deberías ver algo como: <code>Docker version 25.0.3, build 4debf41</code></p>
+<p><strong>Ejemplo 1: Verificando que todo funciona</strong>
+Una vez instalado, Docker Desktop se iniciará automáticamente. Verás un pequeño icono de una ballena con contenedores en tu barra de tareas. Si está estático, todo está listo. Si se está animando, es que está arrancando.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Además de la versión, puedes pedir más detalles</span>
+docker<span class="w"> </span>info
+<span class="c1"># Este comando te dará un montón de información sobre tu instalación,</span>
+<span class="c1"># como el número de contenedores, imágenes, el SO, etc.</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Comprobando que Docker Compose también está</strong>
+Docker Desktop instala Compose por defecto. Puedes verificarlo con:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>version
+<span class="c1"># Ojo a la sintaxis: es `docker compose`, no `docker-compose` con guion.</span>
+<span class="c1"># La versión con guion es la antigua y, aunque suele funcionar por retrocompatibilidad,</span>
+<span class="c1"># la nueva es la que se integra directamente en el CLI de Docker.</span>
+</code></pre></div>
+Deberías ver: <code>Docker Compose version v2.24.6</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Licencia de Docker Desktop</p>
+<p>Docker Desktop es <strong>gratuito para uso personal, educación y pequeñas empresas</strong> (menos de 250 empleados Y menos de 10 millones de dólares en ingresos anuales). Las empresas más grandes necesitan una suscripción de pago. ¡Para nosotros en clase y para nuestros proyectos personales, es totalmente gratis!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Qué es WSL 2 y por qué es importante para Docker en Windows?</li>
+<li>¿Qué tres componentes principales instala Docker Desktop?</li>
+<li>Busca en la documentación oficial de Docker los requisitos del sistema para instalar Docker Desktop en tu sistema operativo. ¿Los cumples?</li>
+<li>¿Qué alternativas a Docker Desktop existen para gestionar Docker en un entorno Linux, donde la GUI no es tan necesaria? (Pista: busca sobre <code>Portainer</code> o <code>LazyDocker</code>).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="6-ejecutar-un-docker">6. Ejecutar un Docker</h2>
+<p>¡Manos a la obra! La mejor forma de entender Docker es usándolo. Vamos a ejecutar nuestro primer contenedor. No será nuestro entorno PHP completo aún, sino el "Hola Mundo" del mundo de los contenedores: un servidor web <code>nginx</code>.</p>
+<p>El comando clave aquí es <code>docker run</code>. Es el comando para crear y ejecutar un contenedor a partir de una imagen. Si la imagen no está en tu máquina, Docker la buscará y descargará automáticamente de Docker Hub.</p>
+<p><strong>Ejemplo 1: Nuestro primer servidor web en 60 segundos</strong></p>
+<ol>
+<li>Abre tu terminal.</li>
+<li>Escribe el siguiente comando y pulsa Enter:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>--name<span class="w"> </span>mi-primer-nginx<span class="w"> </span>nginx
+</code></pre></div>
+<p>¡Ya está! Acabas de lanzar un servidor web. Abre tu navegador y visita <code>http://localhost:8080</code>. Deberías ver la página de bienvenida de Nginx.</p>
+<p>Analicemos el comando, es como un conjuro mágico y cada parte tiene su significado:
+*   <code>docker run</code>: El comando para crear y arrancar un contenedor.
+*   <code>--rm</code>: Una opción muy útil para pruebas. Le dice a Docker que elimine automáticamente el contenedor cuando lo detengamos. Así no dejamos basura.
+*   <code>-d</code>: Modo <em>detached</em>. Ejecuta el contenedor en segundo plano y nos devuelve el control de la terminal. Sin esto, la terminal se quedaría "atrapada" mostrando los logs del servidor.
+*   <code>-p 8080:80</code>: Publica un puerto. Es la parte de <strong>mapeo de puertos</strong>. Conecta el puerto <code>8080</code> de tu máquina (el host) con el puerto <code>80</code> del contenedor (que es donde Nginx escucha por defecto). <code>HOST:CONTENEDOR</code>.
+*   <code>--name mi-primer-nginx</code>: Le asigna un nombre fácil de recordar al contenedor. Si no lo haces, Docker le pondrá uno aleatorio y gracioso como <code>boring_wozniak</code>.
+*   <code>nginx</code>: El nombre de la imagen que queremos usar, en su versión <code>latest</code> (la última).</p>
+<p><strong>Ejemplo 2: Interactuando con nuestro contenedor</strong></p>
+<p>Nuestro servidor está corriendo, ¿y ahora qué?</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Listar los contenedores en ejecución para ver el nuestro</span>
+docker<span class="w"> </span>ps
+
+<span class="c1"># 2. Ver los logs en tiempo real</span>
+<span class="c1"># Pulsa Ctrl+C para salir</span>
+docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>mi-primer-nginx
+
+<span class="c1"># 3. "Entrar" al contenedor para curiosear</span>
+<span class="c1"># Esto nos da una shell dentro del sistema de ficheros del contenedor.</span>
+<span class="c1"># ¡Es como hacer SSH a una máquina virtual!</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mi-primer-nginx<span class="w"> </span>bash
+
+<span class="c1"># Una vez dentro, puedes usar comandos de Linux:</span>
+<span class="c1"># ls -l /usr/share/nginx/html  (aquí está el index.html que estás viendo)</span>
+<span class="c1"># exit (para salir de la shell del contenedor)</span>
+
+<span class="c1"># 4. Cuando te canses de él, detenlo</span>
+docker<span class="w"> </span>stop<span class="w"> </span>mi-primer-nginx
+<span class="c1"># Como usamos --rm, al pararlo se borrará automáticamente.</span>
+<span class="c1"># Si no, tendrías que hacer `docker rm mi-primer-nginx` después.</span>
+</code></pre></div>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBkb2NrZXIgcnVuCgojIyBFbCBjb21hbmRvIG3DoWdpY28KYGRvY2tlciBydW4gW09QQ0lPTkVTXSBbSU1BR0VOXSBbQ09NQU5ET11gCgojIyBPcGNpb25lcyBtw6FzIGNvbXVuZXMKLSBgLS1uYW1lYDogUG9ubGUgdW4gbm9tYnJlIGNodWxvLgotIGAtZGA6IE5vIG1lIG1vbGVzdGVzLCBjb3JyZSBlbiBzZWd1bmRvIHBsYW5vLgotIGAtcGA6IENvbmVjdGEgbG9zIGNhYmxlcyAocHVlcnRvcykuIGBIT1NUOkNPTlRFTkVET1JgCi0gYC1pdGA6IETDqWphbWUgZW50cmFyICh0ZXJtaW5hbCBpbnRlcmFjdGl2YSkuCi0gYC0tcm1gOiBMaW1waWEgdHUgaGFiaXRhY2nDs24gYWwgc2FsaXIuCi0gYC12YDogQ29tcGFydGUgdHVzIGp1Z3VldGVzICh2b2zDum1lbmVzKS4=</markmap-data></div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Qué pasa si intentas ejecutar <code>docker run -p 80:80 nginx</code> y ya tienes otro servicio (como XAMPP) usando el puerto 80 en tu máquina?</li>
+<li>Ejecuta un contenedor de <code>httpd</code> (el servidor Apache) en el puerto 9090. ¿Qué comando usarías?</li>
+<li>¿Cuál es la diferencia entre la imagen <code>nginx</code> y el contenedor <code>mi-primer-nginx</code> que hemos creado?</li>
+<li>¿Para qué sirve <code>docker exec</code>? Pon un ejemplo de por qué querrías "entrar" en un contenedor de base de datos.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="7-crear-una-imagen-docker">7. Crear una imagen Docker</h2>
+<p>Usar imágenes de Docker Hub está genial, pero el verdadero poder se desata cuando creamos nuestras propias imágenes personalizadas. Aquí es donde nuestro <code>Dockerfile</code> se convierte en el protagonista. Vamos a crear una imagen para nuestra aplicación PHP que use Apache.</p>
+<p>Un <code>Dockerfile</code> es un simple fichero de texto llamado <code>Dockerfile</code> (sin extensión) que contiene las instrucciones para construir la imagen capa por capa.</p>
+<p><strong>El plan para nuestra imagen PHP:</strong>
+1.  Empezar con una imagen base oficial que ya tenga PHP y Apache.
+2.  Instalar las extensiones de PHP que necesitemos, como <code>mysqli</code> para conectar a la base de datos.
+3.  Copiar nuestro código PHP dentro de la imagen.</p>
+<p><strong>Ejemplo 1: Un Dockerfile sencillo</strong></p>
+<p>Crea una carpeta para tu proyecto. Dentro, crea un fichero <code>Dockerfile</code> y otro fichero <code>index.php</code> en una subcarpeta <code>src</code>.</p>
+<p><strong><code>./src/index.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Comprobamos si la extensión mysqli está cargada</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">'mysqli_connect'</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;¡Hola, Docker!&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;La extensión MySQLi está instalada y lista.&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;¡Oh, no!&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;La extensión MySQLi NO está disponible.&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">phpinfo</span><span class="p">();</span> <span class="c1">// Mostramos toda la info de PHP</span>
+</code></pre></div></p>
+<p><strong><code>./Dockerfile</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="c"># Usa una imagen oficial de PHP 8.2 con el servidor Apache pre-instalado</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-apache</span>
+
+<span class="c"># Es una buena práctica añadir etiquetas con información</span>
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">author</span><span class="o">=</span><span class="s2">"Tu Nombre"</span>
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span>
+
+<span class="c"># Instala la extensión mysqli.</span>
+<span class="c"># docker-php-ext-install es un script que viene en las imágenes oficiales</span>
+<span class="c"># para facilitar la instalación de extensiones.</span>
+<span class="k">RUN</span><span class="w"> </span>docker-php-ext-install<span class="w"> </span>mysqli<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker-php-ext-enable<span class="w"> </span>mysqli
+
+<span class="c"># Copia el contenido de nuestra carpeta local 'src'</span>
+<span class="c"># al directorio raíz del servidor web dentro del contenedor.</span>
+<span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>/var/www/html/
+
+<span class="c"># El comando CMD se ha heredado de la imagen base (apache2-foreground),</span>
+<span class="c"># así que no necesitamos especificarlo. El puerto 80 también está expuesto.</span>
+</code></pre></div></p>
+<p>Ahora, vamos a construir la imagen. Abre una terminal en la carpeta del proyecto y ejecuta:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker build: el comando para construir</span>
+<span class="c1"># -t mi-app-php:1.0 : la opción -t (tag) le pone un nombre y una versión a nuestra imagen</span>
+<span class="c1"># . : el punto final le dice a Docker que busque el Dockerfile en el directorio actual</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mi-app-php:1.0<span class="w"> </span>.
+</code></pre></div>
+<p>Verás cómo Docker ejecuta cada paso del <code>Dockerfile</code>. Si todo va bien, al final tendrás tu imagen lista. Compruébalo con <code>docker images</code>.</p>
+<p><strong>Ejemplo 2: Ejecutando nuestra propia imagen</strong></p>
+<p>Ahora que la imagen existe en nuestro sistema, podemos ejecutarla como cualquier otra:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutamos un contenedor a partir de nuestra nueva imagen</span>
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:80<span class="w"> </span>--name<span class="w"> </span>mi-proyecto<span class="w"> </span>mi-app-php:1.0
+
+<span class="c1"># Abre http://localhost:8000 en tu navegador.</span>
+<span class="c1"># Deberías ver el mensaje de bienvenida y la confirmación de que mysqli está instalado.</span>
+</code></pre></div>
+<p>¡Felicidades! Has creado y ejecutado tu primera imagen personalizada de Docker.</p>
+<div class="admonition tip">
+<p class="admonition-title">Build-cache: El superpoder de Docker</p>
+<p>Si modificas tu <code>Dockerfile</code> y vuelves a construir la imagen, Docker es muy listo. Reutilizará las capas que no han cambiado de la caché. Por eso, las instrucciones que cambian más a menudo (como el <code>COPY</code> de tu código) deben ir al final del <code>Dockerfile</code> para acelerar las reconstrucciones.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Qué es <code>FROM</code> en un Dockerfile y por qué es casi siempre la primera instrucción?</li>
+<li>¿Por qué es una buena práctica versionar tus imágenes (ej. <code>:1.0</code>, <code>:1.1</code>) en lugar de usar siempre <code>:latest</code>?</li>
+<li>Modifica el <code>Dockerfile</code> para que además de <code>mysqli</code>, instale la extensión <code>gd</code> (muy usada para manipular imágenes). Pista: <code>docker-php-ext-install</code> puede instalar varias a la vez.</li>
+<li>¿Qué comando usarías para borrar la imagen <code>mi-app-php:1.0</code> de tu sistema? ¿Qué pasaría si hay un contenedor usándola?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="8-volumen-docker-y-persistencia">8. Volumen Docker y Persistencia</h2>
+<p>Hemos creado contenedores, pero tienen un "pequeño" problema: <strong>son efímeros</strong>. Si borras un contenedor, todos los datos que se hayan generado dentro de él (una base de datos, ficheros subidos por un usuario...) se pierden para siempre. Además, si queremos editar nuestro código, tendríamos que reconstruir la imagen y lanzar un nuevo contenedor con cada cambio. ¡Inviable!</p>
+<p>Aquí es donde entran los <strong>volúmenes</strong>, el mecanismo de Docker para persistir datos.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Volumen Docker</p>
+<p>Un volumen es como una "mochila" de datos que vive <strong>fuera</strong> del contenedor pero que se puede "enganchar" a él. Docker gestiona los volúmenes en una parte específica del disco duro del host. Esto permite que los datos sobrevivan aunque el contenedor sea eliminado y, además, se pueden compartir entre varios contenedores.</p>
+</div>
+<p>Existen dos tipos principales de montaje que nos interesan:</p>
+<ol>
+<li><strong>Volúmenes (Volumes):</strong> Es la forma preferida y recomendada por Docker. Creas un volumen gestionado por Docker (<code>docker volume create ...</code>) y lo montas en una carpeta del contenedor. Es ideal para datos que no quieres tocar directamente, como los de una base de datos. Docker se encarga de dónde se guardan físicamente.</li>
+<li><strong>Montajes de Enlace (Bind Mounts):</strong> Conectas una carpeta de <strong>tu propio ordenador</strong> (el host) directamente con una carpeta dentro del contenedor. Es perfecto para el código fuente: editas los ficheros en tu VS Code en tu máquina, y los cambios se reflejan instantáneamente dentro del contenedor.</li>
+</ol>
+<h3 id="ejemplo-1-persistencia-de-datos-de-una-base-de-datos-con-volumen">Ejemplo 1: Persistencia de datos de una base de datos (con Volumen)</h3>
+<p>Vamos a usar <code>docker-compose.yml</code> para ilustrar esto, que es como lo haremos en el mundo real.</p>
+<p><strong><code>docker-compose.yml</code> con volumen para MariaDB:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.8'</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:10.6</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"3306:3306"</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mi_web</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Sintaxis: [nombre_volumen]:[ruta_en_contenedor]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+
+<span class="c1"># Aquí declaramos el volumen. Docker lo creará y gestionará por nosotros.</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
+</code></pre></div>
+Con esta configuración, todo lo que MariaDB escriba en su carpeta <code>/var/lib/mysql</code> se guardará en el volumen <code>db_data</code>. Si ejecutas <code>docker-compose down</code> (que borra el contenedor <code>db</code>) y luego <code>docker-compose up -d</code> otra vez, los datos seguirán ahí.</p>
+<h3 id="ejemplo-2-sincronizacion-de-codigo-en-vivo-con-bind-mount">Ejemplo 2: Sincronización de código en vivo (con Bind Mount)</h3>
+<p>Ahora, añadamos nuestro servicio de aplicación PHP al <code>docker-compose.yml</code> y usemos un <em>bind mount</em> para nuestro código.</p>
+<p><strong><code>docker-compose.yml</code> completo:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3.8'</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"> </span><span class="c1"># Asume que tienes un Dockerfile en la raíz</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8080:80"</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Sintaxis Bind Mount: [ruta_en_host]:[ruta_en_contenedor]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src:/var/www/html</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:10.6</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mi_web</span>
+<span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
+</code></pre></div>
+Con <code>volumes: - ./src:/var/www/html</code>, le estamos diciendo a Docker: "La carpeta <code>src</code> de mi proyecto en mi ordenador es la misma que la carpeta <code>/var/www/html</code> dentro del contenedor <code>app</code>".
+Ahora, si cambias cualquier fichero dentro de <code>src</code> con tu editor de código, el cambio se refleja al instante en el servidor web que corre dentro de Docker, sin necesidad de reconstruir nada. ¡Simplemente recarga el navegador!</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "Tu Ordenador (Host)"
+        A["Carpeta del Proyecto&lt;br/&gt;/users/tu/proyecto"] --&gt; B["&lt;b&gt;./src&lt;/b&gt;&lt;br/&gt;(index.php, etc.)"]
+        A --&gt; C["&lt;b&gt;docker-compose.yml&lt;/b&gt;"]
+        D["Área de Volúmenes de Docker"] --- E((db_data))
+    end
+
+    subgraph "Contenedores Docker"
+        subgraph "Contenedor 'app'"
+            F["&lt;b&gt;/var/www/html&lt;/b&gt;"]
+        end
+        subgraph "Contenedor 'db'"
+            G["&lt;b&gt;/var/lib/mysql&lt;/b&gt;"]
+        end
+    end
+
+    B &lt;==&gt;|Bind Mount&lt;br/&gt;Sincronización en vivo| F
+    E &lt;==&gt;|Volumen&lt;br/&gt;Persistencia de datos| G</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Cuál es la principal diferencia entre un volumen y un bind mount? ¿Cuándo usarías cada uno?</li>
+<li>Si no usáramos un volumen para la base de datos, ¿qué pasaría cada vez que ejecutáramos <code>docker-compose down</code>?</li>
+<li>El comando <code>docker volume ls</code> lista los volúmenes que Docker está gestionando. ¿Qué esperas ver después de ejecutar el <code>docker-compose.yml</code> de los ejemplos?</li>
+<li>¿Qué problemas de permisos podrías encontrar al usar bind mounts en Linux? (Pista: investiga sobre los <code>UID</code>/<code>GID</code> del usuario del host y del contenedor).</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="9-compilacion-y-despliegue">9. Compilación y despliegue</h2>
+<p>Hemos visto cómo usar Docker para tener un entorno de desarrollo local genial. Pero, ¿y para llevar nuestra aplicación a un servidor de producción? El proceso es sorprendentemente similar y elegante. La idea es que la <strong>misma imagen</strong> que has probado en local es la que se va a ejecutar en producción.</p>
+<p>El flujo de trabajo general es: <strong>Construir -&gt; Publicar -&gt; Desplegar</strong>.</p>
+<ol>
+<li><strong>Construir (Build):</strong> Es el proceso que ya conocemos de usar <code>docker build</code> para crear nuestra imagen a partir del <code>Dockerfile</code>. La clave aquí es que esta imagen debe ser de "producción", es decir, no debería incluir herramientas de desarrollo como Xdebug.</li>
+<li><strong>Publicar (Push):</strong> Una vez que tenemos la imagen, no la vamos a construir en el servidor de producción. En su lugar, la subimos a un <strong>registro de imágenes</strong>, que es un almacén centralizado. El más común es Docker Hub, pero las empresas suelen usar registros privados (Amazon ECR, Google Artifact Registry, etc.) por seguridad.</li>
+<li><strong>Desplegar (Pull &amp; Run):</strong> En el servidor de producción, simplemente hacemos <code>docker pull</code> para descargar la imagen desde el registro y <code>docker run</code> (o más comúnmente, <code>docker-compose up</code>) para iniciarla.</li>
+</ol>
+<h3 id="usando-un-dockerfile-multi-etapa-para-optimizar">Usando un Dockerfile Multi-etapa para optimizar</h3>
+<p>Para producción, queremos que nuestras imágenes sean lo más pequeñas y seguras posible. No queremos incluir las dependencias de <code>composer</code> que solo se usan para desarrollo (<code>phpunit</code>, <code>faker</code>...), por ejemplo. Un <strong>Dockerfile multi-etapa</strong> es la técnica perfecta para esto.</p>
+<p><strong>Ejemplo: Dockerfile Multi-etapa para una app PHP con Composer</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="c"># ---- Etapa 1: "builder" ----</span>
+<span class="c"># En esta etapa instalamos TODAS las dependencias, incluidas las de desarrollo</span>
+<span class="c"># Usamos una imagen de composer para tener la herramienta disponible</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">composer:2.5</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>composer.json<span class="w"> </span>composer.lock<span class="w"> </span>./
+<span class="c"># Instala las dependencias</span>
+<span class="k">RUN</span><span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--no-interaction<span class="w"> </span>--no-scripts<span class="w"> </span>--no-progress
+
+<span class="c"># Copia el resto del código de la aplicación</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c"># ---- Etapa 2: "production" ----</span>
+<span class="c"># Esta es la etapa final. Partimos de una imagen limpia de PHP + Apache</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-apache</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/var/www/html</span>
+
+<span class="c"># Copiamos SOLO las dependencias de producción desde la etapa "builder"</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/app/vendor/<span class="w"> </span>/var/www/html/vendor/
+<span class="c"># Copiamos el código de nuestra aplicación desde la etapa "builder"</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/app/src/<span class="w"> </span>/var/www/html/
+
+<span class="k">RUN</span><span class="w"> </span>docker-php-ext-install<span class="w"> </span>pdo<span class="w"> </span>pdo_mysql
+
+<span class="c"># No instalamos Xdebug ni otras herramientas de desarrollo.</span>
+<span class="c"># La imagen final es limpia y optimizada.</span>
+</code></pre></div>
+La imagen final solo contendrá lo estrictamente necesario, será más pequeña y tendrá una menor superficie de ataque.</p>
+<h3 id="ejemplo-de-flujo-de-despliegue">Ejemplo de flujo de Despliegue</h3>
+<p>Supongamos que tu usuario en Docker Hub es <code>mi-usuario</code>.</p>
+<p><strong>1. En tu máquina local:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Construye la imagen de producción con una etiqueta adecuada</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mi-usuario/mi-app-php:1.0.0<span class="w"> </span>.
+
+<span class="c1"># Inicia sesión en Docker Hub (te pedirá usuario y contraseña)</span>
+docker<span class="w"> </span>login
+
+<span class="c1"># Sube tu imagen al registro</span>
+docker<span class="w"> </span>push<span class="w"> </span>mi-usuario/mi-app-php:1.0.0
+</code></pre></div>
+<p><strong>2. En tu servidor de producción (conectado por SSH):</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Descarga la imagen que acabas de subir</span>
+docker<span class="w"> </span>pull<span class="w"> </span>mi-usuario/mi-app-php:1.0.0
+
+<span class="c1"># Lanza el contenedor</span>
+<span class="c1"># Aquí podrías usar un docker-compose.yml específico para producción</span>
+<span class="c1"># que configure las variables de entorno, redes, etc.</span>
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>--name<span class="w"> </span>produccion<span class="w"> </span>mi-usuario/mi-app-php:1.0.0
+</code></pre></div>
+¡Listo! El mismo código, empaquetado de la misma forma, ahora corre en producción. La consistencia es total.</p>
+<div class="admonition warning">
+<p class="admonition-title">Secretos en Producción</p>
+<p>¡Nunca, nunca, NUNCA incluyas contraseñas, claves de API u otros secretos directamente en tu Dockerfile o en tu código! En producción, estos se deben gestionar a través de variables de entorno o sistemas de gestión de secretos (como Docker Secrets o HashiCorp Vault), que se inyectan al contenedor en tiempo de ejecución.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Por qué no es una buena idea ejecutar <code>docker build</code> directamente en el servidor de producción?</li>
+<li>¿Qué ventajas aporta un Dockerfile multi-etapa?</li>
+<li>¿Qué es un registro de imágenes y por qué es una pieza central en el flujo de despliegue?</li>
+<li>¿Cómo manejarías la configuración de la base de datos (host, usuario, contraseña) en producción si no puedes "quemarla" en la imagen?</li>
+</ol>
+</div>
+<p><br/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/docker.jpeg"><img alt="Git" src="../images/docker.jpeg" width="1024"/></a></p>
+<p><br/><hr/></p>
+<h2 id="10-buenas-practicas">10. Buenas prácticas</h2>
+<p>Usar Docker es fácil, pero usarlo bien requiere seguir ciertas convenciones que harán tus imágenes más pequeñas, rápidas y seguras. Aquí tienes las reglas de oro.</p>
+<ol>
+<li>
+<p><strong>Usa imágenes base específicas y pequeñas:</strong></p>
+<ul>
+<li><strong>NO:</strong> <code>FROM php:latest</code>. La etiqueta <code>latest</code> es impredecible; puede cambiar mañana y romper tu build.</li>
+<li><strong>SÍ:</strong> <code>FROM php:8.2.1-apache-bookworm</code>. Sé específico con la versión.</li>
+<li><strong>MEJOR AÚN:</strong> <code>FROM php:8.2.1-fpm-alpine</code>. Las imágenes con base <code>alpine</code> son extremadamente ligeras (basadas en Alpine Linux), lo que reduce el tamaño de tu imagen final y la superficie de ataque.</li>
+</ul>
+</li>
+<li>
+<p><strong>Minimiza el número de capas:</strong> Cada instrucción <code>RUN</code>, <code>COPY</code> y <code>ADD</code> en tu Dockerfile crea una nueva capa. Combina comandos siempre que sea posible para mantener la imagen ligera.</p>
+<ul>
+<li><strong>NO:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>vim
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl
+</code></pre></div></li>
+<li><strong>SÍ:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vim<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+<span class="c"># El `rm` final limpia la caché de apt para no dejar basura en la capa.</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Utiliza un fichero <code>.dockerignore</code>:</strong> Similar a <code>.gitignore</code>, este fichero excluye archivos y directorios de ser enviados al demonio de Docker durante la construcción. Esto acelera el <code>build</code> y previene que se filtren secretos o ficheros innecesarios.
+    <strong><code>./.dockerignore</code></strong>:
+    <div class="highlight"><pre><span></span><code>.git
+.vscode
+node_modules
+vendor
+Dockerfile
+README.md
+.env
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>No ejecutes como <code>root</code>:</strong> Por defecto, los contenedores se ejecutan con el usuario <code>root</code>, lo cual es un riesgo de seguridad. Crea un usuario sin privilegios y úsalo.
+    <div class="highlight"><pre><span></span><code><span class="c"># ...</span>
+<span class="k">RUN</span><span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>appuser
+<span class="k">USER</span><span class="w"> </span><span class="s">appuser</span>
+<span class="c"># ...</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Aprovecha la caché de construcción:</strong> Ordena las instrucciones de tu Dockerfile de menos a más cambiantes.</p>
+<ul>
+<li><strong>NO:</strong> Copiar tu código (<code>COPY . .</code>) al principio.</li>
+<li><strong>SÍ:</strong> Instala dependencias (<code>RUN apt-get...</code>, <code>RUN composer install...</code>) primero, y copia tu código al final. Como el código es lo que más cambia, solo la última capa se invalidará en cada <code>build</code>, haciendo el proceso casi instantáneo.</li>
+</ul>
+<p><strong>Ejemplo de orden correcto:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">php:8.2-fpm-alpine</span>
+<span class="c"># 1. Instala dependencias del sistema (casi nunca cambia)</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>libzip-dev
+<span class="k">RUN</span><span class="w"> </span>docker-php-ext-install<span class="w"> </span>pdo_mysql<span class="w"> </span>zip
+<span class="c"># 2. Instala dependencias de composer (cambia a veces)</span>
+<span class="k">COPY</span><span class="w"> </span>composer.json<span class="w"> </span>composer.lock<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--no-dev
+<span class="c"># 3. Copia tu código (cambia constantemente)</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="c"># ...</span>
+</code></pre></div>
+6.  <strong>Usa <code>CMD</code> en lugar de <code>ENTRYPOINT</code> para comandos por defecto:</strong> <code>CMD</code> especifica el comando por defecto que se ejecutará si no se provee uno, y puede ser fácilmente sobrescrito desde la línea de comandos (<code>docker run mi-imagen ls -l</code>). <code>ENTRYPOINT</code> es más "fijo" y se usa para crear ejecutables.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">La navaja de Ockham de Docker</p>
+<p>"La imagen más simple que funcione es probablemente la mejor imagen". No instales nada que no sea estrictamente necesario para que tu aplicación corra en producción.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ol>
+<li>¿Por qué usar <code>php:latest</code> en un <code>Dockerfile</code> de producción es una mala idea?</li>
+<li>Explica con tus palabras cómo funciona la caché de construcción de Docker y por qué el orden de las instrucciones es crucial.</li>
+<li>¿Qué tipo de ficheros incluirías siempre en tu <code>.dockerignore</code> y por qué?</li>
+<li>¿Cuál es el riesgo de seguridad de ejecutar un contenedor como <code>root</code>?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Es fácil pensar en Docker como una herramienta académica, pero la realidad es que ha conquistado el mundo del desarrollo de software. Prácticamente todas las empresas tecnológicas modernas lo usan de una forma u otra.</p>
+<ul>
+<li><strong>Gigantes Tecnológicos (Google, Amazon, Netflix):</strong> Usan Docker y tecnologías de orquestación como Kubernetes para gestionar sus masivas infraestructuras de microservicios. Google, de hecho, ejecuta "varios miles de millones de contenedores a la semana". Esta es la escala que Docker permite manejar.</li>
+<li><strong>Startups y PYMES:</strong> Para una empresa que empieza, la agilidad es clave. Docker les permite montar entornos de desarrollo y producción en horas en lugar de semanas, con un equipo de infraestructura mínimo. Les da la capacidad de escalar rápidamente si su producto tiene éxito, sin tener que rediseñar toda su arquitectura.</li>
+<li><strong>Agencias de Desarrollo Web:</strong> Una agencia puede tener docenas de proyectos para distintos clientes, cada uno con sus requisitos (una versión de PHP, un CMS específico como WordPress o Drupal, etc.). Docker les permite tener cada proyecto en su propio entorno aislado, evitando conflictos y facilitando el traspaso entre desarrolladores.</li>
+<li><strong>Ciencia de Datos y Machine Learning:</strong> Los científicos de datos necesitan entornos con librerías muy específicas (TensorFlow, PyTorch, etc.). Docker les permite empaquetar un "experimento" (código, datos y librerías) en una imagen, asegurando que los resultados sean 100% reproducibles por otros colegas o en otros sistemas.</li>
+</ul>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Dominar Docker es un viaje continuo. Aquí tienes algunos recursos de alta calidad para seguir profundizando:</p>
+<ol>
+<li><strong>Documentación Oficial de Docker:</strong> Es el mejor lugar para empezar y para consultar cualquier duda. Es clara, completa y llena de ejemplos. <a href="https://docs.docker.com/">https://docs.docker.com/</a></li>
+<li><strong>Play with Docker:</strong> Un increíble "sandbox" online y gratuito donde puedes experimentar con Docker directamente desde tu navegador, sin instalar nada. Ideal para probar comandos y conceptos de forma rápida. <a href="https://labs.play-with-docker.com/">https://labs.play-with-docker.com/</a></li>
+<li><strong>The Docker Handbook (FreeCodeCamp):</strong> Una guía muy completa y bien explicada que cubre desde lo más básico hasta temas avanzados. Perfecta para consolidar lo que hemos visto. <a href="https://www.freecodecamp.org/news/the-docker-handbook/">https://www.freecodecamp.org/news/the-docker-handbook/</a></li>
+</ol>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

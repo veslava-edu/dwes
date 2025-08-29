@@ -1,0 +1,2612 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/02-Sintaxis/">
+      
+      
+        <link rel="prev" href="../01-Introduccion/">
+      
+      
+        <link rel="next" href="../03-Control/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>02 - Sintaxis - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud2-sintaxis-basica-de-php-las-reglas-del-juego" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02 - Sintaxis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollo-y-ejemplos-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desarrollo y Ejemplos Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incrustando-php-el-arte-de-mezclar-mundos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incrustando PHP: El Arte de Mezclar Mundos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-tus-mensajes-para-el-futuro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios: Tus Mensajes para el Futuro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-los-contenedores-de-tu-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables: Los Contenedores de tu Información
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constantes-valores-escritos-en-piedra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constantes: Valores Escritos en Piedra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-la-caja-de-herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores: La Caja de Herramientas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-por-valor-vs-paso-por-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso por Valor vs. Paso por Referencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambios-realizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios realizados:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#para-saber-mas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Para Saber Más
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-fundamentales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollo-y-ejemplos-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollo y Ejemplos Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Desarrollo y Ejemplos Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#incrustando-php-el-arte-de-mezclar-mundos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incrustando PHP: El Arte de Mezclar Mundos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios-tus-mensajes-para-el-futuro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios: Tus Mensajes para el Futuro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-los-contenedores-de-tu-informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables: Los Contenedores de tu Información
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constantes-valores-escritos-en-piedra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constantes: Valores Escritos en Piedra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-la-caja-de-herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadores: La Caja de Herramientas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-por-valor-vs-paso-por-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso por Valor vs. Paso por Referencia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambios-realizados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambios realizados:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#para-saber-mas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Para Saber Más
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud2-sintaxis-basica-de-php-las-reglas-del-juego">UD2. Sintaxis Básica de PHP: Las Reglas del Juego</h1>
+<p>¡Hola, equipo! Bienvenidos de nuevo a la sala de máquinas del desarrollo web. Hoy vamos a sentar las bases de nuestro próximo gran lenguaje: PHP.</p>
+<p>Imaginad que PHP es un nuevo videojuego de mundo abierto. Antes de lanzaros a explorar, necesitáis aprender los controles básicos: cómo moveros, cómo saltar, cómo abrir el inventario... Si no domináis eso, da igual lo increíble que sea el mundo, estaréis dando vueltas en círculo. La sintaxis de un lenguaje de programación es exactamente eso: son las reglas fundamentales, los "controles", que debéis dominar para que el intérprete de PHP os entienda y haga lo que le pedís.</p>
+<p>En el mundo laboral, un desarrollador que no domina la sintaxis es como un chef que no sabe usar los cuchillos. Puede tener grandes ideas, pero la ejecución fallará. Hoy nos aseguraremos de que vuestros "cuchillos" estén bien afilados.</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de escribir nuestra primera línea de código, vamos a definir algunos términos clave que serán nuestro pan de cada día.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Script PHP</p>
+<p>Un <strong>script PHP</strong> es simplemente un archivo de texto con la extensión <code>.php</code>. Este archivo contiene instrucciones escritas en el lenguaje PHP que un servidor web puede interpretar y ejecutar. El resultado de esa ejecución suele ser código HTML que se envía al navegador del cliente.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Etiquetas PHP</p>
+<p>Son las marcas que le dicen al servidor: "¡Oye, aquí empieza el código PHP que tienes que procesar!". La etiqueta de apertura estándar es <code>&lt;?php</code> y la de cierre es <code>?&gt;</code>. Todo lo que esté fuera de estas etiquetas será ignorado por el intérprete de PHP y se enviará al navegador tal cual.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Sentencia</p>
+<p>Una sentencia es una instrucción completa en PHP, como asignar un valor a una variable o llamar a una función. Piénsalo como una frase completa en un idioma. En PHP, cada sentencia <strong>debe</strong> terminar con un punto y coma (<code>;</code>). Este pequeño símbolo es crucial y olvidarlo es una de las fuentes de error más comunes para los principiantes.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Comentario</p>
+<p>Un comentario es un texto dentro de tu código que el intérprete de PHP ignora por completo. Su única finalidad es ser leído por humanos. Son tus notas al margen, tus recordatorios o las explicaciones que dejas para tus compañeros (o para tu "yo" del futuro, que te lo agradecerá).</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="desarrollo-y-ejemplos-practicos">Desarrollo y Ejemplos Prácticos</h2>
+<p>Ahora que tenemos el vocabulario, ¡manos a la obra! Vamos a ver cómo se aplican estos conceptos.</p>
+<h3 id="incrustando-php-el-arte-de-mezclar-mundos">Incrustando PHP: El Arte de Mezclar Mundos</h3>
+<p>PHP nació para vivir dentro de HTML. Su gran poder reside en la capacidad de "incrustar" lógica de servidor directamente donde la necesitas en tu página web.</p>
+<p>Un archivo <code>.php</code> puede contener solo HTML, solo PHP, o una mezcla de ambos. El servidor lo procesará, ejecutará el código PHP y devolverá al navegador un documento HTML puro.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mezclando Mundos<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Página de Bienvenida<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es HTML puro y duro.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="cp">&lt;?php</span>
+        <span class="c1">// ¡Aquí empieza la magia de PHP!</span>
+        <span class="nv">$nombreUsuario</span> <span class="o">=</span> <span class="s2">"Alex"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Hola, "</span> <span class="o">.</span> <span class="nv">$nombreUsuario</span> <span class="o">.</span> <span class="s2">". ¡Tu aventura en PHP comienza ahora!&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="cp">?&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Y esto... vuelve a ser HTML.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- Forma corta para imprimir una variable --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La hora actual del servidor es: <span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'H:i:s'</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">La etiqueta de cierre es opcional (a veces)</p>
+<p>Según la recomendación de estilo <strong>PSR-12</strong>, si un archivo contiene <strong>únicamente código PHP</strong>, se debe omitir la etiqueta de cierre <code>?&gt;</code>. Esto previene que se envíen accidentalmente espacios en blanco o líneas nuevas al final del fichero, lo que podría causar errores inesperados.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>¿Qué crees que pasaría si guardas el código anterior con la extensión <code>.html</code> en lugar de <code>.php</code> y lo abres en el navegador (a través de un servidor)?</li>
+<li>¿Por qué la etiqueta <code>&lt;?= ... ?&gt;</code> es útil? ¿En qué situaciones la usarías en lugar de un bloque <code>&lt;?php echo ...; ?&gt;</code> completo?</li>
+<li>Imagina que quieres mostrar la fecha de mañana. Investiga la función <code>date()</code> de PHP y modifica el ejemplo para que muestre "Mañana será día X".</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="comentarios-tus-mensajes-para-el-futuro">Comentarios: Tus Mensajes para el Futuro</h3>
+<p>Saber comentar tu código es tan importante como saber escribirlo. Es una marca de profesionalidad. Hay tres formas de hacerlo en PHP:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Esto es un comentario de una sola línea. Sirve para notas rápidas.</span>
+
+<span class="c1"># Este también es un comentario de una sola línea, estilo "shell". Menos común, pero válido.</span>
+
+<span class="cm">/*</span>
+<span class="cm">  Esto es un comentario de bloque o multilínea.</span>
+<span class="cm">  Es ideal para explicaciones más largas o para</span>
+<span class="cm">  "desactivar" temporalmente un trozo de código sin borrarlo.</span>
+<span class="cm">  Es una técnica de depuración muy común.</span>
+<span class="cm">*/</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Esto es un comentario de documentación, conocido como PHPDoc.</span>
+<span class="sd"> * Es especial porque herramientas externas pueden leerlo para</span>
+<span class="sd"> * generar documentación automática de tu proyecto.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $nombre El nombre del usuario a saludar.</span>
+<span class="sd"> * @return string El saludo formateado.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">saludar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$nombre</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="c1">// El código de la función iría aquí...</span>
+    <span class="k">return</span> <span class="s2">"¡Hola, "</span> <span class="o">.</span> <span class="nv">$nombre</span> <span class="o">.</span> <span class="s2">"!"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">PHPDoc: Documentando como un Profesional</p>
+<p>Acostumbrarse a usar comentarios PHPDoc (<code>/** ... */</code>) desde el principio es una práctica excelente. No solo ayuda a entender qué hace cada función o clase, sino que muchos editores de código (como VS Code) los usan para darte autocompletado y pistas sobre los parámetros, ¡haciéndote la vida más fácil!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>En el ejemplo anterior, si borraras la barra <code>*</code> de cierre del comentario multilínea (<code>*/</code>), ¿qué ocurriría con el resto del código?</li>
+<li>¿Por qué es una mala práctica comentar lo obvio? Por ejemplo: <code>// Incremento la variable i</code>. ¿Qué tipo de información SÍ deberías poner en un comentario?</li>
+<li>Busca qué es "código espagueti" (spaghetti code). ¿Cómo crees que el uso adecuado de comentarios puede ayudar a prevenirlo?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="variables-los-contenedores-de-tu-informacion">Variables: Los Contenedores de tu Información</h3>
+<p>Piensa en las variables como cajas etiquetadas donde guardas datos. En PHP, estas "cajas" tienen algunas reglas:</p>
+<ul>
+<li>Siempre empiezan con un símbolo de dólar: <code>$</code>.</li>
+<li>Después del <code>$</code>, el nombre debe empezar con una letra o un guion bajo <code>_</code>.</li>
+<li>Son sensibles a mayúsculas y minúsculas: <code>$nombre</code> es diferente de <code>$Nombre</code>.</li>
+<li>PHP tiene un <strong>tipado débil o dinámico</strong>: no necesitas declarar el tipo de dato de una variable de antemano. PHP lo deduce por el valor que le asignas.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// PHP deduce los tipos automáticamente</span>
+
+<span class="nv">$nombreHeroe</span> <span class="o">=</span> <span class="s2">"Link"</span><span class="p">;</span>          <span class="c1">// Esto es un string (cadena de texto)</span>
+<span class="nv">$rupiaCount</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span>              <span class="c1">// Esto es un integer (número entero)</span>
+<span class="nv">$porcentajeCompletado</span> <span class="o">=</span> <span class="mf">85.5</span><span class="p">;</span>   <span class="c1">// Esto es un float (número decimal)</span>
+<span class="nv">$tieneEspadaMaestra</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>     <span class="c1">// Esto es un boolean (verdadero/falso)</span>
+<span class="nv">$inventario</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>             <span class="c1">// Esto representa la ausencia de valor</span>
+
+<span class="c1">// ¡Podemos incluso cambiar el tipo sobre la marcha! (aunque no siempre es buena idea)</span>
+<span class="nv">$rupiaCount</span> <span class="o">=</span> <span class="s2">"Casi mil"</span><span class="p">;</span>       <span class="c1">// Ahora $rupiaCount es un string</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Cuidado con el Tipado Débil</p>
+<p>La flexibilidad del tipado dinámico es genial para empezar, pero puede ser una fuente de errores difíciles de encontrar. Una operación como <code>$resultado = 5 + "3 manzanas";</code> puede dar resultados inesperados. PHP intentará convertir "3 manzanas" a un número, obteniendo <code>3</code>, y el resultado será <code>8</code> (generando una advertencia). ¡Programa siempre con intención y no dejes que PHP "adivine" por ti!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>¿Es <code>$1jugador</code> un nombre de variable válido en PHP? ¿Y <code>$_jugador1</code>? Justifica tu respuesta.</li>
+<li>Usando la función <code>gettype()</code>, comprueba el tipo de las variables del ejemplo anterior. ¿Qué muestra <code>gettype()</code> para la variable <code>$tieneEspadaMaestra</code>?</li>
+<li>¿Qué crees que pasará si intentas usar una variable que no has definido previamente, por ejemplo, <code>echo $puntuacion;</code>? ¿Y qué herramienta podrías usar para comprobar si una variable existe antes de usarla?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="constantes-valores-escritos-en-piedra">Constantes: Valores Escritos en Piedra</h3>
+<p>Si las variables son cajas donde puedes cambiar el contenido, las constantes son vitrinas selladas. Una vez que defines su valor, no se puede cambiar durante la ejecución del script.</p>
+<ul>
+<li>Por convención, sus nombres se escriben en <strong>MAYÚSCULAS</strong>.</li>
+<li>No llevan el símbolo <code>$</code> delante.</li>
+<li>Se definen con <code>define()</code> o, desde PHP 5.3, con la palabra clave <code>const</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Forma clásica</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">"VERSION_JUEGO"</span><span class="p">,</span> <span class="s2">"1.2.1"</span><span class="p">);</span>
+
+<span class="c1">// Forma moderna (preferida para código dentro de clases)</span>
+<span class="k">const</span> <span class="no">MAX_JUGADORES</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"Bienvenido a la versión "</span> <span class="o">.</span> <span class="nx">VERSION_JUEGO</span> <span class="o">.</span> <span class="s2">" del juego."</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"En esta partida pueden jugar hasta "</span> <span class="o">.</span> <span class="nx">MAX_JUGADORES</span> <span class="o">.</span> <span class="s2">" personas."</span><span class="p">;</span>
+
+<span class="c1">// Esto provocaría un error fatal:</span>
+<span class="c1">// MAX_JUGADORES = 5;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Diferencia entre <code>const</code> y <code>define()</code></p>
+<p>Aunque parecen similares, hay una diferencia clave: <code>const</code> define constantes en tiempo de compilación, mientras que <code>define()</code> lo hace en tiempo de ejecución. Esto significa que no puedes usar <code>const</code> dentro de estructuras de control (como un <code>if</code>), pero con <code>define()</code> sí. Para la mayoría de los casos, si no necesitas esa flexibilidad, <code>const</code> es ligeramente más claro de leer.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>¿Por qué usarías una constante en lugar de una variable para guardar, por ejemplo, el valor de PI (3.14159...)?</li>
+<li>PHP tiene "constantes mágicas" como <code>__LINE__</code> y <code>__FILE__</code>. ¿Qué crees que almacenan y para qué podrían ser útiles, especialmente a la hora de depurar errores?</li>
+<li>Intenta crear una constante cuyo nombre sea <code>2PLAYERS</code>. ¿Qué ocurre? ¿Por qué?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h3 id="operadores-la-caja-de-herramientas">Operadores: La Caja de Herramientas</h3>
+<p>Los operadores son los símbolos que te permiten realizar acciones con tus variables y valores: sumar, comparar, asignar, etc. Son similares a los de otros lenguajes como Java o C.</p>
+<pre class="mermaid"><code>    graph TD
+    subgraph "Operadores en PHP"
+        A["Aritméticos&lt;br&gt;+, -, *, /, %, **"]
+        B["Asignación&lt;br&gt;=, +=, -=, .="]
+        C["Comparación&lt;br&gt;==, ===, !=, &lt;=, &gt;=, &lt;=&gt;"]
+        D["Lógicos&lt;br&gt;&amp;&amp;, ||, !, and, or"]
+    end</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Categoría</th>
+<th style="text-align: left;">Operador</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Aritméticos</strong></td>
+<td style="text-align: left;"><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code></td>
+<td style="text-align: left;">Operaciones matemáticas básicas.</td>
+<td style="text-align: left;"><code>$total = $precio * 1.21;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Asignación</strong></td>
+<td style="text-align: left;"><code>=</code>, <code>+=</code>, <code>-=</code>, <code>.</code>=</td>
+<td style="text-align: left;">Asigna valores. El <code>.</code>= es para concatenar.</td>
+<td style="text-align: left;"><code>$puntuacion += 10;</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Comparación</strong></td>
+<td style="text-align: left;"><code>==</code>, <code>===</code>, <code>!=</code>, <code>&lt;=&gt;</code></td>
+<td style="text-align: left;">Compara dos valores.</td>
+<td style="text-align: left;"><code>if ($vidas == 0) { ... }</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lógicos</strong></td>
+<td style="text-align: left;"><code>&amp;&amp;</code> (y), <code>||</code> (o), <code>!</code> (no)</td>
+<td style="text-align: left;">Combina expresiones condicionales.</td>
+<td style="text-align: left;"><code>if ($logueado &amp;&amp; $esAdmin) { ... }</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Igual (==) vs. Idéntico (===): La Batalla Eterna</p>
+<p>Este es un concepto <strong>CRUCIAL</strong>.
+*   <code>==</code> (Igual): Compara solo el valor, después de intentar convertir los tipos para que coincidan. <code>'5' == 5</code> es <code>true</code>.
+*   <code>===</code> (Idéntico): Compara el valor <strong>Y</strong> el tipo de dato. Es más estricto y seguro. <code>'5' === 5</code> es <code>false</code>, porque uno es <code>string</code> y el otro <code>integer</code>.
+<strong>Como norma general, usa siempre <code>===</code> a menos que tengas una muy buena razón para no hacerlo.</strong></p>
+</div>
+<p>Desde PHP 7, se introdujeron dos operadores muy útiles:</p>
+<ul>
+<li><strong>Nave Espacial <code>&lt;=&gt;</code></strong>: Compara dos valores y devuelve <code>-1</code>, <code>0</code> o <code>1</code> si el de la izquierda es menor, igual o mayor que el de la derecha, respectivamente. Es genial para funciones de ordenación.</li>
+<li><strong>Fusión de null <code>??</code></strong>: Devuelve el primer operando que no sea <code>NULL</code> de izquierda a derecha. Es un atajo increíble para asignar valores por defecto.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Operador de fusión de null</span>
+<span class="c1">// Si $_GET['usuario'] existe y no es null, usa su valor. Si no, usa 'invitado'.</span>
+<span class="nv">$nombreUsuario</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'invitado'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"Bienvenido, </span><span class="si">$nombreUsuario</span><span class="s2">"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡Desafío de Lógica!</p>
+<p>Analiza la siguiente expresión y determina el valor final de <code>$c</code>. ¡No vale ejecutarlo hasta que tengas tu respuesta!
+<code>$a = 5; $b = '5'; $c = ($a == $b) &amp;&amp; ($a !== $b) || !($a &gt; 10);</code></p>
+</div>
+<p><br/><hr/></p>
+<h3 id="paso-por-valor-vs-paso-por-referencia">Paso por Valor vs. Paso por Referencia</h3>
+<p>Cuando pasas una variable a una función, PHP, por defecto, lo hace <strong>por valor</strong>.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Codigo as "Código Principal"
+    participant Funcion as "miFuncion"
+
+    Codigo-&gt;&gt;Codigo: "$original = 10"
+
+    alt "Paso por Valor (defecto)"
+        Codigo-&gt;&gt;Funcion: "miFuncion($original)"
+        Note right of Codigo: "Se crea una COPIA de $original&lt;br&gt;llamada 'param' con valor 10"
+        Funcion-&gt;&gt;Funcion: "param se incrementa a 15"
+        Note left of Funcion: "El $original del código principal&lt;br&gt;sigue valiendo 10"
+        Funcion--&gt;&gt;Codigo: "finaliza"
+
+    else "Paso por Referencia con &amp;"
+        Codigo-&gt;&gt;Funcion: "miFuncion(&amp;$original)"
+        Note right of Codigo: "Se pasa una REFERENCIA a $original&lt;br&gt; 'param' es un alias de $original"
+        Funcion-&gt;&gt;Funcion: "param se incrementa a 15"
+        Note left of Funcion: "Al ser un alias, ¡el $original&lt;br&gt;del código principal ahora vale 15!"
+        Funcion--&gt;&gt;Codigo: "finaliza"
+    end</code></pre>
+<h3 id="cambios-realizados">Cambios realizados:</h3>
+<ol>
+<li><strong><code>participant</code></strong>: Los alias con espacios como <code>"Código Principal"</code> y <code>"miFuncion(param)"</code> han sido rodeados con comillas dobles.</li>
+<li><strong>Mensajes de flechas</strong>: Todos los mensajes de las interacciones, como <code>"$original = 10;"</code> o <code>"miFuncion($original)"</code>, se han entrecomillado.</li>
+<li><strong>Bloques <code>alt</code> y <code>else</code></strong>: Las descripciones de estos bloques ahora están entre comillas: <code>"Paso por Valor (defecto)"</code> y <code>"Paso por Referencia (&amp;)"</code>.</li>
+<li><strong><code>Note</code></strong>: El texto de todas las notas se ha encerrado en comillas dobles para asegurar que los espacios y saltos de línea (<code>&lt;br&gt;</code>) se interpreten correctamente.</li>
+</ol>
+<p>Con estas correcciones, el diagrama debería renderizarse sin problemas en tu documentación de MkDocs.</p>
+<ul>
+<li><strong>Paso por Valor (el comportamiento por defecto):</strong> Es como darle a un amigo una fotocopia de un documento. Tu amigo puede escribir sobre la fotocopia, pero tu documento original permanece intacto. Dentro de la función, trabajas con una copia de la variable.</li>
+<li><strong>Paso por Referencia:</strong> Es como darle a tu amigo el documento original. Cualquier cambio que haga, lo está haciendo sobre tu único ejemplar. Para hacer esto, se antepone un <code>&amp;</code> al parámetro en la definición de la función.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// PASO POR VALOR (Fotocopia)</span>
+<span class="k">function</span> <span class="nf">duplicarValor</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$numero</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$numero</span> <span class="o">=</span> <span class="nv">$numero</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"Dentro de la función, el número es: </span><span class="si">$numero</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$miNumero</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">duplicarValor</span><span class="p">(</span><span class="nv">$miNumero</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"Fuera de la función, el número sigue siendo: </span><span class="si">$miNumero</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// Imprime 10</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;hr&gt;"</span><span class="p">;</span>
+
+<span class="c1">// PASO POR REFERENCIA (Original)</span>
+<span class="k">function</span> <span class="nf">duplicarReferencia</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$numero</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$numero</span> <span class="o">=</span> <span class="nv">$numero</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"Dentro de la función, el número es: </span><span class="si">$numero</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$otroNumero</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">duplicarReferencia</span><span class="p">(</span><span class="nv">$otroNumero</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"Fuera de la función, el número HA CAMBIADO a: </span><span class="si">$otroNumero</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span> <span class="c1">// Imprime 20</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Usa las Referencias con Sabiduría</p>
+<p>El paso por referencia es potente, pero puede hacer que el código sea más difícil de seguir, ya que una función puede tener "efectos secundarios" y modificar variables fuera de su propio ámbito. Úsalo solo cuando sea estrictamente necesario, por ejemplo, cuando trabajes con objetos muy grandes y quieras evitar la sobrecarga de memoria de copiarlos.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Imagina que tienes una función que debe modificar varias variables a la vez (por ejemplo, <code>calcularImpuestos(&amp;$base, &amp;$iva, &amp;$total)</code>). ¿Sería el paso por referencia una buena opción aquí? ¿Qué alternativa podrías usar (pista: piensa en lo que puede devolver una función)?</li>
+<li>¿Qué pasaría si intentas pasar un valor literal por referencia? Ejemplo: <code>duplicarReferencia(5);</code>. ¿Por qué crees que PHP no lo permite?</li>
+<li>El paso por referencia se usaba mucho antes en PHP por razones de rendimiento con arrays grandes. Investiga por qué esto ya no es tan crítico en las versiones modernas de PHP (pista: busca "Copy on Write PHP").</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Dominar la sintaxis no es un ejercicio académico, es la base para construir cualquier cosa en la web con PHP.</p>
+<ul>
+<li><strong>WordPress</strong>, el CMS que potencia más del 40% de la web, está construido sobre PHP. Cada <code>if</code> para mostrar un post, cada variable <code>$</code> que guarda el título, cada función que procesa un comentario... todo se basa en la sintaxis que hemos visto hoy.</li>
+<li>Cuando compras en una tienda online hecha con <strong>Magento</strong> o <strong>PrestaShop</strong>, el cálculo del carrito, la comprobación del stock y la asignación de costes de envío se realizan con operadores aritméticos y de asignación en el servidor.</li>
+<li><strong>Facebook</strong> nació con PHP y, aunque han desarrollado su propio "dialecto" llamado Hack, los fundamentos son los mismos. Millones de variables y constantes se definen cada segundo para mostrar tu feed de noticias.</li>
+</ul>
+<p>Entender la diferencia entre <code>==</code> y <code>===</code> puede prevenir vulnerabilidades de seguridad. Saber cómo comentar el código hará que puedas trabajar en un equipo de desarrollo de forma eficiente. No hay ni un solo aspecto del desarrollo backend con PHP que no dependa directamente de tener una base sintáctica sólida como una roca.</p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para seguir profundizando, no hay mejores lugares que la fuente original y las guías de la comunidad.</p>
+<ol>
+<li><strong>Documentación Oficial de PHP - Sintaxis Básica</strong>: El manual oficial es tu mejor amigo. Consulta las páginas sobre la <a href="https://www.php.net/manual/es/language.basic-syntax.php">sintaxis básica</a>, <a href="https://www.php.net/manual/es/language.variables.php">variables</a> y <a href="https://www.php.net/manual/es/language.operators.php">operadores</a>.</li>
+<li><strong>PHP: The Right Way</strong>: Una guía de referencia fantástica, moderna y fácil de leer sobre buenas prácticas en PHP. Su sección sobre <a href="https://phptherightway.com/#the_basics">conceptos básicos</a> es oro puro.</li>
+<li><strong>PHP-FIG - PSR-12 (Extended Coding Style)</strong>: Si quieres escribir código como los profesionales, lee el estándar PSR-12. Te enseñará las convenciones de formato que usa la mayoría de la comunidad PHP.</li>
+</ol>
+<p><br/><hr class="double"/><br/></p>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr>
+<h1 id="ud2-practicas-de-sintaxis-basica-de-php">UD2. Prácticas de Sintaxis Básica de PHP</h1>
+<p>¡Hola, equipo de DevCore Solutions!</p>
+<p>Bienvenidos a vuestra primera semana de <em>onboarding</em>. Antes de que os sumerjáis en el código de nuestro proyecto insignia, "Helios", es crucial que todos compartamos una base sólida en PHP. Las siguientes tareas están diseñadas para afinar vuestras habilidades en la sintaxis fundamental del lenguaje. Consideradlas vuestro primer <em>commit</em> de conocimiento. ¡Demostrad que estáis listos para el desafío!</p>
+<p><br/></p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos ejercicios son para asegurar que los conceptos básicos están bien asentados. Son el "Hola, Mundo" de un desarrollador profesional.</p>
+<div class="admonition abstract">
+<p class="admonition-title">El Primer Módulo: Generador de Saludos | Nivel: Fácil</p>
+<h4 id="objetivo">Objetivo</h4>
+<p>Familiarizarse con la declaración de variables, la concatenación de cadenas y el uso de <code>echo</code> para generar una salida HTML dinámica.</p>
+<h4 id="tarea-a-realizar">Tarea a realizar</h4>
+<p>Crea un script PHP que realice lo siguiente:
+1.  Declare una variable <code>$nombre_empleado</code> y asígnale tu nombre.
+2.  Declare una variable <code>$puesto_empleado</code> y asígnale "Desarrollador/a Junior".
+3.  Usando el operador de concatenación (<code>.</code>), construye un saludo en una tercera variable <code>$mensaje_bienvenida</code>.
+4.  El saludo debe ser un párrafo HTML (<code>&lt;p&gt;</code>) que diga: "Bienvenido/a a DevCore Solutions, [Tu Nombre]. Tu puesto inicial es: [Puesto]."
+5.  Imprime la variable <code>$mensaje_bienvenida</code> en el script.</p>
+<h4 id="aplicacion-en-el-mundo-real_1">Aplicación en el Mundo Real</h4>
+<p>Esta es la operación más básica en cualquier aplicación web: personalizar la vista para el usuario. Desde un simple saludo hasta la construcción de complejas tarjetas de perfil, todo se basa en estos principios.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Depuración de Código: El Bug en el Contador de Tareas | Nivel: Fácil</p>
+<h4 id="objetivo_1">Objetivo</h4>
+<p>Desarrollar la habilidad de leer código ajeno e identificar errores de sintaxis comunes, una tarea diaria en el desarrollo en equipo.</p>
+<h4 id="setup-inicial">Setup Inicial</h4>
+<p>El siguiente script intenta mostrar un resumen de tareas, pero contiene varios errores y no se ejecuta.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Script para contar tareas pendientes del proyecto "Helios"</span>
+
+<span class="nv">$nombreProyecto</span> <span class="o">=</span> <span class="s1">'Helios'</span><span class="p">;</span>
+<span class="nv">$version</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="nv">$num_tareas_pendientes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nv">$num_tareas_totales</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// Comprobar si no quedan tareas</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$num_tareas_pendientes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"¡Felicidades! No hay tareas pendientes en </span><span class="si">$nombreProyecto</span><span class="s2">."</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Quedan </span><span class="si">$num_tareas_pendientes</span><span class="s2"> tareas de un total de </span><span class="si">$num_tareas_totales</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="tarea-a-realizar_1">Tarea a realizar</h4>
+<ol>
+<li>Copia el código anterior en un fichero <code>.php</code>.</li>
+<li>Identifica y corrige todos los errores para que el script se ejecute correctamente y muestre el mensaje esperado ("Quedan 5 tareas de un total de 10").</li>
+<li>Añade comentarios explicando qué errores encontraste y cómo los solucionaste.</li>
+</ol>
+<h4 id="aplicacion-en-el-mundo-real_2">Aplicación en el Mundo Real</h4>
+<p>La depuración consume una parte significativa del tiempo de un desarrollador. Identificar rápidamente errores de sintaxis, lógicos (como usar <code>=</code> en lugar de <code>==</code>) o tipográficos es una habilidad que te hará extremadamente eficiente.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Calculadora de Bonificación Anual | Nivel: Fácil</p>
+<h4 id="objetivo_2">Objetivo</h4>
+<p>Practicar el uso de operadores aritméticos y la definición de valores inmutables mediante constantes.</p>
+<h4 id="tarea-a-realizar_2">Tarea a realizar</h4>
+<ol>
+<li>Define una constante llamada <code>FACTOR_BONIFICACION</code> con un valor de <code>0.10</code>.</li>
+<li>Crea una variable <code>$salario_base</code> con un valor de <code>30000</code>.</li>
+<li>Calcula el valor de la bonificación anual (<code>$salario_base * FACTOR_BONIFICACION</code>). Almacena el resultado en una variable <code>$bonificacion</code>.</li>
+<li>Calcula el salario total (<code>$salario_base + $bonificacion</code>). Almacena el resultado en <code>$salario_total</code>.</li>
+<li>Imprime un resumen claro, por ejemplo:<ul>
+<li>"Salario Base: 30000 €"</li>
+<li>"Bonificación (10%): 3000 €"</li>
+<li>"Salario Total: 33000 €"</li>
+</ul>
+</li>
+</ol>
+<h4 id="aplicacion-en-el-mundo-real_3">Aplicación en el Mundo Real</h4>
+<p>Los cálculos financieros son comunes en aplicaciones de negocio, ERPs o ecommerce. Usar constantes para valores que no deben cambiar durante la ejecución (como tipos de IVA, porcentajes de comisiones o factores de conversión) hace el código más legible y seguro.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Informe de Estado del Sistema | Nivel: Fácil</p>
+<h4 id="objetivo_3">Objetivo</h4>
+<p>Utilizar constantes "mágicas" y funciones nativas de PHP para generar metadatos útiles para la depuración y el logging.</p>
+<h4 id="tarea-a-realizar_3">Tarea a realizar</h4>
+<ol>
+<li>Crea un script que defina una constante <code>VERSION_SCRIPT</code> con el valor "1.0.2".</li>
+<li>El script debe generar un informe que muestre la siguiente información:<ul>
+<li>La ruta completa del fichero que se está ejecutando.</li>
+<li>La versión del script (usando la constante que creaste).</li>
+<li>La fecha y hora actual del servidor en el formato <code>Año-Mes-Día Hora:Minutos:Segundos</code> (ej: <code>2024-10-27 15:30:00</code>).</li>
+</ul>
+</li>
+<li>Investiga el uso de las constantes mágicas de PHP y la función <code>date()</code> para completar la tarea.</li>
+</ol>
+<h4 id="aplicacion-en-el-mundo-real_4">Aplicación en el Mundo Real</h4>
+<p>Cuando un error ocurre en producción, los logs son tu única fuente de información. Registrar la ubicación exacta del error (<code>__FILE__</code>, <code>__LINE__</code>), la versión del código y la hora precisa es fundamental para diagnosticar y solucionar problemas rápidamente.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Tipos de Datos: Inventario de Recursos | Nivel: Fácil</p>
+<h4 id="objetivo_4">Objetivo</h4>
+<p>Comprender el sistema de tipado dinámico de PHP y cómo verificar el tipo de una variable en tiempo de ejecución.</p>
+<h4 id="tarea-a-realizar_4">Tarea a realizar</h4>
+<ol>
+<li>Crea un script llamado <code>inventario.php</code>.</li>
+<li>Dentro del script, define las siguientes variables que representan los recursos de un proyecto:<ul>
+<li><code>$nombreProyecto</code> = "Helios"</li>
+<li><code>$totalMiembros</code> = 12</li>
+<li><code>$presupuesto</code> = 55000.75</li>
+<li><code>$despliegueActivo</code> = true</li>
+<li><code>$clienteFinal</code> = null</li>
+</ul>
+</li>
+<li>Para cada una de las variables, utiliza la función <code>gettype()</code> para imprimir su tipo de dato junto a su valor. La salida debería ser similar a:<ul>
+<li><code>Variable nombreProyecto: "Helios" (string)</code></li>
+<li><code>Variable totalMiembros: 12 (integer)</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="aplicacion-en-el-mundo-real_5">Aplicación en el Mundo Real</h4>
+<p>Aunque PHP es de tipado débil, a menudo necesitas verificar qué tipo de dato estás recibiendo (por ejemplo, de una API o un formulario) para procesarlo correctamente y evitar errores. Funciones como <code>gettype()</code>, <code>is_int()</code>, <code>is_string()</code> son clave en la validación de datos.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Evaluación de Permisos de Usuario | Nivel: Fácil</p>
+<h4 id="objetivo_5">Objetivo</h4>
+<p>Aplicar el uso de operadores lógicos y de comparación estricta para evaluar condiciones compuestas.</p>
+<h4 id="tarea-a-realizar_5">Tarea a realizar</h4>
+<ol>
+<li>Imagina que estás controlando el acceso a un panel de administración. Define dos variables:<ul>
+<li><code>$usuarioLogueado = true;</code></li>
+<li><code>$perfilUsuario = 'admin';</code></li>
+</ul>
+</li>
+<li>Escribe una expresión lógica que compruebe si <strong>ambas</strong> condiciones se cumplen: el usuario debe estar logueado <strong>Y</strong> su perfil debe ser idéntico a <code>'admin'</code>.</li>
+<li>Almacena el resultado <code>true</code> o <code>false</code> de esa expresión en una variable llamada <code>$tieneAcceso</code>.</li>
+<li>Imprime el valor de <code>$tieneAcceso</code>. Para que se vea claramente <code>true</code> o <code>false</code>, puedes usar la función <code>var_dump()</code>.</li>
+</ol>
+<h4 id="aplicacion-en-el-mundo-real_6">Aplicación en el Mundo Real</h4>
+<p>La lógica condicional es el cerebro de cualquier aplicación. Controlar quién puede ver o hacer qué (autorización) es una tarea constante que depende enteramente del uso correcto y seguro de los operadores lógicos y de comparación.</p>
+</div>
+<p><br/></p>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Estos ejercicios te guiarán a través de problemas un poco más complejos. Se proporcionan pistas para orientarte.</p>
+<div class="admonition warning">
+<p class="admonition-title">Refactorizando el Módulo de Configuración | Nivel: Medio</p>
+<h4 id="objetivo_6">Objetivo</h4>
+<p>Aprender a refactorizar código, reemplazando variables mutables por constantes y aplicando comparaciones estrictas para aumentar la robustez y seguridad del script.</p>
+<h4 id="setup-inicial_1">Setup Inicial</h4>
+<p>Este script de configuración funciona, pero no sigue las mejores prácticas. Usa variables para valores que deberían ser fijos y comparaciones débiles.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Configuración del entorno de la aplicación "Helios"</span>
+
+<span class="nv">$app_env</span> <span class="o">=</span> <span class="s1">'development'</span><span class="p">;</span> <span class="c1">// Podría ser 'production'</span>
+<span class="nv">$db_host</span> <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+<span class="nv">$db_user</span> <span class="o">=</span> <span class="s1">'dev_user'</span><span class="p">;</span>
+<span class="nv">$debug_mode</span> <span class="o">=</span> <span class="s1">'1'</span><span class="p">;</span> <span class="c1">// El '1' se trata como true</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$app_env</span> <span class="o">==</span> <span class="s1">'production'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"MODO PRODUCCIÓN: Conectando a la base de datos en </span><span class="si">$db_host</span><span class="s2">...&lt;br&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$debug_mode</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"MODO DEBUG ACTIVADO.&lt;br&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="tarea-a-realizar_6">Tarea a realizar</h4>
+<ol>
+<li>Reemplaza las variables <code>$db_host</code> y <code>$db_user</code> por constantes (<code>DB_HOST</code>, <code>DB_USER</code>), ya que estos valores no deberían cambiar nunca en tiempo de ejecución.</li>
+<li>Cambia la variable <code>$debug_mode</code> para que use un valor booleano (<code>true</code>) en lugar de un string (<code>'1'</code>).</li>
+<li>Modifica las condiciones <code>if</code> para que utilicen el operador de comparación <strong>idéntico</strong> (<code>===</code>).</li>
+<li>Ajusta el resto del código para que siga funcionando con los cambios realizados.</li>
+</ol>
+<p><br/>
+<details>
+<summary>Pista 1</summary>
+  Recuerda la convención para nombrar constantes en mayúsculas. Puedes usar <code>const</code> o <code>define()</code>.
+</details>
+<details>
+<summary>Pista 2</summary>
+  Al usar <code>===</code>, no solo comparas el valor, sino también el tipo. <code>1 == true</code> es verdadero, pero <code>1 === true</code> es falso. Asegúrate de que los valores que comparas sean del mismo tipo.
+</details></p>
+<h4 id="aplicacion-en-el-mundo-real_7">Aplicación en el Mundo Real</h4>
+<p>Refactorizar es el proceso de mejorar el código existente sin cambiar su comportamiento externo. Es una tarea clave para mantener la calidad, legibilidad y seguridad del software a lo largo del tiempo, especialmente en proyectos grandes como "Helios".</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Gestor Dinámico de Perfiles | Nivel: Medio</p>
+<h4 id="objetivo_7">Objetivo</h4>
+<p>Utilizar el operador de fusión de null (<code>??</code>) como una forma moderna y concisa de asignar valores por defecto.</p>
+<h4 id="setup-inicial_2">Setup Inicial</h4>
+<p>Tu script debe obtener el nombre de usuario de una petición <code>GET</code>. A veces, este valor no existirá. Para simularlo, puedes crear la variable <code>$_GET</code> manualmente.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Simulación 1: El usuario viene en la URL (ej: /perfil.php?usuario=Carlos)</span>
+<span class="nv">$_GET</span><span class="p">[</span><span class="s1">'usuario'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Carlos'</span><span class="p">;</span>
+
+<span class="c1">// Simulación 2: El usuario no se especifica (ej: /perfil.php)</span>
+<span class="c1">// unset($_GET['usuario']); // Descomenta esta línea para probar el caso nulo</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="tarea-a-realizar_7">Tarea a realizar</h4>
+<ol>
+<li>Usando el setup anterior, crea una variable <code>$nombreUsuario</code>.</li>
+<li>Asigna a <code>$nombreUsuario</code> el valor de <code>$_GET['usuario']</code> si existe y no es <code>null</code>.</li>
+<li>Si <code>$_GET['usuario']</code> no existe o es <code>null</code>, asigna a <code>$nombreUsuario</code> el valor por defecto <code>'Invitado'</code>.</li>
+<li><strong>No uses una estructura <code>if/else</code></strong>. Debes resolverlo en una sola línea de asignación.</li>
+<li>Imprime el saludo final: <code>echo "Bienvenido al dashboard de Helios, $nombreUsuario.";</code></li>
+<li>Prueba tu script con y sin la variable <code>$_GET['usuario']</code> definida.</li>
+</ol>
+<p><br/>
+<details>
+<summary>Pista</summary>
+  El material didáctico menciona un operador introducido en PHP 7 que es perfecto para esto. Su sintaxis es <code>valor_a_probar ?? valor_por_defecto</code>.
+</details></p>
+<h4 id="aplicacion-en-el-mundo-real_8">Aplicación en el Mundo Real</h4>
+<p>Este operador es extremadamente útil y común. Se usa constantemente para manejar datos de formularios, parámetros de URLs (<code>$_GET</code>), o datos de APIs, donde muchos campos pueden ser opcionales. Simplifica enormemente el código y lo hace más legible.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">El Modificador de Métricas: ¿Valor o Referencia? | Nivel: Medio</p>
+<h4 id="objetivo_8">Objetivo</h4>
+<p>Comprender la diferencia práctica entre el paso por valor y el paso por referencia, y saber cuándo utilizar este último para modificar variables externas desde una función.</p>
+<h4 id="tarea-a-realizar_8">Tarea a realizar</h4>
+<ol>
+<li>Crea una variable <code>$porcentaje_progreso</code> y asígnale el valor <code>25</code>.</li>
+<li>Define una función <code>avanzar_proyecto($progreso_actual)</code>. Dentro de esta función, incrementa el valor del parámetro recibido en 10.</li>
+<li>Llama a la función <code>avanzar_proyecto()</code> pasándole <code>$porcentaje_progreso</code>.</li>
+<li>Imprime el valor de <code>$porcentaje_progreso</code> después de llamar a la función.</li>
+<li><strong>Observa el resultado</strong>. Te darás cuenta de que la variable original no ha cambiado.</li>
+<li><strong>Modifica la definición de la función</strong> <code>avanzar_proyecto</code> para que acepte el parámetro <strong>por referencia</strong>, de modo que la variable original sí sea modificada.</li>
+<li>Vuelve a ejecutar el script y comprueba que ahora el valor final impreso es <code>35</code>.</li>
+</ol>
+<p><br/>
+<details>
+<summary>Pista</summary>
+  Para que una función acepte un parámetro por referencia, necesitas añadir un único carácter especial justo antes del nombre del parámetro en la declaración de la función.
+</details></p>
+<h4 id="aplicacion-en-el-mundo-real_9">Aplicación en el Mundo Real</h4>
+<p>Aunque se debe usar con cuidado, el paso por referencia es útil para modificar directamente grandes estructuras de datos (como arrays u objetos) sin la sobrecarga de memoria que supondría copiarlos y devolverlos. Entender este mecanismo es clave para optimizar el rendimiento en ciertos escenarios.</p>
+</div>
+<p><br/></p>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Estos son retos abiertos que requieren investigación y pensamiento crítico, preparándote para los problemas complejos del mundo real.</p>
+<div class="admonition danger">
+<p class="admonition-title">Investigación: El Operador 'Nave Espacial' y la Ordenación de Proyectos | Nivel: Alto</p>
+<h4 id="objetivo_9">Objetivo</h4>
+<p>Investigar funciones de array avanzadas (<code>usort</code>) y aplicar operadores modernos (<code>&lt;=&gt;</code>) para resolver un problema de ordenación complejo de forma elegante y eficiente.</p>
+<h4 id="tarea-a-realizar_9">Tarea a realizar</h4>
+<p>En el panel "Helios", necesitamos ordenar una lista de proyectos según su prioridad. Un array de proyectos podría tener esta estructura:
+<div class="highlight"><pre><span></span><code><span class="x">$proyectos = [</span>
+<span class="x">    ['nombre' =&gt; 'Helios Core', 'prioridad' =&gt; 2],</span>
+<span class="x">    ['nombre' =&gt; 'API Gateway', 'prioridad' =&gt; 1],</span>
+<span class="x">    ['nombre' =&gt; 'Frontend Refactor', 'prioridad' =&gt; 3],</span>
+<span class="x">    ['nombre' =&gt; 'Docs Migration', 'prioridad' =&gt; 2],</span>
+<span class="x">];</span>
+</code></pre></div>
+1.  <strong>Investiga</strong> la función de PHP <code>usort()</code>. ¿Para qué sirve? ¿Qué tipo de argumento espera como segundo parámetro?
+2.  <strong>Escribe</strong> una función de comparación que <code>usort()</code> pueda usar. Esta función recibirá dos proyectos (<code>$a</code> y <code>$b</code>) y debe devolver -1, 0 o 1.
+3.  <strong>Utiliza el operador nave espacial (<code>&lt;=&gt;</code>)</strong> dentro de tu función de comparación para determinar el orden basado en la clave <code>'prioridad'</code>. La ordenación debe ser ascendente (menor prioridad primero).
+4.  <strong>Aplica</strong> <code>usort()</code> a tu array de <code>$proyectos</code> con tu función de comparación.
+5.  <strong>Imprime</strong> el array resultante (puedes usar <code>print_r</code> o <code>var_dump</code>) para verificar que los proyectos están ordenados correctamente por prioridad.</p>
+<h5 id="revision-y-discusion">Revisión y Discusión</h5>
+<p>Prepara una breve explicación (2 minutos) para tus compañeros de equipo. Describe cómo <code>usort</code> delega la lógica de comparación a tu función, y por qué el operador <code>&lt;=&gt;</code> es la herramienta perfecta para esta tarea, ahorrando varias líneas de código <code>if/else</code>.</p>
+<h4 id="aplicacion-en-el-mundo-real_10">Aplicación en el Mundo Real</h4>
+<p>Casi todas las aplicaciones complejas necesitan ordenar datos de formas personalizadas: por fecha, por precio, por relevancia, por apellidos... Dominar <code>usort</code> y los operadores de comparación te da el poder de implementar cualquier lógica de ordenación que el negocio requiera.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Revisión de Seguridad: El Peligro del Tipado Débil | Nivel: Alto</p>
+<h4 id="objetivo_10">Objetivo</h4>
+<p>Analizar código vulnerable, investigar una categoría específica de vulnerabilidad de seguridad (Type Juggling) y aplicar las mejores prácticas para solucionarla.</p>
+<h4 id="setup-inicial_3">Setup Inicial</h4>
+<p>Un desarrollador anterior dejó este fragmento de código en un sistema antiguo para una "autenticación rápida". La contraseña correcta es <code>supersecret</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Contraseña "segura" almacenada en el código (¡mala práctica!)</span>
+<span class="nv">$password_real</span> <span class="o">=</span> <span class="s1">'supersecret'</span><span class="p">;</span>
+
+<span class="c1">// Simulación de un dato enviado por un usuario</span>
+<span class="c1">// Prueba a cambiar el valor de $_POST['password']</span>
+<span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">;</span> 
+
+<span class="c1">// Comprobación de autenticación vulnerable</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'password'</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$password_real</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Acceso concedido."</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Acceso denegado."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="tarea-a-realizar_10">Tarea a realizar</h4>
+<ol>
+<li><strong>Investiga</strong> qué es una vulnerabilidad de "Type Juggling" en PHP. ¿Cómo se relaciona con el operador de comparación débil (<code>==</code>)?</li>
+<li><strong>Demuestra la vulnerabilidad</strong>: Modifica el valor de <code>$_POST['password']</code> en el script. Encuentra un valor que, sin ser la contraseña correcta, haga que la condición <code>if</code> se evalúe como <code>true</code>. Explica por qué ocurre esto.</li>
+<li><strong>Refactoriza el código</strong>: Corrige la vulnerabilidad para que la comparación sea segura y estricta, previniendo el "type juggling".</li>
+</ol>
+<h5 id="revision-por-pares-peer-review">Revisión por Pares (Peer Review)</h5>
+<p>Intercambia tu código corregido y tu explicación con un compañero.
+*   <strong>Para el revisor:</strong> ¿La explicación de la vulnerabilidad es clara y precisa? ¿La solución propuesta es robusta? ¿Identificas alguna otra mala práctica en el fragmento de código (incluso si no era parte de la tarea principal)? Proporciona feedback constructivo.
+*   <strong>Para el autor:</strong> Recibe el feedback y, si es necesario, mejora tu solución o tu explicación.</p>
+<h4 id="aplicacion-en-el-mundo-real_11">Aplicación en el Mundo Real</h4>
+<p>Las vulnerabilidades de Type Juggling han sido la causa de fallos de seguridad críticos en aplicaciones reales, incluyendo CMS populares en el pasado. Forzar siempre la comparación estricta (<code>===</code>) es una de las reglas de oro de la programación segura en PHP.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Optimizador de Tareas por Lotes | Nivel: Alto</p>
+<h4 id="objetivo_11">Objetivo</h4>
+<p>Analizar un problema de rendimiento y memoria, y aplicar el paso por referencia como una solución de optimización consciente, justificando la decisión de diseño.</p>
+<h4 id="setup-inicial_4">Setup Inicial</h4>
+<p>Imagina que tienes una función que debe "limpiar" un array muy grande de datos (por ejemplo, millones de registros de logs). Limpiar significa convertir todos los textos a minúsculas y eliminar espacios en blanco al inicio y al final.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Generamos un array grande para simular datos reales.</span>
+<span class="c1">// En un caso real, esto vendría de una base de datos o un fichero.</span>
+<span class="nv">$logs</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$logs</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"  Evento de Sistema "</span> <span class="o">.</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"  "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="tarea-a-realizar_11">Tarea a realizar</h4>
+<ol>
+<li>Crea una función <code>limpiarLogs(array $listaLogs)</code>.</li>
+<li>Dentro de la función, itera sobre el array y, para cada elemento, aplica las funciones <code>trim()</code> y <code>strtolower()</code>.</li>
+<li><strong>Primer enfoque (Paso por Valor):</strong> Haz que la función <strong>devuelva</strong> el nuevo array modificado. Fuera de la función, reasigna la variable original: <code>$logs = limpiarLogs($logs);</code>.</li>
+<li><strong>Segundo enfoque (Paso por Referencia):</strong> Crea una segunda función <code>limpiarLogsPorReferencia(array &amp;$listaLogs)</code> que modifique el array <strong>directamente</strong>, sin devolver nada.</li>
+<li><strong>Análisis:</strong> Escribe un comentario (<code>/* ... */</code>) en tu código explicando las diferencias entre los dos enfoques. ¿Cuál crees que es más eficiente en términos de uso de memoria para un array de 100,000 elementos y por qué? (Pista: Piensa en cuántas copias del array existen en memoria en cada caso).</li>
+</ol>
+<h5 id="revision-por-pares-peer-review_1">Revisión por Pares (Peer Review)</h5>
+<p>Intercambia tu solución con un compañero.
+*   <strong>Para el revisor:</strong> Evalúa la justificación sobre la eficiencia de memoria. ¿Es correcta? ¿El código de ambos enfoques es claro y funcional? ¿Podría el paso por referencia hacer el código más difícil de entender en un contexto más grande? Discutid los pros y contras de la legibilidad frente a la optimización de memoria en este caso.
+*   <strong>Para el autor:</strong> ¿Te ha proporcionado tu compañero una perspectiva que no habías considerado? Documenta las conclusiones de vuestra discusión.</p>
+<h4 id="aplicacion-en-el-mundo-real_12">Aplicación en el Mundo Real</h4>
+<p>En el procesamiento de grandes volúmenes de datos (Big Data, ETLs, procesamiento de logs), la gestión de la memoria es crítica. Saber cuándo evitar copias innecesarias de grandes arrays puede ser la diferencia entre una aplicación que funciona y una que agota la memoria del servidor y se cae.</p>
+</div>
+<hr/></hr>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

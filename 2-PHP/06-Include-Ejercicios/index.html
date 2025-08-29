@@ -1,0 +1,2182 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/06-Include-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>06 Include Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-de-consolidacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06 Include Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>06 Include Ejercicios</h1>
+
+<!-- 06-Ejercicios-Include-y-Require.md -->
+<p>¡Vamos al lío, equipo! Ya hemos visto cómo <code>include</code> y <code>require</code> son las piezas de LEGO de PHP, permitiéndonos construir aplicaciones modulares. Ahora es el momento de ponernos el casco de obra y empezar a construir.</p>
+<p><strong>Narrativa del Proyecto: "DevCorner Blog"</strong></p>
+<p>Sois el equipo de desarrollo encargado de crear "DevCorner", un nuevo blog interno para que los equipos de la empresa compartan conocimientos técnicos, tutoriales y noticias sobre proyectos. La clave es que sea un sistema modular, fácil de mantener y de ampliar en el futuro. Nuestra primera misión es montar el esqueleto de la aplicación usando las herramientas de inclusión de ficheros de PHP de forma profesional y segura.</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Esqueleto del Blog: Montando la Estructura | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Utilizar la sentencia <code>include</code> para ensamblar una página web a partir de componentes de plantilla reutilizables (cabecera y pie de página).</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Tienes la siguiente estructura de archivos para el proyecto "DevCorner":
+<div class="highlight"><pre><span></span><code>/DevCorner
+|-- index.php
+|-- /templates
+    |-- header.php
+    |-- footer.php
+</code></pre></div>
+El contenido de los ficheros es el siguiente:</p>
+<p><strong><code>templates/header.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+<span class="x">    &lt;title&gt;DevCorner - El Blog Técnico Interno&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body { font-family: sans-serif; line-height: 1.6; margin: 0; }</span>
+<span class="x">        header, footer { background-color: #2c3e50; color: white; padding: 1rem; text-align: center; }</span>
+<span class="x">        main { padding: 2rem; }</span>
+<span class="x">        nav a { color: white; margin: 0 1rem; text-decoration: none; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;header&gt;</span>
+<span class="x">        &lt;h1&gt;DevCorner Blog&lt;/h1&gt;</span>
+<span class="x">        &lt;nav&gt;</span>
+<span class="x">            &lt;a href="#"&gt;Inicio&lt;/a&gt;</span>
+<span class="x">            &lt;a href="#"&gt;Artículos&lt;/a&gt;</span>
+<span class="x">            &lt;a href="#"&gt;Sobre Nosotros&lt;/a&gt;</span>
+<span class="x">        &lt;/nav&gt;</span>
+<span class="x">    &lt;/header&gt;</span>
+<span class="x">    &lt;main&gt;</span>
+</code></pre></div></p>
+<p><strong><code>templates/footer.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="x">    &lt;/main&gt;</span>
+<span class="x">    &lt;footer&gt;</span>
+<span class="x">        &lt;p&gt;&amp;copy; </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y'</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"> - Nuestro Equipo de Desarrollo. Todos los derechos reservados.&lt;/p&gt;</span>
+<span class="x">    &lt;/footer&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong><code>index.php</code></strong> (tu fichero de trabajo):
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// TODO: Incluir la cabecera de la plantilla aquí.</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;Bienvenido al Corazón del Conocimiento Técnico&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Este es el punto de partida de nuestro blog. ¡Pronto estará lleno de artículos increíbles!&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="c1">// TODO: Incluir el pie de página de la plantilla aquí.</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Completa el archivo <code>index.php</code> reemplazando los comentarios <code>// TODO:</code> con las sentencias <code>include</code> correctas para cargar <code>header.php</code> y <code>footer.php</code>.</li>
+<li>Abre <code>index.php</code> en tu navegador y comprueba que la página se renderiza correctamente con la cabecera, el contenido principal y el pie de página.</li>
+<li>Reflexiona: ¿Por qué <code>include</code> es la elección correcta aquí en lugar de <code>require</code>?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la base del <em>templating</em> en el 99% de los sitios web hechos con PHP. Separar la cabecera y el pie de página permite reutilizarlos en todas las páginas del sitio (<code>articulos.php</code>, <code>perfil.php</code>, etc.), haciendo que el mantenimiento sea infinitamente más sencillo.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>El código completo de <code>index.php</code> debería ser:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Se incluye la cabecera. Es una pieza de la vista.</span>
+<span class="k">include</span> <span class="s1">'templates/header.php'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;Bienvenido al Corazón del Conocimiento Técnico&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Este es el punto de partida de nuestro blog. ¡Pronto estará lleno de artículos increíbles!&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Se incluye el pie de página.</span>
+<span class="k">include</span> <span class="s1">'templates/footer.php'</span><span class="p">;</span>
+</code></pre></div>
+<strong>Reflexión:</strong> Se usa <code>include</code> porque estos archivos son parte de la "vista" o plantilla. Si uno de ellos fallara (por ejemplo, <code>footer.php</code> se borra por error), queremos que el contenido principal de la página (<code>&lt;h2&gt;</code> y <code>&lt;p&gt;</code>) todavía se muestre al usuario, aunque sea sin el estilo completo. La página sigue siendo parcialmente funcional. Si usáramos <code>require</code>, un error en el pie de página rompería la página entera con un error fatal.</p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Depuración de Dependencias: El Archivo de Configuración Fantasma | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Diagnosticar y corregir un error fatal causado por un <code>require</code> a un archivo inexistente, comprendiendo la diferencia de comportamiento con <code>include</code>.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero de equipo acaba de subir este script <code>index.php</code> al repositorio, pero a ti no te funciona. Él insiste en que "en su máquina funciona".</p>
+<p><strong><code>index.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Iniciando la aplicación DevCorner...&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Se requiere la configuración esencial de la aplicación.</span>
+<span class="k">require</span> <span class="s1">'config/database.php'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Configuración cargada. Intentando conectar a la base de datos...&lt;/p&gt;"</span><span class="p">;</span>
+<span class="c1">// $db = conectarDb(); // Esta línea se ejecutará en el futuro.</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Contenido principal del blog.&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Se incluye un widget opcional con los últimos comentarios.</span>
+<span class="k">include</span> <span class="s1">'widgets/latest_comments.php'</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Al ejecutarlo, solo ves el primer <code>&lt;h1&gt;</code> y luego una página en blanco o un error fatal en los logs, pero no llegas a ver el "Contenido principal del blog".</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Identifica la línea exacta que causa que el script se detenga.</li>
+<li>Explica por qué el script se detiene en ese punto y no continúa.</li>
+<li>Crea un archivo <code>config/database.php</code> vacío. Vuelve a ejecutar <code>index.php</code>. ¿Qué ocurre ahora?</li>
+<li>El <code>include</code> al final intenta cargar <code>widgets/latest_comments.php</code>, que tampoco existe. ¿Por qué no viste un error sobre este archivo al principio?</li>
+<li>Crea también un archivo <code>widgets/latest_comments.php</code> vacío para que el script se ejecute sin ningún tipo de error o advertencia.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es un escenario de depuración extremadamente común, especialmente al clonar un proyecto por primera vez. Muchos proyectos usan un archivo de configuración local (ej. <code>config.local.php</code>) que no se sube a Git, y cada desarrollador debe crearlo. Entender que <code>require</code> detiene la ejecución es clave para diagnosticar estos problemas rápidamente.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong>Línea del error:</strong> La línea que detiene el script es <code>require 'config/database.php';</code>.</li>
+<li><strong>Motivo:</strong> El script se detiene porque <code>require</code> trata el archivo como una dependencia esencial. Si no lo encuentra, lanza un <code>E_COMPILE_ERROR</code> (error fatal) y termina la ejecución inmediatamente. Es un mecanismo de seguridad para evitar que la aplicación intente funcionar sin sus piezas críticas (como la conexión a la base de datos).</li>
+<li><strong>Tras crear <code>config/database.php</code>:</strong> Al crear el archivo (aunque esté vacío), el <code>require</code> tiene éxito. El script ya no se detiene y continúa su ejecución. Ahora verás el mensaje "Configuración cargada", "Contenido principal del blog" y, probablemente, una <strong>advertencia</strong> (<code>E_WARNING</code>) sobre <code>widgets/latest_comments.php</code>, que sigue sin existir.</li>
+<li><strong>Error de <code>include</code> no visible:</strong> No viste el error sobre <code>widgets/latest_comments.php</code> al principio porque la ejecución del script nunca llegó a esa línea. El <code>require</code> fallido detuvo todo antes.</li>
+<li><strong>Solución final:</strong><ul>
+<li>Crear la carpeta <code>config/</code> y dentro un archivo <code>database.php</code>.</li>
+<li>Crear la carpeta <code>widgets/</code> y dentro un archivo <code>latest_comments.php</code>.
+Ahora el script <code>index.php</code> se ejecutará de principio a fin sin errores ni advertencias.</li>
+</ul>
+</li>
+</ol>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">3) La Biblioteca de Funciones: Evitando el Caos de la Duplicación | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Solucionar un error fatal de "función ya declarada" entendiendo y aplicando <code>require_once</code> en lugar de <code>require</code>.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Para "DevCorner", has creado una biblioteca de funciones de utilidad. Varios componentes del blog la necesitan.</p>
+<p><strong><code>utils/formatter.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * Convierte una cadena de texto en un formato "slug" amigable para URLs.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">slugify</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">'/[^a-z0-9]+/'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>src/article.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'utils/formatter.php'</span><span class="p">;</span> <span class="c1">// Necesitamos el slug para el título del artículo</span>
+
+<span class="k">class</span> <span class="nc">Article</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">=</span> <span class="nv">$title</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUrl</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'articles/'</span> <span class="o">.</span> <span class="nx">slugify</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>src/comments.php</code></strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'utils/formatter.php'</span><span class="p">;</span> <span class="c1">// También lo necesitamos para generar IDs de ancla</span>
+
+<span class="k">function</span> <span class="nf">displayComments</span><span class="p">(</span><span class="k">array</span> <span class="nv">$comments</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$comments</span> <span class="k">as</span> <span class="nv">$comment</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$anchorId</span> <span class="o">=</span> <span class="nx">slugify</span><span class="p">(</span><span class="s2">"comment "</span> <span class="o">.</span> <span class="nv">$comment</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]);</span>
+        <span class="k">echo</span> <span class="s2">"&lt;li id='</span><span class="si">{</span><span class="nv">$anchorId</span><span class="si">}</span><span class="s2">'&gt;</span><span class="si">{</span><span class="nv">$comment</span><span class="p">[</span><span class="s1">'text'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>index.php</code></strong> (el punto de entrada que falla):
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Cargando un artículo y sus comentarios...&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="k">require</span> <span class="s1">'src/article.php'</span><span class="p">;</span>
+<span class="k">require</span> <span class="s1">'src/comments.php'</span><span class="p">;</span> <span class="c1">// &lt;-- ¡Algo malo pasa aquí!</span>
+
+<span class="nv">$article</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Article</span><span class="p">(</span><span class="s2">"Mi Primer Post sobre PHP 8!"</span><span class="p">);</span>
+<span class="nv">$comments</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="s1">'¡Gran artículo!'</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="s1">'Muy útil, gracias.'</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;&lt;a href='</span><span class="si">{</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">getUrl</span><span class="p">()</span><span class="si">}</span><span class="s2">'&gt;</span><span class="si">{</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">title</span><span class="si">}</span><span class="s2">&lt;/a&gt;&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Comentarios:&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="nx">displayComments</span><span class="p">(</span><span class="nv">$comments</span><span class="p">);</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Ejecuta <code>index.php</code>. Observarás un error fatal. Lee el mensaje de error con atención. ¿Qué te está diciendo PHP?</li>
+<li>Analiza el flujo de inclusiones: <code>index.php</code> incluye <code>article.php</code>, y <code>article.php</code> incluye <code>formatter.php</code>. Luego, <code>index.php</code> incluye <code>comments.php</code>, que a su vez <em>vuelve a incluir</em> <code>formatter.php</code>.</li>
+<li>Modifica los archivos <code>src/article.php</code> y <code>src/comments.php</code> para usar la sentencia de inclusión correcta que previene este tipo de error.</li>
+<li>
+<p>Justifica por qué tu cambio soluciona el problema.</p>
+</li>
+<li>
+<p><strong>Pista:</strong> Piensa en el "apellido" <code>_once</code>. Su propósito es precisamente recordar si un fichero ya ha sido procesado.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En cualquier aplicación medianamente compleja, es muy común que múltiples módulos dependan de la misma biblioteca base (ej: un logger, un conector de base de datos, funciones de utilidad). Usar <code>require_once</code> es la práctica estándar y obligatoria para asegurar que estas bibliotecas se carguen una sola vez, evitando conflictos y errores.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong>Mensaje de error:</strong> El error fatal es <code>Fatal error: Cannot redeclare slugify() (previously declared in .../utils/formatter.php:5) in .../utils/formatter.php on line 5</code>. PHP nos está diciendo que estamos intentando definir la función <code>slugify()</code> una segunda vez, lo cual está prohibido.</li>
+<li><strong>Análisis:</strong> El problema ocurre porque <code>utils/formatter.php</code> se está incluyendo dos veces. La primera vez a través de <code>article.php</code> y la segunda a través de <code>comments.php</code>.</li>
+<li>
+<p><strong>Solución:</strong> Debes cambiar <code>require</code> por <code>require_once</code> en los archivos que cargan la biblioteca.</p>
+<p><strong><code>src/article.php</code> (modificado)</strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../utils/formatter.php'</span><span class="p">;</span> <span class="c1">// Usamos _once</span>
+
+<span class="k">class</span> <span class="nc">Article</span>
+<span class="p">{</span>
+    <span class="c1">// ... el resto del código no cambia</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong><code>src/comments.php</code> (modificado)</strong>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">'/../utils/formatter.php'</span><span class="p">;</span> <span class="c1">// Usamos _once</span>
+
+<span class="c1">// ... el resto del código no cambia</span>
+</code></pre></div>
+<em>(Nota: He añadido <code>__DIR__ . '/../'</code> para hacer las rutas más robustas, una buena práctica como se menciona en el material.)</em></p>
+</li>
+<li>
+<p><strong>Justificación:</strong> Al usar <code>require_once</code>, la primera vez que se ejecuta (al incluir <code>article.php</code>), PHP carga el archivo <code>utils/formatter.php</code> y lo marca en memoria como "ya incluido". Cuando la ejecución llega a <code>comments.php</code> e intenta hacer el <code>require_once</code> del mismo archivo, PHP comprueba su registro, ve que ya fue incluido, y simplemente ignora la sentencia, continuando sin intentar redeclarar la función. El error desaparece.</p>
+</li>
+</ol>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">4) El Mini-Router: Inclusión Dinámica y Segura | Nivel: Alto</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Crear un sistema de enrutamiento básico que cargue páginas dinámicamente usando <code>include</code>, e implementar una medida de seguridad esencial (una lista blanca o <em>allow-list</em>) para prevenir vulnerabilidades de Inclusión de Ficheros Locales (LFI).</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Tu blog "DevCorner" necesita una forma de mostrar diferentes páginas (<code>inicio</code>, <code>sobre-nosotros</code>, <code>contacto</code>) sin crear un <code>index.php</code>, <code>sobre-nosotros.php</code>, etc., en la raíz. Quieres una única entrada (<code>index.php</code>) que cargue el contenido correspondiente.</p>
+<p><strong>Estructura de archivos:</strong>
+<div class="highlight"><pre><span></span><code>/DevCorner
+|-- index.php
+|-- /templates
+|   |-- header.php
+|   |-- footer.php
+|   |-- 404.php      &lt;-- Página de error
+|-- /pages
+    |-- home.php
+    |-- about.php
+    |-- contact.php
+</code></pre></div></p>
+<p><strong>Contenido de los archivos de página:</strong>
+*   <strong><code>pages/home.php</code></strong>: <code>&lt;h2&gt;Página de Inicio&lt;/h2&gt;&lt;p&gt;Contenido de la home.&lt;/p&gt;</code>
+*   <strong><code>pages/about.php</code></strong>: <code>&lt;h2&gt;Sobre Nosotros&lt;/h2&gt;&lt;p&gt;Somos un equipo genial.&lt;/p&gt;</code>
+*   <strong><code>pages/contact.php</code></strong>: <code>&lt;h2&gt;Contacto&lt;/h2&gt;&lt;p&gt;Escríbenos un email.&lt;/p&gt;</code>
+*   <strong><code>templates/404.php</code></strong>: <code>&lt;h2&gt;Error 404 - Página no encontrada&lt;/h2&gt;&lt;p&gt;Lo sentimos, la página que buscas no existe.&lt;/p&gt;</code></p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Modifica <code>index.php</code> para que incluya siempre el <code>header.php</code> y el <code>footer.php</code>.</li>
+<li>Dentro de <code>index.php</code>, implementa una lógica que lea un parámetro GET de la URL, por ejemplo <code>?page=contact</code>.</li>
+<li><strong>Implementa la seguridad:</strong> Antes de incluir nada, crea un array (lista blanca) con los nombres de las páginas permitidas (ej: <code>['home', 'about', 'contact']</code>).</li>
+<li>Tu lógica debe hacer lo siguiente:<ul>
+<li>Si el parámetro <code>page</code> existe <strong>y</strong> su valor está en tu lista blanca, incluye el archivo correspondiente desde la carpeta <code>pages/</code>. Por ejemplo, si <code>$_GET['page']</code> es <code>'about'</code>, debes incluir <code>pages/about.php</code>.</li>
+<li>Si el parámetro <code>page</code> no existe o está vacío, incluye por defecto <code>pages/home.php</code>.</li>
+<li>Si el parámetro <code>page</code> existe pero su valor <strong>no</strong> está en tu lista blanca (ej. <code>?page=../../etc/passwd</code>), debes incluir la página de error <code>templates/404.php</code>.</li>
+</ul>
+</li>
+<li><strong>Revisión por Pares (Peer Review):</strong> Intercambia tu <code>index.php</code> con un compañero. Intenta "hackear" su script. Prueba URLs como:<ul>
+<li><code>index.php?page=about</code> (debe funcionar)</li>
+<li><code>index.php</code> (debe mostrar la home)</li>
+<li><code>index.php?page=admin</code> (debe mostrar 404)</li>
+<li><code>index.php?page=../templates/header</code> (¡la más importante! debe mostrar 404 y no revelar la ruta del fichero).
+Comenta si su implementación es segura y por qué.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este ejercicio es una introducción directa al concepto de <strong>enrutamiento (routing)</strong>, que es el corazón de todos los frameworks de PHP modernos (Laravel, Symfony, etc.). La implementación de una lista blanca es la contramedida más fundamental contra las vulnerabilidades de tipo "File Inclusion", un ataque muy peligroso que puede exponer código fuente o información sensible del servidor.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>El contenido de <code>index.php</code> podría ser el siguiente:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Incluimos la cabecera, que es común a todas las páginas.</span>
+<span class="k">include</span> <span class="s1">'templates/header.php'</span><span class="p">;</span>
+
+<span class="c1">// 1. Definimos nuestra lista blanca de páginas seguras.</span>
+<span class="nv">$allowedPages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'home'</span><span class="p">,</span> <span class="s1">'about'</span><span class="p">,</span> <span class="s1">'contact'</span><span class="p">];</span>
+
+<span class="c1">// 2. Determinamos qué página cargar.</span>
+<span class="c1">// Usamos el operador de fusión de null (??) para establecer 'home' por defecto.</span>
+<span class="nv">$requestedPage</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'page'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'home'</span><span class="p">;</span>
+
+<span class="c1">// 3. Validamos la página solicitada contra nuestra lista blanca.</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$requestedPage</span><span class="p">,</span> <span class="nv">$allowedPages</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Si es segura, construimos la ruta al archivo.</span>
+    <span class="nv">$filePath</span> <span class="o">=</span> <span class="s2">"pages/</span><span class="si">{</span><span class="nv">$requestedPage</span><span class="si">}</span><span class="s2">.php"</span><span class="p">;</span>
+    <span class="k">include</span> <span class="nv">$filePath</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Si no es segura, mostramos la página de error 404.</span>
+    <span class="c1">// Es importante también enviar el código de estado HTTP correcto.</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+    <span class="k">include</span> <span class="s1">'templates/404.php'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Incluimos el pie de página, común a todas las páginas.</span>
+<span class="k">include</span> <span class="s1">'templates/footer.php'</span><span class="p">;</span>
+</code></pre></div>
+<strong>Análisis de Seguridad de la Solución:</strong>
+*   Esta implementación es segura contra ataques de LFI básicos.
+*   Cualquier intento de usar <code>..</code> para navegar por los directorios (ej. <code>?page=../config/db</code>) fallará porque la cadena <code>'../config/db'</code> no se encuentra en el array <code>$allowedPages</code>.
+*   La lógica nunca construirá una ruta de archivo peligrosa; solo construye rutas para los valores pre-aprobados. Esto convierte la entrada del usuario (<code>$_GET['page']</code>) en una simple clave para buscar en una lista segura, en lugar de usarla directamente como parte de una ruta de archivo, que es donde reside el peligro.
+*   Enviar el código de estado <code>http_response_code(404);</code> es una buena práctica porque informa correctamente a los navegadores y a los motores de búsqueda que el recurso solicitado no fue encontrado.</p>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

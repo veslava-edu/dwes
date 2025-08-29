@@ -1,0 +1,2335 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/10-BasesDatos-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>10 BasesDatos Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-practicos-acceso-a-bases-de-datos-con-php" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10 BasesDatos Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtarea-revision-por-pares-peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtarea: Revisión por Pares (Peer Review)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: T03-Ejercicios-PHP-Acceso-a-BBDD.md -->
+<h1 id="ejercicios-practicos-acceso-a-bases-de-datos-con-php">Ejercicios Prácticos: Acceso a Bases de Datos con PHP</h1>
+<p>¡Ha llegado el momento de la verdad! Después de sentar las bases teóricas, vamos a remangarnos y aplicar todo lo aprendido. Para estos ejercicios, nos convertiremos en el equipo de desarrollo encargado de construir el sistema de gestión interno para <strong>"FrikiGalería"</strong>, nuestra tienda y catálogo de coleccionismo.</p>
+<p>El objetivo es crear un conjunto de scripts PHP que nos permitan realizar las operaciones básicas (CRUD) sobre la base de datos que ya hemos diseñado. ¡A programar!</p>
+<hr/>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos primeros ejercicios están diseñados para asentar los conceptos más fundamentales: conectar, leer y escribir en la base de datos de forma segura.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Catálogo Interactivo: Listando Nuestra Colección | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Validar la capacidad de conectar a la base de datos, ejecutar una consulta <code>SELECT</code> simple y mostrar los resultados de forma segura en una página HTML.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Asegúrate de haber creado y poblado la base de datos <code>frikigaleria</code> utilizando el script SQL proporcionado en el material teórico. Deberás tener también el fichero <code>conexion.php</code> que establece la conexión PDO.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo fichero llamado <code>listar_items.php</code>.</li>
+<li>Dentro de este fichero, incluye (<code>require</code>) el script <code>conexion.php</code> para obtener el objeto <code>$pdo</code>.</li>
+<li>Escribe una consulta SQL que seleccione todos los campos de todos los registros de la tabla <code>items</code>.</li>
+<li>Utiliza el método <code>query()</code> del objeto PDO para ejecutar la consulta.</li>
+<li>Implementa un bucle <code>while</code> que, utilizando el método <code>fetch()</code> en modo <code>PDO::FETCH_ASSOC</code>, recorra todas las filas devueltas.</li>
+<li>Dentro del bucle, muestra por pantalla el nombre, la descripción y el precio de cada item en una lista HTML (<code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code>).</li>
+<li><strong>Importante:</strong> Asegúrate de pasar todos los datos que imprimas por la función <code>htmlspecialchars()</code> para prevenir ataques XSS.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la operación más común en cualquier aplicación web: mostrar una lista de productos en una tienda online, una lista de artículos en un blog, o una lista de amigos en una red social.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: listar_items.php</span>
+
+<span class="c1">// Incluimos el script de conexión para tener disponible $pdo</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// Encabezado de la página</span>
+<span class="k">echo</span> <span class="s2">"&lt;!DOCTYPE html&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;html lang='es'&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;head&gt;&lt;meta charset='UTF-8'&gt;&lt;title&gt;Catálogo FrikiGalería&lt;/title&gt;&lt;/head&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;body&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Catálogo Completo de FrikiGalería&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// 1. Preparamos y ejecutamos la consulta SQL</span>
+    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT nombre, descripcion, precio FROM items ORDER BY nombre ASC"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+    <span class="c1">// Comprobamos si la consulta devolvió filas</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">rowCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+        <span class="c1">// 2. Recorremos los resultados con un bucle while y fetch</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nv">$item</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span><span class="p">;</span>
+            <span class="c1">// 3. Mostramos los datos de forma segura usando htmlspecialchars()</span>
+            <span class="k">echo</span> <span class="s2">"&lt;strong&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/strong&gt;"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">" - "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">]);</span>
+            <span class="k">echo</span> <span class="s2">" &lt;em&gt;("</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">" €)&lt;/em&gt;"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;No hay items en la galería todavía.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// En un caso real, loguearíamos el error y mostraríamos un mensaje amigable</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Error al consultar los items: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Cerramos la conexión</span>
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;/body&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;/html&gt;"</span><span class="p">;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Diagnóstico de Conexión: El Bug Misterioso | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Desarrollar la habilidad de depurar problemas de conexión, uno de los errores más comunes al empezar.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Un compañero de equipo junior ha subido un fichero de conexión que no funciona y está bloqueado. Tu tarea es encontrar los errores y corregirlos.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>Analiza el siguiente código, identifica los <strong>tres</strong> errores que impiden que funcione correctamente y corrígelos. Explica brevemente por qué cada uno era un error.</p>
+<p><strong>Código defectuoso (<code>conexion_bug.php</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$host</span> <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+<span class="nv">$db</span>   <span class="o">=</span> <span class="s1">'frikigaleria'</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+<span class="nv">$pass</span> <span class="o">=</span> <span class="s1">'una_contraseña_incorrecta'</span><span class="p">;</span> <span class="c1">// Error intencionado</span>
+<span class="nv">$charset</span> <span class="o">=</span> <span class="s1">'utf8mb4'</span><span class="p">;</span>
+
+<span class="c1">// OJO: El nombre del parámetro de la base de datos es incorrecto</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:host=</span><span class="si">$host</span><span class="s2">;database=</span><span class="si">$db</span><span class="s2">;charset=</span><span class="si">$charset</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span>            <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_DEFAULT_FETCH_MODE</span> <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_EMULATE_PREPARES</span>   <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="k">try</span> <span class="p">{</span>
+     <span class="nv">$pdo_conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// OJO: Se está mostrando el objeto de la excepción, no el mensaje.</span>
+     <span class="k">echo</span> <span class="s2">"Error de conexión: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 90% del trabajo de un programador no es escribir código nuevo, sino leer, entender y depurar código existente (propio o de otros). Esta habilidad es fundamental.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Código Corregido (<code>conexion.php</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$host</span> <span class="o">=</span> <span class="s1">'localhost'</span><span class="p">;</span>
+<span class="nv">$db</span>   <span class="o">=</span> <span class="s1">'frikigaleria'</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s1">'root'</span><span class="p">;</span>
+<span class="nv">$pass</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span> <span class="c1">// ERROR 1: La contraseña para el usuario 'root' por defecto en XAMPP es vacía.</span>
+<span class="nv">$charset</span> <span class="o">=</span> <span class="s1">'utf8mb4'</span><span class="p">;</span>
+
+<span class="c1">// ERROR 2: El nombre correcto del parámetro DSN para la base de datos es 'dbname', no 'database'.</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:host=</span><span class="si">$host</span><span class="s2">;dbname=</span><span class="si">$db</span><span class="s2">;charset=</span><span class="si">$charset</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span>            <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_DEFAULT_FETCH_MODE</span> <span class="o">=&gt;</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
+    <span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_EMULATE_PREPARES</span>   <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="k">try</span> <span class="p">{</span>
+     <span class="c1">// La variable debería llamarse simplemente $pdo por convención.</span>
+     <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">,</span> <span class="nv">$options</span><span class="p">);</span>
+     <span class="c1">// echo "Conexión exitosa"; // Descomentar para probar</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">// ERROR 3: Para obtener el mensaje de error, se debe usar el método getMessage() del objeto de la excepción.</span>
+     <span class="c1">// En producción, esto se registraría en un log y no se mostraría al usuario.</span>
+     <span class="nb">error_log</span><span class="p">(</span><span class="s2">"Error de conexión: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+     <span class="k">die</span><span class="p">(</span><span class="s2">"No se pudo conectar a la base de datos."</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Explicación de los Errores:</strong>
+1.  <strong>Contraseña Incorrecta:</strong> La credencial de acceso (<code>$pass</code>) era errónea para la configuración por defecto de XAMPP, lo que provoca un fallo de autenticación en MySQL.
+2.  <strong>Parámetro DSN Erróneo:</strong> La cadena DSN usaba <code>database=</code> en lugar del parámetro correcto <code>dbname=</code>. PDO no reconoce este parámetro y, por lo tanto, no sabe a qué base de datos conectarse.
+3.  <strong>Manejo de Excepción Incorrecto:</strong> El bloque <code>catch</code> intentaba imprimir el objeto de la excepción (<code>$e</code>) directamente con <code>echo</code>. PHP no sabe cómo convertir un objeto complejo en una cadena de texto simple, por lo que no mostraría el mensaje de error útil. El método correcto es llamar a <code>$e-&gt;getMessage()</code>.</p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Inyector de Novedades: Añadiendo Items de Forma Segura | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Practicar la inserción de datos (<code>INSERT</code>) provenientes de una fuente externa (como un formulario) utilizando sentencias preparadas para prevenir inyecciones SQL.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Utiliza el fichero <code>conexion.php</code> ya corregido. No necesitas crear el formulario HTML, simplemente simula que los datos llegan a través del array <code>$_POST</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un fichero llamado <code>crear_item.php</code>.</li>
+<li>Simula la llegada de datos por POST creando un array asociativo al principio del script. Por ejemplo:
+    <div class="highlight"><pre><span></span><code><span class="x">$_POST = [</span>
+<span class="x">    'nombre' =&gt; 'Figura Articulada de Spider-Man',</span>
+<span class="x">    'descripcion' =&gt; 'Figura de 15cm de la línea Marvel Legends.',</span>
+<span class="x">    'fecha_adquisicion' =&gt; '2023-10-27',</span>
+<span class="x">    'precio' =&gt; 29.99,</span>
+<span class="x">    'id_categoria' =&gt; 3</span>
+<span class="x">];</span>
+</code></pre></div></li>
+<li>Escribe una sentencia SQL de tipo <code>INSERT</code> utilizando <strong>parámetros con nombre</strong> (ej: <code>:nombre</code>, <code>:precio</code>).</li>
+<li>Usa <code>$pdo-&gt;prepare()</code> para preparar la consulta.</li>
+<li>Crea un array asociativo con los datos del <code>$_POST</code> que se corresponda con los parámetros nombrados de tu consulta.</li>
+<li>Ejecuta la consulta con <code>$stmt-&gt;execute()</code>, pasándole el array de datos.</li>
+<li>Envuelve toda la lógica de la base de datos en un bloque <code>try...catch</code> para manejar posibles errores.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es el proceso exacto que se sigue para gestionar un formulario de registro de usuario, la publicación de un comentario en un blog, o el alta de un nuevo producto en un sistema de inventario.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: crear_item.php</span>
+
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// Simulamos que estos datos vienen de un formulario enviado por método POST</span>
+<span class="nv">$_POST</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'nombre'</span> <span class="o">=&gt;</span> <span class="s1">'Figura Articulada de Spider-Man'</span><span class="p">,</span>
+    <span class="s1">'descripcion'</span> <span class="o">=&gt;</span> <span class="s1">'Figura de 15cm de la línea Marvel Legends.'</span><span class="p">,</span>
+    <span class="s1">'fecha_adquisicion'</span> <span class="o">=&gt;</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y-m-d'</span><span class="p">),</span> <span class="c1">// Usamos la fecha actual</span>
+    <span class="s1">'precio'</span> <span class="o">=&gt;</span> <span class="mf">29.99</span><span class="p">,</span>
+    <span class="s1">'id_categoria'</span> <span class="o">=&gt;</span> <span class="mi">3</span>
+<span class="p">];</span>
+
+<span class="c1">// Comprobamos que tenemos datos para procesar</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// 1. Preparamos la consulta SQL con parámetros nombrados</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"INSERT INTO items (nombre, descripcion, fecha_adquisicion, precio, id_categoria) </span>
+<span class="s2">                VALUES (:nombre, :descripcion, :fecha, :precio, :categoria)"</span><span class="p">;</span>
+
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+        <span class="c1">// 2. Creamos el array de datos para la ejecución</span>
+        <span class="nv">$datos</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">':nombre'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">],</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">],</span>
+            <span class="s1">':fecha'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'fecha_adquisicion'</span><span class="p">],</span>
+            <span class="s1">':precio'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span>
+            <span class="s1">':categoria'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">]</span>
+        <span class="p">];</span>
+
+        <span class="c1">// 3. Ejecutamos la consulta</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$datos</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Obtenemos el ID del último registro insertado</span>
+            <span class="nv">$lastId</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">lastInsertId</span><span class="p">();</span>
+            <span class="k">echo</span> <span class="s2">"¡Nuevo item '"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"' añadido con éxito con el ID "</span> <span class="o">.</span> <span class="nv">$lastId</span> <span class="o">.</span> <span class="s2">"!"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"Error al añadir el item."</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error al insertar el item: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 4. Cerramos la conexión</span>
+    <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"No se han recibido datos para procesar."</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+</div>
+<hr/>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Este ejercicio combina varias técnicas y requiere un flujo de trabajo más completo, similar a una tarea real de mantenimiento de una aplicación.</p>
+<div class="admonition warning">
+<p class="admonition-title">4) El Inventario Dinámico: Edición de un Coleccionable | Nivel: Medio</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Implementar un flujo completo de edición (<code>UPDATE</code>), que implica leer los datos de un registro, mostrarlos, y luego procesar los cambios de forma segura.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Esta tarea se divide en dos partes (dos ficheros).</p>
+<p><strong>Parte 1: Mostrar el formulario de edición (<code>editar_item_form.php</code>)</strong>
+1.  Este script recibirá el ID del item a editar por la URL (ej: <code>editar_item_form.php?id=3</code>). Debes leer este ID de forma segura desde <code>$_GET</code>.
+2.  Conecta a la base de datos y realiza una consulta <code>SELECT</code> para obtener <strong>todos los datos del item con ese ID específico</strong>. Usa una sentencia preparada para evitar inyección SQL en el <code>WHERE</code>.
+3.  Crea un formulario HTML similar al del ejercicio de inserción, pero esta vez, rellena los valores de los <code>input</code> con los datos que has obtenido de la base de datos.
+4.  <strong>Pista:</strong> No olvides incluir un <code>&lt;input type="hidden" name="id"</code> con el ID del item, para que el script de procesamiento sepa qué registro actualizar. El <code>action</code> del formulario debe apuntar a <code>actualizar_item.php</code>.</p>
+<p><strong>Parte 2: Procesar los cambios (<code>actualizar_item.php</code>)</strong>
+1.  Este script recibirá los datos del formulario de edición por <code>$_POST</code>.
+2.  Prepara una sentencia <code>UPDATE</code> que modifique todos los campos del item. La cláusula <code>WHERE</code> debe filtrar por el ID recibido.
+3.  Utiliza parámetros nombrados y <code>execute()</code> para actualizar el registro de forma segura.
+4.  Muestra un mensaje de confirmación al usuario.</p>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta funcionalidad es el núcleo de cualquier panel de administración: editar una entrada de blog, modificar los datos de un cliente, ajustar el precio de un producto, etc.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Parte 1: <code>editar_item_form.php</code></strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// Validamos que se ha recibido un ID</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error: ID no válido.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$id</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'id'</span><span class="p">];</span>
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Preparamos y ejecutamos la consulta para obtener los datos del item</span>
+    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT * FROM items WHERE id = :id"</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+    <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+    <span class="nv">$item</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s1">'Item no encontrado.'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error al cargar el item: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Editar Item: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Editando: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/h1&gt;</span>
+<span class="x">    &lt;form action="actualizar_item.php" method="post"&gt;</span>
+<span class="x">        &lt;!-- Campo oculto para enviar el ID --&gt;</span>
+<span class="x">        &lt;input type="hidden" name="id" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+
+<span class="x">        &lt;p&gt;&lt;label&gt;Nombre: &lt;input type="text" name="nombre" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">" required&gt;&lt;/label&gt;&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;label&gt;Descripción: &lt;textarea name="descripcion"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$item</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;/label&gt;&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;label&gt;Fecha Adquisición: &lt;input type="date" name="fecha_adquisicion" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'fecha_adquisicion'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">" required&gt;&lt;/label&gt;&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;label&gt;Precio: &lt;input type="number" step="0.01" name="precio" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">" required&gt;&lt;/label&gt;&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label&gt;Categoría:</span>
+<span class="x">                &lt;select name="id_categoria" required&gt;</span>
+<span class="x">                    &lt;!-- En un caso real, este select también se rellenaría desde la BBDD --&gt;</span>
+<span class="x">                    &lt;option value="1" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;Videojuegos&lt;/option&gt;</span>
+<span class="x">                    &lt;option value="2" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;Cómics&lt;/option&gt;</span>
+<span class="x">                    &lt;option value="3" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;Figuras de Acción&lt;/option&gt;</span>
+<span class="x">                    &lt;option value="4" </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$item</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">?</span> <span class="s1">'selected'</span> <span class="o">:</span> <span class="s1">''</span> <span class="cp">?&gt;</span><span class="x">&gt;Juegos de Mesa&lt;/option&gt;</span>
+<span class="x">                &lt;/select&gt;</span>
+<span class="x">            &lt;/label&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;button type="submit"&gt;Actualizar Item&lt;/button&gt;&lt;/p&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong>Parte 2: <code>actualizar_item.php</code></strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// Comprobamos que se reciben datos por POST</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"UPDATE items SET </span>
+<span class="s2">                    nombre = :nombre, </span>
+<span class="s2">                    descripcion = :descripcion, </span>
+<span class="s2">                    fecha_adquisicion = :fecha, </span>
+<span class="s2">                    precio = :precio, </span>
+<span class="s2">                    id_categoria = :categoria</span>
+<span class="s2">                WHERE id = :id"</span><span class="p">;</span>
+
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+        <span class="nv">$datos</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">':nombre'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">],</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">],</span>
+            <span class="s1">':fecha'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'fecha_adquisicion'</span><span class="p">],</span>
+            <span class="s1">':precio'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio'</span><span class="p">],</span>
+            <span class="s1">':categoria'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id_categoria'</span><span class="p">],</span>
+            <span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+        <span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$datos</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"¡Item actualizado correctamente!"</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s1">'&lt;p&gt;&lt;a href="listar_items.php"&gt;Volver al catálogo&lt;/a&gt;&lt;/p&gt;'</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"Error al actualizar el item."</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error al actualizar: "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Redirigir si se accede directamente</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: listar_items.php'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</details>
+</div>
+<hr/>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Este reto final te pide que combines los conceptos más avanzados (transacciones y manejo de errores) para resolver un problema complejo y realista.</p>
+<div class="admonition danger">
+<p class="admonition-title">5) Operación 'Trasvase': Transferencia Atómica de Colecciones | Nivel: Alto</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Implementar una operación compleja que involucra múltiples actualizaciones de base de datos, garantizando la integridad de los datos mediante el uso de transacciones.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>El CEO de "FrikiGalería" ha decidido reorganizar el catálogo. Quiere una herramienta interna para mover <strong>todos</strong> los items de una categoría a otra de forma masiva (por ejemplo, fusionar "Cómics" y "Videojuegos" en una nueva categoría llamada "Ocio Digital"). Esta operación debe ser "atómica": o se mueven todos los items, o no se mueve ninguno.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un script llamado <code>transferir_categoria.php</code>.</li>
+<li>Define dos variables al principio del script: <code>$id_categoria_origen</code> (ej: 2 para 'Cómics') y <code>$id_categoria_destino</code> (ej: 1 para 'Videojuegos').</li>
+<li>Inicia una transacción con <code>$pdo-&gt;beginTransaction()</code>.</li>
+<li>Dentro de un bloque <code>try...catch</code>, prepara y ejecuta una sentencia <code>UPDATE</code> que cambie el <code>id_categoria</code> de <strong>todos</strong> los items que pertenezcan a la categoría de origen al ID de la categoría de destino.</li>
+<li>Para hacer el reto más interesante, vamos a simular que, como parte de la operación, también se debe registrar el cambio en una tabla de <code>logs</code> (que no crearemos, solo simularemos la consulta). Prepara y ejecuta una segunda consulta (puede ser un <code>INSERT</code> simulado).</li>
+<li>Si ambas consultas se ejecutan sin errores, confirma la transacción con <code>$pdo-&gt;commit()</code>.</li>
+<li>Si se produce <strong>cualquier</strong> excepción en el bloque <code>try</code>, el bloque <code>catch</code> debe capturarla y ejecutar un <code>$pdo-&gt;rollback()</code> para deshacer todos los cambios.</li>
+<li>Muestra mensajes informativos al usuario en cada paso (inicio de transacción, éxito, rollback).</li>
+</ol>
+<h5 id="subtarea-revision-por-pares-peer-review"><strong>Subtarea: Revisión por Pares (Peer Review)</strong></h5>
+<p>Intercambia tu solución con un compañero. Revisa su código y responde a estas preguntas:
+*   ¿Se utiliza correctamente el bloque <code>try...catch</code> para encapsular toda la lógica de la transacción?
+*   ¿Se llama a <code>commit()</code> solo si todas las operaciones tienen éxito?
+*   ¿Se garantiza la llamada a <code>rollback()</code> en caso de error?
+*   ¿El código es legible y está bien comentado? Ofrece una sugerencia de mejora.</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este patrón es fundamental en sistemas críticos. Una compra online, por ejemplo, es una transacción que implica: reducir el stock del producto, registrar el pedido, procesar el pago y generar la factura. Si cualquiera de estos pasos falla, la operación completa debe ser revertida para no dejar el sistema en un estado inconsistente.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Fichero: transferir_categoria.php</span>
+
+<span class="k">require</span> <span class="s1">'conexion.php'</span><span class="p">;</span>
+
+<span class="c1">// IDs para la operación de transferencia</span>
+<span class="nv">$id_categoria_origen</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// Cómics</span>
+<span class="nv">$id_categoria_destino</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Videojuegos</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Operación Trasvase de Categoría&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="c1">// Validar que las categorías no sean la misma</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$id_categoria_origen</span> <span class="o">===</span> <span class="nv">$id_categoria_destino</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error: La categoría de origen y destino no pueden ser la misma.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// 1. Iniciar la transacción</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Transacción iniciada. Moviendo items de la categoría </span><span class="si">$id_categoria_origen</span><span class="s2"> a la </span><span class="si">$id_categoria_destino</span><span class="s2">...&lt;/p&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// 2. Primera consulta: Actualizar todos los items de la categoría origen</span>
+    <span class="nv">$sql_update</span> <span class="o">=</span> <span class="s2">"UPDATE items SET id_categoria = :id_dest WHERE id_categoria = :id_orig"</span><span class="p">;</span>
+    <span class="nv">$stmt_update</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql_update</span><span class="p">);</span>
+    <span class="nv">$stmt_update</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span>
+        <span class="s1">':id_dest'</span> <span class="o">=&gt;</span> <span class="nv">$id_categoria_destino</span><span class="p">,</span>
+        <span class="s1">':id_orig'</span> <span class="o">=&gt;</span> <span class="nv">$id_categoria_origen</span>
+    <span class="p">]);</span>
+
+    <span class="c1">// Obtenemos el número de filas afectadas para informar al usuario</span>
+    <span class="nv">$filas_afectadas</span> <span class="o">=</span> <span class="nv">$stmt_update</span><span class="o">-&gt;</span><span class="na">rowCount</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Paso 1: Se han actualizado </span><span class="si">$filas_afectadas</span><span class="s2"> items.&lt;/p&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// 3. Simulación de una segunda operación (ej: registrar en un log)</span>
+    <span class="c1">// Esta consulta podría fallar si la tabla 'logs' no existiera o tuviera una estructura diferente.</span>
+    <span class="nv">$sql_log</span> <span class="o">=</span> <span class="s2">"INSERT INTO logs (accion) VALUES (:accion)"</span><span class="p">;</span>
+    <span class="c1">// Para este ejemplo, la comentamos para que no falle, pero en un caso real existiría.</span>
+    <span class="c1">// $stmt_log = $pdo-&gt;prepare($sql_log);</span>
+    <span class="c1">// $stmt_log-&gt;execute([':accion' =&gt; "Transferencia de categoría $id_categoria_origen -&gt; $id_categoria_destino"]);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Paso 2: Registro de la operación en el log (simulado).&lt;/p&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// 4. Si hemos llegado hasta aquí, todo ha ido bien. Confirmamos.</span>
+    <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h2&gt;¡Éxito!&lt;/h2&gt;&lt;p&gt;La transacción se ha completado. Todos los cambios son permanentes.&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 5. Si algo falla, capturamos la excepción y hacemos rollback</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h2&gt;¡ERROR!&lt;/h2&gt;&lt;p&gt;Ha ocurrido un problema durante la transacción. Deshaciendo todos los cambios.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Mensaje de error:&lt;/strong&gt; "</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+
+    <span class="c1">// Verificamos si hay una transacción activa antes de hacer rollback</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">inTransaction</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Rollback ejecutado. La base de datos ha sido restaurada a su estado anterior.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Cerramos la conexión</span>
+<span class="nv">$pdo</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

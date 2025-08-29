@@ -1,0 +1,2384 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/13-Servicios-WEB/" rel="canonical"/>
+<link href="../12-Dependencias/" rel="prev"/>
+<link href="../14-Documentacion/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+<title>13 - Servicios WEB - DWES</title>
+<link href="../../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></link><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#servicios-web-con-php-conviertete-en-el-arquitecto-de-la-informacion">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              13 - Servicios WEB
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="#">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Inicio
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    PHP
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Ficheros/">
+<span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-BasesDatos/">
+<span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-Navegacion/">
+<span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-Dependencias/">
+<span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-un-web-service">
+<span class="md-ellipsis">
+      ¿Qué es un Web Service?
+    </span>
+</a>
+<nav aria-label="¿Qué es un Web Service?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diferencia-entre-web-services-y-apis">
+<span class="md-ellipsis">
+      Diferencia entre Web Services y APIs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-clave-de-usar-web-services">
+<span class="md-ellipsis">
+      Ventajas Clave de Usar Web Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-y-metodos-de-web-services">
+<span class="md-ellipsis">
+      Tipos y Métodos de Web Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rest-vs-soap-la-batalla-de-las-arquitecturas">
+<span class="md-ellipsis">
+      REST vs. SOAP: La Batalla de las Arquitecturas
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-arquitectura-rest-las-reglas-del-juego">
+<span class="md-ellipsis">
+      La Arquitectura REST: Las Reglas del Juego
+    </span>
+</a>
+<nav aria-label="La Arquitectura REST: Las Reglas del Juego" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-interfaz-uniforme-hablando-el-mismo-idioma">
+<span class="md-ellipsis">
+      La Interfaz Uniforme: Hablando el Mismo Idioma
+    </span>
+</a>
+<nav aria-label="La Interfaz Uniforme: Hablando el Mismo Idioma" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recursos-los-sustantivos">
+<span class="md-ellipsis">
+      Recursos (Los Sustantivos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verbos-http-las-acciones">
+<span class="md-ellipsis">
+      Verbos HTTP (Las Acciones)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#representaciones-el-formato">
+<span class="md-ellipsis">
+      Representaciones (El Formato)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hateoas-el-gps-de-tu-api">
+<span class="md-ellipsis">
+      HATEOAS (El GPS de tu API)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#consumir-web-services-externos-con-php">
+<span class="md-ellipsis">
+      Consumir Web Services Externos con PHP
+    </span>
+</a>
+<nav aria-label="Consumir Web Services Externos con PHP" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buscar-y-analizar-apis-publicas">
+<span class="md-ellipsis">
+      Buscar y Analizar APIs Públicas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-file_get_contents-el-metodo-sencillo">
+<span class="md-ellipsis">
+      Usando file_get_contents() (El método sencillo)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-curl-el-metodo-profesional-y-versatil">
+<span class="md-ellipsis">
+      Usando cURL (El método profesional y versátil)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestra-primera-api-rest-con-php-puro-y-duro">
+<span class="md-ellipsis">
+      Creando nuestra Primera API REST con PHP (Puro y Duro)
+    </span>
+</a>
+<nav aria-label="Creando nuestra Primera API REST con PHP (Puro y Duro)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-del-proyecto">
+<span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-router-casero-y-el-preambulo">
+<span class="md-ellipsis">
+      El "Router" Casero y el Preámbulo
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-get-chollos-y-get-chollosid">
+<span class="md-ellipsis">
+      Endpoint GET /chollos y GET /chollos/{id}
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-post-chollos">
+<span class="md-ellipsis">
+      Endpoint POST /chollos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-put-chollosid-y-delete-chollosid">
+<span class="md-ellipsis">
+      Endpoint PUT /chollos/{id} y DELETE /chollos/{id}
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probando-y-debuggeando-nuestra-api-postman-al-rescate">
+<span class="md-ellipsis">
+      Probando y "Debuggeando" nuestra API: Postman al Rescate
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conclusiones-y-recomendaciones-finales">
+<span class="md-ellipsis">
+      Conclusiones y Recomendaciones Finales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-consolidacion">
+<span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Consolidación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_1">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_1">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_1">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_1">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_2">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_2">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_2">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_3">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-refuerzo">
+<span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+</a>
+<nav aria-label="Ejercicios de Refuerzo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_3">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_2">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_3">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_4">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-ampliacion">
+<span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Ampliación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_4">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_3">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_4">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_5">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Documentacion/">
+<span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-LOGS/">
+<span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-WebScraping/">
+<span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-Testing/">
+<span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="">
+<span class="md-ellipsis">
+    Laravel
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_18_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_18">
+<span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Node.js
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      Conceptos Fundamentales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#que-es-un-web-service">
+<span class="md-ellipsis">
+      ¿Qué es un Web Service?
+    </span>
+</a>
+<nav aria-label="¿Qué es un Web Service?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diferencia-entre-web-services-y-apis">
+<span class="md-ellipsis">
+      Diferencia entre Web Services y APIs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-clave-de-usar-web-services">
+<span class="md-ellipsis">
+      Ventajas Clave de Usar Web Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-y-metodos-de-web-services">
+<span class="md-ellipsis">
+      Tipos y Métodos de Web Services
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rest-vs-soap-la-batalla-de-las-arquitecturas">
+<span class="md-ellipsis">
+      REST vs. SOAP: La Batalla de las Arquitecturas
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-arquitectura-rest-las-reglas-del-juego">
+<span class="md-ellipsis">
+      La Arquitectura REST: Las Reglas del Juego
+    </span>
+</a>
+<nav aria-label="La Arquitectura REST: Las Reglas del Juego" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-interfaz-uniforme-hablando-el-mismo-idioma">
+<span class="md-ellipsis">
+      La Interfaz Uniforme: Hablando el Mismo Idioma
+    </span>
+</a>
+<nav aria-label="La Interfaz Uniforme: Hablando el Mismo Idioma" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recursos-los-sustantivos">
+<span class="md-ellipsis">
+      Recursos (Los Sustantivos)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verbos-http-las-acciones">
+<span class="md-ellipsis">
+      Verbos HTTP (Las Acciones)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#representaciones-el-formato">
+<span class="md-ellipsis">
+      Representaciones (El Formato)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hateoas-el-gps-de-tu-api">
+<span class="md-ellipsis">
+      HATEOAS (El GPS de tu API)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#consumir-web-services-externos-con-php">
+<span class="md-ellipsis">
+      Consumir Web Services Externos con PHP
+    </span>
+</a>
+<nav aria-label="Consumir Web Services Externos con PHP" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buscar-y-analizar-apis-publicas">
+<span class="md-ellipsis">
+      Buscar y Analizar APIs Públicas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-file_get_contents-el-metodo-sencillo">
+<span class="md-ellipsis">
+      Usando file_get_contents() (El método sencillo)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usando-curl-el-metodo-profesional-y-versatil">
+<span class="md-ellipsis">
+      Usando cURL (El método profesional y versátil)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-nuestra-primera-api-rest-con-php-puro-y-duro">
+<span class="md-ellipsis">
+      Creando nuestra Primera API REST con PHP (Puro y Duro)
+    </span>
+</a>
+<nav aria-label="Creando nuestra Primera API REST con PHP (Puro y Duro)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-del-proyecto">
+<span class="md-ellipsis">
+      Estructura del Proyecto
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-router-casero-y-el-preambulo">
+<span class="md-ellipsis">
+      El "Router" Casero y el Preámbulo
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-get-chollos-y-get-chollosid">
+<span class="md-ellipsis">
+      Endpoint GET /chollos y GET /chollos/{id}
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-post-chollos">
+<span class="md-ellipsis">
+      Endpoint POST /chollos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#endpoint-put-chollosid-y-delete-chollosid">
+<span class="md-ellipsis">
+      Endpoint PUT /chollos/{id} y DELETE /chollos/{id}
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probando-y-debuggeando-nuestra-api-postman-al-rescate">
+<span class="md-ellipsis">
+      Probando y "Debuggeando" nuestra API: Postman al Rescate
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conclusiones-y-recomendaciones-finales">
+<span class="md-ellipsis">
+      Conclusiones y Recomendaciones Finales
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      Para Saber Más
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      EJERCICIOS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-consolidacion">
+<span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Consolidación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_1">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_1">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_1">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_1">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_2">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_2">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_2">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_3">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-refuerzo">
+<span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+</a>
+<nav aria-label="Ejercicios de Refuerzo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_3">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_2">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_3">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_4">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios-de-ampliacion">
+<span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+</a>
+<nav aria-label="Ejercicios de Ampliación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objetivo_4">
+<span class="md-ellipsis">
+      Objetivo:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup-inicial_3">
+<span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tarea-a-realizar_4">
+<span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real_5">
+<span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="servicios-web-con-php-conviertete-en-el-arquitecto-de-la-informacion">Servicios Web con PHP - ¡Conviértete en el Arquitecto de la Información!</h1>
+<p>¡Hola, futuros cracks del desarrollo web! Hasta ahora, hemos construido aplicaciones que viven en su propia "casa", nuestro servidor. Muestran HTML, hablan con su base de datos y, en general, se portan muy bien. Pero, ¿y si te dijera que podemos hacer que nuestras aplicaciones hablen con OTRAS aplicaciones? ¿Y si pudieras pedirle a la NASA la foto astronómica del día, obtener datos de videojuegos de una base de datos gigante o incluso permitir que una app móvil que tú no has creado use la información de tu proyecto?</p>
+<p>Aquí es donde entran los <strong>Servicios Web</strong>.</p>
+<p>Piénsalo como un restaurante de alta cocina. Tú eres el <strong>cliente</strong> hambriento de datos. No entras a la cocina (la <strong>base de datos</strong>) a prepararte un plato; sería un caos y probablemente te quemarías. En su lugar, hay un <strong>camarero</strong> (el <strong>Servidor Web</strong>) que te atiende. ¿Y cómo sabes qué puedes pedir? Miras la <strong>carta</strong> (la <strong>API</strong>). La carta te dice "tenemos estos platos (recursos), y se piden así (endpoints y métodos)".</p>
+<p>En este tema, vamos a aprender a ser los chefs y a la vez a diseñar la carta más clara y eficiente del mundo digital, usando la arquitectura más popular y demandada del mercado: <strong>REST</strong>.</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de ponernos el delantal, aclaremos algunos términos que son el pan de cada día en este mundillo.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Servicio Web</p>
+<p>Es un sistema de software diseñado para permitir la comunicación e interacción entre diferentes máquinas (aplicaciones) a través de una red, como Internet. Su objetivo es que un programa pueda "usar" la funcionalidad de otro, sin importar dónde esté o en qué lenguaje se programó.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: API (Application Programming Interface)</p>
+<p>Una Interfaz de Programación de Aplicaciones es un conjunto de reglas, definiciones y protocolos que permite que dos aplicaciones se comuniquen entre sí. Es la "carta" de nuestro restaurante: define qué se puede pedir (<code>endpoints</code>), cómo se debe pedir (<code>métodos HTTP</code>) y qué te van a devolver (<code>formatos de datos</code>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: REST (REpresentational State Transfer)</p>
+<p>No es un protocolo ni un estándar, sino un <strong>estilo de arquitectura</strong> de software para crear servicios web. REST define un conjunto de principios o "reglas de la casa" para que la comunicación sea simple, escalable y fiable. Un servicio web que sigue estas reglas se denomina <strong>"RESTful"</strong>.</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="que-es-un-web-service">¿Qué es un Web Service?</h2>
+<div class="admonition note">
+<p class="admonition-title">Definición: Web Service (Revisitado)</p>
+<p>Un Servicio Web es, en esencia, una pieza de software que se hace disponible a través de una red (normalmente Internet) y que otras aplicaciones pueden "llamar" para ejecutar una tarea o pedir datos. Es un puente de comunicación estandarizado entre programas.</p>
+</div>
+<p>Su rol en la arquitectura moderna es ser el <strong>pegamento del mundo digital</strong>. Permiten que una aplicación de reservas de vuelos (hecha en Java) pueda consultar el tiempo en el destino usando un servicio de meteorología (hecho en Python) y procesar el pago a través de un TPV virtual (hecho en .NET).</p>
+<h3 id="diferencia-entre-web-services-y-apis">Diferencia entre Web Services y APIs</h3>
+<p>Este es un punto que confunde a muchos. ¡Aclaremoslo con una analogía!</p>
+<p>Piensa en una <strong>API</strong> como el diseño completo de los enchufes de un país: te dice la forma, el voltaje, los pines... es el <strong>contrato</strong> completo que define cómo interactuar.</p>
+<p>Un <strong>Web Service</strong> es un tipo específico de API que <strong>siempre</strong> se comunica a través de una red. Es como un enchufe específico en la pared que, al usarlo, te da acceso a la red eléctrica nacional.</p>
+<ul>
+<li><strong>Toda API de un Web Service es una API.</strong></li>
+<li><strong>No toda API es un Web Service.</strong> Por ejemplo, la API de tu sistema operativo para abrir una ventana o la API de una librería que usas en tu código no son Web Services, porque la comunicación no ocurre a través de una red.</li>
+</ul>
+<p>En el desarrollo web moderno, los términos se usan casi como sinónimos, pero es bueno conocer la distinción teórica.</p>
+<p><br/></p>
+<h3 id="ventajas-clave-de-usar-web-services">Ventajas Clave de Usar Web Services</h3>
+<p>Ya intuimos por qué son geniales, pero pongámoslo en una lista clara que puedas usar para convencer a tu futuro jefe de proyectos:</p>
+<ul>
+<li><strong>Reutilización de Código y Lógica</strong>: Si tienes una función para calcular el IVA, en lugar de copiarla en 10 proyectos, la conviertes en un microservicio. Todos los demás proyectos "llaman" a ese servicio. Un cambio, un solo lugar que mantener.</li>
+<li><strong>Escalabilidad y Mantenibilidad</strong>: Puedes mejorar o escalar el servicio de autenticación sin tocar el servicio de facturación. Permite que equipos diferentes trabajen en paralelo.</li>
+<li><strong>Separación TOTAL entre Cliente y Servidor</strong>: El equipo de frontend (React, Angular, Vue) puede trabajar a su ritmo usando datos falsos (<code>mock data</code>), mientras el equipo de backend (¡nosotros!) construye la API. Cuando ambos terminan, se conectan y... ¡magia!</li>
+<li><strong>Independencia del Lenguaje y Plataforma</strong>: Tu API en PHP puede ser consumida por una app de iOS (Swift), un análisis de datos en Python o una aplicación de escritorio en C#. ¡Todos hablan el mismo "idioma" (HTTP)!</li>
+<li><strong>Accesibilidad Global</strong>: Al estar en la web, tu servicio puede ser accedido desde cualquier parte del mundo, abriendo la puerta a integraciones que ni siquiera habías imaginado.</li>
+</ul>
+<p><br/></p>
+<h3 id="tipos-y-metodos-de-web-services">Tipos y Métodos de Web Services</h3>
+<p>Aunque nos hemos centrado   en REST, no es el único jugador en el campo. Durante años, su principal rival fue <strong>SOAP</strong>.</p>
+<h3 id="rest-vs-soap-la-batalla-de-las-arquitecturas">REST vs. SOAP: La Batalla de las Arquitecturas</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">REST (El Ágil y Flexible)</th>
+<th style="text-align: left;">SOAP (El Formal y Estricto)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Acrónimo</strong></td>
+<td style="text-align: left;">REpresentational State Transfer</td>
+<td style="text-align: left;">Simple Object Access Protocol</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>¿Qué es?</strong></td>
+<td style="text-align: left;">Un <strong>estilo arquitectónico</strong>, un conjunto de buenas prácticas.</td>
+<td style="text-align: left;">Un <strong>protocolo</strong> oficial con reglas muy estrictas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Formato de Datos</strong></td>
+<td style="text-align: left;">Principalmente <strong>JSON</strong>. También puede usar XML, texto...</td>
+<td style="text-align: left;">Exclusivamente <strong>XML</strong>. Muy verboso.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Protocolo</strong></td>
+<td style="text-align: left;">Usa <strong>HTTP</strong> directamente y sus métodos (GET, POST...).</td>
+<td style="text-align: left;">Puede usar HTTP, pero también otros como SMTP (email).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Rendimiento</strong></td>
+<td style="text-align: left;">Ligero, rápido. Ideal para web y móviles.</td>
+<td style="text-align: left;">Más pesado debido a la verbosidad de XML y sus cabeceras.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso Típico</strong></td>
+<td style="text-align: left;">APIs públicas, aplicaciones web, SPAs, apps móviles.</td>
+<td style="text-align: left;">Sistemas empresariales, banca, transacciones seguras (legacy).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">El Veredicto</p>
+<p>Para el 99% de los proyectos web que encontrarás, <strong>REST es la elección correcta</strong>. Es más simple, más rápido y se alinea perfectamente con la naturaleza de la web. SOAP sigue existiendo en entornos corporativos muy específicos, pero su popularidad ha decaído enormemente.</p>
+</div>
+<p><br/><hr/></p>
+<h2 id="la-arquitectura-rest-las-reglas-del-juego">La Arquitectura REST: Las Reglas del Juego</h2>
+<p>Imagina construir una ciudad. Si cada uno construye su casa como quiere, sin aceras, carreteras ni sistema de alcantarillado común, el resultado es un caos. REST son las normas de urbanismo para los datos en la web. Propuesto por Roy Fielding en el año 2000 (¡uno de los padres del protocolo HTTP!), este estilo arquitectónico se basa en varias restricciones clave.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBQcmluY2lwaW9zIGRlIFJFU1QKCiMjIDEuIENsaWVudGUtU2Vydmlkb3IKLSAqKlNlcGFyYWNpw7NuIHRvdGFsKio6IEVsIGNsaWVudGUgKGZyb250ZW5kLCBhcHAgbcOzdmlsKSB5IGVsIHNlcnZpZG9yPGJyLz4gKGJhY2tlbmQsIFBIUCkgc29uIGluZGVwZW5kaWVudGVzLgotIDxici8+KipWZW50YWphKio6IFB1ZWRlcyBjYW1iaWFyIGVsIGNsaWVudGUgc2luIHRvY2FyIGVsIHNlcnZpZG9yLDxici8+IHkgdmljZXZlcnNhLiDCoUV2b2x1Y2nDs24gcG9yIHNlcGFyYWRvIQoKIyMgMi4gU2luIEVzdGFkbyAoU3RhdGVsZXNzKQotIDxici8+KipFbCBjYW1hcmVybyBjb24gYW1uZXNpYSoqOiBDYWRhIHBldGljacOzbiBkZWwgY2xpZW50ZSBkZWJlIGNvbnRlbmVyIDxici8+VE9EQSBsYSBpbmZvcm1hY2nDs24gcXVlIGVsIHNlcnZpZG9yIG5lY2VzaXRhIHBhcmEgZW50ZW5kZXJsYS4KLSA8YnIvPioqRWplbXBsbyoqOiBFbCBzZXJ2aWRvciBubyByZWN1ZXJkYSBxdWnDqW4gZXJlcyA8YnIvPmVudHJlIHVuYSBwZXRpY2nDs24geSBvdHJhLiBObyBoYXkgYCRfU0VTU0lPTmAgZGUgdXN1YXJpby4KLSA8YnIvPioqVmVudGFqYSoqOiBNZWpvcmEgbGEgZXNjYWxhYmlsaWRhZC4gQ3VhbHF1aWVyIHNlcnZpZG9yPGJyLz4gcHVlZGUgYXRlbmRlciBjdWFscXVpZXIgcGV0aWNpw7NuLgoKIyMgMy4gSW50ZXJmYXogVW5pZm9ybWUKLSA8YnIvPioqRWwgaWRpb21hIHVuaXZlcnNhbCoqOiBFcyBsYSByZXN0cmljY2nDs24gbcOhcyBpbXBvcnRhbnRlPGJyLz4geSBsYSBxdWUgZGVmaW5lIGxhICJlc2VuY2lhIiBkZSBSRVNULgotIFNlIGJhc2EgZW4gNCBwaWxhcmVzOgogICAgLSA8YnIvPklkZW50aWZpY2FjacOzbiBkZSAqKlJlY3Vyc29zKiogKFVSSXMpLgogICAgLSA8YnIvPk1hbmlwdWxhY2nDs24gYSB0cmF2w6lzIGRlICoqUmVwcmVzZW50YWNpb25lcyoqIChKU09OL1hNTCkuCiAgICAtIDxici8+KipNZW5zYWplcyBhdXRvZGVzY3JpcHRpdm9zKiouCiAgICAtIDxici8+KipIQVRFT0FTKiogKEVsIEdQUyBkZSBsYSBBUEkpLgoKIyMgNC4gQ2FjaGVhYmxlCi0gPGJyLz5MYXMgcmVzcHVlc3RhcyBkZWwgc2Vydmlkb3IgZGViZW4gcG9kZXIgZGVjbGFyYXJzZTxici8+IGNvbW8gImNhY2hlYWJsZXMiIG8gIm5vIGNhY2hlYWJsZXMiLgotIDxici8+RXN0byBwZXJtaXRlIGFsIGNsaWVudGUgcmV1dGlsaXphciByZXNwdWVzdGFzIGFudGlndWFzLDxici8+IG1lam9yYW5kbyBsYSB2ZWxvY2lkYWQgeSBlZmljaWVuY2lhLg==</markmap-data></div>
+<p>De todas estas reglas, la más importante y la que vamos a desgranar es la <strong>Interfaz Uniforme</strong>. Es la que garantiza que cualquier desarrollador, en cualquier parte del mundo, pueda entender y usar tu API sin necesidad de leerse un manual de 300 páginas.</p>
+<h3 id="la-interfaz-uniforme-hablando-el-mismo-idioma">La Interfaz Uniforme: Hablando el Mismo Idioma</h3>
+<p>Esta es la joya de la corona de REST. Se compone de cuatro partes:</p>
+<h4 id="recursos-los-sustantivos">Recursos (Los Sustantivos)</h4>
+<p>En REST, todo es un <strong>recurso</strong>. Un usuario, un producto, un chollo, un videojuego, una simple foto... todo. Cada recurso tiene un identificador único, que es su <strong>URI</strong> (Uniform Resource Identifier).</p>
+<ul>
+<li><strong>Bien:</strong> <code>/videojuegos</code>, <code>/videojuegos/3</code>, <code>/usuarios/123/facturas</code></li>
+<li><strong>Mal:</strong> <code>/obtenerVideojuegos</code>, <code>/crearUsuario.php</code>, <code>/show_all_products</code></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Piensa en 'Sustantivos', no en 'Verbos'</p>
+<p>Las URIs identifican "cosas", no acciones. La acción la determinará el método HTTP que usemos.</p>
+</div>
+<h4 id="verbos-http-las-acciones">Verbos HTTP (Las Acciones)</h4>
+<p>Una vez que tenemos la URI del recurso, ¿cómo le decimos al servidor qué queremos hacer con él? Usamos los <strong>métodos del protocolo HTTP</strong>. Los cuatro principales son el escuadrón de asalto de cualquier API:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Verbo</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">¿Es Seguro?¹</th>
+<th style="text-align: left;">¿Es Idempotente?²</th>
+<th style="text-align: left;">Ejemplo de Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>GET</strong></td>
+<td style="text-align: left;"><strong>Obtener/Leer</strong> un recurso.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;"><code>GET /videojuegos/5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>POST</strong></td>
+<td style="text-align: left;"><strong>Crear</strong> un nuevo recurso.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No (dos POST crean dos recursos)</td>
+<td style="text-align: left;"><code>POST /videojuegos</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PUT</strong></td>
+<td style="text-align: left;"><strong>Actualizar/Reemplazar</strong> un recurso.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Sí (actualizar 100 veces da el mismo resultado)</td>
+<td style="text-align: left;"><code>PUT /videojuegos/5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DELETE</strong></td>
+<td style="text-align: left;"><strong>Eliminar</strong> un recurso.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Sí (borrar 100 veces da el mismo resultado)</td>
+<td style="text-align: left;"><code>DELETE /videojuegos/5</code></td>
+</tr>
+</tbody>
+</table>
+<p>¹ <strong>Seguro</strong>: No modifica datos en el servidor.
+² <strong>Idempotente</strong>: Realizar la misma petición varias veces produce el mismo resultado que realizarla una sola vez.</p>
+<h4 id="representaciones-el-formato">Representaciones (El Formato)</h4>
+<p>El cliente y el servidor no se envían los datos "en bruto" desde la base de datos. Se envían una <strong>representación</strong> del recurso. Hoy en día, el estándar de facto es <strong>JSON (JavaScript Object Notation)</strong>, por ser ligero, legible para humanos y fácil de procesar por cualquier lenguaje.</p>
+<p>Cuando pides <code>GET /videojuegos/5</code>, el servidor no te devuelve la fila de la tabla de la base de datos. Te devuelve algo así:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Witcher 3: Wild Hunt"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"desarrollador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD Projekt Red"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"lanzamiento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-19"</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="hateoas-el-gps-de-tu-api">HATEOAS (El GPS de tu API)</h4>
+<p>Este acrónimo impronunciable significa <strong>Hypermedia as the Engine of Application State</strong>. Es más fácil de lo que parece: significa que la respuesta del servidor no solo debe contener los datos, sino también <strong>enlaces (hipermedia) a otras acciones que puedes realizar</strong>.</p>
+<div class="admonition info inline">
+<p class="admonition-title">HATEOAS en acción</p>
+<p>Es como cuando estás en una web y, además del contenido, tienes botones de "Editar", "Borrar" o "Ver comentarios". La propia página te guía sobre qué puedes hacer a continuación.</p>
+</div>
+<p>Una respuesta con HATEOAS se vería así:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Witcher 3: Wild Hunt"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"desarrollador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD Projekt Red"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"lanzamiento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-19"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.misjuegos.com/videojuegos/5"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.misjuegos.com/videojuegos/5"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PUT"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delete"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://api.misjuegos.com/videojuegos/5"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DELETE"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Esto hace que tu API sea "auto-explorable". El cliente no necesita saber de antemano todas las URIs posibles.</p>
+<div class="admonition question">
+<p class="admonition-title">A ver si lo pillas...</p>
+<ol>
+<li>Si quieres ver la lista de todos los comentarios de un post con ID <code>42</code>, ¿qué URI y qué verbo HTTP usarías?</li>
+<li>¿Por qué es una mala idea usar <code>GET /deleteUser?id=123</code> en una API REST? ¿Qué principio(s) incumple?</li>
+<li>Imagina que Twitter es una API REST. Cuando cargas tu timeline, ¿qué recurso estás pidiendo? Cuando das "Me Gusta" a un tweet, ¿qué verbo HTTP crees que se está usando por debajo y sobre qué recurso?</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="consumir-web-services-externos-con-php">Consumir Web Services Externos con PHP</h2>
+<p>Ser un buen chef no solo implica saber cocinar, sino también saber elegir y usar los ingredientes de otros. ¡Vamos a consumir APIs de terceros!</p>
+<h3 id="buscar-y-analizar-apis-publicas">Buscar y Analizar APIs Públicas</h3>
+<p>Internet es un buffet libre de APIs. Aquí tienes algunas geniales para practicar, que no requieren registro (o es muy simple):</p>
+<ul>
+<li><strong>REST Countries</strong>: Información detallada de cualquier país del mundo. ¡Genial para practicar! (<code>https://restcountries.com/</code>)</li>
+<li><strong>JSONPlaceholder</strong>: Una API falsa con datos de usuarios, posts, etc. Perfecta para testing sin tener que montar un backend. (<code>https://jsonplaceholder.typicode.com/</code>)</li>
+<li><strong>Cat Facts API</strong>: Datos curiosos sobre gatos. Porque... ¿por qué no? (<code>https://catfact.ninja/fact</code>)</li>
+<li><strong>OpenWeatherMap</strong>: Datos del clima. Requiere una API Key gratuita, lo que es una práctica excelente para aprender a manejar autenticación. (<code>https://openweathermap.org/api</code>)</li>
+</ul>
+<h3 id="usando-file_get_contents-el-metodo-sencillo">Usando <code>file_get_contents()</code> (El método sencillo)</h3>
+<p>Para peticiones <code>GET</code> simples, esta función de PHP es suficiente. Es como escribir una URL en el navegador.</p>
+<p><strong>Ejemplo: Obtener un dato curioso sobre gatos.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// URL del endpoint de la API</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://catfact.ninja/fact'</span><span class="p">;</span>
+
+<span class="c1">// Opciones para el contexto del stream (aunque para un GET simple no son necesarias)</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'http'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'header'</span> <span class="o">=&gt;</span> <span class="s2">"Content-type: application/json</span><span class="se">\r\n</span><span class="s2">"</span> <span class="o">.</span>
+                    <span class="s2">"User-Agent: MiAppDePHP/1.0</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="c1">// Algunas APIs requieren un User-Agent</span>
+        <span class="s1">'method'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+<span class="nv">$context</span> <span class="o">=</span> <span class="nb">stream_context_create</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+
+<span class="c1">// Realizar la petición</span>
+<span class="nv">$responseJson</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="nv">$context</span><span class="p">);</span>
+
+<span class="c1">// Manejar errores en la petición</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$responseJson</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error al consumir la API.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Decodificar la respuesta JSON a un objeto o array de PHP</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$responseJson</span><span class="p">);</span> <span class="c1">// true para array, false u omitido para objeto</span>
+
+<span class="c1">// Validar que la decodificación fue exitosa</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">json_last_error</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">JSON_ERROR_NONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error al decodificar la respuesta JSON.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Mostrar el resultado</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Dato Gatuno del Día:&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="na">fact</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">'UTF-8'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;em&gt;(Dato de "</span> <span class="o">.</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$data</span><span class="o">-&gt;</span><span class="na">fact</span><span class="p">)</span> <span class="o">.</span> <span class="s2">" caracteres)&lt;/em&gt;"</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Limitaciones de file_get_contents</p>
+<p>Es genial para <code>GET</code> simples, pero se complica mucho para otros métodos (<code>POST</code>, <code>PUT</code>), para enviar cabeceras personalizadas o para manejar errores de forma granular (como códigos de estado HTTP 404 o 500).</p>
+</div>
+<h3 id="usando-curl-el-metodo-profesional-y-versatil">Usando cURL (El método profesional y versátil)</h3>
+<p><strong>cURL</strong> es una librería que te da control TOTAL sobre la petición HTTP. Es el estándar de facto en PHP para consumir servicios web de forma robusta.</p>
+<p><strong>Ejemplo: Obtener información de un país (España).</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// URL del endpoint</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://restcountries.com/v3.1/name/spain'</span><span class="p">;</span>
+
+<span class="c1">// 1. Inicializar cURL</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// 2. Configurar las opciones de cURL</span>
+<span class="c1">// Establecer la URL a la que se hará la petición</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+
+<span class="c1">// Establecer que queremos recibir la respuesta, no imprimirla directamente</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Establecer un User-Agent (buena práctica)</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_USERAGENT</span><span class="p">,</span> <span class="s1">'MiAppDePaises/1.0'</span><span class="p">);</span>
+
+<span class="c1">// 3. Ejecutar la petición</span>
+<span class="nv">$responseJson</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="c1">// 4. Manejar errores de cURL</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error de cURL: '</span> <span class="o">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// 5. Obtener el código de estado HTTP</span>
+<span class="nv">$httpCode</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+<span class="c1">// 6. Cerrar la sesión cURL</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="c1">// 7. Procesar la respuesta</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$httpCode</span> <span class="o">&gt;=</span> <span class="mi">400</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Error: La API devolvió un código de estado </span><span class="si">{</span><span class="nv">$httpCode</span><span class="si">}</span><span class="s2">."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$responseJson</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">json_last_error</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">JSON_ERROR_NONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">'Error al decodificar la respuesta JSON.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Mostrar los datos del primer país encontrado (la API devuelve un array)</span>
+<span class="nv">$pais</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Información sobre: "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pais</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">-&gt;</span><span class="na">official</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;&lt;b&gt;Capital:&lt;/b&gt; "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pais</span><span class="o">-&gt;</span><span class="na">capital</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">.</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;&lt;b&gt;Población:&lt;/b&gt; "</span> <span class="o">.</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$pais</span><span class="o">-&gt;</span><span class="na">population</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">','</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">" habitantes&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;li&gt;&lt;b&gt;Región:&lt;/b&gt; "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pais</span><span class="o">-&gt;</span><span class="na">region</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;img src='"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$pais</span><span class="o">-&gt;</span><span class="na">flags</span><span class="o">-&gt;</span><span class="na">svg</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"' alt='Bandera' width='150'&gt;"</span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡Ahora tú! El Hombre del Tiempo</p>
+<ol>
+<li>Regístrate en <a href="https://home.openweathermap.org/users/sign_up">OpenWeatherMap</a> y obtén una API Key gratuita.</li>
+<li>Consulta la <a href="https://openweathermap.org/current">documentación de la API</a> para ver cómo pedir el clima actual de una ciudad. Necesitarás el nombre de la ciudad, tu API Key (<code>appid</code>) y opcionalmente las unidades (<code>units=metric</code>) y el idioma (<code>lang=es</code>).</li>
+<li>Crea un script en PHP que, usando <strong>cURL</strong>, pida el tiempo de "Valencia" y muestre en pantalla una frase como: "El tiempo en Valencia: nubes dispersas con una temperatura de 25.4°C."</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="creando-nuestra-primera-api-rest-con-php-puro-y-duro">Creando nuestra Primera API REST con PHP (Puro y Duro)</h2>
+<p>Vale, basta de teoría. ¡Vamos a picar código! Olvidémonos de frameworks por un momento y construyamos una API REST desde cero para gestionar una colección de "chollos". Esto nos ayudará a entender de verdad lo que ocurre bajo el capó.</p>
+<p>Primero, generaremos la estructura y los datos de ejemplo en la base da datos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">--</span>
+<span class="c1">-- Base de datos: `db_chollos`</span>
+<span class="c1">-- (Asegúrate de haber creado esta base de datos primero)</span>
+<span class="c1">--</span>
+
+<span class="c1">-- --------------------------------------------------------</span>
+
+<span class="c1">--</span>
+<span class="c1">-- Estructura de tabla para la tabla `chollos`</span>
+<span class="c1">--</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">chollos</span><span class="o">`</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">titulo</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">descripcion</span><span class="o">`</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">url</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="o">`</span><span class="n">creado_en</span><span class="o">`</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">current_timestamp</span><span class="p">(),</span>
+<span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="o">=</span><span class="n">utf8mb4_general_ci</span><span class="p">;</span>
+
+<span class="c1">--</span>
+<span class="c1">-- Volcado de datos para la tabla `chollos`</span>
+<span class="c1">--</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">chollos</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">titulo</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">descripcion</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">url</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">'Viaje a la Luna por 1€'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Solo ida, eso sí. Una oportunidad única para cambiar de aires. Traje espacial no incluido.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://chollos.com/luna'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'Teclado mecánico RGB al 50%'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Ideal para programar y para que tus vecinos sepan que estás trabajando a las 3 AM. Switches azules, por supuesto.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://techdeals.com/teclado-mecanico'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">'Pack "Indie Gems" para Steam'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Incluye 5 joyas ocultas del desarrollo independiente que te harán replantearte qué es un videojuego.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://store.steampowered.com/bundle/12345'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">'Pizza infinita los martes'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Come hasta que dudes de tus decisiones de vida. Bebida no incluida. La casa no se hace responsable de la posterior necesidad de siesta.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://pizzeria-daw.com/promo-martes'</span><span class="p">),</span><span class="w"> </span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="s1">'Servidor VPS a precio de risa'</span><span class="p">,</span><span class="w"> </span><span class="s1">'1TB de RAM, 200 núcleos. Bueno, quizás no tanto. Pero suficiente para alojar tu proyecto final y que no se caiga. ¡Garantizado por 5 minutos!'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://hosting-baratisimo.com/vps-daw'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="s1">'Taza que compila tu café'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Taza térmica que cambia de color con el calor. Pasa de ''Error 418: I''m a teapot'' a ''200 OK''. El mejor debug para tus mañanas.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://gadgetprogramador.com/taza-termica'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="s1">'Silla ergonómica ''Anti-dolor de espalda'''</span><span class="p">,</span><span class="w"> </span><span class="s1">'Invierte en tu futuro... lumbar. Con esta silla pasarás 12 horas programando y te levantarás más fresco que una API sin estado.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://oficina-confort.es/silla-dev'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="s1">'Pack de libros ''Clean Code'''</span><span class="p">,</span><span class="w"> </span><span class="s1">'Aprende a escribir código que no haga llorar a tus futuros compañeros. Incluye ''Clean Code'', ''The Pragmatic Programmer'' y ''Designing Data-Intensive Applications''.'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://libros-tech.com/pack-imprescindible'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="s1">'Raspberry Pi 5 Kit Completo'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Todo lo que necesitas para montar tu propio servidor casero, un centro multimedia o un robot que te traiga el café. La imaginación es el límite (y el stock).'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://tienda-raspberry.es/kit-completo-pi5'</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="s1">'Disco SSD NVMe de 2TB a precio de HDD'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Tu ''npm install'' tardará 0.5 segundos menos. Cada milisegundo cuenta. ¡Compila el kernel de Linux mientras desayunas!'</span><span class="p">,</span><span class="w"> </span><span class="s1">'http://componentes-pc.com/ssd-nvme-2tb-oferta'</span><span class="p">);</span>
+</code></pre></div>
+<p>Nuestra API gestionará chollos con <code>id</code>, <code>titulo</code>, <code>descripcion</code> y <code>url</code>.</p>
+<h3 id="estructura-del-proyecto">Estructura del Proyecto</h3>
+<p>Crearemos una carpeta para el proyecto con un único fichero <code>api.php</code> que contendrá toda nuestra lógica.</p>
+<div class="highlight"><pre><span></span><code>/mi-primera-api/
+└── api.php
+</code></pre></div>
+<h3 id="el-router-casero-y-el-preambulo">El "Router" Casero y el Preámbulo</h3>
+<p>Lo primero en <code>api.php</code> es establecer las cabeceras para indicar que devolveremos JSON, y montar un pequeño sistema para dirigir las peticiones según el método HTTP.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// api.php</span>
+
+<span class="c1">// Forzar que la respuesta sea siempre en formato JSON</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/json'</span><span class="p">);</span>
+
+<span class="c1">// Permitir peticiones desde cualquier origen (CORS)</span>
+<span class="c1">// ¡¡CUIDADO!! En producción, deberías limitarlo a dominios específicos.</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Access-Control-Allow-Origin: *'</span><span class="p">);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Access-Control-Allow-Methods: GET, POST, PUT, DELETE'</span><span class="p">);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Access-Control-Allow-Headers: Content-Type, Authorization'</span><span class="p">);</span>
+
+<span class="c1">// --- Conexión a la Base de Datos (PDO) ---</span>
+<span class="c1">// En un proyecto real, esto estaría en un fichero de configuración.</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">'DB_HOST'</span><span class="p">,</span> <span class="s1">'localhost'</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">'DB_NAME'</span><span class="p">,</span> <span class="s1">'db_chollos'</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">'DB_USER'</span><span class="p">,</span> <span class="s1">'root'</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">'DB_PASS'</span><span class="p">,</span> <span class="s1">''</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="nf">getDbConnection</span><span class="p">()</span><span class="o">:</span> <span class="nx">PDO</span>
+<span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span>
+            <span class="s1">'mysql:host='</span> <span class="o">.</span> <span class="nx">DB_HOST</span> <span class="o">.</span> <span class="s1">';dbname='</span> <span class="o">.</span> <span class="nx">DB_NAME</span> <span class="o">.</span> <span class="s1">';charset=utf8'</span><span class="p">,</span>
+            <span class="nx">DB_USER</span><span class="p">,</span>
+            <span class="nx">DB_PASS</span>
+        <span class="p">);</span>
+        <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$pdo</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Enviar respuesta de error y terminar script</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// Internal Server Error</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error de conexión a la base de datos: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+        <span class="k">exit</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// --- "Router" simple ---</span>
+<span class="nv">$method</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">];</span>
+
+<span class="c1">// Parsear la URL para obtener el recurso y el ID</span>
+<span class="nv">$request_uri</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">'?'</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_URI'</span><span class="p">],</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nv">$path</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$request_uri</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'/'</span><span class="p">);</span>
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="nv">$path</span><span class="p">);</span>
+
+<span class="c1">// El ID será el último segmento de la URL, si es numérico</span>
+<span class="nv">$resourceId</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parts</span><span class="p">[</span><span class="nb">count</span><span class="p">(</span><span class="nv">$parts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$parts</span><span class="p">[</span><span class="nb">count</span><span class="p">(</span><span class="nv">$parts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$resourceId</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nv">$parts</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Aquí irían los controladores de cada recurso, por ahora todo junto.</span>
+<span class="c1">// Suponiendo que la URL es como '.../api.php/chollos/1'</span>
+<span class="nv">$resource</span> <span class="o">=</span> <span class="s1">'chollos'</span><span class="p">;</span> <span class="c1">// Asumimos un solo recurso</span>
+
+<span class="c1">// Lógica para manejar la petición</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$method</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">'GET'</span><span class="o">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$resourceId</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">handleGetChollo</span><span class="p">(</span><span class="nv">$resourceId</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">handleGetAllChollos</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'POST'</span><span class="o">:</span>
+        <span class="nx">handlePostChollo</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'PUT'</span><span class="o">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$resourceId</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">handlePutChollo</span><span class="p">(</span><span class="nv">$resourceId</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="c1">// Bad Request</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Se requiere un ID para actualizar.'</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'DELETE'</span><span class="o">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$resourceId</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">handleDeleteChollo</span><span class="p">(</span><span class="nv">$resourceId</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="c1">// Bad Request</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Se requiere un ID para eliminar.'</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">405</span><span class="p">);</span> <span class="c1">// Method Not Allowed</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Método no permitido.'</span><span class="p">]);</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Aquí irán las funciones handle...</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Seguridad y CORS</p>
+<p>La línea <code>header('Access-Control-Allow-Origin: *');</code> es una puerta abierta de par en par. Permite que CUALQUIER página web en Internet haga peticiones a tu API. Para desarrollo está bien, pero en un entorno real (producción), deberías cambiar el <code>*</code> por el dominio exacto de tu aplicación cliente (ej: <code>https://mi-frontend-genial.com</code>).</p>
+</div>
+<h3 id="endpoint-get-chollos-y-get-chollosid">Endpoint <code>GET /chollos</code> y <code>GET /chollos/{id}</code></h3>
+<p>Ahora, implementemos las funciones que se encargan de la lógica de obtener datos.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// ... (código anterior)</span>
+
+<span class="k">function</span> <span class="nf">handleGetAllChollos</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="nx">getDbConnection</span><span class="p">();</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT * FROM chollos"</span><span class="p">);</span>
+        <span class="nv">$chollos</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// OK</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$chollos</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error al obtener los chollos: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">handleGetChollo</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="nx">getDbConnection</span><span class="p">();</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s2">"SELECT * FROM chollos WHERE id = :id"</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+        <span class="nv">$chollo</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$chollo</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// OK</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$chollo</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span> <span class="c1">// Not Found</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo no encontrado.'</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error al obtener el chollo: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ... (resto de funciones handle)</span>
+</code></pre></div>
+<h3 id="endpoint-post-chollos">Endpoint <code>POST /chollos</code></h3>
+<p>Para crear un recurso, los datos no vienen en <code>$_POST</code> como en un formulario tradicional, sino en el <em>cuerpo (body)</em> de la petición HTTP, normalmente como un string JSON.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// ... (código anterior)</span>
+
+<span class="k">function</span> <span class="nf">handlePostChollo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="c1">// Leer el cuerpo de la petición (raw input)</span>
+    <span class="nv">$json</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'php://input'</span><span class="p">);</span>
+    <span class="c1">// Decodificar el JSON a un array asociativo de PHP</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+    <span class="c1">// Validación simple</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="c1">// Bad Request</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Faltan datos requeridos: titulo, descripcion, url.'</span><span class="p">]);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="nx">getDbConnection</span><span class="p">();</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"INSERT INTO chollos (titulo, descripcion, url) VALUES (:titulo, :descripcion, :url)"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">':titulo'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">],</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">],</span>
+            <span class="s1">':url'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$newId</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">lastInsertId</span><span class="p">();</span>
+
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span> <span class="c1">// Created</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span>
+            <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo creado con éxito.'</span><span class="p">,</span>
+            <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$newId</span>
+        <span class="p">]);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error al crear el chollo: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ... (resto de código)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">php://input</p>
+<p><code>php://input</code> es un <em>stream</em> de solo lectura que te permite leer datos brutos del cuerpo de la petición. Es la forma estándar de obtener los datos de una petición POST o PUT en una API REST.</p>
+</div>
+<h3 id="endpoint-put-chollosid-y-delete-chollosid">Endpoint <code>PUT /chollos/{id}</code> y <code>DELETE /chollos/{id}</code></h3>
+<p><code>PUT</code> es similar a <code>POST</code>, pero actualiza un recurso existente. <code>DELETE</code> es más sencillo.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// ... (código anterior)</span>
+
+<span class="k">function</span> <span class="nf">handlePutChollo</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="nv">$json</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'php://input'</span><span class="p">);</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$json</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">])</span> <span class="o">||</span> <span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Faltan datos requeridos: titulo, descripcion, url.'</span><span class="p">]);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="nx">getDbConnection</span><span class="p">();</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"UPDATE chollos SET titulo = :titulo, descripcion = :descripcion, url = :url WHERE id = :id"</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">':id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+            <span class="s1">':titulo'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'titulo'</span><span class="p">],</span>
+            <span class="s1">':descripcion'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">],</span>
+            <span class="s1">':url'</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]</span>
+        <span class="p">]);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">rowCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// OK</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo actualizado con éxito.'</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span> <span class="c1">// Not Found</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo no encontrado o sin cambios.'</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error al actualizar el chollo: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">handleDeleteChollo</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nv">$pdo</span> <span class="o">=</span> <span class="nx">getDbConnection</span><span class="p">();</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s2">"DELETE FROM chollos WHERE id = :id"</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">rowCount</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// OK</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo eliminado con éxito.'</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span> <span class="c1">// Not Found</span>
+            <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Chollo no encontrado.'</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'Error al eliminar el chollo: '</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Cliente as Cliente (Postman/App)
+    participant API as api.php
+    participant BD as Base de Datos
+
+    Cliente-&gt;&gt;API: POST /chollos&lt;br&gt;Body: {"titulo": "Nuevo Cholazo", ...}
+    API-&gt;&gt;API: Lee 'php://input'
+    API-&gt;&gt;API: json_decode()
+    API-&gt;&gt;BD: PREPARE "INSERT INTO ..."
+    API-&gt;&gt;BD: EXECUTE con los datos
+    BD--&gt;&gt;API: OK, lastInsertId=10
+    API--&gt;&gt;Cliente: 201 Created&lt;br&gt;Body: {"message": "...", "id": 10}</code></pre>
+<div class="admonition question">
+<p class="admonition-title">¡A los fogones!</p>
+<ol>
+<li>En la función <code>handlePutChollo</code>, estamos actualizando todos los campos. ¿Cómo la modificarías para que sea un método <code>PATCH</code>, que solo actualiza los campos que vienen en el JSON y deja los demás como están?</li>
+<li>Nuestra validación es muy básica. ¿Cómo podrías mejorar la validación en <code>handlePostChollo</code> para asegurarte de que la <code>url</code> es una URL válida y que el <code>titulo</code> no está vacío?</li>
+<li>Añade el principio HATEOAS a las respuestas. Modifica <code>handleGetChollo</code> para que, además de los datos del chollo, devuelva un array <code>links</code> con la URL para editarse y eliminarse a sí mismo.</li>
+</ol>
+</div>
+<p><br/><hr/></p>
+<h2 id="probando-y-debuggeando-nuestra-api-postman-al-rescate">Probando y "Debuggeando" nuestra API: Postman al Rescate</h2>
+<p>Un navegador solo nos sirve para probar los endpoints <code>GET</code>. ¿Cómo probamos <code>POST</code>, <code>PUT</code> y <code>DELETE</code>? No vamos a crear un formulario para cada acción. Para eso existen los <strong>clientes de API</strong>, y el rey indiscutible es <strong>Postman</strong>.</p>
+<p>Postman es una aplicación que actúa como un "cliente universal". Te permite construir y enviar cualquier tipo de petición HTTP y ver la respuesta en detalle.</p>
+<ul>
+<li>
+<p><strong>Petición GET:</strong> Es la más fácil. Seleccionas <code>GET</code>, pones la URL <code>http://localhost/mi-primera-api/api.php/chollos/1</code> y le das a "Send".</p>
+</li>
+<li>
+<p><strong>Petición POST:</strong></p>
+<ol>
+<li>Cambia el método a <code>POST</code>.</li>
+<li>Pon la URL base: <code>http://localhost/mi-primera-api/api.php/chollos</code>.</li>
+<li>Ve a la pestaña <strong>"Body"</strong>.</li>
+<li>Selecciona la opción <strong>"raw"</strong>.</li>
+<li>En el desplegable que aparece a la derecha, selecciona <strong>"JSON"</strong>.</li>
+<li>Escribe el JSON de tu nuevo chollo en el área de texto:
+    <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Viaje a la Luna por 1€"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"descripcion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Solo ida, eso sí."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://chollos.com/luna"</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>¡Dale a "Send"! Deberías recibir un código <code>201 Created</code>.</li>
+</ol>
+</li>
+<li>
+<p><strong>Peticiones PUT y DELETE:</strong> Se hacen de forma muy similar. Para <code>PUT</code>, repites los pasos de <code>POST</code> pero con el método <code>PUT</code> y la URL incluyendo el ID (<code>.../chollos/10</code>). Para <code>DELETE</code>, solo necesitas el método <code>DELETE</code> y la URL con el ID; no necesita "Body".</p>
+</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    subgraph Postman
+        A[Seleccionar Método: POST]
+        B[Escribir URL: .../chollos]
+        C[Pestaña 'Body' -&gt; 'raw' -&gt; 'JSON']
+        D[Escribir el objeto JSON]
+    end
+
+    E[Botón 'Send']
+
+    subgraph Servidor
+        F[Nuestra api.php]
+    end
+
+    subgraph Respuesta en Postman
+        G[Código de Estado: 201 Created]
+        H[Cuerpo de la Respuesta: mensaje de éxito]
+        I[Cabeceras: Content-Type: application/json]
+    end
+
+    A --&gt; E
+    B --&gt; E
+    C --&gt; E
+    D --&gt; E
+    E --&gt; F
+    F --&gt; G
+    F --&gt; H
+    F --&gt; I
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Alternativas a Postman</p>
+<p>Aunque Postman es el estándar, existen otras herramientas excelentes. <strong>Insomnia</strong> es otra muy popular, y si usas Visual Studio Code, la extensión <strong>Thunder Client</strong> es una maravilla porque se integra directamente en tu editor (ejemplo: Visual Studio Code).
+<strong>Chrome DevTools (Pestaña Network)</strong>: Cuando consumes una API desde una web, esta herramienta es tu ojo que todo lo ve. Te permite inspeccionar cada petición HTTP que hace tu página, ver las cabeceras, el cuerpo de la petición, la respuesta del servidor y los tiempos. Esencial para el debugging.   </p>
+</div>
+<p><br/><hr/></p>
+<h2 id="conclusiones-y-recomendaciones-finales">Conclusiones y Recomendaciones Finales</h2>
+<ul>
+<li><strong>Elige REST por Defecto</strong>: A menos que tengas una razón muy específica (como integrarte con un sistema bancario antiguo), REST es el camino a seguir por su simplicidad y rendimiento.</li>
+<li><strong>Usa Librerías o Frameworks para Crecer</strong>: Crear una API desde cero es un ejercicio académico fantástico. Para un proyecto real, considera usar un micro-framework como <strong>Slim</strong> o <strong>Lumen (de Laravel)</strong>. Te abstraen del "routing" y te dan herramientas para crecer más rápido.</li>
+<li><strong>Documenta SIEMPRE</strong>: Una API sin documentación es como un mapa sin leyenda. Herramientas como <strong>Swagger/OpenAPI</strong> o la propia documentación de Postman te permiten generar documentación interactiva que tus "clientes" (otros desarrolladores) amarán.</li>
+<li><strong>La Seguridad no es Opcional</strong>: Hemos visto lo básico. En el mundo real, necesitarás:<ul>
+<li><strong>Sanitizar</strong> todas las entradas para prevenir inyecciones SQL.</li>
+<li>Implementar <strong>autenticación</strong> (¿quién eres?) y <strong>autorización</strong> (¿qué puedes hacer?). Los <strong>Tokens de Acceso (JWT)</strong> son el estándar.</li>
+<li>Configurar <strong>CORS</strong> (<code>Access-Control-Allow-Origin</code>) de forma restrictiva en producción.</li>
+</ul>
+</li>
+</ul>
+<p>¡Enhorabuena! Has pasado de ser un simple desarrollador web a ser un arquitecto de la información, capaz de construir puentes que conectan aplicaciones, plataformas y servicios. ¡El poder de los servicios web está ahora en tus manos!</p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>Creerás que esto de las APIs es algo abstracto, pero lo usas <strong>todos los días</strong>:<br/>
+-   <strong>Microservicios:</strong> Grandes plataformas como Netflix, Amazon o Spotify no son una única aplicación gigante. Son cientos de pequeños servicios (microservicios) que se comunican entre ellos a través de APIs REST internas. Hay un servicio para la autenticación, otro para las recomendaciones, otro para el streaming de vídeo...<br/>
+-   <strong>Aplicaciones Móviles:</strong> Cuando usas la app de tu banco, de una red social o de comida a domicilio, la app es el "cliente". Esta no contiene los datos, sino que hace peticiones a una API REST para obtener tu saldo, tus mensajes o el menú del restaurante.<br/>
+-   <strong>Single Page Applications (SPA):</strong> Frameworks de JavaScript como React, Angular o Vue construyen interfaces de usuario que corren enteramente en el navegador. Estas aplicaciones se comunican con un backend (que podría ser nuestra API en PHP) para obtener y manipular datos sin tener que recargar la página.<br/>
+-   <strong>El Internet de las Cosas (IoT):</strong> Tu reloj inteligente, tu termostato conectado, tu nevera... todos ellos usan APIs para enviar y recibir información del fabricante o de otros servicios.<br/></p>
+<p>Saber diseñar, construir y consumir APIs REST no es una habilidad más; es, posiblemente, <strong>la habilidad más fundamental para un desarrollador backend hoy en día</strong>.</p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para seguir profundizando, te recomiendo encarecidamente estos recursos:<br/>
+1.  <strong>Documentación oficial de PHP sobre PDO:</strong> Imprescindible para dominar la interacción con bases de datos de forma segura. <a href="https://www.php.net/manual/es/book.pdo.php">https://www.php.net/manual/es/book.pdo.php</a><br/>
+2.  <strong>Guía de diseño de APIs de Google:</strong> Aunque está pensada para sus servicios, es una lectura obligatoria sobre buenas prácticas en el diseño de APIs REST a gran escala. <a href="https://cloud.google.com/apis/design?hl=es-419">https://cloud.google.com/apis/design?hl=es-419</a><br/>
+3.  <strong>JSON Web Tokens (JWT):</strong> El siguiente paso en la seguridad de tus APIs. Es el estándar para la autenticación basada en tokens. La web oficial tiene un depurador genial. <a href="https://jwt.io/">https://jwt.io/</a><br/></p>
+<p><br/><hr class="double"/><br/></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Endpoint Roto: Diagnóstico y Reparación | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Depurar un script PHP que no está consumiendo correctamente una API externa, identificando errores comunes en el manejo de cURL y la respuesta JSON.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Imagina que un compañero te pasa el siguiente script. Su objetivo era simple: obtener la capital de Francia desde la API pública <code>REST Countries</code>. Sin embargo, al ejecutarlo, no muestra nada o da errores.</p>
+<p><strong>Código a Depurar (<code>consumo_roto.php</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// URL para obtener datos de Francia</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://restcountries.com/v3.1/name/france'</span><span class="p">;</span>
+
+<span class="c1">// Inicializar cURL</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Configurar opciones</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+
+<span class="c1">// Ejecutar la petición</span>
+<span class="nv">$responseJson</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="c1">// Obtener el código de estado (esto podría ser una pista)</span>
+<span class="nv">$httpCode</span> <span class="o">=</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+
+<span class="c1">// Decodificar la respuesta</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$responseJson</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// Mostrar el resultado</span>
+<span class="k">echo</span> <span class="s2">"La capital de Francia es: "</span> <span class="o">.</span> <span class="nv">$data</span><span class="o">-&gt;</span><span class="na">capital</span><span class="p">;</span>
+
+<span class="c1">// Cerrar cURL</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Copia el código en un fichero PHP y ejecútalo. Observa los errores o la falta de resultados.</li>
+<li>Identifica al menos <strong>tres errores</strong> en el script. Pueden ser lógicos, de sintaxis o de mal uso de las funciones de cURL o de manejo de arrays/objetos.</li>
+<li>Corrige el script para que funcione correctamente y muestre en pantalla: "La capital de Francia es: Paris".</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 90% del trabajo de un desarrollador no es escribir código nuevo, sino leer, entender y depurar código existente. Saber identificar por qué una petición a una API falla es una habilidad diaria y fundamental.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) El Reportero de Chollos | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Crear un script PHP básico que consuma la API de <code>chollos</code> (la que se construyó en el tema) para obtener y mostrar la información de un chollo específico.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<ul>
+<li>Asegúrate de que tienes el servidor web corriendo con el <code>api.php</code> y la base de datos <code>db_chollos</code> con los datos de ejemplo.</li>
+<li>La URL para obtener un chollo específico es, por ejemplo, <code>http://localhost/mi-primera-api/api.php/chollos/2</code>.</li>
+</ul>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo fichero PHP llamado <code>ver_chollo.php</code>.</li>
+<li>Dentro de este fichero, utiliza <strong>cURL</strong> para hacer una petición <code>GET</code> a tu API local y solicitar el chollo con <code>id = 2</code>.</li>
+<li>Decodifica la respuesta JSON.</li>
+<li>Muestra los detalles del chollo en una estructura HTML simple (ej: un <code>&lt;h1&gt;</code> para el título, un <code>&lt;p&gt;</code> para la descripción y un enlace <code>&lt;a&gt;</code> para la URL).</li>
+<li>Asegúrate de manejar los posibles errores (fallo de cURL, API devuelve un 404 si el chollo no existe).</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la operación más común que realiza una aplicación cliente (como una SPA en React o una app móvil): solicitar los datos de un elemento específico para mostrarlos en una pantalla de detalle.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Arquitecto de APIs | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Consolidar la comprensión teórica de los principios de REST y los métodos HTTP.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>Responde a las siguientes preguntas como si estuvieras explicando los conceptos a un nuevo miembro del equipo:</p>
+<ol>
+<li><strong>Sin Estado (Stateless):</strong> Explica con tus propias palabras qué significa que una API REST sea "stateless". ¿Qué implicación práctica tiene para la gestión de sesiones de usuario (<code>$_SESSION</code>)?</li>
+<li><strong>Interfaz Uniforme:</strong> ¿Por qué se considera la restricción más importante de REST? Menciona dos de sus cuatro pilares.</li>
+<li><strong>Elección de Verbos:</strong> Para cada una de las siguientes acciones en una API que gestiona <code>usuarios</code>, indica qué <strong>método HTTP</strong> y qué <strong>URI</strong> usarías:<ul>
+<li>Obtener la lista de todos los usuarios.</li>
+<li>Crear un nuevo usuario.</li>
+<li>Obtener los datos del usuario con ID <code>123</code>.</li>
+<li>Actualizar completamente los datos del usuario con ID <code>123</code>.</li>
+<li>Eliminar el usuario con ID <code>123</code>.</li>
+</ul>
+</li>
+<li><strong>Idempotencia:</strong> Define qué es una operación idempotente y di cuáles de los verbos principales (GET, POST, PUT, DELETE) lo son.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Usar la terminología y los principios correctos no solo demuestra profesionalidad, sino que es esencial para diseñar APIs que sean lógicas, predecibles y fáciles de usar para otros desarrolladores.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">4) El Publicador de Chollos | Nivel: Medio</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Implementar el consumo del endpoint <code>POST</code> de la API <code>CholloHunter</code> para añadir un nuevo chollo a la base de datos, manejando correctamente las opciones de cURL para este tipo de petición.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<ul>
+<li>Necesitas tu API de <code>chollos</code> funcionando.</li>
+<li>Debes tener a mano la URL del endpoint para crear chollos: <code>http://localhost/mi-primera-api/api.php/chollos</code>.</li>
+</ul>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Crea un script <code>publicar_chollo.php</code> que realice los siguientes pasos:
+1.  Define un array asociativo en PHP con los datos de un nuevo chollo (título, descripción y url).
+2.  Convierte este array a una cadena de texto en formato JSON usando <code>json_encode()</code>.
+3.  Configura una petición <strong>cURL</strong> para que haga una llamada <code>POST</code> a la API.
+    *   <strong>Pista:</strong> Necesitarás usar <code>curl_setopt($ch, CURLOPT_POST, true);</code> o <code>curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");</code>.
+4.  Envía el string JSON como el cuerpo (<code>body</code>) de la petición.
+    *   <strong>Pista:</strong> La opción para esto es <code>CURLOPT_POSTFIELDS</code>.
+5.  Establece la cabecera <code>Content-Type</code> a <code>application/json</code> para que la API sepa qué tipo de datos estás enviando.
+    *   <strong>Pista:</strong> Usa <code>CURLOPT_HTTPHEADER</code> con un array de cabeceras.
+6.  Ejecuta la petición, comprueba el código de respuesta HTTP (debería ser <code>201</code>) y muestra un mensaje de éxito o de error.</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta tarea simula exactamente lo que haría un formulario en una aplicación web moderna (hecha con JavaScript) o una app móvil al enviar nuevos datos al servidor.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">5) El Evolucionador de APIs: Implementando PATCH | Nivel: Alto</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Modificar la API existente para soportar el método <code>PATCH</code>, permitiendo actualizaciones parciales de un recurso. Este reto requiere pensar en cómo construir una consulta SQL dinámica y segura.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<ul>
+<li>El fichero <code>api.php</code> de la lección.</li>
+<li>Tu cliente de API preferido (Postman, Insomnia, etc.).</li>
+</ul>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Investigación:</strong> Analiza la diferencia semántica entre <code>PUT</code> y <code>PATCH</code>. ¿Por qué <code>PUT</code> requiere todos los campos y <code>PATCH</code> no?</li>
+<li><strong>Modificar el Router:</strong> En <code>api.php</code>, añade un <code>case 'PATCH':</code> en el <code>switch</code> principal para que, si se proporciona un ID, llame a una nueva función <code>handlePatchChollo($resourceId);</code>.</li>
+<li><strong>Implementar <code>handlePatchChollo</code>:</strong> Esta es la parte clave. La función debe:<ul>
+<li>Leer el cuerpo JSON de la petición.</li>
+<li>Verificar qué campos vienen en el JSON (<code>titulo</code>, <code>descripcion</code>, <code>url</code>).</li>
+<li>Construir una consulta <code>UPDATE</code> de SQL <strong>dinámicamente</strong>. Si el JSON solo trae <code>titulo</code>, la consulta solo debe actualizar el <code>titulo</code>. Si trae <code>titulo</code> y <code>url</code>, debe actualizar ambos.</li>
+<li>Utilizar sentencias preparadas de PDO para ejecutar la consulta de forma segura, bindeando los valores.</li>
+<li>Devolver una respuesta <code>200 OK</code> si la actualización fue exitosa, o <code>404 Not Found</code> si el chollo no existía.</li>
+</ul>
+</li>
+<li><strong>Testing:</strong> Usa Postman para probar tu nuevo endpoint. Envía una petición <code>PATCH</code> a <code>.../chollos/1</code> con un cuerpo como <code>{"titulo": "Nuevo Título Super Guay"}</code> y verifica que solo el título se ha modificado en la base de datos.</li>
+<li><strong>Peer Review (Revisión por Pares):</strong><ul>
+<li>Intercambia tu fichero <code>api.php</code> con un compañero.</li>
+<li>Tú te encargarás de probar su implementación mientras él/ella prueba la tuya.</li>
+<li>Usando Postman, intenta "romper" su endpoint: envía un <code>PATCH</code> con un campo que no existe, con un JSON mal formado, sin cuerpo, etc.</li>
+<li>Prepara un breve feedback (2-3 puntos) sobre su implementación: ¿Funciona como se espera? ¿Maneja bien los errores? ¿Hay algo que se podría mejorar?</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En APIs grandes, <code>PATCH</code> es a menudo preferido sobre <code>PUT</code> para las actualizaciones, ya que es más eficiente y evita que el cliente tenga que enviar todos los datos de un objeto solo para cambiar una pequeña parte. Saber implementarlo de forma segura y dinámica es una marca de un desarrollador backend competente.</p>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body>
+</html>

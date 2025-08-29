@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Recuperación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+            background-color: #f5f9fc;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #263238;
+        }
+        .header {
+            background-color: #0277bd;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 30px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+        .recovery-container {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+        }
+        .recovery-info {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .recovery-visual {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .recovery-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .recovery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .purpose-icon {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        .content-icon {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .group-icon {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+        .method-icon {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .card-content {
+            flex-grow: 1;
+        }
+        .key-points {
+            list-style-type: none;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+        .key-bullet {
+            margin-right: 10px;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .purpose-bullet {
+            color: #0277bd;
+        }
+        .content-bullet {
+            color: #2e7d32;
+        }
+        .group-bullet {
+            color: #e65100;
+        }
+        .method-bullet {
+            color: #7b1fa2;
+        }
+        .key-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .highlight {
+            color: #0277bd;
+            font-weight: 700;
+        }
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .process-step {
+            display: flex;
+            align-items: center;
+            background-color: #f5f9fc;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #0277bd;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .benefit-tag {
+            background-color: #e1f5fe;
+            color: #0277bd;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-tag i {
+            margin-right: 5px;
+        }
+        .footer {
+            padding: 15px 70px;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            font-size: 16px;
+            color: #546e7a;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Plan de Recuperación</h1>
+        </div>
+        
+        <div class="content">
+            <div class="recovery-container">
+                <div class="recovery-info">
+                    <div class="recovery-card">
+                        <div class="card-header">
+                            <div class="card-icon purpose-icon">
+                                <i class="fas fa-lightbulb fa-lg"></i>
+                            </div>
+                            <div class="card-title">Finalidad</div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="key-points">
+                                <li class="key-point">
+                                    <div class="key-bullet purpose-bullet"><i class="fas fa-book"></i></div>
+                                    <div class="key-text">Guía de estudio <span class="highlight">estructurada</span></div>
+                                </li>
+                                <li class="key-point">
+                                    <div class="key-bullet purpose-bullet"><i class="fas fa-tools"></i></div>
+                                    <div class="key-text">Materiales de <span class="highlight">refuerzo</span></div>
+                                </li>
+                                <li class="key-point">
+                                    <div class="key-bullet purpose-bullet"><i class="fas fa-calendar-check"></i></div>
+                                    <div class="key-text">Preparación para <span class="highlight">convocatoria extraordinaria</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="recovery-card">
+                        <div class="card-header">
+                            <div class="card-icon content-icon">
+                                <i class="fas fa-list-alt fa-lg"></i>
+                            </div>
+                            <div class="card-title">Contenido</div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="key-points">
+                                <li class="key-point">
+                                    <div class="key-bullet content-bullet"><i class="fas fa-user-check"></i></div>
+                                    <div class="key-text">Plan <span class="highlight">individualizado</span></div>
+                                </li>
+                                <li class="key-point">
+                                    <div class="key-bullet content-bullet"><i class="fas fa-tasks"></i></div>
+                                    <div class="key-text">Listado de actividades <span class="highlight">obligatorias</span></div>
+                                </li>
+                                <li class="key-point">
+                                    <div class="key-bullet content-bullet"><i class="fas fa-project-diagram"></i></div>
+                                    <div class="key-text">Proyectos no superados</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recovery-visual">
+                    <div class="recovery-card">
+                        <div class="card-header">
+                            <div class="card-icon group-icon">
+                                <i class="fas fa-users fa-lg"></i>
+                            </div>
+                            <div class="card-title">Trabajos Grupales</div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="key-points">
+                                <li class="key-point">
+                                    <div class="key-bullet group-bullet"><i class="fas fa-user-friends"></i></div>
+                                    <div class="key-text">Prácticas colaborativas</div>
+                                </li>
+                                <li class="key-point">
+                                    <div class="key-bullet group-bullet"><i class="fas fa-user"></i></div>
+                                    <div class="key-text">Realización <span class="highlight">individual</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="recovery-card">
+                        <div class="card-header">
+                            <div class="card-icon method-icon">
+                                <i class="fas fa-cogs fa-lg"></i>
+                            </div>
+                            <div class="card-title">Metodología</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="process-flow">
+                                <div class="process-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-text">Trabajo <span class="highlight">autónomo</span></div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-text">Periodo entre convocatorias</div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-text">Sin asistencia a clases</div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-text">Orientación previa del profesorado</div>
+                                </div>
+                            </div>
+                            
+                            <div class="benefits-list">
+                                <div class="benefit-tag"><i class="fas fa-check"></i>Personalizado</div>
+                                <div class="benefit-tag"><i class="fas fa-check"></i>Flexible</div>
+                                <div class="benefit-tag"><i class="fas fa-check"></i>Enfocado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web</div>
+            <div class="footer-text">Curso 2025-2026</div>
+        </div>
+    </div>
+</body>
+</html>

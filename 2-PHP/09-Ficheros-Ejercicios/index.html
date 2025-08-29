@@ -1,0 +1,2947 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/09-Ficheros-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Ejercicios Prácticos: PHP y el Manejo de Ficheros - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-practicos-php-y-el-manejo-de-ficheros" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ejercicios Prácticos: PHP y el Manejo de Ficheros
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ejercicios-practicos-php-y-el-manejo-de-ficheros">Ejercicios Prácticos: PHP y el Manejo de Ficheros</h1>
+<p>¡Bienvenido/a al departamento de desarrollo de <strong>DataLog Inc.</strong>! Somos una empresa líder en el procesamiento de datos y necesitamos programadores como tú para construir y mantener las herramientas que gestionan la información de nuestros clientes.</p>
+<p>Tu misión, si decides aceptarla, es completar una serie de tareas que te llevarán a dominar el arte de la manipulación de ficheros en PHP. Desde registrar simples eventos hasta procesar complejos conjuntos de datos, cada ejercicio es un paso más para convertirte en un desarrollador backend de primera. ¡Manos al código!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos primeros ejercicios están diseñados para asentar los conceptos básicos. Son el calentamiento perfecto para las tareas más complejas que vendrán después.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Interrogatorio del Becario | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Validar la comprensión de los conceptos teóricos fundamentales sobre el manejo de ficheros en PHP.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Responde a las siguientes preguntas como si estuvieras explicando los conceptos a un nuevo integrante del equipo.</p>
+<ol>
+<li>¿Cuál es la diferencia fundamental entre abrir un fichero con el modo <code>'w'</code> y el modo <code>'a'</code>? ¿En qué situación usarías cada uno?</li>
+<li>Tu script necesita leer el contenido de un fichero de configuración pequeño (menos de 1 KB). ¿Qué función usarías para que el código sea lo más conciso y legible posible: <code>fopen()</code>/<code>fread()</code>/<code>fclose()</code> o <code>file_get_contents()</code>? ¿Por qué?</li>
+<li>Describe qué representa cada uno de los siguientes elementos dentro de la superglobal <code>$_FILES['avatar']</code> después de que un usuario sube un fichero: <code>['name']</code>, <code>['tmp_name']</code>, <code>['size']</code>, y <code>['error']</code>.</li>
+<li>¿Por qué es una mala práctica de seguridad confiar en la extensión del fichero (<code>.jpg</code>) o en el <code>MIME Type</code> (<code>image/jpeg</code>) que envía el navegador? ¿Qué método es más seguro para verificar el tipo de fichero real?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Entender estas bases te permite tomar decisiones correctas desde el principio, escribiendo código más seguro, eficiente y fácil de mantener. Es la diferencia entre un código que "funciona a veces" y un código robusto.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li>
+<p><strong>Diferencia entre 'w' y 'a':</strong></p>
+<ul>
+<li><strong>Modo 'w' (write):</strong> Abre el fichero para escritura. Si el fichero existe, <strong>borra todo su contenido</strong> y coloca el puntero al principio. Si no existe, intenta crearlo. Se usa cuando quieres reemplazar completamente el contenido de un fichero, como al guardar una nueva configuración o generar un fichero de caché.</li>
+<li><strong>Modo 'a' (append):</strong> Abre el fichero para escritura. Si el fichero existe, <strong>mantiene su contenido</strong> y coloca el puntero <strong>al final</strong>, listo para añadir nueva información. Si no existe, intenta crearlo. Es ideal para ficheros de log, donde continuamente añades nuevas entradas sin borrar las anteriores.</li>
+</ul>
+</li>
+<li>
+<p><strong>Leer un fichero pequeño:</strong>
+    Para un fichero de configuración pequeño, <code>file_get_contents()</code> es la mejor opción. Es una única función que maneja la apertura, lectura y cierre del fichero de forma transparente, resultando en un código mucho más limpio y menos propenso a errores (como olvidarse de cerrar el fichero).</p>
+</li>
+<li>
+<p><strong>Anatomía de <code>$_FILES</code>:</strong></p>
+<ul>
+<li><code>['name']</code>: El nombre original del fichero en el ordenador del usuario (ej: <code>mi_foto_de_perfil.jpg</code>).</li>
+<li><code>['tmp_name']</code>: La ruta y nombre del fichero temporal que PHP ha creado en el servidor para almacenar el contenido subido (ej: <code>/tmp/phpXYZ123</code>).</li>
+<li><code>['size']</code>: El tamaño del fichero en bytes.</li>
+<li><code>['error']</code>: Un código numérico que indica el estado de la subida. Un valor de <code>0</code> (o la constante <code>UPLOAD_ERR_OK</code>) significa que no hubo errores.</li>
+</ul>
+</li>
+<li>
+<p><strong>Seguridad en la validación de tipos:</strong>
+    No se debe confiar en la extensión o el MIME type del navegador porque ambos son controlados por el cliente y pueden ser falsificados fácilmente por un atacante para intentar subir un fichero malicioso (como un script PHP) disfrazado de imagen. El método más seguro es ignorar esa información y analizar el contenido real del fichero en el servidor usando la extensión <code>Fileinfo</code> (con funciones como <code>finfo_open()</code> y <code>finfo_file()</code>) para determinar su verdadero MIME type.</p>
+</li>
+</ol>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) El Registrador de Eventos | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Practicar la escritura de datos en un fichero utilizando el modo de añadir (<code>append</code>).</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero PHP vacío llamado <code>log_event.php</code>.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>Modifica <code>log_event.php</code> para que, cada vez que se ejecute, añada una nueva línea al fichero <code>events.log</code>. La línea debe tener el siguiente formato: <code>[YYYY-MM-DD HH:MM:SS] - Se ha ejecutado el script.</code></p>
+<ol>
+<li>Define el nombre del fichero de log en una variable.</li>
+<li>Crea el mensaje que se va a registrar, incluyendo la fecha y hora actual (usa la función <code>date()</code>). No olvides añadir un salto de línea al final.</li>
+<li>Usa la función <code>file_put_contents()</code> con el flag adecuado para asegurar que cada nuevo evento se añade al final del fichero sin borrar los anteriores.</li>
+<li>Añade un mensaje de confirmación en pantalla, como "Evento registrado correctamente.".</li>
+<li>Ejecuta el script varias veces y verifica el contenido del fichero <code>events.log</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los ficheros de log son la herramienta fundamental de un desarrollador para diagnosticar problemas. Registrar eventos clave de una aplicación ayuda a trazar el flujo de ejecución y a encontrar errores.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// log_event.php</span>
+
+<span class="c1">// 1. Define el nombre del fichero de log</span>
+<span class="nv">$logFile</span> <span class="o">=</span> <span class="s1">'events.log'</span><span class="p">;</span>
+
+<span class="c1">// 2. Crea el mensaje a registrar</span>
+<span class="nv">$eventMessage</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'[Y-m-d H:i:s]'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">" - Se ha ejecutado el script."</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// 3. Usa file_put_contents con el flag FILE_APPEND</span>
+<span class="c1">// La función se encarga de crear el fichero si no existe.</span>
+<span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$logFile</span><span class="p">,</span> <span class="nv">$eventMessage</span><span class="p">,</span> <span class="nx">FILE_APPEND</span><span class="p">);</span>
+
+<span class="c1">// 4. Muestra un mensaje de confirmación</span>
+<span class="k">echo</span> <span class="s2">"Evento registrado correctamente."</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Lector de Configuración | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Leer un fichero de texto línea por línea y procesar su contenido para cargarlo en una estructura de datos de PHP.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<ol>
+<li>Crea un fichero llamado <code>config.txt</code> con el siguiente contenido:
+    <div class="highlight"><pre><span></span><code><span class="na">APP_NAME</span><span class="o">=</span><span class="s">DataLog INC</span>
+<span class="na">APP_ENV</span><span class="o">=</span><span class="s">development</span>
+<span class="na">DB_HOST</span><span class="o">=</span><span class="s">localhost</span>
+<span class="na">DB_USER</span><span class="o">=</span><span class="s">root</span>
+</code></pre></div></li>
+<li>Crea un fichero PHP vacío llamado <code>load_config.php</code>.</li>
+</ol>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe un script en <code>load_config.php</code> que lea <code>config.txt</code>, procese cada línea y guarde la configuración en un array asociativo de PHP.</p>
+<ol>
+<li>Verifica si <code>config.txt</code> existe y es legible usando <code>is_readable()</code>.</li>
+<li>Si lo es, utiliza la función <code>file()</code> para leer el fichero en un array, donde cada elemento es una línea del fichero. Usa los flags <code>FILE_IGNORE_NEW_LINES</code> y <code>FILE_SKIP_EMPTY_LINES</code> para facilitar el procesado.</li>
+<li>Crea un array vacío llamado <code>$config</code>.</li>
+<li>Recorre el array de líneas. En cada iteración, usa la función <code>explode()</code> para separar la clave y el valor, usando el carácter <code>=</code> como delimitador.</li>
+<li>Añade la clave y el valor al array <code>$config</code>.</li>
+<li>Finalmente, imprime el array <code>$config</code> usando <code>print_r()</code> para verificar que la configuración se ha cargado correctamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Muchas aplicaciones y frameworks utilizan ficheros <code>.env</code> o <code>.ini</code> para gestionar la configuración del entorno (base de datos, claves de API, etc.), separándola del código fuente.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// load_config.php</span>
+
+<span class="nv">$configFile</span> <span class="o">=</span> <span class="s1">'config.txt'</span><span class="p">;</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// 1. Verifica si el fichero es legible</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$configFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// 2. Lee el fichero en un array de líneas</span>
+    <span class="nv">$lines</span> <span class="o">=</span> <span class="nb">file</span><span class="p">(</span><span class="nv">$configFile</span><span class="p">,</span> <span class="nx">FILE_IGNORE_NEW_LINES</span> <span class="o">|</span> <span class="nx">FILE_SKIP_EMPTY_LINES</span><span class="p">);</span>
+
+    <span class="c1">// 4. Recorre las líneas</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$lines</span> <span class="k">as</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 5. Separa clave y valor</span>
+        <span class="k">list</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">'='</span><span class="p">,</span> <span class="nv">$line</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="nv">$config</span><span class="p">[</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$key</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"Error: El fichero de configuración no se puede leer."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 6. Imprime el resultado</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span><span class="p">;</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) Depuración: El Fichero Fantasma | Nivel: Fácil</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Encontrar y corregir un bug común relacionado con la lectura de ficheros en un código preexistente.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<ol>
+<li>Crea un fichero PHP llamado <code>buggy_script.php</code> con el siguiente código:
+    <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Este script debería mostrar el nombre de usuario guardado en un fichero.</span>
+
+<span class="nv">$userFile</span> <span class="o">=</span> <span class="s1">'data/user.txt'</span><span class="p">;</span>
+
+<span class="nv">$username</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$userFile</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Bienvenido, "</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">"&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></li>
+</ol>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>Al ejecutar <code>buggy_script.php</code>, PHP muestra una advertencia (<code>Warning: file_get_contents(data/user.txt): Failed to open stream: No such file or directory</code>) y no muestra el nombre de usuario.</p>
+<ol>
+<li><strong>Identifica la causa del error.</strong> ¿Qué está intentando hacer el script y por qué falla?</li>
+<li><strong>Propón una solución.</strong> Modifica el código para que sea más robusto y maneje la situación correctamente. El script no debe mostrar una advertencia si el fichero o el directorio no existen. En su lugar, debería mostrar un mensaje amigable como "Aún no se ha configurado un usuario.".</li>
+<li>Asegúrate de que tu solución funcione creando manualmente el directorio <code>data/</code> y el fichero <code>user.txt</code> (con un nombre dentro) y volviendo a ejecutar el script.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El código defensivo es clave. Anticipar y manejar errores comunes como ficheros o directorios inexistentes previene que la aplicación se rompa y mejora la experiencia del usuario.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>1. Causa del error:</strong>
+El error <code>No such file or directory</code> ocurre porque el script intenta leer el fichero <code>data/user.txt</code>, pero el directorio <code>data</code> y/o el fichero <code>user.txt</code> no existen. <code>file_get_contents</code> no crea rutas, solo intenta leerlas.</p>
+<p><strong>2. Solución:</strong>
+La solución es verificar la existencia del fichero con <code>file_exists()</code> o, mejor aún, si es legible con <code>is_readable()</code> antes de intentar leerlo.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// buggy_script.php (corregido)</span>
+
+<span class="c1">// Este script debería mostrar el nombre de usuario guardado en un fichero.</span>
+<span class="nv">$userFile</span> <span class="o">=</span> <span class="s1">'data/user.txt'</span><span class="p">;</span>
+
+<span class="c1">// Comprobamos si el fichero existe y es legible antes de intentar leerlo.</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$userFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$username</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$userFile</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Bienvenido, "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$username</span><span class="p">))</span> <span class="o">.</span> <span class="s2">"&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Si no, mostramos un mensaje amigable.</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Bienvenido. Aún no se ha configurado un usuario.&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<em>Nota:</em> Se ha añadido <code>trim()</code> para eliminar posibles espacios en blanco o saltos de línea y <code>htmlspecialchars()</code> como buena práctica de seguridad al mostrar datos en HTML.</p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) El Creador de Perfiles de Usuario | Nivel: Fácil</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Practicar la escritura de datos estructurados (un array de PHP) en un fichero utilizando el formato JSON.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero PHP vacío llamado <code>save_profile.php</code>.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Dentro de <code>save_profile.php</code>, define un array asociativo con datos de un perfil de usuario.
+    <div class="highlight"><pre><span></span><code><span class="x">$userProfile = [</span>
+<span class="x">    'userId' =&gt; 101,</span>
+<span class="x">    'username' =&gt; 'jdoe',</span>
+<span class="x">    'email' =&gt; 'john.doe@datalog.inc',</span>
+<span class="x">    'lastLogin' =&gt; date('Y-m-d H:i:s'),</span>
+<span class="x">    'preferences' =&gt; ['theme' =&gt; 'dark', 'notifications' =&gt; true]</span>
+<span class="x">];</span>
+</code></pre></div></li>
+<li>Convierte este array a un string en formato JSON. Usa las opciones para que el JSON resultante esté bien formateado y sea legible para un humano.</li>
+<li>Guarda este string JSON en un fichero llamado <code>profiles/user_101.json</code>.</li>
+<li><strong>Importante:</strong> El script debe ser capaz de crear el directorio <code>profiles/</code> si este no existe. Investiga la función <code>mkdir()</code> y cómo usar su parámetro recursivo.</li>
+<li>Muestra un mensaje confirmando que el perfil ha sido guardado.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>JSON es el formato estándar para el intercambio de datos en la web moderna. Guardar configuraciones, cachés o datos de APIs en ficheros JSON es una práctica extremadamente común.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// save_profile.php</span>
+
+<span class="c1">// 1. Define el perfil del usuario</span>
+<span class="nv">$userProfile</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'userId'</span> <span class="o">=&gt;</span> <span class="mi">101</span><span class="p">,</span>
+    <span class="s1">'username'</span> <span class="o">=&gt;</span> <span class="s1">'jdoe'</span><span class="p">,</span>
+    <span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="s1">'john.doe@datalog.inc'</span><span class="p">,</span>
+    <span class="s1">'lastLogin'</span> <span class="o">=&gt;</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y-m-d H:i:s'</span><span class="p">),</span>
+    <span class="s1">'preferences'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'theme'</span> <span class="o">=&gt;</span> <span class="s1">'dark'</span><span class="p">,</span> <span class="s1">'notifications'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]</span>
+<span class="p">];</span>
+
+<span class="c1">// 4. Prepara la ruta y asegúrate de que el directorio exista</span>
+<span class="nv">$directory</span> <span class="o">=</span> <span class="s1">'profiles'</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$directory</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// El tercer parámetro 'true' permite la creación de directorios anidados (recursivo).</span>
+    <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$directory</span><span class="p">,</span> <span class="mo">0755</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$filePath</span> <span class="o">=</span> <span class="nv">$directory</span> <span class="o">.</span> <span class="s1">'/user_'</span> <span class="o">.</span> <span class="nv">$userProfile</span><span class="p">[</span><span class="s1">'userId'</span><span class="p">]</span> <span class="o">.</span> <span class="s1">'.json'</span><span class="p">;</span>
+
+<span class="c1">// 2. Convierte el array a un string JSON formateado</span>
+<span class="nv">$jsonString</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$userProfile</span><span class="p">,</span> <span class="nx">JSON_PRETTY_PRINT</span><span class="p">);</span>
+
+<span class="c1">// 3. Guarda el string en el fichero</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">,</span> <span class="nv">$jsonString</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// 5. Muestra confirmación</span>
+    <span class="k">echo</span> <span class="s2">"Perfil del usuario "</span> <span class="o">.</span> <span class="nv">$userProfile</span><span class="p">[</span><span class="s1">'username'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">" guardado en "</span> <span class="o">.</span> <span class="nv">$filePath</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Error: No se pudo guardar el perfil."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) El Contador de Visitas | Nivel: Fácil</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Implementar un ciclo completo de lectura, modificación y escritura en un mismo fichero.</p>
+<h5 id="setup-inicial_4"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero PHP llamado <code>counter.php</code>.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>Crea un simple contador de visitas que se incremente cada vez que la página <code>counter.php</code> es cargada.</p>
+<ol>
+<li>Define el nombre del fichero que almacenará el contador, por ejemplo, <code>visits.txt</code>.</li>
+<li>Cuando el script se ejecute, primero debe comprobar si <code>visits.txt</code> existe.</li>
+<li>Si existe, debe leer el número actual, convertirlo a un entero y guardarlo en una variable <code>$count</code>. Si no existe, <code>$count</code> debe ser <code>0</code>.</li>
+<li>Incrementa <code>$count</code> en 1.</li>
+<li>Escribe el nuevo valor de <code>$count</code> de vuelta en el fichero <code>visits.txt</code>, sobreescribiendo el contenido anterior.</li>
+<li>Muestra un mensaje en pantalla: "Esta página ha sido visitada X veces.".</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este patrón de "leer-modificar-escribir" es fundamental en muchas operaciones, como actualizar el stock de un producto guardado en un fichero o modificar un valor de configuración específico.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// counter.php</span>
+
+<span class="c1">// 1. Define el nombre del fichero</span>
+<span class="nv">$counterFile</span> <span class="o">=</span> <span class="s1">'visits.txt'</span><span class="p">;</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// 2. y 3. Comprueba si existe y lee el valor</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$counterFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$count</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$counterFile</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Incrementa el contador</span>
+<span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
+
+<span class="c1">// 5. Escribe el nuevo valor</span>
+<span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$counterFile</span><span class="p">,</span> <span class="nv">$count</span><span class="p">);</span>
+
+<span class="c1">// 6. Muestra el mensaje</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Esta página ha sido visitada "</span> <span class="o">.</span> <span class="nv">$count</span> <span class="o">.</span> <span class="s2">" veces.&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Ahora que dominas lo básico, vamos a combinar conceptos en tareas más realistas y estructuradas.</p>
+<div class="admonition warning">
+<p class="admonition-title">7) El Gestor de Tareas CSV | Nivel: Medio</p>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Leer y parsear un fichero en formato CSV (Comma-Separated Values) para mostrar sus datos de forma estructurada en HTML.</p>
+<h5 id="setup-inicial_5"><strong>Setup Inicial:</strong></h5>
+<ol>
+<li>Crea un fichero llamado <code>tasks.csv</code> con el siguiente contenido:
+    <div class="highlight"><pre><span></span><code>1,"Implementar login","Completada"
+2,"Diseñar base de datos","Completada"
+3,"Crear API de usuarios","Pendiente"
+4,"Desplegar en producción","Pendiente"
+5,"Escribir documentación","En Progreso"
+</code></pre></div></li>
+<li>Crea un fichero PHP llamado <code>task_manager.php</code>.</li>
+</ol>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe un script en <code>task_manager.php</code> que lea <code>tasks.csv</code> y muestre las tareas en una tabla HTML.</p>
+<ol>
+<li>Comprueba si el fichero <code>tasks.csv</code> es legible.</li>
+<li>Abre el fichero en modo lectura (<code>'r'</code>) usando <code>fopen()</code>.</li>
+<li>Imprime la estructura inicial de la tabla HTML (<code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code> con las cabeceras: ID, Tarea, Estado).</li>
+<li>Utiliza un bucle <code>while</code> junto con la función <code>fgetcsv()</code> para leer el fichero línea por línea. <code>fgetcsv()</code> es perfecta para esto, ya que parsea una línea de CSV y la devuelve como un array.</li>
+<li>Dentro del bucle, por cada tarea (fila) leída:<ul>
+<li>Crea una fila de tabla (<code>&lt;tr&gt;</code>).</li>
+<li><strong>Pista:</strong> Puedes asignar un nombre de clase CSS a la fila (<code>&lt;tr class="estado-pendiente"&gt;</code>) basándote en el valor de la columna "Estado" para poder darle estilo después.</li>
+<li>Imprime cada dato de la tarea dentro de una celda (<code>&lt;td&gt;</code>).</li>
+</ul>
+</li>
+<li>No olvides cerrar el fichero con <code>fclose()</code> al final del bucle y cerrar las etiquetas HTML de la tabla.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El formato CSV es un estándar para la importación y exportación de datos en hojas de cálculo y bases de datos. Saber procesarlos es una habilidad esencial para tareas de migración de datos o generación de informes.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// task_manager.php</span>
+
+<span class="nv">$csvFile</span> <span class="o">=</span> <span class="s1">'tasks.csv'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Gestor de Tareas de DataLog Inc.&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="c1">// 1. Comprueba si es legible</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$csvFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"&lt;p&gt;Error: No se puede leer el fichero de tareas.&lt;/p&gt;"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Abre el fichero</span>
+<span class="nv">$fileHandle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$csvFile</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fileHandle</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"&lt;p&gt;Error: No se pudo abrir el fichero de tareas.&lt;/p&gt;"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. Imprime la cabecera de la tabla</span>
+<span class="k">echo</span> <span class="s2">"&lt;style&gt;</span>
+<span class="s2">        table { width: 100%; border-collapse: collapse; }</span>
+<span class="s2">        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }</span>
+<span class="s2">        th { background-color: #f2f2f2; }</span>
+<span class="s2">        .estado-completada { background-color: #d4edda; }</span>
+<span class="s2">        .estado-pendiente { background-color: #f8d7da; }</span>
+<span class="s2">        .estado-en-progreso { background-color: #fff3cd; }</span>
+<span class="s2">      &lt;/style&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;table&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Tarea&lt;/th&gt;&lt;th&gt;Estado&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;tbody&gt;"</span><span class="p">;</span>
+
+<span class="c1">// 4. Bucle para leer el CSV</span>
+<span class="k">while</span> <span class="p">((</span><span class="nv">$data</span> <span class="o">=</span> <span class="nb">fgetcsv</span><span class="p">(</span><span class="nv">$fileHandle</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 5. Procesa cada fila</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="nv">$task</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="nv">$status</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+    <span class="c1">// Pista: Genera una clase CSS a partir del estado</span>
+    <span class="nv">$statusClass</span> <span class="o">=</span> <span class="s1">'estado-'</span> <span class="o">.</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">str_replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="nv">$status</span><span class="p">));</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;tr class='</span><span class="si">{</span><span class="nv">$statusClass</span><span class="si">}</span><span class="s2">'&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;td&gt;</span><span class="si">{</span><span class="nv">$id</span><span class="si">}</span><span class="s2">&lt;/td&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;td&gt;</span><span class="si">{</span><span class="nv">$task</span><span class="si">}</span><span class="s2">&lt;/td&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;td&gt;</span><span class="si">{</span><span class="nv">$status</span><span class="si">}</span><span class="s2">&lt;/td&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;/tr&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;/tbody&gt;&lt;/table&gt;"</span><span class="p">;</span>
+
+<span class="c1">// 6. Cierra el fichero</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fileHandle</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">8) El Validador de Avatares | Nivel: Medio</p>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Implementar de forma segura la lógica de subida de un fichero, incluyendo validaciones de tamaño y tipo.</p>
+<h5 id="setup-inicial_6"><strong>Setup Inicial:</strong></h5>
+<ol>
+<li>Crea un directorio <code>uploads/</code> y asegúrate de que el servidor web tiene permisos para escribir en él.</li>
+<li>Crea un fichero HTML (<code>form.html</code>) con un formulario para subir ficheros que apunte a <code>upload.php</code>:
+    <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"upload.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">enctype</span><span class="o">=</span><span class="s">"multipart/form-data"</span><span class="p">&gt;</span>
+  Sube tu nuevo avatar (JPG o PNG, máx. 1MB):
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span> <span class="na">name</span><span class="o">=</span><span class="s">"avatar"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Subir Avatar"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div></li>
+<li>Crea el fichero <code>upload.php</code>.</li>
+</ol>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<p>En <code>upload.php</code>, escribe el código que procesa la subida del fichero.</p>
+<ol>
+<li>Verifica que la petición sea <code>POST</code> y que un fichero ha sido subido (<code>isset($_FILES['avatar'])</code>).</li>
+<li>Comprueba si hubo algún error en la subida (<code>$_FILES['avatar']['error']</code>).</li>
+<li><strong>Validación de tamaño:</strong> Rechaza el fichero si supera 1 MB.</li>
+<li><strong>Validación de tipo:</strong> Utiliza la extensión <code>Fileinfo</code> para comprobar el MIME type real del fichero. Solo permite <code>image/jpeg</code> y <code>image/png</code>.<ul>
+<li><strong>Pista:</strong> <code>finfo_open(FILEINFO_MIME_TYPE)</code> y <code>finfo_file()</code>.</li>
+</ul>
+</li>
+<li>Si todas las validaciones pasan, genera un nombre de fichero nuevo y único para evitar colisiones y problemas de seguridad. Una buena estrategia es <code>uniqid() . '-' . basename($_FILES['avatar']['name'])</code>.</li>
+<li>Mueve el fichero desde su ubicación temporal a la carpeta <code>uploads/</code> usando <code>move_uploaded_file()</code>.</li>
+<li>Muestra un mensaje de éxito o de error según corresponda.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Cualquier aplicación que permita a los usuarios subir contenido (fotos de perfil, documentos, etc.) debe tener una validación de ficheros extremadamente robusta para proteger la seguridad y la integridad del sistema.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// upload.php</span>
+
+<span class="c1">// 1. Verificar método y existencia del fichero</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">];</span>
+    <span class="nv">$uploadDir</span> <span class="o">=</span> <span class="s1">'uploads/'</span><span class="p">;</span>
+
+    <span class="c1">// 2. Comprobar errores de subida</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">UPLOAD_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error en la subida. Código: "</span> <span class="o">.</span> <span class="nv">$file</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 3. Validar tamaño (1MB = 1024 * 1024 bytes)</span>
+    <span class="nv">$maxSize</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'size'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nv">$maxSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error: El fichero es demasiado grande. Máximo 1MB."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 4. Validar tipo de fichero</span>
+    <span class="nv">$finfo</span> <span class="o">=</span> <span class="nb">finfo_open</span><span class="p">(</span><span class="nx">FILEINFO_MIME_TYPE</span><span class="p">);</span>
+    <span class="nv">$mimeType</span> <span class="o">=</span> <span class="nb">finfo_file</span><span class="p">(</span><span class="nv">$finfo</span><span class="p">,</span> <span class="nv">$file</span><span class="p">[</span><span class="s1">'tmp_name'</span><span class="p">]);</span>
+    <span class="nb">finfo_close</span><span class="p">(</span><span class="nv">$finfo</span><span class="p">);</span>
+    <span class="nv">$allowedMimeTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'image/jpeg'</span><span class="p">,</span> <span class="s1">'image/png'</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$mimeType</span><span class="p">,</span> <span class="nv">$allowedMimeTypes</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s2">"Error: Tipo de fichero no permitido. Solo se aceptan JPG y PNG."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 5. Generar nombre único y seguro</span>
+    <span class="nv">$extension</span> <span class="o">=</span> <span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'name'</span><span class="p">],</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
+    <span class="nv">$newFilename</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">(</span><span class="s1">'avatar_'</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'.'</span> <span class="o">.</span> <span class="nv">$extension</span><span class="p">;</span>
+    <span class="nv">$destination</span> <span class="o">=</span> <span class="nv">$uploadDir</span> <span class="o">.</span> <span class="nv">$newFilename</span><span class="p">;</span>
+
+    <span class="c1">// 6. Mover el fichero</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'tmp_name'</span><span class="p">],</span> <span class="nv">$destination</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"¡Avatar subido con éxito! Guardado en: "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$destination</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"Error crítico al mover el fichero subido."</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"No se ha recibido ningún fichero o el método no es POST."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">9) Auditoría de Logs | Nivel: Medio</p>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Procesar un fichero de texto grande de forma eficiente para extraer información y generar un informe de resumen.</p>
+<h5 id="setup-inicial_7"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero de log llamado <code>system.log</code> con al menos 20-30 líneas, mezclando distintos tipos de mensajes.
+<div class="highlight"><pre><span></span><code>[2023-10-27 10:00:00] INFO: El sistema se ha iniciado correctamente.
+[2023-10-27 10:01:15] INFO: Usuario 'admin' ha iniciado sesión.
+[2023-10-27 10:02:30] WARNING: La conexión a la API externa ha tardado más de 5s.
+[2023-10-27 10:05:00] ERROR: No se pudo conectar a la base de datos 'analytics_db'.
+[2023-10-27 10:05:05] INFO: Reintentando conexión a la base de datos...
+[2023-10-27 10:05:10] ERROR: Fallo definitivo en la conexión a la base de datos.
+... (añade más líneas)
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe un script que lea <code>system.log</code> y genere un informe en <code>report.txt</code>. El script debe ser eficiente y no cargar el log entero en memoria.</p>
+<ol>
+<li>Abre <code>system.log</code> en modo lectura.</li>
+<li>Inicializa un array de contadores, por ejemplo: <code>$summary = ['INFO' =&gt; 0, 'WARNING' =&gt; 0, 'ERROR' =&gt; 0];</code>.</li>
+<li>Usa un bucle <code>while</code> y la función <code>fgets()</code> para leer el log línea por línea.</li>
+<li>Dentro del bucle, para cada línea, comprueba si contiene la subcadena "INFO:", "WARNING:" o "ERROR:" (puedes usar <code>str_contains()</code>).</li>
+<li>Incrementa el contador correspondiente en el array <code>$summary</code>.</li>
+<li>Una vez terminado el bucle, cierra el fichero de log.</li>
+<li>Construye el contenido del informe en un string.</li>
+<li>Guarda el informe en <code>report.txt</code> usando <code>file_put_contents()</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los ficheros de log pueden crecer hasta ocupar varios gigabytes. Procesarlos de forma secuencial (línea a línea) en lugar de cargarlos de golpe es la única manera de analizarlos en servidores con memoria limitada.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$logFile</span> <span class="o">=</span> <span class="s1">'system.log'</span><span class="p">;</span>
+<span class="nv">$reportFile</span> <span class="o">=</span> <span class="s1">'report.txt'</span><span class="p">;</span>
+<span class="nv">$summary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'INFO'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'WARNING'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'ERROR'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'UNKNOWN'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$logFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"El fichero de log no existe o no se puede leer."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 1. y 3. Abrir y leer línea por línea</span>
+<span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$logFile</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$handle</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">((</span><span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$handle</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 4. y 5. Comprobar contenido e incrementar contador</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">str_contains</span><span class="p">(</span><span class="nv">$line</span><span class="p">,</span> <span class="s1">'INFO:'</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$summary</span><span class="p">[</span><span class="s1">'INFO'</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nb">str_contains</span><span class="p">(</span><span class="nv">$line</span><span class="p">,</span> <span class="s1">'WARNING:'</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$summary</span><span class="p">[</span><span class="s1">'WARNING'</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nb">str_contains</span><span class="p">(</span><span class="nv">$line</span><span class="p">,</span> <span class="s1">'ERROR:'</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$summary</span><span class="p">[</span><span class="s1">'ERROR'</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Opcional: contar líneas no reconocidas</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$line</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$summary</span><span class="p">[</span><span class="s1">'UNKNOWN'</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 6. Cerrar el fichero</span>
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 7. Construir el informe</span>
+<span class="nv">$reportContent</span> <span class="o">=</span> <span class="s2">"Informe de Auditoría de Logs ("</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y-m-d'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$reportContent</span> <span class="o">.=</span> <span class="s2">"========================================</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$reportContent</span> <span class="o">.=</span> <span class="s2">"Eventos de Información (INFO): "</span> <span class="o">.</span> <span class="nv">$summary</span><span class="p">[</span><span class="s1">'INFO'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$reportContent</span> <span class="o">.=</span> <span class="s2">"Advertencias (WARNING):      "</span> <span class="o">.</span> <span class="nv">$summary</span><span class="p">[</span><span class="s1">'WARNING'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$reportContent</span> <span class="o">.=</span> <span class="s2">"Errores (ERROR):             "</span> <span class="o">.</span> <span class="nv">$summary</span><span class="p">[</span><span class="s1">'ERROR'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="nv">$reportContent</span> <span class="o">.=</span> <span class="s2">"Entradas no reconocidas:   "</span> <span class="o">.</span> <span class="nv">$summary</span><span class="p">[</span><span class="s1">'UNKNOWN'</span><span class="p">]</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// 8. Guardar el informe</span>
+<span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$reportFile</span><span class="p">,</span> <span class="nv">$reportContent</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"Informe generado con éxito en "</span> <span class="o">.</span> <span class="nv">$reportFile</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;pre&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$reportContent</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/pre&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>Es hora de volar solo/a. Estos retos son más abiertos y te pedirán que investigues y combines tus habilidades para resolver problemas complejos.</p>
+<div class="admonition danger">
+<p class="admonition-title">10) La Galería de Imágenes Dinámica | Nivel: Alto</p>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Crear una aplicación completa que interactúa con el sistema de ficheros para listar directorios y presentar la información dinámicamente.</p>
+<h5 id="setup-inicial_8"><strong>Setup Inicial:</strong></h5>
+<ol>
+<li>Crea un directorio <code>gallery/</code>.</li>
+<li>Dentro de <code>gallery/</code>, sube varias imágenes (JPG, PNG, GIF).</li>
+<li>Crea un fichero PHP <code>gallery.php</code> en el directorio principal (fuera de <code>gallery/</code>).</li>
+</ol>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>Desarrolla el script <code>gallery.php</code> para que funcione como una galería de imágenes.</p>
+<ol>
+<li>El script debe escanear el directorio <code>gallery/</code>.</li>
+<li>Debe filtrar la lista de ficheros para quedarse solo con aquellos que son imágenes válidas (comprueba la extensión: <code>.jpg</code>, <code>.jpeg</code>, <code>.png</code>, <code>.gif</code>). Ignora otros ficheros y los directorios <code>.</code> y <code>..</code>.</li>
+<li>Por cada imagen encontrada, el script debe generar el código HTML para mostrarla en la página.
+    <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"photo"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"gallery/nombre_imagen.jpg"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"gallery/nombre_imagen.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"nombre_imagen.jpg"</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>nombre_imagen.jpg<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div></li>
+<li>Si el directorio <code>gallery/</code> está vacío o no existe, debe mostrar un mensaje amigable indicándolo.</li>
+<li><strong>Reto Adicional:</strong> Añade una funcionalidad que muestre información extra de cada fichero, como su tamaño (en KB) y la fecha de la última modificación. Investiga las funciones <code>filesize()</code> y <code>filemtime()</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Sistemas de gestión de ficheros, exploradores de medios en CMS como WordPress, o cualquier aplicación que necesite mostrar un listado de ficheros de un directorio, se basan en esta lógica.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Galería de DataLog Inc.&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body { font-family: sans-serif; }</span>
+<span class="x">        .gallery-container { display: flex; flex-wrap: wrap; gap: 20px; }</span>
+<span class="x">        .photo { border: 1px solid #ccc; padding: 10px; text-align: center; width: 200px; }</span>
+<span class="x">        .photo img { max-width: 100%; height: auto; display: block; margin-bottom: 10px; }</span>
+<span class="x">        .photo span { font-size: 0.8em; color: #555; }</span>
+<span class="x">        .info { font-size: 0.7em; color: #777; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Galería de Imágenes&lt;/h1&gt;</span>
+<span class="x">    &lt;div class="gallery-container"&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+        <span class="nv">$galleryDir</span> <span class="o">=</span> <span class="s1">'gallery/'</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$galleryDir</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;p&gt;El directorio de la galería no existe.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$files</span> <span class="o">=</span> <span class="nb">scandir</span><span class="p">(</span><span class="nv">$galleryDir</span><span class="p">);</span>
+            <span class="nv">$imageFound</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="nv">$allowedExtensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'jpg'</span><span class="p">,</span> <span class="s1">'jpeg'</span><span class="p">,</span> <span class="s1">'png'</span><span class="p">,</span> <span class="s1">'gif'</span><span class="p">];</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$files</span> <span class="k">as</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$filePath</span> <span class="o">=</span> <span class="nv">$galleryDir</span> <span class="o">.</span> <span class="nv">$file</span><span class="p">;</span>
+                <span class="nv">$extension</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">,</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nb">is_file</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">in_array</span><span class="p">(</span><span class="nv">$extension</span><span class="p">,</span> <span class="nv">$allowedExtensions</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$imageFound</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+                    <span class="nv">$fileSize</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">filesize</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// En KB</span>
+                    <span class="nv">$lastModified</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"d-m-Y H:i"</span><span class="p">,</span> <span class="nb">filemtime</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">));</span>
+
+                    <span class="k">echo</span> <span class="s1">'&lt;div class="photo"&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'  &lt;a href="'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" target="_blank"&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'    &lt;img src="'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'" alt="'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'"&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'  &lt;/a&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'  &lt;span&gt;'</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'&lt;/span&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'  &lt;div class="info"&gt;'</span> <span class="o">.</span> <span class="nv">$fileSize</span> <span class="o">.</span> <span class="s1">' KB | '</span> <span class="o">.</span> <span class="nv">$lastModified</span> <span class="o">.</span> <span class="s1">'&lt;/div&gt;'</span><span class="p">;</span>
+                    <span class="k">echo</span> <span class="s1">'&lt;/div&gt;'</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$imageFound</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="s2">"&lt;p&gt;No hay imágenes en la galería.&lt;/p&gt;"</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">11) El Importador Masivo de Productos | Nivel: Alto</p>
+<h5 id="objetivo_10"><strong>Objetivo:</strong></h5>
+<p>Resolver un problema complejo de procesamiento de datos que requiere eficiencia y manipulación de estructuras de datos anidadas.</p>
+<h5 id="setup-inicial_9"><strong>Setup Inicial:</strong></h5>
+<p>Crea un fichero <code>products.csv</code> con cientos o miles de líneas para simular un fichero grande.
+<div class="highlight"><pre><span></span><code>"SKU-001","Teclado Mecánico RGB","Teclados",99.99,150
+"SKU-002","Mouse Inalámbrico Pro","Ratones",49.50,300
+"SKU-003","Monitor Ultrawide 34 pulgadas","Monitores",399.00,50
+"SKU-004","Webcam 4K con Auto-Focus","Periféricos",120.00,80
+"SKU-005","Teclado Compacto 60%","Teclados",85.00,120
+...
+</code></pre></div></p>
+<h5 id="tarea-a-realizar_10"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe un script <code>import.php</code> que lea <code>products.csv</code> y lo transforme en un único fichero <code>inventory.json</code>. El script debe ser eficiente en el uso de memoria. El JSON final debe agrupar los productos por categoría.</p>
+<p><strong>Formato del JSON de salida esperado:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Teclados"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-001"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teclado Mecánico RGB"</span><span class="p">,</span><span class="w"> </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.99</span><span class="p">,</span><span class="w"> </span><span class="nt">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-005"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teclado Compacto 60%"</span><span class="p">,</span><span class="w"> </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.00</span><span class="p">,</span><span class="w"> </span><span class="nt">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"Ratones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU-002"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mouse Inalámbrico Pro"</span><span class="p">,</span><span class="w"> </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">49.50</span><span class="p">,</span><span class="w"> </span><span class="nt">"stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<ol>
+<li>Abre <code>products.csv</code> para lectura.</li>
+<li>Crea un array vacío <code>$inventory</code>.</li>
+<li>Lee el CSV línea por línea (<code>fgetcsv</code>).</li>
+<li>Por cada producto, extrae los datos. La categoría es el tercer campo.</li>
+<li>Usa la categoría como clave en el array <code>$inventory</code>. Si la clave no existe, créala como un array vacío.</li>
+<li>Añade el producto (como un nuevo array asociativo con las claves <code>sku</code>, <code>name</code>, <code>price</code>, <code>stock</code>) al array de su categoría correspondiente.</li>
+<li>Después de procesar todo el fichero, convierte el array <code>$inventory</code> a JSON y guárdalo en <code>inventory.json</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_10"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este tipo de tareas de ETL (Extract, Transform, Load) son críticas en el mundo del e-commerce y el análisis de datos para migrar información entre sistemas o prepararla para su visualización.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$csvFile</span> <span class="o">=</span> <span class="s1">'products.csv'</span><span class="p">;</span>
+<span class="nv">$jsonFile</span> <span class="o">=</span> <span class="s1">'inventory.json'</span><span class="p">;</span>
+<span class="nv">$inventory</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_readable</span><span class="p">(</span><span class="nv">$csvFile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s2">"No se puede leer el fichero CSV."</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">((</span><span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$csvFile</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Opcional: Saltar la primera línea si es una cabecera</span>
+    <span class="c1">// fgetcsv($handle); </span>
+
+    <span class="k">while</span> <span class="p">((</span><span class="nv">$data</span> <span class="o">=</span> <span class="nb">fgetcsv</span><span class="p">(</span><span class="nv">$handle</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Asumiendo el formato: SKU, Nombre, Categoría, Precio, Stock</span>
+        <span class="nv">$sku</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="nv">$category</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="nv">$price</span> <span class="o">=</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+        <span class="nv">$stock</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+        <span class="c1">// Si la categoría no existe en nuestro inventario, la inicializamos como un array</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$inventory</span><span class="p">[</span><span class="nv">$category</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$inventory</span><span class="p">[</span><span class="nv">$category</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Añadimos el producto a su categoría</span>
+        <span class="nv">$inventory</span><span class="p">[</span><span class="nv">$category</span><span class="p">][]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">'sku'</span> <span class="o">=&gt;</span> <span class="nv">$sku</span><span class="p">,</span>
+            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+            <span class="s1">'price'</span> <span class="o">=&gt;</span> <span class="nv">$price</span><span class="p">,</span>
+            <span class="s1">'stock'</span> <span class="o">=&gt;</span> <span class="nv">$stock</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+    <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Convertimos el inventario completo a JSON y lo guardamos</span>
+<span class="nv">$jsonOutput</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$inventory</span><span class="p">,</span> <span class="nx">JSON_PRETTY_PRINT</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$jsonFile</span><span class="p">,</span> <span class="nv">$jsonOutput</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Importación completada. El inventario se ha guardado en "</span> <span class="o">.</span> <span class="nv">$jsonFile</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Error al guardar el fichero JSON."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">12) Reto de Implementación y Revisión: Sistema de Caché en Ficheros | Nivel: Alto</p>
+<h5 id="objetivo_11"><strong>Objetivo:</strong></h5>
+<p>Diseñar e implementar un componente reutilizable (una función) que aplique el patrón de caché en ficheros para mejorar el rendimiento, y practicar la revisión de código de un compañero.</p>
+<h5 id="tarea-a-realizar_11"><strong>Tarea a realizar:</strong></h5>
+<p><strong>Parte 1: Implementación</strong></p>
+<p>Crea una función <code>get_content_with_cache(string $url, int $ttl = 300)</code> (<code>$ttl</code> son los segundos de vida de la caché).</p>
+<ol>
+<li>La función debe generar un nombre de fichero de caché seguro y único a partir de la <code>$url</code>. Por ejemplo: <code>cache/</code> + <code>md5($url)</code> + <code>.cache</code>.</li>
+<li>Debe comprobar si existe un fichero de caché para esa URL.</li>
+<li>Si existe, debe comprobar si ha expirado. Compara el <code>filemtime()</code> del fichero con la hora actual, restando el <code>$ttl</code>.</li>
+<li>Si el fichero de caché existe y es válido (no ha expirado), la función debe leerlo y devolver su contenido.</li>
+<li>Si no existe o ha expirado, la función debe "obtener" el contenido. Para simular una tarea lenta, usa <code>sleep(3);</code> y luego genera el contenido (ej: <code>"Contenido para $url generado a las " . date('H:i:s')</code>).</li>
+<li>Guarda este nuevo contenido en el fichero de caché.</li>
+<li>Devuelve el nuevo contenido.</li>
+<li>Escribe un pequeño script que llame a tu función dos o tres veces seguidas con la misma URL para demostrar que la primera vez tarda y las siguientes son instantáneas.</li>
+</ol>
+<p><strong>Parte 2: Peer Review (Revisión por Pares)</strong></p>
+<ol>
+<li>Intercambia tu solución con un compañero/a.</li>
+<li>Revisa su código y responde a estas preguntas en un breve informe:<ul>
+<li><strong>Claridad:</strong> ¿El código es fácil de entender? ¿Tiene comentarios donde es necesario?</li>
+<li><strong>Correctitud:</strong> ¿La lógica para comprobar la expiración (TTL) es correcta?</li>
+<li><strong>Robustez:</strong> ¿Maneja bien los casos de error, como no poder escribir en el directorio de caché?</li>
+<li><strong>Sugerencia de mejora:</strong> Propón al menos una mejora que podría hacerse a su función.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_11"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El almacenamiento en caché es una de las técnicas más importantes para optimizar aplicaciones web. Un sistema de caché, incluso uno simple basado en ficheros, puede reducir drásticamente la carga del servidor y los tiempos de respuesta para el usuario.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Obtiene contenido, usando un sistema de caché basado en ficheros.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $url Identificador único del contenido (ej. una URL).</span>
+<span class="sd"> * @param int $ttl Segundos que la caché debe considerarse válida.</span>
+<span class="sd"> * @return string El contenido, ya sea desde la caché o recién generado.</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">get_content_with_cache</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$ttl</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="nv">$cacheDir</span> <span class="o">=</span> <span class="s1">'cache/'</span><span class="p">;</span>
+    <span class="c1">// 1. Generar nombre de fichero seguro</span>
+    <span class="nv">$cacheFile</span> <span class="o">=</span> <span class="nv">$cacheDir</span> <span class="o">.</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$url</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'.cache'</span><span class="p">;</span>
+
+    <span class="c1">// Asegurarse de que el directorio de caché existe</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$cacheDir</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$cacheDir</span><span class="p">,</span> <span class="mo">0755</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 2. y 3. Comprobar si hay una caché válida</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$cacheFile</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="nb">filemtime</span><span class="p">(</span><span class="nv">$cacheFile</span><span class="p">))</span> <span class="o">&lt;</span> <span class="nv">$ttl</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;em&gt;(Leyendo desde CACHÉ)&lt;/em&gt;&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="c1">// 4. Devolver contenido desde la caché</span>
+        <span class="k">return</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$cacheFile</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;em&gt;(Generando contenido NUEVO)&lt;/em&gt;&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="c1">// 5. Simular obtención de contenido</span>
+    <span class="nb">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// Simula una tarea lenta</span>
+    <span class="nv">$content</span> <span class="o">=</span> <span class="s2">"Este es el contenido para '"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$url</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"' generado a las "</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'H:i:s'</span><span class="p">);</span>
+
+    <span class="c1">// 6. Guardar en caché</span>
+    <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$cacheFile</span><span class="p">,</span> <span class="nv">$content</span><span class="p">);</span>
+
+    <span class="c1">// 7. Devolver el contenido</span>
+    <span class="k">return</span> <span class="nv">$content</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// --- Script de prueba ---</span>
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Probando el sistema de caché&lt;/h1&gt;"</span><span class="p">;</span>
+
+<span class="nv">$resource_url</span> <span class="o">=</span> <span class="s2">"https://api.datalog.inc/report/daily_sales"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;Primera llamada (debería tardar 3 segundos):&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">get_content_with_cache</span><span class="p">(</span><span class="nv">$resource_url</span><span class="p">);</span>
+<span class="nv">$duration</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$startTime</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;small&gt;Tiempo de ejecución: "</span> <span class="o">.</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$duration</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"s&lt;/small&gt;"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;hr&gt;"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;Segunda llamada (debería ser instantánea):&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="nv">$startTime</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">get_content_with_cache</span><span class="p">(</span><span class="nv">$resource_url</span><span class="p">);</span>
+<span class="nv">$duration</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="o">-</span> <span class="nv">$startTime</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;small&gt;Tiempo de ejecución: "</span> <span class="o">.</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$duration</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"s&lt;/small&gt;"</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,3019 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/07-GET-POST-Formularios-Ejercicios/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>07 GET POST Formularios Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-de-consolidacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              07 GET POST Formularios Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Consolidación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Refuerzo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pista:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios de Ampliación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Inicial:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea a realizar:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aplicación en el Mundo Real:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>07 GET POST Formularios Ejercicios</h1>
+
+<!-- Nombre de archivo sugerido: T03-Ejercicios-PHP-Get-Post-Formularios.md -->
+<p>¡Equipo! Es hora de poner en práctica la teoría. Vamos a dejar de ser meros espectadores de la web para convertirnos en sus arquitectos.</p>
+<p><strong>Nuestra Misión:</strong> Sois el equipo de desarrollo de <strong>"DevDine"</strong>, una startup que está creando una plataforma SaaS (Software as a Service) para que los restaurantes gestionen sus operaciones. Vuestro primer gran encargo es desarrollar el núcleo de la gestión de menús y la interacción con los clientes. A través de estos ejercicios, construiremos los formularios que serán la espina dorsal de la aplicación. ¡Manos al código!</p>
+<hr/>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<p>Estos ejercicios están diseñados para asentar los conceptos básicos que hemos visto. Son los cimientos sobre los que construiremos funcionalidades más complejas.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Interrogatorio: GET vs. POST | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Asegurar la comprensión de las diferencias fundamentales entre los métodos GET y POST y el uso de las superglobales de PHP.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Responde a las siguientes preguntas como si estuvieras preparando la documentación interna para un nuevo miembro del equipo de DevDine.</p>
+<ol>
+<li>El chef quiere un enlace para compartir que muestre todos los platos "veganos" del menú. ¿Usarías GET o POST para el formulario de filtro? ¿Por qué?</li>
+<li>Cuando un cliente envía el formulario de "Reservar Mesa", que contiene su nombre, teléfono y email, ¿qué método es el único aceptable y por qué?</li>
+<li>¿En qué variable superglobal de PHP buscarías el valor de un campo de formulario enviado con <code>method="get"</code>? ¿Y con <code>method="post"</code>?</li>
+<li>¿Qué atributo es indispensable en una etiqueta <code>&lt;form&gt;</code> para poder subir la foto de un plato?</li>
+<li>Si un campo de formulario se llama <code>ingredientes[]</code>, ¿qué tipo de dato esperas recibir en tu script PHP en la variable <code>$_POST['ingredientes']</code>?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Elegir el método HTTP correcto no es una preferencia, es una decisión de diseño fundamental que afecta a la seguridad, la usabilidad y la funcionalidad de la aplicación.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong>Filtro de platos veganos:</strong> Se debe usar <strong>GET</strong>. La razón es que el objetivo es crear una URL que se pueda compartir y guardar en marcadores (ej: <code>.../menu.php?dieta=vegano</code>). La acción no modifica datos, solo los solicita.</li>
+<li><strong>Reserva de Mesa:</strong> Se debe usar <strong>POST</strong>. El formulario contiene datos personales y sensibles (nombre, teléfono, email). POST oculta estos datos en el cuerpo de la petición HTTP, evitando que queden expuestos en la URL, en el historial del navegador o en los logs del servidor.</li>
+<li><strong>Superglobales:</strong> Para <code>method="get"</code>, los datos se encuentran en <code>$_GET</code>. Para <code>method="post"</code>, en <code>$_POST</code>. La variable <code>$_REQUEST</code> contiene datos de ambos, pero es una mejor práctica ser explícito y usar <code>$_GET</code> o <code>$_POST</code>.</li>
+<li><strong>Subida de archivos:</strong> El atributo indispensable es <code>enctype="multipart/form-data"</code>.</li>
+<li><strong>Campo <code>ingredientes[]</code>:</strong> Se espera recibir un <strong>array</strong>. Los corchetes <code>[]</code> le indican a PHP que agrupe todos los valores de los campos con ese nombre en un array.</li>
+</ol>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) El Buscador del Chef: Creando un Filtro con GET | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Crear un formulario simple que envíe datos usando el método GET y procesarlos en un script PHP.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Crea dos ficheros: <code>menu.html</code> y <code>buscar_plato.php</code>.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>En <code>menu.html</code>, crea un formulario que apunte a <code>buscar_plato.php</code> usando el método <code>GET</code>.</li>
+<li>El formulario debe tener un campo de texto (<code>&lt;input type="search"&gt;</code>) con el <code>name</code> "termino_busqueda".</li>
+<li>En <code>buscar_plato.php</code>, comprueba si se ha recibido el <code>termino_busqueda</code>.</li>
+<li>Si se ha recibido, sanitiza la entrada con <code>htmlspecialchars()</code> y muestra un mensaje como: <code>&lt;h1&gt;Buscando platos que contengan: '[término introducido]'&lt;/h1&gt;</code>.</li>
+<li>Si no se ha recibido nada, muestra un mensaje pidiendo al usuario que introduzca un término.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la base de casi cualquier funcionalidad de búsqueda o filtrado en una aplicación web, desde buscar un producto en Amazon hasta filtrar correos en Gmail.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>menu.html:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Menú DevDine<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Nuestro Menú<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"buscar_plato.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"get"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"search"</span><span class="p">&gt;</span>Buscar plato:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"search"</span> <span class="na">id</span><span class="o">=</span><span class="s">"search"</span> <span class="na">name</span><span class="o">=</span><span class="s">"termino_busqueda"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Buscar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- Aquí se mostraría la lista de platos --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>buscar_plato.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'termino_busqueda'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'termino_busqueda'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$busqueda</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'termino_busqueda'</span><span class="p">]);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Buscando platos que contengan: '</span><span class="si">{</span><span class="nv">$busqueda</span><span class="si">}</span><span class="s2">'&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="c1">// Lógica futura: conectar a la BBDD y buscar...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Por favor, vuelve al menú e introduce un término de búsqueda.&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) Habla con el Cliente: Formulario de Contacto con POST | Nivel: Fácil</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Implementar un formulario que envíe datos de forma segura usando POST.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Crea dos ficheros: <code>contacto.html</code> y <code>enviar_mensaje.php</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>En <code>contacto.html</code>, crea un formulario que envíe a <code>enviar_mensaje.php</code> usando el método <code>POST</code>.</li>
+<li>Debe contener un campo para el email del cliente (<code>name="cliente_email"</code>) y un <code>textarea</code> para el mensaje (<code>name="mensaje"</code>).</li>
+<li>En <code>enviar_mensaje.php</code>, comprueba que el método de la petición sea POST (<code>$_SERVER['REQUEST_METHOD']</code>).</li>
+<li>Recoge los datos, sanitízalos (<code>htmlspecialchars</code>) y muéstralos en pantalla confirmando la recepción del mensaje.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los formularios de contacto son la forma más directa de comunicación con los usuarios. Manejarlos correctamente es esencial para el soporte al cliente y la captación de leads.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>contacto.html:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Contacto - DevDine<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Contacta con nosotros<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"enviar_mensaje.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"email"</span><span class="p">&gt;</span>Tu Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">id</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"cliente_email"</span> <span class="na">required</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"msg"</span><span class="p">&gt;</span>Tu Mensaje:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"msg"</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">rows</span><span class="o">=</span><span class="s">"5"</span> <span class="na">cols</span><span class="o">=</span><span class="s">"40"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>enviar_mensaje.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'cliente_email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">);</span>
+    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'mensaje'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Mensaje Recibido&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Gracias por contactarnos, &lt;strong&gt;</span><span class="si">{</span><span class="nv">$email</span><span class="si">}</span><span class="s2">&lt;/strong&gt;.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Hemos recibido tu mensaje:&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;blockquote&gt;"</span> <span class="o">.</span> <span class="nb">nl2br</span><span class="p">(</span><span class="nv">$mensaje</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/blockquote&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Acceso no permitido."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) ¡Hay un Bug en mi Sopa!: Depuración de Código | Nivel: Fácil</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Identificar y corregir errores comunes en el procesamiento de formularios, incluyendo vulnerabilidades de seguridad básicas.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>El siguiente script (<code>procesar_plato.php</code>) debería recibir datos de un formulario para añadir un nuevo plato, pero contiene varios errores.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Script para procesar un nuevo plato</span>
+
+<span class="nv">$nombrePlato</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">];</span>
+<span class="nv">$descripcion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">];</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;Plato Añadido: </span><span class="si">$nombrePlato</span><span class="s2">&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Descripción: </span><span class="si">$descripcion</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+
+<span class="c1">// ¿Qué pasa si la descripción es "&lt;script&gt;alert('XSS');&lt;/script&gt;"?</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Identifica el error lógico principal en cómo se recogen las variables.</li>
+<li>Identifica la vulnerabilidad de seguridad (XSS - Cross-Site Scripting).</li>
+<li>Re-escribe el script para que funcione asumiendo que el formulario envía los datos por POST y que sea seguro contra ataques XSS.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La depuración es una tarea diaria para un desarrollador. Saber identificar no solo errores de lógica, sino también brechas de seguridad, es lo que diferencia a un programador de un profesional.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Errores Identificados:</strong>
+1.  <strong>Error Lógico:</strong> El script intenta leer <code>nombre</code> de <code>$_GET</code> y <code>descripcion</code> de <code>$_POST</code>. Si el formulario se envía por un único método (lo normal es POST), una de las dos variables no existirá y generará un <code>Warning</code>.
+2.  <strong>Vulnerabilidad XSS:</strong> El script imprime las variables <code>$nombrePlato</code> y <code>$descripcion</code> directamente en el HTML. Si un usuario introduce código JavaScript en la descripción (ej: <code>&lt;script&gt;alert('hackeado');&lt;/script&gt;</code>), este se ejecutará en el navegador de quien vea la página.</p>
+<p><strong>Código Corregido:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Asumimos que el formulario se envía por POST.</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 1. Recoger las variables de $_POST.</span>
+    <span class="c1">// Usamos el operador de fusión de null para dar un valor por defecto si no existen.</span>
+    <span class="nv">$nombrePlato</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nv">$descripcion</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">;</span>
+
+    <span class="c1">// 2. Sanitizar las salidas para prevenir XSS.</span>
+    <span class="nv">$nombrePlatoSeguro</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$nombrePlato</span><span class="p">);</span>
+    <span class="nv">$descripcionSegura</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$descripcion</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Plato Añadido: </span><span class="si">{</span><span class="nv">$nombrePlatoSeguro</span><span class="si">}</span><span class="s2">&lt;/h1&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Descripción: </span><span class="si">{</span><span class="nv">$descripcionSegura</span><span class="si">}</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Por favor, envía el formulario para añadir un plato."</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) Etiquetas por doquier: Manejando Arrays de Checkboxes | Nivel: Fácil</p>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Aprender a procesar múltiples valores de un solo control de formulario (checkboxes) que PHP recibe como un array.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Crea <code>plato_form.html</code> y <code>guardar_plato.php</code>.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>En <code>plato_form.html</code>, crea un formulario (método POST) con un campo para el nombre del plato y una serie de checkboxes para "etiquetas dietéticas".</li>
+<li>Los checkboxes deben tener el mismo <code>name</code>, por ejemplo, <code>etiquetas[]</code>. No olvides los corchetes <code>[]</code>. Dales valores como <code>vegano</code>, <code>sin-gluten</code>, <code>picante</code>, <code>vegetariano</code>.</li>
+<li>En <code>guardar_plato.php</code>, recoge el nombre del plato.</li>
+<li>Comprueba si se recibieron <code>etiquetas</code>. Si es así, recorre el array con un <code>foreach</code> y muestra cada etiqueta seleccionada en una lista HTML (<code>&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;</code>).</li>
+<li>Si no se seleccionó ninguna etiqueta, muestra un mensaje indicándolo.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esto se usa constantemente para gestionar categorías, etiquetas, permisos de usuario, selección de múltiples productos, etc.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>plato_form.html:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Nuevo Plato<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"guardar_plato.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"nombre"</span><span class="p">&gt;</span>Nombre del Plato:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">id</span><span class="o">=</span><span class="s">"nombre"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre_plato"</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">legend</span><span class="p">&gt;</span>Etiquetas Dietéticas<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">name</span><span class="o">=</span><span class="s">"etiquetas[]"</span> <span class="na">value</span><span class="o">=</span><span class="s">"vegano"</span> <span class="na">id</span><span class="o">=</span><span class="s">"veg"</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"veg"</span><span class="p">&gt;</span>Vegano<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">name</span><span class="o">=</span><span class="s">"etiquetas[]"</span> <span class="na">value</span><span class="o">=</span><span class="s">"sin-gluten"</span> <span class="na">id</span><span class="o">=</span><span class="s">"sg"</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"sg"</span><span class="p">&gt;</span>Sin Gluten<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">name</span><span class="o">=</span><span class="s">"etiquetas[]"</span> <span class="na">value</span><span class="o">=</span><span class="s">"picante"</span> <span class="na">id</span><span class="o">=</span><span class="s">"pic"</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"pic"</span><span class="p">&gt;</span>Picante<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Guardar Plato<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>guardar_plato.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$nombrePlato</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre_plato'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'Plato sin nombre'</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">"&lt;h1&gt;</span><span class="si">{</span><span class="nv">$nombrePlato</span><span class="si">}</span><span class="s2">&lt;/h1&gt;"</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'etiquetas'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'etiquetas'</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$etiquetasSeleccionadas</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'etiquetas'</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Etiquetas seleccionadas:&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$etiquetasSeleccionadas</span> <span class="k">as</span> <span class="nv">$etiqueta</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;li&gt;"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$etiqueta</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;No se seleccionó ninguna etiqueta.&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) No me hagas escribirlo todo de nuevo: Formularios Pegajosos (Sticky Forms) | Nivel: Fácil</p>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Modificar un formulario para que, en caso de error de validación, los campos se muestren con los valores que el usuario ya había introducido.</p>
+<h5 id="setup-inicial_4"><strong>Setup Inicial:</strong></h5>
+<p>Usa un único fichero <code>formulario_opinion.php</code>.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un script que contenga tanto la lógica de procesamiento como el HTML del formulario.</li>
+<li>El formulario tendrá un campo para el nombre (<code>nombre</code>) y otro para la opinión (<code>opinion</code>), ambos requeridos.</li>
+<li>En la parte de PHP (al principio del fichero), comprueba si la petición es POST.</li>
+<li>Si es POST, valida que los campos no estén vacíos. Si alguno lo está, guarda un mensaje de error. Si todo está bien, muestra un mensaje de "Gracias".</li>
+<li>En el HTML del formulario, en el atributo <code>value</code> de cada <code>input</code> y dentro del <code>textarea</code>, usa código PHP para imprimir el valor que se envió previamente.</li>
+<li>Asegúrate de mostrar los errores de validación al usuario si los hay.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los Sticky Forms son un estándar en experiencia de usuario. Forzar a un usuario a rellenar un formulario largo de nuevo por un solo error es una forma segura de perderlo.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>formulario_opinion.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$errores</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$opinion</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+    <span class="nv">$opinion</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'opinion'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"El nombre es obligatorio."</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$opinion</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"Debes escribir una opinión."</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;h1&gt;¡Gracias por tu opinión, </span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="s2">!&lt;/h1&gt;"</span><span class="p">;</span>
+        <span class="c1">// Aquí procesaríamos los datos y podríamos redirigir</span>
+        <span class="k">exit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;Tu Opinión&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;.error { color: red; }&lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Danos tu opinión sobre DevDine&lt;/h2&gt;</span>
+
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;div class="error"&gt;</span>
+<span class="x">            &lt;p&gt;&lt;strong&gt;Por favor, corrige los errores:&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="x">            &lt;ul&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$errores</span> <span class="k">as</span> <span class="nv">$error</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">                    &lt;li&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$error</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;/ul&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="x">    &lt;form action="formulario_opinion.php" method="post"&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="nombre"&gt;Tu nombre:&lt;/label&gt;&lt;br&gt;</span>
+<span class="x">            &lt;input type="text" id="nombre" name="nombre" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$nombre</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="opinion"&gt;Opinión:&lt;/label&gt;&lt;br&gt;</span>
+<span class="x">            &lt;textarea id="opinion" name="opinion" rows="4"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$opinion</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Enviar Opinión&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<hr/>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<p>Ahora subimos un poco la dificultad. Estos ejercicios requieren combinar varios conceptos y prestar más atención a los detalles, como harías en un proyecto real.</p>
+<div class="admonition warning">
+<p class="admonition-title">7) El Plato Estrella: Formulario con Validación Robusta | Nivel: Medio</p>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Crear un formulario completo con validación del lado del servidor usando las funciones de filtro de PHP.</p>
+<h5 id="setup-inicial_5"><strong>Setup Inicial:</strong></h5>
+<p>Trabaja en un único fichero <code>nuevo_plato_validado.php</code>.</p>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un formulario para añadir un "Plato Estrella". Debe tener los siguientes campos:<ul>
+<li><code>nombre_plato</code> (texto)</li>
+<li><code>precio</code> (texto, pero esperamos un número)</li>
+<li><code>email_chef</code> (texto, pero esperamos un email)</li>
+<li><code>es_oferta</code> (un único checkbox, valor "si")</li>
+</ul>
+</li>
+<li>En la parte de PHP, procesa el formulario enviado por POST.</li>
+<li>Usa <code>filter_input()</code> para recoger y sanitizar cada valor.</li>
+<li>Valida los datos con estas reglas:<ul>
+<li><code>nombre_plato</code>: No puede estar vacío.</li>
+<li><code>precio</code>: Debe ser un número flotante válido y mayor que cero. Usa <code>filter_var()</code> con <code>FILTER_VALIDATE_FLOAT</code>.</li>
+<li><code>email_chef</code>: Debe ser una dirección de email válida. Usa <code>filter_var()</code> con <code>FILTER_VALIDATE_EMAIL</code>.</li>
+</ul>
+</li>
+<li>Acumula todos los errores en un array.</li>
+<li>Implementa el patrón "Sticky Form" para todos los campos (incluyendo el checkbox, que deberá aparecer marcado si se envió así).</li>
+<li>Si no hay errores, muestra un mensaje de éxito. Si hay errores, muéstralos encima del formulario.</li>
+</ol>
+<h5 id="pista"><strong>Pista:</strong></h5>
+<ul>
+<li>Para validar un checkbox que puede no enviarse, comprueba su existencia con <code>isset()</code>.</li>
+<li>Para hacer un checkbox "sticky", puedes usar un <code>if</code> dentro de la etiqueta input para añadir el atributo <code>checked</code>. <code>&lt;?php if ($es_oferta) echo 'checked'; ?&gt;</code>.</li>
+</ul>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la rutina estándar para procesar cualquier formulario que maneje datos importantes. La validación robusta previene la corrupción de datos en tu base de datos y mejora la seguridad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>nuevo_plato_validado.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$errores</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nv">$nombre_plato</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$precio</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$email_chef</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$es_oferta</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// Por defecto no está en oferta</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Recoger y sanitizar</span>
+    <span class="nv">$nombre_plato</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'nombre_plato'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_FULL_SPECIAL_CHARS</span><span class="p">);</span>
+    <span class="nv">$precio</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'precio'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_NUMBER_FLOAT</span><span class="p">,</span> <span class="nx">FILTER_FLAG_ALLOW_FRACTION</span><span class="p">);</span>
+    <span class="nv">$email_chef</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'email_chef'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_EMAIL</span><span class="p">);</span>
+    <span class="c1">// Para el checkbox, solo nos importa si existe</span>
+    <span class="nv">$es_oferta</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'es_oferta'</span><span class="p">]);</span>
+
+    <span class="c1">// Validar</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$nombre_plato</span><span class="p">))</span> <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"El nombre del plato es obligatorio."</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$precio</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_FLOAT</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span><span class="nv">$precio</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"El precio debe ser un número válido mayor que 0."</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email_chef</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"El email del chef no es válido."</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"&lt;h1&gt;Plato '</span><span class="si">{</span><span class="nv">$nombre_plato</span><span class="si">}</span><span class="s2">' guardado con éxito!&lt;/h1&gt;"</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;Nuevo Plato Estrella&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;.error { color: #D8000C; background-color: #FFD2D2; padding: 10px; border-radius: 5px; margin-bottom: 15px; }&lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Añadir Plato Estrella&lt;/h2&gt;</span>
+
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;div class="error"&gt;</span>
+<span class="x">            &lt;strong&gt;Por favor, corrige los siguientes errores:&lt;/strong&gt;</span>
+<span class="x">            &lt;ul&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$errores</span> <span class="k">as</span> <span class="nv">$error</span><span class="p">)</span> <span class="k">echo</span> <span class="s2">"&lt;li&gt;</span><span class="si">{</span><span class="nv">$error</span><span class="si">}</span><span class="s2">&lt;/li&gt;"</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">            &lt;/ul&gt;</span>
+<span class="x">        &lt;/div&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+
+<span class="x">    &lt;form action="nuevo_plato_validado.php" method="post"&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;</span>
+<span class="x">            &lt;input type="text" name="nombre_plato" id="nombre" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$nombre_plato</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="precio"&gt;Precio:&lt;/label&gt;</span>
+<span class="x">            &lt;input type="text" name="precio" id="precio" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span><span class="nv">$precio</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;label for="email"&gt;Email del Chef:&lt;/label&gt;</span>
+<span class="x">            &lt;input type="text" name="email_chef" id="email" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$email_chef</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;</span>
+<span class="x">            &lt;input type="checkbox" name="es_oferta" id="oferta" value="si" </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$es_oferta</span><span class="p">)</span> <span class="k">echo</span> <span class="s1">'checked'</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&gt;</span>
+<span class="x">            &lt;label for="oferta"&gt;¿Está en oferta?&lt;/label&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+<span class="x">        &lt;button type="submit"&gt;Guardar Plato&lt;/button&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">8) ¡Una Foto Vale Más que Mil Palabras!: Subida de Archivos | Nivel: Medio</p>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Implementar de forma segura la subida de un archivo (la foto de un plato), validando su tipo, tamaño y moviéndolo a una ubicación permanente.</p>
+<h5 id="setup-inicial_6"><strong>Setup Inicial:</strong></h5>
+<p>Crea una carpeta <code>uploads/</code> en el mismo directorio de tus scripts y asegúrate de que el servidor web (Apache) tenga permisos de escritura en ella. Crea dos ficheros: <code>form_foto.html</code> y <code>subir_foto.php</code>.</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>En <code>form_foto.html</code>, crea un formulario (POST) con un <code>&lt;input type="file"&gt;</code> llamado <code>foto_plato</code> y el <code>enctype</code> correcto.</li>
+<li>En <code>subir_foto.php</code>, implementa la lógica de subida:<ul>
+<li>Comprueba si se envió un archivo y si <code>$_FILES['foto_plato']['error']</code> es <code>UPLOAD_ERR_OK</code>.</li>
+<li>Valida que el tipo de archivo sea una imagen (p.ej., <code>image/jpeg</code> o <code>image/png</code>).</li>
+<li>Valida que el tamaño del archivo no exceda un límite (ej: 1MB = 1048576 bytes).</li>
+<li>Si todas las validaciones pasan, genera un nombre de fichero <strong>único</strong> (pista: <code>uniqid()</code> o <code>time()</code>) para evitar sobreescribir archivos.</li>
+<li>Usa <code>move_uploaded_file()</code> para mover el archivo desde su ubicación temporal a tu carpeta <code>uploads/</code>.</li>
+<li>Muestra mensajes de éxito o de error específicos al usuario.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Desde avatares de usuario hasta la subida de facturas o documentos, manejar archivos es una funcionalidad clave en innumerables aplicaciones. Hacerlo de forma insegura puede abrir un agujero de seguridad gigante en tu servidor.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>form_foto.html:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Subir Foto del Plato<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"subir_foto.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">enctype</span><span class="o">=</span><span class="s">"multipart/form-data"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"foto"</span><span class="p">&gt;</span>Selecciona la foto del plato (JPG, PNG <span class="p">&lt;</span> <span class="nt">1MB</span><span class="err">)</span><span class="na">:</span><span class="err">&lt;/</span><span class="na">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"file"</span> <span class="na">id</span><span class="o">=</span><span class="s">"foto"</span> <span class="na">name</span><span class="o">=</span><span class="s">"foto_plato"</span> <span class="na">accept</span><span class="o">=</span><span class="s">"image/jpeg,image/png"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Subir Foto<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<strong>subir_foto.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">]</span> <span class="o">===</span> <span class="nx">UPLOAD_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Definir validaciones</span>
+        <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="s1">'uploads/'</span><span class="p">;</span>
+        <span class="nv">$max_size</span> <span class="o">=</span> <span class="mi">1048576</span><span class="p">;</span> <span class="c1">// 1MB</span>
+        <span class="nv">$allowed_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'image/jpeg'</span><span class="p">,</span> <span class="s1">'image/png'</span><span class="p">];</span>
+
+        <span class="nv">$file_size</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'size'</span><span class="p">];</span>
+        <span class="nv">$file_type</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'type'</span><span class="p">];</span>
+        <span class="nv">$tmp_name</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">];</span>
+
+        <span class="c1">// Validar tamaño y tipo</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$file_size</span> <span class="o">&gt;</span> <span class="nv">$max_size</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">"Error: El archivo es demasiado grande. Máximo 1MB."</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$file_type</span><span class="p">,</span> <span class="nv">$allowed_types</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">"Error: Tipo de archivo no permitido. Solo JPG y PNG."</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Generar nombre único y mover</span>
+        <span class="nv">$extension</span> <span class="o">=</span> <span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">],</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
+        <span class="nv">$new_filename</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">(</span><span class="s1">'plato_'</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'.'</span> <span class="o">.</span> <span class="nv">$extension</span><span class="p">;</span>
+        <span class="nv">$destination</span> <span class="o">=</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$new_filename</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$tmp_name</span><span class="p">,</span> <span class="nv">$destination</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"¡Foto subida con éxito! Se ha guardado como: "</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$new_filename</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"Error: no se pudo mover el archivo a su destino."</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"Error en la subida. Código de error: "</span> <span class="o">.</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'foto_plato'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">9) El Déjà Vu del Cliente: Evitando Reenvíos de Formularios | Nivel: Medio</p>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Investigar e implementar el patrón de diseño <strong>Post/Redirect/Get (PRG)</strong> para solucionar el problema del reenvío de formularios al recargar la página.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Investiga:</strong> Busca qué es el patrón "Post/Redirect/Get" y por qué resuelve el problema del "Form a resubmission". Escribe una explicación de 1-2 frases.</li>
+<li><strong>Implementa:</strong> Coge el ejercicio 3 ("Habla con el Cliente") y modifícalo.</li>
+<li>En <code>enviar_mensaje.php</code>, después de procesar los datos y (simulando) guardarlos, en lugar de mostrar un mensaje de "Gracias", usa la función <code>header()</code> de PHP para redirigir al usuario a una nueva página <code>gracias.html</code>.</li>
+<li>Recuerda que <code>header()</code> debe llamarse antes de cualquier salida HTML y que debes usar <code>exit()</code> después para detener la ejecución del script.</li>
+<li>Crea la página <code>gracias.html</code> con un simple mensaje de agradecimiento.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El patrón PRG es un estándar de la industria para cualquier acción POST que modifica datos (compras, registros, inserción de comentarios...). Previene la duplicación de acciones accidental y mejora la experiencia de usuario, permitiendo recargar la página de "éxito" sin efectos secundarios.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<ol>
+<li><strong>Explicación PRG:</strong> El patrón Post/Redirect/Get consiste en que, tras una petición POST exitosa, el servidor responde con una redirección (HTTP 302/303) a una URL diferente. El navegador entonces hace una petición GET a esa nueva URL, que es la que muestra la página de éxito. Esto evita que al recargar la página se reenvíe la petición POST original.</li>
+</ol>
+<p><strong>enviar_mensaje.php (modificado):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// La función header() debe ejecutarse ANTES de cualquier salida (ni echos, ni HTML)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'cliente_email'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">);</span>
+    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'mensaje'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">'No especificado'</span><span class="p">);</span>
+
+    <span class="c1">// --- Lógica de procesamiento ---</span>
+    <span class="c1">// Aquí guardaríamos los datos en una base de datos, o enviaríamos un email.</span>
+    <span class="c1">// Por ejemplo: mail($admin_email, "Nuevo mensaje de {$email}", $mensaje);</span>
+    <span class="c1">// --- Fin de la lógica ---</span>
+
+    <span class="c1">// Redirección usando el patrón PRG</span>
+    <span class="nb">header</span><span class="p">(</span><span class="s1">'Location: gracias.html'</span><span class="p">);</span>
+    <span class="k">exit</span><span class="p">();</span> <span class="c1">// Es crucial para asegurar que el script se detiene aquí.</span>
+<span class="p">}</span>
+
+<span class="c1">// Si se accede por GET, podemos redirigir al formulario</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Location: contacto.html'</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong>gracias.html (nuevo fichero):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Gracias - DevDine<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>¡Gracias por tu mensaje!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hemos recibido tu consulta y te responderemos lo antes posible.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"contacto.html"</span><span class="p">&gt;</span>Enviar otro mensaje<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<hr/>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<p>¡Es hora de volar solos! Estos ejercicios son más abiertos y simulan retos reales donde no siempre hay una única solución correcta. Fomentan la investigación y la toma de decisiones de diseño.</p>
+<div class="admonition danger">
+<p class="admonition-title">10) El Asistente del Chef: Formulario Multi-Paso | Nivel: Alto</p>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Diseñar y construir un formulario que se complete en varios pasos, manteniendo el estado entre peticiones sin usar sesiones de PHP (aún).</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>Crea un asistente de dos pasos para crear una "Oferta del Día".
+1.  <strong>Paso 1 (<code>paso1.php</code>):</strong> Un formulario que pide el <code>nombre_plato</code> y el <code>precio_oferta</code>. Al enviarse (POST), debe dirigir a <code>paso2.php</code>.
+2.  <strong>Paso 2 (<code>paso2.php</code>):</strong> Este script debe:
+    *   Recibir los datos del paso 1.
+    *   Mostrar los datos recibidos para que el usuario los confirme.
+    *   Presentar un segundo formulario con un campo <code>textarea</code> para la <code>descripcion_oferta</code>.
+    *   <strong>El Reto:</strong> ¿Cómo pasas los datos del paso 1 (<code>nombre_plato</code>, <code>precio_oferta</code>) junto con los datos del paso 2 (<code>descripcion_oferta</code>) a un tercer script final (<code>guardar_oferta.php</code>)? <strong>Pista:</strong> Piensa en campos de formulario que no son visibles para el usuario.
+3.  <strong>Paso 3 (<code>guardar_oferta.php</code>):</strong> Recibe los datos de los tres campos y muestra un resumen final.</p>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los asistentes (wizards) y los procesos de compra (checkout) en e-commerce son aplicaciones directas de formularios multi-paso. Dividir un formulario largo en pasos lógicos mejora drásticamente la tasa de conversión y la experiencia de usuario.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p>La clave es usar <code>&lt;input type="hidden"&gt;</code> para pasar los datos del paso 1 al paso 3.</p>
+<p><strong>paso1.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Oferta - Paso 1<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Crear Oferta: Paso 1 de 2<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"paso2.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Nombre del Plato: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">name</span><span class="o">=</span><span class="s">"nombre_plato"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Precio de Oferta: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">name</span><span class="o">=</span><span class="s">"precio_oferta"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Siguiente Paso<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>paso2.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span> <span class="k">die</span><span class="p">(</span><span class="s2">"Acceso inválido"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="c1">// Recoger y sanitizar datos del paso 1</span>
+<span class="nv">$nombre_plato</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre_plato'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$precio_oferta</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio_oferta'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;&lt;html lang="es"&gt;&lt;head&gt;&lt;title&gt;Oferta - Paso 2&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span>
+<span class="x">&lt;h2&gt;Crear Oferta: Paso 2 de 2&lt;/h2&gt;</span>
+<span class="x">&lt;p&gt;&lt;strong&gt;Confirmar datos:&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="x">&lt;ul&gt;</span>
+<span class="x">    &lt;li&gt;Plato: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$nombre_plato</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">    &lt;li&gt;Precio: </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$precio_oferta</span> <span class="cp">?&gt;</span><span class="x"> €&lt;/li&gt;</span>
+<span class="x">&lt;/ul&gt;</span>
+<span class="x">&lt;form action="guardar_oferta.php" method="post"&gt;</span>
+<span class="x">    &lt;!-- Campos ocultos para pasar los datos del paso 1 --&gt;</span>
+<span class="x">    &lt;input type="hidden" name="nombre_plato" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$nombre_plato</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+<span class="x">    &lt;input type="hidden" name="precio_oferta" value="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$precio_oferta</span> <span class="cp">?&gt;</span><span class="x">"&gt;</span>
+
+<span class="x">    &lt;p&gt;</span>
+<span class="x">        &lt;label for="desc"&gt;Descripción de la Oferta:&lt;/label&gt;&lt;br&gt;</span>
+<span class="x">        &lt;textarea name="descripcion_oferta" id="desc" rows="4" cols="50" required&gt;&lt;/textarea&gt;</span>
+<span class="x">    &lt;/p&gt;</span>
+<span class="x">    &lt;button type="submit"&gt;Publicar Oferta&lt;/button&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;&lt;/html&gt;</span>
+</code></pre></div></p>
+<p><strong>guardar_oferta.php:</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span> <span class="k">die</span><span class="p">(</span><span class="s2">"Acceso inválido"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'nombre_plato'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$precio</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'precio_oferta'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+<span class="nv">$descripcion</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'descripcion_oferta'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h1&gt;¡Oferta Publicada!&lt;/h1&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;h2&gt;</span><span class="si">{</span><span class="nv">$nombre</span><span class="si">}</span><span class="s2">&lt;/h2&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Precio:&lt;/strong&gt; </span><span class="si">{</span><span class="nv">$precio</span><span class="si">}</span><span class="s2"> €&lt;/p&gt;"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt; </span><span class="si">{</span><span class="nv">$descripcion</span><span class="si">}</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">11) El Futuro es Ahora: Formulario con Envío Asíncrono (AJAX) | Nivel: Alto</p>
+<h5 id="objetivo_10"><strong>Objetivo:</strong></h5>
+<p>Refactorizar un formulario para que se envíe usando JavaScript (<code>fetch</code>) sin recargar la página, y que el script PHP devuelva una respuesta en formato JSON.</p>
+<h5 id="setup-inicial_7"><strong>Setup Inicial:</strong></h5>
+<p>Usa el <code>contacto.html</code> y el <code>enviar_mensaje.php</code> del ejercicio 3.</p>
+<h5 id="tarea-a-realizar_10"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Backend (<code>enviar_mensaje.php</code>):</strong> Modifica el script para que, en lugar de imprimir HTML, devuelva una respuesta JSON.<ul>
+<li>Si el envío es exitoso, debe devolver algo como: <code>{"status": "success", "message": "Mensaje enviado correctamente."}</code>.</li>
+<li>Si hay un error (ej: campos vacíos), debe devolver: <code>{"status": "error", "message": "Por favor, completa todos los campos."}</code>.</li>
+<li>Usa <code>header('Content-Type: application/json');</code> para indicar el tipo de respuesta y <code>echo json_encode($responseArray);</code> para generar el JSON.</li>
+</ul>
+</li>
+<li><strong>Frontend (<code>contacto.html</code>):</strong> Añade un bloque <code>&lt;script&gt;</code> para interceptar el envío del formulario.<ul>
+<li>Usa <code>event.preventDefault()</code> para evitar la recarga de la página.</li>
+<li>Usa la API <code>fetch</code> para enviar los datos del formulario a <code>enviar_mensaje.php</code> por POST.</li>
+<li>Recibe la respuesta JSON y muestra el mensaje al usuario en un <code>&lt;div&gt;</code> de estado, sin cambiar de página.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_10"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es la base de las "Single Page Applications" (SPA) y de la web moderna. La comunicación asíncrona permite crear experiencias de usuario fluidas y rápidas, similares a las de una aplicación de escritorio.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>enviar_mensaje.php (modificado para AJAX):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Preparamos la respuesta que será convertida a JSON</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'error'</span><span class="p">,</span> <span class="s1">'message'</span> <span class="o">=&gt;</span> <span class="s1">'Error desconocido.'</span><span class="p">];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$email</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'cliente_email'</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
+    <span class="nv">$mensaje</span> <span class="o">=</span> <span class="nb">filter_input</span><span class="p">(</span><span class="nx">INPUT_POST</span><span class="p">,</span> <span class="s1">'mensaje'</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_FULL_SPECIAL_CHARS</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$email</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$mensaje</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// Lógica de envío (simulada)</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'success'</span><span class="p">;</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'¡Gracias por tu mensaje! Te responderemos pronto.'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$response</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Datos inválidos. Por favor, revisa el formulario.'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$response</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Método no permitido.'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Enviamos la respuesta como JSON</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">'Content-Type: application/json'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+<span class="k">exit</span><span class="p">();</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></p>
+<p><strong>contacto.html (con JavaScript):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Contacto AJAX<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Contacta con nosotros (Sin recargar)<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"status-message"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">"contact-form"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Email: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">name</span><span class="o">=</span><span class="s">"cliente_email"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Mensaje: <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">name</span><span class="o">=</span><span class="s">"mensaje"</span> <span class="na">required</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Enviar<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'contact-form'</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">statusDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'status-message'</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"> </span><span class="c1">// Evitamos el envío tradicional</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">formData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FormData</span><span class="p">(</span><span class="nx">form</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Enviando...'</span><span class="p">;</span>
+
+<span class="w">            </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'enviar_mensaje.php'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">'POST'</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">formData</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'success'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'green'</span><span class="p">;</span>
+<span class="w">                    </span><span class="nx">form</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span><span class="w"> </span><span class="c1">// Limpiamos el formulario</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'red'</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Error de conexión. Inténtalo de nuevo.'</span><span class="p">;</span>
+<span class="w">                </span><span class="nx">statusDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'red'</span><span class="p">;</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">12) El Auditor de Seguridad: Revisión por Pares (Peer Review) | Nivel: Alto</p>
+<h5 id="objetivo_11"><strong>Objetivo:</strong></h5>
+<p>Analizar críticamente el código de un compañero, identificar vulnerabilidades de seguridad y proponer mejoras, fomentando las habilidades de colaboración y la mentalidad de "seguridad primero".</p>
+<h5 id="setup-inicial_8"><strong>Setup Inicial:</strong></h5>
+<p>A continuación se presenta el script <code>perfil_uploader.php</code>, que permite a un usuario subir una foto de perfil y un texto de biografía. El script es funcional, pero tiene varias lagunas de seguridad.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// perfil_uploader.php - FUNCIONAL PERO INSEGURO</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'submit'</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$bio</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'bio'</span><span class="p">];</span>
+    <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="s2">"avatars/"</span><span class="p">;</span>
+    <span class="nv">$file_name</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">][</span><span class="s1">'name'</span><span class="p">];</span>
+    <span class="nv">$tmp_name</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">][</span><span class="s1">'tmp_name'</span><span class="p">];</span>
+
+    <span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$tmp_name</span><span class="p">,</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$file_name</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"&lt;h2&gt;Perfil Actualizado&lt;/h2&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;img src='</span><span class="si">{</span><span class="nv">$upload_dir</span><span class="si">}{</span><span class="nv">$file_name</span><span class="si">}</span><span class="s2">' width='100'&gt;"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Biografía: </span><span class="si">{</span><span class="nv">$bio</span><span class="si">}</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+
+<span class="x">&lt;form action="" method="post" enctype="multipart/form-data"&gt;</span>
+<span class="x">    Biografía: &lt;textarea name="bio"&gt;&lt;/textarea&gt;&lt;br&gt;</span>
+<span class="x">    Avatar: &lt;input type="file" name="avatar"&gt;&lt;br&gt;</span>
+<span class="x">    &lt;input type="submit" name="submit" value="Actualizar"&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_11"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li><strong>Auditoría Individual:</strong> Analiza el script <code>perfil_uploader.php</code> e identifica al menos 3 vulnerabilidades o malas prácticas distintas. Documenta por qué son un problema.</li>
+<li><strong>Solución Propia:</strong> Reescribe el script para que sea seguro, aplicando todas las validaciones y sanitizaciones que hemos visto en el tema (validación de tipo/tamaño de archivo, <code>htmlspecialchars</code> para la bio, nombre de archivo único, etc.).</li>
+<li><strong>Peer Review:</strong> Intercambia tu solución con un compañero. Revisa su código y proporciona feedback constructivo por escrito, respondiendo a estas preguntas:<ul>
+<li>¿Solucionó las mismas 3 (o más) vulnerabilidades que identificaste?</li>
+<li>¿Su código es claro y sigue buenas prácticas?</li>
+<li>¿Hay algo que tú hiciste diferente? ¿Por qué?</li>
+<li>¿Aprendiste alguna técnica nueva de su enfoque?</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_11"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las revisiones de código (Code Reviews) son una práctica estándar en los equipos de desarrollo profesionales. Sirven para mejorar la calidad del código, compartir conocimiento y, crucialmente, detectar bugs y fallos de seguridad antes de que lleguen a producción.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+<p><strong>Vulnerabilidades Identificadas:</strong>
+1.  <strong>Subida de Archivos Arbitraria:</strong> No hay ninguna validación sobre el tipo, tamaño o extensión del archivo. Un usuario podría subir un script PHP (<code>.php</code>) y potencialmente ejecutarlo en el servidor, o un archivo enorme para saturar el disco.
+2.  <strong>Sobrescritura de Archivos:</strong> Se usa el nombre original del archivo (<code>$_FILES['avatar']['name']</code>). Si dos usuarios suben un archivo llamado <code>avatar.jpg</code>, el segundo sobrescribirá al primero.
+3.  <strong>Vulnerabilidad de Path Traversal:</strong> Un atacante podría manipular el <code>name</code> del archivo para que contenga <code>../</code>, intentando escribir fuera del directorio <code>avatars/</code>.
+4.  <strong>Vulnerabilidad XSS (Cross-Site Scripting):</strong> La biografía (<code>$bio</code>) se imprime directamente en el HTML sin sanitizar, permitiendo la inyección de código JavaScript. El <code>src</code> de la imagen también es vulnerable si el nombre del archivo contiene caracteres maliciosos.</p>
+<p><strong>Script Seguro (Propuesta de Solución):</strong>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$errores</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nv">$bio</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+<span class="nv">$avatar_path</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'REQUEST_METHOD'</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'POST'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 1. Procesar la biografía de forma segura</span>
+    <span class="nv">$bio</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'bio'</span><span class="p">]</span> <span class="o">??</span> <span class="s1">''</span><span class="p">);</span>
+
+    <span class="c1">// 2. Procesar el archivo subido</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">][</span><span class="s1">'error'</span><span class="p">]</span> <span class="o">===</span> <span class="nx">UPLOAD_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">'avatar'</span><span class="p">];</span>
+
+        <span class="c1">// Validación de seguridad del archivo</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'size'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000000</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Max 2MB</span>
+            <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"El avatar no puede superar los 2MB."</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$finfo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">finfo</span><span class="p">(</span><span class="nx">FILEINFO_MIME_TYPE</span><span class="p">);</span>
+        <span class="nv">$mime_type</span> <span class="o">=</span> <span class="nv">$finfo</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'tmp_name'</span><span class="p">]);</span>
+        <span class="nv">$allowed_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'image/jpeg'</span><span class="p">,</span> <span class="s1">'image/png'</span><span class="p">,</span> <span class="s1">'image/gif'</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$mime_type</span><span class="p">,</span> <span class="nv">$allowed_types</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"Tipo de archivo no válido. Solo JPG, PNG, o GIF."</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="s2">"avatars/"</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$upload_dir</span><span class="p">))</span> <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$upload_dir</span><span class="p">,</span> <span class="mo">0755</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+            <span class="c1">// Generar nombre seguro y único</span>
+            <span class="nv">$extension</span> <span class="o">=</span> <span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'name'</span><span class="p">],</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
+            <span class="nv">$safe_filename</span> <span class="o">=</span> <span class="s2">"avatar_"</span> <span class="o">.</span> <span class="nb">uniqid</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"."</span> <span class="o">.</span> <span class="nv">$extension</span><span class="p">;</span>
+            <span class="nv">$destination</span> <span class="o">=</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$safe_filename</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$file</span><span class="p">[</span><span class="s1">'tmp_name'</span><span class="p">],</span> <span class="nv">$destination</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$avatar_path</span> <span class="o">=</span> <span class="nv">$destination</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"No se pudo guardar el avatar."</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="nv">$errores</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">"Debes seleccionar un archivo para tu avatar."</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">)){</span>
+        <span class="k">echo</span> <span class="s2">"&lt;h2&gt;Perfil Actualizado&lt;/h2&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;img src='"</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$avatar_path</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"' width='100' alt='Avatar'&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;Biografía:&lt;/strong&gt;&lt;br&gt;"</span> <span class="o">.</span> <span class="nb">nl2br</span><span class="p">(</span><span class="nv">$bio</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;&lt;html lang="es"&gt;&lt;head&gt;&lt;title&gt;Actualizar Perfil&lt;/title&gt;&lt;/head&gt;&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Actualiza tu perfil&lt;/h1&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errores</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">'&lt;div style="color:red;"&gt;&lt;ul&gt;'</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$errores</span> <span class="k">as</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s1">'&lt;li&gt;'</span> <span class="o">.</span> <span class="nv">$error</span> <span class="o">.</span> <span class="s1">'&lt;/li&gt;'</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">echo</span> <span class="s1">'&lt;/ul&gt;&lt;/div&gt;'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">    &lt;form action="" method="post" enctype="multipart/form-data"&gt;</span>
+<span class="x">        Biografía: &lt;textarea name="bio"&gt;</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$bio</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;br&gt;</span>
+<span class="x">        Avatar: &lt;input type="file" name="avatar"&gt;&lt;br&gt;</span>
+<span class="x">        &lt;input type="submit" name="submit" value="Actualizar"&gt;</span>
+<span class="x">    &lt;/form&gt;</span>
+<span class="x">&lt;/body&gt;&lt;/html&gt;</span>
+</code></pre></div></p>
+</details>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

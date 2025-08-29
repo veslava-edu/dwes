@@ -1,0 +1,2044 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/09-EndpointsAvanzados/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>09 EndpointsAvanzados - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#endpoints-avanzado-cache-paginacion-filtros-y-ordenaciones" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              09 EndpointsAvanzados
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="#" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura WEB y Servidor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arquitectura WEB y Servidor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00 - Arquitectura-Web-y-Software-en-Servidor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Entorno-WAMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Virtualizacion-Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Control-Versiones-GIT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    PHP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Sintaxis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Estructuras de Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Arrays, Funciones y Strings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - POO - Programación Orientada a Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Include y Require
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - GET y POST - Formularios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Gestión de estado - Cookies y Sesiones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - Bases de Datos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Dependencias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Servicios WEB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15 - Logs en PHP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16 - WebScraping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_18" id="__nav_3_18_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Laravel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_18">
+            <span class="md-nav__icon md-icon"></span>
+            Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L1 - Introducción a Laravel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2 - Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L3 - Eloquent ORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L4 - Controladores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L5 - Almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L6 - Vistas (Blade)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L7 - Autenticación y Autorización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L8 - Sesiones y Cookies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L9 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Node.js
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Node.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Intro a Node.js
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Intro a TypeScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Intro a NestJS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Creación de Recursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - TypeORM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Almacenamiento de Ficheros
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - WebSockets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09 - Endpoints Avanzados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10 - MongoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11 - Seguridad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12 - Documentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13 - Perfiles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14 - Despliegue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de paquetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-la-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de la cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-en-controlador-vs-cache-en-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache en controlador vs Cache en servicio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servicio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<ul>
+<li><a href="#endpoints-avanzado-cache-paginación-filtros-y-ordenaciones">Endpoints avanzado: cache, paginación, filtros y ordenaciones</a></li>
+<li><a href="#cache">Cache</a><ul>
+<li><a href="#instalación-de-paquetes">Instalación de paquetes</a></li>
+<li><a href="#configuración-de-la-cache">Configuración de la cache</a></li>
+<li><a href="#auto-cache">Auto-cache</a></li>
+<li><a href="#cache-en-controlador-vs-cache-en-servicio">Cache en controlador vs Cache en servicio</a></li>
+</ul>
+</li>
+<li><a href="#testing">Testing</a><ul>
+<li><a href="#servicio">Servicio</a></li>
+</ul>
+</li>
+<li><a href="#paginación-ordenación-y-búsqueda">Paginación, ordenación y búsqueda</a></li>
+<li><a href="#instalación">Instalación</a></li>
+<li><a href="#controlador">Controlador</a></li>
+<li><a href="#servicio-1">Servicio</a><ul>
+<li><a href="#relaciones">Relaciones</a></li>
+<li><a href="#filtros">Filtros</a></li>
+<li><a href="#testing-1">Testing</a></li>
+</ul>
+</li>
+<li><a href="#práctica-de-clase-cache-paginación-y-mejoras-en-búsquedas">Práctica de clase: Cache, Paginación y mejoras en búsquedas</a></li>
+<li><a href="#proyecto">Proyecto</a></li>
+</ul>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/09-banner.png"><img alt="" src="../images/09-banner.png"/></a></p>
+<h1 id="endpoints-avanzado-cache-paginacion-filtros-y-ordenaciones">Endpoints avanzado: cache, paginación, filtros y ordenaciones</h1>
+<h2 id="cache">Cache</h2>
+<p>La cache nos permite acelerar la obtención de resultados. Para ello <a href="https://docs.nestjs.com/techniques/caching">Netsjs nos ofrece distintos enfoques</a> para trata la cache.</p>
+<h3 id="instalacion-de-paquetes">Instalación de paquetes</h3>
+<p>Antes de nada deberemos instalar los paquetes necesarios para trabajar con la cache, adicionalmente podemos instalar otros que nos permiten usar métodos o sistemas alternativos. En nuestro caso usaremos el sistema por defecto de NestJS (In-Memory Cache).</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>@nestjs/cache-manager<span class="w"> </span>cache-manager
+</code></pre></div>
+<h3 id="configuracion-de-la-cache">Configuración de la cache</h3>
+<p>Podemos configurar la cache directamente en nuestro módulo de la aplicación, en nuestro caso en el módulo principal <code>app.module.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nestjs/common'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CacheModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nestjs/cache-manager'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AppController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./app.controller'</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CacheModule</span><span class="p">.</span><span class="nx">register</span><span class="p">()],</span>
+<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AppController</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+<p>Una vez configurada la cache, podemos usarla en nuestros controladores o servicios. Para ello, deberemos inyectarla en el constructor de la clase:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="kd">@Inject</span><span class="p">(</span><span class="nx">CACHE_MANAGER</span><span class="p">)</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="nx">cacheManager</span><span class="o">:</span><span class="w"> </span><span class="kt">Cache</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+<p>Una vez inyectada, podemos usarla en nuestros métodos. Por ejemplo, en nuestro servicio:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'key'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Obtener un valor</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span><span class="w"> </span><span class="s1">'value'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Establecer un valor</span>
+<span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cacheManager</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="s1">'key'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Eliminar un valor</span>
+</code></pre></div>
+<p><strong><em>OJO</em></strong> Es importante que la key sea única para cada objeto que queramos cachear.</p>
+<h3 id="auto-cache">Auto-cache</h3>
+<p>Podemos activar el auto cache para los métodos <code>GET</code> en nuestro controlador gracias al interceptador <code>CacheInterceptor</code>. Para ello, deberemos añadirlo en nuestro controlador:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Controller</span><span class="p">()</span>
+<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">CacheInterceptor</span><span class="p">)</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">@Get</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En NestJS, un interceptor es una característica que te permite interceptar y modificar el flujo de ejecución de una solicitud antes de que llegue al controlador o después de que salga del controlador. Los interceptores se utilizan para realizar acciones comunes de manera centralizada, como la validación de datos, la transformación de respuestas, el registro de solicitudes, la gestión de errores, la autenticación, la autorización, entre otros.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/Interceptors_1.png"><img alt="" src="../images/Interceptors_1.png"/></a></p>
+<h3 id="cache-en-controlador-vs-cache-en-servicio">Cache en controlador vs Cache en servicio</h3>
+<p>La decisión de utilizar la caché a nivel del controlador o del servicio depende en gran medida de la estructura de tu aplicación y de tus necesidades específicas.</p>
+<ul>
+<li>
+<p>Caché a nivel de controlador: Si utilizas la caché a nivel del controlador, estarías almacenando en caché los datos que se devuelven directamente a través de las respuestas HTTP. Esto puede ser útil si quieres reducir la carga en tu servidor y acelerar las respuestas a las solicitudes HTTP. Sin embargo, si tienes múltiples controladores que utilizan el mismo servicio y necesitas que los datos estén siempre actualizados, la caché a nivel del controlador podría no ser la mejor opción, ya que cada controlador tendría su propia versión de los datos en caché. Es fácil de implementar y usar gracias al uso de anotaciones.</p>
+</li>
+<li>
+<p>Caché a nivel de servicio: Si utilizas la caché a nivel del servicio, estarías almacenando en caché los datos que se obtienen a través de las operaciones de tu servicio. Esto puede ser útil si tienes operaciones que son costosas en términos de tiempo o recursos y quieres evitar realizarlas repetidamente. Además, si tienes múltiples controladores que utilizan el mismo servicio, la caché a nivel de servicio asegurará que todos los controladores utilicen la misma versión de los datos en caché. Te da más control sobre cuándo y cómo se almacenan los datos en caché. Sin embargo, puede ser más complicado de implementar, ya que necesitas gestionar la caché manualmente.</p>
+</li>
+</ul>
+<p>En general, si tienes operaciones costosas que se realizan en tus servicios y que se utilizan en múltiples controladores, puede ser más beneficioso utilizar la caché a nivel del servicio. Por otro lado, si estás más interesado en acelerar las respuestas a las solicitudes HTTP y las operaciones de tu servicio no son particularmente costosas, podría ser más beneficioso utilizar la caché a nivel del controlador.</p>
+<p>Por último, es importante tener en cuenta que la caché no es una solución mágica que mejora automáticamente el rendimiento de tu aplicación. Debes utilizarla con prudencia y comprender bien cuándo y cómo utilizarla para obtener los mejores resultados</p>
+<p>La decisión de implementar la caché a nivel de controlador o de servicio depende en gran medida de la estructura de tu aplicación y de tus necesidades específicas. Aquí te dejo algunos puntos a considerar:</p>
+<p>En general, si estás buscando una solución fácil para mejorar el rendimiento de tus respuestas HTTP, la caché a nivel de controlador puede ser una buena opción. Sin embargo, si necesitas un control más granular sobre la caché, o si tus servicios realizan operaciones costosas que quieres optimizar, entonces la caché a nivel de servicio puede ser la mejor opción.</p>
+<p>Además, no hay nada que te impida utilizar ambas técnicas en la misma aplicación. Por ejemplo, podrías utilizar la caché a nivel de servicio para optimizar las operaciones costosas dentro de tus servicios, y luego utilizar la caché a nivel de controlador para almacenar las respuestas HTTP y acelerar las respuestas a las solicitudes HTTP.</p>
+<h2 id="testing">Testing</h2>
+<h3 id="servicio">Servicio</h3>
+<p>Podemos mockear su funcionamiento y pasar este mock en el módulo de test
+<div class="highlight"><pre><span></span><code><span class="c1">// Mock con los métodos, ojo que son promesas</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cacheManagerMock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()),</span>
+<span class="w">    </span><span class="nx">set</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()),</span>
+<span class="w">    </span><span class="nx">store</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">keys</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">del</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()),</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Creamos un módulo de prueba de NestJS que nos permitirá crear una instancia de nuestro servicio.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="kt">TestingModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Test</span><span class="p">.</span><span class="nx">createTestingModule</span><span class="p">({</span>
+<span class="w">      </span><span class="c1">// Proporcionamos una lista de dependencias que se inyectarán en nuestro servicio.</span>
+<span class="w">      </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nx">CategoriasService</span><span class="p">,</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">getRepositoryToken</span><span class="p">(</span><span class="nx">CategoriaEntity</span><span class="p">),</span><span class="w"> </span>
+<span class="w">          </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">Repository</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CACHE_MANAGER</span><span class="p">,</span><span class="w"> </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">cacheManagerMock</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">compile</span><span class="p">()</span><span class="w"> </span><span class="c1">// Compilamos el módulo de prueba.</span>
+
+<span class="w">    </span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasService</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasService</span><span class="p">)</span><span class="w"> </span><span class="c1">// Obtenemos una instancia de nuestro servicio.</span>
+<span class="w">    </span><span class="c1">// getRepositoryToken es una función de NestJS que se utiliza para generar un token de inyección de dependencias para un repositorio de TypeORM.</span>
+<span class="w">    </span><span class="nx">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">Repository</span><span class="o">&lt;</span><span class="nx">CategoriaEntity</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">getRepositoryToken</span><span class="p">(</span><span class="nx">CategoriaEntity</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="c1">// Obtenemos una instancia de nuestro repositorio de categorías.</span>
+<span class="w">    </span><span class="nx">mapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">CategoriasMapper</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CategoriasMapper</span><span class="p">)</span><span class="w"> </span><span class="c1">// Obtenemos una instancia de nuestro mapper de categorías.</span>
+<span class="w">    </span><span class="nx">cacheManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">module</span><span class="nx">.get</span><span class="o">&lt;</span><span class="nx">Cache</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">CACHE_MANAGER</span><span class="p">)</span><span class="w"> </span><span class="c1">// Obtenemos una instancia del caché</span>
+<span class="w">  </span><span class="p">})</span>
+</code></pre></div></p>
+<p>Ahora en cada método podemos mockear el funcionamiento de get, set y del
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">'should return a list of categories'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Mock the cacheManager.get() method to return a list of categories</span>
+<span class="w">      </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">cacheManager</span><span class="p">,</span><span class="w"> </span><span class="s1">'get'</span><span class="p">).</span><span class="nx">mockResolvedValueOnce</span><span class="p">([</span><span class="nx">testCategory</span><span class="p">])</span>
+
+<span class="w">      </span><span class="c1">// Call the findAll() method</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+
+<span class="w">      </span><span class="c1">// Expect the result to be an array of categories</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([</span><span class="nx">testCategory</span><span class="p">])</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div></p>
+<h1 id="paginacion-ordenacion-y-busqueda">Paginación, ordenación y búsqueda</h1>
+<p><a href="https://www.npmjs.com/package/nestjs-paginate">Nest Paginate</a> es una biblioteca de paginación para NestJS que facilita la implementación de la paginación en tus aplicaciones con TypeORM y basada en <a href="https://jsonapi.org/">JSON:API</a>. </p>
+<p>Proporciona una forma sencilla de manejar la paginación de resultados en las consultas a bases de datos o cualquier otra fuente de datos.</p>
+<h2 id="instalacion">Instalación</h2>
+<p>Para utilizar Nest Paginate en tu proyecto NestJS, sigue estos pasos:</p>
+<p>Instala la biblioteca <code>nestjs-paginate</code> utilizando npm:</p>
+<div class="highlight"><pre><span></span><code>npm install nestjs-paginate
+</code></pre></div>
+<h2 id="controlador">Controlador</h2>
+<p>Utiliza la función <code>Paginate()</code> en tus controladores o servicios para implementar la paginación. Esta función acepta un <code>PaginateQuery</code>.</p>
+<p>Esta esta formada por los campos:
+- page?: number, número de pagina
+- limit?: number, límite de pagina
+- sortBy?: [string, string][], campo y criterio de ordenacion (ASC|DESC)
+- searchBy?: string[], criterio usado para buscar
+- search?: string , criterio de búsqueda
+- filter?: { [column: string]: string | string[] }, filtro y tipo de filtro
+- select?: string[], columnas a mostrar
+- path: string, el path</p>
+<p>Por ejemplo en esta url: <code>http://localhost:3000/cats?limit=5&amp;page=2&amp;sortBy=color:DESC&amp;search=i&amp;filter.age=$gte:3&amp;select=id,name,color,age</code></p>
+<p>Tenemos:
+- limit: 5
+- pagina: 2
+- sortBy: color:DESC
+- search: i (que contenga la i)
+- filter: age: $gte:3 (edad mayor o igual que 3)
+- select: id, name, color, age (datos a mostrar)</p>
+<div class="highlight"><pre><span></span><code><span class="kd">@Controller</span><span class="p">(</span><span class="s1">'cats'</span><span class="p">)</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="kd">@Get</span><span class="p">()</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">findAll</span><span class="p">(</span><span class="kd">@Paginate</span><span class="p">()</span><span class="w"> </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginateQuery</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Paginated</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="servicio_1">Servicio</h2>
+<p>En nuestro servicio definimos el método <code>findAll()</code> que recibe el <code>PaginateQuery</code> y devuelve un <code>Promise&lt;Paginated&lt;T&gt;&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nx">findAll</span><span class="p">(</span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginateQuery</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Paginated</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">paginate</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsRepository</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">sortableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'color'</span><span class="p">,</span><span class="w"> </span><span class="s1">'age'</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">nullSort</span><span class="o">:</span><span class="w"> </span><span class="s1">'last'</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">defaultSortBy</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">'id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'DESC'</span><span class="p">]],</span>
+<span class="w">      </span><span class="nx">searchableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'color'</span><span class="p">,</span><span class="w"> </span><span class="s1">'age'</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'color'</span><span class="p">,</span><span class="w"> </span><span class="s1">'age'</span><span class="p">,</span><span class="w"> </span><span class="s1">'lastVetVisit'</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">filterableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">FilterOperator</span><span class="p">.</span><span class="nx">EQ</span><span class="p">,</span><span class="w"> </span><span class="nx">FilterSuffix</span><span class="p">.</span><span class="nx">NOT</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">  </span><span class="p">})</span>
+</code></pre></div>
+<p>Definimos lo que queramos que no sea por defecto
+- sortableColumns: columnas por las que se puede ordenar
+- nullSort: si es null, como se ordena
+- defaultSortBy: ordenación por defecto
+- searchableColumns: columnas por las que se puede buscar
+- select: columnas por las que se puede seleccionar
+- filterableColumns: columnas por las que se puede filtrar y tipo de filtro si se quiere acotar</p>
+<h3 id="relaciones">Relaciones</h3>
+<p>Podemos usarlo con <code>QueryBuilder</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">queryBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">repo</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createQueryBuilder</span><span class="p">(</span><span class="s1">'cats'</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">leftJoinAndSelect</span><span class="p">(</span><span class="s1">'cats.owner'</span><span class="p">,</span><span class="w"> </span><span class="s1">'owner'</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">'cats.owner = :ownerId'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ownerId</span><span class="w"> </span><span class="p">})</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">paginate</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="nx">queryBuilder</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
+</code></pre></div>
+<p>Podemos usar Relations, como forma alternativa para hacer un left-join 
+<div class="highlight"><pre><span></span><code><span class="c1">// http://localhost:3000/cats?filter.toys.name=$in:Mouse,String</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginateConfig</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">relations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'toys'</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">sortableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'toys.name'</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">filterableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">'toys.name'</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">FilterOperator</span><span class="p">.</span><span class="nx">IN</span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">paginate</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="nx">catRepo</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
+</code></pre></div></p>
+<p>O lo podemos usar con relaciones embebidas o anidadas
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">PaginateConfig</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">relations</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">home</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pillows</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">sortableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'id'</span><span class="p">,</span><span class="w"> </span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'home.pillows.color'</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">searchableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span><span class="w"> </span><span class="s1">'home.pillows.color'</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">filterableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">'home.pillows.color'</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">FilterOperator</span><span class="p">.</span><span class="nx">EQ</span><span class="p">],</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">paginate</span><span class="o">&lt;</span><span class="nx">CatEntity</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="nx">catRepo</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="filtros">Filtros</h3>
+<p>Aquí tienes ejemplos de filtros
+<div class="highlight"><pre><span></span><code>?filter.name=$eq:Milo es equivalente a ?filter.name=Milo
+
+?filter.age=$btw:4,6 donde la columna age está entre 4 y 6
+
+?filter.id=$not:$in:2,5,7 donde la columna id no es 2, 5 o 7
+
+?filter.summary=$not:$ilike:term donde la columna summary no contiene el término "term"
+
+?filter.summary=$sw:term donde la columna summary comienza con el término "term"
+
+?filter.seenAt=$null donde la columna seenAt es NULL
+
+?filter.seenAt=$not:$null donde la columna seenAt no es NULL
+
+?filter.createdAt=$btw:2022-02-02,2022-02-10 donde la columna createdAt está entre las fechas 2022-02-02 y 2022-02-10
+
+?filter.createdAt=$lt:2022-12-20T10:00:00.000Z donde la columna createdAt es anterior a la fecha ISO 2022-12-20T10:00:00.000Z
+
+?filter.roles=$contains:moderator donde la columna roles es un array y contiene el valor "moderator"
+
+?filter.roles=$contains:moderator,admin donde la columna roles es un array y contiene los valores "moderator" y "admin"
+</code></pre></div></p>
+<h3 id="testing_1">Testing</h3>
+<p>A la hora de testear, debes crear las simulaciones de los datos de entrada para PageQuery y de salida para Paginated. Para ello.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">'should return a page of categories'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Create a mock PaginateQuery object</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">paginateOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">page</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">'categorias'</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// Mock the paginate method to return a Paginated object</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCategories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nx">meta</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">itemsPerPage</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">totalItems</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">currentPage</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">totalPages</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">links</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">current</span><span class="o">:</span><span class="w"> </span><span class="s1">'categorias?page=1&amp;limit=10&amp;sortBy=nombre:ASC'</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Paginated</span><span class="o">&lt;</span><span class="nx">CategoriaEntity</span><span class="o">&gt;</span>
+
+<span class="w">        </span><span class="c1">// Debemos simular la consulta que se hace con paginate</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockQueryBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">take</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">().</span><span class="nx">mockReturnThis</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">().</span><span class="nx">mockReturnThis</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">addOrderBy</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">().</span><span class="nx">mockReturnThis</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">getManyAndCount</span><span class="o">:</span><span class="w"> </span><span class="kt">jest.fn</span><span class="p">().</span><span class="nx">mockResolvedValue</span><span class="p">([</span><span class="nx">testCategories</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">]),</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="nx">jest</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">repo</span><span class="p">,</span><span class="w"> </span><span class="s1">'createQueryBuilder'</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">mockReturnValue</span><span class="p">(</span><span class="nx">mockQueryBuilder</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c1">// Call the findAll method</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="nx">paginateOptions</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c1">// console.log(result)</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">itemsPerPage</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">paginateOptions</span><span class="p">.</span><span class="nx">limit</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">// Expect the result to have the correct currentPage</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">currentPage</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">paginateOptions</span><span class="p">.</span><span class="nx">page</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">// Expect the result to have the correct totalPages</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">totalPages</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// You may need to adjust this value based on your test case</span>
+<span class="w">      </span><span class="c1">// Expect the result to have the correct current link</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">links</span><span class="p">.</span><span class="nx">current</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span>
+<span class="w">        </span><span class="sb">`categorias?page=</span><span class="si">${</span><span class="nx">paginateOptions</span><span class="p">.</span><span class="nx">page</span><span class="si">}</span><span class="sb">&amp;limit=</span><span class="si">${</span><span class="nx">paginateOptions</span><span class="p">.</span><span class="nx">limit</span><span class="si">}</span><span class="sb">&amp;sortBy=nombre:ASC`</span><span class="p">,</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+</code></pre></div>
+<h1 id="practica-de-clase-cache-paginacion-y-mejoras-en-busquedas">Práctica de clase: Cache, Paginación y mejoras en búsquedas</h1>
+<ol>
+<li>Crea la cache para Funkos, tanto a nivel de controlador como se servicio.</li>
+<li>Implementa mejoras en el metodo de obtener todos los funkos por ejemplo que se pueda paginar de un determinado tamaño, buscar por marca, modelo, o filtrar por precios</li>
+<li>Crea los test que sean necesarios para probar la nueva funcionalidad.</li>
+<li>Prueba la nueva funcionalidad en Postman.</li>
+</ol>
+<h1 id="proyecto">Proyecto</h1>
+<p>Puedes consultar esta parte en <a href="https://github.com/joseluisgs/DesarrolloWebEntornosServidor-03-Proyecto-2023-2024/releases/tag/paginacion_busquedas_cache">el proyecto de ejemplo</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
