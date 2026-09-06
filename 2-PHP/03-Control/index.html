@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/03-Control/" rel="canonical"/>
+<link href="../02-Sintaxis/" rel="prev"/>
+<link href="../04-Arrays-Funciones-Strings/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>03 - Estructuras de Control - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ud3-control-de-flujo-en-php">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              03 - Estructuras de Control
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../3-NODE/01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      
+        Desarrollo y Ejemplos Prácticos
+      
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructuras-condicionales-tomando-decisiones">
+<span class="md-ellipsis">
+      
+        Estructuras Condicionales: Tomando Decisiones
+      
+    </span>
+</a>
+<nav aria-label="Estructuras Condicionales: Tomando Decisiones" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-if-else-y-elseif">
+<span class="md-ellipsis">
+      
+        El if, else y elseif
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-sentencia-switch-multiples-caminos">
+<span class="md-ellipsis">
+      
+        La Sentencia switch: Múltiples Caminos
+      
+    </span>
+</a>
+<nav aria-label="La Sentencia switch: Múltiples Caminos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-evolucion-match-en-php-8">
+<span class="md-ellipsis">
+      
+        La Evolución: match en PHP 8
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-el-arte-de-la-repeticion">
+<span class="md-ellipsis">
+      
+        Bucles: El Arte de la Repetición
+      
+    </span>
+</a>
+<nav aria-label="Bucles: El Arte de la Repetición" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-indefinidos-while-y-do-while">
+<span class="md-ellipsis">
+      
+        Bucles Indefinidos: while y do-while
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-definidos-for-y-foreach">
+<span class="md-ellipsis">
+      
+        Bucles Definidos: for y foreach
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#controlando-el-flujo-break-y-continue">
+<span class="md-ellipsis">
+      
+        Controlando el Flujo: break y continue
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      
+        EJERCICIOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desarrollo-y-ejemplos-practicos">
+<span class="md-ellipsis">
+      
+        Desarrollo y Ejemplos Prácticos
+      
+    </span>
+</a>
+<nav aria-label="Desarrollo y Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructuras-condicionales-tomando-decisiones">
+<span class="md-ellipsis">
+      
+        Estructuras Condicionales: Tomando Decisiones
+      
+    </span>
+</a>
+<nav aria-label="Estructuras Condicionales: Tomando Decisiones" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-if-else-y-elseif">
+<span class="md-ellipsis">
+      
+        El if, else y elseif
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-sentencia-switch-multiples-caminos">
+<span class="md-ellipsis">
+      
+        La Sentencia switch: Múltiples Caminos
+      
+    </span>
+</a>
+<nav aria-label="La Sentencia switch: Múltiples Caminos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#la-evolucion-match-en-php-8">
+<span class="md-ellipsis">
+      
+        La Evolución: match en PHP 8
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-el-arte-de-la-repeticion">
+<span class="md-ellipsis">
+      
+        Bucles: El Arte de la Repetición
+      
+    </span>
+</a>
+<nav aria-label="Bucles: El Arte de la Repetición" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-indefinidos-while-y-do-while">
+<span class="md-ellipsis">
+      
+        Bucles Indefinidos: while y do-while
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bucles-definidos-for-y-foreach">
+<span class="md-ellipsis">
+      
+        Bucles Definidos: for y foreach
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#controlando-el-flujo-break-y-continue">
+<span class="md-ellipsis">
+      
+        Controlando el Flujo: break y continue
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      
+        EJERCICIOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="ud3-control-de-flujo-en-php">UD3 - Control de Flujo en PHP</h1>
+<p>¡Muy buenas, equipo! Bienvenidos de nuevo al motor de DevCore Solutions. En la UD2 - Sintaxis, aprendimos las reglas básicas del idioma PHP: cómo declarar variables, usar operadores y escribir comentarios. Ahora que sabemos "hablar" el idioma, vamos a aprender a "razonar" con él.</p>
+<p>Imaginad que estáis programando la IA de un videojuego. El personaje no puede simplemente correr hacia adelante sin parar. Necesita tomar decisiones: "Si veo un enemigo, ataco. Si no, sigo patrullando". O repetir acciones: "Mientras no llegue al final del pasillo, sigo caminando". Ese proceso de tomar decisiones y repetir acciones es el <strong>control de flujo</strong>. Es el cerebro de cualquier programa. Sin él, nuestros scripts serían como un coche sin volante, incapaces de reaccionar o adaptarse a las circunstancias.</p>
+<p>Hoy vamos a construir ese volante y esa palanca de cambios para nuestros programas en PHP.</p>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Antes de escribir nuestro primer <code>if</code>, vamos a asentar el vocabulario que nos permitirá dirigir el tráfico de nuestras aplicaciones.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Control de Flujo</p>
+<p>El <strong>control de flujo</strong> (o <em>control flow</em> en inglés) es el orden en el que un programa ejecuta sus instrucciones. Por defecto, el flujo es secuencial (una línea después de la otra). Las estructuras de control nos permiten alterar ese orden, creando bifurcaciones y repeticiones para que el programa sea dinámico e inteligente.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Estructuras Condicionales</p>
+<p>Son la herramienta para tomar decisiones. Permiten ejecutar un bloque de código <strong>solo si se cumple una condición específica</strong>. Son las bifurcaciones en el camino: "¿El usuario es administrador? Si es así, toma la ruta A. Si no, toma la ruta B". Las principales en PHP son <code>if</code>, <code>else</code>, <code>elseif</code>, <code>switch</code> y, desde PHP 8, <code>match</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Bucles (Loops)</p>
+<p>Son la herramienta para la repetición. Permiten ejecutar un bloque de código múltiples veces <strong>mientras se cumpla una condición</strong> o <strong>para cada elemento de un conjunto</strong>. Son perfectos para tareas repetitivas, como mostrar una lista de 100 productos o procesar las líneas de un fichero. Los bucles principales son <code>while</code>, <code>do-while</code>, <code>for</code> y <code>foreach</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Iteración</p>
+<p>Una <strong>iteración</strong> es cada una de las repeticiones que se realizan dentro de un bucle. Si un bucle se ejecuta 10 veces, decimos que ha tenido 10 iteraciones. La sentencia <code>continue</code> nos permite saltar a la siguiente iteración.</p>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="desarrollo-y-ejemplos-practicos">Desarrollo y Ejemplos Prácticos</h2>
+<p>Con el mapa en la mano, es hora de explorar las rutas que podemos tomar en nuestro código.</p>
+<h3 id="estructuras-condicionales-tomando-decisiones">Estructuras Condicionales: Tomando Decisiones</h3>
+<p>Las condicionales son el pilar de la lógica en cualquier aplicación. Permiten que nuestros programas reaccionen de manera diferente a distintas entradas o estados.</p>
+<pre class="mermaid"><code>graph TD
+    A[Inicio] --&gt; B{¿Usuario Autenticado?};
+    B -- Sí --&gt; C[Mostrar Panel de Control];
+    B -- No --&gt; D{¿Recordar Contraseña?};
+    D -- Sí --&gt; E[Enviar email de recuperación];
+    D -- No --&gt; F[Mostrar Formulario de Login];
+    C --&gt; G[Fin];
+    E --&gt; G;
+    F --&gt; G;</code></pre>
+<h4 id="el-if-else-y-elseif">El <code>if</code>, <code>else</code> y <code>elseif</code></h4>
+<p>La estructura <code>if</code> es la más fundamental. Evalúa una condición y, si es verdadera (<code>true</code>), ejecuta el código que contiene.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$temperatura</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+
+<span class="c1">// Si la temperatura es mayor a 22 grados...</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$temperatura</span> <span class="o">&gt;</span> <span class="mi">22</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Día caluroso. ¡No olvides hidratarte!&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<p>A menudo, queremos realizar una acción alternativa si la condición no se cumple. Para eso, añadimos un bloque <code>else</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$edadUsuario</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$edadUsuario</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Acceso permitido al área de mayores de edad.&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p style='color: red;'&gt;Acceso denegado. Debes ser mayor de edad.&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<p>Para encadenar varias condiciones, usamos <code>elseif</code>. PHP evalúa cada condición en orden y ejecuta el primer bloque que encuentre verdadero. Si ninguno lo es, ejecuta el <code>else</code> final, si existe.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$nota</span> <span class="o">=</span> <span class="mf">7.5</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$nota</span> <span class="o">&gt;=</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$calificacion</span> <span class="o">=</span> <span class="s2">"Sobresaliente"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$nota</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$calificacion</span> <span class="o">=</span> <span class="s2">"Notable"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$nota</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$calificacion</span> <span class="o">=</span> <span class="s2">"Aprobado"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$calificacion</span> <span class="o">=</span> <span class="s2">"Suspenso"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Tu calificación es: &lt;strong&gt;</span><span class="si">$calificacion</span><span class="s2">&lt;/strong&gt;&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Siempre llaves <code>{}</code></p>
+<p>Aunque PHP permite omitir las llaves si un <code>if</code> o <code>else</code> solo contiene una instrucción, es una <strong>muy mala práctica</strong>. Añadir siempre las llaves <code>{}</code> hace el código más legible y previene errores difíciles de detectar cuando se añaden más líneas de código en el futuro.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">El Operador Ternario: Un Atajo Elegante</p>
+<p>Para asignaciones condicionales simples, el operador ternario <code>?:</code> es un atajo muy limpio que evita escribir un bloque <code>if/else</code> completo.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$stock</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// Si el stock es mayor que 0, el estado es 'Disponible', si no, 'Agotado'.</span>
+<span class="nv">$estado</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$stock</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="s2">"Disponible"</span> <span class="o">:</span> <span class="s2">"Agotado"</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Estado del producto: </span><span class="si">$estado</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Piensa en la página de inicio de sesión de una red social. ¿Qué tres o cuatro condiciones <code>if/elseif/else</code> crees que se comprueban cuando pulsas el botón "Iniciar Sesión"?</li>
+<li>¿Cómo modificarías el ejemplo de las notas para incluir la calificación "Matrícula de Honor" para una nota de 10?</li>
+<li>El operador de fusión de null <code>??</code> que vimos en la UD2, ¿podría considerarse una forma de estructura condicional? ¿En qué se parece y en qué se diferencia de un <code>if</code>?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h3 id="la-sentencia-switch-multiples-caminos">La Sentencia <code>switch</code>: Múltiples Caminos</h3>
+<p>Cuando necesitas comparar una única variable con muchos valores distintos, usar una larga cadena de <code>if/elseif</code> puede ser aparatoso. La sentencia <code>switch</code> ofrece una alternativa más limpia y organizada para estos casos.</p>
+<p>Funciona así:
+1.  Se evalúa la expresión dentro de <code>switch()</code>.
+2.  PHP busca un <code>case</code> cuyo valor coincida con el resultado.
+3.  Cuando encuentra una coincidencia, ejecuta el código de ese <code>case</code> hasta que encuentra una sentencia <code>break;</code>.
+4.  Si no se encuentra ninguna coincidencia, se ejecuta el bloque <code>default</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$rolUsuario</span> <span class="o">=</span> <span class="s1">'editor'</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$rolUsuario</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">'admin'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Acceso total. Puede gestionar usuarios y contenido.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'editor'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Acceso de editor. Puede crear y modificar contenido.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'suscriptor'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Acceso básico. Solo puede ver contenido.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p&gt;Rol desconocido. Acceso restringido.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">¡No olvides el <code>break</code>!</p>
+<p>Un error clásico de principiante es olvidar el <code>break;</code> al final de un <code>case</code>. Si lo omites, PHP continuará ejecutando el código de los siguientes <code>case</code> hasta que encuentre un <code>break</code> o termine el <code>switch</code>. Esto se llama "fall-through" y, aunque puede ser útil en situaciones muy específicas, casi siempre es un bug.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo de "fall-through" no deseado</span>
+<span class="nv">$diaSemana</span> <span class="o">=</span> <span class="s1">'Lunes'</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$diaSemana</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">'Lunes'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"¡Ánimo, empieza la semana!"</span><span class="p">;</span>
+        <span class="c1">// Falta el break</span>
+    <span class="k">case</span> <span class="s1">'Martes'</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">'Miércoles'</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">'Jueves'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"Día de trabajo."</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s1">'Viernes'</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"¡Por fin es viernes!"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">"¡A disfrutar del fin de semana!"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Salida: ¡Ánimo, empieza la semana!Día de trabajo.</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="la-evolucion-match-en-php-8">La Evolución: <code>match</code> en PHP 8</h4>
+<p>Desde PHP 8, existe una alternativa más moderna y segura al <code>switch</code>: la expresión <code>match</code>.</p>
+<p>Principales diferencias y ventajas:
+*   <strong>Devuelve un valor:</strong> <code>match</code> es una expresión, por lo que puedes asignarla directamente a una variable.
+*   <strong>Comparación estricta (<code>===</code>):</strong> <code>match</code> usa comparación idéntica, evitando errores de tipado débil que pueden ocurrir con <code>switch</code> (<code>==</code>).
+*   <strong>Sin <code>break</code>:</strong> No hay "fall-through". Se ejecuta solo el código de la rama coincidente.
+*   <strong>Código más conciso:</strong> Permite agrupar condiciones con comas.
+*   <strong>Debe ser exhaustivo:</strong> Si no hay una coincidencia y no hay un <code>default</code>, <code>match</code> lanzará un error, lo que te obliga a controlar todos los casos posibles.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// El mismo ejemplo de antes, pero con match</span>
+<span class="nv">$httpStatus</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+
+<span class="nv">$mensaje</span> <span class="o">=</span> <span class="k">match</span> <span class="p">(</span><span class="nv">$httpStatus</span><span class="p">)</span> <span class="p">{</span>
+    <span class="mi">200</span><span class="p">,</span> <span class="mi">201</span> <span class="o">=&gt;</span> <span class="s1">'Éxito'</span><span class="p">,</span>
+    <span class="mi">404</span> <span class="o">=&gt;</span> <span class="s1">'No encontrado'</span><span class="p">,</span>
+    <span class="mi">500</span> <span class="o">=&gt;</span> <span class="s1">'Error del servidor'</span><span class="p">,</span>
+    <span class="k">default</span> <span class="o">=&gt;</span> <span class="s1">'Código de estado desconocido'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;Respuesta del servidor: </span><span class="si">$mensaje</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span> <span class="c1">// Salida: Respuesta del servidor: Éxito</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Imagina un sistema de gestión de pedidos online. ¿En qué situación usarías un <code>switch</code> (o <code>match</code>)? Piensa en los posibles estados de un pedido.</li>
+<li>¿Qué ventajas de <code>match</code> sobre <code>switch</code> crees que es la más importante para prevenir bugs en un proyecto grande? ¿Por qué?</li>
+<li>¿Podrías reescribir el ejemplo de las calificaciones (<code>if/elseif/else</code>) usando una expresión <code>match</code>? (Pista: <code>match (true)</code> es una técnica muy potente).</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h3 id="bucles-el-arte-de-la-repeticion">Bucles: El Arte de la Repetición</h3>
+<p>Los bucles son esenciales para automatizar tareas. Permiten ejecutar un bloque de código una y otra vez sin tener que copiarlo y pegarlo.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBCdWNsZXMgZW4gUEhQCgojIyBJbmRlZmluaWRvcwotIGB3aGlsZWAKICAtIExhIGNvbmRpY2nDs24gc2UgY29tcHJ1ZWJhICoqYW50ZXMqKiBkZSBjYWRhIGl0ZXJhY2nDs24uCiAgLSBQb2Ryw61hIG5vIGVqZWN1dGFyc2UgbnVuY2EuCi0gYGRvLXdoaWxlYAogIC0gTGEgY29uZGljacOzbiBzZSBjb21wcnVlYmEgKipkZXNwdcOpcyoqIGRlIGNhZGEgaXRlcmFjacOzbi4KICAtIFNlIGVqZWN1dGEgKiphbCBtZW5vcyB1bmEgdmV6KiosIGdhcmFudGl6YWRvLgoKIyMgRGVmaW5pZG9zCi0gYGZvcmAKICAtIElkZWFsIHBhcmEgY3VhbmRvIHNhYmVzICoqY3XDoW50YXMgdmVjZXMqKiBxdWllcmVzIHJlcGV0aXIuCiAgLSBVc2EgdW4gY29udGFkb3IgKGluaWNpYWxpemFjacOzbiwgY29uZGljacOzbiwgaW5jcmVtZW50bykuCi0gYGZvcmVhY2hgCiAgLSBFbCByZXkgcGFyYSByZWNvcnJlciAqKmFycmF5cyoqLgogIC0gTm8gbmVjZXNpdGFzIHVuIGNvbnRhZG9yLCB2YSBlbGVtZW50byBwb3IgZWxlbWVudG8u</markmap-data></div>
+<h4 id="bucles-indefinidos-while-y-do-while">Bucles Indefinidos: <code>while</code> y <code>do-while</code></h4>
+<p>Se usan cuando no sabemos de antemano cuántas veces se debe repetir el bucle, solo que debe continuar mientras una condición sea verdadera.</p>
+<p>El bucle <code>while</code> comprueba la condición <strong>antes</strong> de cada iteración. Si la condición es falsa desde el principio, el bucle no se ejecuta ni una sola vez.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo: Procesar una cola de tareas hasta que se vacíe.</span>
+<span class="nv">$tareasPendientes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h3&gt;Procesando cola de tareas:&lt;/h3&gt;"</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$tareasPendientes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Quedan </span><span class="si">$tareasPendientes</span><span class="s2"> tareas. Procesando una...&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="nv">$tareasPendientes</span><span class="o">--</span><span class="p">;</span> <span class="c1">// ¡Crucial! Si no, bucle infinito.</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;¡Cola de tareas vacía!&lt;/strong&gt;&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<p>El bucle <code>do-while</code> es similar, pero comprueba la condición <strong>después</strong> de cada iteración. Esto garantiza que el código del bucle se ejecutará <strong>al menos una vez</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo: Pedir una clave hasta que sea correcta.</span>
+<span class="nv">$claveCorrecta</span> <span class="o">=</span> <span class="s2">"1234"</span><span class="p">;</span>
+<span class="nv">$intento</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// En una aplicación real, aquí obtendríamos la entrada del usuario.</span>
+    <span class="c1">// Para este ejemplo, simulamos un intento aleatorio.</span>
+    <span class="nv">$intento</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span> 
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Intento con la clave: </span><span class="si">$intento</span><span class="s2">...&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">((</span><span class="nx">string</span><span class="p">)</span><span class="nv">$intento</span> <span class="o">!==</span> <span class="nv">$claveCorrecta</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;p style='color: green;'&gt;&lt;strong&gt;Acceso concedido con la clave </span><span class="si">$intento</span><span class="s2">.&lt;/strong&gt;&lt;/p&gt;"</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<h4 id="bucles-definidos-for-y-foreach">Bucles Definidos: <code>for</code> y <code>foreach</code></h4>
+<p>El bucle <code>for</code> es el clásico cuando sabes exactamente cuántas veces quieres que se ejecute el bucle. Su estructura consta de tres partes: inicialización, condición e incremento.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo: Generar las opciones de un selector de año de nacimiento.</span>
+<span class="k">echo</span> <span class="s1">'&lt;label for="anio"&gt;Año de nacimiento:&lt;/label&gt;'</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s1">'&lt;select name="anio" id="anio"&gt;'</span><span class="p">;</span>
+
+<span class="nv">$anioActual</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'Y'</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$anioActual</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&gt;=</span> <span class="nv">$anioActual</span> <span class="o">-</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;option value='</span><span class="si">$i</span><span class="s2">'&gt;</span><span class="si">$i</span><span class="s2">&lt;/option&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="s1">'&lt;/select&gt;'</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<p>El bucle <code>foreach</code> es la estrella de PHP para trabajar con arrays. Simplifica enormemente el proceso de recorrer cada uno de sus elementos.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo: Mostrar una lista de productos.</span>
+<span class="nv">$productos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"Teclado Mecánico"</span><span class="p">,</span>
+    <span class="s2">"Ratón Gaming"</span><span class="p">,</span>
+    <span class="s2">"Monitor Ultrawide"</span><span class="p">,</span>
+    <span class="s2">"Auriculares Inalámbricos"</span>
+<span class="p">];</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;ul&gt;"</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$productos</span> <span class="k">as</span> <span class="nv">$producto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;li&gt;</span><span class="si">$producto</span><span class="s2">&lt;/li&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="s2">"&lt;/ul&gt;"</span><span class="p">;</span>
+
+<span class="c1">// También funciona con arrays asociativos</span>
+<span class="nv">$configuracion</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+    <span class="s1">'usuario'</span> <span class="o">=&gt;</span> <span class="s1">'root'</span><span class="p">,</span>
+    <span class="s1">'tema'</span> <span class="o">=&gt;</span> <span class="s1">'oscuro'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="k">echo</span> <span class="s2">"&lt;h4&gt;Configuración actual:&lt;/h4&gt;"</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$configuracion</span> <span class="k">as</span> <span class="nv">$clave</span> <span class="o">=&gt;</span> <span class="nv">$valor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;&lt;strong&gt;</span><span class="si">$clave</span><span class="s2">:&lt;/strong&gt; </span><span class="si">$valor</span><span class="s2">&lt;/p&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">¡A reflexionar!</p>
+<ol>
+<li>Si tuvieras que leer un fichero de texto línea por línea hasta llegar al final, ¿qué tipo de bucle (definido o indefinido) sería más apropiado? ¿Por qué?</li>
+<li>¿Podrías reescribir el bucle <code>for</code> del selector de año para que funcione con un <code>while</code>? ¿Cuál de los dos te parece más claro y adecuado para esa tarea?</li>
+<li>Imagina que tienes un array de usuarios y necesitas enviarles un email a todos. ¿Por qué <code>foreach</code> es la opción ideal para esta tarea?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h3 id="controlando-el-flujo-break-y-continue">Controlando el Flujo: <code>break</code> y <code>continue</code></h3>
+<p>A veces, necesitamos un control más fino sobre nuestros bucles. <code>break</code> y <code>continue</code> nos dan ese poder.</p>
+<ul>
+<li><code>break</code>: Rompe la ejecución del bucle (o <code>switch</code>) actual y sale de él inmediatamente.</li>
+<li><code>continue</code>: Detiene la iteración actual y salta directamente al inicio de la siguiente.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Bucle as "Bucle for (i=1 a 5)"
+    participant Codigo as "Código dentro del bucle"
+
+    loop Iteraciones
+        Bucle-&gt;&gt;Codigo: "Inicia iteración con i"
+        Codigo-&gt;&gt;Codigo: "echo 'Procesando ' . i"
+        Codigo--&gt;&gt;Bucle: "{i es igual a 3?}"
+
+        alt Si i == 3
+            Bucle-&gt;&gt;Bucle: "continue: Salta el resto"
+        else No
+            Bucle-&gt;&gt;Codigo: "Sigue la ejecución normal"
+            Codigo-&gt;&gt;Codigo: "echo '...terminado'"
+        end
+    end
+    Bucle--&gt;&gt;Bucle: "Fin del bucle"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ejemplo: Buscar el primer usuario administrador en una lista.</span>
+<span class="nv">$usuarios</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Juan (user)'</span><span class="p">,</span> <span class="s1">'Ana (user)'</span><span class="p">,</span> <span class="s1">'Pedro (admin)'</span><span class="p">,</span> <span class="s1">'Marta (user)'</span><span class="p">];</span>
+
+<span class="nv">$adminEncontrado</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$usuarios</span> <span class="k">as</span> <span class="nv">$usuario</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"&lt;p&gt;Revisando a </span><span class="si">$usuario</span><span class="s2">...&lt;/p&gt;"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">str_contains</span><span class="p">(</span><span class="nv">$usuario</span><span class="p">,</span> <span class="s1">'(admin)'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$adminEncontrado</span> <span class="o">=</span> <span class="nv">$usuario</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;p style='color: blue;'&gt;¡Administrador encontrado! Saliendo del bucle.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span> <span class="c1">// No necesitamos seguir buscando</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Ejemplo: Imprimir solo los números pares.</span>
+<span class="k">echo</span> <span class="s2">"&lt;h4&gt;Números pares del 1 al 10:&lt;/h4&gt;"</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span> <span class="c1">// Si el número es impar, saltamos a la siguiente iteración</span>
+    <span class="p">}</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="si">$i</span><span class="s2"> "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Alternativas a <code>break</code> y <code>continue</code></p>
+<p>Aunque <code>break</code> y <code>continue</code> son herramientas válidas, algunos programadores prefieren evitarlas en la medida de lo posible para mantener un único punto de salida en los bucles. Esto se puede lograr con variables de control (flags) o reestructurando la lógica del <code>if</code>. Es una cuestión de estilo, pero es bueno conocer ambas aproximaciones.</p>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>El control de flujo es la esencia de la programación. No hay aplicación, por simple que sea, que no lo utilice masivamente.
+*   <strong>eCommerce (Magento, PrestaShop):</strong> Cuando añades un producto al carrito, un <code>if ($stock &gt; 0)</code> decide si puedes hacerlo. El listado de productos de una categoría se genera con un <code>foreach</code> que recorre los resultados de la base de datos. Un <code>switch</code> gestiona el estado del pedido (<code>procesando</code>, <code>enviado</code>, <code>entregado</code>).
+*   <strong>CMS (WordPress, Drupal):</strong> El famoso "Loop" de WordPress es, en esencia, un bucle <code>while</code> que dice <code>while (have_posts())</code>. Dentro de ese bucle, se decide con <code>if (is_single())</code> si mostrar una entrada completa o con <code>if (is_archive())</code> si mostrar un extracto.
+*   <strong>Redes Sociales (Facebook, X):</strong> Para mostrar tu feed, un <code>foreach</code> recorre una lista de publicaciones. Dentro de cada una, múltiples <code>if</code> deciden si mostrar el botón "Me gusta" (si no le has dado ya), si eres el autor para mostrar el botón "Editar", o si el contenido es para mayores de 18 años para mostrar una advertencia.</p>
+<p>Dominar el control de flujo es, literalmente, dominar la capacidad de dar vida y lógica a tus aplicaciones web.</p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para seguir profundizando en cómo dirigir tu código, aquí tienes algunos recursos de primera:</p>
+<ol>
+<li><strong>Documentación Oficial de PHP sobre Estructuras de Control</strong>: La fuente de la verdad. Siempre es el mejor lugar para consultar la sintaxis precisa y todos los detalles.<a href="https://www.php.net/manual/en/language.control-structures.php">Documentación Oficial</a></li>
+<li><strong>PHP: The Right Way - Control Structures</strong>: Una guía excelente que no solo explica el "cómo" sino también el "porqué" de las buenas prácticas al usar estas estructuras.<a href="https://phptherightway.com/">PHP: The Right Way</a></li>
+<li><strong>GeeksforGeeks - PHP Decision Making</strong>: Ofrece ejemplos claros y variados de <code>if</code>, <code>else</code> y <code>switch</code>, ideal para reforzar los conceptos básicos.<a href="https://www.geeksforgeeks.org/php/php-decision-making/">GeeksforGeeks</a></li>
+</ol>
+<p><br/></p><hr class="double"/><br/><p></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<p><a href="../03-Control-Ejercicios/">=&gt; EJERCICIOS de Control de Flujo</a></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

@@ -1,0 +1,3171 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/04-Timers-Asincronia-Ejercicios-Manus/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>04 Timers Asincronia Ejercicios Manus - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-practicos-timers-event-loop-y-asincronia-en-nodejs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 Timers Asincronia Ejercicios Manus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-IntroNodeJS/" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/09-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/10-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/11-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/12-MVC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/13-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/14-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/15-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/16-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/17-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2-PHP/18-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-IntroNodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-IntroTypeScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-NodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Timers-Asincronia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-FileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-ModulosHTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GestionPaquetes-NPM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Nodemon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/01-IntroNestJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/02-CreacionRecursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/03-TypeORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/04-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/05-AlacenamientoFicheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/06-WebSockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/07-EndpointsAvanzados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/08-MongoDB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/09-Seguridad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/10-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/11-Perfiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NestJS/12-Despliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Consolidación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-diagnostico-de-bloqueo-sincrono-vs-asincrono-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Diagnóstico de Bloqueo: Síncrono vs Asíncrono | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Diagnóstico de Bloqueo: Síncrono vs Asíncrono | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uso-basico-de-timers-settimeout-y-setinterval-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Uso Básico de Timers: setTimeout y setInterval | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2) Uso Básico de Timers: setTimeout y setInterval | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-el-orden-de-ejecucion-settimeout0-vs-setimmediate-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) El Orden de Ejecución: setTimeout(0) vs setImmediate | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) El Orden de Ejecución: setTimeout(0) vs setImmediate | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-paralelismo-asincrono-con-promiseall-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Paralelismo Asíncrono con Promise.all | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Paralelismo Asíncrono con Promise.all | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-control-de-vida-del-proceso-con-unref-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Control de Vida del Proceso con unref() | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Control de Vida del Proceso con unref() | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-microtasks-prioridad-de-processnexttick-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Microtasks: Prioridad de process.nextTick | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Microtasks: Prioridad de process.nextTick | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Refuerzo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-depuracion-de-codigo-el-bug-del-orden-determinista-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Depuración de Código: El Bug del Orden Determinista | Nivel: Medio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7) Depuración de Código: El Bug del Orden Determinista | Nivel: Medio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-analisis-de-microtasks-nexttick-vs-promise-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Análisis de Microtasks: nextTick vs Promise | Nivel: Medio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8) Análisis de Microtasks: nextTick vs Promise | Nivel: Medio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Ampliación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-investigacion-estrategias-de-concurrencia-y-fallos-nivel-alto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Investigación: Estrategias de Concurrencia y Fallos | Nivel: Alto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9) Investigación: Estrategias de Concurrencia y Fallos | Nivel: Alto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa-promiseall-vs-promiseallsettled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativa: Promise.all vs Promise.allSettled
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso-en-nexus-server-monitor-nsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uso en Nexus Server Monitor (NSM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uso en Nexus Server Monitor (NSM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peer-review-instrucciones-para-el-companero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review (Instrucciones para el compañero):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-reto-de-codificacion-evitando-el-bloqueo-de-cpu-nivel-alto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Reto de Codificación: Evitando el Bloqueo de CPU | Nivel: Alto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10) Reto de Codificación: Evitando el Bloqueo de CPU | Nivel: Alto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codigo-de-bloqueo-demostracion-del-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Código de Bloqueo (Demostración del Problema)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propuesta-de-solucion-worker-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propuesta de Solución (Worker Threads)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta de Solución (Worker Threads)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peer-review-instrucciones-para-el-companero_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review (Instrucciones para el compañero):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: T03-Ejercicios-Asincronia-NodeJS.md --><h1 id="ejercicios-practicos-timers-event-loop-y-asincronia-en-nodejs">Ejercicios Prácticos: Timers, Event Loop y Asincronía en Node.js</h1>
+<p><strong>Narrativa del Proyecto: Nexus Server Monitor (NSM)</strong></p>
+<p>El equipo de DevOps de <strong>Innovatech</strong> está desarrollando <strong>Nexus Server Monitor (NSM)</strong>, una herramienta crítica que debe ser extremadamente eficiente y nunca bloquearse, ya que monitoriza la salud de los servidores en tiempo real. Para lograr esto, es fundamental dominar el modelo asíncrono de Node.js, asegurando que las operaciones de I/O (lectura de logs, peticiones de red) no detengan el hilo principal.</p>
+<hr>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<h3 id="1-diagnostico-de-bloqueo-sincrono-vs-asincrono-nivel-facil">1) Diagnóstico de Bloqueo: Síncrono vs Asíncrono | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">1) Diagnóstico de Bloqueo: Síncrono vs Asíncrono | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Comprender la diferencia entre las operaciones síncronas y asíncronas del módulo <code>fs</code> y su impacto en el Event Loop.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>io-test.ts</code>.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Analiza el siguiente código y predice el orden de la salida. Luego, crea el archivo y verifica tu predicción.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio de la solicitud'</span><span class="p">);</span>
+
+<span class="c1">// Tarea A: Asíncrona (Non-blocking)</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'package.json'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Tarea A (Lectura de archivo asíncrona)'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Tarea B: Síncrona (Blocking)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">'package.json'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Tarea B (Lectura de archivo síncrona)'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Fin del script principal'</span><span class="p">);</span>
+</code></pre></div>
+<ol>
+<li>¿Cuál es el orden de la salida si <code>package.json</code> es un archivo pequeño?</li>
+<li>¿Qué pasaría si la lectura síncrona (<code>fs.readFileSync</code>) tardara 5 segundos? ¿Qué mensaje se vería afectado?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En NSM, usar <code>fs.readFileSync</code> para leer un log gigante bloquearía el monitor, impidiendo que procese otras alertas. Por ello, todas las operaciones de I/O deben ser asíncronas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<ol>
+<li>
+<p><strong>Orden de Salida (Archivo pequeño):</strong>
+</p><div class="highlight"><pre><span></span><code>1. Inicio de la solicitud
+2. Tarea B (Lectura de archivo síncrona)
+4. Fin del script principal
+3. Tarea A (Lectura de archivo asíncrona)
+</code></pre></div>
+<strong>Explicación:</strong> El código síncrono (1, 2, 4) se ejecuta primero. La Tarea A es delegada a Libuv y su callback se ejecuta solo cuando el Event Loop se vacía. La Tarea B, aunque es I/O, es síncrona y bloquea el hilo principal hasta que termina.<p></p>
+</li>
+<li>
+<p><strong>Si <code>fs.readFileSync</code> tardara 5 segundos:</strong> El mensaje <code>4. Fin del script principal</code> se retrasaría 5 segundos, ya que el hilo principal estaría bloqueado por la Tarea B.</p>
+</li>
+</ol>
+<h3 id="2-uso-basico-de-timers-settimeout-y-setinterval-nivel-facil">2) Uso Básico de Timers: <code>setTimeout</code> y <code>setInterval</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">2) Uso Básico de Timers: <code>setTimeout</code> y <code>setInterval</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Implementar tareas temporizadas para simular el <em>polling</em> (verificación periódica) y la ejecución diferida de comandos.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>timers-monitor.ts</code>.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>El NSM necesita dos funcionalidades:</p>
+<ol>
+<li><strong>Alerta de Inicio:</strong> Usa <code>setTimeout</code> para imprimir un mensaje de "Sistema de Monitoreo Iniciado" exactamente 2 segundos después de que el script comience.</li>
+<li><strong>Verificación Periódica:</strong> Usa <code>setInterval</code> para simular una verificación de estado cada 500 milisegundos. Esta verificación debe detenerse automáticamente después de 5 intentos usando <code>clearInterval</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los timers son la base para el <em>polling</em> de APIs, la re-conexión automática a bases de datos y la ejecución de tareas programadas dentro de un servidor.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// timers-monitor.ts</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Iniciando script...'</span><span class="p">);</span>
+
+<span class="c1">// 1. Alerta de Inicio (Ejecución diferida)</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'✅ Sistema de Monitoreo Iniciado (2 segundos después)'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="c1">// 2. Verificación Periódica (Polling)</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">intentos</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">MAX_INTENTOS</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">intervalo</span><span class="o">:</span><span class="w"> </span><span class="kt">NodeJS.Timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">intentos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[Polling] Verificando estado del servidor... Intento </span><span class="si">${</span><span class="nx">intentos</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">intentos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">MAX_INTENTOS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalo</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'🛑 Verificación periódica finalizada.'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'El script principal continúa ejecutándose...'</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3-el-orden-de-ejecucion-settimeout0-vs-setimmediate-nivel-facil">3) El Orden de Ejecución: <code>setTimeout(0)</code> vs <code>setImmediate</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">3) El Orden de Ejecución: <code>setTimeout(0)</code> vs <code>setImmediate</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Entender la diferencia de prioridad entre <code>setTimeout</code> (Fase Timers) y <code>setImmediate</code> (Fase Check) en el Event Loop.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>event-order.ts</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe el siguiente código y predice el orden de la salida.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Síncrono'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. setTimeout(0) - Fase Timers'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. setImmediate - Fase Check'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Fin Síncrono'</span><span class="p">);</span>
+</code></pre></div>
+<ol>
+<li>¿Por qué el resultado es a menudo no determinista (a veces <code>setTimeout</code> primero, a veces <code>setImmediate</code> primero)?</li>
+<li>¿Qué se ejecuta siempre antes que ambos?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>La precisión en el orden es vital. <code>setImmediate</code> se usa a menudo para tareas que deben ejecutarse <em>inmediatamente</em> después de la I/O, mientras que <code>setTimeout</code> es para un retraso mínimo.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<p><strong>Orden de Salida (Típico, pero no garantizado):</strong>
+</p><div class="highlight"><pre><span></span><code>1. Síncrono
+2. Fin Síncrono
+3. setTimeout(0) - Fase Timers (o 4)
+4. setImmediate - Fase Check (o 3)
+</code></pre></div><p></p>
+<ol>
+<li><strong>No Determinista:</strong> Al inicio del script, el tiempo que tarda el sistema en preparar el Event Loop puede ser mayor o menor que el <code>delay</code> mínimo de <code>setTimeout(0)</code>. Si el tiempo de preparación es mayor que 1ms, el timer puede estar listo antes de que el Event Loop llegue a la fase Check. Si no, <code>setImmediate</code> puede ejecutarse primero.</li>
+<li><strong>Siempre antes:</strong> El código síncrono (<code>1. Síncrono</code> y <code>2. Fin Síncrono</code>) se ejecuta siempre antes de que el Event Loop comience a procesar Macrotasks.</li>
+</ol>
+<h3 id="4-paralelismo-asincrono-con-promiseall-nivel-facil">4) Paralelismo Asíncrono con <code>Promise.all</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">4) Paralelismo Asíncrono con <code>Promise.all</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Utilizar <code>Promise.all</code> para ejecutar múltiples tareas asíncronas de forma concurrente y esperar a que todas finalicen.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>concurrent-tasks.ts</code>.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>El NSM necesita consultar el estado de tres microservicios a la vez.</p>
+<ol>
+<li>Crea una función asíncrona <code>simularPeticion(nombre: string, tiempo: number)</code> que use <code>setTimeout</code> (o la versión con promesas de <code>node:timers/promises</code>) para simular una latencia. Debe imprimir "Iniciando [nombre]" y "Finalizando [nombre]" y devolver el nombre.</li>
+<li>Llama a <code>Promise.all</code> con tres peticiones con diferentes tiempos (ej: 3s, 1s, 2s).</li>
+<li>Mide el tiempo total de ejecución usando <code>console.time</code> y <code>console.timeEnd</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p><code>Promise.all</code> es la herramienta fundamental para reducir la latencia en APIs, ya que permite que el tiempo de respuesta sea igual al de la tarea más lenta, no a la suma de todas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// concurrent-tasks.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setTimeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:timers/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">simularPeticion</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tiempo</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">] Iniciando... (Tardará </span><span class="si">${</span><span class="nx">tiempo</span><span class="si">}</span><span class="sb">ms)`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">tiempo</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">] Finalizando.`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">nombre</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">ejecutarConcurrente</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Tiempo Total de Carga'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">            </span><span class="nx">simularPeticion</span><span class="p">(</span><span class="s1">'Microservicio A'</span><span class="p">,</span><span class="w"> </span><span class="mf">3000</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">simularPeticion</span><span class="p">(</span><span class="s1">'Microservicio B'</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">simularPeticion</span><span class="p">(</span><span class="s1">'Microservicio C'</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">),</span>
+<span class="w">        </span><span class="p">]);</span>
+
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'\n✅ Todas las tareas completadas. Resultados:'</span><span class="p">,</span><span class="w"> </span><span class="nx">resultados</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'❌ Una de las peticiones falló.'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Tiempo Total de Carga'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">ejecutarConcurrente</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5-control-de-vida-del-proceso-con-unref-nivel-facil">5) Control de Vida del Proceso con <code>unref()</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">5) Control de Vida del Proceso con <code>unref()</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Aprender a usar <code>timer.unref()</code> para permitir que el proceso de Node.js termine incluso si un timer secundario sigue activo.</p>
+<h5 id="setup-inicial_4"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>unref-logger.ts</code>.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<p>El NSM tiene una tarea principal y un <em>logger</em> de métricas en segundo plano.</p>
+<ol>
+<li>Crea un <code>setInterval</code> llamado <code>logger</code> que se ejecute cada 100ms e imprima "Logueando métricas...".</li>
+<li>Aplica <code>logger.unref()</code> al intervalo.</li>
+<li>Usa un <code>setTimeout</code> de 2 segundos para simular la finalización de la "Tarea Principal".</li>
+<li>Observa y explica por qué el proceso termina después de 2 segundos, a pesar de que el <code>setInterval</code> sigue teóricamente activo.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p><code>unref()</code> es crucial para tareas de limpieza, métricas o <em>heartbeats</em> que no deben impedir que el servidor se apague o reinicie limpiamente.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// unref-logger.ts</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Iniciando Tarea Principal...'</span><span class="p">);</span>
+
+<span class="c1">// Tarea secundaria (Logger)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">NodeJS.Timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'[Logger] Enviando métricas en segundo plano...'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+
+<span class="c1">// 1. Desreferenciar el timer. Si es lo único que queda, Node puede salir.</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">unref</span><span class="p">();</span>
+
+<span class="c1">// Tarea principal que termina después de 2 segundos</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'✅ Tarea Principal Finalizada.'</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Node.js saldrá aquí porque el 'logger' ya no mantiene el Event Loop vivo.</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'El Event Loop está activo, pero el logger es secundario.'</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="6-microtasks-prioridad-de-processnexttick-nivel-facil">6) Microtasks: Prioridad de <code>process.nextTick</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">6) Microtasks: Prioridad de <code>process.nextTick</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p>Demostrar la alta prioridad de <code>process.nextTick</code> sobre todas las Macrotasks (Timers y Immediate).</p>
+<h5 id="setup-inicial_5"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>microtask-priority.ts</code>.</p>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe el siguiente código y predice el orden de la salida.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio Síncrono'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. setTimeout(0)'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'5. setImmediate'</span><span class="p">));</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Promise.then()'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. process.nextTick()'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1.5. Fin Síncrono'</span><span class="p">);</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p><code>process.nextTick</code> se usa para garantizar que una función se ejecute de forma asíncrona, pero <em>antes</em> de que el Event Loop pase a la siguiente fase, lo que es útil para inicialización de eventos.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<p><strong>Orden de Salida (Garantizado):</strong>
+</p><div class="highlight"><pre><span></span><code>1. Inicio Síncrono
+1.5. Fin Síncrono
+2. process.nextTick()
+3. Promise.then()
+4. setTimeout(0) (o 5)
+5. setImmediate (o 4)
+</code></pre></div>
+<strong>Explicación:</strong> El código síncrono se ejecuta primero. Luego, el Event Loop vacía la cola de Microtasks: <code>process.nextTick</code> tiene la máxima prioridad, seguido por las Promesas. Finalmente, se pasa a las Macrotasks (Timers y Check), cuyo orden es no determinista en este caso.<p></p>
+<hr>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<h3 id="7-depuracion-de-codigo-el-bug-del-orden-determinista-nivel-medio">7) Depuración de Código: El Bug del Orden Determinista | Nivel: Medio</h3>
+<div class="admonition warning">
+<p class="admonition-title">7) Depuración de Código: El Bug del Orden Determinista | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p><strong>Encuentra y corrige el bug</strong> en el orden de ejecución entre <code>setTimeout(0)</code> y <code>setImmediate</code> cuando se ejecuta dentro de un callback de I/O.</p>
+<h5 id="setup-inicial_6"><strong>Setup Inicial:</strong></h5>
+<p>El siguiente código simula una lectura de archivo y tiene un problema de orden.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// bug-order.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="c1">// Simulamos una lectura de archivo (I/O)</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'package.json'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Dentro del Callback de I/O (Fase Poll) ---'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// El desarrollador quiere que el timer se ejecute primero</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Tarea de Timer'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Tarea Inmediata'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio del script'</span><span class="p">);</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Ejecuta el código y observa la salida. ¿Qué se ejecuta primero (<code>setTimeout</code> o <code>setImmediate</code>)?</li>
+<li><strong>Corrige</strong> el código para que la <code>Tarea de Timer</code> se ejecute <strong>siempre</strong> antes que la <code>Tarea Inmediata</code>, sin cambiar los tiempos de los timers.</li>
+<li><strong>Pista:</strong> El material didáctico indica que dentro de un callback de I/O, el orden es determinista. ¿Qué Microtask tiene la máxima prioridad y podría usarse para "colarse" antes de la fase Check?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Garantizar el orden de ejecución es vital para la integridad de los datos. Si una tarea de limpieza (<code>setImmediate</code>) se ejecuta antes de que se complete una tarea crítica (<code>setTimeout</code>), puede haber errores.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<ol>
+<li><strong>Observación:</strong> Al ejecutar el código, <code>setImmediate</code> se ejecuta <strong>primero</strong> (2. Tarea Inmediata), porque el callback de <code>fs.readFile</code> termina en la fase <strong>Poll</strong>, y la siguiente fase es <strong>Check</strong> (donde vive <code>setImmediate</code>).</li>
+<li><strong>Corrección:</strong> Para que el <code>setTimeout</code> se ejecute primero, debemos elevar su prioridad a Microtask, o usar una Microtask para forzar la ejecución del <code>setTimeout</code> antes de que el Event Loop llegue a la fase Check. La solución más simple es usar <code>process.nextTick</code> para envolver el <code>setTimeout</code>, aunque esto no garantiza que el <code>setTimeout</code> se ejecute en la misma vuelta. Una solución más directa para forzar el orden es usar <code>process.nextTick</code> para envolver el <code>setTimeout</code> y que se ejecute antes de que el Event Loop pase a la fase Check.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// bug-order.ts (CORREGIDO)</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="c1">// Simulamos una lectura de archivo (I/O)</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'package.json'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Dentro del Callback de I/O (Fase Poll) ---'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// CORRECCIÓN: Usamos process.nextTick para forzar la ejecución</span>
+<span class="w">    </span><span class="c1">// de la Tarea de Timer en la cola de Microtasks, que se vacía</span>
+<span class="w">    </span><span class="c1">// ANTES de pasar a la fase Check (setImmediate).</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Tarea de Timer'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Tarea Inmediata'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio del script'</span><span class="p">);</span>
+
+<span class="c1">// NOTA: La solución más simple es usar process.nextTick para envolver el setTimeout.</span>
+<span class="c1">// Sin embargo, la solución más limpia es simplemente usar process.nextTick para la tarea</span>
+<span class="c1">// que debe ejecutarse primero, ya que tiene la máxima prioridad.</span>
+</code></pre></div>
+<h3 id="8-analisis-de-microtasks-nexttick-vs-promise-nivel-medio">8) Análisis de Microtasks: <code>nextTick</code> vs <code>Promise</code> | Nivel: Medio</h3>
+<div class="admonition warning">
+<p class="admonition-title">8) Análisis de Microtasks: <code>nextTick</code> vs <code>Promise</code> | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Demostrar la diferencia de prioridad dentro de la cola de Microtasks entre <code>process.nextTick</code> y <code>Promise.resolve().then()</code>.</p>
+<h5 id="setup-inicial_7"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>microtask-race.ts</code>.</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<p>Escribe el siguiente código, que anida una Microtask dentro de otra.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio'</span><span class="p">);</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Promise Externa'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3.5. nextTick Anidado'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. nextTick Externo'</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2.5. Promise Anidada'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Fin'</span><span class="p">);</span>
+</code></pre></div>
+<ol>
+<li>Predice el orden de la salida, prestando especial atención a los elementos anidados (<code>3.5</code> y <code>2.5</code>).</li>
+<li>Explica por qué <code>process.nextTick</code> siempre se ejecuta antes que las Promesas, incluso si la Promesa fue declarada antes.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta jerarquía es importante al diseñar librerías que necesitan garantizar que su código se ejecute antes que el código de terceros que usa Promesas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<p><strong>Orden de Salida (Garantizado):</strong>
+</p><div class="highlight"><pre><span></span><code>1. Inicio
+4. Fin
+2. nextTick Externo
+3.5. nextTick Anidado
+3. Promise Externa
+2.5. Promise Anidada
+</code></pre></div><p></p>
+<p><strong>Explicación:</strong>
+1.  <strong>Síncrono (1, 4):</strong> Se ejecuta primero.
+2.  <strong><code>process.nextTick</code> (2):</strong> Tiene la máxima prioridad en la cola de Microtasks. Se ejecuta.
+3.  <strong><code>nextTick Anidado</code> (3.5):</strong> Al ejecutarse <code>2</code>, se añade <code>3.5</code> a la cola de <code>nextTick</code>. Como la cola de <code>nextTick</code> se vacía completamente antes de pasar a las Promesas, <code>3.5</code> se ejecuta inmediatamente después de <code>2</code>.
+4.  <strong><code>Promise Externa</code> (3):</strong> Se ejecuta la primera Promesa.
+5.  <strong><code>Promise Anidada</code> (2.5):</strong> Al ejecutarse <code>2</code>, se añade <code>2.5</code> a la cola de Promesas. Se ejecuta después de <code>3</code>.</p>
+<hr>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<h3 id="9-investigacion-estrategias-de-concurrencia-y-fallos-nivel-alto">9) Investigación: Estrategias de Concurrencia y Fallos | Nivel: Alto</h3>
+<div class="admonition danger">
+<p class="admonition-title">9) Investigación: Estrategias de Concurrencia y Fallos | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Investigar y comparar dos estrategias avanzadas de manejo de concurrencia en Promesas, cruciales para el desarrollo de microservicios robustos.</p>
+<h5 id="setup-inicial_8"><strong>Setup Inicial:</strong></h5>
+<p>No se requiere código inicial.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<p>El NSM necesita consultar el estado de 100 servidores. Si uno falla, el reporte no debe detenerse.</p>
+<ol>
+<li>Investiga la diferencia clave entre <code>Promise.all()</code> y <code>Promise.allSettled()</code>.</li>
+<li>Documenta con ejemplos de código (conceptuales) cómo usarías cada uno en el contexto de NSM:<ul>
+<li><strong><code>Promise.all</code>:</strong> Para tareas donde el fallo de una implica el fallo de todo el sistema (ej: iniciar 3 servicios críticos).</li>
+<li><strong><code>Promise.allSettled</code>:</strong> Para tareas independientes donde necesitas el resultado de todas, incluso si algunas fallan (ej: consultar el estado de 100 servidores).</li>
+</ul>
+</li>
+<li><strong>Peer Review:</strong> Incluye una sección de <em>Peer Review</em> donde se pida a un compañero que evalúe si el uso de <code>Promise.allSettled</code> introduce un riesgo de seguridad al ignorar errores. ¿Cómo debería el desarrollador manejar los <code>rejections</code> después de usar <code>allSettled</code>?</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En producción, <code>Promise.allSettled</code> es la herramienta preferida para tareas de <em>batch</em> (procesamiento por lotes) donde la resiliencia es más importante que la velocidad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<h4 id="comparativa-promiseall-vs-promiseallsettled">Comparativa: <code>Promise.all</code> vs <code>Promise.allSettled</code></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;"><code>Promise.all(promises)</code></th>
+<th style="text-align: left;"><code>Promise.allSettled(promises)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Comportamiento ante Fallo</strong></td>
+<td style="text-align: left;"><strong>Fail-Fast:</strong> Si una sola promesa es rechazada (<code>reject</code>), <code>Promise.all</code> se rechaza inmediatamente con el error de la primera promesa.</td>
+<td style="text-align: left;"><strong>Resiliente:</strong> Espera a que <em>todas</em> las promesas se resuelvan o se rechacen.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor de Retorno</strong></td>
+<td style="text-align: left;">Un array de valores de las promesas resueltas.</td>
+<td style="text-align: left;">Un array de objetos de estado, cada uno con <code>{ status: 'fulfilled' | 'rejected', value | reason }</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caso de Uso Principal</strong></td>
+<td style="text-align: left;">Tareas interdependientes donde el éxito de todas es necesario.</td>
+<td style="text-align: left;">Tareas independientes (batch) donde se necesita un reporte completo de todos los resultados.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uso-en-nexus-server-monitor-nsm">Uso en Nexus Server Monitor (NSM)</h4>
+<p><strong>1. Uso de <code>Promise.all</code> (Fallo Crítico):</strong>
+Se usa para el inicio de los componentes principales. Si el servidor de logs o la base de datos no están listos, el monitor no puede arrancar.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">iniciarServiciosCriticos</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">logServer</span><span class="p">,</span><span class="w"> </span><span class="nx">dbConnection</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">            </span><span class="nx">iniciarLogServer</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Si falla, el catch se activa inmediatamente</span>
+<span class="w">            </span><span class="nx">conectarBaseDeDatos</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">cargarConfiguracion</span><span class="p">()</span>
+<span class="w">        </span><span class="p">]);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Servicios críticos iniciados con éxito.'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'FATAL: No se pudo iniciar un servicio crítico. Abortando.'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>2. Uso de <code>Promise.allSettled</code> (Reporte de Estado):</strong>
+Se usa para consultar el estado de 100 servidores. Si 5 fallan, queremos saber cuáles fallaron, pero seguir con el reporte de los 95 restantes.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">obtenerReporteCompleto</span><span class="p">(</span><span class="nx">servidores</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">promesas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">servidores</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">servidor</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">verificarEstado</span><span class="p">(</span><span class="nx">servidor</span><span class="p">));</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">(</span><span class="nx">promesas</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fallos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resultados</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'rejected'</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">exitos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resultados</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'fulfilled'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Reporte: </span><span class="si">${</span><span class="nx">exitos</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> OK, </span><span class="si">${</span><span class="nx">fallos</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> Fallos.`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">fallos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Es crucial manejar el error aquí para que no sea ignorado</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Servidor </span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb"> falló. Razón:`</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">PromiseRejectedResult</span><span class="p">).</span><span class="nx">reason</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="peer-review-instrucciones-para-el-companero"><strong>Peer Review (Instrucciones para el compañero):</strong></h5>
+<ul>
+<li><strong>Riesgo de Seguridad/Ignorar Errores:</strong> El uso de <code>Promise.allSettled</code> no ignora errores, sino que los encapsula como objetos de estado. El riesgo es que el desarrollador <strong>no revise</strong> la propiedad <code>reason</code> de los objetos <code>rejected</code>.</li>
+<li><strong>Manejo de Rejections:</strong> El desarrollador debe iterar sobre el array de resultados y buscar explícitamente los objetos con <code>status: 'rejected'</code>. Si no se hace, el error pasa silenciosamente, lo cual es una mala práctica. El código de ejemplo maneja correctamente los <code>rejections</code> al filtrarlos y loguear la razón.</li>
+</ul>
+<h3 id="10-reto-de-codificacion-evitando-el-bloqueo-de-cpu-nivel-alto">10) Reto de Codificación: Evitando el Bloqueo de CPU | Nivel: Alto</h3>
+<div class="admonition danger">
+<p class="admonition-title">10) Reto de Codificación: Evitando el Bloqueo de CPU | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Identificar una tarea CPU-Bound y proponer una solución para evitar que bloquee el Event Loop, usando el concepto de Worker Threads o Partitioning.</p>
+<h5 id="setup-inicial_9"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>cpu-blocker.ts</code>.</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>El NSM necesita calcular un <em>hash</em> de seguridad muy complejo para validar la integridad de un archivo. Este cálculo es CPU-Bound.</p>
+<ol>
+<li>Crea una función síncrona <code>fibonacci(n: number)</code> que calcule el número de Fibonacci para un <code>n</code> grande (ej: 40).</li>
+<li>Simula un servidor HTTP simple (usando <code>http.createServer</code>) con dos rutas:<ul>
+<li><code>/fib</code>: Ejecuta <code>fibonacci(40)</code> de forma síncrona.</li>
+<li><code>/status</code>: Simplemente responde "OK" inmediatamente.</li>
+</ul>
+</li>
+<li><strong>Prueba de Bloqueo:</strong> Lanza una petición a <code>/fib</code> y, mientras espera, lanza una petición a <code>/status</code>. Observa que <code>/status</code> se retrasa.</li>
+<li><strong>Propuesta de Solución (Conceptual):</strong> Describe cómo se modificaría el código de <code>/fib</code> para delegar el cálculo a un <strong>Worker Thread</strong> (módulo <code>worker_threads</code>), liberando el hilo principal. No es necesario implementar el Worker Thread completo, solo el <em>código conceptual</em> de cómo se lanzaría.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Cualquier tarea que consuma más de 10ms de CPU (cifrado, compresión, cálculo intensivo) debe ser movida fuera del Event Loop para evitar un <em>Denial of Service</em> (DoS) accidental.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<h4 id="codigo-de-bloqueo-demostracion-del-problema">Código de Bloqueo (Demostración del Problema)</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// cpu-blocker.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="c1">// Tarea CPU-Bound (Síncrona)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/fib'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Fibonacci'</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// ESTO BLOQUEA EL EVENT LOOP</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fibonacci</span><span class="p">(</span><span class="mf">40</span><span class="p">);</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Fibonacci'</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="sb">`Resultado de Fib(40): </span><span class="si">${</span><span class="nx">result</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/status'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Esta ruta se retrasa porque el Event Loop está bloqueado por /fib</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'OK - Servidor Respondiendo (Lentamente)'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">404</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Not Found'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Servidor escuchando en puerto 3000. Prueba /fib y /status.'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="propuesta-de-solucion-worker-threads">Propuesta de Solución (Worker Threads)</h4>
+<p>La solución es mover la función <code>fibonacci(40)</code> fuera del hilo principal de Node.js, delegándola a un hilo de trabajo real (Worker Thread).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Solución Conceptual con Worker Threads</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Worker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'worker_threads'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Se importaría el módulo</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/fib'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 1. En lugar de ejecutar fibonacci(40) aquí, creamos un Worker</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Worker</span><span class="p">(</span><span class="s1">'./worker.js'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">workerData</span><span class="o">:</span><span class="w"> </span><span class="kt">40</span><span class="w"> </span><span class="c1">// Pasamos el argumento</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// 2. El hilo principal sigue libre para atender otras peticiones (como /status)</span>
+
+<span class="w">        </span><span class="nx">worker</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 3. Cuando el Worker termina, nos envía el resultado</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="sb">`Resultado de Fib(40) (Worker): </span><span class="si">${</span><span class="nx">result</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="nx">worker</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Error en el Worker'</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/status'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Esta ruta responde inmediatamente, sin esperar a Fibonacci</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'OK - Servidor Respondiendo (Rápidamente)'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h5 id="peer-review-instrucciones-para-el-companero_1"><strong>Peer Review (Instrucciones para el compañero):</strong></h5>
+<ul>
+<li><strong>Evaluación:</strong> ¿La solución con Worker Threads resuelve el problema de bloqueo del Event Loop?</li>
+<li><strong>Pregunta:</strong> ¿Qué desventaja introduce el uso de Worker Threads en términos de consumo de memoria y latencia inicial (overhead)? (Pista: Crear un hilo es costoso).</li>
+<li><strong>Alternativa:</strong> ¿Podría haberse usado <code>setImmediate</code> para resolver este problema? (Respuesta: No, porque <code>setImmediate</code> solo divide la tarea en Macrotasks, pero sigue usando el mismo hilo principal, lo que no resuelve el problema de CPU-Bound).
+```</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

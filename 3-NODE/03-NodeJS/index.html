@@ -1,0 +1,3850 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/03-NodeJS/" rel="canonical"/>
+<link href="../02-IntroTypeScript/" rel="prev"/>
+<link href="../04-Timers-Asincronia/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>03 - NodeJS - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#nodejs">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              03 - NodeJS
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nodejs-environment">
+<span class="md-ellipsis">
+      
+        Node.js Environment
+      
+    </span>
+</a>
+<nav aria-label="Node.js Environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser-vs-nodejs">
+<span class="md-ellipsis">
+      
+        Browser vs Node.js
+      
+    </span>
+</a>
+<nav aria-label="Browser vs Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-repl-de-nodejs-terminal-interactiva">
+<span class="md-ellipsis">
+      
+        El REPL de Node.js (terminal interactiva)
+      
+    </span>
+</a>
+<nav aria-label="El REPL de Node.js (terminal interactiva)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_1">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_1">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-sesion-simulada">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Sesión simulada)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_2">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_1">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objectos-globales">
+<span class="md-ellipsis">
+      
+        Objectos Globales
+      
+    </span>
+</a>
+<nav aria-label="Objectos Globales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_2">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables-globales-y-pseudo-globales-importantes">
+<span class="md-ellipsis">
+      
+        Variables Globales y "Pseudo-Globales" Importantes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_3">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-jerarquia-global">
+<span class="md-ellipsis">
+      
+        Diagrama de Jerarquía Global
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_1">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_2">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primer-programa-con-nodejs">
+<span class="md-ellipsis">
+      
+        Primer programa con Node.js
+      
+    </span>
+</a>
+<nav aria-label="Primer programa con Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_4">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-ejecucion-ts-en-node">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo: Ejecución TS en Node
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_5">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_3">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-en-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos en Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crear-un-modulo">
+<span class="md-ellipsis">
+      
+        Crear un módulo
+      
+    </span>
+</a>
+<nav aria-label="Crear un módulo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-de-sistemas-de-modulos">
+<span class="md-ellipsis">
+      
+        Tipos de Sistemas de Módulos
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-e-importar-moduleexports-y-require">
+<span class="md-ellipsis">
+      
+        Exportar e importar (module.exports y require)
+      
+    </span>
+</a>
+<nav aria-label="Exportar e importar (module.exports y require)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-cjs-vs-esm">
+<span class="md-ellipsis">
+      
+        Tabla Comparativa: CJS vs ESM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-carga-de-modulos">
+<span class="md-ellipsis">
+      
+        Diagrama de Carga de Módulos
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-estilo-commonjs-en-ts">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Estilo CommonJS en TS)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-e-importar-moduleexports-y-require_1">
+<span class="md-ellipsis">
+      
+        Exportar e importar (module.exports y require)
+      
+    </span>
+</a>
+<nav aria-label="Exportar e importar (module.exports y require)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_3">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_6">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-sintaxis-cjs">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Sintaxis CJS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-carga-de-modulos-cjs">
+<span class="md-ellipsis">
+      
+        Diagrama de Carga de Módulos (CJS)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-necesaria-para-habilitar-es-modules">
+<span class="md-ellipsis">
+      
+        Configuración necesaria para habilitar ES Modules
+      
+    </span>
+</a>
+<nav aria-label="Configuración necesaria para habilitar ES Modules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-markmap-de-configuracion">
+<span class="md-ellipsis">
+      
+        Diagrama Markmap de Configuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_7">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_2">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-varios-elementos">
+<span class="md-ellipsis">
+      
+        Exportar varios elementos
+      
+    </span>
+</a>
+<nav aria-label="Exportar varios elementos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_4">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_8">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_3">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-de-modulos-cjs-vs-esm">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo de Módulos (CJS vs ESM)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_9">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sintaxis-de-desestructuracion-y-require">
+<span class="md-ellipsis">
+      
+        Sintaxis de desestructuración y require
+      
+    </span>
+</a>
+<nav aria-label="Sintaxis de desestructuración y require" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_10">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-secuencia-desestructuracion">
+<span class="md-ellipsis">
+      
+        Diagrama de Secuencia: Desestructuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_4">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_4">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-principales-de-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos principales de Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos principales de Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-mental-de-modulos-core">
+<span class="md-ellipsis">
+      
+        Diagrama Mental de Módulos Core
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-console">
+<span class="md-ellipsis">
+      
+        El módulo console
+      
+    </span>
+</a>
+<nav aria-label="El módulo console" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_5">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metodos-avanzados">
+<span class="md-ellipsis">
+      
+        Métodos Avanzados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_5">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-process">
+<span class="md-ellipsis">
+      
+        El módulo process
+      
+    </span>
+</a>
+<nav aria-label="El módulo process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funcionalidades-clave">
+<span class="md-ellipsis">
+      
+        Funcionalidades Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_6">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_11">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_6">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-os">
+<span class="md-ellipsis">
+      
+        El módulo os
+      
+    </span>
+</a>
+<nav aria-label="El módulo os" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_7">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_12">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_7">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-path">
+<span class="md-ellipsis">
+      
+        El módulo path
+      
+    </span>
+</a>
+<nav aria-label="El módulo path" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_8">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_13">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_8">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_5">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enriquecimiento-pedagogico-estrategia-fp">
+<span class="md-ellipsis">
+      
+        🎓 Enriquecimiento Pedagógico (Estrategia FP)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nodejs-environment">
+<span class="md-ellipsis">
+      
+        Node.js Environment
+      
+    </span>
+</a>
+<nav aria-label="Node.js Environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser-vs-nodejs">
+<span class="md-ellipsis">
+      
+        Browser vs Node.js
+      
+    </span>
+</a>
+<nav aria-label="Browser vs Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-repl-de-nodejs-terminal-interactiva">
+<span class="md-ellipsis">
+      
+        El REPL de Node.js (terminal interactiva)
+      
+    </span>
+</a>
+<nav aria-label="El REPL de Node.js (terminal interactiva)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_1">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_1">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-sesion-simulada">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Sesión simulada)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_2">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_1">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objectos-globales">
+<span class="md-ellipsis">
+      
+        Objectos Globales
+      
+    </span>
+</a>
+<nav aria-label="Objectos Globales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_2">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables-globales-y-pseudo-globales-importantes">
+<span class="md-ellipsis">
+      
+        Variables Globales y "Pseudo-Globales" Importantes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_3">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-jerarquia-global">
+<span class="md-ellipsis">
+      
+        Diagrama de Jerarquía Global
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_1">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_2">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primer-programa-con-nodejs">
+<span class="md-ellipsis">
+      
+        Primer programa con Node.js
+      
+    </span>
+</a>
+<nav aria-label="Primer programa con Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_4">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-ejecucion-ts-en-node">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo: Ejecución TS en Node
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_5">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_3">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-en-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos en Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crear-un-modulo">
+<span class="md-ellipsis">
+      
+        Crear un módulo
+      
+    </span>
+</a>
+<nav aria-label="Crear un módulo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-de-sistemas-de-modulos">
+<span class="md-ellipsis">
+      
+        Tipos de Sistemas de Módulos
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-e-importar-moduleexports-y-require">
+<span class="md-ellipsis">
+      
+        Exportar e importar (module.exports y require)
+      
+    </span>
+</a>
+<nav aria-label="Exportar e importar (module.exports y require)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-cjs-vs-esm">
+<span class="md-ellipsis">
+      
+        Tabla Comparativa: CJS vs ESM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-carga-de-modulos">
+<span class="md-ellipsis">
+      
+        Diagrama de Carga de Módulos
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-estilo-commonjs-en-ts">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Estilo CommonJS en TS)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-e-importar-moduleexports-y-require_1">
+<span class="md-ellipsis">
+      
+        Exportar e importar (module.exports y require)
+      
+    </span>
+</a>
+<nav aria-label="Exportar e importar (module.exports y require)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_3">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_6">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-sintaxis-cjs">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Sintaxis CJS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-carga-de-modulos-cjs">
+<span class="md-ellipsis">
+      
+        Diagrama de Carga de Módulos (CJS)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-necesaria-para-habilitar-es-modules">
+<span class="md-ellipsis">
+      
+        Configuración necesaria para habilitar ES Modules
+      
+    </span>
+</a>
+<nav aria-label="Configuración necesaria para habilitar ES Modules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-markmap-de-configuracion">
+<span class="md-ellipsis">
+      
+        Diagrama Markmap de Configuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_7">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_2">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-varios-elementos">
+<span class="md-ellipsis">
+      
+        Exportar varios elementos
+      
+    </span>
+</a>
+<nav aria-label="Exportar varios elementos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_4">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_8">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_3">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-de-modulos-cjs-vs-esm">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo de Módulos (CJS vs ESM)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_9">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sintaxis-de-desestructuracion-y-require">
+<span class="md-ellipsis">
+      
+        Sintaxis de desestructuración y require
+      
+    </span>
+</a>
+<nav aria-label="Sintaxis de desestructuración y require" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_10">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-secuencia-desestructuracion">
+<span class="md-ellipsis">
+      
+        Diagrama de Secuencia: Desestructuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_4">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_4">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-principales-de-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos principales de Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos principales de Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-mental-de-modulos-core">
+<span class="md-ellipsis">
+      
+        Diagrama Mental de Módulos Core
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-console">
+<span class="md-ellipsis">
+      
+        El módulo console
+      
+    </span>
+</a>
+<nav aria-label="El módulo console" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_5">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metodos-avanzados">
+<span class="md-ellipsis">
+      
+        Métodos Avanzados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_5">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-process">
+<span class="md-ellipsis">
+      
+        El módulo process
+      
+    </span>
+</a>
+<nav aria-label="El módulo process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funcionalidades-clave">
+<span class="md-ellipsis">
+      
+        Funcionalidades Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_6">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_11">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_6">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-os">
+<span class="md-ellipsis">
+      
+        El módulo os
+      
+    </span>
+</a>
+<nav aria-label="El módulo os" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_7">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_12">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_7">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-path">
+<span class="md-ellipsis">
+      
+        El módulo path
+      
+    </span>
+</a>
+<nav aria-label="El módulo path" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#explicacion-tecnica_8">
+<span class="md-ellipsis">
+      
+        Explicación Técnica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_13">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_8">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_5">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enriquecimiento-pedagogico-estrategia-fp">
+<span class="md-ellipsis">
+      
+        🎓 Enriquecimiento Pedagógico (Estrategia FP)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- 02_nodejs_fundamentos_typescript.md --><h1 id="nodejs">Node.js</h1>
+<h2 id="nodejs-environment">Node.js Environment</h2>
+<h3 id="browser-vs-nodejs">Browser vs Node.js</h3>
+<p>Aunque el lenguaje base es el mismo, el ecosistema es opuesto. En el navegador (Cliente), tu código vive en una "pecera" (sandbox) por seguridad. En Node.js (Servidor), tu código tiene llaves maestras del sistema. En el <strong>Navegador</strong>, tu preocupación principal es la interfaz de usuario, el DOM y la compatibilidad visual. En <strong>Node.js</strong>, tu prioridad es el sistema operativo, la red y el acceso a datos.</p>
+<h4 id="explicacion-tecnica">Explicación Técnica</h4>
+<p>En el navegador, interactúas con <code>window</code> y el <code>DOM</code>. En Node, no existen. A cambio, Node te da acceso a <code>global</code> y módulos nativos para manipular el Sistema Operativo (OS). Además, en el navegador dependes de la versión que el usuario tenga instalada (Chrome, Firefox, Safari); en Node.js, tú decides la versión exacta del motor (ej. Node 22 LTS), lo que garantiza estabilidad.</p>
+<h4 id="tablas-comparativas">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Navegador (Browser)</th>
+<th style="text-align: left;">Node.js (Servidor)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Acceso al Sistema</strong></td>
+<td style="text-align: left;">Restringido (Sandbox). No puede leer tus archivos locales por seguridad.</td>
+<td style="text-align: left;">Total. Puede leer, escribir y borrar archivos del SO (<code>fs</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objeto Global</strong></td>
+<td style="text-align: left;"><code>window</code> / <code>document</code></td>
+<td style="text-align: left;"><code>global</code> / <code>process</code>. No existe el DOM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fragmentación</strong></td>
+<td style="text-align: left;">Debes soportar Chrome, Firefox, Safari (Babel/Polyfills).</td>
+<td style="text-align: left;">Tú controlas la versión exacta de Node.js donde corre tu código.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Módulos</strong></td>
+<td style="text-align: left;">ES Modules (reciente) o Bundlers (Webpack/Vite).</td>
+<td style="text-align: left;">CommonJS (histórico) y ES Modules (moderno).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concepto</th>
+<th style="text-align: left;">Frontend (Cliente)</th>
+<th style="text-align: left;">Backend (Node.js)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Prioridad</strong></td>
+<td style="text-align: left;">Interactividad y renderizado</td>
+<td style="text-align: left;">Procesamiento de datos y I/O</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Motor</strong></td>
+<td style="text-align: left;">V8, SpiderMonkey, JavaScriptCore</td>
+<td style="text-align: left;">V8 (principalmente)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event Loop</strong></td>
+<td style="text-align: left;">Gestiona UI y clicks</td>
+<td style="text-align: left;">Gestiona I/O, Red y DB</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Intentar acceder al DOM en Node (Error)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// browser-check.ts</span>
+<span class="cm">/* </span>
+<span class="cm">   ❌ Esto lanzará un error ReferenceError en Node.js </span>
+<span class="cm">   porque 'window' y 'document' no existen.</span>
+<span class="cm">*/</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error: Estamos en el servidor, no hay ventana.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Detectar el entorno de ejecución</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// environment-detect.ts</span>
+<span class="c1">// ✅ Verificamos dónde estamos corriendo</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">process</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'undefined'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">               </span><span class="nx">process</span><span class="p">.</span><span class="nx">versions</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">               </span><span class="nx">process</span><span class="p">.</span><span class="nx">versions</span><span class="p">.</span><span class="nx">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isNode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ejecutando en Node.js versión: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">version</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Ejecutando en el navegador'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Uso de APIs exclusivas de Node</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// server-capability.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">freemem</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="c1">// ✅ Acceso a hardware (imposible en browser puro)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">freemem</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria libre en el servidor: </span><span class="si">${</span><span class="nx">memory</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">APIs Disponibles</th>
+<th style="text-align: left;">Navegador</th>
+<th style="text-align: left;">Node.js</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DOM (HTML)</strong></td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">❌ No</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>File System (<code>fs</code>)</strong></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fetch API</strong></td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">✅ Sí (desde Node 18+)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-arquitectura">Diagrama de Arquitectura</h4>
+<pre class="mermaid"><code>graph TD
+
+    subgraph "Node.js (Servidor)"
+        D["Código JS"] --&gt; E["Motor V8"]
+        E --&gt; F["Libuv (Event Loop asíncrono)"]
+        F --&gt; G["Bindings C++"]
+        G --&gt; H["Sistema Operativo (Archivos, Red)"]
+    end
+
+    style D fill:#6f9,stroke:#333,stroke-width:2px</code></pre>
+<pre class="mermaid"><code>graph TD
+    subgraph "Navegador (Cliente)"
+        A["Código JS"] --&gt; B["Motor V8 / SpiderMonkey"]
+        B --&gt; C["Web APIs (DOM, Fetch, Storage)"]
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Profesional</p>
+<p>Nunca asumas que una librería de NPM funcionará en ambos lados. Si usa <code>window</code>, fallará en Node. Si usa <code>fs</code>, fallará en el navegador (a menos que uses empaquetadores complejos).</p>
+</div>
+<h4 id="preguntas-reflexivas">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Por qué es un riesgo de seguridad que el navegador tuviera las mismas capacidades de acceso al disco duro que Node.js?</li>
+<li>Si Node.js usa el mismo motor V8 que Chrome, ¿por qué el rendimiento puede variar entre ambos al ejecutar el mismo algoritmo matemático?</li>
+<li>¿Qué implicaciones tiene para el desarrollador poder "fijar" la versión de Node.js en producción a diferencia del navegador del usuario?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="el-repl-de-nodejs-terminal-interactiva">El REPL de Node.js (terminal interactiva)</h3>
+<p>El REPL (<strong>R</strong>ead-<strong>E</strong>val-<strong>P</strong>rint-<strong>L</strong>oop) es la consola de comandos de Node. Es ideal para probar lógica rápida sin crear archivos.</p>
+<h4 id="explicacion-tecnica_1">Explicación Técnica</h4>
+<p>Al escribir <code>node</code> en tu terminal sin argumentos, entras en este modo. Lee tu entrada, la evalúa en JavaScript, imprime el resultado y vuelve a esperar (Loop). Es muy útil para verificar sintaxis o comportamientos de librerías.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Pro: REPL con TypeScript</p>
+<p>Node.js no entiende TS directamente en el REPL. Para probar código TypeScript interactivo, usa la herramienta <code>ts-node</code>. Ejecuta: <code>npx ts-node</code>.</p>
+</div>
+<h4 id="tablas-comparativas_1">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando REPL</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Equivalente en GUI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>.break</code></td>
+<td style="text-align: left;">Salir de expresión multilínea</td>
+<td style="text-align: left;">Escapar / Cancelar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.editor</code></td>
+<td style="text-align: left;">Entrar en modo edición</td>
+<td style="text-align: left;">Abrir un archivo temporal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.exit</code></td>
+<td style="text-align: left;">Cerrar el REPL</td>
+<td style="text-align: left;">Cerrar ventana</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.save [file]</code></td>
+<td style="text-align: left;">Guardar sesión actual</td>
+<td style="text-align: left;">Guardar como...</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Script de Archivo (<code>node file.js</code>)</th>
+<th style="text-align: left;">REPL (<code>node</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Persistencia</strong></td>
+<td style="text-align: left;">Permanente</td>
+<td style="text-align: left;">Volátil (se pierde al cerrar)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso principal</strong></td>
+<td style="text-align: left;">Aplicaciones completas</td>
+<td style="text-align: left;">Pruebas, debug rápido, cálculos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Variables</strong></td>
+<td style="text-align: left;">Ámbito del módulo</td>
+<td style="text-align: left;">Ámbito "global" de la sesión</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo-sesion-simulada">Ejemplos de Código (Sesión simulada)</h4>
+<p><strong>Ejemplo 1: Operaciones básicas y variables</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// En terminal: npx ts-node</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">150</span><span class="p">;</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">iva</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.21</span><span class="p">;</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">iva</span><span class="p">);</span>
+<span class="mf">181.5</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Definición de funciones al vuelo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// En terminal</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="sb">`Hola </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="s2">"DAW"</span><span class="p">);</span>
+<span class="s1">'Hola DAW'</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Uso del guion bajo (_)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// El guion bajo almacena el resultado anterior</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+<span class="mf">0.54321</span><span class="p">...</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span><span class="w"> </span><span class="c1">// Usa el 0.54321...</span>
+<span class="mf">54.321</span><span class="p">...</span>
+</code></pre></div><p></p>
+<div class="admonition warning">
+<p class="admonition-title">Ojo con TypeScript en REPL</p>
+<p>El comando <code>node</code> espera JavaScript. Si queréis probar código <strong>TypeScript</strong> directamente en la terminal (con tipos), debéis usar la herramienta <code>ts-node</code> (ejecutando <code>npx ts-node</code>).</p>
+</div>
+<h4 id="tablas-comparativas_2">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando REPL</th>
+<th style="text-align: left;">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>.help</code></td>
+<td style="text-align: left;">Muestra la lista de comandos disponibles.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.editor</code></td>
+<td style="text-align: left;">Entra en modo editor para escribir funciones multilínea.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.break</code></td>
+<td style="text-align: left;">Cancela la entrada actual.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.exit</code></td>
+<td style="text-align: left;">Sale del REPL (también <code>Ctrl+D</code>).</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Script (<code>node file.js</code>)</th>
+<th style="text-align: left;">REPL (<code>node</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Persistencia</strong></td>
+<td style="text-align: left;">El código se guarda en disco.</td>
+<td style="text-align: left;">El código se pierde al cerrar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso principal</strong></td>
+<td style="text-align: left;">Aplicaciones, Servicios.</td>
+<td style="text-align: left;">Pruebas rápidas, Depuración.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contexto</strong></td>
+<td style="text-align: left;">Módulo (Scope local).</td>
+<td style="text-align: left;">Global (Scope interactivo).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="preguntas-reflexivas_1">Preguntas Reflexivas</h4>
+<ol>
+<li>¿En qué escenario laboral preferirías usar el REPL en lugar de crear un archivo <code>test.ts</code>?</li>
+<li>¿Qué sucede con las variables declaradas con <code>const</code> en el REPL si intentas redeclararlas en la misma sesión?</li>
+<li>Investiga: ¿Cómo puedes cargar un archivo externo dentro de una sesión REPL activa?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="objectos-globales">Objectos Globales</h3>
+<p>En Node.js, <code>window</code> no existe. El objeto raíz es <code>global</code>.</p>
+<h4 id="explicacion-tecnica_2">Explicación Técnica</h4>
+<p>Los objetos globales están disponibles en todos los módulos sin necesidad de <code>import</code>. Incluyen temporizadores (<code>setTimeout</code>), consola (<code>console</code>) y acceso al proceso (<code>process</code>).
+Existe una distinción importante: variables "verdaderamente globales" (en <code>global</code>) y variables "pseudo-globales" que existen por módulo (como <code>__dirname</code> en CommonJS).</p>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con 'this'</p>
+<p>En el nivel superior de un archivo Node.js (CommonJS), <code>this</code> es <code>module.exports</code>, no el objeto global. En el REPL, <code>this</code> sí es el objeto global. ¡Confuso al principio!</p>
+</div>
+<h4 id="variables-globales-y-pseudo-globales-importantes">Variables Globales y "Pseudo-Globales" Importantes</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Disponibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>global</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">El equivalente a <code>window</code>. Contiene métodos como <code>setTimeout</code>, <code>console</code>.</td>
+<td style="text-align: left;">Verdaderamente Global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">Información sobre el proceso actual (env vars, argumentos).</td>
+<td style="text-align: left;">Verdaderamente Global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>__dirname</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Ruta absoluta al directorio del archivo actual.</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>__filename</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Ruta absoluta al archivo actual (incluye nombre).</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>module</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">Referencia al módulo actual (usado para exportar).</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="tablas-comparativas_3">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Objeto</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Disponibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>global</code></td>
+<td style="text-align: left;">El objeto raíz (como <code>window</code>).</td>
+<td style="text-align: left;">Universal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process</code></td>
+<td style="text-align: left;">Info del proceso actual (PID, env).</td>
+<td style="text-align: left;">Universal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console</code></td>
+<td style="text-align: left;">Salida estándar y debug.</td>
+<td style="text-align: left;">Universal</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>__dirname</code></td>
+<td style="text-align: left;">Ruta al directorio actual.</td>
+<td style="text-align: left;"><strong>Solo CommonJS</strong> (No en ESM)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Síncrono/Asíncrono</th>
+<th style="text-align: left;">Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>setTimeout</code></td>
+<td style="text-align: left;">Asíncrono</td>
+<td style="text-align: left;">Retrasar ejecución</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>setImmediate</code></td>
+<td style="text-align: left;">Asíncrono</td>
+<td style="text-align: left;">Ejecutar al final del ciclo actual</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>queueMicrotask</code></td>
+<td style="text-align: left;">Asíncrono</td>
+<td style="text-align: left;">Ejecutar antes del siguiente ciclo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota sobre TypeScript y ES Modules:</strong>
+Si configuras tu proyecto TypeScript para usar ES Modules modernos (lo recomendado hoy día), <code>__dirname</code> y <code>__filename</code> <strong>dejan de existir</strong>. Debemos recrearlos.</p>
+<h4 id="diagrama-de-jerarquia-global">Diagrama de Jerarquía Global</h4>
+<pre class="mermaid"><code>classDiagram
+    class GlobalObject {
+        +setTimeout()
+        +setInterval()
+        +setImmediate()
+        +console
+        +process
+    }
+
+    class ModuleScope {
+        -__dirname (CJS)
+        -__filename (CJS)
+        -require() (CJS)
+        -exports (CJS)
+    }
+
+    GlobalObject &lt;|-- ModuleScope : Disponible dentro de</code></pre>
+<h4 id="ejemplos-de-codigo_1">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: El objeto Global y temporizadores</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// global-timers.ts</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio'</span><span class="p">);</span>
+
+<span class="c1">// setTimeout es un método de global</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Han pasado 2 segundos'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: <code>__dirname</code> en TypeScript Moderno (ESM)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// paths-esm.ts</span>
+<span class="c1">// En ESM (EcmaScript Modules), __dirname NO existe. </span>
+<span class="c1">// Debemos reconstruirlo:</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'url'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">__filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Directorio actual: </span><span class="si">${</span><span class="nx">__dirname</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Variables Globales personalizadas (Mala práctica pero posible)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// custom-global.ts</span>
+<span class="cm">/* eslint-disable no-var */</span>
+<span class="kr">declare</span><span class="w"> </span><span class="nb">global</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">miConfiguracion</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">global</span><span class="p">.</span><span class="nx">miConfiguracion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"SECRETO_SERVER"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">global</span><span class="p">.</span><span class="nx">miConfiguracion</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 4: El objeto <code>process</code> (Global)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * archivo: global-process.ts</span>
+<span class="cm"> * Descripción: Acceso a variables de entorno y argumentos.</span>
+<span class="cm"> */</span>
+
+<span class="c1">// process está disponible sin importar nada</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🆔 ID del Proceso (PID): </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`📁 Directorio de ejecución (CWD): </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`👤 Usuario del sistema: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USER</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USERNAME</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_2">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Por qué se considera una mala práctica "contaminar" el objeto <code>global</code> con nuestras propias variables?</li>
+<li>¿Qué diferencia fundamental hay entre <code>__dirname</code> en CommonJS y cómo obtenemos la ruta en ES Modules?</li>
+<li>¿Por qué <code>process</code> es global y no requiere importación, a diferencia de <code>os</code> o <code>fs</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="primer-programa-con-nodejs">Primer programa con Node.js</h3>
+<p>Vamos a crear un "Hola Mundo" profesional. Usaremos TypeScript, un archivo de configuración y ejecución tipada.</p>
+<p><strong>Paso 1: Inicializar proyecto</strong>
+</p><div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+npm<span class="w"> </span>install<span class="w"> </span>typescript<span class="w"> </span>ts-node<span class="w"> </span>@types/node<span class="w"> </span>-D
+npx<span class="w"> </span>tsc<span class="w"> </span>--init
+</code></pre></div><p></p>
+<p><strong>Ejemplo 1: Código Fuente (index.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * index.ts</span>
+<span class="cm"> * Un saludo tipado y profesional.</span>
+<span class="cm"> */</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Desarrollador</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">lenguajes</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">activo</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">yo</span><span class="o">:</span><span class="w"> </span><span class="kt">Desarrollador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Estudiante DAW"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">lenguajes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"JS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PHP"</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">activo</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<span class="p">};</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">iniciarSistema</span><span class="p">(</span><span class="nx">dev</span><span class="o">:</span><span class="w"> </span><span class="kt">Desarrollador</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🚀 Sistema iniciado por: </span><span class="si">${</span><span class="nx">dev</span><span class="p">.</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`📚 Stack tecnológico: </span><span class="si">${</span><span class="nx">dev</span><span class="p">.</span><span class="nx">lenguajes</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">' - '</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">iniciarSistema</span><span class="p">(</span><span class="nx">yo</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Ejecución</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Desarrollo (compila en memoria y ejecuta)</span>
+$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>index.ts
+
+<span class="c1"># Producción (transpila a JS y luego ejecuta con node)</span>
+$<span class="w"> </span>npx<span class="w"> </span>tsc
+$<span class="w"> </span>node<span class="w"> </span>index.js
+</code></pre></div><p></p>
+<h4 id="tablas-comparativas_4">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Función</th>
+<th style="text-align: left;">Cuándo usarla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>node</code></td>
+<td style="text-align: left;">Ejecuta JavaScript.</td>
+<td style="text-align: left;">Producción / Despliegue.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tsc</code></td>
+<td style="text-align: left;">Compila TS a JS.</td>
+<td style="text-align: left;">Build / Pre-despliegue.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ts-node</code></td>
+<td style="text-align: left;">Ejecuta TS directamente (simulado).</td>
+<td style="text-align: left;">Desarrollo local / Pruebas.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Archivo</th>
+<th style="text-align: left;">Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>index.ts</code></td>
+<td style="text-align: left;">Código fuente humano (con tipos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>index.js</code></td>
+<td style="text-align: left;">Código máquina virtual (sin tipos).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tsconfig.json</code></td>
+<td style="text-align: left;">Reglas del compilador (estricto, versión JS, rutas).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-flujo-ejecucion-ts-en-node">Diagrama de Flujo: Ejecución TS en Node</h4>
+<pre class="mermaid"><code>graph LR
+    A[Código .ts] -- "tsc (Compilación)" --&gt; B[Código .js]
+    B -- "node (Ejecución)" --&gt; C[Salida en Consola]
+    A -.-&gt; D[ts-node]
+    D -.-&gt; C
+    style A fill:#3178c6,color:white
+    style B fill:#f7df1e,color:black</code></pre>
+<h4 id="tablas-comparativas_5">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Función</th>
+<th style="text-align: left;">Comando Típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>npm</strong></td>
+<td style="text-align: left;">Gestor de paquetes</td>
+<td style="text-align: left;"><code>npm init -y</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>tsc</strong></td>
+<td style="text-align: left;">Compilador TypeScript</td>
+<td style="text-align: left;"><code>npx tsc</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>node</strong></td>
+<td style="text-align: left;">Ejecutor (Runtime)</td>
+<td style="text-align: left;"><code>node dist/index.js</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ts-node</strong></td>
+<td style="text-align: left;">Ejecución directa (Dev)</td>
+<td style="text-align: left;"><code>npx ts-node src/index.ts</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Carpeta</th>
+<th style="text-align: left;">Propósito estándar</th>
+<th style="text-align: left;">Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>src/</code></td>
+<td style="text-align: left;">Source (Fuente)</td>
+<td style="text-align: left;">Archivos <code>.ts</code> originales</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dist/</code></td>
+<td style="text-align: left;">Distribution (Salida)</td>
+<td style="text-align: left;">Archivos <code>.js</code> compilados</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>node_modules/</code></td>
+<td style="text-align: left;">Dependencias</td>
+<td style="text-align: left;">Librerías externas</td>
+</tr>
+</tbody>
+</table>
+<h4 id="preguntas-reflexivas_3">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Qué pasaría si intentas ejecutar <code>node index.ts</code> directamente? ¿Por qué?</li>
+<li>¿Qué ventajas tiene el paso de compilación (<code>tsc</code>) para detectar errores antes de ejecutar el código?</li>
+<li>Modifica el programa para que lea tu nombre desde los argumentos de la consola (<code>process.argv</code>).</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="modulos-en-nodejs">Módulos en Node.js</h2>
+<h3 id="crear-un-modulo">Crear un módulo</h3>
+<p>En el desarrollo profesional, <strong>dividir es vencer</strong>. No escribimos todo el código en un fichero <code>index.ts</code> de 5000 líneas. Usamos módulos.
+Un módulo en Node.js es simplemente un archivo JavaScript/TypeScript que encapsula una funcionalidad específica y expone solo lo que quiere que otros vean (Interfaz Pública).</p>
+<p>Es como una cocina de restaurante:
+- <strong>Tu módulo:</strong> La estación de postres.
+- <strong>Lo privado:</strong> Tus recetas secretas, ingredientes sucios.
+- <strong>Lo público (export):</strong> El pastel terminado.</p>
+<h4 id="tipos-de-sistemas-de-modulos">Tipos de Sistemas de Módulos</h4>
+<ol>
+<li><strong>CommonJS (CJS):</strong> El clásico de Node. Usa <code>require</code> y <code>module.exports</code>. Síncrono.</li>
+<li><strong>ES Modules (ESM):</strong> El estándar oficial de JavaScript y TypeScript. Usa <code>import</code> y <code>export</code>. Asíncrono y estático.</li>
+</ol>
+<p><strong>Nos enfocaremos en cómo TypeScript maneja esto, priorizando ESM pero entendiendo CJS.</strong></p>
+<p><br/></p><hr/><p></p>
+<h3 id="exportar-e-importar-moduleexports-y-require">Exportar e importar (module.exports y require)</h3>
+<p>Aunque TypeScript prefiere <code>import/export</code>, en el mundo laboral encontrarás mucho código legado (legacy) o configuraciones específicas que usan <strong>CommonJS</strong>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Importante</p>
+<p>Para que TypeScript compile a CommonJS (y use <code>require</code> por debajo), tu <code>tsconfig.json</code> debe tener <code>"module": "commonjs"</code>.</p>
+</div>
+<h4 id="tabla-comparativa-cjs-vs-esm">Tabla Comparativa: CJS vs ESM</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">CommonJS (Legacy Node)</th>
+<th style="text-align: left;">ES Modules (Moderno TS/JS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Sintaxis Export</strong></td>
+<td style="text-align: left;"><code>module.exports = ...</code></td>
+<td style="text-align: left;"><code>export const ...</code> / <code>export default</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sintaxis Import</strong></td>
+<td style="text-align: left;"><code>const x = require('./x')</code></td>
+<td style="text-align: left;"><code>import x from './x'</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Carga</strong></td>
+<td style="text-align: left;">Síncrona (bloqueante)</td>
+<td style="text-align: left;">Asíncrona</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso principal</strong></td>
+<td style="text-align: left;">Scripts antiguos, herramientas de build.</td>
+<td style="text-align: left;">Frontend moderno, Node.js actual, Deno.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-carga-de-modulos">Diagrama de Carga de Módulos</h4>
+<pre class="mermaid"><code>graph LR
+    A[main.ts] -- require('./utils') --&gt; B(Busca utils.ts/.js)
+    B -- Lee archivo --&gt; C{¿Tiene caché?}
+    C -- Sí --&gt; D[Devuelve exports de caché]
+    C -- No --&gt; E[Ejecuta código del módulo]
+    E --&gt; F[Guarda en caché]
+    F --&gt; G[Devuelve module.exports]</code></pre>
+<h4 id="ejemplos-de-codigo-estilo-commonjs-en-ts">Ejemplos de Código (Estilo CommonJS en TS)</h4>
+<p><strong>Ejemplo 1: Exportando (math.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// math.ts</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span><span class="w"> </span><span class="c1">// Privado</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">restar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Sintaxis CommonJS clásica</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sumar</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">restar</span>
+<span class="w">    </span><span class="c1">// PI no se exporta, es privada</span>
+<span class="p">};</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Importando con require (app.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// app.ts</span>
+<span class="c1">// TypeScript nos permite usar require si declaramos los tipos o usamos una sintaxis especial:</span>
+<span class="c1">// import x = require('./x') es la forma "TypeScript-ish" de hacerlo para CJS.</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">operaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./math'</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operaciones</span><span class="p">.</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Resultado: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+
+<span class="o">**</span><span class="nx">Ejemplo</span><span class="w"> </span><span class="nx">3</span><span class="o">:</span><span class="w"> </span><span class="kt">Módulo</span><span class="w"> </span><span class="nx">privado</span><span class="w"> </span><span class="p">(</span><span class="nx">encapsulamiento</span><span class="p">)</span><span class="o">**</span>
+<span class="sb">```typescript</span>
+<span class="sb">// secretaria.ts</span>
+<span class="sb">const CLAVE_SECRETA = "123456"; // Variable privada, no se exporta</span>
+
+<span class="sb">// Solo exportamos la función que usa la clave internamente</span>
+<span class="sb">export function validar(pass: string): boolean {</span>
+<span class="sb">    return pass === CLAVE_SECRETA;</span>
+<span class="sb">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 4: Módulo de utilidades</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// mates.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cuadrado</span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 5: Consumiendo el módulo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// app.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cuadrado</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./mates.js'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nota la extensión .js en imports ESM</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cuadrado</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span><span class="w"> </span><span class="c1">// 25</span>
+<span class="c1">// console.log(CLAVE_SECRETA); // Error: no existe aquí</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="exportar-e-importar-moduleexports-y-require_1">Exportar e importar (module.exports y require)</h3>
+<p>Este es el sistema clásico (<strong>CommonJS</strong> o CJS). Es vital conocerlo porque mucho código "legacy" y herramientas de configuración aún lo usan.</p>
+<div class="admonition danger">
+<p class="admonition-title">Importante: CommonJS</p>
+<p>CommonJS es <strong>síncrono</strong>. Cuando haces <code>require()</code>, el programa se detiene hasta que el archivo se carga y lee.</p>
+</div>
+<h4 id="explicacion-tecnica_3">Explicación Técnica</h4>
+<p>CommonJS es síncrono. Usa <code>module.exports</code> para exponer objetos o funciones y <code>require()</code> para cargarlos. TypeScript puede compilar a este formato si configuramos <code>"module": "commonjs"</code>.</p>
+<h4 id="tablas-comparativas_6">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">CommonJS (CJS)</th>
+<th style="text-align: left;">ES Modules (ESM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Exportar</strong></td>
+<td style="text-align: left;"><code>module.exports = ...</code></td>
+<td style="text-align: left;"><code>export ...</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Importar</strong></td>
+<td style="text-align: left;"><code>const x = require('./x')</code></td>
+<td style="text-align: left;"><code>import x from './x'</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Carga</strong></td>
+<td style="text-align: left;">Síncrona (bloqueante)</td>
+<td style="text-align: left;">Asíncrona</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo-sintaxis-cjs">Ejemplos de Código (Sintaxis CJS)</h4>
+<p><strong>Ejemplo 1: Exportando un objeto (CJS)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// calculadora.js (Legacy)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">area</span><span class="p">(</span><span class="nx">radio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">radio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">radio</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">area</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">PI</span>
+<span class="p">};</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Importando con require</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// app.js (Legacy)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">mates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./calculadora'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mates</span><span class="p">.</span><span class="nx">area</span><span class="p">(</span><span class="mf">10</span><span class="p">));</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: TypeScript adaptándose a CJS</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// legacy-adapter.ts</span>
+<span class="c1">// TS permite usar sintaxis import para traer CJS</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">mates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./calculadora'</span><span class="p">);</span><span class="w"> </span><span class="c1">// Sintaxis especial TS</span>
+<span class="c1">// O la estándar si "esModuleInterop" es true</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">mates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./calculadora'</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div><p></p>
+<h4 id="diagrama-de-carga-de-modulos-cjs">Diagrama de Carga de Módulos (CJS)</h4>
+<pre class="mermaid"><code>graph LR
+    A[Main.js] -- require('./utils') --&gt; B(Busca archivo utils.js)
+    B -- Lee y Ejecuta --&gt; C{¿Está en caché?}
+    C -- Sí --&gt; D[Devuelve exports de caché]
+    C -- No --&gt; E[Ejecuta código]
+    E --&gt; F[Guarda en caché]
+    F --&gt; G[Devuelve module.exports]</code></pre>
+<p><br/></p><hr/><p></p>
+<h3 id="configuracion-necesaria-para-habilitar-es-modules">Configuración necesaria para habilitar ES Modules</h3>
+<p>Para usar la sintaxis moderna (estándar en TypeScript y en la industria actual) y que Node.js la interprete nativamente como ESM, debemos configurar el entorno.</p>
+<ol>
+<li><em>En <code>package.json</code></em>*: <ul>
+<li>Añadir <code>"type": "module"</code>.</li>
+</ul>
+</li>
+<li><em>En <code>tsconfig.json</code></em>*:<ul>
+<li><code>"target"</code>: <code>ES2020</code> (o superior).</li>
+<li><code>"module"</code>: <code>NodeNext</code> o <code>ESNext</code>.</li>
+<li><code>"moduleResolution"</code>: <code>NodeNext</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Esto le dice a Node: "Oye, trátame los archivos <code>.js</code> (resultado de compilar TS) como módulos modernos, no como CommonJS antiguo".</p>
+<h4 id="diagrama-markmap-de-configuracion">Diagrama Markmap de Configuración</h4>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBDb25maWd1cmFjacOzbiBFU00KCiMjIHBhY2thZ2UuanNvbgotICJ0eXBlIjogIm1vZHVsZSIKLSBPYmxpZ2EgYSB1c2FyIGV4dGVuc2lvbmVzIC5qcyBlbiBpbXBvcnRzIHJlbGF0aXZvcwoKIyMgdHNjb25maWcuanNvbgotICJtb2R1bGUiOiAiTm9kZU5leHQiCi0gIm1vZHVsZVJlc29sdXRpb24iOiAiTm9kZU5leHQiCi0gImVzTW9kdWxlSW50ZXJvcCI6IHRydWUKCiMjIENvbnNlY3VlbmNpYXMKLSBBZGnDs3MgYHJlcXVpcmUoKWAKLSBBZGnDs3MgYF9fZGlybmFtZWAKLSBIb2xhIGBpbXBvcnQubWV0YWAKLSBUb3AtbGV2ZWwgYGF3YWl0YCBwZXJtaXRpZG8=</markmap-data></div>
+<h4 id="tablas-comparativas_7">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Archivo</th>
+<th style="text-align: left;">Configuración Clave</th>
+<th style="text-align: left;">Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>package.json</code></td>
+<td style="text-align: left;"><code>"type": "module"</code></td>
+<td style="text-align: left;">Node trata <code>.js</code> como ESM por defecto.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tsconfig.json</code></td>
+<td style="text-align: left;"><code>"module": "NodeNext"</code></td>
+<td style="text-align: left;">TS compila usando sintaxis ESM moderna.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Extensiones</td>
+<td style="text-align: left;"><code>.mjs</code></td>
+<td style="text-align: left;">Fuerza ESM siempre (incluso sin package.json).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_2">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: package.json (Obligatorio)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-app-moderna"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;--- LA CLAVE</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: tsconfig.json (Obligatorio)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2022"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodeNext"</span><span class="p">,</span><span class="w">            </span><span class="c1">// Sistema de módulos</span>
+<span class="w">    </span><span class="nt">"moduleResolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodeNext"</span><span class="p">,</span><span class="w">  </span><span class="c1">// Resolución de rutas</span>
+<span class="w">    </span><span class="nt">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Importación con extensión explícita</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Ojo con la extensión</p>
+<p>En ESM nativo de Node, <strong>es obligatorio</strong> poner la extensión <code>.js</code> en los imports de archivos locales.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/index.ts</span>
+<span class="c1">// ❌ Error en runtime: import { algo } from './algo';</span>
+<span class="c1">// ✅ Correcto:</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">algo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./algo.js'</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Extensiones de Archivo</p>
+<p>Cuando usas <code>"type": "module"</code>, Node te obliga a poner la extensión <code>.js</code> en tus imports, incluso en TypeScript.
+<code>import { x } from './utils.js';</code> (Sí, pones .js aunque el archivo sea .ts, porque TS compilará a JS).</p>
+</div>
+<p><br/></p><hr/><p></p>
+<h3 id="exportar-varios-elementos">Exportar varios elementos</h3>
+<p>En ESM tenemos dos formas de exportar: <strong>Nombrada (Named)</strong> y <strong>Por Defecto (Default)</strong>. La recomendación profesional es usar <strong>Exportaciones Nombradas</strong> para mantener la consistencia y facilitar el <em>refactoring</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Buenas Prácticas</p>
+<p>Google Style Guide y la comunidad TS prefieren <strong>Named Exports</strong>. Hacen que el refactoring sea más fácil y el autocompletado del IDE más preciso. Evita <code>export default</code> si puedes.</p>
+</div>
+<h4 id="explicacion-tecnica_4">Explicación Técnica</h4>
+<p>Existen <strong>Named Exports</strong> (exportaciones con nombre) y <strong>Default Exports</strong>.<br/>
+*   <strong>Named:</strong> Obliga a usar el mismo nombre al importar. Es más seguro para refactorizar.<br/>
+*   <strong>Default:</strong> Se puede renombrar al importar. Solo uno por archivo.<br/></p>
+<h4 id="tablas-comparativas_8">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Sintaxis Export</th>
+<th style="text-align: left;">Sintaxis Import</th>
+<th style="text-align: left;">Recomendación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Named</strong></td>
+<td style="text-align: left;"><code>export const X = 1</code></td>
+<td style="text-align: left;"><code>import { X } from ...</code></td>
+<td style="text-align: left;"><strong>Alta</strong> (Google Style)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Default</strong></td>
+<td style="text-align: left;"><code>export default X</code></td>
+<td style="text-align: left;"><code>import CualquierNombre from ...</code></td>
+<td style="text-align: left;"><strong>Baja</strong> (Confuso)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_3">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Named Exports (Recomendado)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// usuarios.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MAX_USERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">crearUsuario</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Default Export</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// logger.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Logger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Importando ambos tipos</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Logger</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./logger.js'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Default (sin llaves)</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MAX_USERS</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./usuarios.js'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Named (con llaves)</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Logger</span><span class="p">();</span>
+<span class="nx">log</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Límite: </span><span class="si">${</span><span class="nx">MAX_USERS</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="diagrama-de-flujo-de-modulos-cjs-vs-esm">Diagrama de Flujo de Módulos (CJS vs ESM)</h4>
+<pre class="mermaid"><code>graph LR
+    subgraph CommonJS_Loading
+    A["require('./mod')"] --&gt; B["¿Está en caché?"]
+    B -- Sí --&gt; C["Devuelve exports"]
+    B -- No --&gt; D["Lee archivo Síncrono"]
+    D --&gt; E["Ejecuta todo el JS"]
+    E --&gt; F["Devuelve module.exports"]
+    end
+
+    subgraph ESM_Loading
+    G["import from './mod'"] --&gt; H["Parseo Estático"]
+    H --&gt; I["Carga Asíncrona"]
+    I --&gt; J["Enlace de referencias vivas"]
+    J --&gt; K["Ejecución"]
+    end</code></pre>
+<h4 id="tablas-comparativas_9">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo Export</th>
+<th style="text-align: left;">Definición</th>
+<th style="text-align: left;">Importación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Named</strong></td>
+<td style="text-align: left;"><code>export const A = 1;</code></td>
+<td style="text-align: left;"><code>import { A } from './file';</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Default</strong></td>
+<td style="text-align: left;"><code>export default A;</code></td>
+<td style="text-align: left;"><code>import CualquierNombre from './file';</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Named Exports</th>
+<th style="text-align: left;">Default Exports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Autocompletado</strong></td>
+<td style="text-align: left;">Excelente (IDE sabe el nombre).</td>
+<td style="text-align: left;">Regular.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Flexibilidad</strong></td>
+<td style="text-align: left;">Exportar N cosas.</td>
+<td style="text-align: left;">Exportar 1 cosa.</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p><hr/><p></p>
+<h3 id="sintaxis-de-desestructuracion-y-require">Sintaxis de desestructuración y require</h3>
+<p>Volviendo un momento a CommonJS (o al interoperar con librerías antiguas). Cuando hacemos <code>require('modulo')</code>, obtenemos un objeto gigante. A menudo solo queremos una pieza. Aquí entra la <strong>Desestructuración</strong> (Destructuring) de JavaScript.</p>
+<p>Es como pedir una pizza entera pero solo poner en tu plato una porción de pepperoni.</p>
+<p>La desestructuración (Destructuring) permite extraer propiedades de un objeto y asignarlas a variables en una sola línea. Es fundamental para mantener el código limpio y importar solo lo necesario.</p>
+<h4 id="tablas-comparativas_10">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Código Clásico</th>
+<th style="text-align: left;">Código con Desestructuración</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Acceso</strong></td>
+<td style="text-align: left;"><code>const fs = require('fs'); fs.readFile(...)</code></td>
+<td style="text-align: left;"><code>const { readFile } = require('fs');</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ventaja</strong></td>
+<td style="text-align: left;">Espacio de nombres claro</td>
+<td style="text-align: left;">Menos verbosidad, código más directo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Riesgo</strong></td>
+<td style="text-align: left;">Ninguno</td>
+<td style="text-align: left;">Posible colisión de nombres de variables</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-secuencia-desestructuracion">Diagrama de Secuencia: Desestructuración</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Main as "Archivo Principal"
+    participant Modulo as "Módulo 'fs'"
+
+    Note over Main, Modulo: Sin Desestructuración
+    Main-&gt;&gt;Modulo: const fs = require('fs')
+    Modulo--&gt;&gt;Main: Devuelve objeto { readFile, writeFile, ... }
+    Main-&gt;&gt;Main: Uso: fs.readFile()
+
+    Note over Main, Modulo: Con Desestructuración
+    Main-&gt;&gt;Modulo: const { readFile } = require('fs')
+    Modulo--&gt;&gt;Main: Devuelve objeto completo
+    Main-&gt;&gt;Main: Extrae SOLO 'readFile'
+    Main-&gt;&gt;Main: Uso: readFile()</code></pre>
+<h4 id="ejemplos-de-codigo_4">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Desestructuración con require</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// legacy.js</span>
+<span class="c1">// Importamos TODO el objeto</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="c1">// Extraemos solo lo que queremos</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">join</span><span class="p">,</span><span class="w"> </span><span class="nx">resolve</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">join</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span><span class="w"> </span><span class="s1">'b'</span><span class="p">));</span><span class="w"> </span><span class="c1">// Uso directo</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Desestructuración en Imports (Named Imports)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// modern.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">freemem</span><span class="p">,</span><span class="w"> </span><span class="nx">totalmem</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Similar a desestructurar</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">freemem</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">totalmem</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria libre: </span><span class="si">${</span><span class="nx">percent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Renombrando al desestructurar (Alias)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// alias.ts</span>
+<span class="c1">// Si tenemos conflicto de nombres, usamos 'as'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'uuid'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFileSync</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">leerArchivo</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">();</span>
+</code></pre></div>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBTaXN0ZW1hIGRlIE3Ds2R1bG9zCgojIyBUaXBvcwotICoqQ29tbW9uSlMgKENKUykqKgogICAgLSBgcmVxdWlyZWAgLyBgbW9kdWxlLmV4cG9ydHNgCiAgICAtIFPDrW5jcm9ubwogICAgLSBMZWdhY3kgKE5vZGUgYW50aWd1bykKLSAqKkVTIE1vZHVsZXMgKEVTTSkqKgogICAgLSBgaW1wb3J0YCAvIGBleHBvcnRgCiAgICAtIEFzw61uY3Jvbm8KICAgIC0gRXN0w6FuZGFyIE1vZGVybm8KCiMjIE9wZXJhY2lvbmVzCi0gKipFeHBvcnRhcioqCiAgICAtIE5hbWVkOiBgZXhwb3J0IGNvbnN0IHhgCiAgICAtIERlZmF1bHQ6IGBleHBvcnQgZGVmYXVsdCB4YAotICoqSW1wb3J0YXIqKgogICAgLSBEZXN0cnVjdHVyaW5nOiBgaW1wb3J0IHsgeCB9YAogICAgLSBOYW1lc3BhY2U6IGBpbXBvcnQgKiBhcyB1dGlsc2A=</markmap-data></div><p></p>
+<h4 id="preguntas-reflexivas_4">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Por qué el <em>Tree Shaking</em> (eliminación de código muerto) funciona mejor con ES Modules y Named Exports que con CommonJS?</li>
+<li>Si importo un módulo que ejecuta un <code>console.log</code> en su raíz, ¿cuántas veces se imprimirá si lo importo en 5 archivos diferentes?</li>
+<li>¿Qué sucede si intento asignar un valor a una variable importada (ej: <code>MAX_USERS = 50</code>) dentro del archivo que la importa?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="modulos-principales-de-nodejs">Módulos principales de Node.js</h2>
+<p>Node.js viene con una "navaja suiza" de módulos incorporados (Core Modules). No necesitas instalar nada con NPM para usarlos. Son la base de todo.</p>
+<h3 id="diagrama-mental-de-modulos-core">Diagrama Mental de Módulos Core</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBOb2RlLmpzIENvcmUgTW9kdWxlcwoKIyMgU2lzdGVtYQotICoqb3MqKjogQ1BVLCBSQU0sIE5ldHdvcmsKLSAqKnByb2Nlc3MqKjogRW52IHZhcnMsIFBJRCwgU1RESU4vT1VUCgojIyBBcmNoaXZvcyB5IFJ1dGFzCi0gKipmcyoqOiBMZWVyL0VzY3JpYmlyIGFyY2hpdm9zCi0gKipwYXRoKio6IFVuaXIgcnV0YXMsIGV4dGVuc2lvbmVzCgojIyBVdGlsaWRhZGVzCi0gKipjb25zb2xlKio6IERlYnVnZ2luZwotICoqZXZlbnRzKio6IEFycXVpdGVjdHVyYSBkaXJpZ2lkYSBhIGV2ZW50b3MKLSAqKmh0dHAqKjogQ3JlYXIgc2Vydmlkb3Jlcw==</markmap-data></div>
+<hr/>
+<h3 id="el-modulo-console">El módulo console</h3>
+<p>Mucho más que <code>console.log</code>. Es tu herramienta principal de depuración y salida estándar. Es una herramienta de depuración poderosa conectada a <code>stdout</code> (salida estándar) y <code>stderr</code> (salida de error).</p>
+<h4 id="explicacion-tecnica_5">Explicación Técnica</h4>
+<p>Escribe en <code>stdout</code> (salida estándar) y <code>stderr</code> (salida de error). Es bloqueante en algunos sistemas (Windows) y asíncrono en otros, pero para propósitos generales lo tratamos como síncrono.</p>
+<h4 id="metodos-avanzados">Métodos Avanzados</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>console.log</code></td>
+<td style="text-align: left;">Salida estándar (stdout).</td>
+<td style="text-align: left;">Info general.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.error</code></td>
+<td style="text-align: left;">Salida de error (stderr).</td>
+<td style="text-align: left;">Errores críticos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.table</code></td>
+<td style="text-align: left;">Muestra arrays/objetos como tabla.</td>
+<td style="text-align: left;">Listados de datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.time</code> / <code>timeEnd</code></td>
+<td style="text-align: left;">Mide el tiempo de ejecución.</td>
+<td style="text-align: left;">Performance testing.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.trace</code></td>
+<td style="text-align: left;">Muestra la pila de llamadas (stack trace).</td>
+<td style="text-align: left;">¿Quién llamó a esta función?</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_5">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Tablas para datos estructurados</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">alumnos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Luis'</span><span class="p">,</span><span class="w"> </span><span class="nx">nota</span><span class="o">:</span><span class="w"> </span><span class="kt">8</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Marta'</span><span class="p">,</span><span class="w"> </span><span class="nx">nota</span><span class="o">:</span><span class="w"> </span><span class="kt">9.5</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+<span class="c1">// Muestra una tabla ASCII preciosa en la terminal</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">alumnos</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Benchmarking simple</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Bucle'</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">1000000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* work */</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Bucle'</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">// Output: Bucle: 2.453ms</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Trace (Pila de llamadas)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">critica</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Me dice quién llamó a esta función y toda la ruta</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">trace</span><span class="p">(</span><span class="s1">'¿Quién me llamó?'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">critica</span><span class="p">();</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 4: Niveles de Log</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Info normal"</span><span class="p">);</span><span class="w">         </span><span class="c1">// stdout</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error crítico"</span><span class="p">);</span><span class="w">     </span><span class="c1">// stderr (útil para logs de errores)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">"Advertencia"</span><span class="p">);</span><span class="w">        </span><span class="c1">// stderr</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">trace</span><span class="p">(</span><span class="s2">"¿Quién me llamó?"</span><span class="p">);</span><span class="w">  </span><span class="c1">// Imprime la pila de llamadas</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-process">El módulo process</h3>
+<p><code>process</code> es el puente entre tu código y el proceso del sistema operativo que lo está ejecutando. Es fundamental para la configuración de entornos (Dev vs Prod).</p>
+<h4 id="funcionalidades-clave">Funcionalidades Clave</h4>
+<ul>
+<li><strong>Variables de Entorno (<code>process.env</code>):</strong> Para guardar contraseñas, claves API y puertos sin escribirlos en el código ("hardcode").</li>
+<li><strong>Argumentos (<code>process.argv</code>):</strong> Leer inputs desde la línea de comandos.</li>
+<li><strong>Salida (<code>process.exit</code>):</strong> Terminar el programa (0 = éxito, 1 = error).</li>
+</ul>
+<h4 id="explicacion-tecnica_6">Explicación Técnica</h4>
+<p>No necesita <code>import</code>. Provee acceso a las variables de entorno (<code>.env</code>), argumentos de línea de comandos (<code>argv</code>) y control del ciclo de vida (salir del programa).</p>
+<h4 id="tablas-comparativas_11">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Propiedad/Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>process.env</code></td>
+<td style="text-align: left;">Variables de entorno</td>
+<td style="text-align: left;">Leer contraseñas de BD, Puertos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process.argv</code></td>
+<td style="text-align: left;">Argumentos de ejecución</td>
+<td style="text-align: left;"><code>node app.js --modo=dev</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process.exit(code)</code></td>
+<td style="text-align: left;">Terminar programa</td>
+<td style="text-align: left;"><code>exit(0)</code> (ok), <code>exit(1)</code> (error)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process.cwd()</code></td>
+<td style="text-align: left;">Directorio actual</td>
+<td style="text-align: left;">Saber desde dónde se lanzó el comando</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_6">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Variables de Entorno (Seguridad)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// config.ts</span>
+<span class="c1">// Ejecutar como: PORT=3000 node dist/config.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">puerto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">8080</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dbUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_USER</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">dbUser</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Fatal: DB_USER no definido'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida con error</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor en puerto </span><span class="si">${</span><span class="nx">puerto</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Argumentos CLI</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// args.ts</span>
+<span class="c1">// Ejecutar: node dist/args.js --borrar-todo</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">;</span><span class="w"> </span>
+<span class="c1">// argv[0] es el binario de node</span>
+<span class="c1">// argv[1] es el archivo ejecutado</span>
+<span class="c1">// argv[2...] son tus argumentos</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">'--borrar-todo'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">'⚠️  Borrando base de datos...'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Uso de memoria</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">uso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">memoryUsage</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Uso de RAM: </span><span class="si">${</span><span class="p">(</span><span class="nx">uso</span><span class="p">.</span><span class="nx">heapUsed</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-os">El módulo os</h3>
+<p>Te da información sobre el hardware y el sistema operativo. Muy útil si estás creando herramientas de monitoreo o balanceadores de carga.</p>
+<h4 id="explicacion-tecnica_7">Explicación Técnica</h4>
+<p>Útil para diagnósticos, balanceo de carga (saber cuántas CPUs tenemos para lanzar hilos) y obtener rutas específicas del usuario.</p>
+<h4 id="tablas-comparativas_12">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Retorno</th>
+<th style="text-align: left;">Utilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>os.cpus()</code></td>
+<td style="text-align: left;">Array de núcleos</td>
+<td style="text-align: left;">Clustering (aprovechar multicore)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.freemem()</code></td>
+<td style="text-align: left;">Bytes libres</td>
+<td style="text-align: left;">Monitorización de salud del server</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.homedir()</code></td>
+<td style="text-align: left;">Ruta string</td>
+<td style="text-align: left;">Guardar configs en carpeta de usuario</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.platform()</code></td>
+<td style="text-align: left;">'win32', 'linux'</td>
+<td style="text-align: left;">Lógica específica por SO</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_7">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Información básica</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sistema: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">platform</span><span class="p">()</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">release</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Arquitectura: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">arch</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// x64, arm64</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Usuario: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">().</span><span class="nx">username</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Clustering basado en CPUs</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cpus</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">nucleos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Detectados </span><span class="si">${</span><span class="nx">nucleos</span><span class="si">}</span><span class="sb"> núcleos. Deberíamos lanzar </span><span class="si">${</span><span class="nx">nucleos</span><span class="si">}</span><span class="sb"> procesos.`</span><span class="p">);</span>
+<span class="c1">// En un servidor real, aquí usaríamos el módulo 'cluster'</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Interfaces de Red</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">networkInterfaces</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">nets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">networkInterfaces</span><span class="p">();</span>
+<span class="c1">// Muestra IPs, mac addresses, etc.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nets</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-path">El módulo path</h3>
+<p>Manipulación de rutas de archivos segura y multiplataforma. En Windows las rutas usan backslash <code>\</code> (ej: <code>C:\Users\Pepe</code>). En Linux/Mac usan slash <code>/</code> (ej: <code>/home/pepe</code>).
+Si escribes las rutas a mano (<code>"carpeta/archivo.txt"</code>), tu aplicación se romperá cuando cambies de sistema operativo.</p>
+<p><strong><code>path</code> resuelve esto normalizando las rutas automáticamente.</strong></p>
+<h4 id="explicacion-tecnica_8">Explicación Técnica</h4>
+<p><strong>Problema:</strong> Windows usa <code>\</code> y Linux/Mac usan <code>/</code> para separar carpetas. Si escribes strings manuales (<code>"carpeta/archivo"</code>), fallará en Windows.
+<strong>Solución:</strong> <code>path</code> normaliza esto automáticamente.</p>
+<div class="admonition tip">
+<p class="admonition-title">Regla de Oro</p>
+<p>Nunca concatenes rutas con <code>+</code> (ej: <code>dir + '/' + file</code>). Usa siempre <code>path.join()</code>.</p>
+</div>
+<h4 id="tablas-comparativas_13">Tablas Comparativas</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>path.join()</code></td>
+<td style="text-align: left;">Une segmentos</td>
+<td style="text-align: left;"><code>a/b</code> (Linux), <code>a\b</code> (Win)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>path.resolve()</code></td>
+<td style="text-align: left;">Ruta absoluta</td>
+<td style="text-align: left;"><code>/home/user/proyecto/a</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>path.extname()</code></td>
+<td style="text-align: left;">Extensión</td>
+<td style="text-align: left;"><code>.jpg</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>path.parse()</code></td>
+<td style="text-align: left;">Desglosa ruta</td>
+<td style="text-align: left;"><code>{ root, dir, base, ext, name }</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_8">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Unir rutas (Cross-platform)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="c1">// Nunca hagas esto: const ruta = 'uploads' + '/' + 'foto.jpg';</span>
+<span class="c1">// Haz esto:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaSegura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'uploads'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2024'</span><span class="p">,</span><span class="w"> </span><span class="s1">'foto.jpg'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rutaSegura</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">// Win: uploads\2024\foto.jpg</span>
+<span class="c1">// Linux: uploads/2024/foto.jpg</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Obtener rutas absolutas</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="c1">// Resuelve desde la raíz del disco</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">absoluta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'dist'</span><span class="p">,</span><span class="w"> </span><span class="s1">'index.js'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">absoluta</span><span class="p">);</span>
+<span class="c1">// /Users/usuario/proyectos/mi-api/dist/index.js</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 3: Analizar nombres de archivo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">archivo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/var/www/index.html'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">archivo</span><span class="p">));</span><span class="w"> </span><span class="c1">// .html</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">archivo</span><span class="p">));</span><span class="w"> </span><span class="c1">// index.html</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">archivo</span><span class="p">,</span><span class="w"> </span><span class="s1">'.html'</span><span class="p">));</span><span class="w"> </span><span class="c1">// index</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 4: Extrayendo información de un archivo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">parse</span><span class="p">,</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ruta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/home/usuario/documentos/reporte.pdf'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="nx">ruta</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+<span class="cm">/*</span>
+<span class="cm">┌──────────┬─────────────────────────────┐</span>
+<span class="cm">│ (index)  │           Values            │</span>
+<span class="cm">├──────────┼─────────────────────────────┤</span>
+<span class="cm">│   root   │             '/'             │</span>
+<span class="cm">│   dir    │  '/home/usuario/documentos' │</span>
+<span class="cm">│   base   │        'reporte.pdf'        │</span>
+<span class="cm">│   ext    │           '.pdf'            │</span>
+<span class="cm">│   name   │          'reporte'          │</span>
+<span class="cm">└──────────┴─────────────────────────────┘</span>
+<span class="cm">*/</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_5">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Por qué <code>path.resolve('a', 'b')</code> puede dar un resultado diferente a <code>path.join('a', 'b')</code>? (Pista: Rutas absolutas).</li>
+<li>¿Cómo ayuda el módulo <code>path</code> a evitar vulnerabilidades de seguridad tipo "Directory Traversal" (ej: <code>../../etc/passwd</code>)?</li>
+<li>En un proyecto Dockerizado (Linux) desarrollado en Windows, ¿qué problemas evitarías usando <code>path.join</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li><strong>Node.js Documentation (API Reference):</strong> La fuente de la verdad.<ul>
+<li>https://nodejs.org/api/</li>
+</ul>
+</li>
+<li><strong>TypeScript Handbook - Modules:</strong> Entender cómo TS maneja las importaciones.<ul>
+<li>https://www.typescriptlang.org/docs/handbook/modules.html</li>
+</ul>
+</li>
+<li><strong>Google TypeScript Style Guide:</strong> Buenas prácticas estándar.<ul>
+<li>https://google.github.io/styleguide/tsguide.html</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="enriquecimiento-pedagogico-estrategia-fp">🎓 Enriquecimiento Pedagógico (Estrategia FP)</h2>
+<p>Chicos, pensad en el <strong>Core de Node.js</strong> (<code>fs</code>, <code>path</code>, <code>os</code>, <code>http</code>) como en la <strong>caja de herramientas básica</strong> que te dan al entrar a trabajar en un taller.
+Tienes un martillo, un destornillador y una llave inglesa. Son robustos, nunca fallan y están hechos de acero.</p>
+<p>Luego está <strong>NPM</strong> (que veremos después), que es como ir a Amazon y comprar una pistola láser o un robot que atornilla solo. Mola mucho, pero a veces se rompe, o deja de tener soporte.
+Un buen desarrollador DAW sabe resolver problemas simples con la caja de herramientas básica (Core Modules) antes de instalar 50 dependencias externas pesadas. <strong>Dominad lo básico, y controlaréis el servidor.</strong></p>
+<hr/>
+<p><br/></p><hr/><p></p>
+<h1 id="ejercicios">Ejercicios</h1>
+<p><a href="../03-NodeJS-Ejercicios/">-&gt; Ejercicios de Node.js </a> </p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

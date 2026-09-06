@@ -1,0 +1,2854 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/_old/02-IntroTypeScript-Ejercicios-Manus/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>02 IntroTypeScript Ejercicios Manus - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-practicos-typescript-para-backend-nodejs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02 IntroTypeScript Ejercicios Manus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-IntroNodeJS/" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/09-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/10-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/11-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/12-MVC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/13-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/14-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/15-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/16-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/17-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/18-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-IntroNodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-IntroTypeScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-NodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-Timers-Asincronia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-FileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-ModulosHTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-GestionPaquetes-NPM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-Nodemon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/01-IntroNestJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/02-CreacionRecursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/03-TypeORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/04-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/05-AlacenamientoFicheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/06-WebSockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/07-EndpointsAvanzados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/08-MongoDB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/09-Seguridad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/10-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/11-Perfiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/12-Despliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Consolidación (Nivel Fácil)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación (Nivel Fácil)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Refuerzo (Nivel Medio)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo (Nivel Medio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion-nivel-dificil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Ampliación (Nivel Difícil)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación (Nivel Difícil)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial-cuando-aplique_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial (cuando aplique):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: T02-Ejercicios-TypeScript.md --><h1 id="ejercicios-practicos-typescript-para-backend-nodejs">Ejercicios Prácticos: TypeScript para Backend (Node.js)</h1>
+<p><strong>Narrativa Temática:</strong> Estás trabajando en "Nexus Hub", una plataforma de gestión de proyectos interna. Tu tarea es migrar y desarrollar nuevos módulos en TypeScript para asegurar la robustez y escalabilidad del sistema.</p>
+<hr>
+<h2 id="ejercicios-de-consolidacion-nivel-facil">Ejercicios de Consolidación (Nivel Fácil)</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) Tipado Básico y Detección de Errores | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo">Objetivo:</h5>
+<p>Asegurar la comprensión de los tipos primitivos (<code>string</code>, <code>number</code>, <code>boolean</code>) y la capacidad de TypeScript para detectar errores de tipo en tiempo de edición.</p>
+<h5 id="setup-inicial-cuando-aplique">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio1.ts</code>.</p>
+<h5 id="tarea-a-realizar">Tarea a realizar:</h5>
+<p>El siguiente código JavaScript tiene un error lógico que TypeScript puede prevenir.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">calcularTotal</span><span class="p">(</span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">cantidad</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">descuento</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// La función espera un descuento en formato string (ej: "10%")</span>
+<span class="w">    </span><span class="c1">// pero realiza una operación matemática.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">cantidad</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">descuento</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">calcularTotal</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"10"</span><span class="p">));</span><span class="w"> </span><span class="c1">// 190, pero el descuento debería ser 10% del total (200), no 10.</span>
+</code></pre></div>
+<ol>
+<li>Modifica la función <code>calcularTotal</code> para que el parámetro <code>descuento</code> sea de tipo <code>number</code> (representando el porcentaje, ej: 0.10).</li>
+<li>Asegúrate de que la función devuelva el tipo correcto (<code>number</code>).</li>
+<li>Escribe una línea de código que intente llamar a la función con un valor de descuento incorrecto (ej: un <code>string</code>) y explica el error que muestra TypeScript.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real:</h5>
+<p>Prevenir errores de conversión de tipos es la razón principal para usar TypeScript en un backend, evitando que una API devuelva un resultado incorrecto o que un proceso de negocio falle silenciosamente.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">calcularTotal</span><span class="p">(</span><span class="nx">precio</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">cantidad</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">descuentoPorcentaje</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">precio</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">cantidad</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Aplicamos el descuento correctamente</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">descuentoPorcentaje</span><span class="p">);</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="c1">// Ejemplo de uso correcto</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">calcularTotal</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.10</span><span class="p">));</span><span class="w"> </span><span class="c1">// Resultado: 180 (200 - 10%)</span>
+
+<span class="c1">// Ejemplo de error detectado por TS:</span>
+<span class="c1">// calcularTotal(100, 2, "diez"); </span>
+<span class="c1">// Error: Argument of type 'string' is not assignable to parameter of type 'number'.</span>
+</code></pre></div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Configuración del Compilador (<code>tsconfig.json</code>) | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_1">Objetivo:</h5>
+<p>Comprender la función de las opciones clave en el archivo de configuración de TypeScript y su impacto en el proyecto.</p>
+<h5 id="setup-inicial-cuando-aplique_1">Setup Inicial (cuando aplique):</h5>
+<p>Ninguno.</p>
+<h5 id="tarea-a-realizar_1">Tarea a realizar:</h5>
+<p>Responde a las siguientes preguntas basándote en el material didáctico sobre <code>tsconfig.json</code>:</p>
+<ol>
+<li>¿Qué opción de <code>compilerOptions</code> define la carpeta donde se guardará el código JavaScript transpilado?</li>
+<li>¿Por qué es crucial activar la opción <code>"strict": true</code> en un proyecto profesional de Node.js?</li>
+<li>Si un desarrollador está usando una versión moderna de Node.js (que soporta ES2022), ¿qué valor debería establecer para la opción <code>"target"</code>?</li>
+<li>Explica brevemente el proceso de <strong>transpilación</strong> en el contexto de TypeScript.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1">Aplicación en el Mundo Real:</h5>
+<p>Un <code>tsconfig.json</code> bien configurado es la primera línea de defensa para asegurar la calidad del código y la compatibilidad con el entorno de ejecución (Node.js).</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<ol>
+<li>La opción es <code>"outDir"</code>.</li>
+<li>Activar <code>"strict": true</code> obliga a TypeScript a ser lo más riguroso posible con el chequeo de tipos. Esto incluye verificar valores nulos (<code>null</code> o <code>undefined</code>), lo cual previene la mayoría de los errores comunes en JavaScript en tiempo de ejecución.</li>
+<li>Debería establecer <code>"target": "ES2022"</code> (o la versión más reciente que soporte su entorno de Node.js).</li>
+<li>La <strong>transpilación</strong> es el proceso de traducir el código fuente de TypeScript (<code>.ts</code>), que incluye tipos y sintaxis moderna, a código JavaScript plano (<code>.js</code>) que pueda ser ejecutado por el motor de Node.js.</li>
+</ol>
+<div class="admonition abstract">
+<p class="admonition-title">3) Modelado de Datos con Tuplas y Arrays | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_2">Objetivo:</h5>
+<p>Aplicar los tipos <code>Array</code> y <code>Tuple</code> para modelar colecciones de datos estructurados.</p>
+<h5 id="setup-inicial-cuando-aplique_2">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio3.ts</code>.</p>
+<h5 id="tarea-a-realizar_2">Tarea a realizar:</h5>
+<p>En Nexus Hub, necesitamos modelar dos estructuras de datos:</p>
+<ol>
+<li><strong>Lista de Tags:</strong> Define un array llamado <code>tagsProyecto</code> que solo pueda contener cadenas de texto (<code>string</code>). Inicialízalo con al menos tres tags (ej: 'backend', 'typescript', 'api').</li>
+<li><strong>Registro de Evento:</strong> Define una tupla llamada <code>logEntry</code> que represente un registro de evento. Debe tener exactamente tres elementos:<ul>
+<li>Un <code>number</code> para el timestamp.</li>
+<li>Un <code>string</code> para el nivel de severidad (ej: 'ERROR', 'INFO').</li>
+<li>Un <code>string</code> para el mensaje del evento.</li>
+</ul>
+</li>
+</ol>
+<p>Asigna un valor a <code>logEntry</code> y luego intenta asignarle un valor con el orden de tipos incorrecto (ej: <code>[string, number, string]</code>) y observa el error de TS.</p>
+<h5 id="aplicacion-en-el-mundo-real_2">Aplicación en el Mundo Real:</h5>
+<p>Las tuplas son perfectas para modelar estructuras de datos fijas como coordenadas GPS, códigos de color RGB o, como en este caso, registros de log.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Lista de Tags (Array)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tagsProyecto</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'backend'</span><span class="p">,</span><span class="w"> </span><span class="s1">'typescript'</span><span class="p">,</span><span class="w"> </span><span class="s1">'api'</span><span class="p">,</span><span class="w"> </span><span class="s1">'node'</span><span class="p">];</span>
+<span class="c1">// tagsProyecto.push(123); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.</span>
+
+<span class="c1">// 2. Registro de Evento (Tupla)</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">LogEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">];</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">logEntry</span><span class="o">:</span><span class="w"> </span><span class="kt">LogEntry</span><span class="p">;</span>
+
+<span class="c1">// Asignación correcta</span>
+<span class="nx">logEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">'INFO'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Usuario root ha iniciado sesión.'</span><span class="p">];</span><span class="w"> </span>
+
+<span class="c1">// Asignación incorrecta (TS detecta el error en el orden de los tipos)</span>
+<span class="c1">// logEntry = ['ERROR', Date.now(), 'Mensaje']; </span>
+<span class="c1">// Error: Type 'string' is not assignable to type 'number' in position 0.</span>
+</code></pre></div>
+<div class="admonition abstract">
+<p class="admonition-title">4) Uso de <code>Void</code> y <code>Never</code> en Funciones | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_3">Objetivo:</h5>
+<p>Diferenciar el uso de los tipos de retorno <code>void</code> y <code>never</code> en funciones.</p>
+<h5 id="setup-inicial-cuando-aplique_3">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio4.ts</code>.</p>
+<h5 id="tarea-a-realizar_3">Tarea a realizar:</h5>
+<p>Analiza las siguientes dos funciones y responde:</p>
+<ol>
+<li>¿Qué tipo de retorno debe tener la función <code>imprimirLog</code> y por qué?</li>
+<li>¿Qué tipo de retorno debe tener la función <code>lanzarErrorCritico</code> y por qué?</li>
+<li>¿Qué ocurriría si intentas asignar el resultado de <code>lanzarErrorCritico</code> a una variable?</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">imprimirLog</span><span class="p">(</span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[LOG] </span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// No devuelve nada explícitamente</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">lanzarErrorCritico</span><span class="p">(</span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">mensaje</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Esta línea nunca se alcanza</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="aplicacion-en-el-mundo-real_3">Aplicación en el Mundo Real:</h5>
+<p>Usar <code>never</code> ayuda a TypeScript a entender que ciertas partes del código son inalcanzables, lo cual es útil para el análisis de flujo de control y para asegurar que todas las ramas de un <code>switch</code> han sido manejadas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<ol>
+<li>La función <code>imprimirLog</code> debe tener el tipo de retorno <code>void</code>. Esto indica que la función no devuelve un valor significativo (aunque internamente devuelva <code>undefined</code>).</li>
+<li>La función <code>lanzarErrorCritico</code> debe tener el tipo de retorno <code>never</code>. Esto indica que la función nunca termina su ejecución de forma normal, ya que lanza una excepción que rompe el flujo de control.</li>
+<li>Si intentas asignar el resultado de <code>lanzarErrorCritico</code> a una variable, TypeScript lo permitirá (ya que <code>never</code> es un subtipo de todos los tipos), pero en tiempo de ejecución, el programa se detendrá en el <code>throw new Error()</code>, y la variable nunca recibirá un valor.</li>
+</ol>
+<div class="admonition abstract">
+<p class="admonition-title">5) Funciones con Parámetros Opcionales y por Defecto | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_4">Objetivo:</h5>
+<p>Implementar funciones que utilicen parámetros opcionales y parámetros con valores por defecto.</p>
+<h5 id="setup-inicial-cuando-aplique_4">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio5.ts</code>.</p>
+<h5 id="tarea-a-realizar_4">Tarea a realizar:</h5>
+<p>Crea una función llamada <code>generarToken</code> que simule la creación de un token de seguridad para un usuario.</p>
+<ol>
+<li>La función debe aceptar el <code>userId</code> (obligatorio, <code>number</code>).</li>
+<li>Debe aceptar un parámetro <code>duracionHoras</code> que sea <strong>opcional</strong> (<code>number</code>).</li>
+<li>Debe aceptar un parámetro <code>algoritmo</code> que tenga un <strong>valor por defecto</strong> de <code>'HS256'</code> (<code>string</code>).</li>
+<li>La función debe devolver un <code>string</code> que simule el token.</li>
+</ol>
+<p><strong>Ejemplo de salida esperada:</strong> <code>Token para usuario 101, duración: 24h, algoritmo: HS256</code></p>
+<h5 id="aplicacion-en-el-mundo-real_4">Aplicación en el Mundo Real:</h5>
+<p>Es una práctica común en el desarrollo de APIs definir valores por defecto para parámetros opcionales, como el tamaño de página (<code>pageSize</code>) o el algoritmo de cifrado.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">generarToken</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">duracionHoras?</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">algoritmo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'HS256'</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Si duracionHoras es undefined (opcional no proporcionado), usamos 24 por defecto.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">duracion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">duracionHoras</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">24</span><span class="p">;</span><span class="w"> </span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`Token para usuario </span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">, duración: </span><span class="si">${</span><span class="nx">duracion</span><span class="si">}</span><span class="sb">h, algoritmo: </span><span class="si">${</span><span class="nx">algoritmo</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso 1: Solo obligatorio</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generarToken</span><span class="p">(</span><span class="mf">101</span><span class="p">));</span><span class="w"> </span>
+<span class="c1">// Salida: Token para usuario 101, duración: 24h, algoritmo: HS256</span>
+
+<span class="c1">// Uso 2: Opcional y por defecto</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generarToken</span><span class="p">(</span><span class="mf">202</span><span class="p">,</span><span class="w"> </span><span class="mf">48</span><span class="p">));</span><span class="w"> </span>
+<span class="c1">// Salida: Token para usuario 202, duración: 48h, algoritmo: HS256</span>
+
+<span class="c1">// Uso 3: Todos los parámetros</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">generarToken</span><span class="p">(</span><span class="mf">303</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">'RSA512'</span><span class="p">));</span><span class="w"> </span>
+<span class="c1">// Salida: Token para usuario 303, duración: 1h, algoritmo: RSA512</span>
+</code></pre></div>
+<hr>
+<h2 id="ejercicios-de-refuerzo-nivel-medio">Ejercicios de Refuerzo (Nivel Medio)</h2>
+<div class="admonition warning">
+<p class="admonition-title">6) Modelado de Entidades con Interfaces y Extensión | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_5">Objetivo:</h5>
+<p>Utilizar interfaces para definir contratos de objetos y la extensión de interfaces para crear jerarquías de datos.</p>
+<h5 id="setup-inicial-cuando-aplique_5">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio6.ts</code>.</p>
+<h5 id="tarea-a-realizar_5">Tarea a realizar:</h5>
+<p>En Nexus Hub, necesitamos modelar los datos de los empleados y los administradores.</p>
+<ol>
+<li>Define una interfaz base llamada <code>Empleado</code> con las siguientes propiedades:<ul>
+<li><code>id</code>: <code>number</code> (solo lectura).</li>
+<li><code>nombre</code>: <code>string</code>.</li>
+<li><code>departamento</code>: <code>string</code>.</li>
+</ul>
+</li>
+<li>Define una interfaz llamada <code>Administrador</code> que <strong>extienda</strong> de <code>Empleado</code> y añada las siguientes propiedades:<ul>
+<li><code>permisos</code>: <code>string[]</code> (un array de cadenas).</li>
+<li><code>fechaContratacion</code>: <code>Date</code> (opcional).</li>
+</ul>
+</li>
+<li>Crea un objeto <code>admin</code> de tipo <code>Administrador</code> y un objeto <code>empleado</code> de tipo <code>Empleado</code>.</li>
+<li><strong>Pista:</strong> Recuerda usar la palabra clave <code>readonly</code> para la propiedad <code>id</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5">Aplicación en el Mundo Real:</h5>
+<p>Las interfaces son la herramienta fundamental para definir la estructura de los datos que se envían y reciben en las APIs (Data Transfer Objects - DTOs).</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Empleado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">departamento</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Administrador extiende de Empleado, heredando id, nombre y departamento</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Administrador</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Empleado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">permisos</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
+<span class="w">    </span><span class="nx">fechaContratacion?</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span><span class="w"> </span><span class="c1">// Opcional</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">empleado</span><span class="o">:</span><span class="w"> </span><span class="kt">Empleado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1001</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Laura Gómez"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">departamento</span><span class="o">:</span><span class="w"> </span><span class="s2">"Desarrollo"</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">Administrador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">"Javier Torres"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">departamento</span><span class="o">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">permisos</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"gestion_usuarios"</span><span class="p">,</span><span class="w"> </span><span class="s2">"auditoria"</span><span class="p">,</span><span class="w"> </span><span class="s2">"despliegue"</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">fechaContratacion</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2020-01-15'</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="c1">// empleado.id = 1002; // Error: Cannot assign to 'id' because it is a read-only property.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">admin</span><span class="p">.</span><span class="nx">permisos</span><span class="p">);</span><span class="w"> </span><span class="c1">// Acceso a propiedad extendida</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">7) Gestión de Datos Externos: <code>Any</code> vs <code>Unknown</code> | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_6">Objetivo:</h5>
+<p>Demostrar la diferencia de seguridad entre usar <code>any</code> y <code>unknown</code> al manejar datos provenientes de fuentes externas (ej: una API).</p>
+<h5 id="setup-inicial-cuando-aplique_6">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio7.ts</code>.</p>
+<h5 id="tarea-a-realizar_6">Tarea a realizar:</h5>
+<p>Simula la recepción de un objeto JSON de una API externa que contiene un campo <code>data</code>.</p>
+<ol>
+<li>Crea una función <code>procesarDatosAny</code> que acepte un parámetro de tipo <code>any</code>. Dentro de la función, intenta llamar a un método que solo existe en strings (<code>.toUpperCase()</code>) sobre una propiedad que podría ser un número (<code>data.id</code>).</li>
+<li>Crea una función <code>procesarDatosUnknown</code> que acepte un parámetro de tipo <code>unknown</code>. Intenta hacer la misma llamada (<code>.toUpperCase()</code>) sin realizar ninguna comprobación de tipo.</li>
+<li>Corrige la función <code>procesarDatosUnknown</code> para que solo llame al método si se ha comprobado que el tipo de la propiedad es <code>string</code> (usando <strong>Type Narrowing</strong>).</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6">Aplicación en el Mundo Real:</h5>
+<p>Los datos de APIs externas son inherentemente inseguros. <code>unknown</code> es la forma de forzar al desarrollador a validar los datos antes de usarlos, previniendo fallos en producción.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">ApiData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Simulación de datos recibidos (podrían ser incorrectos)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">ApiData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">123</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="s2">"mensaje de prueba"</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// 1. Función con ANY (Peligro)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">procesarDatosAny</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// TS no se queja, pero si 'data.id' fuera un número, esto fallaría en runtime.</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"ANY (Peligro):"</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span><span class="w"> </span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Función con UNKNOWN (Seguro)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">procesarDatosUnknown</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// console.log(data.payload.toUpperCase()); // Error: Object is of type 'unknown'. TS te protege.</span>
+
+<span class="w">    </span><span class="c1">// 3. Corrección con Type Narrowing</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'object'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s1">'payload'</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'string'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"UNKNOWN (Seguro):"</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Error: Datos no válidos."</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">procesarDatosAny</span><span class="p">(</span><span class="nx">apiResponse</span><span class="p">);</span>
+<span class="nx">procesarDatosUnknown</span><span class="p">(</span><span class="nx">apiResponse</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">8) Clases y Modificadores de Acceso | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_7">Objetivo:</h5>
+<p>Aplicar los modificadores de acceso (<code>public</code>, <code>private</code>, <code>protected</code>) y la sintaxis abreviada del constructor (Parameter Properties).</p>
+<h5 id="setup-inicial-cuando-aplique_7">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio8.ts</code>.</p>
+<h5 id="tarea-a-realizar_7">Tarea a realizar:</h5>
+<p>Crea una clase <code>ServicioAuditoria</code> para gestionar el log de operaciones críticas en Nexus Hub.</p>
+<ol>
+<li>Utiliza la sintaxis abreviada del constructor para definir las propiedades <code>nombreServicio</code> (público) y <code>claveAcceso</code> (privado).</li>
+<li>Define una propiedad <code>log</code> (privada) que sea un array de strings.</li>
+<li>Crea un método <code>registrarOperacion</code> (público) que reciba un mensaje y lo añada al <code>log</code>.</li>
+<li>Crea un método <code>obtenerLog</code> (público) que devuelva el contenido del <code>log</code>.</li>
+<li>Intenta acceder a <code>claveAcceso</code> y <code>log</code> desde fuera de la clase y explica por qué TypeScript lo impide.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_7">Aplicación en el Mundo Real:</h5>
+<p>Los modificadores de acceso son esenciales para el encapsulamiento, asegurando que el estado interno de un objeto (como una clave de API o un log) solo pueda ser modificado a través de métodos controlados.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ServicioAuditoria</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Propiedad privada para el log</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">log</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// 1. Uso de Parameter Properties para definir y asignar propiedades</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nx">nombreServicio</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="c1">// Público</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="nx">claveAcceso</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Privado</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servicio </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">nombreServicio</span><span class="si">}</span><span class="sb"> inicializado.`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">registrarOperacion</span><span class="p">(</span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">obtenerLog</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Solo la clase puede acceder al log privado</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">auditoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ServicioAuditoria</span><span class="p">(</span><span class="s2">"AuthService"</span><span class="p">,</span><span class="w"> </span><span class="s2">"super-secreto-123"</span><span class="p">);</span>
+<span class="nx">auditoria</span><span class="p">.</span><span class="nx">registrarOperacion</span><span class="p">(</span><span class="s2">"Intento de login fallido: usuario 'admin'"</span><span class="p">);</span>
+<span class="nx">auditoria</span><span class="p">.</span><span class="nx">registrarOperacion</span><span class="p">(</span><span class="s2">"Usuario 'root' ha cambiado su contraseña."</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">auditoria</span><span class="p">.</span><span class="nx">obtenerLog</span><span class="p">());</span>
+
+<span class="c1">// 5. Intentos de acceso fallidos:</span>
+<span class="c1">// console.log(auditoria.claveAcceso); // Error: Property 'claveAcceso' is private.</span>
+<span class="c1">// console.log(auditoria.log);         // Error: Property 'log' is private.</span>
+</code></pre></div>
+<hr>
+<h2 id="ejercicios-de-ampliacion-nivel-dificil">Ejercicios de Ampliación (Nivel Difícil)</h2>
+<div class="admonition danger">
+<p class="admonition-title">9) Diseño de Arquitectura: Clases Abstractas y Herencia | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_8">Objetivo:</h5>
+<p>Diseñar una jerarquía de clases utilizando clases abstractas para definir un contrato de base de datos, forzando a las clases hijas a implementar métodos específicos.</p>
+<h5 id="setup-inicial-cuando-aplique_8">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio9.ts</code>.</p>
+<h5 id="tarea-a-realizar_8">Tarea a realizar:</h5>
+<p>En Nexus Hub, todos los modelos de datos deben interactuar con la base de datos de forma estandarizada.</p>
+<ol>
+<li>Define una <strong>clase abstracta</strong> llamada <code>BaseRepository</code> que acepte un tipo genérico <code>T</code> (el tipo de la entidad, ej: <code>User</code>, <code>Project</code>).</li>
+<li>Esta clase debe tener un constructor que reciba la <code>tableName</code> (<code>string</code>) y la asigne a una propiedad <code>protected</code>.</li>
+<li>Define los siguientes <strong>métodos abstractos</strong> que deben ser implementados por cualquier repositorio hijo:<ul>
+<li><code>findById(id: number): Promise&lt;T | null&gt;</code></li>
+<li><code>save(entity: T): Promise&lt;T&gt;</code></li>
+<li><code>delete(id: number): Promise&lt;boolean&gt;</code></li>
+</ul>
+</li>
+<li>Crea una clase concreta <code>UserRepository</code> que <strong>extienda</strong> de <code>BaseRepository&lt;User&gt;</code> e implemente todos los métodos abstractos. Para simplificar, los métodos solo deben devolver un valor simulado (ej: <code>Promise.resolve(true)</code>).</li>
+<li>Define una interfaz <code>User</code> para el tipo genérico.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8">Aplicación en el Mundo Real:</h5>
+<p>Este patrón (Repository Pattern) es fundamental en arquitecturas de backend para desacoplar la lógica de negocio de la tecnología de la base de datos.</p>
+<h5 id="peer-review">Peer Review:</h5>
+<p>Pide a un compañero que revise tu implementación de <code>UserRepository</code>. ¿Ha implementado todos los métodos abstractos? ¿Ha usado correctamente el tipo genérico <code>T</code>?</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 1. Clase Abstracta</span>
+<span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">BaseRepository</span><span class="o">&lt;</span><span class="nx">T</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 2. Propiedad protegida para el nombre de la tabla</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="k">protected</span><span class="w"> </span><span class="nx">tableName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Repositorio para tabla: </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tableName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 3. Métodos abstractos (contrato)</span>
+<span class="w">    </span><span class="k">abstract</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">abstract</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">entity</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">abstract</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Clase Concreta</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseRepository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Llama al constructor padre con el nombre de la tabla</span>
+<span class="w">    </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="s2">"users"</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Implementación de los métodos abstractos</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Buscando usuario </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb"> en la tabla </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tableName</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Simulación de resultado</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="sb">`user_</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="sb">`user</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">@nexus.com`</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Guardando usuario </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="si">}</span><span class="sb"> en la tabla </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tableName</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Eliminando usuario </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb"> de la tabla </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tableName</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userRepo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserRepository</span><span class="p">();</span>
+<span class="nx">userRepo</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="mf">42</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Encontrado:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">));</span>
+
+<span class="c1">// const repoBase = new BaseRepository("test"); // Error: Cannot create an instance of an abstract class.</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">10) Tipos de Intersección y Decoradores (Investigación) | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_9">Objetivo:</h5>
+<p>Combinar <code>Intersection Types</code> para crear un tipo complejo y realizar una investigación sobre el uso de Decoradores en un framework de Node.js.</p>
+<h5 id="setup-inicial-cuando-aplique_9">Setup Inicial (cuando aplique):</h5>
+<p>Crea un archivo <code>ejercicio10.ts</code>.</p>
+<h5 id="tarea-a-realizar_9">Tarea a realizar:</h5>
+<p><strong>Parte A: Intersection Types</strong></p>
+<ol>
+<li>Define dos tipos: <code>Auditable</code> (con propiedades <code>createdAt: Date</code> y <code>updatedAt: Date</code>) y <code>SoftDeletable</code> (con una propiedad opcional <code>deletedAt?: Date</code>).</li>
+<li>Crea un nuevo tipo llamado <code>BaseEntity</code> que sea la <strong>intersección</strong> de <code>Auditable</code> y <code>SoftDeletable</code>.</li>
+<li>Crea un objeto <code>project</code> de tipo <code>BaseEntity</code> y asígnale valores.</li>
+</ol>
+<p><strong>Parte B: Investigación sobre Decoradores</strong></p>
+<ol>
+<li>Investiga cómo se utilizan los <strong>Decoradores</strong> en un framework de backend de Node.js basado en TypeScript (ej: <strong>NestJS</strong> o <strong>TypeORM</strong>).</li>
+<li>Escribe un breve párrafo (3-4 líneas) explicando cómo un decorador como <code>@Controller()</code> (en NestJS) o <code>@Entity()</code> (en TypeORM) utiliza la funcionalidad de los decoradores de TypeScript para añadir metadatos a las clases.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_9">Aplicación en el Mundo Real:</h5>
+<p>Los tipos de intersección se usan para componer tipos complejos a partir de tipos más simples (Composición sobre Herencia). Los decoradores son la base de la inyección de dependencias y la configuración de metadatos en frameworks modernos.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<p><strong>Parte A: Intersection Types</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 1. Definición de tipos</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Auditable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">updatedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kr">type</span><span class="w"> </span><span class="nx">SoftDeletable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">deletedAt?</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 2. Tipo de Intersección</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">BaseEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Auditable</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">SoftDeletable</span><span class="p">;</span>
+
+<span class="c1">// 3. Creación del objeto</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">project</span><span class="o">:</span><span class="w"> </span><span class="kt">BaseEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">updatedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2024-05-15'</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// deletedAt es opcional</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">deletedProject</span><span class="o">:</span><span class="w"> </span><span class="kt">BaseEntity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2023-01-01'</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">updatedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2024-05-15'</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">deletedAt</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2024-06-01'</span><span class="p">),</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">project</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Parte B: Investigación sobre Decoradores</strong></p>
+<p>Los decoradores en TypeScript son una característica experimental (o estándar en versiones recientes) que permite adjuntar y manipular metadatos a clases, métodos, propiedades o parámetros en tiempo de diseño. Frameworks como <strong>NestJS</strong> utilizan intensamente los decoradores (ej: <code>@Controller()</code>, <code>@Get()</code>, <code>@Inject()</code>) para definir la estructura de la aplicación. Cuando se aplica un decorador a una clase, este ejecuta una función que, internamente, utiliza la API de metadatos de TypeScript (<code>reflect-metadata</code>) para registrar información sobre esa clase (por ejemplo, que es un controlador de rutas o que necesita una dependencia específica). El <em>runtime</em> del framework lee estos metadatos para saber cómo instanciar la clase y cómo enrutar las peticiones HTTP, permitiendo una configuración declarativa y limpia.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

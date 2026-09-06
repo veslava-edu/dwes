@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/01-IntroNodeJS/" rel="canonical"/>
+<link href="../../2-PHP/18-Testing/" rel="prev"/>
+<link href="../02-IntroTypeScript/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>01 - Intro a Node.js - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#repasando-el-desarrollo-web">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              01 - Intro a Node.js
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- Introducción a Node.js --><h1 id="repasando-el-desarrollo-web">Repasando el Desarrollo WEB</h1>
+<p><a href="../00-DesarrolloWEB.pdf" target="_blank">Visión general del desarrollo WEB</a></p>
+<p><br/><br/></p>
+<h1 id="introduccion-a-nodejs">Introducción a Node.js</h1>
+<h2 id="introduccion-el-camarero-ninja">🚀 Introducción: El Camarero Ninja</h2>
+<p>Imagina un restaurante tradicional muy concurrido. En el modelo clásico (como Apache/PHP antiguo), cada vez que entra un cliente, el restaurante contrata a un camarero exclusivo para esa mesa. El camarero toma la nota, va a la cocina y <strong>se queda esperando de pie</strong> mirando al cocinero hasta que el plato está listo. Si el cocinero tarda 20 minutos, ese camarero está 20 minutos inactivo. Si llegan 500 clientes, necesitas 500 camareros. El restaurante colapsa por falta de espacio (memoria RAM).</p>
+<p><strong>Node.js cambia las reglas del juego</strong>. Es un restaurante con <strong>un solo camarero</strong>. ¿Cómo? Porque es un <strong>Camarero Ninja</strong>. Toma la nota de la Mesa 1, la deja en cocina, y <em>mientras se cocina</em>, corre a atender a la Mesa 2, luego a la Mesa 3... No espera a nadie. Cuando la cocina (Base de Datos o Sistema de Archivos) termina un plato, toca un timbre (Evento), y el Camarero Ninja vuelve, recoge el plato y lo sirve.</p>
+<p>Resultado: Un solo camarero gestiona miles de clientes simultáneamente, siempre que los pedidos sean rápidos de anotar. Esto es Node.js: eficiencia máxima basada en eventos.</p>
+<hr/>
+<h2 id="conceptos-fundamentales">🧠 Conceptos Fundamentales</h2>
+<p>Antes de picar código, definamos el vocabulario que usarás en las entrevistas de trabajo.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Runtime (Entorno de Ejecución)</p>
+<p>Node.js <strong>NO es un lenguaje de programación</strong> ni un framework. Es un <strong>entorno de ejecución</strong> (Runtime Environment) que permite correr código JavaScript fuera del navegador (servidores, robots, IoT).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: V8 Engine</p>
+<p>Es el motor de JavaScript de código abierto creado por Google para Chrome. Node.js lo usa para traducir tu código JS/TS a código máquina a velocidad de vértigo.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Non-blocking I/O (E/S No Bloqueante)</p>
+<p>Es la capacidad de solicitar una operación lenta (leer disco, petición a API) y continuar ejecutando el resto del código sin esperar a que la primera termine.</p>
+</div>
+<p><br/></p><hr/><p></p>
+<hr/>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/nodelogo.png"><img alt="" src="../images/nodelogo.png"/></a></p>
+<h2 id="1-que-es-nodejs">1. ¿Qué es Node.js?</h2>
+<p>Node.js nació en 2009 cuando <strong>Ryan Dahl</strong> presentó una idea revolucionaria: sacar JavaScript del navegador. Su obsesión era crear servidores que pudieran manejar miles de conexiones concurrentes sin bloquearse, algo que en aquella época era una pesadilla con los servidores tradicionales.</p>
+<p>Hoy, Node.js es el estándar de facto para el desarrollo web moderno, permitiendo el <strong>Isomorphic JavaScript</strong>: usar el mismo lenguaje en el cliente (Frontend) y en el servidor (Backend).</p>
+<h3 id="caracteristicas-principales">Características Principales</h3>
+<ol>
+<li><strong>Single-threaded (Monohilo):</strong> Ejecuta el código JavaScript en un solo hilo principal. No crea un hilo por cada usuario.</li>
+<li><strong>Event Driven (Basado en Eventos):</strong> Todo es una reacción. "Si pasa X, ejecuta la función Y".</li>
+<li><strong>Asíncrono y No Bloqueante:</strong> La filosofía central. Nunca detengas el hilo principal.</li>
+<li><strong>Motor V8:</strong> Desarrollado por Google, compila JS a código máquina nativo a una velocidad vertiginosa. Es de arquitectura ligera. Ideal para operaciones intensivas de I/O (Red/Disco).</li>
+<li><strong>Full Stack JS:</strong> Permite usar el mismo lenguaje en cliente y servidor, unificando tipos de datos y lógica.</li>
+</ol>
+<h3 id="tabla-comparativa-nodejs-vs-el-mundo">Tabla Comparativa: Node.js vs El Mundo</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Node.js</th>
+<th style="text-align: left;">PHP (Tradicional/Apache)</th>
+<th style="text-align: left;">Java (Spring/Tomcat)</th>
+<th style="text-align: left;">Python (Django)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Modelo de Hilos</strong></td>
+<td style="text-align: left;">Single-Thread con Event Loop</td>
+<td style="text-align: left;">Multi-Thread (un proceso por petición)</td>
+<td style="text-align: left;">Multi-Thread (pesado)</td>
+<td style="text-align: left;">Síncrono/Multi-thread</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bloqueo I/O</strong></td>
+<td style="text-align: left;">No bloqueante por defecto</td>
+<td style="text-align: left;">Bloqueante (normalmente)</td>
+<td style="text-align: left;">Bloqueante (aunque existe NIO)</td>
+<td style="text-align: left;">Bloqueante</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Curva de Aprendizaje</strong></td>
+<td style="text-align: left;">Media (Si sabes JS)</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Baja/Media</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caso de Uso Ideal</strong></td>
+<td style="text-align: left;">Apps Tiempo Real (Chats), APIs REST, Streaming</td>
+<td style="text-align: left;">CMS (WordPress), Webs estáticas</td>
+<td style="text-align: left;">Grandes sistemas Enterprise, Banca</td>
+<td style="text-align: left;">Data Science, IA, Scripts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="por-que-usarlo-en-el-desarrollo-moderno">¿Por qué usarlo en el desarrollo moderno?</h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Servidor Clásico (Ej. Apache/PHP antiguo)</th>
+<th>Node.js</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Concurrencia</strong></td>
+<td>Crea un hilo (thread) por cada petición. Consume mucha RAM.</td>
+<td>Un solo hilo gestiona miles de conexiones concurrentes.</td>
+</tr>
+<tr>
+<td><strong>Bloqueo</strong></td>
+<td>Si la DB tarda, el hilo se duerme y espera.</td>
+<td>Si la DB tarda, Node atiende a otro cliente mientras espera.</td>
+</tr>
+<tr>
+<td><strong>Lenguaje</strong></td>
+<td>PHP/Java/Python en back, JS en front. (Context Switching).</td>
+<td><strong>TypeScript/JS en todo el stack.</strong> (Full Stack real).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="casos-de-uso-reales">Casos de uso Reales</h3>
+<p>Gigantes como <strong>Netflix</strong> (redujo el tiempo de inicio en un 70%), <strong>Uber</strong> (gestión masiva de datos en tiempo real), <strong>LinkedIn</strong> y <strong>NASA</strong> utilizan Node.js para sistemas críticos.</p>
+<h3 id="ejemplos-practicos-typescript">Ejemplos Prácticos (TypeScript)</h3>
+<p><strong>Ejemplo 1: Servidor HTTP Básico</strong>
+Observa cómo definimos tipos para <code>req</code> y <code>res</code>. Esto es TypeScript en acción.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createServer</span><span class="p">,</span><span class="w"> </span><span class="nx">IncomingMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">ServerResponse</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">hostname</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'127.0.0.1'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+
+<span class="c1">// Callback que se ejecuta cada vez que entra una petición</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">IncomingMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">ServerResponse</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'¡Hola DAW! Servidor corriendo en Node + TS\n'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="nx">hostname</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🚀 Servidor escuchando en http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Bloqueante vs No Bloqueante (Concepto)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Imaginad una función que simula leer un archivo grande</span>
+
+<span class="c1">// ❌ ENFOQUE BLOQUEANTE (Estilo PHP clásico o Java síncrono)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">leerArchivoSync</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// El programa se CONGELA aquí hasta terminar</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"Contenido del archivo"</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">leerArchivoSync</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// Espera a la línea anterior</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Fin"</span><span class="p">);</span><span class="w"> </span><span class="c1">// Espera a todo lo anterior</span>
+
+<span class="c1">// ✅ ENFOQUE NODE.JS (Asíncrono)</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="nx">readFile</span><span class="p">(</span><span class="s1">'archivo.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf8'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Archivo leído (Llega del futuro)"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"2. Esto se imprime PRIMERO porque Node no espera"</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="ecosistema-y-casos-de-uso">Ecosistema y Casos de Uso</h3>
+<ul>
+<li><strong>Netflix:</strong> Redujo el tiempo de inicio de su app en un 70%.</li>
+<li><strong>Uber:</strong> Maneja millones de peticiones de geolocalización en tiempo real.</li>
+<li><strong>Trello:</strong> Actualizaciones instantáneas en los tableros (WebSockets).</li>
+</ul>
+<h3 id="diagrama-conceptual">Diagrama Conceptual</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBOb2RlLmpzCiMjIE7DumNsZW8KLSAqKlY4IEVuZ2luZSoqOiBFamVjdXRhIEpTCi0gKipMaWJ1dioqOiBHZXN0aW9uYSBFdmVudCBMb29wCiMjIFZlbnRhamFzCi0gKipOUE0qKjogKzIgTWlsbG9uZXMgZGUgcGFxdWV0ZXMKLSAqKkpTT04gbmF0aXZvKio6IFNpbiBwYXJzZW9zIGV4dHJhw7FvcwotICoqRnVsbHN0YWNrIEpTKio6IEZyb250ZW5kICsgQmFja2VuZAojIyBVc29zCi0gKipBUElzIFJFU1QqKgotICoqTWljcm9zZXJ2aWNpb3MqKgotICoqU3RyZWFtaW5nKiogKE5ldGZsaXgpCi0gKipSZWFsLVRpbWUqKiAoU29ja2V0LmlvKQ==</markmap-data></div>
+<h3 id="ejercicios-reflexivos">🧠 Ejercicios Reflexivos</h3>
+<ol>
+<li>Si Node.js es "single-thread", ¿significa que solo puede usar un núcleo de mi CPU de 8 núcleos? (Investiga sobre el módulo <code>cluster</code>).</li>
+<li>¿Por qué crees que Node.js no es recomendable para tareas de Inteligencia Artificial o procesamiento de video pesado?</li>
+<li>¿Qué ventaja competitiva tiene para una startup usar el mismo lenguaje (JS/TS) en todo el stack tecnológico?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="2-arquitectura-interna-de-nodejs">2. Arquitectura interna de Node.js</h2>
+<p>Muchos desarrolladores usan Node sin saber qué hay bajo el capó. Vosotros no seréis de esos. Entender la arquitectura es lo que separa a un Junior de un Senior.</p>
+<h3 id="los-motores">Los Motores</h3>
+<ol>
+<li><strong>V8 (Google):</strong> Compila JS a código máquina.</li>
+<li><strong>Libuv (C++):</strong> Es la biblioteca mágica. Proporciona el <strong>Event Loop</strong> y el <strong>Thread Pool</strong>. Es la que permite que Node sea asíncrono y cross-platform (funciona igual en Windows y Linux).</li>
+</ol>
+<h3 id="el-event-loop-el-corazon">El Event Loop (El Corazón)</h3>
+<p>El Event Loop es un bucle infinito que orquesta todo. Cuando tu código JS termina, el Event Loop comprueba si hay tareas pendientes.</p>
+<p><strong>Fases del Event Loop:</strong>
+1.  <strong>Timers:</strong> Ejecuta callbacks de <code>setTimeout</code> y <code>setInterval</code>.
+2.  <strong>Pending Callbacks:</strong> Errores de sistema I/O.
+3.  <strong>Poll:</strong> Recupera nuevos eventos I/O; ejecuta I/O callbacks. <strong>Aquí pasa la mayor parte del tiempo.</strong>
+4.  <strong>Check:</strong> Ejecuta <code>setImmediate</code>.
+5.  <strong>Close Callbacks:</strong> Cierre de conexiones (<code>socket.on('close')</code>).</p>
+<h3 id="diagrama-de-arquitectura">Diagrama de Arquitectura</h3>
+<pre class="mermaid"><code>graph TD
+    subgraph "Capa de Aplicación (Tu código)"
+        JS["Código JavaScript / TypeScript"]
+    end
+
+    subgraph "Node.js Bindings (El puente)"
+        API["Node API (fs, http, crypto)"]
+    end
+
+    subgraph "V8 Engine"
+        V8["Motor V8 - Call Stack"]
+    end
+
+    subgraph "Libuv (El Músculo)"
+        EL["Event Loop"]
+        TP["Worker Thread Pool"]
+    end
+
+    subgraph "Sistema Operativo"
+        OS["Kernel / Hardware"]
+    end
+
+    JS --&gt; V8
+    V8 --&gt; API
+    API --&gt; EL
+    EL -- "Tareas ligeras" --&gt; V8
+    EL -- "Tareas pesadas (FS, Crypto)" --&gt; TP
+    TP --&gt; OS
+    OS --&gt; TP
+    TP --&gt; EL</code></pre>
+<h3 id="call-stack-vs-queues-la-clave-de-la-entrevista">Call Stack vs Queues (La clave de la entrevista)</h3>
+<ul>
+<li><strong>Call Stack (Pila de llamadas):</strong> Donde se ejecuta el código síncrono. LIFO (Last In, First Out).</li>
+<li><strong>Callback Queue (Macrotasks):</strong> <code>setTimeout</code>, I/O. Esperan a que el Call Stack esté vacío.</li>
+<li><strong>Microtask Queue:</strong> <code>Promise.then</code>, <code>process.nextTick</code>. <strong>Tienen prioridad VIP</strong>. El Event Loop vaciará TODA la cola de microtareas antes de pasar a la siguiente macrotarea.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Peligro: Bloquear el Event Loop</p>
+<p>Si ejecutas un <code>while(true)</code> o un cálculo matemático de 10 segundos en el hilo principal, <strong>NADIE</strong> podrá acceder a tu servidor durante ese tiempo. Node.js se detendrá por completo.</p>
+</div>
+<h3 id="tablas-comparativas">Tablas Comparativas</h3>
+<p><strong>Tabla 3: Tipos de Tareas en el Loop</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Macrotask</strong></td>
+<td>Tareas estándar del loop</td>
+<td><code>setTimeout</code>, <code>setInterval</code>, I/O</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><strong>Microtask</strong></td>
+<td>Tareas que se ejecutan <em>inmediatamente</em> tras la operación actual</td>
+<td><code>Promise.then</code>, <code>process.nextTick</code></td>
+<td>Alta (Se cuelan antes que la siguiente vuelta del loop)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabla 4: Bloqueo del Event Loop</strong></p>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Consecuencia</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>while(true)</code></td>
+<td>CPU al 100%, servidor colgado</td>
+<td>Eliminar bucles infinitos</td>
+</tr>
+<tr>
+<td>JSON.parse (JSON enorme)</td>
+<td>Bloqueo temporal del hilo</td>
+<td>Usar streams o librerías asíncronas</td>
+</tr>
+<tr>
+<td>Procesamiento de Imagen</td>
+<td>Bloqueo severo</td>
+<td>Delegar a <code>Worker Threads</code> o servicio externo</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-secuencia-sincrono">Diagrama de Secuencia: Síncrono</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Main as Main Thread (JS)
+    participant Libuv as OS
+    participant DB as Base de Datos
+
+    Note over Main: Código Síncrono
+    Main-&gt;&gt;Main: Ejecuta console.log('Inicio')
+
+    Main-&gt;&gt;Libuv: Pide datos a DB 
+
+    Libuv-&gt;&gt;DB: Consulta SQL
+    DB--&gt;&gt;Libuv: Datos retornados
+    Libuv--&gt;&gt;Main: Se pasan los datos
+
+    Main-&gt;&gt;Main: Se muestran los datos</code></pre>
+<h4 id="diagrama-de-secuencia-asincrono">Diagrama de Secuencia: Asíncrono</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Main as Main Thread (JS)
+    participant Libuv as Libuv 
+    participant DB as Base de Datos
+
+    Note over Main: Operación Asíncrona
+    Main-&gt;&gt;Libuv: Pide datos a DB (Callback)
+    Note right of Main: Main Thread se libera&lt;br/&gt;y sigue trabajando
+    Main-&gt;&gt;Main: Ejecuta console.log('Fin')
+
+    Libuv-&gt;&gt;DB: Consulta SQL
+    DB--&gt;&gt;Libuv: Datos retornados
+    Libuv-&gt;&gt;Main: Pone Callback en Queue
+
+    Note over Main: Event Loop mueve&lt;br/&gt;Callback al Stack
+    Main-&gt;&gt;Main: Ejecuta el Callback con los datos
+</code></pre>
+<h3 id="ejemplos-practicos-typescript_1">Ejemplos Prácticos (TypeScript)</h3>
+<p><strong>Ejemplo 1: Prioridad de Ejecución (Reto Mental)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio del script'</span><span class="p">);</span>
+
+<span class="c1">// Macrotask (Cola normal)</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'5. Timeout 0ms'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="c1">// Microtask (Cola VIP - Promesas)</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Promesa resuelta'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Microtask (Cola VIP ++ - Exclusivo Node)</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Next Tick'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Fin del script'</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ORDEN REAL DE SALIDA:</span>
+<span class="cm"> * 1. Inicio del script</span>
+<span class="cm"> * 4. Fin del script</span>
+<span class="cm"> * 2. Next Tick (Prioridad máxima tras el stack)</span>
+<span class="cm"> * 3. Promesa resuelta (Microtask)</span>
+<span class="cm"> * 5. Timeout 0ms (Macrotask - Event Loop nueva vuelta)</span>
+<span class="cm"> */</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Uso del Thread Pool (Criptografía)</strong>
+Node delega esto a Libuv, que usa hilos del sistema (generalmente 4 por defecto).</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pbkdf2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'crypto'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="c1">// Simulamos 4 llamadas pesadas de encriptación</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">pbkdf2</span><span class="p">(</span><span class="s1">'password'</span><span class="p">,</span><span class="w"> </span><span class="s1">'salt'</span><span class="p">,</span><span class="w"> </span><span class="mf">100000</span><span class="p">,</span><span class="w"> </span><span class="mf">512</span><span class="p">,</span><span class="w"> </span><span class="s1">'sha512'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hash </span><span class="si">${</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb"> terminado en:`</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="s1">'ms'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Verás que los 4 terminan casi al mismo tiempo.</span>
+<span class="c1">// Si Node fuera 100% single-thread puro, tardarían la suma de los tiempos.</span>
+<span class="c1">// ¡Gracias Libuv!</span>
+</code></pre></div>
+<h3 id="ejercicios-reflexivos_1">🧠 Ejercicios Reflexivos</h3>
+<ol>
+<li>Investiga la diferencia entre <code>process.nextTick()</code> y <code>setImmediate()</code>. ¿Cuál se ejecuta antes realmente a pesar de sus nombres confusos?</li>
+<li>¿Qué pasaría con la cola de Microtareas si hacemos una recursividad infinita de Promesas? ¿Se bloquearía el Event Loop?</li>
+<li>Si tengo una tarea muy pesada (ej: redimensionar imágenes), ¿cómo debería manejarla en Node para no bloquear el servidor? (Pista: Worker Threads o colas externas).</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="3-instalacion-y-configuracion-inicial">3. Instalación y configuración inicial</h2>
+<p><a href="../01-ConfiguracionInicial.pdf" target="_blank">Configuración Inicial</a></p>
+<p><br/></p>
+<p>Olvídate de ir a la web de Node.js y descargar el instalador <code>.msi</code> o <code>.pkg</code>. Eso está bien para probar un día, pero profesionalmente es un error. ¿Por qué? Porque los proyectos cambian de versión. Hoy trabajas en Node 18, mañana te asignan un proyecto legacy en Node 14.</p>
+<h3 id="la-solucion-profesional-nvm-node-version-manager">La Solución Profesional: NVM (Node Version Manager)</h3>
+<p>Permite tener múltiples versiones instaladas y cambiar entre ellas con un comando.</p>
+<ul>
+<li><strong>Linux/Mac:</strong> <code>nvm</code></li>
+<li><strong>Windows:</strong> <code>nvm-windows</code> (coreybutler)</li>
+</ul>
+<p><strong>Tabla 5: Comandos Esenciales de NVM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nvm install --lts</code></td>
+<td>Instala la última versión LTS (Long Term Support) - <strong>Recomendada</strong></td>
+</tr>
+<tr>
+<td><code>nvm use &lt;versión&gt;</code></td>
+<td>Cambia la versión activa en tu terminal</td>
+</tr>
+<tr>
+<td><code>nvm alias default &lt;versión&gt;</code></td>
+<td>Fija una versión predeterminada al abrir nuevas terminales</td>
+</tr>
+<tr>
+<td><code>nvm list</code></td>
+<td>Muestra las versiones instaladas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inicializando-un-proyecto">Inicializando un Proyecto</h3>
+<p>Todo proyecto Node.js comienza con un <code>package.json</code>. Es el DNI de tu aplicación.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>mi-proyecto-daw
+<span class="nb">cd</span><span class="w"> </span>mi-proyecto-daw
+npm<span class="w"> </span>init<span class="w"> </span>-y<span class="w">  </span><span class="c1"># El flag -y acepta todas las preguntas por defecto</span>
+</code></pre></div>
+<p>Esto crea el archivo <code>package.json</code>. Ahora crearemos nuestro punto de entrada.</p>
+<h3 id="repl-vs-script">REPL vs Script</h3>
+<ul>
+<li><strong>REPL (Read-Eval-Print Loop):</strong> Si escribes <code>node</code> en la terminal, entras en modo interactivo. Útil para pruebas rápidas (<code>1+1</code>, probar una función).</li>
+<li><strong>Script:</strong> Escribir código en un archivo <code>index.js</code> y ejecutar <code>node index.js</code>.</li>
+</ul>
+<h3 id="31-npm-node-package-manager">3.1 npm (Node Package Manager)</h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/npmlogo.png"><img alt="" src="../images/npmlogo.png"/></a></p>
+<p>Es el repositorio de software más grande del mundo.</p>
+<h4 id="el-fichero-packagejson">El fichero <code>package.json</code></h4>
+<p>Es el manifiesto de tu aplicación. Define quién eres, qué necesitas y cómo funcionas.</p>
+<p><strong>Conceptos Clave del <code>package.json</code>:</strong><br/>
+- <code>dependencies</code>: Librerías necesarias para que la app funcione en producción (ej: <code>express</code>, <code>mongoose</code>).<br/>
+- <code>devDependencies</code>: Herramientas solo para programar/compilar (ej: <code>typescript</code>, <code>eslint</code>, <code>nodemon</code>). <strong>No se instalan en el servidor de producción.</strong><br/>
+- <code>scripts</code>: Alias para comandos largos.<br/></p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBwYWNrYWdlLmpzb24KIyMgTWV0YWRhdG9zCi0gbmFtZQotIHZlcnNpb24KLSBhdXRob3IKIyMgU2NyaXB0cwotICJzdGFydCI6ICJub2RlIGRpc3QvaW5kZXguanMiCi0gImRldiI6ICJ0cy1ub2RlIHNyYy9pbmRleC50cyIKLSAiYnVpbGQiOiAidHNjIgojIyBEZXBlbmRlbmNpZXMgKFByb2R1Y2Npw7NuKQotIGV4cHJlc3MKLSBtb25nb29zZQotIGNvcnMKIyMgRGV2RGVwZW5kZW5jaWVzIChEZXNhcnJvbGxvKQotIHR5cGVzY3JpcHQKLSBAdHlwZXMvbm9kZQotIG5vZGVtb24KLSBlc2xpbnQ=</markmap-data></div>
+<p><strong>Comandos Esenciales:</strong>
+</p><div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>express<span class="w">            </span><span class="c1"># Instala y guarda en dependencies</span>
+npm<span class="w"> </span>install<span class="w"> </span>typescript<span class="w"> </span>-D<span class="w">      </span><span class="c1"># Instala y guarda en devDependencies (-D)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>nodemon<span class="w">         </span><span class="c1"># Instalación global (disponible en todo el PC)</span>
+npm<span class="w"> </span>start<span class="w">                      </span><span class="c1"># Ejecuta el script "start"</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">                    </span><span class="c1"># Ejecuta el script "dev"</span>
+npx<span class="w"> </span>eslint<span class="w"> </span>--init<span class="w">              </span><span class="c1"># Ejecuta un binario sin instalarlo globalmente</span>
+</code></pre></div><p></p>
+<p><strong>Tabla: Dependencias vs DevDependencias</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concepto</th>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Ejemplos</th>
+<th style="text-align: left;">¿Va a Producción?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Dependencies</strong></td>
+<td style="text-align: left;"><code>npm i paquete</code></td>
+<td style="text-align: left;">React, Express, pg (Postgres)</td>
+<td style="text-align: left;">✅ SÍ</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DevDependencies</strong></td>
+<td style="text-align: left;"><code>npm i -D paquete</code></td>
+<td style="text-align: left;">TypeScript, Webpack, Jest, ESLint</td>
+<td style="text-align: left;">❌ NO</td>
+</tr>
+</tbody>
+</table>
+<p>En 2025, escribir Node.js sin TypeScript es como conducir sin cinturón. Vamos a configurar un entorno profesional con <strong>TypeScript</strong>, <strong>ESLint</strong> (para calidad de código) y <strong>Prettier</strong> (para formato).</p>
+<p><strong>Paso 1: Instalar dependencias</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dependencias de desarrollo (sólo necesarias para programar, no para producción)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript<span class="w"> </span>ts-node<span class="w"> </span>@types/node<span class="w"> </span>nodemon<span class="w"> </span>eslint<span class="w"> </span>prettier
+</code></pre></div>
+<p><strong>Tabla 6: Herramientas del Entorno</strong></p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Función</th>
+<th>Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>npm</strong></td>
+<td>Gestor de paquetes</td>
+<td>El almacén de suministros</td>
+</tr>
+<tr>
+<td><strong>TypeScript</strong></td>
+<td>Lenguaje tipado</td>
+<td>Un corrector gramatical estricto</td>
+</tr>
+<tr>
+<td><strong>@types/node</strong></td>
+<td>Definiciones de tipos para Node</td>
+<td>El diccionario para que TS entienda Node</td>
+</tr>
+<tr>
+<td><strong>ts-node</strong></td>
+<td>Ejecuta TS directamente (dev)</td>
+<td>Traductor simultáneo</td>
+</tr>
+<tr>
+<td><strong>Nodemon</strong></td>
+<td>Reinicia el server al guardar</td>
+<td>Un asistente que vigila cambios</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paso 2</strong>: Configurar <code>tsconfig.json</code> <br/>
+Este archivo le dice al compilador cómo comportarse.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es2020"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Versión de JS a la que compilamos</span>
+<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonjs"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Sistema de módulos de Node estándar</span>
+<span class="w">    </span><span class="nt">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Dónde va el código compilado (JS)</span>
+<span class="w">    </span><span class="nt">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Dónde está nuestro código fuente (TS)</span>
+<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">              </span><span class="c1">// Modo estricto activado (Google Style)</span>
+<span class="w">    </span><span class="nt">"esModuleInterop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">      </span><span class="c1">// Permite importar módulos CommonJS como ES6</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src/**/*"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"node_modules"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Paso 3</strong>: Scripts en <code>package.json</code> <br/>
+Automatizamos tareas comunes.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Para producción (código compilado)</span>
+<span class="w">  </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Compilar TS a JS</span>
+<span class="w">  </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon src/index.ts"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Para desarrollo (reinicio auto + ts-node)</span>
+<span class="w">  </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src/**/*.ts"</span><span class="p">,</span><span class="w">         </span><span class="c1">// Revisar calidad</span>
+<span class="w">  </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prettier --write ."</span><span class="w">        </span><span class="c1">// Formatear código</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ejemplos-de-codigo">Ejemplos de Código</h3>
+<p><strong>Ejemplo 3.1: Estructura de carpetas profesional</strong></p>
+<div class="highlight"><pre><span></span><code>mi-proyecto/
+├── node_modules/       # Dependencias (NUNCA se sube a Git)
+├── src/                # Código Fuente TypeScript
+│   ├── index.ts        # Punto de entrada
+│   └── utils/          # Módulos auxiliares
+├── dist/               # Código Compilado JavaScript (Generado por tsc)
+├── .gitignore          # Ignorar node_modules y dist
+├── package.json        # Manifiesto
+└── tsconfig.json       # Configuración TS
+</code></pre></div>
+<h3 id="32-otras-utilidades-recomendadas-tooling">3.2 Otras utilidades recomendadas (Tooling)</h3>
+<p>Para programar como un profesional, necesitas un entorno que te corrija y te ayude.</p>
+<p>ESLint es una herramienta de linting de código para JavaScript. Su objetivo principal es detectar y reportar patrones de código problemáticos o sospechosos en tu código fuente. Te ayuda a mantener un código limpio, legible y consistente en tus proyectos.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/eslintlogo.png"><img alt="" src="../images/eslintlogo.png"/></a></p>
+<p>Algunas de las características y beneficios de ESLint son:</p>
+<ul>
+<li>
+<p><strong>Detección de errores y problemas</strong>: ESLint analiza tu código en busca de errores comunes, como variables no utilizadas, variables no declaradas, uso incorrecto de funciones, entre otros.</p>
+</li>
+<li>
+<p><strong>Consistencia de código</strong>: ESLint te permite definir y aplicar reglas de estilo de código personalizadas o utilizar conjuntos de reglas predefinidas (como las de Airbnb, Google, Standard, etc.) para mantener la consistencia en tu código.</p>
+</li>
+<li>
+<p><strong>Integración con herramientas de desarrollo</strong>: ESLint se puede integrar con tu editor de código favorito o con tu flujo de trabajo de desarrollo, lo que te permite recibir retroalimentación instantánea sobre problemas de código mientras escribes.</p>
+</li>
+</ul>
+<p>A continuación, te explico cómo instalar y configurar ESLint en tu proyecto:</p>
+<ol>
+<li>
+<p><strong>Instalación</strong>: Puedes instalar ESLint localmente en tu proyecto ejecutando el siguiente comando en la terminal, dentro de la carpeta raíz de tu proyecto:
+</p><div class="highlight"><pre><span></span><code>npm install eslint --save-dev
+</code></pre></div><p></p>
+</li>
+<li>
+<p><strong>Configuración</strong>: Después de la instalación, necesitarás configurar ESLint. Puedes generar un archivo de configuración inicial ejecutando el siguiente comando:
+</p><div class="highlight"><pre><span></span><code>npx eslint --init
+</code></pre></div>
+Esto abrirá un asistente interactivo que te guiará a través de la configuración. Puedes seleccionar un conjunto de reglas predefinidas o personalizar tus propias reglas.<p></p>
+</li>
+<li>
+<p><strong>Uso</strong>: Una vez que hayas configurado ESLint, puedes ejecutarlo en tu proyecto utilizando el siguiente comando:
+</p><div class="highlight"><pre><span></span><code>npx eslint your-file.js
+</code></pre></div>
+Reemplaza <code>your-file.js</code> con la ruta al archivo o carpeta que deseas analizar. ESLint mostrará los problemas encontrados en tu código y te sugerirá cómo solucionarlos.<p></p>
+</li>
+<li>
+<p><strong>Integración con editores de código</strong>: Para obtener una experiencia de desarrollo más fluida, puedes integrar ESLint con tu editor de código. La mayoría de los editores populares tienen extensiones o complementos disponibles para ESLint. Estas extensiones pueden mostrar los problemas de ESLint directamente en tu editor y proporcionar sugerencias mientras escribes.</p>
+</li>
+<li>
+<p><strong>Personalización</strong>: Puedes personalizar las reglas de ESLint según tus preferencias o necesidades. Puedes editar el archivo de configuración <code>.eslintrc.js</code> o <code>.eslintrc.json</code> generado en el paso 2 para agregar, modificar o desactivar reglas específicas.</p>
+</li>
+</ol>
+<p>Recuerda que la configuración de ESLint puede variar según tus necesidades y el tipo de proyecto en el que estés trabajando. Puedes consultar la documentación oficial de ESLint para obtener más información sobre las opciones de configuración y las reglas disponibles.</p>
+<h4 id="ejemplo-de-configuracion-de-eslint">Ejemplo de configuración de ESLint</h4>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">browser</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">es2021</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="k">extends</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">'eslint:recommended'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'plugin:prettier/recommended'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">parserOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ecmaVersion</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sourceType</span><span class="o">:</span><span class="w"> </span><span class="s1">'module'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Reglas personalizadas</span>
+<span class="w">    </span><span class="s1">'no-console'</span><span class="o">:</span><span class="w"> </span><span class="s1">'warn'</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'no-unused-vars'</span><span class="o">:</span><span class="w"> </span><span class="s1">'error'</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>En este ejemplo:</p>
+<ul>
+<li>La propiedad <code>env</code> establece el entorno en el que se ejecutará el código (navegador, ES2021 y Node.js).</li>
+<li>La propiedad <code>extends</code> especifica las configuraciones predefinidas que se utilizarán. En este caso, se utiliza <code>eslint:recommended</code> que incluye las reglas recomendadas por ESLint y <code>plugin:prettier/recommended</code> que integra ESLint con Prettier para formatear el código automáticamente.</li>
+<li>La propiedad <code>parserOptions</code> especifica las opciones del analizador de código. Aquí se establece la versión de ECMAScript (ES2021) y el tipo de módulo (module).</li>
+<li>La propiedad <code>rules</code> define las reglas personalizadas. En este ejemplo, se establecen dos reglas: <code>no-console</code> que muestra una advertencia si se utiliza <code>console.log</code> en el código y <code>no-unused-vars</code> que muestra un error si se declaran variables no utilizadas.</li>
+</ul>
+<p>Puedes agregar, modificar o desactivar reglas según tus necesidades. Además, puedes consultar la documentación oficial de ESLint para obtener más información sobre las opciones de configuración y las reglas disponibles.</p>
+<p>Prettier es una herramienta de formateo de código que te ayuda a mantener un estilo de código consistente en tus proyectos. Su objetivo principal es eliminar las discusiones sobre la forma en que se debe formatear el código, ya que Prettier aplica automáticamente un estilo de formato consistente en todo el código.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/prettierlogo.png"><img alt="" src="../images/prettierlogo.png"/></a></p>
+<h4 id="uso-de-prettier">Uso de Prettier</h4>
+<ol>
+<li>Instalación: Primero, debes instalar Prettier en tu proyecto. Puedes hacerlo ejecutando el siguiente comando en la terminal:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>prettier
+</code></pre></div>
+<ol>
+<li>Configuración: Prettier se puede configurar utilizando un archivo de configuración <code>.prettierrc</code> en formato JSON o YAML, o mediante la sección <code>"prettier"</code> en el archivo <code>package.json</code>.</li>
+</ol>
+<p>Ejemplo de archivo <code>.prettierrc</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"semi"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"singleQuote"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"tabWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"printWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En este ejemplo, se configuran algunas opciones como el uso de punto y coma, comillas simples, tamaño de tabulación y ancho de línea de 80 caracteres.</p>
+<ol>
+<li>Ejecución: Puedes ejecutar Prettier para formatear tu código utilizando el siguiente comando:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>prettier<span class="w"> </span>--write<span class="w"> </span>.
+</code></pre></div>
+<p>El argumento <code>--write</code> indica que Prettier debe aplicar los cambios directamente en los archivos.</p>
+<h5 id="ejemplo-de-uso-de-prettier">Ejemplo de uso de Prettier</h5>
+<p>Supongamos que tienes un archivo JavaScript llamado <code>index.js</code> con el siguiente código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="mf">10</span><span class="p">));</span>
+</code></pre></div>
+<p>Después de ejecutar Prettier, el código se formateará automáticamente de la siguiente manera:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span>
+</code></pre></div>
+<p>Prettier ajusta automáticamente la indentación, agrega espacios alrededor de los operadores y coloca correctamente los paréntesis.</p>
+<p>Recuerda que Prettier se puede integrar con ESLint para obtener un formateo de código aún más completo y consistente.</p>
+<h3 id="integracion">Integración</h3>
+<p>Lo ideal es usar ambos. ESLint busca errores lógicos, Prettier deja el código bonito.</p>
+<h4 id="ejemplo-de-configuracion-completa-packagejson">Ejemplo de Configuración Completa (<code>package.json</code>)</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"curso-daw-node"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon src/index.ts"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src/**/*.ts"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prettier --write ."</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.18.2"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"@types/node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^20.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"eslint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"nodemon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"prettier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ts-node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^10.9.1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.0.0"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="diagrama-de-flujo-de-trabajo-moderno">Diagrama de Flujo de Trabajo Moderno</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desarrollador
+    participant IDE as VS Code
+    participant Tool as ESLint/Prettier
+    participant Git as Git Repo
+
+    Dev-&gt;&gt;IDE: Escribe código "sucio" (sin punto y coma, mal identado)
+    IDE-&gt;&gt;Tool: Al guardar (On Save)
+    Tool-&gt;&gt;Tool: Prettier formatea
+    Tool-&gt;&gt;Tool: ESLint busca errores
+    Tool--&gt;&gt;IDE: Código limpio y corregido
+    IDE--&gt;&gt;Dev: Muestra código perfecto
+    Dev-&gt;&gt;Git: git commit
+    Note right of Git: Solo llega código de calidad</code></pre>
+<h3 id="ejercicios-reflexivos_2">🧠 Ejercicios Reflexivos</h3>
+<ol>
+<li>¿Por qué es mala práctica subir la carpeta <code>node_modules</code> a GitHub? (Pista: Pesa más que un agujero negro). ¿Qué archivo evita esto?</li>
+<li>¿Qué diferencia hay entre <code>^1.0.0</code> y <code>~1.0.0</code> en el <code>package.json</code>? (Versionado Semántico).</li>
+<li>Si ejecuto <code>npx create-react-app</code>, ¿dónde se instala <code>create-react-app</code> en mi disco duro?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li><a href="https://nodejs.org/en/docs/">Documentación Oficial de Node.js</a> - La biblia. Siempre actualizada.</li>
+<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Visualización del Event Loop</a> - Charla mítica de Philip Roberts (JSConf) que explica el Event Loop visualmente.</li>
+<li><a href="https://github.com/goldbergyoni/nodebestpractices">Node.js Best Practices</a> - Repositorio colaborativo número 1 sobre buenas prácticas en arquitectura y código.</li>
+<li><a href="https://v8.dev/">Introducción a V8</a> - Para los curiosos que quieren saber cómo funciona el motor por dentro.</li>
+</ul>
+<hr/>
+<h2 id="metafora-pedagogica">🎓 Metáfora Pedagógica</h2>
+<p><strong>Metáfora Laboral: El Taller Mecánico</strong>
+Imagina que <code>npm</code> es tu proveedor de piezas.
+- <strong><code>package.json</code></strong>: Es la hoja de inventario de tu taller.
+- <strong><code>dependencies</code></strong>: Son las ruedas, el aceite y los filtros que pones en el coche del cliente para que funcione. (Producción).
+- <strong><code>devDependencies</code></strong>: Son las llaves inglesas, el elevador hidráulico y la máquina de café de los mecánicos. Son necesarias para montar el coche, pero <strong>no se las entregas al cliente</strong> dentro del maletero. (Desarrollo).</p>
+<p><strong>Cita del día:</strong></p>
+<blockquote>
+<p>"Node.js no es plata para matar hombres lobo, pero es un martillo muy rápido si sabes dónde golpear."</p>
+</blockquote>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

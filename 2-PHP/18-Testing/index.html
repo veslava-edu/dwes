@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/2-PHP/18-Testing/" rel="canonical"/>
+<link href="../17-WebScraping/" rel="prev"/>
+<link href="../../3-NODE/01-IntroNodeJS/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>18 - Testing - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#php-pruebas-con-php-construyendo-software-a-prueba-de-balas">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              18 - Testing
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../3-NODE/01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales-el-arsenal-del-tester">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales: El Arsenal del Tester
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primeros-pasos-con-phpunit">
+<span class="md-ellipsis">
+      
+        Primeros Pasos con PHPUnit
+      
+    </span>
+</a>
+<nav aria-label="Primeros Pasos con PHPUnit" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-y-configuracion">
+<span class="md-ellipsis">
+      
+        Instalación y Configuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#escribiendo-nuestra-primera-prueba-el-ciclo-tdd-en-accion">
+<span class="md-ellipsis">
+      
+        Escribiendo Nuestra Primera Prueba: El Ciclo TDD en Acción
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aserciones-el-corazon-de-la-prueba">
+<span class="md-ellipsis">
+      
+        Aserciones: El Corazón de la Prueba
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tecnicas-avanzadas-de-testing">
+<span class="md-ellipsis">
+      
+        Técnicas Avanzadas de Testing
+      
+    </span>
+</a>
+<nav aria-label="Técnicas Avanzadas de Testing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proveedores-de-datos-dataprovider">
+<span class="md-ellipsis">
+      
+        Proveedores de Datos (@dataProvider)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probando-excepciones">
+<span class="md-ellipsis">
+      
+        Probando Excepciones
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-doubles-mocks-y-stubs">
+<span class="md-ellipsis">
+      
+        Test Doubles: Mocks y Stubs
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cobertura-de-codigo-cuanto-estamos-probando-realmente">
+<span class="md-ellipsis">
+      
+        Cobertura de Código: ¿Cuánto estamos probando realmente?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      
+        EJERCICIOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../3-NODE/NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales-el-arsenal-del-tester">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales: El Arsenal del Tester
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primeros-pasos-con-phpunit">
+<span class="md-ellipsis">
+      
+        Primeros Pasos con PHPUnit
+      
+    </span>
+</a>
+<nav aria-label="Primeros Pasos con PHPUnit" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-y-configuracion">
+<span class="md-ellipsis">
+      
+        Instalación y Configuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#escribiendo-nuestra-primera-prueba-el-ciclo-tdd-en-accion">
+<span class="md-ellipsis">
+      
+        Escribiendo Nuestra Primera Prueba: El Ciclo TDD en Acción
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aserciones-el-corazon-de-la-prueba">
+<span class="md-ellipsis">
+      
+        Aserciones: El Corazón de la Prueba
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tecnicas-avanzadas-de-testing">
+<span class="md-ellipsis">
+      
+        Técnicas Avanzadas de Testing
+      
+    </span>
+</a>
+<nav aria-label="Técnicas Avanzadas de Testing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proveedores-de-datos-dataprovider">
+<span class="md-ellipsis">
+      
+        Proveedores de Datos (@dataProvider)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probando-excepciones">
+<span class="md-ellipsis">
+      
+        Probando Excepciones
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-doubles-mocks-y-stubs">
+<span class="md-ellipsis">
+      
+        Test Doubles: Mocks y Stubs
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cobertura-de-codigo-cuanto-estamos-probando-realmente">
+<span class="md-ellipsis">
+      
+        Cobertura de Código: ¿Cuánto estamos probando realmente?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aplicacion-en-el-mundo-real">
+<span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejercicios">
+<span class="md-ellipsis">
+      
+        EJERCICIOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!--
+Tema: PHP - Pruebas con PHP
+Lenguaje: PHP 8+
+--><h1 id="php-pruebas-con-php-construyendo-software-a-prueba-de-balas">PHP - Pruebas con PHP: Construyendo Software a Prueba de Balas</h1>
+<p>En esta sección vamos a hablar de un tema que a primera vista puede parecer un "mal necesario", pero que en realidad es el superpoder secreto de los programadores profesionales: <strong>el testing</strong>.</p>
+<p>Imagina que eres un arquitecto de rascacielos. No empezarías a poner ladrillos uno encima de otro sin más, ¿verdad? Primero, tendrías unos planos detallados, harías pruebas de resistencia de los materiales, simulaciones por ordenador... En definitiva, te asegurarías de que cada pieza es sólida antes de construir la siguiente planta. Si no, al menor imprevisto, ¡todo se viene abajo!</p>
+<p>En el desarrollo de software, ocurre exactamente lo mismo. Escribir código sin pruebas es como construir ese rascacielos a ojo. Puede que al principio parezca que todo va bien, pero en cuanto el proyecto crece o necesitas cambiar algo, el miedo a romperlo todo se vuelve paralizante. Las pruebas son nuestros planos, nuestras pruebas de estrés y nuestra red de seguridad. Nos dan la <strong>confianza</strong> para construir aplicaciones más grandes, mejores y para refactorizar sin miedo.</p>
+<p>En este tema, vamos a convertirnos en esos arquitectos meticulosos. Descubriremos cómo usar <strong>PHPUnit</strong>, el estándar de facto para el testing en PHP, y adoptaremos una mentalidad que cambiará vuestra forma de programar para siempre: el <em>Desarrollo Guiado por Pruebas</em> o TDD.</p>
+<h2 id="conceptos-fundamentales-el-arsenal-del-tester">Conceptos Fundamentales: El Arsenal del Tester</h2>
+<p>Antes de lanzarnos a escribir código, vamos a definir nuestro vocabulario. Estos son los términos que usarás a diario en el mundo del testing.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Prueba Unitaria (Unit Test)</p>
+<p>Es una prueba que verifica el correcto funcionamiento de la parte más pequeña y aislable de nuestro código, como un método dentro de una clase. El objetivo es aislar esa "unidad" para comprobar que, dados unos inputs concretos, produce el output esperado.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Desarrollo Guiado por Pruebas (TDD)</p>
+<p>Es una metodología de desarrollo que invierte el proceso tradicional. En lugar de escribir el código y luego las pruebas, TDD nos propone un ciclo:
+1.  <strong>Rojo</strong>: Escribir una prueba para una funcionalidad que aún no existe. Obviamente, la prueba fallará.
+2.  <strong>Verde</strong>: Escribir el código mínimo e indispensable para que esa prueba pase.
+3.  <strong>Refactorizar</strong>: Mejorar el código que acabamos de escribir, con la tranquilidad de que nuestra prueba nos avisará si rompemos algo.
+Este ciclo nos fuerza a pensar en el diseño antes de implementar y produce un código más robusto y mantenible.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Aserción (Assertion)</p>
+<p>Es una declaración que hacemos dentro de una prueba para verificar una condición. Por ejemplo, "aseguro que el resultado de esta suma es igual a 5". Si la condición no se cumple, la aserción falla y, con ella, toda la prueba.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Doble de Prueba (Test Double)</p>
+<p>Es un término genérico para cualquier objeto que "sustituye" a un objeto real durante una prueba. Imagina que tu código necesita enviar un email. En una prueba, no quieres enviar un email de verdad cada vez que la ejecutas. En su lugar, usas un doble que finja ser el servicio de envío de emails. Los tipos más comunes son los <em>Stubs</em> y los <em>Mocks</em>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Cobertura de Código (Code Coverage)</p>
+<p>Es una métrica, expresada en porcentaje, que nos dice qué cantidad de nuestro código fuente ha sido ejecutada por nuestras pruebas. Una alta cobertura nos da más confianza, pero ¡cuidado!, no garantiza que el código esté libre de errores.</p>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="primeros-pasos-con-phpunit">Primeros Pasos con PHPUnit</h2>
+<p>PHPUnit es el framework de testing por excelencia en el ecosistema PHP. Piensa en él como una caja de herramientas súper completa que nos facilita enormemente la tarea de escribir, ejecutar y analizar nuestras pruebas.</p>
+<h3 id="instalacion-y-configuracion">Instalación y Configuración</h3>
+<p>La forma moderna y estándar de añadir PHPUnit a un proyecto es a través de <strong>Composer</strong>, nuestro gestor de dependencias de confianza.</p>
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>phpunit/phpunit<span class="w"> </span>^10
+</code></pre></div>
+<div class="admonition info inline">
+<p class="admonition-title">Dependencias de Desarrollo</p>
+<p>Fíjate en el flag <code>--dev</code>. Esto indica a Composer que PHPUnit es una dependencia que solo necesitamos para desarrollar y probar, no en el entorno de producción final. De esta forma, cuando despliegues tu aplicación, esta dependencia no se instalará, haciendo el paquete final más ligero.</p>
+</div>
+<p>Una vez instalado, es una buena práctica crear un fichero de configuración en la raíz de nuestro proyecto llamado <code>phpunit.xml</code>. Este fichero nos permite definir cómo se deben ejecutar las pruebas, ahorrándonos escribir largas instrucciones en la consola.</p>
+<p><strong><code>phpunit.xml</code> Básico:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;phpunit</span>
+<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="w">    </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">"https://schema.phpunit.de/10.5/phpunit.xsd"</span>
+<span class="w">    </span><span class="na">bootstrap=</span><span class="s">"vendor/autoload.php"</span>
+<span class="w">    </span><span class="na">colors=</span><span class="s">"true"</span>
+<span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;testsuites&gt;</span>
+<span class="w">        </span><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">"Unit"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory&gt;</span>tests<span class="nt">&lt;/directory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/testsuite&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/testsuites&gt;</span>
+<span class="nt">&lt;/phpunit&gt;</span>
+</code></pre></div>
+*   <code>bootstrap</code>: Le dice a PHPUnit que cargue el <code>autoload.php</code> de Composer antes de ejecutar nada. Esto es vital para que pueda encontrar nuestras clases.
+*   <code>colors</code>: ¡Porque la vida es mejor en color! Muestra los resultados con colores para identificar rápidamente los éxitos (verde) y los fallos (rojo).
+*   <code>testsuites</code>: Define los conjuntos de pruebas. Aquí le indicamos que busque todos nuestros ficheros de prueba en la carpeta <code>tests</code>.<p></p>
+<p>También es muy recomendable añadir un <em>script</em> en nuestro <code>composer.json</code> para ejecutar las pruebas fácilmente:</p>
+<p><strong><code>composer.json</code>:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"autoload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"psr-4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"App\\"</span><span class="p">:</span><span class="w"> </span><span class="s2">"src/"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"autoload-dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"psr-4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"Tests\\"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tests/"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"require-dev"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"phpunit/phpunit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^10.5"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phpunit"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Ahora, para lanzar todas nuestras pruebas, solo tendremos que ejecutar:
+<div class="highlight"><pre><span></span><code>composer<span class="w"> </span><span class="nb">test</span>
+</code></pre></div><p></p>
+<h3 id="escribiendo-nuestra-primera-prueba-el-ciclo-tdd-en-accion">Escribiendo Nuestra Primera Prueba: El Ciclo TDD en Acción</h3>
+<p>Vamos a aplicar el ciclo TDD para crear una clase muy sencilla: un <code>CalculadorDeIVA</code>.</p>
+<p><strong>Paso 1: Rojo - Escribir la prueba que falla</strong></p>
+<p>Primero, creamos el archivo de prueba. Por convención, si nuestra clase se llama <code>CalculadorDeIVA</code>, la prueba se llamará <code>CalculadorDeIVATest</code>.</p>
+<p><strong><code>tests/CalculadorDeIVATest.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Tests</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Service\CalculadorDeIVA</span><span class="p">;</span> <span class="c1">// ¡Esta clase aún no existe!</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">CalculadorDeIVATest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaElIVASobreUnPrecio</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 1. Preparación (Arrange)</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorDeIVA</span><span class="p">();</span>
+        <span class="nv">$precioBase</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="nv">$ivaEsperado</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+
+        <span class="c1">// 2. Actuación (Act)</span>
+        <span class="nv">$ivaCalculado</span> <span class="o">=</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcular</span><span class="p">(</span><span class="nv">$precioBase</span><span class="p">);</span>
+
+        <span class="c1">// 3. Aserción (Assert)</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$ivaEsperado</span><span class="p">,</span> <span class="nv">$ivaCalculado</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p>Si ejecutamos <code>composer test</code>, obtendremos un error: <code>Error: Class "App\Service\CalculadorDeIVA" not found</code>. ¡Perfecto! <br/> Estamos en la fase <strong>ROJA</strong>. La prueba falla porque el código que intenta probar ni siquiera existe.</p>
+<p><strong>Paso 2: Verde - Escribir el código mínimo para que pase</strong></p>
+<p>Ahora, nuestro único objetivo es hacer que la prueba pase. Nada de florituras.</p>
+<p><strong><code>src/Service/CalculadorDeIVA.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalculadorDeIVA</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">const</span> <span class="no">TIPO_IVA</span> <span class="o">=</span> <span class="mf">0.21</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcular</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$precioBase</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$precioBase</span> <span class="o">*</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIPO_IVA</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Ejecutamos <code>composer test</code> de nuevo... ¡Y ahora está en <strong>VERDE</strong>! <code>OK (1 test, 1 assertion)</code>.<p></p>
+<p><strong>Paso 3: Refactorizar - Mejorar el código</strong></p>
+<p>El código actual es muy simple, pero imaginemos que queremos que el tipo de IVA se pueda configurar en el constructor.</p>
+<p><strong>Refactorizando <code>src/Service/CalculadorDeIVA.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">InvalidArgumentException</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalculadorDeIVA</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">float</span> <span class="nv">$tipoIVA</span> <span class="o">=</span> <span class="mf">0.21</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tipoIVA</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span><span class="s1">'El tipo de IVA no puede ser negativo.'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcular</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$precioBase</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$precioBase</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tipoIVA</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Y ahora, ajustamos la prueba para que refleje el cambio:<p></p>
+<p><strong>Refactorizando <code>tests/CalculadorDeIVATest.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Tests</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Service\CalculadorDeIVA</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">CalculadorDeIVATest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaElIVASobreUnPrecioConTipoPorDefecto</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorDeIVA</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcular</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaElIVASobreUnPrecioConTipoPersonalizado</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorDeIVA</span><span class="p">(</span><span class="mf">0.10</span><span class="p">);</span> <span class="c1">// IVA reducido</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcular</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Volvemos a ejecutar <code>composer test</code>. Si todo sigue en verde, ¡hemos refactorizado con éxito y con la confianza de que no hemos roto nada!<p></p>
+<pre class="mermaid"><code>graph TD
+    A[🔴 Escribir Test que Falla] --&gt; B{¿Falla?};
+    B -- Sí --&gt; C[🟢 Escribir Código Mínimo];
+    C --&gt; D{¿Pasa el Test?};
+    D -- Sí --&gt; E[🔵 Refactorizar Código];
+    E --&gt; F{¿Sigue pasando?};
+    F -- Sí --&gt; A;
+    F -- No --&gt; C;
+    D -- No --&gt; C;
+    B -- No --&gt; A;
+    subgraph "Ciclo TDD"
+        A
+        C
+        E
+    end</code></pre>
+<h3 id="aserciones-el-corazon-de-la-prueba">Aserciones: El Corazón de la Prueba</h3>
+<p>PHPUnit viene cargado con un arsenal de métodos de aserción. Aquí tienes los más comunes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Aserción</th>
+<th style="text-align: left;">Propósito</th>
+<th style="text-align: left;">Ejemplo de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>assertEquals($esp, $act)</code></strong></td>
+<td style="text-align: left;">Comprueba si dos valores son iguales (comparación laxa, <code>==</code>).</td>
+<td style="text-align: left;"><code>$this-&gt;assertEquals(5, '5'); // Pasa</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertSame($esp, $act)</code></strong></td>
+<td style="text-align: left;">Comprueba si dos valores son idénticos (comparación estricta, <code>===</code>).</td>
+<td style="text-align: left;"><code>$this-&gt;assertSame(5, 5); // Pasa</code> <br/> <code>$this-&gt;assertSame(5, '5'); // Falla</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertTrue($cond)</code></strong></td>
+<td style="text-align: left;">Comprueba que una condición sea verdadera.</td>
+<td style="text-align: left;"><code>$this-&gt;assertTrue(is_numeric('123'));</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertFalse($cond)</code></strong></td>
+<td style="text-align: left;">Comprueba que una condición sea falsa.</td>
+<td style="text-align: left;"><code>$this-&gt;assertFalse(empty([1, 2]));</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertCount($num, $arr)</code></strong></td>
+<td style="text-align: left;">Comprueba que un array o <code>Countable</code> tiene un número de elementos.</td>
+<td style="text-align: left;"><code>$this-&gt;assertCount(3, ['a', 'b', 'c']);</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertInstanceOf($clase, $obj)</code></strong></td>
+<td style="text-align: left;">Comprueba que un objeto es una instancia de una clase concreta.</td>
+<td style="text-align: left;"><code>$this-&gt;assertInstanceOf(CalculadorDeIVA::class, new CalculadorDeIVA());</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>assertStringContainsString($needle, $haystack)</code></strong></td>
+<td style="text-align: left;">Comprueba si un string contiene a otro.</td>
+<td style="text-align: left;"><code>$this-&gt;assertStringContainsString('mundo', 'Hola mundo');</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Same vs Equals</p>
+<p>Una de las fuentes de error más comunes es dudar entre <code>assertSame</code> y <code>assertEquals</code>. La regla de oro: <strong>usa siempre <code>assertSame</code> a menos que tengas una razón muy específica para no hacerlo</strong>. Forzarte a comprobar los tipos hace tus pruebas más estrictas y fiables.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>¿Por qué crees que el ciclo TDD empieza con una prueba que falla? ¿Qué nos garantiza ese primer fallo?</li>
+<li>Imagina una clase <code>User</code> con un método <code>getFullName()</code> que une nombre y apellido. ¿Cómo sería el test <code>testCanGetFullName()</code>? ¿Qué aserciones usarías?</li>
+<li>Piensa en una función que valida si un NIF es correcto. ¿Qué casos de prueba (inputs) se te ocurren para asegurar que funciona bien? (NIFs válidos, NIFs inválidos, letras incorrectas, longitudes incorrectas...).</li>
+<li>¿Qué ventajas aporta definir un <code>script</code> en <code>composer.json</code> para lanzar los tests?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="tecnicas-avanzadas-de-testing">Técnicas Avanzadas de Testing</h2>
+<p>Una vez dominas lo básico, PHPUnit te ofrece herramientas más potentes para casos más complejos.</p>
+<h3 id="proveedores-de-datos-dataprovider">Proveedores de Datos (<code>@dataProvider</code>)</h3>
+<p>A menudo, queremos probar el mismo método con múltiples combinaciones de datos de entrada y salida. En lugar de crear un método de prueba para cada combinación, podemos usar un <em>Proveedor de Datos</em>.</p>
+<p>Un proveedor de datos es un método público que devuelve un array de arrays. Cada array interno representa un conjunto de argumentos para nuestro método de prueba.</p>
+<p><strong>Ejemplo con nuestro <code>CalculadorDeIVA</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// En tests/CalculadorDeIVATest.php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\Attributes\DataProvider</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">CalculadorDeIVATest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="c1">// ... otros tests ...</span>
+
+    <span class="p">#[</span><span class="nd">DataProvider</span><span class="p">(</span><span class="s1">'casosDePruebaIVA'</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaCorrectamenteParaMultiplesCasos</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$precio</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$tipo</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$esperado</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorDeIVA</span><span class="p">(</span><span class="nv">$tipo</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$esperado</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcular</span><span class="p">(</span><span class="nv">$precio</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">casosDePruebaIVA</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">'Caso general 21%'</span>         <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span>
+            <span class="s1">'Caso reducido 10%'</span>        <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+            <span class="s1">'Caso superreducido 4%'</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+            <span class="s1">'Caso con decimales'</span>       <span class="o">=&gt;</span> <span class="p">[</span><span class="mf">12.50</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mf">2.625</span><span class="p">],</span>
+            <span class="s1">'Caso con precio cero'</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info inline">
+<p class="admonition-title">Atributos vs Anotaciones</p>
+<p>Desde PHP 8, se prefieren los atributos (<code>#[DataProvider(...)]</code>) sobre las anotaciones en comentarios (<code>/** @dataProvider ... */</code>). Son más limpios, forman parte del lenguaje y los editores de código los entienden mejor.</p>
+</div>
+<h3 id="probando-excepciones">Probando Excepciones</h3>
+<p>Una parte fundamental de un código robusto es saber cómo manejar los errores. Las pruebas deben cubrir también los casos en los que esperamos que se lance una excepción.</p>
+<p>PHPUnit nos da métodos para esto:
+*   <code>expectException(Exception::class)</code>: Espera que se lance una excepción de un tipo concreto.
+*   <code>expectExceptionMessage(string)</code>: Comprueba que el mensaje de la excepción contiene un texto específico.</p>
+<p><br/>
+<strong>Ampliando el test para <code>CalculadorDeIVA</code>:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// En tests/CalculadorDeIVATest.php</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">CalculadorDeIVATest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="c1">// ... otros tests ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testLanzaExcepcionSiElIVAEsNegativo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 1. Definimos la expectativa ANTES de ejecutar el código</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectException</span><span class="p">(</span><span class="nx">\InvalidArgumentException</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectExceptionMessage</span><span class="p">(</span><span class="s1">'El tipo de IVA no puede ser negativo.'</span><span class="p">);</span>
+
+        <span class="c1">// 2. Ejecutamos el código que debe provocar el error</span>
+        <span class="k">new</span> <span class="nx">CalculadorDeIVA</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+La prueba pasará <strong>solo si</strong> al intentar crear el objeto se lanza una <code>InvalidArgumentException</code> con ese mensaje exacto. Si no se lanza ninguna excepción o se lanza una diferente, la prueba fallará.<p></p>
+<h3 id="test-doubles-mocks-y-stubs">Test Doubles: Mocks y Stubs</h3>
+<p>Aquí es donde el testing se vuelve realmente poderoso. Como vimos, a veces una clase (nuestro <em>Sistema Bajo Prueba</em> o SUT) depende de otra. Para hacer una prueba <em>unitaria</em> de verdad, debemos aislar nuestro SUT de sus dependencias.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Aislando la Unidad</p>
+<p>Imagina que pruebas un <code>ControladorDePedidos</code> que usa un <code>ServicioDeNotificaciones</code> para enviar un email. Si pruebas el controlador, no quieres que se envíe un email real. Lo que quieres es asegurarte de que el controlador <strong>llama al método <code>enviar()</code></strong> del servicio de notificaciones. Para eso, reemplazamos el servicio real por un doble.</p>
+</div>
+<p><strong>Tabla de Diferencias: Stub vs. Mock</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Stub (Doble de pega)</th>
+<th style="text-align: left;">Mock (Espía)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Propósito</strong></td>
+<td style="text-align: left;">Proporcionar datos de prueba al SUT. Responde a llamadas con valores pre-configurados.</td>
+<td style="text-align: left;">Verificar que se realizan ciertas llamadas desde el SUT. Se centra en la interacción.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Verificación</strong></td>
+<td style="text-align: left;">Se comprueba el estado del SUT, no el del stub.</td>
+<td style="text-align: left;">Se comprueba que el mock fue llamado como se esperaba (<code>expects()</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Analogía</strong></td>
+<td style="text-align: left;">Un actor de doblaje que tiene un guion fijo.</td>
+<td style="text-align: left;">Un agente secreto que debe confirmar si se ha producido una conversación específica.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cuándo usar</strong></td>
+<td style="text-align: left;">Cuando el SUT necesita obtener datos de una dependencia para funcionar.</td>
+<td style="text-align: left;">Cuando el SUT debe provocar un cambio de estado en una dependencia (llamar a un método).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo Práctico: Un <code>RegistradorDeUsuarios</code></strong></p>
+<p>Imaginemos una clase que registra un usuario y luego envía un correo de bienvenida.</p>
+<p><strong>El Código a Probar:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RegistradorDeUsuarios</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">Mailer</span> <span class="nv">$mailer</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registrar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$email</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$password</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span>
+    <span class="p">{</span>
+        <span class="c1">// Lógica para crear el usuario y guardarlo en BD (omitida por simplicidad)</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+
+        <span class="c1">// ¡Aquí está la dependencia!</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailer</span><span class="o">-&gt;</span><span class="na">enviarEmailBienvenida</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getEmail</span><span class="p">());</span>
+
+        <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Clases de las que dependemos</span>
+<span class="k">class</span> <span class="nc">Mailer</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">enviarEmailBienvenida</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$email</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span> <span class="cm">/* ... envía un email real ... */</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">public</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">,</span> <span class="k">public</span> <span class="nx">string</span> <span class="nv">$password</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEmail</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>La Prueba con un Mock:</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Tests\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Service\Mailer</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Service\RegistradorDeUsuarios</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">RegistradorDeUsuariosTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAlRegistrarUnUsuarioSeEnviaUnEmailDeBienvenida</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 1. Preparación: Creamos el MOCK del Mailer</span>
+        <span class="nv">$mailerMock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="c1">// Configuramos la expectativa: esperamos que el método 'enviarEmailBienvenida'</span>
+        <span class="c1">// sea llamado exactamente UNA VEZ, con el argumento 'test@example.com'.</span>
+        <span class="nv">$mailerMock</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+                   <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">'enviarEmailBienvenida'</span><span class="p">)</span>
+                   <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="s1">'test@example.com'</span><span class="p">));</span>
+
+        <span class="c1">// Creamos la instancia del SUT, inyectando el MOCK en lugar del Mailer real.</span>
+        <span class="nv">$registrador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RegistradorDeUsuarios</span><span class="p">(</span><span class="nv">$mailerMock</span><span class="p">);</span>
+
+        <span class="c1">// 2. Actuación</span>
+        <span class="nv">$registrador</span><span class="o">-&gt;</span><span class="na">registrar</span><span class="p">(</span><span class="s1">'test@example.com'</span><span class="p">,</span> <span class="s1">'password123'</span><span class="p">);</span>
+
+        <span class="c1">// 3. Aserción: En este caso, la aserción es la expectativa que definimos en el mock.</span>
+        <span class="c1">// PHPUnit la verificará automáticamente al final del test. Si el método no se</span>
+        <span class="c1">// llamó, o se llamó con otro email, el test fallará.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p>Con esta prueba, hemos verificado el comportamiento del <code>RegistradorDeUsuarios</code> en total aislamiento, sin enviar ni un solo email. ¡Magia!</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Test as RegistradorDeUsuariosTest
+    participant SUT as RegistradorDeUsuarios
+    participant Mock as "Mailer (Mock)"
+
+    Test-&gt;&gt;Mock: $mailerMock = createMock(Mailer::class)
+    Test-&gt;&gt;Mock: expects(once())-&gt;method('enviar...')-&gt;with('...')
+    Test-&gt;&gt;SUT: $registrador = new RegistradorDeUsuarios($mailerMock)
+
+    Test-&gt;&gt;SUT: registrar('test@example.com', '...')
+
+    SUT-&gt;&gt;Mock: enviarEmailBienvenida('test@example.com')
+    Note right of Mock: ¡Llamada interceptada!&lt;br&gt;El Mock verifica si coincide&lt;br&gt;con la expectativa.
+
+    SUT--&gt;&gt;Test: return User
+    Test--&gt;&gt;Test: Fin del Test. PHPUnit&lt;br&gt;comprueba que las&lt;br&gt;expectativas del Mock se cumplieron.</code></pre>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>¿Qué ventajas aporta usar un <code>@dataProvider</code> frente a escribir tests separados para cada caso? ¿Y qué desventajas podría tener?</li>
+<li>Si una clase <code>Product</code> necesita un precio positivo para ser creada y lanza una <code>PriceException</code> si es negativo, ¿cómo escribirías el test para verificar este comportamiento?</li>
+<li>Tienes una clase <code>APIClient</code> que hace una llamada HTTP real a un servicio externo para obtener datos del tiempo. ¿Por qué sería una mala idea usar la clase real en tus tests unitarios? ¿Usarías un Stub o un Mock para sustituirla y por qué?</li>
+<li>¿En qué se diferencia <code>expects($this-&gt;once())</code> de <code>expects($this-&gt;any())</code> al configurar un mock?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="cobertura-de-codigo-cuanto-estamos-probando-realmente">Cobertura de Código: ¿Cuánto estamos probando realmente?</h2>
+<p>La cobertura de código es una métrica que nos indica qué porcentaje de nuestro código ha sido ejecutado durante las pruebas. Es como un mapa de calor que nos muestra las "zonas frías": partes de nuestra aplicación que ninguna prueba ha tocado.</p>
+<div class="admonition warning">
+<p class="admonition-title">Requisito: Xdebug o PCOV</p>
+<p>Para que PHPUnit pueda generar informes de cobertura, necesita una extensión de PHP que se lo permita. Las más comunes son <strong>Xdebug</strong> y <strong>PCOV</strong>. Xdebug es más completa pero puede ralentizar las pruebas, mientras que PCOV es más ligera y rápida, enfocada solo en la cobertura. Deberás asegurarte de tener una de ellas instalada y activada (<code>xdebug.mode=coverage</code> en <code>php.ini</code>).</p>
+</div>
+<p>Para generar un informe de cobertura en formato HTML, podemos añadir otro script a <code>composer.json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phpunit"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"test:coverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phpunit --coverage-html coverage-report"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ahora, al ejecutar <code>composer test:coverage</code>, se generará una carpeta <code>coverage-report</code> con un informe interactivo. Podrás navegar por tus ficheros y ver línea por línea qué está cubierto y qué no.</p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBUZXN0aW5nIGNvbiBQSFBVbml0CgojIyBGdW5kYW1lbnRvcwotICoqVEREKio6IFJvam8gLT4gVmVyZGUgLT4gUmVmYWN0b3IKLSAqKkFzZXJjaW9uZXMqKjogYGFzc2VydFNhbWVgLCBgYXNzZXJ0RXF1YWxzYCwgZXRjLgotICoqRXN0cnVjdHVyYSoqOiBgKlRlc3QucGhwYCwgaGVyZWRhIGRlIGBUZXN0Q2FzZWAuCgojIyBUw6ljbmljYXMgQ2xhdmUKLSAqKkRhdGEgUHJvdmlkZXJzKio6IGBAZGF0YVByb3ZpZGVyYCBwYXJhIG3Dumx0aXBsZXMgY2Fzb3MuCi0gKipFeGNlcGNpb25lcyoqOiBgZXhwZWN0RXhjZXB0aW9uKClgLgotICoqRG9ibGVzIGRlIFBydWViYSoqCiAgICAtICoqU3R1YnMqKjogU2ltdWxhbiBkYXRvcyBkZSBlbnRyYWRhLgogICAgLSAqKk1vY2tzKio6IFZlcmlmaWNhbiBpbnRlcmFjY2lvbmVzIGRlIHNhbGlkYS4KCiMjIENhbGlkYWQKLSAqKkNvYmVydHVyYSoqOiDCv1F1w6kgcGFydGUgZGVsIGPDs2RpZ28gcHJvYmFtb3M/CiAgICAtIFNlIG5lY2VzaXRhIFhkZWJ1ZyAvIFBDT1YuCiAgICAtIGBwaHB1bml0IC0tY292ZXJhZ2UtaHRtbGAKLSAqKkNSQVAgSW5kZXgqKjogTcOpdHJpY2EgZGUgImRvbG9yIiBhbCBtYW50ZW5lci4gwqFNYW50ZW5lciBiYWpvIQ==</markmap-data></div>
+<p>El objetivo no es obsesionarse con el 100% de cobertura, sino usar el informe para tomar decisiones inteligentes. Si una parte crítica de tu lógica de negocio tiene una cobertura baja, es una señal de alarma clara para añadir más pruebas.</p>
+<div class="admonition question">
+<p class="admonition-title">¡A Reflexionar!</p>
+<ol>
+<li>Un informe de cobertura te dice que tienes un 95%. ¿Significa eso que tu código está 95% libre de bugs? ¿Por qué?</li>
+<li>Abres el informe y ves que un <code>if</code> complejo nunca entra en la rama <code>else</code>. ¿Qué te está diciendo eso sobre tus pruebas?</li>
+<li>El índice CRAP (Change Risk Anti-Patterns) de un método es muy alto. ¿Qué dos factores contribuyen a este índice y qué puedes hacer para bajarlo?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h2>
+<p>En un entorno profesional, el testing no es opcional, es la base de la calidad y la agilidad. Las empresas integran estas pruebas en sistemas de <strong>Integración Continua (CI)</strong> como GitHub Actions, GitLab CI o Jenkins.</p>
+<p>Esto significa que cada vez que un desarrollador intenta subir código nuevo (<code>git push</code>), un sistema automático ejecuta todas las pruebas. Si una sola prueba falla, la subida se bloquea. Esto asegura que nunca se introduce código roto en la rama principal, previene el clásico "en mi máquina funciona" y permite a los equipos refactorizar y añadir nuevas funcionalidades con una confianza total.</p>
+<p>Las pruebas se convierten en la documentación viva y ejecutable del sistema. Un nuevo desarrollador puede leer los tests para entender qué se supone que debe hacer una clase.</p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<p>Para seguir profundizando, no hay nada como ir a las fuentes originales y a tutoriales de calidad.
+1.  <strong>Documentación Oficial de PHPUnit (en inglés)</strong>: Es la biblia. Completa, precisa y siempre actualizada a la última versión. <a href="https://docs.phpunit.de/en/10.5/">https://docs.phpunit.de/en/10.5/</a>
+2.  <strong>PHPUnit: Stubs vs Mocks (Vídeo en inglés)</strong>: Un vídeo práctico que aclara muy bien la diferencia entre stubs y mocks con ejemplos claros. <a href="https://www.youtube.com/watch?v=i9t_iP3gYqE">https://www.youtube.com/watch?v=i9t_iP3gYqE</a>
+3.  <strong>Curso de PHPUnit desde cero (Vídeo en español)</strong>: Un curso completo en vídeo que te guía paso a paso en la creación de un proyecto con TDD y PHPUnit. <a href="https://www.youtube.com/watch?v=lA0jyNBl0b0">https://www.youtube.com/watch?v=lA0jyNBl0b0</a></p>
+<p><br/></p><hr class="double"/><br/><p></p>
+<h2 id="ejercicios">EJERCICIOS</h2>
+<hr/>
+<!-- 
+******************
+*   EJERCICIOS   *  
+******************
+-->
+<!-- Nombre de archivo sugerido: T12-Ejercicios-PHP-Pruebas-con-PHP.md -->
+<h1 id="ejercicios-practicos-testing-en-php">Ejercicios Prácticos: Testing en PHP</h1>
+<p>¡Bienvenido al departamento de I+D de <strong>"LogiTrack S.L."</strong>! Somos una empresa en plena expansión que desarrolla software de última generación para la gestión logística y el seguimiento de envíos. Nuestro éxito se basa en la fiabilidad de nuestro software, y para mantener nuestros estándares de calidad mientras crecemos, hemos decidido adoptar una cultura de <strong>Testing Primero</strong>.</p>
+<p>Tu misión, como nuevo desarrollador en el equipo, será ayudarnos a construir una suite de pruebas robusta para nuestras nuevas funcionalidades. A través de estos ejercicios, no solo aplicarás los conceptos de PHPUnit, sino que te convertirás en un guardián de la calidad de nuestro código. ¡Vamos a ello!</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Validador de Códigos de Paquete | Nivel: Fácil</p>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Aplicar el ciclo completo de Desarrollo Guiado por Pruebas (TDD) para crear una nueva clase de validación desde cero.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>Tu estructura de proyecto es la estándar que hemos visto, con una carpeta <code>src/</code> para el código de la aplicación y <code>tests/</code> para las pruebas.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>En "LogiTrack", todos nuestros paquetes tienen un código de seguimiento con el formato <code>LT-XXXXXX-L</code>, donde <code>X</code> es un número y <code>L</code> es una letra mayúscula. Por ejemplo, <code>LT-123456-A</code> es válido, pero <code>LT-123-A</code> o <code>LT-ABCDEF-Z</code> no lo son.</p>
+<p>Siguiendo el ciclo TDD (Rojo -&gt; Verde -&gt; Refactorizar):
+1.  <strong>Fase Roja:</strong> Crea un nuevo fichero de prueba <code>tests/Util/CodigoSeguimientoValidatorTest.php</code>. Dentro, escribe al menos dos métodos de prueba:
+    *   <code>testCodigosValidosDevuelvenTrue()</code>: Debe asegurar que varios códigos con el formato correcto son aceptados por el validador. Usa <code>assertTrue()</code>.
+    *   <code>testCodigosInvalidosDevuelvenFalse()</code>: Debe asegurar que varios códigos con formato incorrecto (longitud, caracteres, prefijo) son rechazados. Usa <code>assertFalse()</code>.
+    *   <em>Ejecuta las pruebas. Fallarán porque la clase <code>CodigoSeguimientoValidator</code> no existe.</em></p>
+<ol>
+<li>
+<p><strong>Fase Verde:</strong> Crea la clase <code>src/Util/CodigoSeguimientoValidator.php</code> con un método <code>esValido(string $codigo): bool</code>. Escribe el código <strong>mínimo e indispensable</strong> para que las pruebas que escribiste en el paso anterior pasen.</p>
+<ul>
+<li><em>Pista: Una expresión regular es tu mejor amiga aquí. Piensa en un patrón como <code>/^LT-\d{6}-[A-Z]$/</code>.</em></li>
+</ul>
+</li>
+<li>
+<p><strong>Fase de Refactorización:</strong> Revisa tu código. ¿Es legible? ¿Podrías mejorar el nombre de alguna variable? En este caso, el código es simple, pero es un buen hábito pararse a pensar si se puede mejorar.</p>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Las clases de validación son omnipresentes en cualquier aplicación (validar emails, NIFs, contraseñas, formatos de fichero...). Construirlas con TDD garantiza que cubren todos los casos de uso desde el principio y que son resistentes a futuros cambios.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) Depuración: El Calculador de Tarifas con Bug | Nivel: Fácil</p>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Analizar un test que falla para identificar y corregir un error en el código de la aplicación.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Tu compañero ha subido una nueva clase <code>CalculadorTarifas</code> y su test correspondiente, pero algo va mal. El pipeline de Integración Continua está en rojo. ¡Necesita tu ayuda!</p>
+<p>Copia estos dos ficheros en tu proyecto:</p>
+<p><strong><code>src/Service/CalculadorTarifas.php</code> (¡Con Bug!)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalculadorTarifas</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Calcula el precio de un envío basado en el peso en kg.</span>
+<span class="sd">     * - Hasta 5kg (incluido): 10€</span>
+<span class="sd">     * - Más de 5kg: 10€ + 2€ por cada kg adicional por encima de 5.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcularPorPeso</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$peso</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$peso</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$peso</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mf">10.0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Tarifa para paquetes pesados</span>
+        <span class="nv">$pesoAdicional</span> <span class="o">=</span> <span class="nv">$peso</span> <span class="o">-</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mf">10.0</span> <span class="o">+</span> <span class="p">(</span><span class="nv">$pesoAdicional</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong><code>tests/Service/CalculadorTarifasTest.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Tests\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Service\CalculadorTarifas</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalculadorTarifasTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaCorrectamentePaqueteLigero</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorTarifas</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcularPorPeso</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaCorrectamentePaqueteEnElLimite</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorTarifas</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcularPorPeso</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testCalculaCorrectamentePaquetePesado</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$calculador</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CalculadorTarifas</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mf">14.0</span><span class="p">,</span> <span class="nv">$calculador</span><span class="o">-&gt;</span><span class="na">calcularPorPeso</span><span class="p">(</span><span class="mi">7</span><span class="p">));</span> <span class="c1">// 10€ base + 2kg extra * 2€/kg = 14€</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Ejecuta los tests (<code>composer test</code>).</li>
+<li>Observa el fallo. PHPUnit te dirá qué test ha fallado, qué valor esperaba y qué valor ha obtenido.</li>
+<li>Analiza el mensaje de error y el código de la clase <code>CalculadorTarifas</code>. El test está bien, el bug está en la lógica de la clase.</li>
+<li>Corrige la línea incorrecta en <code>CalculadorTarifas.php</code>.</li>
+<li>Vuelve a ejecutar los tests para confirmar que ahora todo está en verde.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta es una de las tareas más comunes de un desarrollador. Los tests actúan como una red de seguridad. Cuando alguien introduce un bug, un test bien escrito falla inmediatamente, señalando exactamente qué funcionalidad se ha roto. Esto es infinitamente más rápido que encontrar el error manualmente en producción.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">3) Probando el Servicio de Notificaciones con Mocks | Nivel: Medio</p>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Aprender a usar <strong>Mocks</strong> para aislar una clase de sus dependencias y probar su comportamiento sin ejecutar el código de dichas dependencias.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>En "LogiTrack", cuando un paquete se marca como "Enviado", debemos notificar al cliente. Tenemos una clase <code>GestorEnvios</code> que depende de una interfaz <code>NotificadorClienteInterface</code> para realizar esta acción.</p>
+<p><strong>Interfaz del Notificador:</strong> <code>src/Interfaces/NotificadorClienteInterface.php</code>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Interfaces</span><span class="p">;</span>
+
+<span class="k">interface</span> <span class="nx">NotificadorClienteInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Envía una notificación al teléfono del cliente.</span>
+<span class="sd">     * @return bool True si el envío fue exitoso.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">enviarSMS</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$telefono</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$mensaje</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Clase a Probar:</strong> <code>src/Service/GestorEnvios.php</code>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Interfaces\NotificadorClienteInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">GestorEnvios</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">NotificadorClienteInterface</span> <span class="nv">$notificador</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">despacharPaquete</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$codigoPaquete</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$telefonoCliente</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">// Lógica compleja para preparar el envío...</span>
+        <span class="c1">// ...marcar en la base de datos, etc.</span>
+        <span class="k">echo</span> <span class="s2">"Paquete </span><span class="si">$codigoPaquete</span><span class="s2"> despachado.</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+        <span class="nv">$mensaje</span> <span class="o">=</span> <span class="s2">"Su paquete </span><span class="si">$codigoPaquete</span><span class="s2"> ha sido enviado. Gracias por confiar en LogiTrack."</span><span class="p">;</span>
+
+        <span class="c1">// Llamamos a la dependencia para notificar</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">notificador</span><span class="o">-&gt;</span><span class="na">enviarSMS</span><span class="p">(</span><span class="nv">$telefonoCliente</span><span class="p">,</span> <span class="nv">$mensaje</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea un nuevo fichero de prueba: <code>tests/Service/GestorEnviosTest.php</code>.</li>
+<li>Dentro, crea un método de prueba <code>testAlDespacharSeNotificaCorrectamenteAlCliente()</code>.</li>
+<li>El objetivo es probar <code>GestorEnvios</code> <strong>sin</strong> usar una implementación real de <code>NotificadorClienteInterface</code> (que podría enviar un SMS de verdad, algo que no queremos en un test).</li>
+<li><strong>Usa un Mock:</strong><ul>
+<li>Crea un mock de <code>NotificadorClienteInterface</code> usando <code>$this-&gt;createMock(...)</code>.</li>
+<li><strong>Configura la expectativa:</strong> Debes decirle a PHPUnit que esperas (<code>expects($this-&gt;once())</code>) que el método <code>enviarSMS</code> del mock sea llamado exactamente una vez.</li>
+<li><strong>Añade una restricción de argumentos:</strong> Usa <code>with()</code> para asegurarte de que <code>enviarSMS</code> es llamado con el número de teléfono y el mensaje correctos.</li>
+<li><strong>Define un valor de retorno:</strong> Haz que la llamada al método del mock devuelva <code>true</code> usando <code>willReturn(true)</code>.</li>
+</ul>
+</li>
+<li>Crea la instancia de <code>GestorEnvios</code> pasándole el mock en el constructor.</li>
+<li>Llama al método <code>despacharPaquete()</code> y usa <code>assertTrue()</code> para verificar que el resultado es el que esperas.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El 99% de las clases de una aplicación real tienen dependencias (servicios de email, acceso a APIs externas, loggers, bases de datos...). Los mocks son la herramienta fundamental para probar la lógica de una clase de forma aislada, rápida y fiable, sin depender de sistemas externos que pueden fallar o ser lentos.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">4) Testing Avanzado del Gestor de Rutas | Nivel: Alto</p>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Implementar un test completo para una clase con lógica compleja, utilizando proveedores de datos (<code>@dataProvider</code>) para cubrir múltiples casos y probando el lanzamiento de excepciones para entradas inválidas.</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>"LogiTrack" necesita una nueva clase <code>GestorRutas</code> para calcular el coste de un envío. La fórmula es: <code>Coste = (Distancia en km * 0.15) + (Peso en kg * 0.5)</code>. Además, la distancia nunca puede ser cero o negativa.</p>
+<p><strong>Clase a probar:</strong> <code>src/Service/GestorRutas.php</code>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">App\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">InvalidArgumentException</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">GestorRutas</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">const</span> <span class="no">COSTE_POR_KM</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">const</span> <span class="no">COSTE_POR_KG</span> <span class="o">=</span> <span class="mf">0.50</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">calcularCoste</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$distanciaKm</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$pesoKg</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$distanciaKm</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span><span class="s2">"La distancia debe ser un valor positivo."</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$costeDistancia</span> <span class="o">=</span> <span class="nv">$distanciaKm</span> <span class="o">*</span> <span class="nx">self</span><span class="o">::</span><span class="na">COSTE_POR_KM</span><span class="p">;</span>
+        <span class="nv">$costePeso</span> <span class="o">=</span> <span class="nv">$pesoKg</span> <span class="o">*</span> <span class="nx">self</span><span class="o">::</span><span class="na">COSTE_POR_KG</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nv">$costeDistancia</span> <span class="o">+</span> <span class="nv">$costePeso</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<ol>
+<li>Crea el fichero de prueba <code>tests/Service/GestorRutasTest.php</code>.</li>
+<li><strong>Prueba de Excepciones:</strong> Escribe un método de prueba, <code>testLanzaExcepcionParaDistanciasInvalidas()</code>, que asegure que se lanza una <code>InvalidArgumentException</code> cuando la distancia es <code>0</code> o <code>-50</code>. Usa <code>expectException()</code>.</li>
+<li><strong>Prueba con Proveedor de Datos:</strong><ul>
+<li>Crea un método de prueba público <code>testCalculaCosteCorrectamente()</code>. Anótalo con el atributo <code>#[DataProvider('proveedorDeCasosDeCoste')]</code>. Este test recibirá tres argumentos: <code>$distancia</code>, <code>$peso</code> y <code>$costeEsperado</code>.</li>
+<li>Dentro de este test, crea una instancia de <code>GestorRutas</code> y usa <code>assertEquals()</code> para verificar que el coste calculado coincide con el esperado.</li>
+<li>Crea un método público y estático <code>proveedorDeCasosDeCoste()</code> que devuelva un array de arrays. Cada subarray debe contener un caso de prueba con la distancia, el peso y el coste esperado. Incluye al menos 4 casos de prueba variados (con enteros, decimales, etc.).</li>
+</ul>
+</li>
+<li><strong>(Opcional) Revisión por Pares (Peer Review):</strong><ul>
+<li>Intercambia tu fichero <code>GestorRutasTest.php</code> con un compañero.</li>
+<li>Revisa su código: ¿Los nombres de los tests son claros? ¿Los casos del <code>dataProvider</code> son suficientemente variados? ¿Cubre casos límite? ¿La prueba de la excepción es correcta?</li>
+<li>Escribe una pequeña lista de sugerencias constructivas para mejorar su test.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En sistemas complejos (cálculo de impuestos, motores de precios, algoritmos de recomendación), es imposible probar todas las combinaciones a mano. Los <code>DataProviders</code> son esenciales para crear tests exhaustivos que cubran una gran variedad de escenarios con muy poco código, aumentando drásticamente la confianza en la lógica de negocio.</p>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

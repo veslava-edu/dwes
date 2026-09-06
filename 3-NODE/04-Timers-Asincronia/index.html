@@ -1,0 +1,3785 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/04-Timers-Asincronia/" rel="canonical"/>
+<link href="../03-NodeJS/" rel="prev"/>
+<link href="../05-FileSystem/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>04 - Timers y Asincronia - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#timers-event-loop-y-asincronia-en-nodejs">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              04 - Timers y Asincronia
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-el-chef-y-la-cocina-infinita">
+<span class="md-ellipsis">
+      
+        Introducción: El Chef y la Cocina Infinita
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-asincronia-y-modelo-de-ejecucion-en-nodejs">
+<span class="md-ellipsis">
+      
+        1. Asincronía y modelo de ejecución en Node.js
+      
+    </span>
+</a>
+<nav aria-label="1. Asincronía y modelo de ejecución en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitectura-event-driven">
+<span class="md-ellipsis">
+      
+        Arquitectura Event-Driven
+      
+    </span>
+</a>
+<nav aria-label="Arquitectura Event-Driven" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-desastre-sincrono-bloqueante">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El desastre síncrono (Bloqueante)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-la-elegancia-asincrona-no-bloqueante-con-callbacks">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: La elegancia asíncrona (No bloqueante con Callbacks)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-asincronia-moderna-con-asyncawait">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Asincronía moderna con Async/Await
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativas">
+<span class="md-ellipsis">
+      
+        Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitectura-single-threaded-y-event-driven">
+<span class="md-ellipsis">
+      
+        Arquitectura Single-Threaded y Event-Driven
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-el-modulo-timers-en-nodejs">
+<span class="md-ellipsis">
+      
+        2. El módulo Timers en Node.js
+      
+    </span>
+</a>
+<nav aria-label="2. El módulo Timers en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_1">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diferencias-con-el-navegador">
+<span class="md-ellipsis">
+      
+        Diferencias con el Navegador
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_1">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-uso-basico-global">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Uso básico global
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-importando-desde-nodetimers-buenas-practicas-ts">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Importando desde node:timers (Buenas prácticas TS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-cancelacion-de-timers">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Cancelación de Timers
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-navegador-vs-nodejs">
+<span class="md-ellipsis">
+      
+        Tabla: Navegador vs Node.js
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-timers-fundamentales">
+<span class="md-ellipsis">
+      
+        3. Timers fundamentales
+      
+    </span>
+</a>
+<nav aria-label="3. Timers fundamentales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settimeoutcallback-delay">
+<span class="md-ellipsis">
+      
+        setTimeout(callback, delay)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setintervalcallback-delay">
+<span class="md-ellipsis">
+      
+        setInterval(callback, delay)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setimmediatecallback">
+<span class="md-ellipsis">
+      
+        setImmediate(callback)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-de-timers">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo de Timers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_2">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settimeout-y-cleartimeout">
+<span class="md-ellipsis">
+      
+        setTimeout() y clearTimeout()
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setinterval-y-clearinterval">
+<span class="md-ellipsis">
+      
+        setInterval() y clearInterval()
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setimmediate-vs-clearimmediate">
+<span class="md-ellipsis">
+      
+        setImmediate() vs clearImmediate()
+      
+    </span>
+</a>
+<nav aria-label="setImmediate() vs clearImmediate()" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-4-la-carrera-timeout-vs-immediate">
+<span class="md-ellipsis">
+      
+        Ejemplo 4: La carrera (Timeout vs Immediate)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-5-pasando-argumentos-a-los-timers">
+<span class="md-ellipsis">
+      
+        Ejemplo 5: Pasando argumentos a los timers
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativa-settimeout-vs-setimmediate-vs-setinterval">
+<span class="md-ellipsis">
+      
+        Comparativa: setTimeout vs setImmediate vs setInterval
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-timers-avanzados-y-control-del-event-loop">
+<span class="md-ellipsis">
+      
+        4. Timers avanzados y control del Event Loop
+      
+    </span>
+</a>
+<nav aria-label="4. Timers avanzados y control del Event Loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_2">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_3">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-proceso-que-no-termina-comportamiento-por-defecto">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El proceso que no termina (Comportamiento por defecto)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-usando-unref-para-tareas-secundarias">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Usando unref() para tareas secundarias
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-reactivando-con-ref">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Reactivando con ref()
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-metodos-del-objeto-timer">
+<span class="md-ellipsis">
+      
+        Tabla: Métodos del Objeto Timer
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-introduccion-al-event-loop">
+<span class="md-ellipsis">
+      
+        5. Introducción al Event Loop
+      
+    </span>
+</a>
+<nav aria-label="5. Introducción al Event Loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_3">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mito-del-single-thread">
+<span class="md-ellipsis">
+      
+        Mito del Single-Thread
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-general">
+<span class="md-ellipsis">
+      
+        Diagrama General
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_4">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-visualizando-el-loop">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Visualizando el Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-bucle-infinito-bloqueo">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: El bucle infinito (Bloqueo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-stack-trace-y-asincronia">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Stack Trace y Asincronía
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-event-loop-en-detalle-y-libuv">
+<span class="md-ellipsis">
+      
+        6. Event Loop en detalle y Libuv
+      
+    </span>
+</a>
+<nav aria-label="6. Event Loop en detalle y Libuv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fases-del-event-loop">
+<span class="md-ellipsis">
+      
+        Fases del Event Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-mental-markmap">
+<span class="md-ellipsis">
+      
+        Diagrama Mental (Markmap)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ciclo-visual">
+<span class="md-ellipsis">
+      
+        El Ciclo Visual
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-bloques">
+<span class="md-ellipsis">
+      
+        Diagrama de Bloques
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_5">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-navegando-las-fases">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Navegando las fases
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-thread-pool-de-libuv">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: El Thread Pool de Libuv
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-cambiando-el-tamano-del-pool">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Cambiando el tamaño del Pool
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-tareas-y-ejecutores">
+<span class="md-ellipsis">
+      
+        Tabla: Tareas y Ejecutores
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-microtasks-y-prioridad-de-ejecucion">
+<span class="md-ellipsis">
+      
+        7. Microtasks y prioridad de ejecución
+      
+    </span>
+</a>
+<nav aria-label="7. Microtasks y prioridad de ejecución" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_4">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_6">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-jerarquia-de-ejecucion">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Jerarquía de Ejecución
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-promise-starvation-bloqueo-por-microtasks">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Promise starvation (Bloqueo por microtasks)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-uso-correcto-de-nexttick">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Uso correcto de nextTick
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-prioridad">
+<span class="md-ellipsis">
+      
+        Diagrama de Prioridad
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-bloqueo-del-event-loop-y-paralelismo">
+<span class="md-ellipsis">
+      
+        8. Bloqueo del Event Loop y paralelismo
+      
+    </span>
+</a>
+<nav aria-label="8. Bloqueo del Event Loop y paralelismo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_5">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_7">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-json-de-la-muerte-bloqueo">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El JSON de la muerte (Bloqueo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-solucion-con-setimmediate-partitioning">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Solución con setImmediate (Partitioning)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-solucion-real-con-worker-threads">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Solución real con Worker Threads
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativa-estrategias-anti-bloqueo">
+<span class="md-ellipsis">
+      
+        Comparativa: Estrategias Anti-Bloqueo
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-manejo-avanzado-de-asincronia">
+<span class="md-ellipsis">
+      
+        9. Manejo avanzado de asincronía
+      
+    </span>
+</a>
+<nav aria-label="9. Manejo avanzado de asincronía" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#patrones-de-evolucion">
+<span class="md-ellipsis">
+      
+        Patrones de Evolución
+      
+    </span>
+</a>
+<nav aria-label="Patrones de Evolución" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-callback-hell-el-pasado-oscuro">
+<span class="md-ellipsis">
+      
+        1. Callback Hell (El pasado oscuro)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-promises-el-presente-estandar">
+<span class="md-ellipsis">
+      
+        2. Promises (El presente estándar)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-asyncawait-syntactic-sugar">
+<span class="md-ellipsis">
+      
+        3. Async/Await (Syntactic Sugar)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-estados-de-una-promesa">
+<span class="md-ellipsis">
+      
+        Diagrama de Estados de una Promesa
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_8">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-promiseall-paralelismo">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Promise.all (Paralelismo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-promiserace-timeout-manual">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Promise.race (Timeout manual)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-async-iterator-for-await">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Async Iterator (for await)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-flujos-asincronos-reales-y-buenas-practicas">
+<span class="md-ellipsis">
+      
+        10. Flujos asíncronos reales y buenas prácticas
+      
+    </span>
+</a>
+<nav aria-label="10. Flujos asíncronos reales y buenas prácticas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_6">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_9">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-tuberias-piping">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Tuberías (Piping)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-event-emitters-personalizados">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Event Emitters personalizados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-manejo-de-errores-asincronos-globales">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Manejo de errores asíncronos globales
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-el-chef-y-la-cocina-infinita">
+<span class="md-ellipsis">
+      
+        Introducción: El Chef y la Cocina Infinita
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-asincronia-y-modelo-de-ejecucion-en-nodejs">
+<span class="md-ellipsis">
+      
+        1. Asincronía y modelo de ejecución en Node.js
+      
+    </span>
+</a>
+<nav aria-label="1. Asincronía y modelo de ejecución en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitectura-event-driven">
+<span class="md-ellipsis">
+      
+        Arquitectura Event-Driven
+      
+    </span>
+</a>
+<nav aria-label="Arquitectura Event-Driven" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-desastre-sincrono-bloqueante">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El desastre síncrono (Bloqueante)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-la-elegancia-asincrona-no-bloqueante-con-callbacks">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: La elegancia asíncrona (No bloqueante con Callbacks)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-asincronia-moderna-con-asyncawait">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Asincronía moderna con Async/Await
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativas">
+<span class="md-ellipsis">
+      
+        Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#arquitectura-single-threaded-y-event-driven">
+<span class="md-ellipsis">
+      
+        Arquitectura Single-Threaded y Event-Driven
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-el-modulo-timers-en-nodejs">
+<span class="md-ellipsis">
+      
+        2. El módulo Timers en Node.js
+      
+    </span>
+</a>
+<nav aria-label="2. El módulo Timers en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_1">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diferencias-con-el-navegador">
+<span class="md-ellipsis">
+      
+        Diferencias con el Navegador
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_1">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-uso-basico-global">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Uso básico global
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-importando-desde-nodetimers-buenas-practicas-ts">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Importando desde node:timers (Buenas prácticas TS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-cancelacion-de-timers">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Cancelación de Timers
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-navegador-vs-nodejs">
+<span class="md-ellipsis">
+      
+        Tabla: Navegador vs Node.js
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-timers-fundamentales">
+<span class="md-ellipsis">
+      
+        3. Timers fundamentales
+      
+    </span>
+</a>
+<nav aria-label="3. Timers fundamentales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settimeoutcallback-delay">
+<span class="md-ellipsis">
+      
+        setTimeout(callback, delay)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setintervalcallback-delay">
+<span class="md-ellipsis">
+      
+        setInterval(callback, delay)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setimmediatecallback">
+<span class="md-ellipsis">
+      
+        setImmediate(callback)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-de-timers">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo de Timers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_2">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#settimeout-y-cleartimeout">
+<span class="md-ellipsis">
+      
+        setTimeout() y clearTimeout()
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setinterval-y-clearinterval">
+<span class="md-ellipsis">
+      
+        setInterval() y clearInterval()
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setimmediate-vs-clearimmediate">
+<span class="md-ellipsis">
+      
+        setImmediate() vs clearImmediate()
+      
+    </span>
+</a>
+<nav aria-label="setImmediate() vs clearImmediate()" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-4-la-carrera-timeout-vs-immediate">
+<span class="md-ellipsis">
+      
+        Ejemplo 4: La carrera (Timeout vs Immediate)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-5-pasando-argumentos-a-los-timers">
+<span class="md-ellipsis">
+      
+        Ejemplo 5: Pasando argumentos a los timers
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativa-settimeout-vs-setimmediate-vs-setinterval">
+<span class="md-ellipsis">
+      
+        Comparativa: setTimeout vs setImmediate vs setInterval
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-timers-avanzados-y-control-del-event-loop">
+<span class="md-ellipsis">
+      
+        4. Timers avanzados y control del Event Loop
+      
+    </span>
+</a>
+<nav aria-label="4. Timers avanzados y control del Event Loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_2">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_3">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-proceso-que-no-termina-comportamiento-por-defecto">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El proceso que no termina (Comportamiento por defecto)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-usando-unref-para-tareas-secundarias">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Usando unref() para tareas secundarias
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-reactivando-con-ref">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Reactivando con ref()
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-metodos-del-objeto-timer">
+<span class="md-ellipsis">
+      
+        Tabla: Métodos del Objeto Timer
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-introduccion-al-event-loop">
+<span class="md-ellipsis">
+      
+        5. Introducción al Event Loop
+      
+    </span>
+</a>
+<nav aria-label="5. Introducción al Event Loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_3">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mito-del-single-thread">
+<span class="md-ellipsis">
+      
+        Mito del Single-Thread
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-general">
+<span class="md-ellipsis">
+      
+        Diagrama General
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_4">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-visualizando-el-loop">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Visualizando el Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-bucle-infinito-bloqueo">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: El bucle infinito (Bloqueo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-stack-trace-y-asincronia">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Stack Trace y Asincronía
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-event-loop-en-detalle-y-libuv">
+<span class="md-ellipsis">
+      
+        6. Event Loop en detalle y Libuv
+      
+    </span>
+</a>
+<nav aria-label="6. Event Loop en detalle y Libuv" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fases-del-event-loop">
+<span class="md-ellipsis">
+      
+        Fases del Event Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-mental-markmap">
+<span class="md-ellipsis">
+      
+        Diagrama Mental (Markmap)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-ciclo-visual">
+<span class="md-ellipsis">
+      
+        El Ciclo Visual
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-bloques">
+<span class="md-ellipsis">
+      
+        Diagrama de Bloques
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_5">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-navegando-las-fases">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Navegando las fases
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-el-thread-pool-de-libuv">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: El Thread Pool de Libuv
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-cambiando-el-tamano-del-pool">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Cambiando el tamaño del Pool
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-tareas-y-ejecutores">
+<span class="md-ellipsis">
+      
+        Tabla: Tareas y Ejecutores
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-microtasks-y-prioridad-de-ejecucion">
+<span class="md-ellipsis">
+      
+        7. Microtasks y prioridad de ejecución
+      
+    </span>
+</a>
+<nav aria-label="7. Microtasks y prioridad de ejecución" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_4">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_6">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-jerarquia-de-ejecucion">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Jerarquía de Ejecución
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-promise-starvation-bloqueo-por-microtasks">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Promise starvation (Bloqueo por microtasks)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-uso-correcto-de-nexttick">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Uso correcto de nextTick
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-prioridad">
+<span class="md-ellipsis">
+      
+        Diagrama de Prioridad
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-bloqueo-del-event-loop-y-paralelismo">
+<span class="md-ellipsis">
+      
+        8. Bloqueo del Event Loop y paralelismo
+      
+    </span>
+</a>
+<nav aria-label="8. Bloqueo del Event Loop y paralelismo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_5">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_7">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-el-json-de-la-muerte-bloqueo">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: El JSON de la muerte (Bloqueo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-solucion-con-setimmediate-partitioning">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Solución con setImmediate (Partitioning)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-solucion-real-con-worker-threads">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Solución real con Worker Threads
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativa-estrategias-anti-bloqueo">
+<span class="md-ellipsis">
+      
+        Comparativa: Estrategias Anti-Bloqueo
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-manejo-avanzado-de-asincronia">
+<span class="md-ellipsis">
+      
+        9. Manejo avanzado de asincronía
+      
+    </span>
+</a>
+<nav aria-label="9. Manejo avanzado de asincronía" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#patrones-de-evolucion">
+<span class="md-ellipsis">
+      
+        Patrones de Evolución
+      
+    </span>
+</a>
+<nav aria-label="Patrones de Evolución" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-callback-hell-el-pasado-oscuro">
+<span class="md-ellipsis">
+      
+        1. Callback Hell (El pasado oscuro)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-promises-el-presente-estandar">
+<span class="md-ellipsis">
+      
+        2. Promises (El presente estándar)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-asyncawait-syntactic-sugar">
+<span class="md-ellipsis">
+      
+        3. Async/Await (Syntactic Sugar)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-estados-de-una-promesa">
+<span class="md-ellipsis">
+      
+        Diagrama de Estados de una Promesa
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_8">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-promiseall-paralelismo">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Promise.all (Paralelismo)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-promiserace-timeout-manual">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Promise.race (Timeout manual)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-async-iterator-for-await">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Async Iterator (for await)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-flujos-asincronos-reales-y-buenas-practicas">
+<span class="md-ellipsis">
+      
+        10. Flujos asíncronos reales y buenas prácticas
+      
+    </span>
+</a>
+<nav aria-label="10. Flujos asíncronos reales y buenas prácticas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-clave_6">
+<span class="md-ellipsis">
+      
+        Conceptos Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos-en-typescript_9">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos en TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos en TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-1-tuberias-piping">
+<span class="md-ellipsis">
+      
+        Ejemplo 1: Tuberías (Piping)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-2-event-emitters-personalizados">
+<span class="md-ellipsis">
+      
+        Ejemplo 2: Event Emitters personalizados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-3-manejo-de-errores-asincronos-globales">
+<span class="md-ellipsis">
+      
+        Ejemplo 3: Manejo de errores asíncronos globales
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- 3_Timers_EventLoop_Asincronia_Nodejs.md --><h1 id="timers-event-loop-y-asincronia-en-nodejs">Timers, Event Loop y Asincronía en Node.js</h1>
+<h2 id="introduccion-el-chef-y-la-cocina-infinita">Introducción: El Chef y la Cocina Infinita</h2>
+<p>Imagina por un momento que estás gestionando la cocina de un restaurante con una estrella Michelin, pero con una peculiaridad muy específica: <strong>solo hay un chef principal</strong>.</p>
+<p>En un restaurante tradicional (como funcionaban los servidores antiguos tipo Apache/PHP), si entraban 50 pedidos, contratabas a 50 cocineros (hilos/threads). Si un cliente tardaba en decidir, el cocinero se quedaba de brazos cruzados esperando.</p>
+<p>En <strong>Node.js</strong>, nuestro único chef (el <strong>Single Thread</strong>) es una máquina de eficiencia absoluta. No espera a nadie.
+1. Recibe una comanda (petición).
+2. Si es picar cebolla (tarea rápida de CPU), lo hace al instante.
+3. Si es hornear un pavo durante 2 horas (tarea de entrada/salida o I/O, como leer una base de datos), <strong>no se queda mirando el horno</strong>. Mete el pavo, pone un temporizador, y pasa inmediatamente a atender la siguiente mesa.</p>
+<p>Cuando el pavo está listo, el horno avisa ("ding!"), y el chef vuelve a ese plato en cuanto tiene un milisegundo libre. Este sistema de avisos y gestión de tiempos es lo que vamos a dominar hoy: <strong>Timers, Asincronía y el famoso Event Loop</strong>.</p>
+<p>Como vimos en el tema anterior sobre <strong>Módulos Principales</strong>, Node.js nos da las herramientas. Hoy aprenderemos cómo el motor que hay debajo las ejecuta sin bloquearse jamás.</p>
+<hr/>
+<h2 id="1-asincronia-y-modelo-de-ejecucion-en-nodejs">1. Asincronía y modelo de ejecución en Node.js</h2>
+<p>Para ser un desarrollador Backend en TypeScript competente, debes tatuarte este concepto en la mente: <strong>Bloquear el hilo principal es un crimen</strong>.</p>
+<h3 id="conceptos-clave">Conceptos Clave</h3>
+<div class="admonition note">
+<p class="admonition-title">Definición: Programación Síncrona (Blocking)</p>
+<p>Modelo donde cada tarea debe completarse antes de que comience la siguiente. Si una tarea tarda (ej. leer un fichero grande), todo el programa se detiene ("se congela") hasta que termina.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Programación Asíncrona (Non-blocking)</p>
+<p>Modelo donde el programa inicia una tarea y continúa ejecutando el resto del código sin esperar. Cuando la tarea termina, se notifica al programa (mediante un callback, promesa o evento) para procesar el resultado.</p>
+</div>
+<h3 id="arquitectura-event-driven">Arquitectura Event-Driven</h3>
+<p>Node.js no sigue el modelo tradicional de "hilo por petición". Utiliza un modelo <strong>guiado por eventos</strong>. El servidor consta de un solo hilo que acepta conexiones y delega las operaciones pesadas.</p>
+<h4 id="diagrama-de-arquitectura">Diagrama de Arquitectura</h4>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBBcnF1aXRlY3R1cmEgTm9kZS5qcwoKIyMgVjggRW5naW5lCi0gRWplY3V0YSBjw7NkaWdvIEpTL1RTCi0gQ2FsbCBTdGFjayAoUGlsYSBkZSBsbGFtYWRhcykKCiMjIE5vZGUuanMgQmluZGluZ3MKLSBDb25lY3RhIEpTIGNvbiBDKysKCiMjIExpYnV2IChFbCBtb3RvciByZWFsKQotIEV2ZW50IExvb3AKLSBUaHJlYWQgUG9vbCAocGFyYSBJL08gcGVzYWRvKQotIE9wZXJhY2lvbmVzIGRlIFJlZAotIE9wZXJhY2lvbmVzIGRlIEFyY2hpdm9z</markmap-data></div>
+<h3 id="ejemplos-practicos-en-typescript">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-el-desastre-sincrono-bloqueante">Ejemplo 1: El desastre síncrono (Bloqueante)</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio del programa'</span><span class="p">);</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ⚠️ ESTO ES PELIGROSO EN SERVIDORES WEB</span>
+<span class="w">  </span><span class="c1">// El hilo se detiene aquí hasta leer todo el archivo</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">'archivo_gigante.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Archivo leído:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Fin del programa'</span><span class="p">);</span>
+
+<span class="c1">// SALIDA:</span>
+<span class="c1">// 1. Inicio del programa</span>
+<span class="c1">// 2. Archivo leído...</span>
+<span class="c1">// 3. Fin del programa</span>
+</code></pre></div>
+<h4 id="ejemplo-2-la-elegancia-asincrona-no-bloqueante-con-callbacks">Ejemplo 2: La elegancia asíncrona (No bloqueante con Callbacks)</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio del programa'</span><span class="p">);</span>
+
+<span class="c1">// El chef mete el pavo al horno y sigue trabajando</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'archivo_gigante.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error leyendo:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// Esto se ejecuta en el futuro, cuando el disco duro termine</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Archivo leído (callback):'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Fin de las instrucciones principales'</span><span class="p">);</span>
+
+<span class="c1">// SALIDA:</span>
+<span class="c1">// 1. Inicio del programa</span>
+<span class="c1">// 2. Fin de las instrucciones principales</span>
+<span class="c1">// 3. Archivo leído (callback)...</span>
+</code></pre></div>
+<h4 id="ejemplo-3-asincronia-moderna-con-asyncawait">Ejemplo 3: Asincronía moderna con Async/Await</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">leerArchivo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio de la función'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 'await' pausa solo esta función, no el hilo principal del servidor</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'archivo_gigante.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Archivo leído (await):'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'...'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio Global'</span><span class="p">);</span>
+<span class="nx">leerArchivo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Fin Global (el servidor sigue vivo)'</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="comparativas">Comparativas</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Síncrono (Blocking)</th>
+<th style="text-align: left;">Asíncrono (Non-blocking)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Uso de CPU</strong></td>
+<td style="text-align: left;">Ineficiente (tiempos muertos esperando I/O)</td>
+<td style="text-align: left;">Eficiente (siempre trabajando)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Escalabilidad</strong></td>
+<td style="text-align: left;">Baja (necesita más RAM/Threads para escalar)</td>
+<td style="text-align: left;">Muy Alta (miles de conexiones con poca RAM)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Complejidad</strong></td>
+<td style="text-align: left;">Baja (fácil de leer secuencialmente)</td>
+<td style="text-align: left;">Media/Alta (requiere gestión de control de flujo)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caso de uso</strong></td>
+<td style="text-align: left;">Scripts CLI simples, inicialización de apps</td>
+<td style="text-align: left;">Servidores Web, APIs, Microservicios</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arquitectura-single-threaded-y-event-driven">Arquitectura Single-Threaded y Event-Driven</h3>
+<p>Node.js corre en un solo hilo principal (V8 Engine). Esto significa que <strong>no puedes hacer dos cosas a la vez en el código JavaScript</strong>. Sin embargo, Node.js delega las tareas pesadas (I/O, Red, Criptografía) al sistema operativo o a un pool de hilos internos (libuv), permitiendo el paralelismo real fuera de tu código JS.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant JS as Main Thread (V8)
+    participant Libuv as Libuv / OS
+    participant DB as Base de Datos
+
+    JS-&gt;&gt;Libuv: Petición a Base de Datos (Async)
+    Note right of JS: JS sigue ejecutando&lt;br/&gt;otras líneas de código
+    Libuv-&gt;&gt;DB: Consulta SQL real
+    DB--&gt;&gt;Libuv: Resultados
+    Libuv--&gt;&gt;JS: Evento: "Datos Listos" (Callback)</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Por qué <code>fs.readFileSync</code> podría ser útil al <em>iniciar</em> una aplicación (cargar configuración), pero fatal en una ruta de una API REST?</li>
+<li>Si Node.js es single-thread, ¿cómo es posible que pueda leer 10 archivos "a la vez"? (Pista: Piensa en quién hace realmente el trabajo sucio).</li>
+<li>Analiza el Ejemplo 2: ¿Qué pasaría si el archivo tarda 0.0001ms en leerse? ¿Cambiaría el orden de los logs?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="2-el-modulo-timers-en-nodejs">2. El módulo Timers en Node.js</h2>
+<p>Los timers en Node.js no son parte del estándar ECMAScript (JavaScript puro), sino que son parte de la API que Node.js (y los navegadores) implementan sobre el lenguaje. Sin embargo, hay diferencias cruciales.</p>
+<h3 id="conceptos-clave_1">Conceptos Clave</h3>
+<div class="admonition note">
+<p class="admonition-title">Definición: Módulo Timers</p>
+<p>Conjunto de funciones globales que permiten ejecutar código en un momento futuro, ya sea una vez o repetidamente. En Node.js, estas funciones están disponibles globalmente, no necesitas <code>import</code> (aunque existen en <code>node:timers</code>).</p>
+</div>
+<h3 id="diferencias-con-el-navegador">Diferencias con el Navegador</h3>
+<p>En el navegador, los timers dependen del objeto <code>window</code>. En Node.js, dependen del objeto <code>global</code>. Además, Node.js implementa funciones específicas como <code>setImmediate</code> que no son estándar en todos los navegadores.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ojo al dato: El tiempo no es exacto</p>
+<p>Cuando dices "ejecuta esto en 100ms", le estás diciendo a Node: "ejecuta esto <strong>como muy pronto</strong> en 100ms". Si el Chef está ocupado picando 50kg de cebolla (CPU bloqueada), tu timer esperará.</p>
+</div>
+<h3 id="ejemplos-practicos-en-typescript_1">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-uso-basico-global">Ejemplo 1: Uso básico global</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// No necesitamos importar nada para lo básico</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Esto se ejecuta tras 1 segundo (mínimo)'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fin'</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="ejemplo-2-importando-desde-nodetimers-buenas-practicas-ts">Ejemplo 2: Importando desde <code>node:timers</code> (Buenas prácticas TS)</h4>
+<p>A veces, para tipado estricto o testeo, preferimos importar.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setTimeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:timers/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">esperar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Esperando...'</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Esta versión devuelve una Promesa, ideal para async/await</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'¡Han pasado 2 segundos!'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">esperar</span><span class="p">();</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-cancelacion-de-timers">Ejemplo 3: Cancelación de Timers</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">bomba</span><span class="o">:</span><span class="w"> </span><span class="kt">NodeJS.Timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'¡BOOM!'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+
+<span class="c1">// Decidimos cortar el cable rojo a los 1.5s</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">bomba</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Bomba desactivada.'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1500</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="tabla-navegador-vs-nodejs">Tabla: Navegador vs Node.js</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Navegador (Chrome/Firefox)</th>
+<th style="text-align: left;">Node.js</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Objeto Raíz</strong></td>
+<td style="text-align: left;"><code>window.setTimeout</code></td>
+<td style="text-align: left;"><code>global.setTimeout</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valor de retorno</strong></td>
+<td style="text-align: left;">Un número entero (ID)</td>
+<td style="text-align: left;">Un objeto <code>Timeout</code> complejo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Precisión</strong></td>
+<td style="text-align: left;">Limitada por la tasa de refresco (aprox 4ms min)</td>
+<td style="text-align: left;">Depende del ciclo del sistema, muy precisa</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>setImmediate()</strong></td>
+<td style="text-align: left;">No estándar (solo IE/Edge antiguos)</td>
+<td style="text-align: left;"><strong>Nativo y fundamental</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Ejecuta el ejemplo 1. ¿Garantizas al 100% que pasará exactamente 1.0000 segundos?</li>
+<li>¿Por qué el tipo de dato de retorno de <code>setTimeout</code> en TypeScript para Node es <code>NodeJS.Timeout</code> y no <code>number</code>?</li>
+<li>Investiga qué sucede si pones un <code>setTimeout</code> con tiempo 0.</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="3-timers-fundamentales">3. Timers fundamentales</h2>
+<p>Vamos a diseccionar las tres herramientas principales para controlar el tiempo.</p>
+<h3 id="settimeoutcallback-delay"><code>setTimeout(callback, delay)</code></h3>
+<p>Ejecuta una función <strong>una sola vez</strong> tras un retraso mínimo.</p>
+<h3 id="setintervalcallback-delay"><code>setInterval(callback, delay)</code></h3>
+<p>Ejecuta una función <strong>repetidamente</strong> con un intervalo de tiempo entre ejecuciones.</p>
+<h3 id="setimmediatecallback"><code>setImmediate(callback)</code></h3>
+<p>Esta es exclusiva y especial. Se ejecuta <strong>al final del ciclo actual del Event Loop</strong>, justo después de las operaciones I/O y antes de los timers.</p>
+<h3 id="diagrama-de-flujo-de-timers">Diagrama de Flujo de Timers</h3>
+<pre class="mermaid"><code>graph TD
+    A[Inicio Script] --&gt; B{¿Hay código síncrono?}
+    B -- Sí --&gt; C[Ejecutar Call Stack]
+    B -- No --&gt; D[Event Loop]
+
+    D --&gt; E{Fase Check?}
+    E -- Sí --&gt; F[Ejecutar setImmediate]
+
+    D --&gt; G{Fase Timers?}
+    G -- Sí --&gt; H[¿Pasó el tiempo?]
+    H -- Sí --&gt; I[Ejecutar setTimeout/Interval]</code></pre>
+<h3 id="ejemplos-practicos-en-typescript_2">Ejemplos Prácticos en TypeScript</h3>
+<h3 id="settimeout-y-cleartimeout">setTimeout() y clearTimeout()</h3>
+<p>Ejecuta una función una vez, tras un retraso mínimo.</p>
+<p><strong>Ejemplo 1: Cancelación de un timer</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">bomba</span><span class="o">:</span><span class="w"> </span><span class="kt">NodeJS.Timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'💥 BOOM!'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+
+<span class="c1">// Decidimos cortar el cable rojo a los 2 segundos</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">bomba</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'😅 Bomba desactivada'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h3 id="setinterval-y-clearinterval">setInterval() y clearInterval()</h3>
+<p>Ejecuta una función repetidamente cada X milisegundos.</p>
+<p><strong>Ejemplo 2: Polling simulado</strong>
+</p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">intentos</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">intervalo</span><span class="o">:</span><span class="w"> </span><span class="kt">NodeJS.Timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">intentos</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Verificando base de datos... Intento </span><span class="si">${</span><span class="nx">intentos</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">intentos</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'🛑 Parando verificación.'</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalo</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h3 id="setimmediate-vs-clearimmediate">setImmediate() vs clearImmediate()</h3>
+<p>Este es exclusivo de Node.js (no estándar en navegadores). Se ejecuta <strong>después de la fase actual de I/O</strong> del Event Loop. A menudo se confunde con <code>setTimeout(..., 0)</code>.</p>
+<p><strong>Ejemplo 3: setImmediate</strong>
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio'</span><span class="p">);</span>
+
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Ejecutado en la fase "Check" del Event Loop'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fin'</span><span class="p">);</span>
+<span class="c1">// Salida: Inicio -&gt; Fin -&gt; Ejecutado...</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-4-la-carrera-timeout-vs-immediate">Ejemplo 4: La carrera (Timeout vs Immediate)</h4>
+<p>Este es un clásico de entrevista técnica.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="c1">// Caso A: Ejecución en el módulo principal (Resultado NO determinista)</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Timeout'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Immediate'</span><span class="p">));</span>
+
+<span class="c1">// Caso B: Ejecución dentro de un ciclo I/O (Resultado DETERMINISTA)</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">__filename</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Dentro de I/O ---'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Timeout (I/O)'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Immediate (I/O)'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// En el Caso B, 'setImmediate' SIEMPRE gana. ¿Por qué?</span>
+<span class="c1">// Porque fs.readFile termina en la fase de Poll. </span>
+<span class="c1">// La siguiente fase del Event Loop es Check (donde vive setImmediate).</span>
+<span class="c1">// Los Timers están al principio, así que tiene que dar toda la vuelta.</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-5-pasando-argumentos-a-los-timers">Ejemplo 5: Pasando argumentos a los timers</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">saludar</span><span class="p">(</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">rol</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola </span><span class="si">${</span><span class="nx">nombre</span><span class="si">}</span><span class="sb">, eres </span><span class="si">${</span><span class="nx">rol</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Los argumentos extra se pasan a la función callback</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">saludar</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="s1">'Ana'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Admin'</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="comparativa-settimeout-vs-setimmediate-vs-setinterval">Comparativa: <code>setTimeout</code> vs <code>setImmediate</code> vs <code>setInterval</code></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;"><code>setTimeout(fn, 0)</code></th>
+<th style="text-align: left;"><code>setImmediate(fn)</code></th>
+<th style="text-align: left;"><code>setInterval(fn, ms)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Definición</strong></td>
+<td style="text-align: left;">Ejecutar <strong>una vez</strong> "lo antes posible" (mínimo real 1ms).</td>
+<td style="text-align: left;">Ejecutar <strong>una vez</strong> en la siguiente fase de chequeo.</td>
+<td style="text-align: left;">Ejecutar <strong>repetidamente</strong> e infinitamente cada X ms.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fase del Event Loop</strong></td>
+<td style="text-align: left;">Fase <strong>Timers</strong>.</td>
+<td style="text-align: left;">Fase <strong>Check</strong>.</td>
+<td style="text-align: left;">Fase <strong>Timers</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Orden de Ejecución</strong></td>
+<td style="text-align: left;">Impredecible al inicio del script (depende de CPU).</td>
+<td style="text-align: left;">Siempre <strong>después</strong> de los callbacks de I/O (Poll).</td>
+<td style="text-align: left;">Igual que <code>setTimeout</code>, pero se reagenda al terminar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso Ideal</strong></td>
+<td style="text-align: left;">Posponer una tarea para que no bloquee el flujo actual.</td>
+<td style="text-align: left;">Ejecutar algo <strong>inmediatamente</strong> después de leer un archivo o red.</td>
+<td style="text-align: left;">Tareas periódicas: limpieza de caché, <em>heartbeats</em>, <em>polling</em>.</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<div class="admonition danger">
+<p class="admonition-title">Cuidado con <code>setInterval(fn, 0)</code></p>
+<p>Técnicamente puedes hacer un <code>setInterval</code> con tiempo 0. Esto intentará ejecutar la función repetidamente "lo más rápido posible". </p>
+<p>A diferencia de un <code>while(true)</code>, esto <strong>no bloquea</strong> el Event Loop completamente (deja respirar mínimamente entre ejecuciones), pero <strong>consumirá el 100% de un núcleo de tu CPU</strong> intentando ejecutar el callback miles de veces por segundo. ¡Úsalo con precaución!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Por qué es peligroso usar <code>setInterval</code> para tareas que tardan más que el propio intervalo? (Ej: intervalo de 1s, tarea de 3s).</li>
+<li>¿Qué sucedería si ejecutas el Ejemplo 1 pero olvidas el <code>clearInterval</code>? ¿Tu programa de Node terminaría alguna vez?</li>
+<li>En el Ejemplo 2, intenta predecir la salida antes de ejecutarlo.</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="4-timers-avanzados-y-control-del-event-loop">4. Timers avanzados y control del Event Loop</h2>
+<p>En Node.js, los timers devuelven un objeto, no un ID numérico. Este objeto nos da poder sobre el comportamiento del proceso de Node.js.</p>
+<h3 id="conceptos-clave_2">Conceptos Clave</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip Profesional: ref() y unref()</p>
+<p>Por defecto, un timer activo <strong>mantiene vivo el proceso de Node.js</strong>. Si tienes un <code>setInterval</code> corriendo, el programa nunca termina.
+*   <code>unref()</code>: Dice a Node "Si este timer es lo único que queda activo, no esperes por él, cierra el programa".
+*   <code>ref()</code>: Vuelve a dar importancia al timer.</p>
+</div>
+<h3 id="ejemplos-practicos-en-typescript_3">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-el-proceso-que-no-termina-comportamiento-por-defecto">Ejemplo 1: El proceso que no termina (Comportamiento por defecto)</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Este programa NUNCA terminará automáticamente</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">keepAlive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Sigo vivo...'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="c1">// Tienes que matarlo con Ctrl+C</span>
+</code></pre></div>
+<h4 id="ejemplo-2-usando-unref-para-tareas-secundarias">Ejemplo 2: Usando <code>unref()</code> para tareas secundarias</h4>
+<p>Imagina un sistema de logs o métricas que envía datos cada minuto. No quieres que eso impida apagar el servidor si el trabajo principal terminó.
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Iniciando tarea principal...'</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Enviando métricas en segundo plano (si el server sigue vivo)...'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="c1">// Magia: Si no hay nada más que hacer, este intervalo NO mantendrá el programa abierto</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">unref</span><span class="p">();</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Tarea principal terminada. Adiós.'</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Al terminar este timeout, no hay más tareas obligatorias.</span>
+<span class="w">  </span><span class="c1">// Node ignorará el 'logger' y se cerrará.</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-reactivando-con-ref">Ejemplo 3: Reactivando con <code>ref()</code></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Esto no se verá si no hago ref()'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+
+<span class="nx">timer</span><span class="p">.</span><span class="nx">unref</span><span class="p">();</span><span class="w"> </span><span class="c1">// Node podría cerrarse ya...</span>
+
+<span class="c1">// Pero si pasa algo, lo reactivamos</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">timer</span><span class="p">.</span><span class="nx">ref</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Timer reactivado, esperaremos.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="tabla-metodos-del-objeto-timer">Tabla: Métodos del Objeto Timer</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>timer.hasRef()</code></td>
+<td style="text-align: left;">Devuelve <code>true</code> si el timer mantiene vivo el Event Loop.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>timer.refresh()</code></td>
+<td style="text-align: left;">Reinicia el contador de tiempo del timer (útil para debounce).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>timer.unref()</code></td>
+<td style="text-align: left;">Permite que el Event Loop salga si este es el único handle activo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>timer.ref()</code></td>
+<td style="text-align: left;">Vuelve a requerir que el Event Loop espere a este timer.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Profesional</p>
+<p>Usa <code>unref()</code> para tareas de limpieza en segundo plano o métricas que no deben impedir que el servidor se reinicie o apague suavemente.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Diseña un caso de uso donde <code>timer.refresh()</code> sea útil para implementar un sistema de "Session Timeout" en un servidor.</li>
+<li>Si tienes un servidor web (Express/Fastify) escuchando peticiones, ¿necesitas usar <code>ref()</code> en tus timers? ¿Por qué?</li>
+<li>¿Qué pasaría si haces <code>unref()</code> a todos tus timers y no tienes servidores escuchando?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="5-introduccion-al-event-loop">5. Introducción al Event Loop</h2>
+<p>El Event Loop es el corazón de Node.js. Es lo que permite que Node realice operaciones no bloqueantes (como leer archivos o redes) a pesar de que JavaScript es <em>single-threaded</em>.</p>
+<h3 id="conceptos-clave_3">Conceptos Clave</h3>
+<div class="admonition note">
+<p class="admonition-title">Metáfora: El Tío Vivo (Carousel)</p>
+<p>Imagina un Tío Vivo que gira infinitamente. En cada vuelta, pasa por diferentes "estaciones".<br/>
+1. Estación de Timers.<br/>
+2. Estación de I/O (ficheros, red).<br/>
+3. Estación de Chequeo inmediato.<br/>
+4. Estación de Cierre.<br/>
+Si hay gente esperando en una estación, el Tío Vivo para, los sube (ejecuta sus callbacks) y sigue girando.</p>
+</div>
+<p>Node descarga operaciones al kernel del sistema (multihilo) siempre que es posible. Cuando el sistema termina, "avisa" al Event Loop.</p>
+<h3 id="mito-del-single-thread">Mito del Single-Thread</h3>
+<p>Se dice que Node es <em>single-thread</em>.<br/>
+*   <strong>Verdad:</strong> Tu código JS corre en un hilo.<br/>
+*   <strong>Verdad:</strong> El Event Loop corre en ese mismo hilo.<br/>
+*   <strong>Matiz:</strong> Las operaciones pesadas (leer disco, desencriptar) ocurren en <strong>hilos C++ de fondo (libuv Worker Pool)</strong>.<br/></p>
+<pre class="mermaid"><code>graph TD
+    A[Tu Código JS] --&gt;|Llama API Asíncrona| B(Node.js Bindings)
+    B --&gt;|Delega| C{Libuv / Event Loop}
+    C --&gt;|Tareas Ligeras| D[OS Kernel - Net/IO]
+    C --&gt;|Tareas Pesadas| E[Thread Pool - FS/Crypto]
+    D --&gt;|Callback| F[Cola de Eventos]
+    E --&gt;|Callback| F
+    F --&gt;|Event Loop ejecuta| A</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Definición: Event Loop</p>
+<p>Es el mecanismo que orquesta la ejecución de código síncrono y asíncrono. Monitorea la pila de llamadas (Call Stack) y la cola de tareas (Callback Queue). Si la pila está vacía, mueve tareas de la cola a la pila.</p>
+</div>
+<h3 id="diagrama-general">Diagrama General</h3>
+<pre class="mermaid"><code>flowchart TD
+    Start((Inicio)) --&gt; Sync[Código Síncrono]
+    Sync --&gt; Loop{¿Hay tareas pendientes?}
+    Loop -- No --&gt; End((Salir))
+    Loop -- Sí --&gt; Phases[Ejecutar Fases del Event Loop]
+    Phases --&gt; Loop</code></pre>
+<h3 id="ejemplos-practicos-en-typescript_4">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-visualizando-el-loop">Ejemplo 1: Visualizando el Loop</h4>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio (Síncrono)'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Timeout (Asíncrono - Timer Phase)'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Promesa (Asíncrono - Microtask - Prioridad)'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Fin (Síncrono)'</span><span class="p">);</span>
+
+<span class="c1">// El Event Loop no arranca hasta que el stack síncrono (1 y 2) se vacía.</span>
+<span class="c1">// Luego procesa microtasks (3).</span>
+<span class="c1">// Luego entra en fases y ejecuta timers (4).</span>
+</code></pre></div>
+<h4 id="ejemplo-2-el-bucle-infinito-bloqueo">Ejemplo 2: El bucle infinito (Bloqueo)</h4>
+<p>Si el Tío Vivo se atasca, nadie sube ni baja.
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inicio'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Timer listo'</span><span class="p">),</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="c1">// Tarea síncrona infinita (o muy larga)</span>
+<span class="c1">// ESTO MATA AL EVENT LOOP. El timer nunca se ejecutará.</span>
+<span class="cm">/* Descomentar para probar (con cuidado)</span>
+<span class="cm">const start = Date.now();</span>
+<span class="cm">while(Date.now() - start &lt; 3000) {</span>
+<span class="cm">    // Bloqueando CPU por 3 segundos</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fin del bloqueo'</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-stack-trace-y-asincronia">Ejemplo 3: Stack Trace y Asincronía</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">errorAsincrono</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'¡Ups!'</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="c1">// Este error NO puede ser capturado por un try/catch fuera del timeout</span>
+<span class="w">    </span><span class="c1">// porque el stack original ya desapareció.</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">errorAsincrono</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Esto nunca se ejecutará'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Si Node.js es single-threaded, ¿quién maneja realmente la lectura del disco duro? (Libuv y el Kernel).</li>
+<li>Explica con tus palabras por qué un <code>while(true)</code> detiene todas las peticiones web en Node.js, pero no en PHP (con Apache).</li>
+<li>¿En qué momento exacto "arranca" el Event Loop?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="6-event-loop-en-detalle-y-libuv">6. Event Loop en detalle y Libuv</h2>
+<p>Aquí es donde separamos a los aficionados de los profesionales. Vamos a ver las <strong>fases</strong> reales. Node.js usa una librería C llamada <strong>libuv</strong> para gestionar esto.</p>
+<h3 id="fases-del-event-loop">Fases del Event Loop</h3>
+<ol>
+<li><strong>Timers</strong>: Ejecuta callbacks de <code>setTimeout</code> y <code>setInterval</code>.</li>
+<li><strong>Pending Callbacks</strong>: Ejecuta callbacks de I/O diferidos.</li>
+<li><strong>Idle, Prepare</strong>: Uso interno.</li>
+<li><strong>Poll (Encuesta)</strong>: Recupera nuevos eventos I/O; ejecuta I/O callbacks. Aquí es donde Node suele "dormir" esperando peticiones.</li>
+<li><strong>Check</strong>: Ejecuta <code>setImmediate</code>.</li>
+<li><strong>Close Callbacks</strong>: Cierre de sockets, <code>socket.on('close', ...)</code>.</li>
+</ol>
+<h3 id="diagrama-mental-markmap">Diagrama Mental (Markmap)</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBGYXNlcyBkZWwgRXZlbnQgTG9vcAojIyAxLiBUaW1lcnMKLSBzZXRUaW1lb3V0Ci0gc2V0SW50ZXJ2YWwKIyMgMi4gUGVuZGluZyBDYWxsYmFja3MKLSBPcGVyYWNpb25lcyBkZSBzaXN0ZW1hIGRpZmVyaWRhcwojIyAzLiBQb2xsIChMYSBlc3BlcmEgYWN0aXZhKQotIExlZSBJL08gZW50cmFudGUKLSBQcm9jZXNhIGV2ZW50b3MgZGUgcmVkL2Rpc2NvCiMjIDQuIENoZWNrCi0gc2V0SW1tZWRpYXRlKCkKIyMgNS4gQ2xvc2UgSGFuZGxlcnMKLSBzb2NrZXQuZGVzdHJveSgp</markmap-data></div>
+<h3 id="el-ciclo-visual">El Ciclo Visual</h3>
+<p>Las fases principales ("Macrotasks") y de la cola de alta prioridad ("Microtasks"). Muestra explícitamente que <strong>después de cada fase</strong> se revisan las Microtasks.</p>
+<pre class="mermaid"><code>graph TD
+    %% Estilos
+    classDef phases fill:#e1f5fe,stroke:#01579b,stroke-width:2px,rx:10,ry:10;
+    classDef micro fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef start fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,rx:5,ry:5;
+
+    Start((INICIO&lt;br&gt;Script JS)) --&gt; Micro1
+
+    subgraph "Event Loop (Libuv)"
+        direction TB
+
+        %% Nodos de Microtasks (Guardias entre fases)
+        Micro1{{"Cola Microtasks&lt;br&gt;(nextTick &amp; Promises)"}}
+        Micro2{{"Cola Microtasks"}}
+        Micro3{{"Cola Microtasks"}}
+        Micro4{{"Cola Microtasks"}}
+        Micro5{{"Cola Microtasks"}}
+
+        %% Fases Principales
+        Timer[("1. TIMERS&lt;br&gt;setTimeout&lt;br&gt;setInterval")]
+        Pending["2. PENDING CALLBACKS&lt;br&gt;Errores de sistema TCP/UDP"]
+        Idle["3. IDLE / PREPARE&lt;br&gt;(Uso interno)"]
+        Poll[("4. POLL (I/O)&lt;br&gt;fs.readFile, http, net&lt;br&gt;(Espera aquí si no hay tareas)")]
+        Check[("5. CHECK&lt;br&gt;setImmediate")]
+        Close["6. CLOSE&lt;br&gt;socket.on('close')"]
+
+        %% Flujo
+        Micro1 --&gt; Timer
+        Timer --&gt; Micro2
+        Micro2 --&gt; Pending
+        Pending --&gt; Micro3
+        Micro3 --&gt; Idle
+        Idle --&gt; Poll
+        Poll --&gt; Micro4
+        Micro4 --&gt; Check
+        Check --&gt; Micro5
+        Micro5 --&gt; Close
+        Close --&gt; |"Si hay refs activos"| Micro1
+    end
+
+    %% Salida
+    Close --&gt; |"Si no hay tareas"| End((SALIR))
+
+    %% Aplicar estilos
+    class Timer,Pending,Idle,Poll,Check,Close phases;
+    class Micro1,Micro2,Micro3,Micro4,Micro5 micro;
+    class Start,End start;</code></pre>
+<h3 id="diagrama-de-bloques">Diagrama de Bloques</h3>
+<p>Separación visual de la infraestructura (C++ / Kernel) de la ejecución JavaScript, y muestra cómo las Microtasks "envuelven" o interrumpen el ciclo principal.</p>
+<pre class="mermaid"><code>flowchart TB
+    %% Definición de estilos
+    classDef loop fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    classDef microqueue fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef phase fill:#ffffff,stroke:#333,stroke-width:1px;
+
+    subgraph Core ["Arquitectura de Ejecución"]
+        direction TB
+
+        subgraph Microtasks ["⚡ COLA DE PRIORIDAD  (Microtasks)"]
+            direction LR
+            NT[process.nextTick] --- PR[Promises]
+        end
+
+        subgraph EventLoop ["🔄 EVENT LOOP  (Fases Macrotasks)"]
+            P1[1. Timers] 
+            P2[2. Pending Callbacks] 
+            P3[3. Idle / Prepare] 
+            P4[4. Poll - I/O Events] 
+            P5[5. Check - setImmediate] 
+            P6[6. Close Callbacks]
+
+            P1 --&gt; P2 --&gt; P3 --&gt; P4 --&gt; P5 --&gt; P6
+            P6 -.-&gt; P1
+        end
+    end
+
+    Input[Código JS Entrante] --&gt; Microtasks
+    Microtasks ==&gt; EventLoop
+
+    %% Relación de interrupción
+    P1 -.-&gt; |"Al terminar callbacks"| Microtasks
+    P4 -.-&gt; |"Al terminar callbacks"| Microtasks
+    P5 -.-&gt; |"Al terminar callbacks"| Microtasks
+
+    class EventLoop loop;
+    class Microtasks microqueue;
+    class P1,P2,P3,P4,P5,P6 phase;</code></pre>
+<h3 id="ejemplos-practicos-en-typescript_5">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-navegando-las-fases">Ejemplo 1: Navegando las fases</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Timer (Fase 1)'</span><span class="p">),</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">__filename</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. I/O Callback (Fase 4 - Poll)'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Al terminar Poll, vamos a Check</span>
+<span class="w">    </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Immediate dentro de I/O (Fase 5)'</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Si ponemos un timer corto, tendrá que esperar a la siguiente vuelta</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Timer siguiente vuelta'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="ejemplo-2-el-thread-pool-de-libuv">Ejemplo 2: El Thread Pool de Libuv</h4>
+<p>Libuv tiene un "Pool de Hilos" (por defecto 4) para tareas que el Kernel no puede hacer asíncronamente (como compresión o fs complejos).
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'crypto'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="c1">// Lanzamos 4 operaciones criptográficas pesadas (PBKDF2)</span>
+<span class="c1">// Al tener 4 hilos en el pool, se harán en paralelo (aprox mismo tiempo)</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">4</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">pbkdf2</span><span class="p">(</span><span class="s1">'secreto'</span><span class="p">,</span><span class="w"> </span><span class="s1">'salt'</span><span class="p">,</span><span class="w"> </span><span class="mf">100000</span><span class="p">,</span><span class="w"> </span><span class="mf">64</span><span class="p">,</span><span class="w"> </span><span class="s1">'sha512'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hash </span><span class="si">${</span><span class="nx">i</span><span class="o">+</span><span class="mf">1</span><span class="si">}</span><span class="sb">:`</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="s1">'ms'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+<span class="c1">// Si ejecutas esto, verás que terminan casi a la vez.</span>
+<span class="c1">// Si pides 6 hashes, 4 terminan a la vez y 2 tardan el doble.</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-cambiando-el-tamano-del-pool">Ejemplo 3: Cambiando el tamaño del Pool</h4>
+<p>En producción, a veces necesitamos más hilos.
+</p><div class="highlight"><pre><span></span><code><span class="c1">// Esto debe hacerse ANTES de importar módulos que usen el pool</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">UV_THREADPOOL_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"8"</span><span class="p">;</span><span class="w"> </span>
+
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'crypto'</span><span class="p">;</span>
+<span class="c1">// ... ahora podríamos hacer 8 hashes en paralelo real (si tienes 8 cores)</span>
+</code></pre></div><p></p>
+<h3 id="tabla-tareas-y-ejecutores">Tabla: Tareas y Ejecutores</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo de Tarea</th>
+<th style="text-align: left;">Ejecutor Real</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Lógica JS</strong></td>
+<td style="text-align: left;">V8 (Main Thread)</td>
+<td style="text-align: left;"><code>for loops</code>, <code>JSON.parse</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Red (HTTP/TCP)</strong></td>
+<td style="text-align: left;">Kernel del SO (No-bloqueante)</td>
+<td style="text-align: left;"><code>http.request</code>, <code>net.connect</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Archivos (fs)</strong></td>
+<td style="text-align: left;">Libuv Thread Pool</td>
+<td style="text-align: left;"><code>fs.readFile</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Criptografía/Zip</strong></td>
+<td style="text-align: left;">Libuv Thread Pool</td>
+<td style="text-align: left;"><code>crypto.pbkdf2</code>, <code>zlib</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DNS</strong></td>
+<td style="text-align: left;">Libuv Thread Pool</td>
+<td style="text-align: left;"><code>dns.lookup</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Comportamiento Indeterminado</p>
+<p>Fuera de un ciclo de I/O (en el script principal), el orden entre <code>setTimeout(0)</code> y <code>setImmediate</code> es <strong>no determinista</strong> (depende del rendimiento del PC). Dentro de un callback de I/O, <code>setImmediate</code> <strong>siempre</strong> se ejecuta antes.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>Si tu ordenador tiene 2 núcleos de CPU, ¿tiene sentido poner <code>UV_THREADPOOL_SIZE = 128</code>?</li>
+<li>¿Por qué <code>setImmediate</code> siempre se ejecuta antes que un <code>setTimeout(0)</code> si estamos dentro de un callback de lectura de archivo? (Mira el diagrama de fases).</li>
+<li>¿Qué fase del Event Loop crees que es la más crítica para el rendimiento de un servidor HTTP?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="7-microtasks-y-prioridad-de-ejecucion">7. Microtasks y prioridad de ejecución</h2>
+<p>No todo es el Event Loop. Existe una "cola VIP" que se cuela constantemente.</p>
+<h3 id="conceptos-clave_4">Conceptos Clave</h3>
+<ol>
+<li><strong>Macrotasks</strong>: Timers, I/O callbacks, setImmediate. Se ejecutan uno por fase.</li>
+<li><strong>Microtasks</strong>: <code>process.nextTick</code>, <code>Promise.then</code>. Se ejecutan <strong>inmediatamente después de la operación actual</strong> y antes de pasar a la siguiente fase del Event Loop.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Peligro: process.nextTick()</p>
+<p>Tiene el nombre más confuso de Node.js. No es "en el próximo tick". Es <strong>"AHORA MISMO, antes que nada"</strong>. Si llenas recursivamente <code>process.nextTick</code>, el Event Loop nunca avanzará y bloquearás I/O.</p>
+</div>
+<h3 id="ejemplos-practicos-en-typescript_6">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-jerarquia-de-ejecucion">Ejemplo 1: Jerarquía de Ejecución</h4>
+<p>Este ejemplo es oro puro para entender Node.js.
+</p><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'5. Timeout (Macrotask)'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'6. Immediate (Macrotask)'</span><span class="p">));</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Promise (Microtask)'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. nextTick (Microtask Prioritaria)'</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Incluso una microtask dentro de una microtask se cuela</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2.5. nextTick interior'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1.5. Fin Síncrono'</span><span class="p">);</span>
+
+<span class="c1">// ORDEN: </span>
+<span class="c1">// Síncronos (1, 1.5) -&gt; nextTick (2, 2.5) -&gt; Promises (3) -&gt; Macrotasks (5 o 6)</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-2-promise-starvation-bloqueo-por-microtasks">Ejemplo 2: Promise starvation (Bloqueo por microtasks)</h4>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">microtaskLoop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Esto se ejecutará 1000 veces ANTES de cualquier timer</span>
+<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">microtaskLoop</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'TIMER (por fin)'</span><span class="p">),</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="nx">microtaskLoop</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fin sync'</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="ejemplo-3-uso-correcto-de-nexttick">Ejemplo 3: Uso correcto de <code>nextTick</code></h4>
+<p>Se usa para emitir eventos antes de que el usuario pueda escucharlos, garantizando asincronía técnica.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">EventEmitter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'events'</span><span class="p">;</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">MiEmisor</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">EventEmitter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Si emitimos aquí directo, el usuario aún no ha hecho .on('init')</span>
+<span class="w">    </span><span class="c1">// this.emit('init'); &lt;--- Error, nadie escucha aún</span>
+
+<span class="w">    </span><span class="c1">// Solución: Diferirlo mínimamente</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'init'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">emisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiEmisor</span><span class="p">();</span>
+<span class="nx">emisor</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'init'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'¡Inicializado!'</span><span class="p">));</span>
+</code></pre></div><p></p>
+<h3 id="diagrama-de-prioridad">Diagrama de Prioridad</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    state "Operación Actual (Sync)" as A
+    state "Cola nextTick" as B
+    state "Cola Promises" as C
+    state "Event Loop (Fase Siguiente)" as D
+
+    A --&gt; B: Termina código
+    B --&gt; C: Vacía nextTick
+    C --&gt; B: Si Promesa crea nextTick
+    C --&gt; D: Vacía Promises</code></pre>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Cuál es la diferencia técnica entre <code>setImmediate</code> y <code>process.nextTick</code>? (Pista: Fases vs Microtasks).</li>
+<li>¿Por qué las Promesas se ejecutan antes que los Timers?</li>
+<li>Analiza el Ejemplo 1. ¿Por qué <code>2.5</code> se ejecuta antes que <code>3</code>?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="8-bloqueo-del-event-loop-y-paralelismo">8. Bloqueo del Event Loop y paralelismo</h2>
+<p>Node es rápido manejando 10,000 peticiones ligeras, pero terrible manejando 1 petición pesada de cálculo.</p>
+<h3 id="conceptos-clave_5">Conceptos Clave</h3>
+<ul>
+<li><strong>I/O Bound</strong>: Tareas limitadas por red/disco (Node es REY aquí).</li>
+<li><strong>CPU Bound</strong>: Tareas limitadas por procesador (Cálculo matemático, procesamiento de imagen).</li>
+</ul>
+<p>Si ejecutas una tarea CPU Bound en el hilo principal, bloqueas el Tío Vivo.</p>
+<h3 id="ejemplos-practicos-en-typescript_7">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-el-json-de-la-muerte-bloqueo">Ejemplo 1: El JSON de la muerte (Bloqueo)</h4>
+<p><code>JSON.parse</code> y <code>JSON.stringify</code> son síncronos.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/block'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Simulamos objeto gigante</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hugeObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="mf">1e6</span><span class="p">).</span><span class="nx">fill</span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s1">'test'</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// ESTO BLOQUEA TODO EL SERVIDOR durante milisegundos o segundos</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">hugeObj</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Bloqueo terminado'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Esta petición simple será lenta si alguien llama a /block</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hola mundo'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-2-solucion-con-setimmediate-partitioning">Ejemplo 2: Solución con setImmediate (Partitioning)</h4>
+<p>Dividir una tarea grande en trozos pequeños.
+</p><div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">sumaGigante</span><span class="p">(</span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">acc</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Total:'</span><span class="p">,</span><span class="w"> </span><span class="nx">acc</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Hacemos 1000 sumas y dejamos respirar al Event Loop</span>
+<span class="w">  </span><span class="c1">// Si no hacemos esto, un n muy grande bloquearía</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sumaGigante</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sumaGigante</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">sumaGigante</span><span class="p">(</span><span class="mf">1000000</span><span class="p">);</span><span class="w"> </span><span class="c1">// No bloquea I/O</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-solucion-real-con-worker-threads">Ejemplo 3: Solución real con Worker Threads</h4>
+<p>Para CPU intensiva, usa hilos reales.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Worker</span><span class="p">,</span><span class="w"> </span><span class="nx">isMainThread</span><span class="p">,</span><span class="w"> </span><span class="nx">parentPort</span><span class="p">,</span><span class="w"> </span><span class="nx">workerData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'worker_threads'</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isMainThread</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Soy el Hilo Principal. Delegando trabajo...'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Worker</span><span class="p">(</span><span class="nx">__filename</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">workerData</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">worker</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Resultado del Worker:'</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">));</span>
+
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Esto corre en OTRO hilo real</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workerData</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">fib</span><span class="p">(</span><span class="nx">num</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">fib</span><span class="p">(</span><span class="nx">num</span><span class="o">-</span><span class="mf">2</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">parentPort</span><span class="o">?</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">fib</span><span class="p">(</span><span class="mf">40</span><span class="p">));</span><span class="w"> </span><span class="c1">// Cálculo pesado</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="comparativa-estrategias-anti-bloqueo">Comparativa: Estrategias Anti-Bloqueo</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Estrategia</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Caso de Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Partitioning</strong></td>
+<td style="text-align: left;">Trocear tarea con <code>setImmediate</code></td>
+<td style="text-align: left;">Procesar arrays grandes sin prisa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Offloading (Workers)</strong></td>
+<td style="text-align: left;">Mover a <code>Worker Threads</code></td>
+<td style="text-align: left;">Criptografía custom, IA, compresión pesada.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Offloading (Externo)</strong></td>
+<td style="text-align: left;">Mover a otro servicio (Microservicio)</td>
+<td style="text-align: left;">Conversión de vídeo, generación PDF.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Partitioning</p>
+<p>Otra estrategia para no bloquear es el "partitioning": dividir una tarea grande en trozos pequeños usando <code>setImmediate</code>, dejando respirar al Event Loop entre trozo y trozo.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Es <code>JSON.parse</code> asíncrono? ¿Por qué es un riesgo de seguridad (DoS) en servidores Node?</li>
+<li>¿Cuándo deberías usar un Worker Thread en lugar de una simple función asíncrona?</li>
+<li>¿Qué hace la función <code>unref()</code> en el contexto de un Worker?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="9-manejo-avanzado-de-asincronia">9. Manejo avanzado de asincronía</h2>
+<p>Hemos pasado de los "Callback Hell" a un futuro brillante con Async/Await.</p>
+<h3 id="patrones-de-evolucion">Patrones de Evolución</h3>
+<h4 id="1-callback-hell-el-pasado-oscuro">1. Callback Hell (El pasado oscuro)</h4>
+<p>Anidación infinita, difícil manejo de errores.</p>
+<h4 id="2-promises-el-presente-estandar">2. Promises (El presente estándar)</h4>
+<p>Objetos que representan un valor futuro. Encadenables <code>.then()</code>.</p>
+<h4 id="3-asyncawait-syntactic-sugar">3. Async/Await (Syntactic Sugar)</h4>
+<p>Hace que el código asíncrono parezca síncrono. <strong>Es lo que debes usar por defecto</strong>.</p>
+<h3 id="diagrama-de-estados-de-una-promesa">Diagrama de Estados de una Promesa</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Pending
+    Pending --&gt; Fulfilled: resolve(valor)
+    Pending --&gt; Rejected: reject(error)
+    Fulfilled --&gt; [*]
+    Rejected --&gt; [*]</code></pre>
+<h3 id="ejemplos-practicos-en-typescript_8">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-promiseall-paralelismo">Ejemplo 1: Promise.all (Paralelismo)</h4>
+<p>Ejecutar tareas independientes a la vez.
+</p><div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cargarDashboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Carga'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Se lanzan las 3 a la vez</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/users'</span><span class="p">),</span><span class="w"> </span><span class="c1">// Tarda 2s</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/posts'</span><span class="p">),</span><span class="w"> </span><span class="c1">// Tarda 1s</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'/api/config'</span><span class="p">)</span><span class="w"> </span><span class="c1">// Tarda 0.5s</span>
+<span class="w">  </span><span class="p">]);</span>
+
+<span class="w">  </span><span class="c1">// Tarda el máximo de las 3 (2s), no la suma (3.5s)</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Carga'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-2-promiserace-timeout-manual">Ejemplo 2: Promise.race (Timeout manual)</h4>
+<p>Si una API tarda mucho, la cancelamos.
+</p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">tareaLenta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="s1">'Datos'</span><span class="p">));</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">reject</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w"> </span><span class="s1">'Tiempo agotado'</span><span class="p">));</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">pedirDatos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span><span class="nx">tareaLenta</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="p">]);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error:'</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">);</span><span class="w"> </span><span class="c1">// Saltará esto al segundo</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-async-iterator-for-await">Ejemplo 3: Async Iterator (for await)</h4>
+<p>Ideal para procesar flujos de datos asíncronos en serie.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">leerLineas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">'datos.txt'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">encoding</span><span class="o">:</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// El bucle espera a que lleguen trozos (chunks) de datos</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">chunk</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Recibido trozo de:'</span><span class="p">,</span><span class="w"> </span><span class="nx">chunk</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Procesar trozo...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Cuál es la diferencia clave entre <code>Promise.all</code> y <code>Promise.allSettled</code>? (Investigación obligatoria para producción).</li>
+<li>Si tienes un <code>async function</code>, ¿qué devuelve esa función automáticamente?</li>
+<li>¿Cómo conviertes una API antigua basada en callbacks (como <code>fs.readFile</code> antiguo) a Promesas? (Pista: <code>util.promisify</code> o el constructor <code>new Promise</code>).</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="10-flujos-asincronos-reales-y-buenas-practicas">10. Flujos asíncronos reales y buenas prácticas</h2>
+<p>Para terminar, ¿cómo se aplica esto en el mundo real?</p>
+<h3 id="conceptos-clave_6">Conceptos Clave</h3>
+<ul>
+<li><strong>Streams</strong>: Manejo de datos que fluyen (como agua en una tubería). No esperas a tener todo el archivo en RAM.</li>
+<li><strong>Backpressure</strong>: Si la tubería se llena (el disco escribe más lento de lo que la red descarga), el sistema debe pausar la lectura. Node lo hace automático con <code>pipe</code>.</li>
+</ul>
+<h3 id="ejemplos-practicos-en-typescript_9">Ejemplos Prácticos en TypeScript</h3>
+<h4 id="ejemplo-1-tuberias-piping">Ejemplo 1: Tuberías (Piping)</h4>
+<p>La forma más eficiente de servir un archivo en un servidor.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// MAL: fs.readFileSync (Carga todo en RAM)</span>
+<span class="w">  </span><span class="c1">// BIEN: Stream</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">'video_hd.mp4'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Conecta el disco a la red. </span>
+<span class="w">  </span><span class="c1">// Gestiona backpressure automáticamente.</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">'Content-Type'</span><span class="o">:</span><span class="w"> </span><span class="s1">'video/mp4'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">stream</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-2-event-emitters-personalizados">Ejemplo 2: Event Emitters personalizados</h4>
+<p>Node está basado en eventos. Crea los tuyos.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">EventEmitter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'events'</span><span class="p">;</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">TicketSystem</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">EventEmitter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">comprar</span><span class="p">(</span><span class="nx">usuario</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Procesando compra de </span><span class="si">${</span><span class="nx">usuario</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Simulamos proceso asíncrono</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'comprado'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">usuario</span><span class="p">,</span><span class="w"> </span><span class="nx">fecha</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">tickets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TicketSystem</span><span class="p">();</span>
+<span class="nx">tickets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'comprado'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'¡Email enviado a:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">usuario</span><span class="p">));</span>
+<span class="nx">tickets</span><span class="p">.</span><span class="nx">comprar</span><span class="p">(</span><span class="s1">'Carlos'</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-3-manejo-de-errores-asincronos-globales">Ejemplo 3: Manejo de errores asíncronos globales</h4>
+<p>Si una promesa falla y nadie la captura, Node puede crashear.
+</p><div class="highlight"><pre><span></span><code><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'unhandledRejection'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span><span class="w"> </span><span class="nx">promise</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'¡Promesa rechazada sin manejar!'</span><span class="p">,</span><span class="w"> </span><span class="nx">reason</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Buenas práctica: Loguear y quizás reiniciar proceso limpio</span>
+<span class="p">});</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'uncaughtException'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Excepción no capturada:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// El estado del proceso es inestable, mejor reiniciar</span>
+<span class="p">});</span>
+</code></pre></div><p></p>
+<div class="admonition tip">
+<p class="admonition-title">Reglas de Oro para Backend Escalable</p>
+<ol>
+<li><strong>Nunca bloquees el Event Loop</strong>: Cuidado con JSON.parse de objetos gigantes o bucles sincrónicos largos.</li>
+<li><strong>Gestiona siempre los errores</strong>: Una promesa rechazada no capturada puede tumbar el proceso Node.js.</li>
+<li><strong>Usa Streams</strong>: Para todo lo que sea mover datos de un lado a otro.</li>
+</ol>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ol>
+<li>¿Qué pasa si intentas leer un archivo de 10GB con <code>fs.readFile</code> en un servidor con 4GB de RAM? ¿Cómo lo soluciona <code>fs.createReadStream</code>?</li>
+<li>¿Por qué es mala práctica usar <code>throw</code> dentro de un callback asíncrono?</li>
+<li>¿Qué es el "Backpressure" y qué pasa si no se maneja bien al copiar datos?</li>
+</ol>
+</div>
+<p><br/></p><hr/><p></p>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li><strong>Documentación Oficial de Node.js sobre el Event Loop</strong> (Lectura obligatoria):
+    https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/</li>
+<li><strong>Visualización interactiva del Event Loop</strong> (Excelente para entender las fases):
+    https://www.jsv9000.app/ (Aunque es más de navegador, ayuda a visualizar la cola de tareas).</li>
+<li><strong>Libuv Design Overview</strong> (Para los que quieren saber C++):
+    http://docs.libuv.org/en/v1.x/design.html</li>
+</ul>
+<hr/>
+<p><br/></p><hr/><p></p>
+<h1 id="ejercicios">Ejercicios</h1>
+<p><a href="../04-Timers-Asincronia-Ejercicios/">-&gt; Ejercicios de Asincronía </a> </p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/_old/07-Nodemon-v1/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>07 Nodemon v1 - DWES</title>
+<link href="../../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script><script src="../../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tema-3-automatizacion-en-el-desarrollo-con-nodemon">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              07 Nodemon v1
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-el-asistente-incansable">
+<span class="md-ellipsis">
+      
+        Introducción: El Asistente Incansable
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-nodemon-y-para-que-se-utiliza">
+<span class="md-ellipsis">
+      
+        1. ¿Qué es Nodemon y para qué se utiliza?
+      
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es Nodemon y para qué se utiliza?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#concepto-y-proposito">
+<span class="md-ellipsis">
+      
+        Concepto y Propósito
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-problema-que-resuelve">
+<span class="md-ellipsis">
+      
+        El problema que resuelve
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-practicos">
+<span class="md-ellipsis">
+      
+        Ejemplos Prácticos
+      
+    </span>
+</a>
+<nav aria-label="Ejemplos Prácticos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-11-el-flujo-de-trabajo-clasico-problematico">
+<span class="md-ellipsis">
+      
+        Ejemplo 1.1: El flujo de trabajo clásico (Problemático)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-21-diferencia-en-la-terminal">
+<span class="md-ellipsis">
+      
+        Ejemplo 2.1: Diferencia en la terminal
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comparativa-node-vs-nodemon">
+<span class="md-ellipsis">
+      
+        Comparativa: Node vs Nodemon
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-del-proceso">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo del Proceso
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-instalacion-y-primeros-pasos">
+<span class="md-ellipsis">
+      
+        2. Instalación y primeros pasos
+      
+    </span>
+</a>
+<nav aria-label="2. Instalación y primeros pasos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-global-vs-local">
+<span class="md-ellipsis">
+      
+        Instalación Global vs Local
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comandos-de-instalacion">
+<span class="md-ellipsis">
+      
+        Comandos de instalación
+      
+    </span>
+</a>
+<nav aria-label="Comandos de instalación" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-21-instalacion-global-para-tu-ordenador-personal">
+<span class="md-ellipsis">
+      
+        Ejemplo 2.1: Instalación Global (Para tu ordenador personal)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-22-instalacion-local-entorno-profesional">
+<span class="md-ellipsis">
+      
+        Ejemplo 2.2: Instalación Local (Entorno Profesional)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-decision-de-instalacion">
+<span class="md-ellipsis">
+      
+        Diagrama de Decisión de Instalación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-tipos-de-dependencias">
+<span class="md-ellipsis">
+      
+        Tabla: Tipos de Dependencias
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_1">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-uso-basico-de-nodemon">
+<span class="md-ellipsis">
+      
+        3. Uso básico de Nodemon
+      
+    </span>
+</a>
+<nav aria-label="3. Uso básico de Nodemon" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejecucion-basica">
+<span class="md-ellipsis">
+      
+        Ejecución básica
+      
+    </span>
+</a>
+<nav aria-label="Ejecución básica" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-31-ejecucion-directa-de-javascript">
+<span class="md-ellipsis">
+      
+        Ejemplo 3.1: Ejecución directa de JavaScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-32-ejecucion-con-typescript-via-ts-node">
+<span class="md-ellipsis">
+      
+        Ejemplo 3.2: Ejecución con TypeScript (vía ts-node)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-33-reinicio-manual">
+<span class="md-ellipsis">
+      
+        Ejemplo 3.3: Reinicio Manual
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#archivos-observados-watching">
+<span class="md-ellipsis">
+      
+        Archivos observados (Watching)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-secuencia-ciclo-de-vida-basico">
+<span class="md-ellipsis">
+      
+        Diagrama de Secuencia: Ciclo de vida básico
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comandos-cli-utiles">
+<span class="md-ellipsis">
+      
+        Tabla: Comandos CLI útiles
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_2">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-integracion-con-npm-y-packagejson">
+<span class="md-ellipsis">
+      
+        4. Integración con NPM y package.json
+      
+    </span>
+</a>
+<nav aria-label="4. Integración con NPM y package.json" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creando-scripts-profesionales">
+<span class="md-ellipsis">
+      
+        Creando Scripts Profesionales
+      
+    </span>
+</a>
+<nav aria-label="Creando Scripts Profesionales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-41-configuracion-estandar-para-js">
+<span class="md-ellipsis">
+      
+        Ejemplo 4.1: Configuración Estándar para JS
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-42-configuracion-para-typescript-con-ts-node">
+<span class="md-ellipsis">
+      
+        Ejemplo 4.2: Configuración para TypeScript (con ts-node)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-43-scripts-con-parametros">
+<span class="md-ellipsis">
+      
+        Ejemplo 4.3: Scripts con parámetros
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ventajas-de-no-instalarlo-globalmente">
+<span class="md-ellipsis">
+      
+        Ventajas de no instalarlo globalmente
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapa-mental-estructura-de-packagejson">
+<span class="md-ellipsis">
+      
+        Mapa Mental: Estructura de package.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-convenciones-de-scripts">
+<span class="md-ellipsis">
+      
+        Tabla: Convenciones de Scripts
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_3">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-configuracion-de-nodemon-nodemonjson">
+<span class="md-ellipsis">
+      
+        5. Configuración de Nodemon (nodemon.json)
+      
+    </span>
+</a>
+<nav aria-label="5. Configuración de Nodemon (nodemon.json)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#propiedades-clave">
+<span class="md-ellipsis">
+      
+        Propiedades Clave
+      
+    </span>
+</a>
+<nav aria-label="Propiedades Clave" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-51-configuracion-basica">
+<span class="md-ellipsis">
+      
+        Ejemplo 5.1: Configuración Básica
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-52-configuracion-avanzada-para-typescript">
+<span class="md-ellipsis">
+      
+        Ejemplo 5.2: Configuración Avanzada para TypeScript
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-53-multiples-mapas-de-ejecucion">
+<span class="md-ellipsis">
+      
+        Ejemplo 5.3: Múltiples mapas de ejecución
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-clases-configuracion">
+<span class="md-ellipsis">
+      
+        Diagrama de Clases (Configuración)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-propiedades-vs-flags-cli">
+<span class="md-ellipsis">
+      
+        Tabla: Propiedades vs Flags CLI
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_4">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-uso-de-nodemon-en-proyectos-reales">
+<span class="md-ellipsis">
+      
+        6. Uso de Nodemon en proyectos reales
+      
+    </span>
+</a>
+<nav aria-label="6. Uso de Nodemon en proyectos reales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#escenario-a-express-typescript">
+<span class="md-ellipsis">
+      
+        Escenario A: Express + TypeScript
+      
+    </span>
+</a>
+<nav aria-label="Escenario A: Express + TypeScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-61-estructura-de-carpetas">
+<span class="md-ellipsis">
+      
+        Ejemplo 6.1: Estructura de carpetas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#escenario-b-entornos-con-docker">
+<span class="md-ellipsis">
+      
+        Escenario B: Entornos con Docker
+      
+    </span>
+</a>
+<nav aria-label="Escenario B: Entornos con Docker" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-62-configuracion-para-docker-legacy-watch">
+<span class="md-ellipsis">
+      
+        Ejemplo 6.2: Configuración para Docker (Legacy Watch)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#escenario-c-depuracion-debugging">
+<span class="md-ellipsis">
+      
+        Escenario C: Depuración (Debugging)
+      
+    </span>
+</a>
+<nav aria-label="Escenario C: Depuración (Debugging)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-63-debugging">
+<span class="md-ellipsis">
+      
+        Ejemplo 6.3: Debugging
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-nodemon-docker">
+<span class="md-ellipsis">
+      
+        Diagrama: Nodemon + Docker
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-tecnologias-complementarias">
+<span class="md-ellipsis">
+      
+        Tabla: Tecnologías complementarias
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_5">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-opciones-avanzadas-y-rendimiento">
+<span class="md-ellipsis">
+      
+        7. Opciones avanzadas y rendimiento
+      
+    </span>
+</a>
+<nav aria-label="7. Opciones avanzadas y rendimiento" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#control-de-reinicios-y-senales">
+<span class="md-ellipsis">
+      
+        Control de Reinicios y Señales
+      
+    </span>
+</a>
+<nav aria-label="Control de Reinicios y Señales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-71-cierre-limpio-graceful-shutdown">
+<span class="md-ellipsis">
+      
+        Ejemplo 7.1: Cierre limpio (Graceful Shutdown)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#eventos-de-nodemon">
+<span class="md-ellipsis">
+      
+        Eventos de Nodemon
+      
+    </span>
+</a>
+<nav aria-label="Eventos de Nodemon" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-72-limpiar-consola-al-reiniciar">
+<span class="md-ellipsis">
+      
+        Ejemplo 7.2: Limpiar consola al reiniciar
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rendimiento-debounce-delay">
+<span class="md-ellipsis">
+      
+        Rendimiento: Debounce (Delay)
+      
+    </span>
+</a>
+<nav aria-label="Rendimiento: Debounce (Delay)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-73-retraso">
+<span class="md-ellipsis">
+      
+        Ejemplo 7.3: Retraso
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-estados-de-nodemon">
+<span class="md-ellipsis">
+      
+        Diagrama de Estados de Nodemon
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-senales-de-unix">
+<span class="md-ellipsis">
+      
+        Tabla: Señales de Unix
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_6">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-buenas-practicas-y-alternativas">
+<span class="md-ellipsis">
+      
+        8. Buenas prácticas y alternativas
+      
+    </span>
+</a>
+<nav aria-label="8. Buenas prácticas y alternativas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#buenas-practicas">
+<span class="md-ellipsis">
+      
+        Buenas Prácticas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alternativas-modernas">
+<span class="md-ellipsis">
+      
+        Alternativas Modernas
+      
+    </span>
+</a>
+<nav aria-label="Alternativas Modernas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nodejs-nativo-watch">
+<span class="md-ellipsis">
+      
+        Node.js Nativo (--watch)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tsx-la-opcion-veloz-para-typescript">
+<span class="md-ellipsis">
+      
+        TSX (La opción veloz para TypeScript)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pm2-process-manager-2">
+<span class="md-ellipsis">
+      
+        PM2 (Process Manager 2)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-de-herramientas">
+<span class="md-ellipsis">
+      
+        Tabla Comparativa de Herramientas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-81-migrando-a-node-watch-el-futuro">
+<span class="md-ellipsis">
+      
+        Ejemplo 8.1: Migrando a Node --watch (El futuro)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion_7">
+<span class="md-ellipsis">
+      
+        🧠 Reflexión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- nombre_fichero: 03_Nodemon_Automatizacion_Desarrollo.md --><h1 id="tema-3-automatizacion-en-el-desarrollo-con-nodemon">Tema 3: Automatización en el Desarrollo con Nodemon</h1>
+<h2 id="introduccion-el-asistente-incansable">Introducción: El Asistente Incansable</h2>
+<p>Imagina que estás rodando una película. Eres el director. Cada vez que un actor se equivoca en una línea o decides cambiar un diálogo del guion, tienes que despedir a todo el equipo, apagar las cámaras, desmontar el set, volver a montarlo todo, recontratar a la gente y gritar "¡Acción!" de nuevo.</p>
+<p>Suena ridículo y agotador, ¿verdad? Pues eso es exactamente lo que ocurre cuando desarrollas en Node.js "a pelo". Cada vez que guardas un cambio en tu código (<code>Ctrl+S</code>), tienes que ir a la terminal, matar el proceso (<code>Ctrl+C</code>) y volver a arrancarlo. Cientos de veces al día.</p>
+<p><strong>Nodemon</strong> es tu asistente de dirección incansable. Es ese miembro del equipo que vigila el guion con ojos de halcón. En el nanosegundo en que detecta un cambio en el texto, chasquea los dedos y reinicia la escena automáticamente sin que tú tengas que levantar la vista del monitor.</p>
+<p>En este tema, vamos a aprender a dejar de pelear con la terminal y dejar que las herramientas trabajen por nosotros.</p>
+<hr/>
+<h2 id="1-que-es-nodemon-y-para-que-se-utiliza">1. ¿Qué es Nodemon y para qué se utiliza?</h2>
+<h3 id="concepto-y-proposito">Concepto y Propósito</h3>
+<p>Nodemon es una utilidad de línea de comandos que monitorea los archivos de tu proyecto. Su única misión en la vida es detectar cambios en tus ficheros de código fuente y <strong>reiniciar automáticamente el servidor</strong> o el proceso de Node.js.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Hot Reloading vs Live Reloading</p>
+<p>Aunque a veces se confunden, Nodemon hace un <strong>reinicio de proceso</strong> (Process Restart). Cierra la aplicación vieja y arranca una nueva. No es <em>Hot Module Replacement</em> (HMR) como en React o Vue, donde se cambia el módulo sin perder el estado de la memoria, pero el efecto práctico para el backend es tener tu código fresco al instante.</p>
+</div>
+<h3 id="el-problema-que-resuelve">El problema que resuelve</h3>
+<p>Node.js, por diseño, carga todos los archivos en memoria al arrancar. Si cambias el archivo en el disco duro, Node.js no se entera porque sigue usando la versión que leyó y guardó en la memoria RAM al inicio.</p>
+<p>Sin Nodemon:
+1. Escribes código.
+2. Guardas.
+3. Vas a la terminal -&gt; <code>Ctrl+C</code> (Detener).
+4. <code>Flecha Arriba</code> -&gt; <code>Enter</code> (Arrancar).
+5. Pruebas.</p>
+<p>Con Nodemon:
+1. Escribes código.
+2. Guardas.
+3. <strong>Magia</strong> (Nodemon reinicia solo).
+4. Pruebas.</p>
+<h3 id="ejemplos-practicos">Ejemplos Prácticos</h3>
+<h4 id="ejemplo-11-el-flujo-de-trabajo-clasico-problematico">Ejemplo 1.1: El flujo de trabajo clásico (Problemático)</h4>
+<p>Imagina un servidor HTTP básico. Si cambias el mensaje de "Hola Mundo" a "Hola FP", sin Nodemon, el navegador seguirá mostrando "Hola Mundo" hasta que reinicies manualmente.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// server.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Si cambio esto a 'Hola FP', Node no se entera</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hola Mundo'</span><span class="p">);</span><span class="w"> </span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="ejemplo-21-diferencia-en-la-terminal">Ejemplo 2.1: Diferencia en la terminal</h4>
+<p>Visualmente, Nodemon te informa de lo que hace.</p>
+<p><strong>Ejecución estándar:</strong>
+</p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>node<span class="w"> </span>dist/index.js
+<span class="c1"># (El cursor se queda esperando, si cambias algo, no pasa nada)</span>
+</code></pre></div><p></p>
+<p><strong>Ejecución con Nodemon:</strong>
+</p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>nodemon<span class="w"> </span>dist/index.js
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span><span class="m">2</span>.0.22
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>to<span class="w"> </span>restart<span class="w"> </span>at<span class="w"> </span>any<span class="w"> </span>time,<span class="w"> </span>enter<span class="w"> </span><span class="sb">`</span>rs<span class="sb">`</span>
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>watching<span class="w"> </span>path<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span>*.*
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>watching<span class="w"> </span>extensions:<span class="w"> </span>js,mjs,json
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>starting<span class="w"> </span><span class="sb">`</span>node<span class="w"> </span>dist/index.js<span class="sb">`</span>
+<span class="c1"># (Si guardas un archivo...)</span>
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>restarting<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>changes...
+<span class="o">[</span>nodemon<span class="o">]</span><span class="w"> </span>starting<span class="w"> </span><span class="sb">`</span>node<span class="w"> </span>dist/index.js<span class="sb">`</span>
+</code></pre></div><p></p>
+<h3 id="comparativa-node-vs-nodemon">Comparativa: Node vs Nodemon</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Node.js (Nativo)</th>
+<th style="text-align: left;">Nodemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Persistencia</strong></td>
+<td style="text-align: left;">Carga una vez y mantiene en memoria.</td>
+<td style="text-align: left;">Vigila y recarga ante cambios.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso ideal</strong></td>
+<td style="text-align: left;"><strong>Producción</strong> (estable, sin cambios).</td>
+<td style="text-align: left;"><strong>Desarrollo</strong> (cambios constantes).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Consumo recursos</strong></td>
+<td style="text-align: left;">Bajo (solo la app).</td>
+<td style="text-align: left;">Ligeramente superior (app + watcher).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Feedback</strong></td>
+<td style="text-align: left;">Solo logs de la app.</td>
+<td style="text-align: left;">Logs de la app + Estado del sistema.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-de-flujo-del-proceso">Diagrama de Flujo del Proceso</h3>
+<pre class="mermaid"><code>flowchart LR
+    A[Desarrollador guarda archivo] --&gt;|Evento FS| B(Nodemon Watcher)
+    B --&gt;|Detecta cambio| C{¿Es extensión válida?}
+    C -- No --&gt; D[Ignorar]
+    C -- Sí --&gt; E[Matar proceso actual]
+    E --&gt; F[Arrancar nuevo proceso]
+    F --&gt; G[Servidor actualizado]</code></pre>
+<h3 id="reflexion">🧠 Reflexión</h3>
+<ol>
+<li>¿Por qué crees que <strong>no</strong> deberíamos usar Nodemon en un entorno de producción real?</li>
+<li>Si Node.js carga los archivos en memoria, ¿qué ventaja tiene esto para el rendimiento frente a lenguajes como PHP que leen el disco en cada petición?</li>
+<li>¿Qué pasaría si Nodemon entra en un bucle infinito de reinicios (ej: tu código modifica un archivo que Nodemon está vigilando)?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="2-instalacion-y-primeros-pasos">2. Instalación y primeros pasos</h2>
+<p>Para usar Nodemon, necesitamos instalarlo a través de NPM (Node Package Manager). Tenemos dos caminos, y como profesionales, debemos saber cuál elegir.</p>
+<h3 id="instalacion-global-vs-local">Instalación Global vs Local</h3>
+<p>Existe un debate eterno, pero en entornos profesionales la respuesta suele ser una: <strong>Local</strong>.</p>
+<ul>
+<li><strong>Global (<code>-g</code>)</strong>: Se instala en tu sistema operativo. Puedes usar <code>nodemon</code> en cualquier carpeta. Útil para scripts rápidos, peligroso para equipos (¿qué pasa si mi compañero tiene la v1 y yo la v3?).</li>
+<li><strong>Local (<code>--save-dev</code>)</strong>: Se instala dentro de la carpeta <code>node_modules</code> del proyecto. Todos usan la misma versión. <strong>Esta es la recomendada</strong>.</li>
+</ul>
+<h3 id="comandos-de-instalacion">Comandos de instalación</h3>
+<h4 id="ejemplo-21-instalacion-global-para-tu-ordenador-personal">Ejemplo 2.1: Instalación Global (Para tu ordenador personal)</h4>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>nodemon
+<span class="c1"># Verificación</span>
+nodemon<span class="w"> </span>--version
+</code></pre></div>
+<h4 id="ejemplo-22-instalacion-local-entorno-profesional">Ejemplo 2.2: Instalación Local (Entorno Profesional)</h4>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>nodemon
+<span class="c1"># O su versión corta</span>
+npm<span class="w"> </span>i<span class="w"> </span>-D<span class="w"> </span>nodemon
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Pro: npx</p>
+<p>Si lo instalas localmente, no podrás escribir <code>nodemon</code> en la terminal directamente (te dirá "comando no encontrado"). Tendrás que usar <code>npx nodemon</code> o configurarlo en los scripts de NPM (veremos esto en el punto 4).</p>
+</div>
+<h3 id="diagrama-de-decision-de-instalacion">Diagrama de Decisión de Instalación</h3>
+<pre class="mermaid"><code>graph TD
+    A[¿Cómo instalo Nodemon?] --&gt; B{¿Es un proyecto compartido?}
+    B -- Sí (Equipo/Git) --&gt; C[Instalación Local]
+    C --&gt; D[npm install --save-dev nodemon]
+    B -- No (Script rápido/Prueba) --&gt; E{¿Lo usarás mucho?}
+    E -- Sí --&gt; F[Instalación Global]
+    F --&gt; G[npm install -g nodemon]
+    E -- No --&gt; H[Uso temporal con npx]
+    H --&gt; I[npx nodemon script.js]</code></pre>
+<h3 id="tabla-tipos-de-dependencias">Tabla: Tipos de Dependencias</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Dónde va en <code>package.json</code></th>
+<th style="text-align: left;">¿Se instala en Producción?</th>
+<th style="text-align: left;">Uso de Nodemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Normal</strong></td>
+<td style="text-align: left;"><code>npm i paquete</code></td>
+<td style="text-align: left;"><code>"dependencies"</code></td>
+<td style="text-align: left;">SÍ</td>
+<td style="text-align: left;">Nunca</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Desarrollo</strong></td>
+<td style="text-align: left;"><code>npm i -D paquete</code></td>
+<td style="text-align: left;"><code>"devDependencies"</code></td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"><strong>AQUÍ</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Global</strong></td>
+<td style="text-align: left;"><code>npm i -g paquete</code></td>
+<td style="text-align: left;">(Ninguno)</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Solo herramientas CLI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_1">🧠 Reflexión</h3>
+<ol>
+<li>Si clonas un repositorio de GitHub que tiene Nodemon en <code>devDependencies</code>, ¿qué comando debes ejecutar para tenerlo disponible?</li>
+<li>¿Por qué es importante que Nodemon <strong>no</strong> se instale en el servidor de producción?</li>
+<li>Investiga: ¿Qué ocurre si intentas ejecutar <code>nodemon</code> en una terminal de Windows Powershell y te da un error de "Políticas de ejecución"?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="3-uso-basico-de-nodemon">3. Uso básico de Nodemon</h2>
+<p>Una vez instalado, usarlo es tan sencillo como sustituir la palabra <code>node</code> por <code>nodemon</code>. Sin embargo, al usar TypeScript, tenemos una pequeña capa extra de complejidad.</p>
+<h3 id="ejecucion-basica">Ejecución básica</h3>
+<p>Nodemon por defecto busca un archivo <code>index.js</code>, <code>main.js</code> o lo que defina tu <code>package.json</code>.</p>
+<h4 id="ejemplo-31-ejecucion-directa-de-javascript">Ejemplo 3.1: Ejecución directa de JavaScript</h4>
+<p>Si ya has compilado tu TypeScript a JavaScript (en la carpeta <code>dist</code> o <code>build</code>):
+</p><div class="highlight"><pre><span></span><code>npx<span class="w"> </span>nodemon<span class="w"> </span>dist/index.js
+</code></pre></div><p></p>
+<h4 id="ejemplo-32-ejecucion-con-typescript-via-ts-node">Ejemplo 3.2: Ejecución con TypeScript (vía ts-node)</h4>
+<p>Nodemon no entiende TypeScript nativamente, necesita un intérprete como <code>ts-node</code>.
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Opción A: Ejecutando ts-node a través de nodemon</span>
+npx<span class="w"> </span>nodemon<span class="w"> </span>--exec<span class="w"> </span>ts-node<span class="w"> </span>src/index.ts
+
+<span class="c1"># Opción B: Si tienes ts-node instalado, nodemon suele ser listo</span>
+<span class="c1"># y detectarlo si configuras el archivo json (ver punto 5)</span>
+</code></pre></div><p></p>
+<h4 id="ejemplo-33-reinicio-manual">Ejemplo 3.3: Reinicio Manual</h4>
+<p>A veces Nodemon se "atonta" o quieres reiniciar sin guardar cambios (ej: para limpiar caché o reconectar BBDD).
+*   Estando en la terminal donde corre nodemon, escribe <code>rs</code> y pulsa <code>Enter</code>.
+*   Nodemon forzará el reinicio.</p>
+<h3 id="archivos-observados-watching">Archivos observados (Watching)</h3>
+<p>Por defecto, Nodemon vigila el directorio actual y subdirectorios, buscando extensiones <code>.js</code>, <code>.mjs</code>, <code>.json</code>. Si trabajamos con TypeScript, querremos que vigile <code>.ts</code>.</p>
+<h3 id="diagrama-de-secuencia-ciclo-de-vida-basico">Diagrama de Secuencia: Ciclo de vida básico</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desarrollador
+    participant NM as Nodemon
+    participant App as Tu Aplicación (Node)
+
+    Dev-&gt;&gt;NM: npx nodemon index.js
+    NM-&gt;&gt;App: Inicia proceso (PID 1234)
+    App--&gt;&gt;Dev: "Servidor escuchando en puerto 3000"
+
+    Note over Dev, App: Pasa el tiempo...
+
+    Dev-&gt;&gt;Dev: Modifica archivo.js
+    Dev-&gt;&gt;NM: Guardar cambios (Evento OS)
+    NM-&gt;&gt;NM: Detecta cambio
+    NM-&gt;&gt;App: SIGUSR2 / Kill PID 1234
+    App--&gt;&gt;NM: Proceso termina
+    NM-&gt;&gt;App: Inicia nuevo proceso (PID 1235)
+    App--&gt;&gt;Dev: "Servidor escuchando en puerto 3000"</code></pre>
+<h3 id="tabla-comandos-cli-utiles">Tabla: Comandos CLI útiles</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag / Comando</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--watch</code></td>
+<td style="text-align: left;">Vigila solo carpetas/archivos específicos.</td>
+<td style="text-align: left;"><code>nodemon --watch src/ app.js</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ext</code></td>
+<td style="text-align: left;">Define qué extensiones disparan el reinicio.</td>
+<td style="text-align: left;"><code>nodemon --ext ts,json,html</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--delay</code></td>
+<td style="text-align: left;">Espera X segundos tras un cambio antes de reiniciar.</td>
+<td style="text-align: left;"><code>nodemon --delay 2.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--exec</code></td>
+<td style="text-align: left;">Ejecuta un binario que no sea 'node'.</td>
+<td style="text-align: left;"><code>nodemon --exec "python3"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_2">🧠 Reflexión</h3>
+<ol>
+<li>Estás trabajando con TypeScript. Si ejecutas <code>nodemon dist/index.js</code>, ¿debes vigilar la carpeta <code>src</code> o la carpeta <code>dist</code>? ¿Por qué?</li>
+<li>¿Qué utilidad tiene el flag <code>--delay</code>? Piensa en cuando haces "Guardar todo" en 5 archivos a la vez.</li>
+<li>Si tu aplicación escribe logs en un archivo <code>app.log</code> cada vez que recibe una petición, ¿qué problema podrías tener con Nodemon?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="4-integracion-con-npm-y-packagejson">4. Integración con NPM y package.json</h2>
+<p>En el mundo profesional, rara vez escribimos comandos largos en la terminal. Usamos los <strong>scripts de NPM</strong>. Esto abstrae la complejidad: un desarrollador nuevo solo necesita saber <code>npm run dev</code> y no le importa si por debajo usas nodemon, ts-node, docker o magia negra.</p>
+<h3 id="creando-scripts-profesionales">Creando Scripts Profesionales</h3>
+<p>El archivo <code>package.json</code> es el centro de mando.</p>
+<h4 id="ejemplo-41-configuracion-estandar-para-js">Ejemplo 4.1: Configuración Estándar para JS</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-api-daw"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span><span class="w">       </span><span class="c1">// Producción</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon src/index.js"</span><span class="w">        </span><span class="c1">// Desarrollo</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"nodemon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.0.1"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="ejemplo-42-configuracion-para-typescript-con-ts-node">Ejemplo 4.2: Configuración para TypeScript (con ts-node)</h4>
+<p></p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Nodemon llamará a ts-node para ejecutar el TS directamente</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon src/index.ts"</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<em>Nota: Para que esto funcione fluido, a veces requerimos configurar el <code>nodemon.json</code> que veremos luego.</em><p></p>
+<h4 id="ejemplo-43-scripts-con-parametros">Ejemplo 4.3: Scripts con parámetros</h4>
+<p>A veces queremos pasar variables de entorno.
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PORT=8080 nodemon src/index.ts"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="ventajas-de-no-instalarlo-globalmente">Ventajas de no instalarlo globalmente</h3>
+<p>Al usar <code>npm run dev</code>, NPM busca automáticamente en la carpeta <code>./node_modules/.bin/</code>. Esto significa que <strong>no necesitas tener nodemon instalado en tu sistema</strong>, solo en el proyecto. Esto garantiza que todos los desarrolladores usen la <strong>misma versión</strong> de Nodemon definida en el <code>package.json</code>.</p>
+<h3 id="mapa-mental-estructura-de-packagejson">Mapa Mental: Estructura de package.json</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBwYWNrYWdlLmpzb24KIyMgTWV0YWRhdGEKLSBub21icmUKLSB2ZXJzacOzbgojIyBTY3JpcHRzIChDb21hbmRvcykKLSBzdGFydCAoUHJvZCkKLSBkZXYgKE5vZGVtb24pCi0gYnVpbGQgKFRTQykKLSB0ZXN0CiMjIERlcGVuZGVuY2lhcwotIGRlcGVuZGVuY2llcyAoRXhwcmVzcywgTW9uZ29vc2UpCi0gZGV2RGVwZW5kZW5jaWVzIChOb2RlbW9uLCBUeXBlc2NyaXB0LCBFc2xpbnQp</markmap-data></div>
+<h3 id="tabla-convenciones-de-scripts">Tabla: Convenciones de Scripts</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Script</th>
+<th style="text-align: left;">Uso Estándar</th>
+<th style="text-align: left;">Comando Típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>npm start</code></td>
+<td style="text-align: left;">Arrancar en producción (servidor real).</td>
+<td style="text-align: left;"><code>node dist/index.js</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm run dev</code></td>
+<td style="text-align: left;">Arrancar en local para desarrollar.</td>
+<td style="text-align: left;"><code>nodemon src/index.ts</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm run watch</code></td>
+<td style="text-align: left;">Similar a dev, a veces usado para compilar en background.</td>
+<td style="text-align: left;"><code>tsc -w</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm test</code></td>
+<td style="text-align: left;">Ejecutar pruebas (Nodemon puede vigilar tests también).</td>
+<td style="text-align: left;"><code>jest</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_3">🧠 Reflexión</h3>
+<ol>
+<li>¿Por qué el script <code>start</code> suele usar <code>node</code> y el script <code>dev</code> usa <code>nodemon</code>?</li>
+<li>Si ejecutas <code>npm start</code> en tu ordenador local para desarrollar, ¿qué inconveniente tendrás?</li>
+<li>¿Cómo encadenarías comandos en un script? Por ejemplo, si quieres borrar la carpeta <code>dist</code> antes de arrancar en modo desarrollo.</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="5-configuracion-de-nodemon-nodemonjson">5. Configuración de Nodemon (<code>nodemon.json</code>)</h2>
+<p>Llenar el <code>package.json</code> de flags (<code>--watch</code>, <code>--ext</code>, <code>--exec</code>) ensucia mucho. La buena práctica es crear un archivo de configuración dedicado: <code>nodemon.json</code> en la raíz del proyecto. Nodemon lo leerá automáticamente.</p>
+<h3 id="propiedades-clave">Propiedades Clave</h3>
+<ul>
+<li><strong>watch</strong>: ¿Qué carpetas vigilo? (Normalmente <code>src</code>).</li>
+<li><strong>ext</strong>: ¿Qué extensiones reinician el server? (<code>ts</code>, <code>js</code>, <code>json</code>, <code>env</code>).</li>
+<li><strong>ignore</strong>: ¿Qué ignoro? (IMPORTANTE: ignorar tests, logs, git).</li>
+<li><strong>exec</strong>: ¿Cómo ejecuto el fichero? (Clave para TypeScript).</li>
+</ul>
+<h4 id="ejemplo-51-configuracion-basica">Ejemplo 5.1: Configuración Básica</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// nodemon.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"watch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"js,json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ignore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src/**/*.spec.js"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"exec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node ./src/index.js"</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="ejemplo-52-configuracion-avanzada-para-typescript">Ejemplo 5.2: Configuración Avanzada para TypeScript</h4>
+<p>Esta es la configuración "pata negra" para un proyecto DAW con TypeScript.</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1">// nodemon.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"watch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts,json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ignore"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src/**/*.test.ts"</span><span class="p">,</span><span class="w"> </span><span class="s2">"node_modules"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"exec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts-node ./src/index.ts"</span>
+<span class="p">}</span>
+</code></pre></div>
+<em>Con esto, en el package.json solo pones <code>"dev": "nodemon"</code> y él sabe qué hacer.</em><p></p>
+<h4 id="ejemplo-53-multiples-mapas-de-ejecucion">Ejemplo 5.3: Múltiples mapas de ejecución</h4>
+<p>Puedes decirle a Nodemon cómo comportarse según la extensión del archivo que ha cambiado.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"execMap"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts-node"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="diagrama-de-clases-configuracion">Diagrama de Clases (Configuración)</h3>
+<pre class="mermaid"><code>classDiagram
+    class NodemonConfig {
+        +Array~String~ watch
+        +String ext
+        +Array~String~ ignore
+        +String exec
+        +Object env
+        +Boolean legacyWatch
+    }
+
+    class ProyectoTS {
+        +watch = ["src"]
+        +ext = "ts,json"
+        +exec = "ts-node src/app.ts"
+    }
+
+    class ProyectoJS {
+        +watch = ["lib"]
+        +ext = "js"
+        +exec = "node lib/server.js"
+    }
+
+    NodemonConfig &lt;|-- ProyectoTS
+    NodemonConfig &lt;|-- ProyectoJS</code></pre>
+<h3 id="tabla-propiedades-vs-flags-cli">Tabla: Propiedades vs Flags CLI</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Propiedad JSON</th>
+<th style="text-align: left;">Flag equivalente</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>watch</code></td>
+<td style="text-align: left;"><code>--watch</code></td>
+<td style="text-align: left;">Directorios a vigilar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ignore</code></td>
+<td style="text-align: left;"><code>--ignore</code></td>
+<td style="text-align: left;">Archivos que NO deben reiniciar la app.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ext</code></td>
+<td style="text-align: left;"><code>--ext</code></td>
+<td style="text-align: left;">Lista de extensiones separadas por coma.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>env</code></td>
+<td style="text-align: left;">N/A (inline vars)</td>
+<td style="text-align: left;">Variables de entorno inyectadas.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_4">🧠 Reflexión</h3>
+<ol>
+<li>Tienes una carpeta <code>uploads</code> donde los usuarios suben imágenes. ¿Debes incluirla en la sección <code>ignore</code>? ¿Por qué?</li>
+<li>¿Qué sucede si pones <code>node_modules</code> dentro de <code>watch</code>? (Spoiler: Tu ordenador despegará como un avión).</li>
+<li>¿Cómo configurarías <code>nodemon.json</code> para que también reinicie el servidor si modificas el archivo <code>.env</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="6-uso-de-nodemon-en-proyectos-reales">6. Uso de Nodemon en proyectos reales</h2>
+<p>Vamos a aterrizar esto en escenarios que os vais a encontrar en las prácticas de empresa o en el proyecto final.</p>
+<h3 id="escenario-a-express-typescript">Escenario A: Express + TypeScript</h3>
+<p>Este es el estándar moderno en Node.js. Usamos <code>ts-node</code> para ejecución en memoria durante el desarrollo (es lento en producción, pero genial en dev).</p>
+<h4 id="ejemplo-61-estructura-de-carpetas">Ejemplo 6.1: Estructura de carpetas</h4>
+<p></p><div class="highlight"><pre><span></span><code>/mi-proyecto
+  /src
+    - app.ts (Express)
+    - routes.ts
+  - package.json
+  - nodemon.json
+  - tsconfig.json
+</code></pre></div>
+Nodemon vigila <code>src</code>. Cuando guardas <code>routes.ts</code>, <code>ts-node</code> recompila al vuelo en memoria y Express reinicia.<p></p>
+<h3 id="escenario-b-entornos-con-docker">Escenario B: Entornos con Docker</h3>
+<p>Aquí viene un problema clásico. Docker corre en un contenedor (Linux virtualizado). Nodemon dentro de Docker a veces <strong>no recibe el evento de archivo guardado</strong> desde Windows/Mac.</p>
+<div class="admonition danger">
+<p class="admonition-title">El problema del Polling en Docker</p>
+<p>Los sistemas de archivos virtuales a veces no propagan los eventos de cambio. Si usas Docker y Nodemon no reinicia, necesitas activar el modo <strong>Legacy Watch</strong> (Polling).</p>
+</div>
+<h4 id="ejemplo-62-configuracion-para-docker-legacy-watch">Ejemplo 6.2: Configuración para Docker (Legacy Watch)</h4>
+<p>Esto fuerza a Nodemon a "preguntar" cada X milisegundos si el archivo cambió, en lugar de esperar a que le avisen. Consume más CPU, pero es infalible en Docker.</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1">// nodemon.json para Docker</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"legacyWatch"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"pollingInterval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div>
+O vía comando: <code>nodemon -L</code><p></p>
+<h3 id="escenario-c-depuracion-debugging">Escenario C: Depuración (Debugging)</h3>
+<p>Si quieres usar el debugger de VS Code o Chrome DevTools, necesitas pasarle el flag de inspección a Node, no a Nodemon.</p>
+<h4 id="ejemplo-63-debugging">Ejemplo 6.3: Debugging</h4>
+<p></p><div class="highlight"><pre><span></span><code>nodemon<span class="w"> </span>--inspect<span class="w"> </span>src/index.js
+</code></pre></div>
+Esto abre el puerto 9229 para que puedas poner puntos de ruptura (breakpoints).<p></p>
+<h3 id="diagrama-nodemon-docker">Diagrama: Nodemon + Docker</h3>
+<pre class="mermaid"><code>graph TD
+    subgraph Host[Tu Ordenador]
+        Code[Código Fuente]
+    end
+
+    subgraph Container[Contenedor Docker]
+        Volume[Volumen Montado]
+        NM[Nodemon -L]
+        Node[Proceso Node]
+    end
+
+    Code -- Sincronización de Volumen --&gt; Volume
+    NM -- Polling (Pregunta cte.) --&gt; Volume
+    Volume -- Cambio detectado --&gt; NM
+    NM -- Reinicio --&gt; Node</code></pre>
+<h3 id="tabla-tecnologias-complementarias">Tabla: Tecnologías complementarias</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tecnología</th>
+<th style="text-align: left;">Rol</th>
+<th style="text-align: left;">Interacción con Nodemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Express</strong></td>
+<td style="text-align: left;">Framework Web</td>
+<td style="text-align: left;">Nodemon reinicia el servidor HTTP.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TypeScript</strong></td>
+<td style="text-align: left;">Lenguaje</td>
+<td style="text-align: left;">Requiere <code>ts-node</code> o paso de compilación previo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Docker</strong></td>
+<td style="text-align: left;">Contenedor</td>
+<td style="text-align: left;">Requiere <code>-L</code> (legacy watch) a menudo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dotenv</strong></td>
+<td style="text-align: left;">Variables Env</td>
+<td style="text-align: left;">Conviene añadir <code>.env</code> a la lista de <code>ext</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_5">🧠 Reflexión</h3>
+<ol>
+<li>En un proyecto con Docker, ¿por qué preferimos montar un volumen con el código en lugar de copiarlo al construir la imagen durante la fase de desarrollo?</li>
+<li>Si usas Babel en lugar de TypeScript, ¿cambiaría la propiedad <code>exec</code> de tu <code>nodemon.json</code>?</li>
+<li>¿Qué diferencia hay entre <code>nodemon --inspect</code> y <code>node --inspect</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="7-opciones-avanzadas-y-rendimiento">7. Opciones avanzadas y rendimiento</h2>
+<p>Cuando el proyecto crece, Nodemon puede volverse un cuello de botella si no se configura bien.</p>
+<h3 id="control-de-reinicios-y-senales">Control de Reinicios y Señales</h3>
+<p>Cuando Nodemon reinicia tu app, le envía una señal (normalmente <code>SIGUSR2</code>). Tu aplicación puede escuchar esta señal para cerrar conexiones a base de datos limpiamente antes de morir.</p>
+<h4 id="ejemplo-71-cierre-limpio-graceful-shutdown">Ejemplo 7.1: Cierre limpio (Graceful Shutdown)</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// En tu código Express</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="s1">'SIGUSR2'</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">server</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">kill</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="p">,</span><span class="w"> </span><span class="s1">'SIGUSR2'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="eventos-de-nodemon">Eventos de Nodemon</h3>
+<p>Puedes ejecutar comandos cuando Nodemon detecta estados. Útil para limpiar consola o enviar notificaciones.</p>
+<h4 id="ejemplo-72-limpiar-consola-al-reiniciar">Ejemplo 7.2: Limpiar consola al reiniciar</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"restart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cls || clear"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Limpia terminal windows/linux</span>
+<span class="w">    </span><span class="nt">"crash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo '¡LA HEMOS LIADO!'"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="rendimiento-debounce-delay">Rendimiento: Debounce (Delay)</h3>
+<p>Si haces "Guardar Todo" en VS Code, se guardan 10 archivos en milisegundos. Nodemon podría intentar reiniciar 10 veces seguidas. El <code>delay</code> agrupa esos cambios.</p>
+<h4 id="ejemplo-73-retraso">Ejemplo 7.3: Retraso</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="w"> </span><span class="c1">// Espera 1.5s desde el último cambio antes de reiniciar</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="diagrama-de-estados-de-nodemon">Diagrama de Estados de Nodemon</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Start
+    Start --&gt; Running
+    Running --&gt; Crash: Error en código
+    Crash --&gt; Waiting: Esperando cambio
+    Running --&gt; Restarting: Archivo modificado
+    Restarting --&gt; Running
+    Waiting --&gt; Restarting: Archivo corregido</code></pre>
+<h3 id="tabla-senales-de-unix">Tabla: Señales de Unix</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Señal</th>
+<th style="text-align: left;">Significado</th>
+<th style="text-align: left;">Comportamiento Nodemon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SIGUSR2</strong></td>
+<td style="text-align: left;">Señal de usuario 2</td>
+<td style="text-align: left;">Señal por defecto que envía Nodemon para reiniciar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SIGINT</strong></td>
+<td style="text-align: left;">Interrupt</td>
+<td style="text-align: left;">Cuando pulsas Ctrl+C.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SIGTERM</strong></td>
+<td style="text-align: left;">Termination</td>
+<td style="text-align: left;">Solicitud de cierre (Docker suele enviarla al parar).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexion_6">🧠 Reflexión</h3>
+<ol>
+<li>¿Por qué es importante cerrar las conexiones a la base de datos antes de que el proceso se reinicie?</li>
+<li>Si tu aplicación tarda 10 segundos en arrancar, ¿cómo te afecta que Nodemon reinicie ante cualquier cambio mínimo? ¿Cómo lo solucionarías?</li>
+<li>¿Qué utilidad tienen los eventos <code>events</code> en un entorno de integración continua (CI)? (Pregunta trampa: Nodemon no suele usarse en CI).</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="8-buenas-practicas-y-alternativas">8. Buenas prácticas y alternativas</h2>
+<p>Para cerrar, vamos a ver cómo ser unos profesionales. Nodemon es el rey, pero hay nuevos aspirantes al trono.</p>
+<h3 id="buenas-practicas">Buenas Prácticas</h3>
+<ol>
+<li><strong>Scope preciso</strong>: Usa <code>watch</code> solo en las carpetas necesarias (<code>src</code>). No vigiles todo el proyecto.</li>
+<li><strong>Ignora lo irrelevante</strong>: <code>tests</code>, <code>docs</code>, <code>uploads</code>, <code>git</code>.</li>
+<li><strong>Configuración en JSON</strong>: Mantén el <code>package.json</code> limpio.</li>
+<li><strong>Solo Dev</strong>: Asegúrate de que es <code>devDependency</code>.</li>
+</ol>
+<h3 id="alternativas-modernas">Alternativas Modernas</h3>
+<h4 id="nodejs-nativo-watch">Node.js Nativo (<code>--watch</code>)</h4>
+<p>Desde la versión 18/19, Node.js incluye un watcher nativo. Es más rápido y no requiere dependencias.
+</p><div class="highlight"><pre><span></span><code>node<span class="w"> </span>--watch<span class="w"> </span>index.js
+</code></pre></div>
+<em>Limitación: Aún está verde y tiene menos opciones de configuración que Nodemon.</em><p></p>
+<h4 id="tsx-la-opcion-veloz-para-typescript">TSX (La opción veloz para TypeScript)</h4>
+<p>Si usas TypeScript, <code>ts-node</code> puede ser lento. <code>tsx</code> (basado en esbuild) es increíblemente rápido y tiene watch mode.
+</p><div class="highlight"><pre><span></span><code>npx<span class="w"> </span>tsx<span class="w"> </span>watch<span class="w"> </span>src/index.ts
+</code></pre></div><p></p>
+<h4 id="pm2-process-manager-2">PM2 (Process Manager 2)</h4>
+<p>PM2 es para <strong>producción</strong>. También tiene modo watch, pero su función es mantener la app viva si crashea y balancear carga.
+*   <strong>Desarrollo</strong>: Nodemon / TSX.
+*   <strong>Producción</strong>: PM2 / Kubernetes.</p>
+<h3 id="tabla-comparativa-de-herramientas">Tabla Comparativa de Herramientas</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Entorno</th>
+<th style="text-align: left;">Soporte TS</th>
+<th style="text-align: left;">Configuración</th>
+<th style="text-align: left;">Velocidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Nodemon</strong></td>
+<td style="text-align: left;">Desarrollo</td>
+<td style="text-align: left;">Vía plugin</td>
+<td style="text-align: left;">Alta</td>
+<td style="text-align: left;">Media</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Node --watch</strong></td>
+<td style="text-align: left;">Desarrollo</td>
+<td style="text-align: left;">No nativo</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSX</strong></td>
+<td style="text-align: left;">Desarrollo</td>
+<td style="text-align: left;">Nativo</td>
+<td style="text-align: left;">Media</td>
+<td style="text-align: left;"><strong>Muy Alta</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PM2</strong></td>
+<td style="text-align: left;"><strong>Producción</strong></td>
+<td style="text-align: left;">Vía plugin</td>
+<td style="text-align: left;">Muy Alta</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-81-migrando-a-node-watch-el-futuro">Ejemplo 8.1: Migrando a Node --watch (El futuro)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// package.json moderno (Node v20+)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node --watch --loader ts-node/esm src/index.ts"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="reflexion_7">🧠 Reflexión</h3>
+<ol>
+<li>¿Por qué crees que Node.js tardó tantos años en incluir un modo <code>--watch</code> nativo si era tan necesario?</li>
+<li>Si <code>tsx</code> es más rápido, ¿por qué seguimos enseñando Nodemon? (Pista: Estándar de la industria y compatibilidad).</li>
+<li>¿Es buena idea usar PM2 con modo watch en producción? Justifica tu respuesta.</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li>
+<p><strong>Documentación Oficial de Nodemon</strong>: La fuente de la verdad. Explora todas las opciones de configuración.
+    https://github.com/remy/nodemon#nodemon</p>
+</li>
+<li>
+<p><strong>Node.js Watch Mode (Experimental)</strong>: El futuro nativo sin dependencias.
+    https://nodejs.org/docs/latest/api/cli.html#--watch</p>
+</li>
+<li>
+<p><strong>TS-Node y Nodemon</strong>: Guía específica para integrar ambas herramientas correctamente.
+    https://khalilstemmler.com/blogs/typescript/node-starter-project/</p>
+</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

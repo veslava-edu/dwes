@@ -1,0 +1,3147 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/_old/03-NodeJS-Ejercicios-Manus/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>03 NodeJS Ejercicios Manus - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ejercicios-practicos-fundamentos-de-nodejs-y-typescript" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03 NodeJS Ejercicios Manus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-IntroNodeJS/" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/09-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/10-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/11-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/12-MVC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/13-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/14-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/15-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/16-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/17-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/18-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-IntroNodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-IntroTypeScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-NodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-Timers-Asincronia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-FileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-ModulosHTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-GestionPaquetes-NPM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-Nodemon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/01-IntroNestJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/02-CreacionRecursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/03-TypeORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/04-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/05-AlacenamientoFicheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/06-WebSockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/07-EndpointsAvanzados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/08-MongoDB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/09-Seguridad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/10-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/11-Perfiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/12-Despliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Consolidación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-diagnostico-de-entorno-servidor-o-navegador-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Diagnóstico de Entorno: ¿Servidor o Navegador? | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Diagnóstico de Entorno: ¿Servidor o Navegador? | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-utilidad-de-diagnostico-consoletable-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Utilidad de Diagnóstico: console.table | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2) Utilidad de Diagnóstico: console.table | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-segura-variables-de-entorno-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Configuración Segura: Variables de Entorno | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) Configuración Segura: Variables de Entorno | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-gestion-de-rutas-pathjoin-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Gestión de Rutas: path.join | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Gestión de Rutas: path.join | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-monitorizacion-de-recursos-modulo-os-nivel-facil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Monitorización de Recursos: Módulo os | Nivel: Fácil
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Monitorización de Recursos: Módulo os | Nivel: Fácil">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Refuerzo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-depuracion-de-codigo-el-bug-de-la-ruta-absoluta-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Depuración de Código: El Bug de la Ruta Absoluta | Nivel: Medio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Depuración de Código: El Bug de la Ruta Absoluta | Nivel: Medio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pista:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-control-de-flujo-validacion-de-argumentos-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Control de Flujo: Validación de Argumentos | Nivel: Medio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7) Control de Flujo: Validación de Argumentos | Nivel: Medio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pista_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pista:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-analisis-de-archivos-pathparse-nivel-medio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Análisis de Archivos: path.parse | Nivel: Medio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8) Análisis de Archivos: path.parse | Nivel: Medio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pista_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pista:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Ampliación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9-investigacion-la-contaminacion-del-objeto-global-nivel-alto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Investigación: La Contaminación del Objeto Global | Nivel: Alto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9) Investigación: La Contaminación del Objeto Global | Nivel: Alto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problemas-de-la-contaminacion-del-objeto-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problemas de la Contaminación del Objeto Global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativas-modernas-y-seguras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativas Modernas y Seguras
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternativas Modernas y Seguras">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peer-review-instrucciones-para-el-companero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review (Instrucciones para el compañero):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-reto-de-codificacion-utilidad-de-monitoreo-de-procesos-nivel-alto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Reto de Codificación: Utilidad de Monitoreo de Procesos | Nivel: Alto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10) Reto de Codificación: Utilidad de Monitoreo de Procesos | Nivel: Alto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- Nombre de archivo sugerido: TXX-Ejercicios-NodeJS-Fundamentos.md --><h1 id="ejercicios-practicos-fundamentos-de-nodejs-y-typescript">Ejercicios Prácticos: Fundamentos de Node.js y TypeScript</h1>
+<p><strong>Narrativa del Proyecto: Nexus CLI Tools</strong></p>
+<p>En <strong>Innovatech</strong>, la eficiencia operativa es clave. Se ha decidido crear un conjunto de utilidades de línea de comandos (CLI Tools) en Node.js y TypeScript, llamado <strong>Nexus CLI Tools</strong>, para que los equipos de DevOps y SysAdmin puedan realizar diagnósticos rápidos del servidor, gestionar configuraciones y manipular rutas de archivos de forma segura.</p>
+<p>Estos ejercicios te guiarán a través de la implementación de los módulos fundamentales de esta suite, asegurando que comprendas cómo Node.js interactúa con el sistema operativo y cómo manejar la configuración de forma profesional.</p>
+<hr>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<h3 id="1-diagnostico-de-entorno-servidor-o-navegador-nivel-facil">1) Diagnóstico de Entorno: ¿Servidor o Navegador? | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">1) Diagnóstico de Entorno: ¿Servidor o Navegador? | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo"><strong>Objetivo:</strong></h5>
+<p>Validar la comprensión de las diferencias fundamentales entre el entorno de ejecución del navegador y el de Node.js, identificando las APIs exclusivas de cada uno.</p>
+<h5 id="setup-inicial"><strong>Setup Inicial:</strong></h5>
+<p>No se requiere configuración inicial.</p>
+<h5 id="tarea-a-realizar"><strong>Tarea a realizar:</strong></h5>
+<p>Analiza los siguientes fragmentos de código y determina si se ejecutarían <strong>correctamente</strong> en Node.js, en el <strong>navegador</strong>, o en <strong>ambos</strong>. Justifica tu respuesta basándote en la disponibilidad de los objetos globales (<code>window</code>, <code>process</code>, <code>document</code>, <code>fs</code>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Fragmento de Código</th>
+<th style="text-align: left;">¿Node.js?</th>
+<th style="text-align: left;">¿Navegador?</th>
+<th style="text-align: left;">Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>console.log(window.location.href);</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.log(process.pid);</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>import { readFileSync } from 'fs';</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>document.getElementById('app').innerHTML = 'Hola';</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>setTimeout(() =&gt; {}, 1000);</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="aplicacion-en-el-mundo-real"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Saber dónde se ejecutará tu código es el primer paso para evitar errores de <code>ReferenceError</code>. Un desarrollador profesional debe saber qué APIs están disponibles en cada entorno para elegir las librerías correctas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Fragmento de Código</th>
+<th style="text-align: left;">¿Node.js?</th>
+<th style="text-align: left;">¿Navegador?</th>
+<th style="text-align: left;">Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>console.log(window.location.href);</code></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;"><code>window</code> es un objeto global del navegador, no existe en Node.js.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.log(process.pid);</code></td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;"><code>process</code> es un objeto global de Node.js que da acceso a información del proceso.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>import { readFileSync } from 'fs';</code></td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">El módulo <code>fs</code> (File System) permite acceso al disco, lo cual está prohibido en el navegador por seguridad.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>document.getElementById('app').innerHTML = 'Hola';</code></td>
+<td style="text-align: left;">❌ No</td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;"><code>document</code> y el DOM son APIs del navegador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>setTimeout(() =&gt; {}, 1000);</code></td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">✅ Sí</td>
+<td style="text-align: left;">Es una API estándar que existe en ambos entornos (aunque su implementación interna difiere).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-utilidad-de-diagnostico-consoletable-nivel-facil">2) Utilidad de Diagnóstico: <code>console.table</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">2) Utilidad de Diagnóstico: <code>console.table</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_1"><strong>Objetivo:</strong></h5>
+<p>Aprender a usar los métodos avanzados del módulo <code>console</code> para presentar datos estructurados de forma legible en la terminal.</p>
+<h5 id="setup-inicial_1"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>diagnostico.ts</code>.</p>
+<h5 id="tarea-a-realizar_1"><strong>Tarea a realizar:</strong></h5>
+<p>El equipo de SysAdmin necesita una herramienta que muestre el estado de las últimas 3 peticiones fallidas a la API de Nexus.</p>
+<ol>
+<li>Define un array de objetos llamado <code>fallos</code> con la siguiente estructura:
+    <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Fallo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">fallos</span><span class="o">:</span><span class="w"> </span><span class="kt">Fallo</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">101</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/users/1'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">404</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:00:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">102</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/auth/login'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:05:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">103</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/data/report'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">401</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:15:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div></li>
+<li>Utiliza el método <code>console.table</code> para imprimir este array en la terminal de Node.js de forma que los SysAdmins puedan leerlo fácilmente.</li>
+<li>Añade una línea de código que mida el tiempo que tarda en ejecutarse la impresión de la tabla usando <code>console.time</code> y <code>console.timeEnd</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p><code>console.table</code> es invaluable para la depuración y el logging en entornos de servidor, permitiendo visualizar grandes cantidades de datos de forma ordenada sin necesidad de herramientas externas.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// diagnostico.ts</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Fallo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">fallos</span><span class="o">:</span><span class="w"> </span><span class="kt">Fallo</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">101</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/users/1'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">404</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:00:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">102</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/auth/login'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:05:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">103</span><span class="p">,</span><span class="w"> </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="s1">'/api/data/report'</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">401</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-01-01T10:15:00Z'</span><span class="w"> </span><span class="p">},</span>
+<span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Tiempo de Diagnóstico'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Últimos Fallos de API ---'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">fallos</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Tiempo de Diagnóstico'</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3-configuracion-segura-variables-de-entorno-nivel-facil">3) Configuración Segura: Variables de Entorno | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">3) Configuración Segura: Variables de Entorno | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_2"><strong>Objetivo:</strong></h5>
+<p>Aprender a acceder a las variables de entorno y a los argumentos de línea de comandos a través del objeto global <code>process</code>.</p>
+<h5 id="setup-inicial_2"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>config-server.ts</code>.</p>
+<h5 id="tarea-a-realizar_2"><strong>Tarea a realizar:</strong></h5>
+<p>La utilidad <strong>Nexus CLI Tools</strong> debe configurarse mediante variables de entorno para el puerto y el modo de operación.</p>
+<ol>
+<li>En <code>config-server.ts</code>, usa <code>process.env</code> para obtener el puerto (<code>PORT</code>) y el modo (<code>NODE_ENV</code>). Si <code>PORT</code> no está definido, usa <code>3000</code> por defecto. Si <code>NODE_ENV</code> no está definido, usa <code>'development'</code>.</li>
+<li>Usa <code>process.argv</code> para detectar si el usuario ha pasado el argumento <code>--verbose</code>.</li>
+<li>Imprime un mensaje de configuración, y si el modo es <code>'development'</code> O si se pasó el argumento <code>--verbose</code>, imprime también el ID del proceso (<code>process.pid</code>).</li>
+</ol>
+<p><strong>Ejecución esperada:</strong>
+</p><div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8080</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>config-server.ts
+<span class="c1"># Output: Servidor configurado: Puerto 8080, Modo production.</span>
+
+$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>config-server.ts<span class="w"> </span>--verbose
+<span class="c1"># Output: Servidor configurado: Puerto 3000, Modo development.</span>
+<span class="c1"># Output: [Verbose] PID: 12345</span>
+</code></pre></div><p></p>
+<h5 id="aplicacion-en-el-mundo-real_2"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>El uso de <code>process.env</code> es la práctica estándar de seguridad para inyectar credenciales y configuraciones sensibles en aplicaciones de servidor, siguiendo el principio de "Configuración de 12 Factores".</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// config-server.ts</span>
+<span class="c1">// Acceso a variables de entorno</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">puerto</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'3000'</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">modo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'development'</span><span class="p">;</span>
+
+<span class="c1">// Acceso a argumentos de línea de comandos</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isVerbose</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">'--verbose'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor configurado: Puerto </span><span class="si">${</span><span class="nx">puerto</span><span class="si">}</span><span class="sb">, Modo </span><span class="si">${</span><span class="nx">modo</span><span class="si">}</span><span class="sb">.`</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">modo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'development'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">isVerbose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[Verbose] PID: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[Verbose] Directorio de trabajo: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-gestion-de-rutas-pathjoin-nivel-facil">4) Gestión de Rutas: <code>path.join</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">4) Gestión de Rutas: <code>path.join</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_3"><strong>Objetivo:</strong></h5>
+<p>Utilizar el módulo <code>path</code> para construir rutas de archivos de forma segura y compatible con diferentes sistemas operativos (Windows, Linux, Mac).</p>
+<h5 id="setup-inicial_3"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>ruta-segura.ts</code>.</p>
+<h5 id="tarea-a-realizar_3"><strong>Tarea a realizar:</strong></h5>
+<p>El módulo de logs de <strong>Nexus CLI Tools</strong> necesita construir la ruta completa a un archivo de log diario.</p>
+<ol>
+<li>Importa el módulo <code>path</code>.</li>
+<li>Define las siguientes variables:<ul>
+<li><code>directorioBase</code>: <code>'var/log/nexus'</code></li>
+<li><code>fecha</code>: <code>'2024-01-01'</code></li>
+<li><code>nombreArchivo</code>: <code>'api-errors.log'</code></li>
+</ul>
+</li>
+<li>Usa <code>path.join()</code> para construir la ruta completa al archivo de log: <code>var/log/nexus/2024-01-01/api-errors.log</code>.</li>
+<li>Imprime la ruta resultante.</li>
+<li>Usa <code>path.resolve()</code> para obtener la ruta absoluta de este archivo, asumiendo que el script se ejecuta desde la raíz del proyecto. Imprime la ruta absoluta.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p><code>path.join</code> es fundamental para evitar errores de ruta en entornos de producción donde el sistema operativo del servidor puede ser diferente al de desarrollo.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// ruta-segura.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">directorioBase</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'var/log/nexus'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fecha</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'2024-01-01'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">nombreArchivo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'api-errors.log'</span><span class="p">;</span>
+
+<span class="c1">// 1. Construir la ruta relativa usando path.join</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaRelativa</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">directorioBase</span><span class="p">,</span><span class="w"> </span><span class="nx">fecha</span><span class="p">,</span><span class="w"> </span><span class="nx">nombreArchivo</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ruta Relativa (Cross-platform): </span><span class="si">${</span><span class="nx">rutaRelativa</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="c1">// 2. Obtener la ruta absoluta</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaAbsoluta</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">rutaRelativa</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ruta Absoluta: </span><span class="si">${</span><span class="nx">rutaAbsoluta</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm">Ejemplo de salida en Linux:</span>
+<span class="cm">Ruta Relativa (Cross-platform): var/log/nexus/2024-01-01/api-errors.log</span>
+<span class="cm">Ruta Absoluta: /home/ubuntu/var/log/nexus/2024-01-01/api-errors.log</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h3 id="5-monitorizacion-de-recursos-modulo-os-nivel-facil">5) Monitorización de Recursos: Módulo <code>os</code> | Nivel: Fácil</h3>
+<div class="admonition abstract">
+<p class="admonition-title">5) Monitorización de Recursos: Módulo <code>os</code> | Nivel: Fácil</p>
+</div>
+<h5 id="objetivo_4"><strong>Objetivo:</strong></h5>
+<p>Utilizar el módulo <code>os</code> para obtener información básica sobre el hardware y el sistema operativo del servidor.</p>
+<h5 id="setup-inicial_4"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>monitor.ts</code>.</p>
+<h5 id="tarea-a-realizar_4"><strong>Tarea a realizar:</strong></h5>
+<p>Crea una función llamada <code>reporteSistema()</code> que imprima la siguiente información usando el módulo <code>os</code>:</p>
+<ol>
+<li>El nombre de la plataforma (ej: <code>linux</code>, <code>win32</code>).</li>
+<li>La arquitectura del CPU (ej: <code>x64</code>).</li>
+<li>El número total de núcleos de CPU disponibles.</li>
+<li>La cantidad de memoria libre en megabytes (MB).</li>
+</ol>
+<p><strong>Pista:</strong> La memoria se reporta en bytes. Debes dividir el resultado de <code>os.freemem()</code> dos veces por 1024 para obtener MB.</p>
+<h5 id="aplicacion-en-el-mundo-real_4"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los módulos <code>os</code> y <code>process</code> son la base para cualquier herramienta de monitorización de servidores, permitiendo a los desarrolladores tomar decisiones sobre el balanceo de carga y la optimización de recursos.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// monitor.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">reporteSistema</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Reporte Rápido del Sistema ---'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Plataforma</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Plataforma: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">platform</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Arquitectura</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Arquitectura: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">arch</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. Núcleos de CPU</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nucleos</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Núcleos de CPU: </span><span class="si">${</span><span class="nx">nucleos</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Memoria Libre (en MB)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">memoriaLibreBytes</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">freemem</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">memoriaLibreMB</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">memoriaLibreBytes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria Libre: </span><span class="si">${</span><span class="nx">memoriaLibreMB</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">reporteSistema</span><span class="p">();</span>
+</code></pre></div>
+<hr>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<h3 id="6-depuracion-de-codigo-el-bug-de-la-ruta-absoluta-nivel-medio">6) Depuración de Código: El Bug de la Ruta Absoluta | Nivel: Medio</h3>
+<div class="admonition warning">
+<p class="admonition-title">6) Depuración de Código: El Bug de la Ruta Absoluta | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_5"><strong>Objetivo:</strong></h5>
+<p><strong>Encuentra y corrige el bug</strong> relacionado con la disponibilidad de variables globales en el contexto de ES Modules (ESM) de TypeScript.</p>
+<h5 id="setup-inicial_5"><strong>Setup Inicial:</strong></h5>
+<p>El siguiente código está en un archivo llamado <code>bug-path.ts</code> y está configurado para ejecutarse como un módulo ES (ESM).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// bug-path.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">obtenerRutaAbsoluta</span><span class="p">(</span><span class="nx">nombreArchivo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// BUG: __dirname no existe en ES Modules</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rutaAbsoluta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'data'</span><span class="p">,</span><span class="w"> </span><span class="nx">nombreArchivo</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">rutaAbsoluta</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obtenerRutaAbsoluta</span><span class="p">(</span><span class="s1">'config.json'</span><span class="p">));</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_5"><strong>Tarea a realizar:</strong></h5>
+<p>Al ejecutar <code>npx ts-node bug-path.ts</code>, el código falla con un <code>ReferenceError: __dirname is not defined</code>.</p>
+<ol>
+<li><strong>Identifica</strong> por qué <code>__dirname</code> no está disponible en este contexto (ESM).</li>
+<li><strong>Corrige</strong> el archivo <code>bug-path.ts</code> para que la función <code>obtenerRutaAbsoluta</code> funcione correctamente, utilizando las APIs de Node.js para recrear <code>__dirname</code> (vistas en el material didáctico).</li>
+<li>La solución debe seguir usando <code>import</code> (ESM) y no <code>require</code> (CommonJS).</li>
+</ol>
+<h5 id="pista"><strong>Pista:</strong></h5>
+<p>Necesitarás importar <code>fileURLToPath</code> del módulo <code>url</code> y <code>dirname</code> del módulo <code>path</code>. La variable <code>import.meta.url</code> te da la URL del archivo actual.</p>
+<h5 id="aplicacion-en-el-mundo-real_5"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este es un error común al migrar proyectos de CommonJS a ES Modules. Saber cómo recrear las variables de ruta es esencial para el desarrollo moderno en Node.js.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// bug-path.ts (CORREGIDO)</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'url'</span><span class="p">;</span>
+
+<span class="c1">// Recreamos __dirname para el contexto de ES Modules</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">obtenerRutaAbsoluta</span><span class="p">(</span><span class="nx">nombreArchivo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Ahora __dirname está definido y se usa path.join correctamente</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rutaAbsoluta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'data'</span><span class="p">,</span><span class="w"> </span><span class="nx">nombreArchivo</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">rutaAbsoluta</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obtenerRutaAbsoluta</span><span class="p">(</span><span class="s1">'config.json'</span><span class="p">));</span>
+</code></pre></div>
+<h3 id="7-control-de-flujo-validacion-de-argumentos-nivel-medio">7) Control de Flujo: Validación de Argumentos | Nivel: Medio</h3>
+<div class="admonition warning">
+<p class="admonition-title">7) Control de Flujo: Validación de Argumentos | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_6"><strong>Objetivo:</strong></h5>
+<p>Implementar una lógica de control de errores que use <code>process.exit()</code> para terminar la ejecución del programa si no se cumplen los requisitos de entrada.</p>
+<h5 id="setup-inicial_6"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>validador-cli.ts</code>.</p>
+<h5 id="tarea-a-realizar_6"><strong>Tarea a realizar:</strong></h5>
+<p>La utilidad <strong>Nexus CLI Tools</strong> requiere que el usuario especifique un argumento de modo (<code>--mode=dev</code> o <code>--mode=prod</code>).</p>
+<ol>
+<li>Usa <code>process.argv</code> para buscar un argumento que comience con <code>--mode=</code>.</li>
+<li>Si el argumento no se encuentra, imprime un mensaje de error claro (<code>console.error</code>) y termina el programa con un código de error (<code>process.exit(1)</code>).</li>
+<li>Si el argumento se encuentra, extrae el valor del modo (ej: <code>dev</code> o <code>prod</code>) e imprímelo.</li>
+<li>Si el modo es <code>prod</code>, imprime un mensaje de advertencia (<code>console.warn</code>) sobre la sensibilidad de la operación.</li>
+</ol>
+<h5 id="pista_1"><strong>Pista:</strong></h5>
+<p>Recuerda que <code>process.argv</code> contiene el binario de node y el nombre del archivo en las primeras dos posiciones.</p>
+<h5 id="aplicacion-en-el-mundo-real_6"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Los códigos de salida (exit codes) son cruciales en scripts de automatización (como CI/CD) para indicar si una tarea se completó con éxito (0) o falló (cualquier otro número).</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// validador-cli.ts</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">modoArg</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">arg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">'--mode='</span><span class="p">));</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">modoArg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'❌ ERROR FATAL: Se requiere el argumento --mode=dev o --mode=prod.'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Uso: npx ts-node validador-cli.ts --mode=prod'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Termina con código de error</span>
+<span class="p">}</span>
+
+<span class="c1">// Extraer el valor del modo</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">modo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">modoArg</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'='</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Modo de operación detectado: </span><span class="si">${</span><span class="nx">modo</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">modo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'prod'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">'⚠️ ADVERTENCIA: Ejecutando en modo PRODUCCIÓN. Las operaciones son sensibles.'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Termina con éxito</span>
+</code></pre></div>
+<h3 id="8-analisis-de-archivos-pathparse-nivel-medio">8) Análisis de Archivos: <code>path.parse</code> | Nivel: Medio</h3>
+<div class="admonition warning">
+<p class="admonition-title">8) Análisis de Archivos: <code>path.parse</code> | Nivel: Medio</p>
+</div>
+<h5 id="objetivo_7"><strong>Objetivo:</strong></h5>
+<p>Utilizar <code>path.parse()</code> para desglosar una ruta de archivo en sus componentes y aplicar lógica de negocio basada en la extensión.</p>
+<h5 id="setup-inicial_7"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>analizador-archivos.ts</code>.</p>
+<h5 id="tarea-a-realizar_7"><strong>Tarea a realizar:</strong></h5>
+<p>La utilidad necesita procesar archivos de configuración, pero solo acepta archivos con extensión <code>.json</code> o <code>.yaml</code>.</p>
+<ol>
+<li>Importa el módulo <code>path</code>.</li>
+<li>Define una ruta de ejemplo: <code>const rutaConfig = '/etc/nexus/config.yaml';</code></li>
+<li>Usa <code>path.parse()</code> para obtener un objeto con los componentes de la ruta.</li>
+<li>Usa la propiedad <code>ext</code> del objeto resultante para verificar si la extensión es <code>.json</code> o <code>.yaml</code>.</li>
+<li>Imprime un mensaje indicando si el archivo es válido para la configuración.</li>
+</ol>
+<h5 id="pista_2"><strong>Pista:</strong></h5>
+<p>El resultado de <code>path.parse()</code> es un objeto con las propiedades <code>root</code>, <code>dir</code>, <code>base</code>, <code>ext</code> y <code>name</code>.</p>
+<h5 id="aplicacion-en-el-mundo-real_7"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Esta técnica se usa en servidores de subida de archivos para validar el tipo de archivo antes de procesarlo, evitando problemas de seguridad y compatibilidad.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// analizador-archivos.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaConfig</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/etc/nexus/config.yaml'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">infoRuta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rutaConfig</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- Análisis de Ruta ---'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">infoRuta</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">extensionValida</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">ext</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'.json'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">ext</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'.yaml'</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">extensionValida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✅ Archivo de configuración válido: </span><span class="si">${</span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">name</span><span class="si">}${</span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">ext</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Ubicación: </span><span class="si">${</span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">dir</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`❌ Extensión no soportada: </span><span class="si">${</span><span class="nx">infoRuta</span><span class="p">.</span><span class="nx">ext</span><span class="si">}</span><span class="sb">. Solo se aceptan .json o .yaml.`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<h3 id="9-investigacion-la-contaminacion-del-objeto-global-nivel-alto">9) Investigación: La Contaminación del Objeto Global | Nivel: Alto</h3>
+<div class="admonition danger">
+<p class="admonition-title">9) Investigación: La Contaminación del Objeto Global | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_8"><strong>Objetivo:</strong></h5>
+<p>Investigar las implicaciones de seguridad y rendimiento de "contaminar" el objeto global (<code>global</code> en Node.js) y proponer alternativas modernas.</p>
+<h5 id="setup-inicial_8"><strong>Setup Inicial:</strong></h5>
+<p>No se requiere código inicial.</p>
+<h5 id="tarea-a-realizar_8"><strong>Tarea a realizar:</strong></h5>
+<p>Realiza una investigación sobre por qué la práctica de asignar variables directamente a <code>global</code> (ej: <code>global.miVariable = 'valor'</code>) se considera una <strong>mala práctica</strong> en el desarrollo de Node.js/TypeScript.</p>
+<ol>
+<li><strong>Investiga y documenta</strong> al menos dos problemas principales (uno de seguridad y uno de rendimiento/mantenimiento) que surgen de la contaminación del objeto global.</li>
+<li><strong>Propón</strong> dos alternativas modernas y seguras para compartir datos de configuración o estado a través de múltiples módulos (ej: Patrón Singleton, Inyección de Dependencias, Módulos de Configuración).</li>
+<li><strong>Peer Review:</strong> Incluye una sección de <em>Peer Review</em> donde se pida a un compañero que revise tu documento y evalúe si las alternativas propuestas son adecuadas para un entorno de microservicios.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>En entornos de producción, la contaminación global puede llevar a colisiones de nombres, fugas de memoria y vulnerabilidades de seguridad. Entender esto es fundamental para escribir código robusto y escalable.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<h4 id="problemas-de-la-contaminacion-del-objeto-global">Problemas de la Contaminación del Objeto Global</h4>
+<ol>
+<li><strong>Problema de Seguridad (Colisión de Nombres):</strong> Si dos librerías diferentes o dos partes de tu código definen la misma variable en el objeto global, una sobrescribirá a la otra sin previo aviso. Esto puede llevar a un comportamiento impredecible y, en el peor de los casos, a que una librería maliciosa o un atacante sobrescriba una variable crítica (como una clave de seguridad o un manejador de errores).</li>
+<li><strong>Problema de Rendimiento y Mantenimiento:</strong> Las variables globales dificultan el <em>Tree Shaking</em> (eliminación de código muerto) por parte de los empaquetadores, ya que no pueden determinar si una variable global está siendo utilizada. Además, hacen que el código sea más difícil de probar (Testing Unitario), ya que cada prueba debe limpiar el estado global para no afectar a la siguiente.</li>
+</ol>
+<h4 id="alternativas-modernas-y-seguras">Alternativas Modernas y Seguras</h4>
+<ol>
+<li><strong>Módulos de Configuración Inmutables:</strong> Crear un módulo dedicado (<code>config.ts</code>) que exporte un objeto de configuración. Este objeto se carga una sola vez al inicio de la aplicación (usando variables de entorno) y se exporta como <code>const</code>. Esto asegura que la configuración sea de solo lectura y que su ámbito esté limitado a los módulos que la importan.</li>
+<li><strong>Inyección de Dependencias (DI):</strong> En lugar de que un módulo acceda a una variable global, se le "inyecta" la dependencia (la configuración, el logger, la conexión a la base de datos) a través de su constructor o de un <em>framework</em> de DI. Esto hace que las dependencias sean explícitas y facilita el reemplazo de componentes para pruebas.</li>
+</ol>
+<h5 id="peer-review-instrucciones-para-el-companero"><strong>Peer Review (Instrucciones para el compañero):</strong></h5>
+<ul>
+<li><strong>Revisa:</strong> ¿El autor ha justificado claramente por qué la contaminación global es un riesgo en un entorno multi-hilo o de microservicios?</li>
+<li><strong>Evalúa:</strong> ¿Cuál de las dos alternativas propuestas (Módulos de Configuración o DI) sería más escalable si tuviéramos 50 microservicios diferentes? Justifica tu elección.</li>
+</ul>
+<h3 id="10-reto-de-codificacion-utilidad-de-monitoreo-de-procesos-nivel-alto">10) Reto de Codificación: Utilidad de Monitoreo de Procesos | Nivel: Alto</h3>
+<div class="admonition danger">
+<p class="admonition-title">10) Reto de Codificación: Utilidad de Monitoreo de Procesos | Nivel: Alto</p>
+</div>
+<h5 id="objetivo_9"><strong>Objetivo:</strong></h5>
+<p>Combinar los módulos <code>os</code> y <code>process</code> para crear una utilidad CLI que reporte el estado de salud del servidor y del proceso de Node.js.</p>
+<h5 id="setup-inicial_9"><strong>Setup Inicial:</strong></h5>
+<p>Crea un archivo llamado <code>health-check.ts</code>.</p>
+<h5 id="tarea-a-realizar_9"><strong>Tarea a realizar:</strong></h5>
+<p>Implementa una utilidad de monitoreo que imprima un informe completo de salud del sistema.</p>
+<ol>
+<li>Usa <code>os.totalmem()</code> y <code>os.freemem()</code> para calcular el porcentaje de memoria RAM utilizada por el sistema.</li>
+<li>Usa <code>process.memoryUsage()</code> para obtener el uso de memoria <strong>solo</strong> del proceso de Node.js (propiedad <code>rss</code> o <code>heapUsed</code>).</li>
+<li>Usa <code>os.cpus()</code> para obtener el número de núcleos y <code>os.loadavg()</code> para obtener la carga promedio del sistema en el último minuto.</li>
+<li>Imprime todos los resultados de forma clara, utilizando <code>console.log</code> y <code>console.table</code> donde sea apropiado.</li>
+</ol>
+<h5 id="peer-review"><strong>Peer Review:</strong></h5>
+<p>Pide a un compañero que ejecute tu script en su máquina y compare los resultados. ¿Son los resultados de <code>os.loadavg()</code> fáciles de interpretar? ¿Qué métrica de las que has usado es más útil para determinar si el servidor está sobrecargado?</p>
+<h5 id="aplicacion-en-el-mundo-real_9"><strong>Aplicación en el Mundo Real:</strong></h5>
+<p>Este tipo de scripts se ejecutan constantemente en servidores de producción para alimentar paneles de monitorización (como Prometheus o Grafana) y activar alertas si los recursos superan un umbral.</p>
+<details class="success">
+<summary>VER Solución.</summary>
+</details>
+<div class="highlight"><pre><span></span><code><span class="c1">// health-check.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">memoryUsage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'process'</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">healthCheck</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'--- INFORME DE SALUD DEL SERVIDOR (Nexus CLI Tools) ---'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Uso de Memoria del Sistema</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">totalMem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">freeMem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">freemem</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usedMem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">totalMem</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">freeMem</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">percentUsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="nx">usedMem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">totalMem</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n[RAM del Sistema]`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Total: </span><span class="si">${</span><span class="p">(</span><span class="nx">totalMem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> GB`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Usada: </span><span class="si">${</span><span class="p">(</span><span class="nx">usedMem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> GB (</span><span class="si">${</span><span class="nx">percentUsed</span><span class="si">}</span><span class="sb">%)`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Uso de Memoria del Proceso Node.js</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nodeMem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">memoryUsage</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n[Memoria del Proceso Node.js]`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">({</span>
+<span class="w">        </span><span class="s1">'RSS (Total Asignada)'</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="p">(</span><span class="nx">nodeMem</span><span class="p">.</span><span class="nx">rss</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">'Heap Usada (JS)'</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="p">(</span><span class="nx">nodeMem</span><span class="p">.</span><span class="nx">heapUsed</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">'Heap Total (JS)'</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="p">(</span><span class="nx">nodeMem</span><span class="p">.</span><span class="nx">heapTotal</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// 3. Carga de CPU</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nucleos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">loadAvg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">loadavg</span><span class="p">();</span><span class="w"> </span><span class="c1">// Carga promedio en 1, 5 y 15 minutos</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n[CPU y Carga]`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Núcleos de CPU: </span><span class="si">${</span><span class="nx">nucleos</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Carga Promedio (1m, 5m, 15m): </span><span class="si">${</span><span class="nx">loadAvg</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">l</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">l</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Interpretación de la carga:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loadAvg</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">nucleos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="sb">`⚠️ ALERTA: La carga (1m: </span><span class="si">${</span><span class="nx">loadAvg</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">) es mayor que los núcleos (</span><span class="si">${</span><span class="nx">nucleos</span><span class="si">}</span><span class="sb">). El sistema está sobrecargado.`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'✅ Carga de CPU normal.'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">healthCheck</span><span class="p">();</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

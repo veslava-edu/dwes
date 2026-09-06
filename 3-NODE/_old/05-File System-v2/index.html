@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/_old/05-File%20System-v2/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>05 File System v2 - DWES</title>
+<link href="../../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script><script src="../../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#05-el-modulo-fs-file-system-en-nodejs">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              05 File System v2
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion">
+<span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduccion-al-modulo-fs">
+<span class="md-ellipsis">
+      
+        1. Introducción al Módulo FS
+      
+    </span>
+</a>
+<nav aria-label="1. Introducción al Módulo FS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#11-proposito-y-alcance">
+<span class="md-ellipsis">
+      
+        1.1. Propósito y alcance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-arquitectura-y-fundamentos">
+<span class="md-ellipsis">
+      
+        1.2. Arquitectura y fundamentos
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-importacion-recomendada">
+<span class="md-ellipsis">
+      
+        1.3. Importación Recomendada
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#14-las-tres-apis-disponibles">
+<span class="md-ellipsis">
+      
+        1.4. Las tres APIs disponibles
+      
+    </span>
+</a>
+<nav aria-label="1.4. Las tres APIs disponibles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura-fs">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura FS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-las-tres-apis-de-fs-diferencias-y-cuando-usar-cada-una">
+<span class="md-ellipsis">
+      
+        2. Las Tres APIs de FS: Diferencias y Cuándo Usar Cada Una
+      
+    </span>
+</a>
+<nav aria-label="2. Las Tres APIs de FS: Diferencias y Cuándo Usar Cada Una" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-api-sincrona-bloqueante">
+<span class="md-ellipsis">
+      
+        2.1. API Síncrona (Bloqueante)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-api-de-callbacks-asincrona-tradicional">
+<span class="md-ellipsis">
+      
+        2.2. API de Callbacks (Asíncrona Tradicional)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-api-de-promesas-el-estandar-moderno">
+<span class="md-ellipsis">
+      
+        2.3. API de Promesas (El Estándar Moderno)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#24-comparativa-de-rendimiento">
+<span class="md-ellipsis">
+      
+        2.4. Comparativa de Rendimiento
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_1">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-operaciones-basicas-de-lectura-y-escritura">
+<span class="md-ellipsis">
+      
+        3. Operaciones Básicas de Lectura y Escritura
+      
+    </span>
+</a>
+<nav aria-label="3. Operaciones Básicas de Lectura y Escritura" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#31-lectura-de-archivos-readfile">
+<span class="md-ellipsis">
+      
+        3.1. Lectura de Archivos (readFile)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#32-escritura-de-archivos-writefile">
+<span class="md-ellipsis">
+      
+        3.2. Escritura de Archivos (writeFile)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#33-anadir-contenido-appendfile">
+<span class="md-ellipsis">
+      
+        3.3. Añadir contenido (appendFile)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_2">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-gestion-de-directorios-y-estructuras">
+<span class="md-ellipsis">
+      
+        4. Gestión de Directorios y Estructuras
+      
+    </span>
+</a>
+<nav aria-label="4. Gestión de Directorios y Estructuras" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#41-creacion-mkdir">
+<span class="md-ellipsis">
+      
+        4.1. Creación (mkdir)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#42-eliminacion-rm-vs-rmdir">
+<span class="md-ellipsis">
+      
+        4.2. Eliminación (rm vs rmdir)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#43-listado-readdir">
+<span class="md-ellipsis">
+      
+        4.3. Listado (readdir)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_3">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-manipulacion-de-archivos-individuales">
+<span class="md-ellipsis">
+      
+        5. Manipulación de Archivos Individuales
+      
+    </span>
+</a>
+<nav aria-label="5. Manipulación de Archivos Individuales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#51-eliminacion-y-renombrado-unlink-rename">
+<span class="md-ellipsis">
+      
+        5.1. Eliminación y Renombrado (unlink, rename)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#52-copiar-copyfile">
+<span class="md-ellipsis">
+      
+        5.2. Copiar (copyFile)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#53-metadatos-stat-vs-lstat">
+<span class="md-ellipsis">
+      
+        5.3. Metadatos (stat vs lstat)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_4">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-control-de-acceso-y-permisos">
+<span class="md-ellipsis">
+      
+        6. Control de Acceso y Permisos
+      
+    </span>
+</a>
+<nav aria-label="6. Control de Acceso y Permisos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#61-verificacion-access">
+<span class="md-ellipsis">
+      
+        6.1. Verificación (access)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#62-modificacion-chmod-chown">
+<span class="md-ellipsis">
+      
+        6.2. Modificación (chmod, chown)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#63-nuevo-modelo-de-permisos-nodejs-2022">
+<span class="md-ellipsis">
+      
+        6.3. Nuevo Modelo de Permisos (Node.js 20/22+)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_5">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-operaciones-avanzadas-con-streams">
+<span class="md-ellipsis">
+      
+        7. Operaciones Avanzadas con Streams
+      
+    </span>
+</a>
+<nav aria-label="7. Operaciones Avanzadas con Streams" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#71-problema-de-memoria-backpressure">
+<span class="md-ellipsis">
+      
+        7.1. Problema de Memoria (Backpressure)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#72-streams-createreadstream-createwritestream">
+<span class="md-ellipsis">
+      
+        7.2. Streams (createReadStream, createWriteStream)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#73-iteradores-asincronos-for-awaitof">
+<span class="md-ellipsis">
+      
+        7.3. Iteradores Asíncronos (for await...of)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#74-diagrama-markmap-conceptos-de-streams">
+<span class="md-ellipsis">
+      
+        7.4. Diagrama Markmap: Conceptos de Streams
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_6">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-observabilidad-y-monitoreo">
+<span class="md-ellipsis">
+      
+        8. Observabilidad y Monitoreo
+      
+    </span>
+</a>
+<nav aria-label="8. Observabilidad y Monitoreo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#81-watch-vs-watchfile">
+<span class="md-ellipsis">
+      
+        8.1. watch vs watchFile
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#82-caso-de-uso-hot-reload">
+<span class="md-ellipsis">
+      
+        8.2. Caso de uso: Hot Reload
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_7">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#9-integracion-con-otros-modulos-y-buenas-practicas">
+<span class="md-ellipsis">
+      
+        9. Integración con Otros Módulos y Buenas Prácticas
+      
+    </span>
+</a>
+<nav aria-label="9. Integración con Otros Módulos y Buenas Prácticas" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#91-modulo-path-tu-mejor-amigo">
+<span class="md-ellipsis">
+      
+        9.1. Módulo Path: Tu mejor amigo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#92-seguridad-path-traversal">
+<span class="md-ellipsis">
+      
+        9.2. Seguridad: Path Traversal
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#93-manejo-de-errores-comunes">
+<span class="md-ellipsis">
+      
+        9.3. Manejo de Errores Comunes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#94-testing-mocking">
+<span class="md-ellipsis">
+      
+        9.4. Testing: Mocking
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_8">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#10-conclusion-y-recursos">
+<span class="md-ellipsis">
+      
+        10. Conclusión y Recursos
+      
+    </span>
+</a>
+<nav aria-label="10. Conclusión y Recursos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- 05-Modulo-FS-NodeJS.md --><h1 id="05-el-modulo-fs-file-system-en-nodejs">05. El Módulo FS (File System) en Node.js</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Imagina que eres el gerente de un almacén gigantesco (tu servidor). Tienes a un empleado extremadamente rápido y eficiente llamado <strong>Event Loop</strong>, que atiende a los clientes (peticiones HTTP) en el mostrador. Pero, de vez en cuando, un cliente pide "ese expediente antiguo que está en el sótano" (leer un archivo del disco duro).</p>
+<p>Si el Event Loop baja al sótano, busca la llave, abre la caja y sube los papeles, dejará el mostrador vacío y la cola de clientes crecerá hasta la calle. <strong>Desastre total</strong>.</p>
+<p>Aquí es donde entra el sistema de archivos de Node.js. En lugar de bajar él mismo, el Event Loop le grita a un equipo de archiveros especializados (el <em>Thread Pool</em> de libuv): <em>"¡Traedme el archivo X, avísame cuando lo tengas!"</em>. Mientras ellos trabajan, el Event Loop sigue atendiendo clientes.</p>
+<p>Como vimos en el tema anterior (<strong>04 - Timers y Asincronía</strong>), dominar esta delegación es la clave del éxito. En este tema, aprenderemos a controlar el disco duro de tu servidor sin congelar la aplicación.</p>
+<hr/>
+<h2 id="1-introduccion-al-modulo-fs">1. Introducción al Módulo FS</h2>
+<p>El módulo <code>fs</code> (File System) es la navaja suiza de Node.js para interactuar con el disco duro. Es un módulo <em>core</em> (nativo), por lo que no necesitas instalar nada extra con npm.</p>
+<h3 id="11-proposito-y-alcance">1.1. Propósito y alcance</h3>
+<p>Su objetivo es permitir que JavaScript, un lenguaje que nació encerrado en la "jaula" del navegador, pueda salir y manipular el sistema operativo.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: Modelo POSIX</p>
+<p>Node.js modela sus operaciones basándose en <strong>POSIX</strong> (Portable Operating System Interface). Esto significa que intenta estandarizar cómo "hablamos" con el disco, ya sea que tu código corra en Windows, Linux o macOS. Sin embargo, no siempre es perfecto y hay discrepancias que veremos.</p>
+</div>
+<h3 id="12-arquitectura-y-fundamentos">1.2. Arquitectura y fundamentos</h3>
+<ul>
+<li><strong>Rutas (Paths):</strong> El sistema necesita saber <em>dónde</em> buscar.<ul>
+<li><strong>Absolutas:</strong> Desde la raíz del disco (<code>C:\Users\Juan...</code> o <code>/home/juan...</code>).</li>
+<li><strong>Relativas:</strong> Desde donde se ejecuta el script (<code>./data/archivo.txt</code>).</li>
+</ul>
+</li>
+<li><strong>Buffers:</strong> Node.js no lee "texto" por defecto, lee datos binarios crudos. Si no especificas un formato (encoding), recibirás un <code>Buffer</code> (una tira de bytes hexadecimales) en lugar de un <code>string</code>.</li>
+</ul>
+<h3 id="13-importacion-recomendada">1.3. Importación Recomendada</h3>
+<p>Desde Node.js 16+, y reafirmado en 2024/2025, la buena práctica es usar el prefijo de protocolo <code>node:</code>. Esto evita conflictos con paquetes de npm que pudieran llamarse igual y es ligeramente más rápido en la carga.</p>
+<p><strong>Ejemplo 1: Importación moderna (ES Modules &amp; TypeScript)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// 🟢 RECOMENDADO: Uso explícito de 'node:' y promesas por defecto</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">constants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+
+<span class="c1">// Para operaciones síncronas (raras) o streams, a veces importamos la base:</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFileSync</span><span class="p">,</span><span class="w"> </span><span class="nx">createReadStream</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Uso de <code>__dirname</code> en ESM</strong>
+En CommonJS (el sistema antiguo) <code>__dirname</code> existía mágicamente. En ES Modules (el estándar actual), debemos construirlo.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:url'</span><span class="p">;</span>
+
+<span class="c1">// Recreando __dirname en ES Modules</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">dirname</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Estoy ejecutándome en: </span><span class="si">${</span><span class="nx">__dirname</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: Constantes del sistema</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">constants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+
+<span class="c1">// Verificamos si tenemos permisos de lectura (R_OK) o escritura (W_OK)</span>
+<span class="c1">// Estas constantes son máscaras de bits utilizadas por el sistema operativo</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Valor constante Lectura:'</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="p">.</span><span class="nx">R_OK</span><span class="p">);</span><span class="w"> </span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Valor constante Escritura:'</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="p">.</span><span class="nx">W_OK</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h3 id="14-las-tres-apis-disponibles">1.4. Las tres APIs disponibles</h3>
+<p>Node.js es único porque ofrece <strong>tres formas distintas</strong> de hacer exactamente lo mismo. Entender cuál usar separa al junior del senior.</p>
+<ol>
+<li><strong>Callbacks (Legacy):</strong> <code>fs.readFile(path, (err, data) =&gt; ...)</code></li>
+<li><strong>Síncrona (Blocking):</strong> <code>fs.readFileSync(path)</code></li>
+<li><strong>Promesas (Modern):</strong> <code>await fs.readFile(path)</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Callbacks</th>
+<th style="text-align: left;">Síncrona</th>
+<th style="text-align: left;">Promesas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Complejidad</strong></td>
+<td style="text-align: left;">Media (Callback Hell)</td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Baja/Media</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bloquea Event Loop</strong></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>SÍ (Peligro)</strong></td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Manejo de Errores</strong></td>
+<td style="text-align: left;"><code>if (err)</code></td>
+<td style="text-align: left;"><code>try/catch</code></td>
+<td style="text-align: left;"><code>try/catch</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso Recomendado</strong></td>
+<td style="text-align: left;">Rendimiento extremo</td>
+<td style="text-align: left;">Scripts CLI / Config</td>
+<td style="text-align: left;"><strong>General (App Web)</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concepto</th>
+<th style="text-align: left;">Buffer</th>
+<th style="text-align: left;">String (utf8)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>¿Qué es?</strong></td>
+<td style="text-align: left;">Datos binarios crudos (bytes)</td>
+<td style="text-align: left;">Texto legible por humanos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso</strong></td>
+<td style="text-align: left;">Imágenes, PDFs, Zips</td>
+<td style="text-align: left;">JSON, HTML, TXT, Logs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Velocidad</strong></td>
+<td style="text-align: left;">Más rápido (sin conversión)</td>
+<td style="text-align: left;">Ligeramente más lento</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-arquitectura-fs">Diagrama de Arquitectura FS</h4>
+<pre class="mermaid"><code>graph TD
+    subgraph JS["Tu Código JavaScript"]
+        API_P["API Promesas"]
+        API_C["API Callbacks"]
+        API_S["API Síncrona"]
+    end
+
+    subgraph NODE["Node.js Internals"]
+        V8["Motor V8"]
+        Bindings["C++ Bindings"]
+    end
+
+    subgraph LIBUV["Libuv &amp; OS"]
+        EL["Event Loop"]
+        TP["Thread Pool (4 workers default)"]
+        FS["Sistema de Archivos OS"]
+    end
+
+    API_P --&gt; V8
+    API_C --&gt; V8
+    API_S --&gt; V8
+
+    V8 --&gt; Bindings
+    Bindings --&gt; EL
+
+    %% Flujo Async
+    EL -.-&gt;|"Delega Tarea"| TP
+    TP --&gt;|"Operación Bloqueante I/O"| FS
+    FS --&gt;|"Retorna Datos"| TP
+    TP -.-&gt;|"Callback/Promesa resuelta"| EL
+
+    %% Flujo Sync
+    API_S ==&gt;|"⛔ BLOQUEA EL HILO PRINCIPAL"| FS</code></pre>
+<h3 id="preguntas-reflexivas">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Por qué crees que Node.js mantiene tres APIs diferentes en lugar de eliminar las antiguas?</li>
+<li>Si importas <code>node:fs</code> sin especificar <code>/promises</code>, ¿qué API estás recibiendo por defecto?</li>
+<li>¿Qué pasaría si intentas leer un archivo <code>.png</code> forzando el encoding <code>utf-8</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="2-las-tres-apis-de-fs-diferencias-y-cuando-usar-cada-una">2. Las Tres APIs de FS: Diferencias y Cuándo Usar Cada Una</h2>
+<p>Elegir la API incorrecta es la causa #1 de cuellos de botella en servidores Node.js.</p>
+<h3 id="21-api-sincrona-bloqueante">2.1. API Síncrona (Bloqueante)</h3>
+<p>Los métodos terminados en <code>Sync</code> (ej: <code>readFileSync</code>) detienen la ejecución de JavaScript hasta que el disco responde.</p>
+<div class="admonition danger">
+<p class="admonition-title">¡Cuidado con el Bloqueo!</p>
+<p>Si usas <code>readFileSync</code> en una ruta de una API REST (ej: Express o Fastify), <strong>nadie más podrá usar tu servidor</strong> hasta que ese archivo se lea. Si el disco tarda 50ms, tu servidor queda congelado 50ms.</p>
+</div>
+<p><strong>Ejemplo 1: Uso Legítimo (Carga de Configuración)</strong>
+Es aceptable usar Sync <strong>solo al inicio</strong> de la aplicación, antes de empezar a escuchar peticiones.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFileSync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Bloqueamos a propósito: la app no puede arrancar sin config</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">rawData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">'./config.json'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawData</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'✅ Configuración cargada:'</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">dbName</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'❌ Error crítico: No se pudo leer config.json'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Cerramos la app</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="22-api-de-callbacks-asincrona-tradicional">2.2. API de Callbacks (Asíncrona Tradicional)</h3>
+<p>Usa el patrón "Error-First Callback". Es muy eficiente, pero conduce al "Callback Hell" si anidas muchas operaciones.</p>
+<p><strong>Ejemplo 2: Lectura con Callback</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Nota: sin /promises</span>
+
+<span class="c1">// El código sigue ejecutándose inmediatamente después de llamar a readFile</span>
+<span class="nx">readFile</span><span class="p">(</span><span class="s1">'./archivo.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error de lectura:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Contenido recibido:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'👋 Esto se imprime ANTES que el contenido del archivo'</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h3 id="23-api-de-promesas-el-estandar-moderno">2.3. API de Promesas (El Estándar Moderno)</h3>
+<p>Desde <code>node:fs/promises</code>. Permite usar <code>async/await</code>, haciendo el código legible como si fuera síncrono, pero sin bloquear el Event Loop.</p>
+<p><strong>Ejemplo 3: Lectura Secuencial con Async/Await</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFile</span><span class="p">,</span><span class="w"> </span><span class="nx">writeFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">duplicarArchivo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Leemos (No bloquea otros procesos)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">contenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'./original.txt'</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. Procesamos</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">nuevoContenido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">contenido</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 3. Escribimos</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">'./copia_mayus.txt'</span><span class="p">,</span><span class="w"> </span><span class="nx">nuevoContenido</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'✨ Proceso completado'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Algo falló:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">duplicarArchivo</span><span class="p">();</span>
+</code></pre></div><p></p>
+<h3 id="24-comparativa-de-rendimiento">2.4. Comparativa de Rendimiento</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">API</th>
+<th style="text-align: left;">Latencia (Tiempo de respuesta)</th>
+<th style="text-align: left;">Throughput (Peticiones/segundo)</th>
+<th style="text-align: left;">Legibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Sync</strong></td>
+<td style="text-align: left;">Baja (en scripts simples)</td>
+<td style="text-align: left;"><strong>Pésima</strong> (en servidores)</td>
+<td style="text-align: left;">Alta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Callback</strong></td>
+<td style="text-align: left;"><strong>Mínima</strong></td>
+<td style="text-align: left;"><strong>Máxima</strong></td>
+<td style="text-align: left;">Baja</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Promises</strong></td>
+<td style="text-align: left;">Baja</td>
+<td style="text-align: left;">Muy Alta (ligeramente menor que callbacks)</td>
+<td style="text-align: left;"><strong>Muy Alta</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="preguntas-reflexivas_1">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>En un servidor web con 10,000 usuarios concurrentes, ¿qué efecto tendría usar <code>writeFileSync</code> para guardar un log de cada visita?</li>
+<li>¿Por qué <code>process.exit(1)</code> es aceptable en el ejemplo síncrono de configuración pero terrible en una ruta de API?</li>
+<li>Transforma mentalmente el Ejemplo 3 (Promesas) a Callbacks. ¿Cuántos niveles de indentación (pirámide) tendrías?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="3-operaciones-basicas-de-lectura-y-escritura">3. Operaciones Básicas de Lectura y Escritura</h2>
+<p>Vamos a mancharnos las manos manipulando archivos. Usaremos preferentemente la API de promesas.</p>
+<h3 id="31-lectura-de-archivos-readfile">3.1. Lectura de Archivos (<code>readFile</code>)</h3>
+<p>Permite leer todo el contenido de un archivo en memoria.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ojo con la Memoria (RAM)</p>
+<p><code>readFile</code> carga <strong>todo</strong> el archivo en la RAM. Si lees un video de 4GB y tu servidor tiene 2GB de RAM, la aplicación colapsará (Crash OOM - Out Of Memory). Para archivos grandes, usaremos Streams (Punto 7).</p>
+</div>
+<p><strong>Ejemplo 1: Lectura de JSON con tipado</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">UserData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getUser</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserData</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'./users.json'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">encoding</span><span class="o">:</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">UserData</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Si el archivo no existe (ENOENT), retornamos null</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ENOENT'</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="32-escritura-de-archivos-writefile">3.2. Escritura de Archivos (<code>writeFile</code>)</h3>
+<p>Crea un archivo nuevo o <strong>sobrescribe</strong> completamente el existente.</p>
+<p><strong>Ejemplo 2: Escritura segura (Flag 'wx')</strong>
+A veces no queremos sobrescribir accidentalmente un archivo importante. Usamos el flag <code>wx</code> (Write Exclusive). Falla si el archivo ya existe.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">writeFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">crearConfiguracionInicial</span><span class="p">(</span><span class="nx">datos</span><span class="o">:</span><span class="w"> </span><span class="kt">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 'wx': Falla si el path ya existe</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">writeFile</span><span class="p">(</span><span class="s1">'./config.json'</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">datos</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">flag</span><span class="o">:</span><span class="w"> </span><span class="s1">'wx'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Archivo creado.'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'EEXIST'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">'⚠️ El archivo ya existe, no se sobrescribió.'</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error de escritura:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="33-anadir-contenido-appendfile">3.3. Añadir contenido (<code>appendFile</code>)</h3>
+<p>Ideal para logs. Agrega datos al final del archivo sin borrar lo anterior.</p>
+<p><strong>Ejemplo 3: Sistema de Logging simple</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">appendFile</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">logActivity</span><span class="p">(</span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">linea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`[</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">mensaje</span><span class="si">}</span><span class="sb">\n`</span><span class="p">;</span><span class="w"> </span><span class="c1">// Importante el salto de línea \n</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">appendFile</span><span class="p">(</span><span class="s1">'./server.log'</span><span class="p">,</span><span class="w"> </span><span class="nx">linea</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'No se pudo escribir el log:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso: await logActivity("Usuario logueado");</span>
+</code></pre></div><p></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Si el archivo no existe...</th>
+<th style="text-align: left;">Si el archivo existe...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>writeFile</code></td>
+<td style="text-align: left;">Lo crea</td>
+<td style="text-align: left;">Lo <strong>borra</strong> y escribe lo nuevo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>writeFile</code> (flag 'wx')</td>
+<td style="text-align: left;">Lo crea</td>
+<td style="text-align: left;">Lanza error <code>EEXIST</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>appendFile</code></td>
+<td style="text-align: left;">Lo crea</td>
+<td style="text-align: left;">Agrega al final</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preguntas-reflexivas_2">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Qué diferencia hay entre usar <code>JSON.stringify</code> antes de escribir o pasar el objeto directo a <code>writeFile</code>? (Pista: <code>writeFile</code> espera string, buffer o Uint8Array).</li>
+<li>Si ejecutas <code>writeFile</code> y <code>readFile</code> en paralelo (sin <code>await</code> entre ellos) sobre el mismo archivo, ¿qué resultado obtendrías?</li>
+<li>¿Por qué es importante añadir <code>\n</code> manualmente al usar <code>appendFile</code> para logs de texto?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="4-gestion-de-directorios-y-estructuras">4. Gestión de Directorios y Estructuras</h2>
+<p>Organizar los archivos es tan importante como crearlos.</p>
+<h3 id="41-creacion-mkdir">4.1. Creación (<code>mkdir</code>)</h3>
+<p>La función clave aquí es <code>recursive: true</code>. Nos permite crear rutas profundas de una sola vez (ej: <code>a/b/c</code>) sin tener que crear <code>a</code>, luego <code>b</code>, etc.</p>
+<p><strong>Ejemplo 1: Crear estructura de carpetas</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">mkdir</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setupProject</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'src/controllers'</span><span class="p">,</span><span class="w"> </span><span class="s1">'src/models'</span><span class="p">,</span><span class="w"> </span><span class="s1">'logs'</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">dir</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">dirs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// recursive: true evita error si la carpeta ya existe</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">mkdir</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">recursive</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`📁 Carpeta asegurada: </span><span class="si">${</span><span class="nx">dir</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="42-eliminacion-rm-vs-rmdir">4.2. Eliminación (<code>rm</code> vs <code>rmdir</code>)</h3>
+<p>Antiguamente usábamos <code>rmdir</code>. Ahora se recomienda <code>rm</code>, que es más parecido al comando de UNIX <code>rm -rf</code>.</p>
+<p><strong>Ejemplo 2: Limpieza de temporales</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">rm</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">limpiarTemp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// force: true evita error si no existe. </span>
+<span class="w">    </span><span class="c1">// recursive: true borra carpetas con contenido.</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">rm</span><span class="p">(</span><span class="s1">'./temp'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">recursive</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="nx">force</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'🧹 Temporales eliminados'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error al limpiar:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="43-listado-readdir">4.3. Listado (<code>readdir</code>)</h3>
+<p>Para saber qué hay dentro de una carpeta.</p>
+<p><strong>Ejemplo 3: Escanear directorio distinguiendo tipos</strong>
+Usar <code>withFileTypes: true</code> es más eficiente que leer los nombres y luego hacer un <code>stat</code> de cada uno. Devuelve objetos <code>Dirent</code> en lugar de strings.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readdir</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">listarContenido</span><span class="p">(</span><span class="nx">ruta</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">entradas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">readdir</span><span class="p">(</span><span class="nx">ruta</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">withFileTypes</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Contenido de </span><span class="si">${</span><span class="nx">ruta</span><span class="si">}</span><span class="sb">:`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">entrada</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">entradas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">icono</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">entrada</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">'📁'</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">'📄'</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">icono</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">entrada</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'No se pudo leer el directorio:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="preguntas-reflexivas_3">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Qué sucede si intentas usar <code>rmdir</code> (sin <code>rm</code>) en una carpeta que contiene archivos?</li>
+<li>¿Por qué <code>withFileTypes: true</code> en <code>readdir</code> mejora el rendimiento en directorios grandes?</li>
+<li>Si usas <code>mkdir</code> sin <code>recursive: true</code> para crear <code>./logs/2025/enero</code>, y <code>./logs</code> no existe, ¿qué error obtienes?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="5-manipulacion-de-archivos-individuales">5. Manipulación de Archivos Individuales</h2>
+<p>Operaciones del día a día: borrar, mover, renombrar y copiar.</p>
+<h3 id="51-eliminacion-y-renombrado-unlink-rename">5.1. Eliminación y Renombrado (<code>unlink</code>, <code>rename</code>)</h3>
+<p><code>unlink</code> es el nombre técnico para "borrar archivo" (desvincularlo del sistema de archivos). <code>rename</code> sirve tanto para cambiar el nombre como para <strong>mover</strong> el archivo a otra carpeta.</p>
+<p><strong>Ejemplo 1: Mover y renombrar (Cut &amp; Paste)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">rename</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">archivarLog</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'./logs/actual.log'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'./logs/historico/2024-log.txt'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">rename</span><span class="p">(</span><span class="nx">origen</span><span class="p">,</span><span class="w"> </span><span class="nx">destino</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Log archivado correctamente.'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Fallo al mover:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="52-copiar-copyfile">5.2. Copiar (<code>copyFile</code>)</h3>
+<p>A veces necesitamos duplicar sin alterar el original.</p>
+<p><strong>Ejemplo 2: Backup seguro</strong>
+Usamos constantes (<code>COPYFILE_EXCL</code>) para evitar destruir un backup previo por error.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">copyFile</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span><span class="w"> </span><span class="c1">// constants viene del callback API</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">copyFile</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">copyFileAsync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">backupDB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// COPYFILE_EXCL: Falla si destino ya existe</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">copyFileAsync</span><span class="p">(</span><span class="s1">'db.sqlite'</span><span class="p">,</span><span class="w"> </span><span class="s1">'db.backup.sqlite'</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="p">.</span><span class="nx">COPYFILE_EXCL</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Backup realizado.'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error backup:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="53-metadatos-stat-vs-lstat">5.3. Metadatos (<code>stat</code> vs <code>lstat</code>)</h3>
+<p>Para saber el tamaño, fecha de creación o permisos.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip Profesional: <code>stat</code> vs <code>lstat</code></p>
+<ul>
+<li><code>stat</code>: Si apuntas a un enlace simbólico (acceso directo), te da info del <strong>archivo real</strong>.</li>
+<li><code>lstat</code>: Te da info del <strong>enlace simbólico</strong> en sí mismo.</li>
+</ul>
+</div>
+<p><strong>Ejemplo 3: Inspeccionar archivo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">stat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">checkSize</span><span class="p">(</span><span class="nx">archivo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">stat</span><span class="p">(</span><span class="nx">archivo</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sizeMB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">datos</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mf">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Tamaño: </span><span class="si">${</span><span class="nx">sizeMB</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Modificado: </span><span class="si">${</span><span class="nx">datos</span><span class="p">.</span><span class="nx">mtime</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Es archivo?: </span><span class="si">${</span><span class="nx">datos</span><span class="p">.</span><span class="nx">isFile</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Equivalente CLI (Linux)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>unlink</code></td>
+<td style="text-align: left;">Borrar archivo</td>
+<td style="text-align: left;"><code>rm archivo</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rename</code></td>
+<td style="text-align: left;">Mover/Renombrar</td>
+<td style="text-align: left;"><code>mv origen destino</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>copyFile</code></td>
+<td style="text-align: left;">Copiar</td>
+<td style="text-align: left;"><code>cp origen destino</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>stat</code></td>
+<td style="text-align: left;">Ver info</td>
+<td style="text-align: left;"><code>ls -l</code> / <code>stat</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="preguntas-reflexivas_4">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>Si intentas hacer <code>rename('./a.txt', './carpeta_inexistente/b.txt')</code>, ¿qué sucede?</li>
+<li>¿Por qué crees que el comando de borrado se llama <code>unlink</code> y no <code>delete</code>? (Pista: tiene que ver con los inodos de Linux).</li>
+<li>¿Para qué situación usarías <code>lstat</code> en lugar de <code>stat</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="6-control-de-acceso-y-permisos">6. Control de Acceso y Permisos</h2>
+<p>Seguridad ante todo. No siempre tu script tendrá permiso para leer o escribir donde quiera.</p>
+<h3 id="61-verificacion-access">6.1. Verificación (<code>access</code>)</h3>
+<p>Comprueba si tenemos visibilidad sobre un archivo.</p>
+<div class="admonition note">
+<p class="admonition-title">Condición de Carrera (Race Condition)</p>
+<p><strong>NO HAGAS ESTO:</strong> <code>if (await access(file)) { await readFile(file) }</code>.
+Entre el chequeo (<code>access</code>) y la lectura (<code>readFile</code>), otro proceso podría haber borrado el archivo.
+<strong>MEJOR:</strong> Intenta leer directamente y maneja el error <code>try/catch</code>.</p>
+</div>
+<p><strong>Ejemplo 1: Verificación (Solo para UI o chequeos no críticos)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">access</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">esEjecutable</span><span class="p">(</span><span class="nx">archivo</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Verificamos permiso de ejecución (X_OK)</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">access</span><span class="p">(</span><span class="nx">archivo</span><span class="p">,</span><span class="w"> </span><span class="nx">constants</span><span class="p">.</span><span class="nx">X_OK</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">archivo</span><span class="si">}</span><span class="sb"> se puede ejecutar.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">archivo</span><span class="si">}</span><span class="sb"> NO es ejecutable o no existe.`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="62-modificacion-chmod-chown">6.2. Modificación (<code>chmod</code>, <code>chown</code>)</h3>
+<p>Cambiar permisos (<code>chmod</code>) o propietario (<code>chown</code>).</p>
+<p><strong>Ejemplo 2: Hacer un script privado (Solo lectura/escritura para el dueño)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">chmod</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">protegerClaves</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 0o600: Dueño (rw-), Grupo (---), Otros (---)</span>
+<span class="w">  </span><span class="c1">// Usamos notación octal (0o)</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">chmod</span><span class="p">(</span><span class="s1">'./claves_secretas.pem'</span><span class="p">,</span><span class="w"> </span><span class="mo">0o600</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Permisos restringidos.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="63-nuevo-modelo-de-permisos-nodejs-2022">6.3. Nuevo Modelo de Permisos (Node.js 20/22+)</h3>
+<p>Inspirado en Deno, Node.js ahora permite restringir qué puede hacer tu propio script mediante flags al ejecutarlo. Esto es vital para seguridad.</p>
+<p><strong>Ejemplo 3: Ejecución restringida (CLI)</strong></p>
+<p>No es código TypeScript, sino cómo ejecutas tu script en la terminal:</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="c1"># Solo permitimos leer en la carpeta /tmp y escribir en ./logs</span>
+node<span class="w"> </span>--allow-fs-read<span class="o">=</span><span class="s2">"/tmp/*"</span><span class="w"> </span>--allow-fs-write<span class="o">=</span><span class="s2">"./logs/*"</span><span class="w"> </span>index.js
+</code></pre></div>
+Si tu código <code>index.js</code> intenta leer <code>/etc/passwd</code>, Node lanzará un error de permiso denegado automáticamente.<p></p>
+<h3 id="preguntas-reflexivas_5">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Qué significan los números <code>777</code> o <code>644</code> en <code>chmod</code>?</li>
+<li>¿Por qué el patrón "Check then Act" (comprobar y luego actuar) es peligroso en sistemas de archivos?</li>
+<li>¿Cómo ayuda el modelo de permisos <code>--allow-fs-*</code> a mitigar ataques si una librería de terceros (npm) intenta robar tus datos?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="7-operaciones-avanzadas-con-streams">7. Operaciones Avanzadas con Streams</h2>
+<p>Hasta ahora hemos tratado los archivos como "bloques de datos". Pero, ¿y si el archivo es gigantesco?</p>
+<h3 id="71-problema-de-memoria-backpressure">7.1. Problema de Memoria (Backpressure)</h3>
+<p>Si lees un archivo de 10GB con <code>readFile</code>, Node intentará crear un Buffer de 10GB. Resultado: <strong>Crash</strong>.</p>
+<p>La solución es procesar el archivo <strong>por trozos (chunks)</strong>, como un grifo de agua, no como un cubo.</p>
+<h3 id="72-streams-createreadstream-createwritestream">7.2. Streams (<code>createReadStream</code>, <code>createWriteStream</code>)</h3>
+<p>Usamos streams para leer y escribir bit a bit.</p>
+<p><strong>Ejemplo 1: Copia eficiente de archivos gigantes</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReadStream</span><span class="p">,</span><span class="w"> </span><span class="nx">createWriteStream</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:stream/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">copiarGigante</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// highWaterMark: Tamaño del "cubo" (chunk). 64KB por defecto.</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">'./big-video.mp4'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">highWaterMark</span><span class="o">:</span><span class="w"> </span><span class="kt">64</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createWriteStream</span><span class="p">(</span><span class="s1">'./copia-video.mp4'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Iniciando transferencia eficiente...'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Pipeline maneja errores y limpieza automática mejor que .pipe()</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Copia finalizada sin explotar la RAM.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="73-iteradores-asincronos-for-awaitof">7.3. Iteradores Asíncronos (<code>for await...of</code>)</h3>
+<p>Podemos recorrer un stream como si fuera un array, gracias a que los streams son iterables asíncronos.</p>
+<p><strong>Ejemplo 2: Procesar línea a línea (o chunk a chunk)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createReadStream</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">analizarChunks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">'./datos.txt'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">encoding</span><span class="o">:</span><span class="w"> </span><span class="s1">'utf-8'</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">totalSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">chunk</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">stream</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">totalSize</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">chunk</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Recibido chunk de </span><span class="si">${</span><span class="nx">chunk</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> caracteres`</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Aquí podríamos buscar palabras clave sin cargar todo el archivo</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Total leído: </span><span class="si">${</span><span class="nx">totalSize</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="74-diagrama-markmap-conceptos-de-streams">7.4. Diagrama Markmap: Conceptos de Streams</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBOb2RlLmpzIFN0cmVhbXMKIyMgVGlwb3MKLSAqKlJlYWRhYmxlKio6IEZ1ZW50ZSBkZSBkYXRvcyAoZWo6IGxlY3R1cmEgYXJjaGl2bykKLSAqKldyaXRhYmxlKio6IERlc3Rpbm8gZGUgZGF0b3MgKGVqOiBlc2NyaXR1cmEgYXJjaGl2bykKLSAqKkR1cGxleCoqOiBBbWJvcyAoZWo6IHNvY2tldHMgVENQKQotICoqVHJhbnNmb3JtKio6IE1vZGlmaWNhIGRhdG9zIGFsIHBhc28gKGVqOiBjb21wcmVzacOzbiBHemlwKQoKIyMgTcOpdG9kb3MgQ2xhdmUKLSAqKnBpcGUoKSoqOiBDb25lY3RhIFJlYWRhYmxlIC0+IFdyaXRhYmxlCi0gKipwaXBlbGluZSgpKio6IFZlcnNpw7NuIHNlZ3VyYSAobWFuZWphIGVycm9yZXMpCi0gKipldmVudHMqKjogJ2RhdGEnLCAnZW5kJywgJ2Vycm9yJw==</markmap-data></div>
+<h3 id="preguntas-reflexivas_6">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Qué es el "Backpressure" en un sistema de tuberías? (Analogía hidráulica).</li>
+<li>Si tienes que comprimir un archivo de 1TB, ¿usarías <code>readFile</code> o <code>createReadStream</code>?</li>
+<li>¿Qué sucede si el stream de lectura es mucho más rápido que el de escritura?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="8-observabilidad-y-monitoreo">8. Observabilidad y Monitoreo</h2>
+<p>Podemos pedirle a Node.js que nos avise si un archivo cambia.</p>
+<h3 id="81-watch-vs-watchfile">8.1. <code>watch</code> vs <code>watchFile</code></h3>
+<ul>
+<li><code>watch</code>: Usa eventos nativos del SO. Es eficiente y rápido. (Recomendado).</li>
+<li><code>watchFile</code>: Hace <strong>polling</strong> (pregunta cada X ms: "¿Cambiaste?"). Ineficiente, usa CPU. (Evitar).</li>
+</ul>
+<h3 id="82-caso-de-uso-hot-reload">8.2. Caso de uso: Hot Reload</h3>
+<p>Imagina reiniciar tu servidor automáticamente cuando cambias la configuración.</p>
+<p><strong>Ejemplo 1: Vigilar cambios en config</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">watch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs/promises'</span><span class="p">;</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">vigilarConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">watcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./config.json'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'👀 Vigilando config.json...'</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">watcher</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Evento detectado: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventType</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Aquí recargaríamos la configuración</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'🔄 Recargando configuración...'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Nota: watch devuelve un AsyncIterator</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Watcher robusto con AbortController</strong>
+Para detener la vigilancia limpiamente.
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">watch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:fs'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AbortController</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ac</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">watcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">watch</span><span class="p">(</span><span class="s1">'./temp'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">signal</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Cambio en </span><span class="si">${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">eventType</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Detener después de 10 segundos</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">ac</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'🛑 Vigilancia detenida.'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">10000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h3 id="preguntas-reflexivas_7">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Por qué herramientas como <code>Nodemon</code> utilizan internamente mecanismos como <code>fs.watch</code>?</li>
+<li>¿Qué desventaja tiene <code>fs.watch</code> en diferentes sistemas operativos (Linux vs Mac vs Windows)? (Pista: consistencia de la API).</li>
+<li>¿Por qué el <em>polling</em> de <code>watchFile</code> consume más batería en un portátil?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="9-integracion-con-otros-modulos-y-buenas-practicas">9. Integración con Otros Módulos y Buenas Prácticas</h2>
+<p>El módulo FS no trabaja solo.</p>
+<h3 id="91-modulo-path-tu-mejor-amigo">9.1. Módulo Path: Tu mejor amigo</h3>
+<p>Jamás concatenes rutas con strings (<code>dir + '/' + file</code>). Windows usa <code>\</code>, Linux <code>/</code>. El módulo <code>path</code> lo resuelve.</p>
+<p><strong>Ejemplo 1: Rutas Cross-Platform</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
+<span class="c1">// MAL: const ruta = 'uploads/' + archivo;</span>
+<span class="c1">// BIEN:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaSegura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'uploads'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2025'</span><span class="p">,</span><span class="w"> </span><span class="s1">'img.png'</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">// Resultado Windows: uploads\2025\img.png</span>
+<span class="c1">// Resultado Linux: uploads/2025/img.png</span>
+</code></pre></div><p></p>
+<h3 id="92-seguridad-path-traversal">9.2. Seguridad: Path Traversal</h3>
+<p>Un atacante podría enviar <code>../../etc/passwd</code> como nombre de archivo para leer tus secretos.</p>
+<p><strong>Ejemplo 2: Sanitización básica</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'node:path'</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">rutaSeguraUsuario</span><span class="p">(</span><span class="nx">inputUser</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">directorioBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">'./public'</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">rutaDestino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">directorioBase</span><span class="p">,</span><span class="w"> </span><span class="nx">inputUser</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Verificamos que la ruta resultante siga estando DENTRO del directorio base</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">rutaDestino</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">directorioBase</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'🚫 Intento de hackeo (Path Traversal)'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">rutaDestino</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="93-manejo-de-errores-comunes">9.3. Manejo de Errores Comunes</h3>
+<p>No todos los errores son iguales.
+- <code>ENOENT</code>: Error No Entry (Archivo no encontrado).
+- <code>EACCES</code>: Error Access (Permiso denegado).
+- <code>EEXIST</code>: Error Exist (El archivo ya existe y no debía).</p>
+<p><strong>Ejemplo 3: Try-Catch con chequeo de código</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'no-existe.txt'</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ENOENT'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'El archivo no está, crearemos uno por defecto.'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'EACCES'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'¡No tengo permisos! Ejecuta como admin/sudo.'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span><span class="w"> </span><span class="c1">// Re-lanzar si es algo inesperado</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<h3 id="94-testing-mocking">9.4. Testing: Mocking</h3>
+<p>En tests unitarios, <strong>nunca</strong> escribas en el disco real (es lento y sucio). Usa librerías como <code>memfs</code> o haz mocks de <code>fs</code>.</p>
+<h3 id="preguntas-reflexivas_8">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Por qué es una mala práctica hardcodear <code>C:\</code> o <code>/home/</code> en tu código?</li>
+<li>Explica con tus palabras qué es un ataque de "Path Traversal".</li>
+<li>¿Cómo afecta la variable <code>UV_THREADPOOL_SIZE</code> al rendimiento de <code>fs</code> si tienes muchas operaciones concurrentes?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="10-conclusion-y-recursos">10. Conclusión y Recursos</h2>
+<p>El módulo <code>fs</code> es el puente entre tu lógica de negocio y los datos persistentes físicos.</p>
+<ol>
+<li><strong>Promesas por defecto:</strong> Usa <code>node:fs/promises</code> para casi todo.</li>
+<li><strong>Streams para volumen:</strong> Si pesa más de 10-20MB, usa Streams.</li>
+<li><strong>Cross-Platform:</strong> Usa siempre el módulo <code>path</code>.</li>
+<li><strong>No bloquees:</strong> Evita <code>*Sync</code> en rutas calientes.</li>
+</ol>
+<p>Ahora que sabes manejar archivos, el siguiente paso lógico es ¿dónde guardar esos archivos si mi servidor escala a 10 máquinas? (Spoiler: Cloud Storage como S3), o ¿cómo estructurar esos datos? (Spoiler: Bases de Datos).</p>
+<h3 id="para-saber-mas">🔗 Para Saber Más</h3>
+<ul>
+<li><a href="https://nodejs.org/docs/latest/api/fs.html">Documentación Oficial Node.js - File System</a></li>
+<li><a href="https://nodejs.org/api/permissions.html">Node.js Permissions Model (Experimental)</a></li>
+<li><a href="https://nodesource.com/blog/understanding-streams-in-nodejs/">Guía Visual: Node.js Streams</a></li>
+</ul>
+<hr/>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

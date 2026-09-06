@@ -1,0 +1,3094 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/07-GestionPaquetes-NPM/" rel="canonical"/>
+<link href="../06-ModulosHTTP-HTTPS/" rel="prev"/>
+<link href="../08-Nodemon/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>07 - Gestión de Paquetes y NPM - DWES</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script><script src="../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#gestion-de-paquetes-con-npm">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              07 - Gestión de Paquetes y NPM
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-a-npm">
+<span class="md-ellipsis">
+      
+        Introducción a npm
+      
+    </span>
+</a>
+<nav aria-label="Introducción a npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#por-que-usar-un-gestor-de-paquetes">
+<span class="md-ellipsis">
+      
+        ¿Por qué usar un gestor de paquetes?
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-npm-exactamente">
+<span class="md-ellipsis">
+      
+        1. ¿Qué es npm exactamente?
+      
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es npm exactamente?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposito-fundamental">
+<span class="md-ellipsis">
+      
+        Propósito fundamental
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-y-verificacion">
+<span class="md-ellipsis">
+      
+        Instalación y verificación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-crear-un-paquete-con-npm">
+<span class="md-ellipsis">
+      
+        2. Crear un paquete con npm
+      
+    </span>
+</a>
+<nav aria-label="2. Crear un paquete con npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#npm-init-creando-desde-cero">
+<span class="md-ellipsis">
+      
+        npm init: creando desde cero
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-inicializacion">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo: Inicialización
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-introduccion-al-formato-json">
+<span class="md-ellipsis">
+      
+        3. Introducción al formato JSON
+      
+    </span>
+</a>
+<nav aria-label="3. Introducción al formato JSON" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-basica-de-json">
+<span class="md-ellipsis">
+      
+        Estructura básica de JSON
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_1">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-estructura-de-packagejson">
+<span class="md-ellipsis">
+      
+        4. Estructura de package.json
+      
+    </span>
+</a>
+<nav aria-label="4. Estructura de package.json" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapa-mental-anatomia-del-packagejson">
+<span class="md-ellipsis">
+      
+        Mapa Mental: Anatomía del package.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#campos-esenciales">
+<span class="md-ellipsis">
+      
+        Campos esenciales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#versionado-semantico-semver">
+<span class="md-ellipsis">
+      
+        Versionado Semántico (SemVer)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-package-lockjson-el-guardian-de-la-consistencia">
+<span class="md-ellipsis">
+      
+        5. package-lock.json: El guardián de la consistencia
+      
+    </span>
+</a>
+<nav aria-label="5. package-lock.json: El guardián de la consistencia" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#por-que-necesitas-package-lockjson">
+<span class="md-ellipsis">
+      
+        ¿Por qué necesitas package-lock.json?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-de-package-lockjson">
+<span class="md-ellipsis">
+      
+        Estructura de package-lock.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_2">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-instalar-y-desinstalar-paquetes-con-npm">
+<span class="md-ellipsis">
+      
+        6. Instalar y desinstalar paquetes con npm
+      
+    </span>
+</a>
+<nav aria-label="6. Instalar y desinstalar paquetes con npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comandos-de-instalacion">
+<span class="md-ellipsis">
+      
+        Comandos de Instalación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-de-paquetes">
+<span class="md-ellipsis">
+      
+        Instalación de paquetes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-flujo-de-instalacion">
+<span class="md-ellipsis">
+      
+        Diagrama: Flujo de Instalación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desinstalacion-de-paquetes">
+<span class="md-ellipsis">
+      
+        Desinstalación de paquetes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_3">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-uso-avanzado-de-npm">
+<span class="md-ellipsis">
+      
+        7. Uso avanzado de npm
+      
+    </span>
+</a>
+<nav aria-label="7. Uso avanzado de npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#auditoria-de-seguridad">
+<span class="md-ellipsis">
+      
+        Auditoría de Seguridad
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-versiones-y-actualizaciones">
+<span class="md-ellipsis">
+      
+        Gestión de Versiones y Actualizaciones
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_4">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-dependencias-de-desarrollo-vs-dependencias-de-produccion">
+<span class="md-ellipsis">
+      
+        8. Dependencias de desarrollo VS dependencias de producción
+      
+    </span>
+</a>
+<nav aria-label="8. Dependencias de desarrollo VS dependencias de producción" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cual-es-la-diferencia-real">
+<span class="md-ellipsis">
+      
+        ¿Cuál es la diferencia real?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa">
+<span class="md-ellipsis">
+      
+        Tabla comparativa
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#peerdependencies-y-optionaldependencies">
+<span class="md-ellipsis">
+      
+        peerDependencies y optionalDependencies
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_5">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+<nav aria-label="Para Saber Más" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentacion-oficial">
+<span class="md-ellipsis">
+      
+        Documentación Oficial
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#seguridad-en-npm">
+<span class="md-ellipsis">
+      
+        Seguridad en npm
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#herramientas-utiles">
+<span class="md-ellipsis">
+      
+        Herramientas Útiles
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conclusion">
+<span class="md-ellipsis">
+      
+        Conclusión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-a-npm">
+<span class="md-ellipsis">
+      
+        Introducción a npm
+      
+    </span>
+</a>
+<nav aria-label="Introducción a npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#por-que-usar-un-gestor-de-paquetes">
+<span class="md-ellipsis">
+      
+        ¿Por qué usar un gestor de paquetes?
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conceptos-fundamentales">
+<span class="md-ellipsis">
+      
+        Conceptos Fundamentales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-npm-exactamente">
+<span class="md-ellipsis">
+      
+        1. ¿Qué es npm exactamente?
+      
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es npm exactamente?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#proposito-fundamental">
+<span class="md-ellipsis">
+      
+        Propósito fundamental
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-y-verificacion">
+<span class="md-ellipsis">
+      
+        Instalación y verificación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-crear-un-paquete-con-npm">
+<span class="md-ellipsis">
+      
+        2. Crear un paquete con npm
+      
+    </span>
+</a>
+<nav aria-label="2. Crear un paquete con npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#npm-init-creando-desde-cero">
+<span class="md-ellipsis">
+      
+        npm init: creando desde cero
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-inicializacion">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo: Inicialización
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-introduccion-al-formato-json">
+<span class="md-ellipsis">
+      
+        3. Introducción al formato JSON
+      
+    </span>
+</a>
+<nav aria-label="3. Introducción al formato JSON" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-basica-de-json">
+<span class="md-ellipsis">
+      
+        Estructura básica de JSON
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_1">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-estructura-de-packagejson">
+<span class="md-ellipsis">
+      
+        4. Estructura de package.json
+      
+    </span>
+</a>
+<nav aria-label="4. Estructura de package.json" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapa-mental-anatomia-del-packagejson">
+<span class="md-ellipsis">
+      
+        Mapa Mental: Anatomía del package.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#campos-esenciales">
+<span class="md-ellipsis">
+      
+        Campos esenciales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#versionado-semantico-semver">
+<span class="md-ellipsis">
+      
+        Versionado Semántico (SemVer)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-package-lockjson-el-guardian-de-la-consistencia">
+<span class="md-ellipsis">
+      
+        5. package-lock.json: El guardián de la consistencia
+      
+    </span>
+</a>
+<nav aria-label="5. package-lock.json: El guardián de la consistencia" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#por-que-necesitas-package-lockjson">
+<span class="md-ellipsis">
+      
+        ¿Por qué necesitas package-lock.json?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-de-package-lockjson">
+<span class="md-ellipsis">
+      
+        Estructura de package-lock.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_2">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-instalar-y-desinstalar-paquetes-con-npm">
+<span class="md-ellipsis">
+      
+        6. Instalar y desinstalar paquetes con npm
+      
+    </span>
+</a>
+<nav aria-label="6. Instalar y desinstalar paquetes con npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comandos-de-instalacion">
+<span class="md-ellipsis">
+      
+        Comandos de Instalación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-de-paquetes">
+<span class="md-ellipsis">
+      
+        Instalación de paquetes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-flujo-de-instalacion">
+<span class="md-ellipsis">
+      
+        Diagrama: Flujo de Instalación
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#desinstalacion-de-paquetes">
+<span class="md-ellipsis">
+      
+        Desinstalación de paquetes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_3">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-uso-avanzado-de-npm">
+<span class="md-ellipsis">
+      
+        7. Uso avanzado de npm
+      
+    </span>
+</a>
+<nav aria-label="7. Uso avanzado de npm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#auditoria-de-seguridad">
+<span class="md-ellipsis">
+      
+        Auditoría de Seguridad
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gestion-de-versiones-y-actualizaciones">
+<span class="md-ellipsis">
+      
+        Gestión de Versiones y Actualizaciones
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_4">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-dependencias-de-desarrollo-vs-dependencias-de-produccion">
+<span class="md-ellipsis">
+      
+        8. Dependencias de desarrollo VS dependencias de producción
+      
+    </span>
+</a>
+<nav aria-label="8. Dependencias de desarrollo VS dependencias de producción" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cual-es-la-diferencia-real">
+<span class="md-ellipsis">
+      
+        ¿Cuál es la diferencia real?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa">
+<span class="md-ellipsis">
+      
+        Tabla comparativa
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#peerdependencies-y-optionaldependencies">
+<span class="md-ellipsis">
+      
+        peerDependencies y optionalDependencies
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexiona_5">
+<span class="md-ellipsis">
+      
+        🧠 Reflexiona
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        Para Saber Más
+      
+    </span>
+</a>
+<nav aria-label="Para Saber Más" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentacion-oficial">
+<span class="md-ellipsis">
+      
+        Documentación Oficial
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#seguridad-en-npm">
+<span class="md-ellipsis">
+      
+        Seguridad en npm
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#herramientas-utiles">
+<span class="md-ellipsis">
+      
+        Herramientas Útiles
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conclusion">
+<span class="md-ellipsis">
+      
+        Conclusión
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="gestion-de-paquetes-con-npm">Gestión de Paquetes con npm</h1>
+<!-- Curso Completo: npm, package.json y dependencias en TypeScript -->
+<h2 id="introduccion-a-npm">Introducción a npm</h2>
+<p>npm es el <strong>corazón del ecosistema Node.js</strong>. Si JavaScript es el lenguaje, npm es la biblioteca donde vive toda la comunidad. Imagina npm como un <strong>enorme almacén de LEGO</strong>: millones de bloques (paquetes) que otros desarrolladores han construido, probado y compartido. En lugar de reinventar la rueda cada vez que quieres hacer algo, entras al almacén, tomas los bloques que necesitas y los ensamblas en tu proyecto.</p>
+<h4 id="por-que-usar-un-gestor-de-paquetes">¿Por qué usar un gestor de paquetes?</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Problema sin npm</th>
+<th style="text-align: left;">Solución con npm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Tienes que descargar archivos <code>.js</code> manualmente y meterlos en carpetas.</td>
+<td style="text-align: left;">Un solo comando (<code>npm install</code>) descarga y organiza todo.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Es difícil saber qué versión de una librería estás usando.</td>
+<td style="text-align: left;">El archivo <code>package.json</code> registra versiones exactas.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Actualizar una librería implica borrar archivos y volver a descargar.</td>
+<td style="text-align: left;"><code>npm update</code> se encarga de todo el proceso de forma segura.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Las librerías que usas pueden necesitar otras librerías (dependencias de dependencias).</td>
+<td style="text-align: left;">npm resuelve automáticamente todo el <strong>árbol de dependencias</strong>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Dato Curioso: El Registro de npm</p>
+<p>El registro de npm alberga más de <strong>2 millones de paquetes</strong>. Es el registro de software más grande del mundo, superando a los de Java (Maven), Python (PyPI) o PHP (Composer). Es la infraestructura central de prácticamente todas las aplicaciones web modernas.</p>
+</div>
+<hr/>
+<h2 id="conceptos-fundamentales">Conceptos Fundamentales</h2>
+<p>Para movernos con soltura en el ecosistema de Node.js, debemos entender los pilares de su gestión de dependencias.</p>
+<div class="admonition note">
+<p class="admonition-title">Definición: npm (Node Package Manager)</p>
+<p>Es el gestor de paquetes por defecto para Node.js. Se compone de tres partes: un sitio web para buscar paquetes, un registro (una base de datos gigante) y una <strong>interfaz de línea de comandos (CLI)</strong> que usamos para instalar y gestionar librerías en nuestros proyectos.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Paquete (Package)</p>
+<p>Es una carpeta que contiene código (normalmente una librería de JavaScript/TypeScript) y un archivo <code>package.json</code> que lo describe. Es la unidad básica de software que compartimos y reutilizamos en la comunidad.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Definición: Dependencia (Dependency)</p>
+<p>Es un paquete externo que tu proyecto <strong>necesita para funcionar</strong>. Por ejemplo, si usas una librería para conectar con una base de datos, esa librería es una dependencia de tu proyecto.</p>
+</div>
+<hr/>
+<h2 id="1-que-es-npm-exactamente">1. ¿Qué es npm exactamente?</h2>
+<p>npm consta de tres componentes esenciales:</p>
+<div class="admonition note">
+<p class="admonition-title">Los tres pilares de npm</p>
+<ul>
+<li><strong>Sitio web</strong> (npmjs.com): descubres paquetes, creas tu perfil, gestionas organizaciones</li>
+<li><strong>CLI (Command Line Interface)</strong>: herramienta que ejecutas en terminal, cómo interactúas con npm</li>
+<li><strong>Registry (Registro)</strong>: base de datos pública con millones de paquetes y sus metadatos</li>
+</ul>
+</div>
+<h3 id="proposito-fundamental">Propósito fundamental</h3>
+<p>npm permite:<br/>
+    - <strong>Reutilizar código</strong>: no escribes <code>fetch</code> desde cero, usas un paquete<br/>
+    - <strong>Gestionar versiones</strong>: controla qué versión de cada paquete usas<br/>
+    - <strong>Compartir tu código</strong>: publica tus propios paquetes para que otros los usen<br/>
+    - <strong>Automatizar tareas</strong>: desde compilar código hasta ejecutar tests<br/>
+    - <strong>Trabajar en equipo</strong>: asegura que todos usan las mismas versiones (lock files)<br/></p>
+<p><strong>npm vs Otros Gestores</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;"><strong>npm</strong></th>
+<th style="text-align: left;"><strong>Yarn</strong></th>
+<th style="text-align: left;"><strong>pnpm</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Origen</strong></td>
+<td style="text-align: left;">El original, viene con Node.</td>
+<td style="text-align: left;">Creado por Facebook para mejorar velocidad.</td>
+<td style="text-align: left;">Enfocado en eficiencia de espacio en disco.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Instalación</strong></td>
+<td style="text-align: left;">Automática con Node.js.</td>
+<td style="text-align: left;">Requiere instalación extra.</td>
+<td style="text-align: left;">Requiere instalación extra.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Estructura</strong></td>
+<td style="text-align: left;"><code>node_modules</code> plano (versiones modernas).</td>
+<td style="text-align: left;"><code>node_modules</code> plano.</td>
+<td style="text-align: left;"><code>node_modules</code> con enlaces simbólicos (ahorra espacio).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso en FP</strong></td>
+<td style="text-align: left;"><strong>Estándar educativo</strong>.</td>
+<td style="text-align: left;">Muy común en empresas React.</td>
+<td style="text-align: left;">Tendencia actual por rapidez.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="instalacion-y-verificacion">Instalación y verificación</h3>
+<p>Node.js incluye npm de forma automática. Para verificar que lo tienes:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ver versión de npm</span>
+npm<span class="w"> </span>--version
+<span class="c1"># Salida típica: 10.5.0 (en 2025)</span>
+
+<span class="c1"># Ver versión de Node.js</span>
+node<span class="w"> </span>--version
+<span class="c1"># Salida típica: v20.11.0</span>
+
+<span class="c1"># Obtener información del usuario npm (si estás logueado)</span>
+npm<span class="w"> </span>whoami
+</code></pre></div>
+<h3 id="reflexiona">🧠 Reflexiona</h3>
+<ol>
+<li><strong>Analogía:</strong> Si npm es el catálogo de piezas, ¿qué sería el archivo <code>package.json</code> en nuestra analogía del coche de carreras?</li>
+<li><strong>Ecosistema:</strong> ¿Qué ventajas e inconvenientes crees que tiene el hecho de que cualquier persona pueda subir un paquete al registro de npm?</li>
+<li><strong>Seguridad:</strong> ¿Cómo crees que npm ayuda a mantener la seguridad de las aplicaciones si una librería que usamos tiene una vulnerabilidad conocida?</li>
+<li><strong>Práctica:</strong> Ejecuta <code>npm -v</code> en tu terminal. Si tu versión es inferior a la 10, investiga cómo podrías actualizar npm a la última versión estable.</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="2-crear-un-paquete-con-npm">2. Crear un paquete con npm</h2>
+<p>La forma más simple de crear un proyecto npm es inicializarlo. npm te hará preguntas y creará un archivo <code>package.json</code> con tus respuestas.</p>
+<h3 id="npm-init-creando-desde-cero">npm init: creando desde cero</h3>
+<p>Cuando ejecutamos <code>npm init</code>, se nos preguntará por:<br/>
+- <strong>package name:</strong> El nombre de tu proyecto (debe ser en minúsculas y sin espacios).<br/>
+- <strong>version:</strong> Siguiendo el estándar de <em>Semantic Versioning</em> (ej. 1.0.0).<br/>
+- <strong>description:</strong> Una breve explicación de qué hace tu app.<br/>
+- <strong>entry point:</strong> El archivo principal (ej. <code>index.js</code> o <code>dist/main.js</code> en TS).<br/>
+- <strong>test command:</strong> El comando para ejecutar tus tests.<br/>
+- <strong>git repository:</strong> La URL de tu repositorio.<br/>
+- <strong>keywords:</strong> Etiquetas para encontrar tu paquete.<br/>
+- <strong>author:</strong> Tu nombre o empresa.<br/>
+- <strong>license:</strong> Normalmente MIT o ISC para código abierto.<br/></p>
+<p>La inicialización guiada es perfecta cuando comienzas un proyecto nuevo:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear carpeta del proyecto</span>
+mkdir<span class="w"> </span>mi-proyecto-ts
+<span class="nb">cd</span><span class="w"> </span>mi-proyecto-ts
+
+<span class="c1"># Inicializar npm (modo interactivo)</span>
+npm<span class="w"> </span>init
+<span class="c1"># Te hará preguntas sobre:</span>
+<span class="c1"># - package name: (mi-proyecto-ts)</span>
+<span class="c1"># - version: (1.0.0)</span>
+<span class="c1"># - description: Mi primer proyecto con TypeScript</span>
+<span class="c1"># - entry point: (index.js)</span>
+<span class="c1"># - test command:</span>
+<span class="c1"># - git repository:</span>
+<span class="c1"># - keywords:</span>
+<span class="c1"># - author: Tu nombre</span>
+<span class="c1"># - license: (ISC)</span>
+
+<span class="c1"># O versión rápida (acepta todos los defaults)</span>
+npm<span class="w"> </span>init<span class="w"> </span>-y
+<span class="c1"># Crea package.json con valores por defecto</span>
+</code></pre></div>
+<p><strong>Ejemplo 1: Inicialización interactiva paso a paso</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Terminal output:</span>
+<span class="c1"># Press ^C at any time to quit.</span>
+<span class="c1"># package name: (my-app) mi-app-node</span>
+<span class="c1"># version: (1.0.0) 1.0.0</span>
+<span class="c1"># description: Una aplicación increíble en Node.js</span>
+<span class="c1"># entry point: (index.js) src/index.ts</span>
+<span class="c1"># test command: npm run test</span>
+<span class="c1"># git repository: https://github.com/usuario/mi-app</span>
+<span class="c1"># keywords: node,typescript,webapp</span>
+<span class="c1"># author: Juan Pérez</span>
+<span class="c1"># license: (ISC) MIT</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Inicialización rápida</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+<span class="c1"># Crea automáticamente con valores por defecto</span>
+<span class="c1"># {</span>
+<span class="c1">#   "name": "mi-carpeta",</span>
+<span class="c1">#   "version": "1.0.0",</span>
+<span class="c1">#   "main": "index.js",</span>
+<span class="c1">#   ...</span>
+<span class="c1"># }</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: Inicialización con prefijo de scope</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para paquetes que publicarás con tu organización</span>
+npm<span class="w"> </span>init<span class="w"> </span>--scope<span class="o">=</span>@miempresa
+
+<span class="c1"># Genera:</span>
+<span class="c1"># "name": "@miempresa/mi-paquete"</span>
+<span class="c1"># Lo que lo hace único y diferente de otros</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Consideraciones al crear paquetes</p>
+<ul>
+<li>El <strong>nombre debe ser único</strong> si lo vas a publicar</li>
+<li>Evita nombres en MAYÚSCULAS</li>
+<li>Evita caracteres especiales excepto <code>-</code> y <code>_</code></li>
+<li>Si es privado, no importa tanto, pero sigue buenas prácticas</li>
+<li>Usa nombres descriptivos y cortos</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">¡Cuidado con el nombre!</p>
+<p>Si planeas subir tu paquete a npm algún día, asegúrate de que el nombre no esté ya cogido. Puedes comprobarlo en <a href="https://www.npmjs.com">npmjs.com</a>.</p>
+</div>
+<p><strong><code>npm init</code> vs <code>npm init -y</code></strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;"><code>npm init</code></th>
+<th style="text-align: left;"><code>npm init -y</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Interacción</strong></td>
+<td style="text-align: left;">Pregunta campo por campo.</td>
+<td style="text-align: left;">No pregunta nada, asume defaults.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Personalización</strong></td>
+<td style="text-align: left;">Alta desde el principio.</td>
+<td style="text-align: left;">Baja (tienes que editar el fichero luego).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Velocidad</strong></td>
+<td style="text-align: left;">Lento (1-2 minutos).</td>
+<td style="text-align: left;">Instantáneo.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso recomendado</strong></td>
+<td style="text-align: left;">Proyectos serios / Producción.</td>
+<td style="text-align: left;">Pruebas / Demos / Ejercicios de clase.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos clave al iniciar</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: left;">Significado</th>
+<th style="text-align: left;">Recomendación TypeScript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>entry point</strong></td>
+<td style="text-align: left;">El archivo principal de ejecución.</td>
+<td style="text-align: left;">Apuntar al JS compilado (ej: <code>./dist/index.js</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>test command</strong></td>
+<td style="text-align: left;">Comando para pasar tests.</td>
+<td style="text-align: left;">Usar Jest o Vitest (<code>jest</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>author</strong></td>
+<td style="text-align: left;">Creador del paquete.</td>
+<td style="text-align: left;">Tu nombre + email.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-de-flujo-inicializacion">Diagrama de Flujo: Inicialización</h3>
+<pre class="mermaid"><code>graph TD
+    A[Inicio] --&gt; B{¿Carpeta vacía?}
+    B -- Sí --&gt; C[Ejecutar npm init]
+    B -- No --&gt; D[Cuidado: No sobrescribir]
+    C --&gt; E{¿Usar flag -y?}
+    E -- Sí --&gt; F[Generar package.json con defaults]
+    E -- No --&gt; G[Cuestionario interactivo]
+    G --&gt; H[Confirmar datos]
+    H --&gt; F
+    F --&gt; I[Proyecto listo para instalar dependencias]</code></pre>
+<p><br/></p><hr/><p></p>
+<h2 id="3-introduccion-al-formato-json">3. Introducción al formato JSON</h2>
+<p>JSON (JavaScript Object Notation) es el formato que npm usa para guardar configuración. Es simple, legible y estructurado.</p>
+<h3 id="estructura-basica-de-json">Estructura básica de JSON</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// JSON válido: pares clave-valor</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">"nombre"</span><span class="o">:</span><span class="w"> </span><span class="s2">"valor"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"numero"</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"booleano"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"array"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">],</span>
+<span class="w">  </span><span class="s2">"objeto"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"anidado"</span><span class="o">:</span><span class="w"> </span><span class="s2">"valor"</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Reglas importantes de JSON:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Regla</th>
+<th>Válido</th>
+<th>Inválido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Las claves siempre van entre comillas</strong></td>
+<td><code>"nombre": "Juan"</code></td>
+<td><code>nombre: "Juan"</code></td>
+</tr>
+<tr>
+<td><strong>Los strings van entre comillas dobles</strong></td>
+<td><code>"hola"</code></td>
+<td><code>'hola'</code> o <code>hola</code></td>
+</tr>
+<tr>
+<td><strong>Sin comas al final</strong></td>
+<td><code>"a": 1, "b": 2</code></td>
+<td><code>"a": 1, "b": 2,</code></td>
+</tr>
+<tr>
+<td><strong>Solo estos tipos de datos</strong></td>
+<td>string, number, boolean, null, array, object</td>
+<td>functions, undefined, NaN</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo 1: Validación de JSON</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ JSON VÁLIDO</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-app"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Juan"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ JSON INVÁLIDO (clave sin comillas)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="kc">na</span><span class="err">me</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-app"</span><span class="p">,</span><span class="w">  </span><span class="c1">// Error: clave debe ir entre comillas</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ JSON INVÁLIDO (comillas simples)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">'mi</span><span class="mi">-</span><span class="err">app'</span><span class="p">,</span><span class="w">  </span><span class="c1">// Error: debe ser comillas dobles</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Estructura anidada correcta</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"proyecto-complejo"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"puerto"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ssl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.18.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.0.0"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="tablas-comparativas">Tablas Comparativas</h3>
+<p><strong>JSON vs Objeto JavaScript/TypeScript</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">JSON</th>
+<th style="text-align: left;">Objeto JS/TS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Comillas en claves</strong></td>
+<td style="text-align: left;"><strong>Obligatorias</strong> (<code>"key"</code>).</td>
+<td style="text-align: left;">Opcionales (<code>key</code> o <code>"key"</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Comillas en strings</strong></td>
+<td style="text-align: left;"><strong>Solo dobles</strong> (<code>"valor"</code>).</td>
+<td style="text-align: left;">Dobles, simples o backticks (<code>'</code>, <code>"</code>, <code>`</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Comentarios</strong></td>
+<td style="text-align: left;"><strong>No permitidos</strong>.</td>
+<td style="text-align: left;">Permitidos (<code>//</code>, <code>/**/</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tipos de datos</strong></td>
+<td style="text-align: left;">Texto, número, booleano, null, array, objeto.</td>
+<td style="text-align: left;">Todo lo anterior + Funciones, Undefined, Dates, etc.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usos de JSON</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Configuración</strong></td>
+<td style="text-align: left;">Guardar preferencias de herramientas.</td>
+<td style="text-align: left;"><code>package.json</code>, <code>tsconfig.json</code>, <code>.eslintrc</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>APIs</strong></td>
+<td style="text-align: left;">Enviar y recibir datos servidor-cliente.</td>
+<td style="text-align: left;">Respuestas REST API.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Almacenamiento</strong></td>
+<td style="text-align: left;">Bases de datos NoSQL.</td>
+<td style="text-align: left;">MongoDB (usa BSON, binario de JSON).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo 3: Validar JSON desde línea de comandos</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verificar si un archivo JSON es válido</span>
+npm<span class="w"> </span>ls<span class="w">  </span><span class="c1"># Si hay error, mostrará problema en package.json</span>
+
+<span class="c1"># Con herramientas externas</span>
+node<span class="w"> </span>-e<span class="w"> </span><span class="s2">"console.log(JSON.parse(require('fs').readFileSync('package.json', 'utf8')))"</span>
+<span class="c1"># Si no hay error, JSON es válido</span>
+
+<span class="c1"># Con jq (si lo tienes instalado)</span>
+jq<span class="w"> </span>.<span class="w"> </span>package.json
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Herramientas para trabajar con JSON</p>
+<ul>
+<li><strong>VS Code</strong>: valida JSON automáticamente (rojo si hay error)</li>
+<li><strong>JSONLint.com</strong>: pega tu JSON y verifica online</li>
+<li><strong>npm ls</strong>: muestra si package.json tiene problemas</li>
+<li><strong>npx json-lint</strong>: comando directo desde npm</li>
+</ul>
+</div>
+<h3 id="reflexiona_1">🧠 Reflexiona</h3>
+<pre><code>1. Si JSON no admite funciones, ¿cómo definimos los scripts en `package.json`? (Pista: son strings que la terminal interpreta).
+2. ¿Por qué crees que JSON ganó la batalla a XML como formato de intercambio de datos?
+3. Intenta crear un archivo `.json` en VS Code y escribe un comentario. ¿Qué ocurre?
+</code></pre>
+<p><br/></p><hr/><p></p>
+<h2 id="4-estructura-de-packagejson">4. Estructura de package.json</h2>
+<p>El <code>package.json</code> es el <strong>corazón de tu proyecto Node.js</strong>. Define qué es tu proyecto, qué necesita y cómo se comporta.</p>
+<h3 id="mapa-mental-anatomia-del-packagejson">Mapa Mental: Anatomía del package.json</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBwYWNrYWdlLmpzb24KCiMjIElkZW50aWRhZAotICoqbmFtZSoqOiBJZGVudGlmaWNhZG9yIMO6bmljbyAoVVJMLWZyaWVuZGx5KQotICoqdmVyc2lvbioqOiBTZW1WZXIgKDEuMC4wKQotICoqZGVzY3JpcHRpb24qKjogUmVzdW1lbiBwYXJhIGh1bWFub3MKCiMjIEZ1bmNpb25hbGlkYWQKLSAqKm1haW4qKjogUHVudG8gZGUgZW50cmFkYSAocGFyYSBsaWJyZXLDrWFzKQotICoqc2NyaXB0cyoqOiBDb21hbmRvcyAoc3RhcnQsIGJ1aWxkLCB0ZXN0KQotICoqdHlwZSoqOiBtb2R1bGUgKEVTTSkgbyBjb21tb25qcwoKIyMgUmVsYWNpb25lcwotICoqZGVwZW5kZW5jaWVzKio6IE5lY2VzYXJpYXMgcGFyYSBjb3JyZXIgKHByb2QpCi0gKipkZXZEZXBlbmRlbmNpZXMqKjogTmVjZXNhcmlhcyBwYXJhIHByb2dyYW1hciAoZGV2KQotICoqcGVlckRlcGVuZGVuY2llcyoqOiBDb21wYXRpYmlsaWRhZCBjb24gcGx1Z2lucwoKIyMgTWV0YWRhdG9zCi0gKiphdXRob3IqKjogQ3JlYWRvcgotICoqbGljZW5zZSoqOiBMZWdhbGlkYWQKLSAqKnJlcG9zaXRvcnkqKjogTGluayBhIEdpdEh1Yi9HaXRMYWI=</markmap-data></div>
+<h3 id="campos-esenciales">Campos esenciales</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="c1">// IDENTIDAD DEL PROYECTO</span>
+<span class="w">  </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"mi-aplicacion-web"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Nombre único (requerido para publicar)</span>
+<span class="w">  </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Versionado semántico (requerido)</span>
+<span class="w">  </span><span class="s2">"description"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Una app increíble"</span><span class="p">,</span><span class="w">   </span><span class="c1">// Breve descripción</span>
+
+<span class="w">  </span><span class="c1">// INFORMACIÓN DE ACCESO</span>
+<span class="w">  </span><span class="s2">"main"</span><span class="o">:</span><span class="w"> </span><span class="s2">"dist/index.js"</span><span class="p">,</span><span class="w">              </span><span class="c1">// Archivo principal de la aplicación</span>
+<span class="w">  </span><span class="s2">"types"</span><span class="o">:</span><span class="w"> </span><span class="s2">"dist/index.d.ts"</span><span class="p">,</span><span class="w">           </span><span class="c1">// Tipos TypeScript (para librerías)</span>
+<span class="w">  </span><span class="s2">"bin"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"mi-cli"</span><span class="o">:</span><span class="w"> </span><span class="s2">"./bin/cli.js"</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// Para herramientas CLI</span>
+
+<span class="w">  </span><span class="c1">// METADATOS</span>
+<span class="w">  </span><span class="s2">"author"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Juan Pérez &lt;juan@email.com&gt; (https://ejemplo.com)"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"license"</span><span class="o">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">                     </span><span class="c1">// Licencia SPDX</span>
+<span class="w">  </span><span class="s2">"homepage"</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://github.com/usuario/proyecto"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"repository"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"git+https://github.com/usuario/proyecto.git"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">"bugs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"url"</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://github.com/usuario/proyecto/issues"</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// DEPENDENCIAS</span>
+<span class="w">  </span><span class="s2">"dependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">        </span><span class="c1">// Necesarias en producción</span>
+<span class="w">  </span><span class="s2">"devDependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">     </span><span class="c1">// Solo para desarrollo</span>
+<span class="w">  </span><span class="s2">"peerDependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">    </span><span class="c1">// Para plugins</span>
+<span class="w">  </span><span class="s2">"optionalDependencies"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="c1">// Opcionales</span>
+
+<span class="w">  </span><span class="c1">// SCRIPTS</span>
+<span class="w">  </span><span class="s2">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"start"</span><span class="o">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"build"</span><span class="o">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"test"</span><span class="o">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"lint"</span><span class="o">:</span><span class="w"> </span><span class="s2">"eslint src"</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// CONFIGURACIÓN</span>
+<span class="w">  </span><span class="s2">"keywords"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"web"</span><span class="p">,</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w"> </span><span class="s2">"typescript"</span><span class="p">],</span>
+<span class="w">  </span><span class="s2">"engines"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"node"</span><span class="o">:</span><span class="w"> </span><span class="s2">"&gt;=18.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"npm"</span><span class="o">:</span><span class="w"> </span><span class="s2">"&gt;=9.0.0"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">"private"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w">            </span><span class="c1">// true = no publicar en npm</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="versionado-semantico-semver">Versionado Semántico (SemVer)</h3>
+<p>El versionado sigue el formato <code>MAYOR.MENOR.PARCHE</code> (por ejemplo, <code>1.2.3</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Cambio</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAYOR</strong></td>
+<td>Breaking changes (incompatible)</td>
+<td><code>1.0.0</code> → <code>2.0.0</code></td>
+</tr>
+<tr>
+<td><strong>MENOR</strong></td>
+<td>Nuevas features (compatible)</td>
+<td><code>1.2.0</code> → <code>1.3.0</code></td>
+</tr>
+<tr>
+<td><strong>PARCHE</strong></td>
+<td>Bug fixes (compatible)</td>
+<td><code>1.2.0</code> → <code>1.2.1</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Símbolos de Versión (SemVer)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Símbolo</th>
+<th style="text-align: left;">Significado</th>
+<th style="text-align: left;">Ejemplo con <code>1.2.3</code></th>
+<th style="text-align: left;">Se actualizará a...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>^</code> (Caret)</td>
+<td style="text-align: left;">Compatible con la versión Mayor.</td>
+<td style="text-align: left;"><code>^1.2.3</code></td>
+<td style="text-align: left;"><code>1.9.9</code> (No sube a 2.0.0).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>~</code> (Tilde)</td>
+<td style="text-align: left;">Compatible con la versión Menor.</td>
+<td style="text-align: left;"><code>~1.2.3</code></td>
+<td style="text-align: left;"><code>1.2.9</code> (No sube a 1.3.0).</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nada</td>
+<td style="text-align: left;">Versión exacta.</td>
+<td style="text-align: left;"><code>1.2.3</code></td>
+<td style="text-align: left;"><code>1.2.3</code> (Fijo).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">Cualquier versión.</td>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">La última absoluta (Peligroso).</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// Comparación de versiones</span>
+<span class="s2">"1.2.3"</span><span class="w">  </span><span class="c1">// Exacto: solo esta versión</span>
+<span class="s2">"^1.2.3"</span><span class="w"> </span><span class="c1">// Compatible: 1.2.3, 1.2.4, 1.3.0, pero NO 2.0.0</span>
+<span class="s2">"~1.2.3"</span><span class="w"> </span><span class="c1">// Aproximado: 1.2.3, 1.2.4, pero NO 1.3.0</span>
+<span class="s2">"*"</span><span class="w"> </span><span class="nx">o</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="c1">// Cualquier versión</span>
+<span class="s2">"&gt;1.0.0"</span><span class="w"> </span><span class="c1">// Mayor que 1.0.0</span>
+</code></pre></div>
+<p><strong>Ejemplo 1: package.json para una API REST</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@miempresa/api-usuarios"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.1.3"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API REST para gestión de usuarios"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/server.js"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/server.d.ts"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/server.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts-node src/server.ts"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest --coverage"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"api"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"usuarios"</span><span class="p">,</span><span class="w"> </span><span class="s2">"typescript"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Equipo Backend &lt;backend@miempresa.com&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"engines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=18.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"npm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=9.0.0"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.18.2"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"axios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.6.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dotenv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^16.3.1"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"@types/express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.17.21"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.3.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^29.7.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"@types/jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^29.5.8"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: package.json para una librería TypeScript</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@utils/validadores"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Librería de validadores TypeScript"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/index.js"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/index.d.ts"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"exports"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"."</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"import"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist/index.mjs"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist/index.js"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist/index.d.ts"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"dist"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc &amp;&amp; tsc -p tsconfig.esm.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.3.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^29.7.0"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: package.json para una aplicación web moderna</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-app-web"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aplicación web con Vite y React"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc &amp;&amp; vite build"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vite preview"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type-check"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc --noEmit"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint . --ext ts,tsx"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.2.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"react-dom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.2.0"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"@types/react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.2.37"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.3.3"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"vite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.0.0"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br/></p><hr/><p></p>
+<h2 id="5-package-lockjson-el-guardian-de-la-consistencia">5. package-lock.json: El guardián de la consistencia</h2>
+<p>Mientras que <code>package.json</code> es flexible (permite rangos como <code>^1.2.3</code>), <code>package-lock.json</code> es <strong>absolutamente específico</strong>. Guarda exactamente qué versiones se instalaron.</p>
+<h3 id="por-que-necesitas-package-lockjson">¿Por qué necesitas package-lock.json?</h3>
+<p>Imagina que especificas <code>"express": "^4.18.0"</code> en package.json. Esto significa:
+- Hoy: npm instala <code>4.18.2</code>
+- Mañana: se lanza <code>4.19.0</code> que cumple <code>^4.18.0</code>
+- Si instalas de nuevo, podrías obtener <code>4.19.0</code> (¡comportamiento diferente!)</p>
+<p><strong>package-lock.json previene esto</strong> asegurando que todos usen exactamente las mismas versiones. El <code>package-lock.json</code> soluciona esto:<br/>
+1.  <strong>Fija las versiones exactas</strong> de todas las dependencias y sus sub-dependencias.<br/>
+2.  <strong>Garantiza la reproducibilidad:</strong> El proyecto se instalará <strong>exactamente igual</strong> en cualquier ordenador.<br/>
+3.  <strong>Mejora la velocidad:</strong> npm no tiene que calcular qué versiones descargar, ya están escritas en el lock.<br/></p>
+<h3 id="estructura-de-package-lockjson">Estructura de package-lock.json</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-proyecto"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"lockfileVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"requires"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"packages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">""</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-proyecto"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.18.2"</span><span class="w">  </span><span class="c1">// Versión EXACTA instalada</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"node_modules/express"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.18.2"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"resolved"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://registry.npmjs.org/express/-/express-4.18.2.tgz"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"integrity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sha512-..."</span><span class="p">,</span><span class="w">  </span><span class="c1">// Hash para verificar integridad</span>
+<span class="w">      </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"body-parser"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.20.1"</span><span class="p">,</span><span class="w">  </span><span class="c1">// Sus dependencias también especificadas</span>
+<span class="w">        </span><span class="nt">"content-disposition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5.4"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 1: Reproducibilidad con lock files</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Día 1: Desarrollador A instala</span>
+npm<span class="w"> </span>install
+<span class="c1"># Crea package-lock.json con versiones exactas</span>
+<span class="c1"># Versiones instaladas: express@4.18.2, jest@29.7.0</span>
+
+<span class="c1"># Día 7: Desarrollador B clona repo</span>
+npm<span class="w"> </span>install
+<span class="c1"># Lee package-lock.json</span>
+<span class="c1"># Instala EXACTAMENTE: express@4.18.2, jest@29.7.0</span>
+<span class="c1"># (aunque 4.19.0 y 29.8.0 estén disponibles)</span>
+
+<span class="c1"># ¡Ambos trabajar con idéntico comportamiento!</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Actualización controlada</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Para actualizar pero mantener consistency:</span>
+
+<span class="c1"># Opción 1: Actualizar solo parches (bug fixes)</span>
+npm<span class="w"> </span>update
+<span class="c1"># Actualiza 4.18.2 → 4.18.3 si hay parches</span>
+<span class="c1"># Actualiza package-lock.json automáticamente</span>
+
+<span class="c1"># Opción 2: Actualizar a versión más nueva manualmente</span>
+npm<span class="w"> </span>install<span class="w"> </span>express@^4.19.0
+<span class="c1"># Actualiza package.json Y package-lock.json</span>
+<span class="c1"># Ahora todos instalarán 4.19.x</span>
+
+<span class="c1"># Opción 3: Ver qué está desactualizado</span>
+npm<span class="w"> </span>outdated
+<span class="c1"># Muestra qué paquetes tienen versiones más nuevas</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: Detectar problemas con lock files</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Si alguien modifica manualmente package.json sin npm:</span>
+<span class="c1"># (por ejemplo, cambia version de express)</span>
+
+npm<span class="w"> </span>ci<span class="w">  </span><span class="c1"># "clean install" - usa package-lock.json</span>
+<span class="c1"># ✅ Instala exactamente lo que dice package-lock.json</span>
+<span class="c1"># Si hay conflicto, npm ci falla (buena para CI/CD)</span>
+
+npm<span class="w"> </span>install
+<span class="c1"># ⚠️ Intenta reconciliar package.json con package-lock.json</span>
+<span class="c1"># Más flexible pero menos seguro</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Mejores prácticas con lock files</p>
+<ul>
+<li><strong>SIEMPRE commitea package-lock.json</strong> a Git</li>
+<li><strong>Usa <code>npm ci</code></strong> en CI/CD (no <code>npm install</code>)</li>
+<li><strong>Nunca elimines</strong> package-lock.json manualmente</li>
+<li><strong>Revisa cambios en package-lock.json</strong> en PRs</li>
+</ul>
+</div>
+<p><strong>package.json vs package-lock.json</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">package.json</th>
+<th style="text-align: left;">package-lock.json</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Generado por</strong></td>
+<td style="text-align: left;">Usuario (<code>npm init</code>) o npm.</td>
+<td style="text-align: left;">Automáticamente por npm.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Edición</strong></td>
+<td style="text-align: left;">Manual (frecuente).</td>
+<td style="text-align: left;"><strong>Prohibida</strong> (manual).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Versiones</strong></td>
+<td style="text-align: left;">Rangos (<code>^</code>, <code>~</code>).</td>
+<td style="text-align: left;">Exactas y URLs de descarga.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Propósito</strong></td>
+<td style="text-align: left;">Definir requisitos del proyecto.</td>
+<td style="text-align: left;">Garantizar consistencia e integridad.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Regla de Oro del Desarrollador</p>
+<p><strong>NUNCA</strong> edites el <code>package-lock.json</code> a mano. Y <strong>SIEMPRE</strong> súbelo a tu repositorio Git. Es vital para el trabajo en equipo.</p>
+</div>
+<p><strong>Diagrama 5.1: Flujo de Instalación (Mermaid Flowchart)</strong></p>
+<pre class="mermaid"><code>graph TD
+    A[Ejecutar npm install] --&gt; B{¿Existe package-lock.json?}
+    B -- SÍ --&gt; C[Comparar con package.json]
+    C -- Coinciden --&gt; D[Instalar versiones exactas del LOCK]
+    C -- No coinciden --&gt; E[Recalcular, instalar y ACTUALIZAR LOCK]
+    B -- NO --&gt; F[Calcular dependencias, instalar y CREAR LOCK]
+    D --&gt; G[Proyecto listo y consistente]
+    E --&gt; G
+    F --&gt; G</code></pre>
+<h3 id="reflexiona_2">🧠 Reflexiona</h3>
+<ol>
+<li>Si borras la carpeta <code>node_modules</code> y ejecutas <code>npm install</code>, ¿qué archivo usa npm para decidir qué instalar, el json o el lock?</li>
+<li>¿Por qué el <code>package-lock.json</code> es mucho más largo (miles de líneas) que el <code>package.json</code>?</li>
+<li>¿Qué pasaría si tu compañero sube cambios al <code>package.json</code> pero olvida subir el <code>package-lock.json</code>?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="6-instalar-y-desinstalar-paquetes-con-npm">6. Instalar y desinstalar paquetes con npm</h2>
+<p>La razón principal de usar npm es <strong>instalar paquetes de otros desarrolladores</strong>. Es simple pero tiene muchos matices.</p>
+<h4 id="comandos-de-instalacion">Comandos de Instalación</h4>
+<ul>
+<li><strong><code>npm install &lt;paquete&gt;</code>:</strong> Instala y añade a <code>dependencies</code>.</li>
+<li><strong><code>npm install -D &lt;paquete&gt;</code>:</strong> Instala y añade a <code>devDependencies</code> (la <code>-D</code> es de <em>Development</em>).</li>
+<li><strong><code>npm install -g &lt;paquete&gt;</code>:</strong> Instala de forma <strong>global</strong> en tu sistema (ej. para herramientas CLI como <code>nodemon</code> o <code>typescript</code>).</li>
+</ul>
+<h3 id="instalacion-de-paquetes">Instalación de paquetes</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Instalar y añadir a dependencies</span>
+npm<span class="w"> </span>install<span class="w"> </span>express
+<span class="c1"># o forma corta:</span>
+npm<span class="w"> </span>i<span class="w"> </span>express
+
+<span class="c1"># Instalar como devDependency (solo desarrollo)</span>
+npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>typescript
+<span class="c1"># o forma corta:</span>
+npm<span class="w"> </span>i<span class="w"> </span>-D<span class="w"> </span>typescript
+
+<span class="c1"># Instalar múltiples paquetes a la vez</span>
+npm<span class="w"> </span>install<span class="w"> </span>express<span class="w"> </span>axios<span class="w"> </span>dotenv
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>jest<span class="w"> </span>@types/node<span class="w"> </span>typescript
+
+<span class="c1"># Instalar versión específica</span>
+npm<span class="w"> </span>install<span class="w"> </span>express@4.18.2
+
+<span class="c1"># Instalar versión compatible más nueva</span>
+npm<span class="w"> </span>install<span class="w"> </span>express@^4.18.0
+
+<span class="c1"># Instalar globalmente (comando disponible en todo el sistema)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@angular/cli
+<span class="c1"># Ahora puedes usar: ng new my-app (desde cualquier carpeta)</span>
+
+<span class="c1"># Solo para producción (sin devDependencies)</span>
+npm<span class="w"> </span>install<span class="w"> </span>--production
+<span class="c1"># Útil para despliegues donde no necesitas testing, etc.</span>
+</code></pre></div>
+<h3 id="diagrama-flujo-de-instalacion">Diagrama: Flujo de Instalación</h3>
+<pre class="mermaid"><code>graph TD
+    A[npm install react] --&gt; B{¿Está en caché local?}
+    B -- Sí --&gt; C[Copiar desde caché]
+    B -- No --&gt; D[Descargar desde Registry npm]
+    D --&gt; E[Guardar en caché]
+    E --&gt; C
+    C --&gt; F[Descomprimir en node_modules]
+    F --&gt; G[Actualizar package.json]
+    G --&gt; H[Generar/Actualizar package-lock.json]</code></pre>
+<h3 id="desinstalacion-de-paquetes">Desinstalación de paquetes</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Desinstalar y quitar de package.json</span>
+npm<span class="w"> </span>uninstall<span class="w"> </span>express
+<span class="c1"># o forma corta:</span>
+npm<span class="w"> </span>rm<span class="w"> </span>express
+
+<span class="c1"># Desinstalar del devDependencies</span>
+npm<span class="w"> </span>uninstall<span class="w"> </span>--save-dev<span class="w"> </span>typescript
+npm<span class="w"> </span>rm<span class="w"> </span>-D<span class="w"> </span>typescript
+
+<span class="c1"># Desinstalar globalmente</span>
+npm<span class="w"> </span>uninstall<span class="w"> </span>-g<span class="w"> </span>@angular/cli
+
+<span class="c1"># Limpiar paquetes no usados</span>
+npm<span class="w"> </span>prune
+<span class="c1"># Elimina paquetes que están en node_modules pero no en package.json</span>
+</code></pre></div>
+<p><strong>Ejemplo 1: Setup inicial de un proyecto</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Crear proyecto</span>
+mkdir<span class="w"> </span>mi-api
+<span class="nb">cd</span><span class="w"> </span>mi-api
+npm<span class="w"> </span>init<span class="w"> </span>-y
+
+<span class="c1"># 2. Instalar dependencias de producción</span>
+npm<span class="w"> </span>install<span class="w"> </span>express<span class="w"> </span>axios<span class="w"> </span>pg<span class="w"> </span>dotenv
+
+<span class="c1"># 3. Instalar dependencias de desarrollo</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript<span class="w"> </span>@types/express<span class="w"> </span>@types/node
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>ts-node<span class="w"> </span>nodemon<span class="w">  </span><span class="c1"># Para desarrollo más cómodo</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>jest<span class="w"> </span>@types/jest<span class="w"> </span><span class="c1"># Para testing</span>
+
+<span class="c1"># Resultado en package.json:</span>
+<span class="c1"># "dependencies": { "express": "^4.18.2", ... }</span>
+<span class="c1"># "devDependencies": { "typescript": "^5.3.3", ... }</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: Migrando proyecto existente</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Si clonas un repo que ya tiene package.json y package-lock.json</span>
+
+<span class="c1"># Simplemente ejecuta (instala todo lo que falta):</span>
+npm<span class="w"> </span>install
+<span class="c1"># Descarga todos los paquetes especificados</span>
+
+<span class="c1"># Verifica lo instalado:</span>
+npm<span class="w"> </span>list
+<span class="c1"># Muestra árbol de dependencias (puede ser largo)</span>
+
+<span class="c1"># Ver solo dependencias directas:</span>
+npm<span class="w"> </span>list<span class="w"> </span>--depth<span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: Limpiar y reinstalar</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># A veces npm se corrompe y necesitas limpiar:</span>
+
+<span class="c1"># 1. Elimina node_modules (pasta con todos los paquetes)</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w">  </span><span class="c1"># Unix/Mac</span>
+rmdir<span class="w"> </span>/s<span class="w"> </span>node_modules<span class="w">  </span><span class="c1"># Windows</span>
+
+<span class="c1"># 2. Limpia caché (opcional pero recomendado)</span>
+npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+
+<span class="c1"># 3. Reinstala limpiamente</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># Alternativa más segura (npm 6.13+):</span>
+npm<span class="w"> </span>ci<span class="w">  </span><span class="c1"># clean install, usa package-lock.json exactamente</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">npm install vs npm ci</p>
+<ul>
+<li><strong><code>npm install</code></strong>: Flexible, ajusta versions si es necesario</li>
+<li><strong><code>npm ci</code> (clean install)</strong>: Estricto, instala exactamente package-lock.json</li>
+<li><strong>Usa <code>npm ci</code></strong> en CI/CD, producción y equipos</li>
+<li><strong>Usa <code>npm install</code></strong> durante desarrollo local</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">node_modules: El Agujero Negro</p>
+<p>Cuando instalas paquetes, se guardan en la carpeta <code>node_modules</code>. Esta carpeta puede llegar a ser enorme. <strong>Nunca la subas a Git</strong>. Para eso está el archivo <code>.gitignore</code>.</p>
+</div>
+<p><strong>Instalación Local vs Global</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Ubicación</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Local</strong></td>
+<td style="text-align: left;"><code>npm i paquete</code></td>
+<td style="text-align: left;"><code>./node_modules</code></td>
+<td style="text-align: left;">Librerías que tu código importa (<code>import x from 'x'</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Global</strong></td>
+<td style="text-align: left;"><code>npm i -g paquete</code></td>
+<td style="text-align: left;"><code>/usr/local/lib</code> o <code>%AppData%</code></td>
+<td style="text-align: left;">Herramientas de sistema (ej: <code>npm</code>, <code>vercel</code>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flags útiles de instalación</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Alias</th>
+<th style="text-align: left;">Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--save</code></td>
+<td style="text-align: left;">(Ya no es necesario)</td>
+<td style="text-align: left;">Antes de npm 5, era obligatorio para guardar en package.json. Ahora es default.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--save-dev</code></td>
+<td style="text-align: left;"><code>-D</code></td>
+<td style="text-align: left;">Guarda en <code>devDependencies</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--global</code></td>
+<td style="text-align: left;"><code>-g</code></td>
+<td style="text-align: left;">Instala en el sistema, no en el proyecto.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--force</code></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Fuerza la instalación ignorando conflictos (Peligroso).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexiona_3">🧠 Reflexiona</h3>
+<ol>
+<li>¿Dónde se guardan físicamente los paquetes globales en tu ordenador?</li>
+<li>¿Por qué es mala práctica instalar librerías como <code>express</code> de forma global?</li>
+<li>¿Qué contiene la carpeta <code>.bin</code> dentro de <code>node_modules</code>?    </li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="7-uso-avanzado-de-npm">7. Uso avanzado de npm</h2>
+<p>npm tiene capacidades avanzadas para proyectos profesionales y monorepos. Una vez dominas lo básico, npm ofrece herramientas para optimizar y asegurar tu proyecto.</p>
+<h4 id="auditoria-de-seguridad">Auditoría de Seguridad</h4>
+<p>npm comprueba automáticamente si las librerías que usas tienen fallos de seguridad conocidos.</p>
+<p><strong>Ejemplo de Código 7.1: Auditoría y reparación</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ver informe de vulnerabilidades</span>
+npm<span class="w"> </span>audit
+
+<span class="c1"># Intentar arreglar automáticamente las vulnerabilidades</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix
+
+<span class="c1"># Forzar arreglos (¡Cuidado! Puede actualizar versiones Major y romper cosas)</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w"> </span>--force
+</code></pre></div>
+<h4 id="gestion-de-versiones-y-actualizaciones">Gestión de Versiones y Actualizaciones</h4>
+<p><strong>Ejemplo de Código 7.2: Comprobar paquetes desactualizados</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Muestra qué paquetes tienen versiones nuevas disponibles</span>
+npm<span class="w"> </span>outdated
+</code></pre></div>
+<p><strong>Ejemplo de Código 7.3: Ejecutar binarios sin instalar (<code>npx</code>)</strong></p>
+<p><code>npx</code> es una herramienta que viene con npm y permite ejecutar paquetes sin tener que instalarlos globalmente. Es ideal para herramientas que solo vas a usar una vez.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ejecutar el compilador de TypeScript sin tenerlo instalado globalmente</span>
+npx<span class="w"> </span>tsc<span class="w"> </span>--init
+
+<span class="c1"># Crear una app de React (ejecuta el creador y luego se borra)</span>
+npx<span class="w"> </span>create-react-app<span class="w"> </span>my-app
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Truco de Profesional: npm scripts y npx</p>
+<p>Dentro de la sección <code>"scripts"</code> de tu <code>package.json</code>, no necesitas usar <code>npx</code>. npm ya busca automáticamente los binarios dentro de <code>node_modules/.bin</code>.</p>
+</div>
+<p><strong>npm vs npx</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;"><code>npm</code></th>
+<th style="text-align: left;"><code>npx</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Nombre</strong></td>
+<td style="text-align: left;">Node Package Manager.</td>
+<td style="text-align: left;">Node Package Execute.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Función</strong></td>
+<td style="text-align: left;">Gestionar (instalar/borrar).</td>
+<td style="text-align: left;">Ejecutar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caso de uso</strong></td>
+<td style="text-align: left;">"Quiero tener esta librería".</td>
+<td style="text-align: left;">"Quiero usar esta herramienta ahora".</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Persistencia</strong></td>
+<td style="text-align: left;">Guarda archivos en disco.</td>
+<td style="text-align: left;">Temporal (o usa los locales de node_modules).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comandos de Mantenimiento</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">¿Cuándo usarlo?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>npm audit</code></td>
+<td style="text-align: left;">Busca vulnerabilidades.</td>
+<td style="text-align: left;">Regularmente o antes de desplegar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm outdated</code></td>
+<td style="text-align: left;">Muestra paquetes con versiones nuevas.</td>
+<td style="text-align: left;">Cuando quieras actualizar dependencias.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm update</code></td>
+<td style="text-align: left;">Actualiza paquetes respetando SemVer (<code>^</code>).</td>
+<td style="text-align: left;">Para mantener el proyecto al día.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm ci</code></td>
+<td style="text-align: left;">Clean Install.</td>
+<td style="text-align: left;">En servidores de despliegue (borra node_modules e instala desde lockfile).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reflexiona_4">🧠 Reflexiona</h3>
+<ol>
+<li>¿Por qué <code>npx</code> es más seguro que instalar paquetes globales?</li>
+<li>Si <code>npm audit</code> encuentra una vulnerabilidad en una sub-dependencia (una dependencia de tu dependencia), ¿cómo lo solucionas?</li>
+<li>¿Qué diferencia hay entre <code>&amp;&amp;</code> (ej: <code>tsc &amp;&amp; node index</code>) y un solo <code>&amp;</code> en los scripts?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="8-dependencias-de-desarrollo-vs-dependencias-de-produccion">8. Dependencias de desarrollo VS dependencias de producción</h2>
+<p>Esta es una <strong>diferencia crítica</strong> que confunde a muchos desarrolladores nuevos.</p>
+<h3 id="cual-es-la-diferencia-real">¿Cuál es la diferencia real?</h3>
+<ul>
+<li><strong>Dependencias de Producción (<code>dependencies</code>)</strong>:Tu aplicación se ejecuta en el servidor de clientes. Son el código que tu aplicación <strong>ejecuta</strong> mientras el usuario la usa. Sin ellas, la app falla. Ejemplos: Express, axios, dotenv, bases de datos, utilidades de lógica. NO necesita: jest, eslint, typescript (ya compilado)</li>
+<li><strong>Dependencias de Desarrollo (<code>devDependencies</code>)</strong>: Tu computadora mientras escribes código. Son herramientas que tú, como programador, usas para <strong>escribir, probar o compilar</strong> el código. Necesita AMBAS: dependencias + devDependencies. No se necesitan para que la app funcione una vez terminada. Ejemplos: TypeScript, Jest, ESLint, Prettier.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">La regla del compilado</p>
+<p>TypeScript se compila a JavaScript. El servidor ejecuta JavaScript. Por tanto, el compilador <code>typescript</code> NO hace falta en el servidor de producción, solo en tu máquina para generar el JS. Por eso es una <code>devDependency</code>.</p>
+</div>
+<h3 id="tabla-comparativa">Tabla comparativa</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>dependencies</th>
+<th>devDependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Se instala en prod</strong></td>
+<td>✅ Sí</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Se instala en desarrollo</strong></td>
+<td>✅ Sí</td>
+<td>✅ Sí</td>
+</tr>
+<tr>
+<td><strong>Ejemplo</strong></td>
+<td><code>express</code>, <code>axios</code></td>
+<td><code>typescript</code>, <code>jest</code></td>
+</tr>
+<tr>
+<td><strong>Comando instalación</strong></td>
+<td><code>npm install pkg</code></td>
+<td><code>npm install -D pkg</code></td>
+</tr>
+<tr>
+<td><strong>En CI/CD</strong></td>
+<td><code>npm install --production</code></td>
+<td>Se omiten</td>
+</tr>
+<tr>
+<td><strong>Tamaño en prod</strong></td>
+<td>✅ Mínimo</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Diagrama 8.1: Ciclo de Vida y Dependencias (Markmap)</strong></p>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBDaWNsbyBkZSBWaWRhIGRlbCBQcm95ZWN0bwoKIyMgRmFzZSBkZSBEZXNhcnJvbGxvCi0gKipIZXJyYW1pZW50YXMqKjogVHlwZVNjcmlwdCwgRVNMaW50LCBKZXN0Ci0gKipVYmljYWNpw7NuKio6IGRldkRlcGVuZGVuY2llcwotICoqQ29tYW5kbyoqOiBucG0gaW5zdGFsbAoKIyMgRmFzZSBkZSBDb25zdHJ1Y2Npw7NuIChCdWlsZCkKLSAqKkFjY2nDs24qKjogdHNjIChDb21waWxhciBUUyBhIEpTKQotICoqUmVzdWx0YWRvKio6IENhcnBldGEgL2Rpc3QgbyAvYnVpbGQKCiMjIEZhc2UgZGUgUHJvZHVjY2nDs24gKERlcGxveSkKLSAqKkVudG9ybm8qKjogU2Vydmlkb3IgUmVhbCAvIENsb3VkCi0gKipIZXJyYW1pZW50YXMqKjogRXhwcmVzcywgTGlicmVyw61hcyBkZSBMw7NnaWNhCi0gKipVYmljYWNpw7NuKio6IGRlcGVuZGVuY2llcwotICoqQ29tYW5kbyoqOiBucG0gaW5zdGFsbCAtLW9taXQ9ZGV2</markmap-data></div>
+<p><strong>Ejemplo 1: Separación correcta</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api-rest"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.18.2"</span><span class="p">,</span><span class="w">          </span><span class="c1">// ✅ Se usa en código</span>
+<span class="w">    </span><span class="nt">"axios"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.6.0"</span><span class="p">,</span><span class="w">             </span><span class="c1">// ✅ Para hacer requests</span>
+<span class="w">    </span><span class="nt">"dotenv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^16.3.1"</span><span class="p">,</span><span class="w">           </span><span class="c1">// ✅ Para variables de entorno</span>
+<span class="w">    </span><span class="nt">"bcryptjs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.4.3"</span><span class="p">,</span><span class="w">          </span><span class="c1">// ✅ Para hashear contraseñas</span>
+<span class="w">    </span><span class="nt">"jsonwebtoken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^9.1.0"</span><span class="w">       </span><span class="c1">// ✅ Para autenticación</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.3.3"</span><span class="p">,</span><span class="w">        </span><span class="c1">// ❌ Se usa para compilar, no en runtime</span>
+<span class="w">    </span><span class="nt">"@types/express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.17.21"</span><span class="p">,</span><span class="w">  </span><span class="c1">// ❌ Solo tipos TypeScript</span>
+<span class="w">    </span><span class="nt">"jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^29.7.0"</span><span class="p">,</span><span class="w">             </span><span class="c1">// ❌ Solo para testing</span>
+<span class="w">    </span><span class="nt">"eslint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.54.0"</span><span class="p">,</span><span class="w">           </span><span class="c1">// ❌ Solo para lintear</span>
+<span class="w">    </span><span class="nt">"prettier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.1.0"</span><span class="p">,</span><span class="w">          </span><span class="c1">// ❌ Solo para formatear</span>
+<span class="w">    </span><span class="nt">"ts-node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^10.9.1"</span><span class="w">           </span><span class="c1">// ❌ Para desarrollo, no prod</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 2: ¿Dónde va cada cosa?</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Paquete: typescript</span>
+npm<span class="w"> </span>install<span class="w"> </span>typescript
+<span class="c1"># ❌ INCORRECTO en dependencies (no se usa en runtime)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript
+<span class="c1"># ✅ CORRECTO en devDependencies (solo compilar)</span>
+
+<span class="c1"># Paquete: express</span>
+npm<span class="w"> </span>install<span class="w"> </span>express
+<span class="c1"># ✅ CORRECTO en dependencies (el servidor lo necesita)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>express
+<span class="c1"># ❌ INCORRECTO en devDependencies</span>
+
+<span class="c1"># Paquete: nodemon (reiniciar en cambios)</span>
+npm<span class="w"> </span>install<span class="w"> </span>nodemon
+<span class="c1"># ❌ INCORRECTO en dependencies (solo desarrollo)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>nodemon
+<span class="c1"># ✅ CORRECTO en devDependencies</span>
+
+<span class="c1"># Paquete: jest (testing)</span>
+npm<span class="w"> </span>install<span class="w"> </span>jest
+<span class="c1"># ❌ INCORRECTO en dependencies (no es código de app)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>jest
+<span class="c1"># ✅ CORRECTO en devDependencies</span>
+</code></pre></div>
+<p><strong>Ejemplo 3: Despliegue a producción</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># En tu servidor de producción:</span>
+
+<span class="c1"># 1. Solo instala lo que necesitas (sin devDependencies)</span>
+npm<span class="w"> </span>install<span class="w"> </span>--production
+<span class="c1"># Instala únicamente: express, axios, dotenv, bcryptjs, jsonwebtoken</span>
+<span class="c1"># Ahorra espacio: sin typescript, jest, eslint, prettier</span>
+
+<span class="c1"># 2. Compila tu TypeScript (lo hiciste localmente)</span>
+npm<span class="w"> </span>run<span class="w"> </span>build
+<span class="c1"># Genera carpeta dist/ con código JavaScript</span>
+
+<span class="c1"># 3. Ejecuta la aplicación</span>
+npm<span class="w"> </span>start
+<span class="c1"># Corre con node dist/index.js (ya compilado)</span>
+
+<span class="c1"># Resultado: servidor lite sin herramientas de desarrollo</span>
+<span class="c1"># ~50MB en lugar de ~500MB con todo</span>
+</code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    subgraph DEV["💻 Entorno de Desarrollo (Tu PC)"]
+        A["npm install"]
+        B["node_modules"]
+        C["dependencies"]
+        D["devDependencies"]
+        E["Compilador TS / Tests"]
+        F["Código JS Final"]
+
+        A --&gt; B
+        B --&gt; C
+        B --&gt; D
+        D --&gt; E
+        E --&gt; F
+    end
+
+    subgraph PROD["🖥️ Entorno de Producción (Servidor)"]
+        G["npm ci --only=production"]
+        H["node_modules"]
+        I["dependencies"]
+        K["Ejecutar App"]
+
+        G --&gt; H
+        H --&gt; I
+        I --&gt; K
+    end </code></pre>
+<h3 id="peerdependencies-y-optionaldependencies">peerDependencies y optionalDependencies</h3>
+<p>Para casos especiales:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Para plugins que requieren que el host tenga cierta versión</span>
+<span class="w">    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.0.0"</span>
+<span class="w">    </span><span class="c1">// Ejemplo: plugin que solo funciona con React 18+</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nt">"optionalDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Para paquetes que IF no se instalan, no falla todo</span>
+<span class="w">    </span><span class="nt">"sharp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.32.0"</span>
+<span class="w">    </span><span class="c1">// Ejemplo: optimizador de imágenes que si falta, usa fallback</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="nt">"bundledDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Para empaquetar (npm pack) junto a tu paquete</span>
+<span class="w">    </span><span class="s2">"lodash"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"moment"</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Ejemplo 4: peerDependencies en plugin</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@my-plugins/react-table"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"react-dom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^18.0.0"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"peerDependenciesMeta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1">// Obligatorio</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"react-dom"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c1">// Opcional</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso en proyecto:</span>
+<span class="c1">// Necesitas TENER react@18+ instalado en tu proyecto</span>
+<span class="c1">// npm install react@18 react-dom@18</span>
+<span class="c1">// npm install @my-plugins/react-table</span>
+</code></pre></div>
+<h3 id="reflexiona_5">🧠 Reflexiona</h3>
+<ol>
+<li>¿Por qué instalaríamos <code>@types/node</code> como dependencia de desarrollo y no de producción?</li>
+<li>Si usas una librería para generar datos falsos en tus tests (ej: <code>faker</code>), ¿dónde debería ir?</li>
+<li>¿Cuánto espacio en disco crees que puedes ahorrar en un servidor eliminando las devDependencies de un proyecto grande?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h2 id="para-saber-mas">Para Saber Más</h2>
+<h3 id="documentacion-oficial">Documentación Oficial</h3>
+<ul>
+<li><strong>npm Official Docs</strong>: https://docs.npmjs.com/</li>
+<li><strong>npm Package.json Reference</strong>: https://docs.npmjs.com/cli/v10/configuring-npm/package-json/</li>
+<li><strong>Node.js Best Practices</strong>: https://github.com/goldbergyoni/nodebestpractices</li>
+</ul>
+<h3 id="seguridad-en-npm">Seguridad en npm</h3>
+<ul>
+<li><strong>npm Security Best Practices</strong>: https://snyk.io/blog/npm-security-best-practices/</li>
+<li><strong>npm Audit</strong>: Incorporado en npm (usa <code>npm audit</code>)</li>
+<li><strong>Securing Supply Chains</strong>: https://github.blog/security/supply-chain-security/</li>
+</ul>
+<h3 id="herramientas-utiles">Herramientas Útiles</h3>
+<ul>
+<li><strong>npx</strong>: Ejecutar herramientas sin instalar</li>
+<li><strong>npm-check-updates</strong>: Ver qué paquetes están desactualizados (<code>npx npm-check-updates</code>)</li>
+<li><strong>Dependabot</strong>: Actualizaciones automáticas de dependencias (GitHub)</li>
+<li><strong>Renovate</strong>: Bot para mantener dependencias actualizadas</li>
+</ul>
+<hr/>
+<h2 id="conclusion">Conclusión</h2>
+<p>npm es la <strong>columna vertebral del ecosistema Node.js/JavaScript</strong>. Dominar:
+- <strong>package.json</strong>: entender cada campo y su propósito
+- <strong>Dependencias</strong>: saber qué va dónde
+- <strong>Lock files</strong>: garantizar reproducibilidad
+- <strong>Scripts</strong>: automatizar tu flujo de trabajo
+- <strong>Seguridad</strong>: mantener tus paquetes libres de vulnerabilidades</p>
+<p>...te convierte en un desarrollador profesional capaz de gestionar proyectos robustos y escalables.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

@@ -1,0 +1,2503 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/3-NODE/_old/07-Gestion%20de%20paquetes%20y%20npm-Per2/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>npm Cheat Sheet: Referencia Rápida - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#npm-cheat-sheet-referencia-rapida" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              npm Cheat Sheet: Referencia Rápida
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../2-PHP/01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-IntroNodeJS/" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/09-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/10-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/11-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/12-MVC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/13-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/14-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/15-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/16-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/17-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2-PHP/18-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-IntroNodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-IntroTypeScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-NodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-Timers-Asincronia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-FileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-ModulosHTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-GestionPaquetes-NPM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08-Nodemon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/01-IntroNestJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/02-CreacionRecursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/03-TypeORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/04-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/05-AlacenamientoFicheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/06-WebSockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/07-EndpointsAvanzados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/08-MongoDB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/09-Seguridad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/10-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/11-Perfiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NestJS/12-Despliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#comandos-esenciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Esenciales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comandos Esenciales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacion-y-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicialización y Configuración
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación de Paquetes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desinstalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desinstalación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informacion-y-listado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Información y Listado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicacion-y-versiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicación y Versiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscelanea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscelánea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rangos-de-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rangos de Versión
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagejson-campos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package.json: Campos Clave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-proyecto-tipico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estructura de Proyecto Típico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencias-donde-va-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencias: Dónde va cada cosa?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabla-comparativa-npm-vs-pnpm-vs-yarn-vs-bun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabla Comparativa: npm vs pnpm vs yarn vs bun
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npm-init-preguntas-tipicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm init: Preguntas Típicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflows Comunes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflows Comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#desarrollo-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Desarrollo Local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicar-un-paquete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publicar un Paquete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limpiar-y-reinstalar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limpiar y Reinstalar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auditar-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditar Seguridad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-lockjson-conceptos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package-lock.json: Conceptos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errores-comunes-y-soluciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores Comunes y Soluciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-profesionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips Profesionales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos Online
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="npm-cheat-sheet-referencia-rapida">npm Cheat Sheet: Referencia Rápida</h1>
+<!-- Guía de consulta rápida para npm -->
+<h2 id="comandos-esenciales">Comandos Esenciales</h2>
+<h3 id="inicializacion-y-configuracion">Inicialización y Configuración</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w">              </span><span class="c1"># Crear package.json interactivamente</span>
+npm<span class="w"> </span>init<span class="w"> </span>-y<span class="w">           </span><span class="c1"># Crear package.json con defaults</span>
+npm<span class="w"> </span>config<span class="w"> </span>get<span class="w"> </span>npm_username<span class="w">  </span><span class="c1"># Ver usuario npm</span>
+npm<span class="w"> </span>whoami<span class="w">            </span><span class="c1"># Ver usuario loguado</span>
+</code></pre></div>
+<h3 id="instalacion-de-paquetes">Instalación de Paquetes</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>pkg<span class="w">           </span><span class="c1"># Instalar y agregar a dependencies</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>pkg<span class="w">        </span><span class="c1"># Instalar como devDependency</span>
+npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>pkg<span class="w"> </span><span class="c1"># Forma larga</span>
+npm<span class="w"> </span>install<span class="w"> </span>--production<span class="w">  </span><span class="c1"># Solo dependencias (sin dev)</span>
+npm<span class="w"> </span>ci<span class="w">                    </span><span class="c1"># Clean install (reproducible)</span>
+npm<span class="w"> </span>update<span class="w"> </span>pkg<span class="w">            </span><span class="c1"># Actualizar paquete específico</span>
+npm<span class="w"> </span>update<span class="w">                </span><span class="c1"># Actualizar todos los paquetes</span>
+</code></pre></div>
+<h3 id="desinstalacion">Desinstalación</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>uninstall<span class="w"> </span>pkg<span class="w">     </span><span class="c1"># Desinstalar paquete</span>
+npm<span class="w"> </span>rm<span class="w"> </span>pkg<span class="w">            </span><span class="c1"># Forma corta</span>
+npm<span class="w"> </span>prune<span class="w">             </span><span class="c1"># Eliminar paquetes no usados</span>
+npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w">  </span><span class="c1"># Limpiar caché</span>
+</code></pre></div>
+<h3 id="informacion-y-listado">Información y Listado</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>list<span class="w">              </span><span class="c1"># Listar dependencias instaladas</span>
+npm<span class="w"> </span>list<span class="w"> </span>--depth<span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="c1"># Solo dependencias directas</span>
+npm<span class="w"> </span>outdated<span class="w">          </span><span class="c1"># Ver qué está desactualizado</span>
+npm<span class="w"> </span>view<span class="w"> </span>pkg<span class="w">          </span><span class="c1"># Info de un paquete en npm</span>
+npm<span class="w"> </span>search<span class="w"> </span>keyword<span class="w">    </span><span class="c1"># Buscar paquetes</span>
+npm<span class="w"> </span>ls<span class="w"> </span>--production<span class="w">   </span><span class="c1"># Solo dependencias de producción</span>
+</code></pre></div>
+<h3 id="seguridad">Seguridad</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>audit<span class="w">             </span><span class="c1"># Escanear vulnerabilidades</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w">         </span><span class="c1"># Intentar arreglarlas automáticamente</span>
+npm<span class="w"> </span>audit<span class="w"> </span>--json<span class="w">      </span><span class="c1"># Reporte en JSON</span>
+</code></pre></div>
+<h3 id="publicacion-y-versiones">Publicación y Versiones</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>version<span class="w"> </span>patch<span class="w">     </span><span class="c1"># 1.2.3 → 1.2.4</span>
+npm<span class="w"> </span>version<span class="w"> </span>minor<span class="w">     </span><span class="c1"># 1.2.3 → 1.3.0</span>
+npm<span class="w"> </span>version<span class="w"> </span>major<span class="w">     </span><span class="c1"># 1.2.3 → 2.0.0</span>
+npm<span class="w"> </span>publish<span class="w">           </span><span class="c1"># Publicar en npm (requiere cuenta)</span>
+npm<span class="w"> </span>login<span class="w">             </span><span class="c1"># Loguear en npm</span>
+npm<span class="w"> </span><span class="nb">logout</span><span class="w">            </span><span class="c1"># Desloguear</span>
+</code></pre></div>
+<h3 id="scripts">Scripts</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>start<span class="w">             </span><span class="c1"># Ejecuta script "start"</span>
+npm<span class="w"> </span><span class="nb">test</span><span class="w">              </span><span class="c1"># Ejecuta script "test"</span>
+npm<span class="w"> </span>run<span class="w"> </span>script<span class="w">        </span><span class="c1"># Ejecuta cualquier script</span>
+npm<span class="w"> </span>run<span class="w"> </span>script<span class="w"> </span>--<span class="w"> </span>arg<span class="w"> </span><span class="c1"># Pasar argumentos</span>
+</code></pre></div>
+<h3 id="miscelanea">Miscelánea</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span><span class="nb">help</span><span class="w">              </span><span class="c1"># Ver ayuda general</span>
+npm<span class="w"> </span><span class="nb">help</span><span class="w"> </span>install<span class="w">      </span><span class="c1"># Ver ayuda de comando específico</span>
+npx<span class="w"> </span>package<span class="w">           </span><span class="c1"># Ejecutar sin instalar</span>
+npm<span class="w"> </span>link<span class="w">              </span><span class="c1"># Instalar localmente para testing</span>
+npm<span class="w"> </span>unlink<span class="w"> </span>pkg<span class="w">        </span><span class="c1"># Desinstalar local</span>
+</code></pre></div>
+<hr>
+<h2 id="rangos-de-version">Rangos de Versión</h2>
+<table>
+<thead>
+<tr>
+<th>Rango</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.2.3</code></td>
+<td>Exacto</td>
+<td>Instala solo 1.2.3</td>
+</tr>
+<tr>
+<td><code>^1.2.3</code></td>
+<td>Compatible</td>
+<td>1.2.3 - 1.999.999 (no mayor)</td>
+</tr>
+<tr>
+<td><code>~1.2.3</code></td>
+<td>Aproximado</td>
+<td>1.2.3 - 1.2.999 (no minor)</td>
+</tr>
+<tr>
+<td><code>&gt;=1.2.3</code></td>
+<td>Mayor o igual</td>
+<td>1.2.3 y superiores</td>
+</tr>
+<tr>
+<td><code>^1.2.3 &lt;2</code></td>
+<td>Rango</td>
+<td>1.2.3 a 1.999.999</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Cualquiera</td>
+<td>Versión más nueva disponible</td>
+</tr>
+<tr>
+<td><code>latest</code></td>
+<td>Última</td>
+<td>Tag "latest" en npm</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="packagejson-campos-clave">package.json: Campos Clave</h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@scope/paquete"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Identificador único</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span><span class="w">              </span><span class="c1">// Versionado semántico</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descripción"</span><span class="p">,</span><span class="w">     </span><span class="c1">// Para npm search</span>
+<span class="w">  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/index.js"</span><span class="p">,</span><span class="w">         </span><span class="c1">// Punto de entrada</span>
+<span class="w">  </span><span class="nt">"types"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dist/index.d.ts"</span><span class="p">,</span><span class="w">      </span><span class="c1">// TypeScript types</span>
+<span class="w">  </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/cli.js"</span><span class="w"> </span><span class="p">},</span><span class="w">  </span><span class="c1">// Para CLIs</span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="c1">// Comandos npm run</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">               </span><span class="c1">// Producción</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">            </span><span class="c1">// Desarrollo</span>
+<span class="w">  </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">           </span><span class="c1">// Para plugins</span>
+<span class="w">  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"word1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"word2"</span><span class="p">],</span><span class="w">   </span><span class="c1">// Para búsqueda</span>
+<span class="w">  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nombre &lt;email&gt;"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">                 </span><span class="c1">// SPDX</span>
+<span class="w">  </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://..."</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                   </span><span class="c1">// Git repo</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/user/repo.git"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"engines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">                      </span><span class="c1">// Requerimientos</span>
+<span class="w">    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=18.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"npm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=9.0.0"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">                  </span><span class="c1">// No publicar si true</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+<h2 id="estructura-de-proyecto-tipico">Estructura de Proyecto Típico</h2>
+<div class="highlight"><pre><span></span><code>mi-proyecto/
+├── package.json              // Definición del proyecto
+├── package-lock.json         // Versiones exactas (commitear)
+├── tsconfig.json             // Configuración TypeScript
+├── src/                       // Código fuente
+│   ├── index.ts
+│   └── utils.ts
+├── dist/                      // Compilado (generado)
+├── tests/                     // Tests
+├── node_modules/             // Paquetes (no commitear)
+├── .gitignore
+├── README.md
+└── .npmignore                // Qué excluir si publicas
+</code></pre></div>
+<hr>
+<h2 id="dependencias-donde-va-cada-cosa">Dependencias: Dónde va cada cosa?</h2>
+<table>
+<thead>
+<tr>
+<th>Paquete</th>
+<th>Dónde</th>
+<th>Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>express</code></td>
+<td>dependencies</td>
+<td>Runtime necesita</td>
+</tr>
+<tr>
+<td><code>typescript</code></td>
+<td>devDependencies</td>
+<td>Compilar, no runtime</td>
+</tr>
+<tr>
+<td><code>jest</code></td>
+<td>devDependencies</td>
+<td>Solo testing</td>
+</tr>
+<tr>
+<td><code>eslint</code></td>
+<td>devDependencies</td>
+<td>Solo lintear</td>
+</tr>
+<tr>
+<td><code>dotenv</code></td>
+<td>dependencies</td>
+<td>Runtime necesita variables</td>
+</tr>
+<tr>
+<td><code>@types/express</code></td>
+<td>devDependencies</td>
+<td>Solo tipos TypeScript</td>
+</tr>
+<tr>
+<td><code>nodemon</code></td>
+<td>devDependencies</td>
+<td>Desarrollo, no runtime</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="tabla-comparativa-npm-vs-pnpm-vs-yarn-vs-bun">Tabla Comparativa: npm vs pnpm vs yarn vs bun</h2>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>npm</th>
+<th>pnpm</th>
+<th>yarn</th>
+<th>bun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Velocidad</strong></td>
+<td>Normal</td>
+<td>⚡ Muy rápida</td>
+<td>Rápida</td>
+<td>⚡ La más rápida</td>
+</tr>
+<tr>
+<td><strong>Espacio disco</strong></td>
+<td>Normal</td>
+<td>70% menos</td>
+<td>Normal</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><strong>Lock file</strong></td>
+<td>package-lock.json</td>
+<td>pnpm-lock.yaml</td>
+<td>yarn.lock</td>
+<td>bun.lockb</td>
+</tr>
+<tr>
+<td><strong>Monorepos</strong></td>
+<td>workspaces</td>
+<td>Excelente</td>
+<td>workspaces</td>
+<td>Bueno</td>
+</tr>
+<tr>
+<td><strong>Popularidad</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>Curva aprendizaje</strong></td>
+<td>Baja</td>
+<td>Media</td>
+<td>Baja</td>
+<td>Baja</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="npm-init-preguntas-tipicas">npm init: Preguntas Típicas</h2>
+<div class="highlight"><pre><span></span><code>package<span class="w"> </span>name:<span class="w"> </span><span class="o">(</span>carpeta<span class="o">)</span><span class="w">          </span><span class="c1"># Nombre único</span>
+version:<span class="w"> </span><span class="o">(</span><span class="m">1</span>.0.0<span class="o">)</span><span class="w">                 </span><span class="c1"># Semver</span>
+description:<span class="w">                     </span><span class="c1"># Una línea de descripción</span>
+entry<span class="w"> </span>point:<span class="w"> </span><span class="o">(</span>index.js<span class="o">)</span><span class="w">          </span><span class="c1"># Archivo main</span>
+<span class="nb">test</span><span class="w"> </span>command:<span class="w">                    </span><span class="c1"># npm test</span>
+git<span class="w"> </span>repository:<span class="w">                  </span><span class="c1"># URL del repo</span>
+keywords:<span class="w">                        </span><span class="c1"># Términos búsqueda</span>
+author:<span class="w">                          </span><span class="c1"># Tu nombre</span>
+license:<span class="w"> </span><span class="o">(</span>ISC<span class="o">)</span><span class="w">                   </span><span class="c1"># MIT, Apache-2.0, etc.</span>
+</code></pre></div>
+<hr>
+<h2 id="workflows-comunes">Workflows Comunes</h2>
+<h3 id="desarrollo-local">Desarrollo Local</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w">          </span><span class="c1"># Instalar todo</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">          </span><span class="c1"># Ejecutar con hot reload</span>
+npm<span class="w"> </span><span class="nb">test</span><span class="w">             </span><span class="c1"># Correr tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">        </span><span class="c1"># Compilar para producción</span>
+</code></pre></div>
+<h3 id="publicar-un-paquete">Publicar un Paquete</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>login<span class="w">            </span><span class="c1"># Loguear</span>
+npm<span class="w"> </span>version<span class="w"> </span>minor<span class="w">    </span><span class="c1"># Bumpar versión</span>
+npm<span class="w"> </span>publish<span class="w">          </span><span class="c1"># Publicar en npm</span>
+</code></pre></div>
+<h3 id="limpiar-y-reinstalar">Limpiar y Reinstalar</h3>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+<span class="c1"># O simplemente:</span>
+npm<span class="w"> </span>ci
+</code></pre></div>
+<h3 id="auditar-seguridad">Auditar Seguridad</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>audit<span class="w">            </span><span class="c1"># Ver vulnerabilidades</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w">        </span><span class="c1"># Intentar arreglarse</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w"> </span>--force<span class="w">  </span><span class="c1"># Forzar actualización</span>
+</code></pre></div>
+<hr>
+<h2 id="package-lockjson-conceptos">package-lock.json: Conceptos</h2>
+<ul>
+<li><strong>Generado automáticamente</strong>: No edites manualmente</li>
+<li><strong>Commitea a Git</strong>: Asegura reproducibilidad</li>
+<li><strong>Especifica versiones exactas</strong>: No rangos</li>
+<li><strong>Incluye hashes</strong>: Para verificar integridad</li>
+<li><strong>Transitividad</strong>: Todas las dependencias anidadas</li>
+</ul>
+<p><strong>Cuándo usar:</strong>
+- <code>npm install</code> en desarrollo
+- <code>npm ci</code> en CI/CD y producción</p>
+<hr>
+<h2 id="errores-comunes-y-soluciones">Errores Comunes y Soluciones</h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EACCES</code></td>
+<td>Instalar npm sin sudo o usar nvm</td>
+</tr>
+<tr>
+<td><code>ENOTFOUND registry.npmjs.org</code></td>
+<td>Verificar conexión internet</td>
+</tr>
+<tr>
+<td><code>peer dep missing</code></td>
+<td>Instalar manualmente la dependencia</td>
+</tr>
+<tr>
+<td><code>package not found</code></td>
+<td>Verificar nombre del paquete en npmjs.com</td>
+</tr>
+<tr>
+<td><code>conflicting peer deps</code></td>
+<td>Usar <code>npm audit fix</code> o actualizar paquetes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="tips-profesionales">Tips Profesionales</h2>
+<ol>
+<li><strong>Siempre commitea package-lock.json</strong> (excepto librerías)</li>
+<li><strong>Usa <code>npm ci</code> en CI/CD</strong> (no <code>npm install</code>)</li>
+<li><strong>Ejecuta <code>npm audit</code> regularmente</strong></li>
+<li><strong>Actualiza paquetes regularmente</strong> (pero revisa cambios)</li>
+<li><strong>Usa scopes para paquetes privados</strong> (@org/package)</li>
+<li><strong>No instales globalmente</strong> (usa npx en su lugar)</li>
+<li><strong>Prefiere devDependencies</strong> cuando sea posible</li>
+<li><strong>Usa git + GitHub</strong> para colaboración en paquetes</li>
+</ol>
+<hr>
+<h2 id="recursos-online">Recursos Online</h2>
+<ul>
+<li><strong>npmjs.com</strong>: Buscar y explorar paquetes</li>
+<li><strong>npm Docs</strong>: Documentación oficial</li>
+<li><strong>Node School</strong>: Tutoriales interactivos</li>
+<li><strong>GitHub npm trending</strong>: Ver qué está de moda</li>
+</ul>
+<hr>
+<p><strong>Última actualización</strong>: Diciembre 2025 | npm v10.5.0+ | Node.js 18+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

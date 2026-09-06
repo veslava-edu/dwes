@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Presentaciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Barra superior */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .top-bar.fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .top-bar.fullscreen-mode:hover {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .presentation-title {
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slide-indicator {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Controles de navegación */
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .fullscreen-btn {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Contenedor principal */
+        .presentation-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+
+       /* Contenedor principal */
+		.presentation-container {
+			flex: 1;
+			position: relative;
+			display: flex;
+			align-items: center; /* <-- Esto centra verticalmente el wrapper */
+			justify-content: center; /* <-- Esto centra horizontalmente el wrapper */
+			background: #0a0a0a;
+			overflow: hidden;
+		}
+
+		/* Wrapper del iframe con aspecto ratio 16:9 */
+		.slide-wrapper {
+			position: relative;
+			width: 94%;
+			aspect-ratio: 16/9;
+
+			background: #fff;
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+			transition: all 0.3s ease;
+		}
+
+		/* Iframe de la diapositiva */
+		.slide-frame {
+			width: 100%;
+			height: 100%;
+			border: none;
+			background: #fff;
+			/* Las propiedades de alineación no tienen efecto aquí, por eso se quitan */
+		}
+
+        /* Botones de navegación laterales */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 20px 12px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+        }
+
+        .nav-arrow:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.7);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .nav-arrow.prev {
+            left: 20px;
+        }
+
+        .nav-arrow.next {
+            right: 20px;
+        }
+
+        .nav-arrow svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Indicador de carga */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Indicador de slide en la parte inferior */
+        .slide-progress {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        body.fullscreen .slide-progress {
+            bottom: 30px;
+        }
+
+        /* Estilos para modo fullscreen */
+        body.fullscreen {
+            background: #000;
+        }
+
+        body.fullscreen .presentation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+        }
+
+        /* Animación de transición */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-frame {
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Mensaje de error */
+        .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #999;
+        }
+
+        .error-message h2 {
+            margin-bottom: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar" id="topBar">
+        <div class="presentation-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span id="presentationTitle">Presentación</span>
+            <span class="slide-indicator" id="slideIndicator">0 / ?</span>
+        </div>
+        
+        <div class="controls">
+            <button class="nav-button" id="prevBtn" title="Anterior (←)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
+            <button class="nav-button" id="nextBtn" title="Siguiente (→)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+            
+            <button class="nav-button fullscreen-btn" id="fullscreenBtn" title="Pantalla completa (F)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+                <span>Pantalla completa</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="presentation-container">
+        <!-- Botones de navegación laterales -->
+        <button class="nav-arrow prev" id="prevArrow" title="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        
+        <button class="nav-arrow next" id="nextArrow" title="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <!-- Wrapper de la diapositiva -->
+        <div class="slide-wrapper">
+            <div class="loading" id="loading">Cargando presentación...</div>
+            <iframe class="slide-frame" id="slideFrame" style="display: none;"></iframe>
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <h2>Error al cargar la diapositiva</h2>
+                <p>No se pudo cargar el archivo <span id="errorFile"></span></p>
+            </div>
+        </div>
+
+        <!-- Indicador de progreso -->
+        <!--
+		<div class="slide-progress" id="slideProgress">
+            <span id="currentSlide">1</span> / <span id="totalSlides">?</span>
+        </div>
+		-->
+    </div>
+
+    <script>
+        class PresentationViewer {
+            constructor() {
+                this.currentSlide = 0;
+                this.totalSlides = null;
+                this.isFullscreen = false;
+                this.maxSlidesToCheck = 11; // Máximo número de slides a verificar
+                
+                this.init();
+            }
+
+            init() {
+                this.setupElements();
+                this.setupEventListeners();
+                this.detectTotalSlides();
+                this.loadSlide(this.currentSlide);
+            }
+
+            setupElements() {
+                this.slideFrame = document.getElementById('slideFrame');
+                this.loading = document.getElementById('loading');
+                this.errorMessage = document.getElementById('errorMessage');
+                this.errorFile = document.getElementById('errorFile');
+                this.slideIndicator = document.getElementById('slideIndicator');
+                this.currentSlideEl = document.getElementById('currentSlide');
+                this.totalSlidesEl = document.getElementById('totalSlides');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.prevArrow = document.getElementById('prevArrow');
+                this.nextArrow = document.getElementById('nextArrow');
+                this.fullscreenBtn = document.getElementById('fullscreenBtn');
+                this.topBar = document.getElementById('topBar');
+            }
+
+            setupEventListeners() {
+                // Navegación con botones
+                this.prevBtn.addEventListener('click', () => this.previousSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevArrow.addEventListener('click', () => this.previousSlide());
+                this.nextArrow.addEventListener('click', () => this.nextSlide());
+                
+                // Pantalla completa
+                this.fullscreenBtn.addEventListener('click', () => this.toggleFullscreen());
+                
+                // Navegación con teclado
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+                
+                // Detectar cambios en pantalla completa
+                document.addEventListener('fullscreenchange', () => this.handleFullscreenChange());
+                document.addEventListener('webkitfullscreenchange', () => this.handleFullscreenChange());
+                document.addEventListener('mozfullscreenchange', () => this.handleFullscreenChange());
+                document.addEventListener('MSFullscreenChange', () => this.handleFullscreenChange());
+            }
+
+            handleKeyPress(e) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.previousSlide();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.nextSlide();
+                        break;
+                    case 'f':
+                    case 'F':
+                        e.preventDefault();
+                        this.toggleFullscreen();
+                        break;
+                    case 'Escape':
+                        if (this.isFullscreen) {
+                            this.exitFullscreen();
+                        }
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        this.goToSlide(0);
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        if (this.totalSlides) {
+                            this.goToSlide(this.totalSlides);
+                        }
+                        break;
+                }
+            }
+
+            async detectTotalSlides() {
+                // Intentar detectar el número total de diapositivas
+                let found = false;
+                let lastValid = 1;
+                
+                for (let i = 2; i <= this.maxSlidesToCheck; i++) {
+                    const exists = await this.checkSlideExists(i);
+                    if (exists) {
+                        lastValid = i;
+                    } else {
+                        // Si no existe, verificar una más adelante por si acaso
+                        const nextExists = await this.checkSlideExists(i + 1);
+                        if (!nextExists) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                
+                this.totalSlides = lastValid;
+                this.updateSlideIndicators();
+            }
+
+            checkSlideExists(slideNumber) {
+                return new Promise((resolve) => {
+                    const testFrame = document.createElement('iframe');
+                    testFrame.style.display = 'none';
+                    const slideUrl = `${slideNumber}.html`;
+                    
+                    testFrame.onload = () => {
+                        document.body.removeChild(testFrame);
+                        resolve(true);
+                    };
+                    
+                    testFrame.onerror = () => {
+                        document.body.removeChild(testFrame);
+                        resolve(false);
+                    };
+                    
+                    // Timeout para evitar esperas largas
+                    setTimeout(() => {
+                        if (testFrame.parentNode) {
+                            document.body.removeChild(testFrame);
+                            resolve(false);
+                        }
+                    }, 3000);
+                    
+                    document.body.appendChild(testFrame);
+                    testFrame.src = slideUrl;
+                });
+            }
+
+            loadSlide(slideNumber) {
+                const slideUrl = `${slideNumber}.html`;
+                
+                this.loading.style.display = 'block';
+                this.slideFrame.style.display = 'none';
+                this.errorMessage.style.display = 'none';
+                
+                // Crear un nuevo iframe para evitar problemas de caché
+                const newFrame = this.slideFrame.cloneNode(false);
+                this.slideFrame.parentNode.replaceChild(newFrame, this.slideFrame);
+                this.slideFrame = newFrame;
+                
+                this.slideFrame.onload = () => {
+                    this.loading.style.display = 'none';
+                    this.slideFrame.style.display = 'block';
+                    this.currentSlide = slideNumber;
+                    this.updateSlideIndicators();
+                    this.updateNavigationButtons();
+                };
+                
+                this.slideFrame.onerror = () => {
+                    this.loading.style.display = 'none';
+                    this.errorMessage.style.display = 'block';
+                    this.errorFile.textContent = slideUrl;
+                };
+                
+                this.slideFrame.src = slideUrl;
+            }
+
+            previousSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            nextSlide() {
+                if (!this.totalSlides || this.currentSlide < this.totalSlides) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            goToSlide(slideNumber) {
+                this.loadSlide(slideNumber);
+            }
+
+            updateSlideIndicators() {
+                const total = this.totalSlides || '?';
+                this.slideIndicator.textContent = `${this.currentSlide} / ${total}`;
+                this.currentSlideEl.textContent = this.currentSlide;
+                this.totalSlidesEl.textContent = total;
+            }
+
+            updateNavigationButtons() {
+                // Deshabilitar botón anterior si estamos en la primera diapositiva
+                const isPrevDisabled = this.currentSlide <= 1;
+                this.prevBtn.disabled = isPrevDisabled;
+                this.prevArrow.disabled = isPrevDisabled;
+                
+                // Deshabilitar botón siguiente si estamos en la última diapositiva conocida
+                const isNextDisabled = this.totalSlides && this.currentSlide >= this.totalSlides;
+                this.nextBtn.disabled = isNextDisabled;
+                this.nextArrow.disabled = isNextDisabled;
+            }
+
+            toggleFullscreen() {
+                if (!this.isFullscreen) {
+                    this.enterFullscreen();
+                } else {
+                    this.exitFullscreen();
+                }
+            }
+
+            enterFullscreen() {
+                const elem = document.documentElement;
+                
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            exitFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            handleFullscreenChange() {
+                const isFullscreenNow = !!(
+                    document.fullscreenElement ||
+                    document.webkitFullscreenElement ||
+                    document.mozFullScreenElement ||
+                    document.msFullscreenElement
+                );
+                
+                this.isFullscreen = isFullscreenNow;
+                document.body.classList.toggle('fullscreen', isFullscreenNow);
+                this.topBar.classList.toggle('fullscreen-mode', isFullscreenNow);
+                
+                // Actualizar texto del botón
+                const btnText = this.fullscreenBtn.querySelector('span');
+                btnText.textContent = isFullscreenNow ? 'Salir' : 'Pantalla completa';
+            }
+        }
+
+        // Inicializar el visor cuando se carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            new PresentationViewer();
+        });
+    </script>
+</body>
+</html>

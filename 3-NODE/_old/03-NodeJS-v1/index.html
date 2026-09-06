@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/_old/03-NodeJS-v1/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>03 NodeJS v1 - DWES</title>
+<link href="../../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script><script src="../../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#nodejs-el-motor-del-backend-con-typescript">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              03 NodeJS v1
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#nodejs-environment">
+<span class="md-ellipsis">
+      
+        Node.js Environment
+      
+    </span>
+</a>
+<nav aria-label="Node.js Environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#browser-vs-nodejs">
+<span class="md-ellipsis">
+      
+        Browser vs Node.js
+      
+    </span>
+</a>
+<nav aria-label="Browser vs Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diferencias-clave">
+<span class="md-ellipsis">
+      
+        Diferencias Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-arquitectura">
+<span class="md-ellipsis">
+      
+        Diagrama de Arquitectura
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-typescript">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (TypeScript)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-repl-de-nodejs-terminal-interactiva">
+<span class="md-ellipsis">
+      
+        El REPL de Node.js (terminal interactiva)
+      
+    </span>
+</a>
+<nav aria-label="El REPL de Node.js (terminal interactiva)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comandos-utiles-del-repl">
+<span class="md-ellipsis">
+      
+        Tabla: Comandos útiles del REPL
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplo-de-sesion-repl">
+<span class="md-ellipsis">
+      
+        Ejemplo de sesión REPL
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_1">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#objectos-globales">
+<span class="md-ellipsis">
+      
+        Objectos Globales
+      
+    </span>
+</a>
+<nav aria-label="Objectos Globales" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#variables-globales-y-pseudo-globales-importantes">
+<span class="md-ellipsis">
+      
+        Variables Globales y "Pseudo-Globales" Importantes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-jerarquia-global">
+<span class="md-ellipsis">
+      
+        Diagrama de Jerarquía Global
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-typescript_1">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (TypeScript)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_2">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#primer-programa-con-nodejs">
+<span class="md-ellipsis">
+      
+        Primer programa con Node.js
+      
+    </span>
+</a>
+<nav aria-label="Primer programa con Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flujo-de-trabajo-profesional">
+<span class="md-ellipsis">
+      
+        Flujo de Trabajo Profesional
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-minima">
+<span class="md-ellipsis">
+      
+        Configuración Mínima
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_3">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-en-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos en Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos en Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#crear-un-modulo">
+<span class="md-ellipsis">
+      
+        Crear un módulo
+      
+    </span>
+</a>
+<nav aria-label="Crear un módulo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-de-sistemas-de-modulos">
+<span class="md-ellipsis">
+      
+        Tipos de Sistemas de Módulos
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-e-importar-moduleexports-y-require">
+<span class="md-ellipsis">
+      
+        Exportar e importar (module.exports y require)
+      
+    </span>
+</a>
+<nav aria-label="Exportar e importar (module.exports y require)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-comparativa-cjs-vs-esm">
+<span class="md-ellipsis">
+      
+        Tabla Comparativa: CJS vs ESM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-carga-de-modulos">
+<span class="md-ellipsis">
+      
+        Diagrama de Carga de Módulos
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-estilo-commonjs-en-ts">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Estilo CommonJS en TS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_4">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-necesaria-para-habilitar-es-modules">
+<span class="md-ellipsis">
+      
+        Configuración necesaria para habilitar ES Modules
+      
+    </span>
+</a>
+<nav aria-label="Configuración necesaria para habilitar ES Modules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-markmap-de-configuracion">
+<span class="md-ellipsis">
+      
+        Diagrama Markmap de Configuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_1">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exportar-varios-elementos">
+<span class="md-ellipsis">
+      
+        Exportar varios elementos
+      
+    </span>
+</a>
+<nav aria-label="Exportar varios elementos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo-sintaxis-esm">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código (Sintaxis ESM)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_5">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sintaxis-de-desestructuracion-y-require">
+<span class="md-ellipsis">
+      
+        Sintaxis de desestructuración y require
+      
+    </span>
+</a>
+<nav aria-label="Sintaxis de desestructuración y require" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-secuencia-desestructuracion">
+<span class="md-ellipsis">
+      
+        Diagrama de Secuencia: Desestructuración
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_2">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_6">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulos-principales-de-nodejs">
+<span class="md-ellipsis">
+      
+        Módulos principales de Node.js
+      
+    </span>
+</a>
+<nav aria-label="Módulos principales de Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-console">
+<span class="md-ellipsis">
+      
+        El módulo console
+      
+    </span>
+</a>
+<nav aria-label="El módulo console" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metodos-avanzados">
+<span class="md-ellipsis">
+      
+        Métodos Avanzados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_3">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-process">
+<span class="md-ellipsis">
+      
+        El módulo process
+      
+    </span>
+</a>
+<nav aria-label="El módulo process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#funcionalidades-clave">
+<span class="md-ellipsis">
+      
+        Funcionalidades Clave
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_4">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-os">
+<span class="md-ellipsis">
+      
+        El módulo os
+      
+    </span>
+</a>
+<nav aria-label="El módulo os" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabla-de-metodos-utiles">
+<span class="md-ellipsis">
+      
+        Tabla de Métodos Útiles
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_5">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-modulo-path">
+<span class="md-ellipsis">
+      
+        El módulo path
+      
+    </span>
+</a>
+<nav aria-label="El módulo path" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_6">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_7">
+<span class="md-ellipsis">
+      
+        Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enriquecimiento-pedagogico">
+<span class="md-ellipsis">
+      
+        🎓 Enriquecimiento Pedagógico
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<!-- 01_nodejs_entorno_typescript.md --><h1 id="nodejs-el-motor-del-backend-con-typescript">Node.js: El Motor del Backend con TypeScript</h1>
+<h2 id="nodejs-environment">Node.js Environment</h2>
+<h3 id="browser-vs-nodejs">Browser vs Node.js</h3>
+<p>Aunque el lenguaje base es el mismo (JavaScript), el ecosistema donde vive es radicalmente opuesto. Es como saber hablar inglés: te sirve tanto en Londres (Navegador) como en Nueva York (Servidor), pero las leyes y las costumbres son diferentes.</p>
+<p>En el <strong>Navegador</strong>, tu preocupación principal es la interfaz de usuario, el DOM y la compatibilidad visual. En <strong>Node.js</strong>, tu prioridad es el sistema operativo, la red y el acceso a datos.</p>
+<h4 id="diferencias-clave">Diferencias Clave</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Navegador (Browser)</th>
+<th style="text-align: left;">Node.js (Servidor)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Acceso al Sistema</strong></td>
+<td style="text-align: left;">Restringido (Sandbox). No puede leer tus archivos locales por seguridad.</td>
+<td style="text-align: left;">Total. Puede leer, escribir y borrar archivos del SO (<code>fs</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objeto Global</strong></td>
+<td style="text-align: left;"><code>window</code> / <code>document</code></td>
+<td style="text-align: left;"><code>global</code> / <code>process</code>. No existe el DOM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fragmentación</strong></td>
+<td style="text-align: left;">Debes soportar Chrome, Firefox, Safari (Babel/Polyfills).</td>
+<td style="text-align: left;">Tú controlas la versión exacta de Node.js donde corre tu código.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Módulos</strong></td>
+<td style="text-align: left;">ES Modules (reciente) o Bundlers (Webpack/Vite).</td>
+<td style="text-align: left;">CommonJS (histórico) y ES Modules (moderno).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-arquitectura">Diagrama de Arquitectura</h4>
+<pre class="mermaid"><code>graph TD
+    subgraph "Navegador (Cliente)"
+        A["Código JS"] --&gt; B["Motor V8 / SpiderMonkey"]
+        B --&gt; C["Web APIs (DOM, Fetch, Storage)"]
+    end
+
+    subgraph "Node.js (Servidor)"
+        D["Código JS"] --&gt; E["Motor V8"]
+        E --&gt; F["Libuv (Event Loop asíncrono)"]
+        F --&gt; G["Bindings C++"]
+        G --&gt; H["Sistema Operativo (Archivos, Red)"]
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#6f9,stroke:#333,stroke-width:2px</code></pre>
+<h4 id="ejemplos-de-codigo-typescript">Ejemplos de Código (TypeScript)</h4>
+<p><strong>Ejemplo 1: Intentando acceder al DOM en Node (Error Común)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// archivo: error-dom.ts</span>
+<span class="c1">// ❌ Esto fallará en Node.js</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'app'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Hola mundo'</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'¡Error! En Node.js no existe "document" ni "alert".'</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Output: ReferenceError: document is not defined</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Acceso al Sistema Operativo (Exclusivo de Node)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// archivo: info-sistema.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="c1">// ✅ Esto funciona perfectamente en Node.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">memoriaLibre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">freemem</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria libre en el servidor: </span><span class="si">${</span><span class="nx">memoriaLibre</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="si">}</span><span class="sb"> MB`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas">Preguntas Reflexivas</h4>
+<ol>
+<li>Si Node.js usa el mismo motor V8 que Chrome, ¿por qué no puedo usar <code>window.location</code> en mi servidor?</li>
+<li>¿Qué ventaja tiene controlar la versión de Node.js en el servidor frente a la incertidumbre del navegador del usuario?</li>
+<li>¿Por qué crees que Node.js se hizo tan popular para aplicaciones de tiempo real (chats, streaming) frente a tecnologías como PHP clásico?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="el-repl-de-nodejs-terminal-interactiva">El REPL de Node.js (terminal interactiva)</h3>
+<p>El REPL (<strong>R</strong>ead-<strong>E</strong>val-<strong>P</strong>rint-<strong>L</strong>oop) es como la consola de desarrollador de Chrome, pero en tu terminal. Es ideal para probar pequeños fragmentos de lógica sin crear archivos.</p>
+<p>Para entrar, simplemente abre tu terminal y escribe <code>node</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Pro: REPL con TypeScript</p>
+<p>Por defecto, el comando <code>node</code> espera JavaScript. Si quieres probar código <strong>TypeScript</strong> directamente en una terminal interactiva, puedes instalar y usar <code>ts-node</code> (aunque en producción siempre compilaremos).
+Comando: <code>npx ts-node</code></p>
+</div>
+<h4 id="tabla-comandos-utiles-del-repl">Tabla: Comandos útiles del REPL</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>.help</code></td>
+<td style="text-align: left;">Muestra la ayuda de comandos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.editor</code></td>
+<td style="text-align: left;">Entra en modo editor para escribir funciones multilínea cómodamente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.break</code></td>
+<td style="text-align: left;">Sale de una expresión multilínea en curso.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>.exit</code> o <code>Ctrl+D</code></td>
+<td style="text-align: left;">Cierra la sesión del REPL.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>_</code> (guion bajo)</td>
+<td style="text-align: left;">Obtiene el resultado de la última operación ejecutada.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplo-de-sesion-repl">Ejemplo de sesión REPL</h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>node
+&gt;<span class="w"> </span>const<span class="w"> </span><span class="nv">saludo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hola DAW"</span><span class="p">;</span>
+undefined
+&gt;<span class="w"> </span><span class="m">10</span><span class="w"> </span>+<span class="w"> </span><span class="m">20</span>
+<span class="m">30</span>
+&gt;<span class="w"> </span>_<span class="w"> </span>+<span class="w"> </span><span class="m">5</span><span class="w">  </span>//<span class="w"> </span>El<span class="w"> </span>guion<span class="w"> </span>bajo<span class="w"> </span>toma<span class="w"> </span>el<span class="w"> </span><span class="m">30</span><span class="w"> </span>anterior
+<span class="m">35</span>
+&gt;<span class="w"> </span>.exit
+</code></pre></div>
+<h4 id="preguntas-reflexivas_1">Preguntas Reflexivas</h4>
+<ol>
+<li>¿En qué escenario laboral usarías el REPL en lugar de escribir un script en VS Code?</li>
+<li>¿Cómo accederías al historial de comandos que escribiste en una sesión anterior del REPL?</li>
+<li>Si defines una variable con <code>const</code> en el REPL, ¿puedes redefinirla? ¿Por qué?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="objectos-globales">Objectos Globales</h3>
+<p>En el navegador, el rey es <code>window</code>. Todo cuelga de él. En Node.js, <code>window</code> no existe. Tenemos <code>global</code>. Sin embargo, hay variables que parecen globales pero son específicas de cada módulo (archivo), y otras que son verdaderamente globales.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con 'this'</p>
+<p>En el nivel superior de un archivo Node.js (CommonJS), <code>this</code> es <code>module.exports</code>, no el objeto global. En el REPL, <code>this</code> sí es el objeto global. ¡Confuso al principio!</p>
+</div>
+<h4 id="variables-globales-y-pseudo-globales-importantes">Variables Globales y "Pseudo-Globales" Importantes</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Disponibilidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>global</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">El equivalente a <code>window</code>. Contiene métodos como <code>setTimeout</code>, <code>console</code>.</td>
+<td style="text-align: left;">Verdaderamente Global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>process</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">Información sobre el proceso actual (env vars, argumentos).</td>
+<td style="text-align: left;">Verdaderamente Global</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>__dirname</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Ruta absoluta al directorio del archivo actual.</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>__filename</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Ruta absoluta al archivo actual (incluye nombre).</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>module</code></td>
+<td style="text-align: left;">Objeto</td>
+<td style="text-align: left;">Referencia al módulo actual (usado para exportar).</td>
+<td style="text-align: left;"><strong>Solo en CommonJS</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota sobre TypeScript y ES Modules:</strong>
+Si configuras tu proyecto TypeScript para usar ES Modules modernos (lo recomendado hoy día), <code>__dirname</code> y <code>__filename</code> <strong>dejan de existir</strong>. Debemos recrearlos.</p>
+<h4 id="diagrama-de-jerarquia-global">Diagrama de Jerarquía Global</h4>
+<pre class="mermaid"><code>classDiagram
+    class GlobalObject {
+        +setTimeout()
+        +setInterval()
+        +setImmediate()
+        +console
+        +process
+    }
+
+    class ModuleScope {
+        -__dirname (CJS)
+        -__filename (CJS)
+        -require() (CJS)
+        -exports (CJS)
+    }
+
+    GlobalObject &lt;|-- ModuleScope : Disponible dentro de</code></pre>
+<h4 id="ejemplos-de-codigo-typescript_1">Ejemplos de Código (TypeScript)</h4>
+<p><strong>Ejemplo 1: Usando <code>process</code> y <code>console</code> (Globales)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// global-demo.ts</span>
+<span class="c1">// No hace falta importar 'process' ni 'console'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Estás ejecutando Node versión: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">version</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Tu usuario de sistema es: </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USER</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USERNAME</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="c1">// Tip: setTimeout también es global</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Han pasado 2 segundos en el servidor.'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: __dirname en Modern TypeScript (ESM)</strong>
+Como <code>__dirname</code> no existe en ES Modules, usamos <code>import.meta.url</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// path-moderno.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'url'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dirname</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="c1">// Recreando __dirname y __filename</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileURLToPath</span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">__dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dirname</span><span class="p">(</span><span class="nx">__filename</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Directorio actual: </span><span class="si">${</span><span class="nx">__dirname</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Archivo actual: </span><span class="si">${</span><span class="nx">__filename</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="preguntas-reflexivas_2">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Por qué crees que Node.js elimina <code>__dirname</code> en el estándar de módulos moderno (ESM)?</li>
+<li>¿Qué peligros de seguridad implica tener acceso a <code>process.env</code> si subes tu código a un repositorio público?</li>
+<li>Investiga: ¿Qué es <code>globalThis</code> y por qué se introdujo recientemente?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="primer-programa-con-nodejs">Primer programa con Node.js</h3>
+<p>Vamos a crear un "Hola Mundo" vitaminado. Usaremos TypeScript, por lo que necesitaremos un paso de <strong>transpilación</strong>.</p>
+<h4 id="flujo-de-trabajo-profesional">Flujo de Trabajo Profesional</h4>
+<ol>
+<li>Escribir código en <code>.ts</code>.</li>
+<li>Compilar con <code>tsc</code> (TypeScript Compiler) -&gt; genera <code>.js</code>.</li>
+<li>Ejecutar con <code>node</code> el archivo <code>.js</code>.</li>
+</ol>
+<h4 id="configuracion-minima">Configuración Mínima</h4>
+<p>Necesitas un archivo <code>tsconfig.json</code>. Ejecuta <code>npx tsc --init</code> para crearlo.</p>
+<h4 id="ejemplos-de-codigo">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: El Código (index.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// index.ts</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Usuario</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">usuarios</span><span class="o">:</span><span class="w"> </span><span class="kt">Usuario</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Ana'</span><span class="p">,</span><span class="w"> </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">2</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Carlos'</span><span class="p">,</span><span class="w"> </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">saludarAdmin</span><span class="p">(</span><span class="nx">users</span><span class="o">:</span><span class="w"> </span><span class="kt">Usuario</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">admins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">admin</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">admins</span><span class="p">);</span><span class="w"> </span><span class="c1">// ¡console.table es genial en Node!</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`¡Servidor listo! Detectados </span><span class="si">${</span><span class="nx">admins</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> administradores.`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">saludarAdmin</span><span class="p">(</span><span class="nx">usuarios</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Ejecución (Terminal)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1"># Opción A: Tradicional (Producción)</span>
+$<span class="w"> </span>npx<span class="w"> </span>tsc<span class="w"> </span>index.ts<span class="w">   </span><span class="c1"># Genera index.js</span>
+$<span class="w"> </span>node<span class="w"> </span>index.js<span class="w">      </span><span class="c1"># Ejecuta el JS</span>
+
+<span class="c1"># Opción B: Desarrollo Rápido (ts-node)</span>
+$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>index.ts<span class="w"> </span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_3">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Qué ocurre si intentas ejecutar <code>node index.ts</code> directamente sin <code>ts-node</code>?</li>
+<li>¿Por qué en un servidor de producción se prefiere ejecutar el <code>.js</code> compilado en lugar de usar <code>ts-node</code>?</li>
+<li>Modifica el programa para que lea un argumento desde la terminal (pista: <code>process.argv</code>).</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="modulos-en-nodejs">Módulos en Node.js</h2>
+<h3 id="crear-un-modulo">Crear un módulo</h3>
+<p>En el desarrollo profesional, <strong>dividir es vencer</strong>. No escribimos todo el código en un fichero <code>index.ts</code> de 5000 líneas. Usamos módulos.
+Un módulo en Node.js es simplemente un archivo JavaScript/TypeScript que encapsula una funcionalidad específica y expone solo lo que quiere que otros vean (Interfaz Pública).</p>
+<p>Es como una cocina de restaurante:
+- <strong>Tu módulo:</strong> La estación de postres.
+- <strong>Lo privado:</strong> Tus recetas secretas, ingredientes sucios.
+- <strong>Lo público (export):</strong> El pastel terminado.</p>
+<h4 id="tipos-de-sistemas-de-modulos">Tipos de Sistemas de Módulos</h4>
+<ol>
+<li><strong>CommonJS (CJS):</strong> El clásico de Node. Usa <code>require</code> y <code>module.exports</code>. Síncrono.</li>
+<li><strong>ES Modules (ESM):</strong> El estándar oficial de JavaScript y TypeScript. Usa <code>import</code> y <code>export</code>. Asíncrono y estático.</li>
+</ol>
+<p><strong>Nos enfocaremos en cómo TypeScript maneja esto, priorizando ESM pero entendiendo CJS.</strong></p>
+<p><br/></p><hr/><p></p>
+<h3 id="exportar-e-importar-moduleexports-y-require">Exportar e importar (module.exports y require)</h3>
+<p>Aunque TypeScript prefiere <code>import/export</code>, en el mundo laboral encontrarás mucho código legado (legacy) o configuraciones específicas que usan <strong>CommonJS</strong>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Importante</p>
+<p>Para que TypeScript compile a CommonJS (y use <code>require</code> por debajo), tu <code>tsconfig.json</code> debe tener <code>"module": "commonjs"</code>.</p>
+</div>
+<h4 id="tabla-comparativa-cjs-vs-esm">Tabla Comparativa: CJS vs ESM</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">CommonJS (Legacy Node)</th>
+<th style="text-align: left;">ES Modules (Moderno TS/JS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Sintaxis Export</strong></td>
+<td style="text-align: left;"><code>module.exports = ...</code></td>
+<td style="text-align: left;"><code>export const ...</code> / <code>export default</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sintaxis Import</strong></td>
+<td style="text-align: left;"><code>const x = require('./x')</code></td>
+<td style="text-align: left;"><code>import x from './x'</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Carga</strong></td>
+<td style="text-align: left;">Síncrona (bloqueante)</td>
+<td style="text-align: left;">Asíncrona</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso principal</strong></td>
+<td style="text-align: left;">Scripts antiguos, herramientas de build.</td>
+<td style="text-align: left;">Frontend moderno, Node.js actual, Deno.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diagrama-de-carga-de-modulos">Diagrama de Carga de Módulos</h4>
+<pre class="mermaid"><code>graph LR
+    A[main.ts] -- require('./utils') --&gt; B(Busca utils.ts/.js)
+    B -- Lee archivo --&gt; C{¿Tiene caché?}
+    C -- Sí --&gt; D[Devuelve exports de caché]
+    C -- No --&gt; E[Ejecuta código del módulo]
+    E --&gt; F[Guarda en caché]
+    F --&gt; G[Devuelve module.exports]</code></pre>
+<h4 id="ejemplos-de-codigo-estilo-commonjs-en-ts">Ejemplos de Código (Estilo CommonJS en TS)</h4>
+<p><strong>Ejemplo 1: Exportando (math.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// math.ts</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1416</span><span class="p">;</span><span class="w"> </span><span class="c1">// Privado</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">sumar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">restar</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Sintaxis CommonJS clásica</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sumar</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">restar</span>
+<span class="w">    </span><span class="c1">// PI no se exporta, es privada</span>
+<span class="p">};</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Importando con require (app.ts)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// app.ts</span>
+<span class="c1">// TypeScript nos permite usar require si declaramos los tipos o usamos una sintaxis especial:</span>
+<span class="c1">// import x = require('./x') es la forma "TypeScript-ish" de hacerlo para CJS.</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">operaciones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./math'</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">operaciones</span><span class="p">.</span><span class="nx">sumar</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Resultado: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_4">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Qué significa que <code>require</code> sea síncrono? ¿Cómo afecta eso al inicio de tu servidor?</li>
+<li>¿Qué sucede si dos archivos se hacen <code>require</code> mutuamente (referencia circular)?</li>
+<li>Si cambias el valor de una variable exportada en el módulo origen, ¿cambia en el destino? (Pista: Primitivos vs Objetos).</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="configuracion-necesaria-para-habilitar-es-modules">Configuración necesaria para habilitar ES Modules</h3>
+<p>Para usar la sintaxis moderna (estándar en TypeScript y en la industria actual) y que Node.js la interprete nativamente como ESM, debemos configurar el entorno.</p>
+<ol>
+<li><strong>En <code>package.json</code></strong>: Añadir <code>"type": "module"</code>.</li>
+<li><strong>En <code>tsconfig.json</code></strong>:<ul>
+<li><code>"target"</code>: <code>ES2020</code> (o superior).</li>
+<li><code>"module"</code>: <code>NodeNext</code> o <code>ESNext</code>.</li>
+<li><code>"moduleResolution"</code>: <code>NodeNext</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Esto le dice a Node: "Oye, trátame los archivos <code>.js</code> (resultado de compilar TS) como módulos modernos, no como CommonJS antiguo".</p>
+<h4 id="diagrama-markmap-de-configuracion">Diagrama Markmap de Configuración</h4>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBDb25maWd1cmFjacOzbiBFU00KCiMjIHBhY2thZ2UuanNvbgotICJ0eXBlIjogIm1vZHVsZSIKLSBPYmxpZ2EgYSB1c2FyIGV4dGVuc2lvbmVzIC5qcyBlbiBpbXBvcnRzIHJlbGF0aXZvcwoKIyMgdHNjb25maWcuanNvbgotICJtb2R1bGUiOiAiTm9kZU5leHQiCi0gIm1vZHVsZVJlc29sdXRpb24iOiAiTm9kZU5leHQiCi0gImVzTW9kdWxlSW50ZXJvcCI6IHRydWUKCiMjIENvbnNlY3VlbmNpYXMKLSBBZGnDs3MgYHJlcXVpcmUoKWAKLSBBZGnDs3MgYF9fZGlybmFtZWAKLSBIb2xhIGBpbXBvcnQubWV0YWAKLSBUb3AtbGV2ZWwgYGF3YWl0YCBwZXJtaXRpZG8=</markmap-data></div>
+<h4 id="ejemplos-de-codigo_1">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: package.json</strong>
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mi-proyecto-daw"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"module"</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: tsconfig.json Crítico</strong>
+</p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2022"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodeNext"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"moduleResolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodeNext"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="exportar-varios-elementos">Exportar varios elementos</h3>
+<p>En ES Modules (la forma preferida en TypeScript), tenemos dos formas de exportar: <strong>Named Exports</strong> (Exportaciones Nombradas) y <strong>Default Exports</strong> (Exportación por Defecto).</p>
+<div class="admonition tip">
+<p class="admonition-title">Buenas Prácticas</p>
+<p>Google Style Guide y la comunidad TS prefieren <strong>Named Exports</strong>. Hacen que el refactoring sea más fácil y el autocompletado del IDE más preciso. Evita <code>export default</code> si puedes.</p>
+</div>
+<h4 id="ejemplos-de-codigo-sintaxis-esm">Ejemplos de Código (Sintaxis ESM)</h4>
+<p><strong>Ejemplo 1: Exportaciones Nombradas (Recomendado)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// utils/text-helpers.ts</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">mayusculas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">str</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">minusculas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">str</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">CAPACIDAD_MAXIMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Importando Varios Elementos</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// main.ts</span>
+<span class="c1">// Notad la extensión .js obligatoria si usamos "type": "module" en Node puro</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">mayusculas</span><span class="p">,</span><span class="w"> </span><span class="nx">CAPACIDAD_MAXIMA</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./utils/text-helpers.js'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mayusculas</span><span class="p">(</span><span class="s1">'hola daw'</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Capacidad: </span><span class="si">${</span><span class="nx">CAPACIDAD_MAXIMA</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_5">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Cuál es la ventaja de tener que usar las llaves <code>{ }</code> al importar?</li>
+<li>¿Se pueden renombrar las exportaciones al importarlas para evitar conflictos de nombres? (Ej: <code>import { suma as sumaTotal } ...</code>)</li>
+<li>¿Qué ocurre si intentas importar algo que no ha sido exportado?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<h3 id="sintaxis-de-desestructuracion-y-require">Sintaxis de desestructuración y require</h3>
+<p>Volviendo un momento a CommonJS (o al interoperar con librerías antiguas). Cuando hacemos <code>require('modulo')</code>, obtenemos un objeto gigante. A menudo solo queremos una pieza. Aquí entra la <strong>Desestructuración</strong> (Destructuring) de JavaScript.</p>
+<p>Es como pedir una pizza entera pero solo poner en tu plato una porción de pepperoni.</p>
+<h4 id="diagrama-de-secuencia-desestructuracion">Diagrama de Secuencia: Desestructuración</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Main as "Archivo Principal"
+    participant Modulo as "Módulo 'fs'"
+
+    Note over Main, Modulo: Sin Desestructuración
+    Main-&gt;&gt;Modulo: const fs = require('fs')
+    Modulo--&gt;&gt;Main: Devuelve objeto { readFile, writeFile, ... }
+    Main-&gt;&gt;Main: Uso: fs.readFile()
+
+    Note over Main, Modulo: Con Desestructuración
+    Main-&gt;&gt;Modulo: const { readFile } = require('fs')
+    Modulo--&gt;&gt;Main: Devuelve objeto completo
+    Main-&gt;&gt;Main: Extrae SOLO 'readFile'
+    Main-&gt;&gt;Main: Uso: readFile()</code></pre>
+<h4 id="ejemplos-de-codigo_2">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: CommonJS con Desestructuración</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// legacy-code.ts</span>
+<span class="c1">// Imaginemos que usamos una librería vieja sin tipos ESM</span>
+<span class="c1">// Importamos TODO el objeto</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span><span class="w"> </span><span class="s1">'b'</span><span class="p">));</span>
+
+<span class="c1">// VS</span>
+
+<span class="c1">// Desestructuramos directamente</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">join</span><span class="p">,</span><span class="w"> </span><span class="nx">resolve</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">join</span><span class="p">(</span><span class="s1">'carpeta'</span><span class="p">,</span><span class="w"> </span><span class="s1">'archivo.txt'</span><span class="p">));</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Desestructuración en Imports (ESM)</strong>
+Aunque técnicamente en ESM se llama "Named Imports", la sintaxis visual es idéntica a la desestructuración de objetos.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// modern-code.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">arch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span><span class="w"> </span><span class="c1">// Extraemos solo 'arch' del módulo 'os'</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Arquitectura del CPU: </span><span class="si">${</span><span class="nx">arch</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="preguntas-reflexivas_6">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Mejora el rendimiento la desestructuración o es solo azúcar sintáctico (syntactic sugar)?</li>
+<li>¿Cómo harías desestructuración si la propiedad se llama <code>class</code> (palabra reservada)?</li>
+<li>¿Es posible desestructurar en niveles profundos? Ej: <code>const { data: { id } } = require('./config')</code>.</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="modulos-principales-de-nodejs">Módulos principales de Node.js</h2>
+<p>Node.js viene con una "navaja suiza" de módulos incorporados (Core Modules). No necesitas instalar nada con NPM para usarlos. Son la base de todo.</p>
+<h3 id="el-modulo-console">El módulo console</h3>
+<p>Mucho más que <code>console.log</code>. Es tu herramienta principal de depuración y salida estándar.</p>
+<h4 id="metodos-avanzados">Métodos Avanzados</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Uso</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>console.log</code></td>
+<td style="text-align: left;">Salida estándar (stdout).</td>
+<td style="text-align: left;">Info general.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.error</code></td>
+<td style="text-align: left;">Salida de error (stderr).</td>
+<td style="text-align: left;">Errores críticos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.table</code></td>
+<td style="text-align: left;">Muestra arrays/objetos como tabla.</td>
+<td style="text-align: left;">Listados de datos.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.time</code> / <code>timeEnd</code></td>
+<td style="text-align: left;">Mide el tiempo de ejecución.</td>
+<td style="text-align: left;">Performance testing.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>console.trace</code></td>
+<td style="text-align: left;">Muestra la pila de llamadas (stack trace).</td>
+<td style="text-align: left;">¿Quién llamó a esta función?</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_3">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Midiendo Performance</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// benchmark.ts</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Bucle Gigante'</span><span class="p">);</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">1000000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">suma</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Bucle Gigante'</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">// Output: Bucle Gigante: 2.45ms</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Depuración Visual</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// debug.ts</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">alumnos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Lucía'</span><span class="p">,</span><span class="w"> </span><span class="nx">nota</span><span class="o">:</span><span class="w"> </span><span class="kt">9</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">'Marcos'</span><span class="p">,</span><span class="w"> </span><span class="nx">nota</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="c1">// Mucho mejor que un JSON stringify</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">alumnos</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-process">El módulo process</h3>
+<p><code>process</code> es el puente entre tu código y el proceso del sistema operativo que lo está ejecutando. Es fundamental para la configuración de entornos (Dev vs Prod).</p>
+<h4 id="funcionalidades-clave">Funcionalidades Clave</h4>
+<ul>
+<li><strong>Variables de Entorno (<code>process.env</code>):</strong> Para guardar contraseñas, claves API y puertos sin escribirlos en el código ("hardcode").</li>
+<li><strong>Argumentos (<code>process.argv</code>):</strong> Leer inputs desde la línea de comandos.</li>
+<li><strong>Salida (<code>process.exit</code>):</strong> Terminar el programa (0 = éxito, 1 = error).</li>
+</ul>
+<h4 id="ejemplos-de-codigo_4">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Leyendo el Entorno</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// config.ts</span>
+<span class="c1">// Ejecutar en terminal: PORT=3000 node dist/config.js</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">PUERTO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">8080</span><span class="p">;</span><span class="w"> </span><span class="c1">// Fallback a 8080 si no existe</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">DB_PASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PASSWORD</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">DB_PASS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'CRITICAL: No hay contraseña de BD definida'</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Cierra el programa con código de error</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor iniciando en puerto </span><span class="si">${</span><span class="nx">PUERTO</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Leyendo Argumentos</strong>
+</p><div class="highlight"><pre><span></span><code><span class="c1">// args.ts</span>
+<span class="c1">// Ejecutar: node dist/args.js --usuario=admin</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">);</span>
+<span class="c1">// argv[0] = ruta al ejecutable node</span>
+<span class="c1">// argv[1] = ruta al archivo ejecutado</span>
+<span class="c1">// argv[2] = '--usuario=admin'</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-os">El módulo os</h3>
+<p>Te da información sobre el hardware y el sistema operativo. Muy útil si estás creando herramientas de monitoreo o balanceadores de carga.</p>
+<h4 id="tabla-de-metodos-utiles">Tabla de Métodos Útiles</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>os.cpus()</code></td>
+<td style="text-align: left;">Array con info de cada núcleo del procesador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.freemem()</code></td>
+<td style="text-align: left;">Memoria RAM libre en bytes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.homedir()</code></td>
+<td style="text-align: left;">Ruta a la carpeta del usuario actual.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>os.platform()</code></td>
+<td style="text-align: left;">'win32', 'linux', 'darwin' (macOS).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ejemplos-de-codigo_5">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Diagnóstico del Servidor</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">memoriaTotalGB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">cpus</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Sistema Operativo: </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="kr">type</span><span class="p">()</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">os</span><span class="p">.</span><span class="nx">release</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Memoria Total: </span><span class="si">${</span><span class="nx">memoriaTotalGB</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb"> GB`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Núcleos de CPU: </span><span class="si">${</span><span class="nx">cpus</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Balanceo de Carga (Concepto)</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cpus</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'os'</span><span class="p">;</span>
+
+<span class="c1">// Un patrón común en Node (Cluster module) es lanzar</span>
+<span class="c1">// tantos procesos como núcleos tenga la CPU</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">numNucleos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cpus</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Para máximo rendimiento, deberíamos lanzar </span><span class="si">${</span><span class="nx">numNucleos</span><span class="si">}</span><span class="sb"> instancias de la app.`</span><span class="p">);</span>
+</code></pre></div><p></p>
+<p><br/></p><hr/><p></p>
+<h3 id="el-modulo-path">El módulo path</h3>
+<p>En Windows las rutas usan backslash <code>\</code> (ej: <code>C:\Users\Pepe</code>). En Linux/Mac usan slash <code>/</code> (ej: <code>/home/pepe</code>).
+Si escribes las rutas a mano (<code>"carpeta/archivo.txt"</code>), tu aplicación se romperá cuando cambies de sistema operativo.</p>
+<p><strong><code>path</code> resuelve esto normalizando las rutas automáticamente.</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Regla de Oro</p>
+<p>Nunca concatenes rutas con <code>+</code> (ej: <code>dir + '/' + file</code>). Usa siempre <code>path.join()</code>.</p>
+</div>
+<h4 id="ejemplos-de-codigo_6">Ejemplos de Código</h4>
+<p><strong>Ejemplo 1: Uniendo rutas de forma segura</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="c1">// Imagina que __dirname es '/var/www' (Linux) o 'C:\Users' (Windows)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">carpetaUploads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'uploads'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">archivo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'imagen.png'</span><span class="p">;</span>
+
+<span class="c1">// path.join maneja los separadores por ti</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rutaCompleta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'/var/www'</span><span class="p">,</span><span class="w"> </span><span class="nx">carpetaUploads</span><span class="p">,</span><span class="w"> </span><span class="nx">archivo</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rutaCompleta</span><span class="p">);</span><span class="w"> </span>
+<span class="c1">// Linux: /var/www/uploads/imagen.png</span>
+<span class="c1">// Windows: \var\www\uploads\imagen.png (lo adapta)</span>
+</code></pre></div><p></p>
+<p><strong>Ejemplo 2: Extrayendo información de un archivo</strong>
+</p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">parse</span><span class="p">,</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">ruta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/home/usuario/documentos/reporte.pdf'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parse</span><span class="p">(</span><span class="nx">ruta</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+<span class="cm">/*</span>
+<span class="cm">┌──────────┬─────────────────────────────┐</span>
+<span class="cm">│ (index)  │           Values            │</span>
+<span class="cm">├──────────┼─────────────────────────────┤</span>
+<span class="cm">│   root   │             '/'             │</span>
+<span class="cm">│   dir    │  '/home/usuario/documentos' │</span>
+<span class="cm">│   base   │        'reporte.pdf'        │</span>
+<span class="cm">│   ext    │           '.pdf'            │</span>
+<span class="cm">│   name   │          'reporte'          │</span>
+<span class="cm">└──────────┴─────────────────────────────┘</span>
+<span class="cm">*/</span>
+</code></pre></div><p></p>
+<h4 id="preguntas-reflexivas_7">Preguntas Reflexivas</h4>
+<ol>
+<li>¿Qué diferencia hay entre <code>path.join()</code> y <code>path.resolve()</code>? (Investigación obligatoria).</li>
+<li>¿Por qué es crítico usar <code>path</code> al subir archivos que los usuarios envían?</li>
+<li>¿Cómo ayuda el módulo <code>path</code> a evitar vulnerabilidades de "Directory Traversal"?</li>
+</ol>
+<p><br/></p><hr/><p></p>
+<hr/>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li><strong>Documentación Oficial Node.js (Español/Inglés):</strong> La biblia. Siempre consulta aquí primero.<ul>
+<li>https://nodejs.org/docs/latest/api/</li>
+</ul>
+</li>
+<li><strong>TypeScript Handbook (Módulos):</strong> Entiende a fondo cómo TS compila los módulos.<ul>
+<li>https://www.typescriptlang.org/docs/handbook/modules.html</li>
+</ul>
+</li>
+<li><strong>Diferencias V8 vs Node vs Browser (Video):</strong> Una explicación visual excelente sobre el Event Loop y el entorno.<ul>
+<li>https://www.youtube.com/watch?v=8aGhZQkoFbQ (What the heck is the event loop anyway?)</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="enriquecimiento-pedagogico">🎓 Enriquecimiento Pedagógico</h2>
+<p>Pensad en los módulos de Node.js como si fueran <strong>Lego</strong>.
+- El <strong>núcleo (Core Modules)</strong> son las piezas base grises que vienen en todas las cajas (placas base, ruedas estándar).
+- Los <strong>Módulos NPM</strong> son los sets especiales (Star Wars, Harry Potter) que compras aparte para tener funcionalidades increíbles sin fabricarlas tú mismo.
+- Tu <strong>código (<code>exports</code>)</strong> es la nave espacial que construyes uniendo esas piezas.</p>
+<p>Si no usas <code>path</code> para unir las piezas, es como intentar pegar los Legos con chicle: funcionará un rato, pero en cuanto lo muevas (cambies de SO), se caerá a pedazos.</p>
+<p>¡Nos vemos en el siguiente tema donde aprenderemos a manejar paquetes externos con NPM!</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

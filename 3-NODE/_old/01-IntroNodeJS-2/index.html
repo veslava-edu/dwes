@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://veslava-edu.github.io/dwes/3-NODE/_old/01-IntroNodeJS-2/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Introducción a Node.js - DWES</title>
+<link href="../../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../../toggle-sidebar.js"></script><script src="../../../js/unpkg.com/d3@7.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-lib@0.18.js" type="text/javascript"></script><script src="../../../js/unpkg.com/markmap-view@0.18.js" type="text/javascript"></script><style type="text/css">div.mkdocs-markmap {
+    width: 100%;
+    min-height: 1em;
+    border: 1px solid grey;
+}
+.mkdocs-markmap > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+</style></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#introduccion-a-nodejs">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DWES" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DWES
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Introducción a Node.js
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="black" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../2-PHP/01-Introduccion/">
+          
+  
+  
+  PHP
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../01-IntroNodeJS/">
+          
+  
+  
+  Node.js
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DWES" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="DWES">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    DWES
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/">
+<span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/">
+<span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/">
+<span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/">
+<span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/01-Introduccion/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/02-Sintaxis/">
+<span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/03-Control/">
+<span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/04-Arrays-Funciones-Strings/">
+<span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/05-POO/">
+<span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/06-Include/">
+<span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/07-GET-POST-Formularios/">
+<span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/">
+<span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/09-Navegacion/">
+<span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/10-Ficheros/">
+<span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/11-BasesDatos/">
+<span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/12-MVC/">
+<span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/13-Dependencias/">
+<span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/14-Servicios-WEB/">
+<span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/15-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/16-LOGS/">
+<span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/17-WebScraping/">
+<span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../2-PHP/18-Testing/">
+<span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../01-IntroNodeJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../02-IntroTypeScript/">
+<span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../03-NodeJS/">
+<span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../04-Timers-Asincronia/">
+<span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../05-FileSystem/">
+<span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../06-ModulosHTTP-HTTPS/">
+<span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../07-GestionPaquetes-NPM/">
+<span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../08-Nodemon/">
+<span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#">
+<span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/01-IntroNestJS/">
+<span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/02-CreacionRecursos/">
+<span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/03-TypeORM/">
+<span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/04-Testing/">
+<span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/05-AlacenamientoFicheros/">
+<span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/06-WebSockets/">
+<span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/07-EndpointsAvanzados/">
+<span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/08-MongoDB/">
+<span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/09-Seguridad/">
+<span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/10-Documentacion/">
+<span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/11-Perfiles/">
+<span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../NestJS/12-Despliegue/">
+<span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduccion-el-chef-multitarea">
+<span class="md-ellipsis">
+      
+        Introducción: El Chef Multitarea
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-que-es-nodejs">
+<span class="md-ellipsis">
+      
+        1. ¿Qué es Node.js?
+      
+    </span>
+</a>
+<nav aria-label="1. ¿Qué es Node.js?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#caracteristicas-principales">
+<span class="md-ellipsis">
+      
+        Características Principales
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapa-mental-del-ecosistema">
+<span class="md-ellipsis">
+      
+        Mapa Mental del Ecosistema
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-arquitectura-interna-de-nodejs">
+<span class="md-ellipsis">
+      
+        2. Arquitectura interna de Node.js
+      
+    </span>
+</a>
+<nav aria-label="2. Arquitectura interna de Node.js" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#el-event-loop-bucle-de-eventos">
+<span class="md-ellipsis">
+      
+        El Event Loop (Bucle de Eventos)
+      
+    </span>
+</a>
+<nav aria-label="El Event Loop (Bucle de Eventos)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-flujo-del-event-loop">
+<span class="md-ellipsis">
+      
+        Diagrama de Flujo del Event Loop
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#call-stack-vs-callback-queue">
+<span class="md-ellipsis">
+      
+        Call Stack vs Callback Queue
+      
+    </span>
+</a>
+<nav aria-label="Call Stack vs Callback Queue" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagrama-de-secuencia-sincrono-vs-asincrono">
+<span class="md-ellipsis">
+      
+        Diagrama de Secuencia: Síncrono vs Asíncrono
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tablas-comparativas_1">
+<span class="md-ellipsis">
+      
+        Tablas Comparativas
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_1">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_1">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-instalacion-y-configuracion-inicial">
+<span class="md-ellipsis">
+      
+        3. Instalación y configuración inicial
+      
+    </span>
+</a>
+<nav aria-label="3. Instalación y configuración inicial" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instalacion-via-nvm-recomendado">
+<span class="md-ellipsis">
+      
+        Instalación vía NVM (Recomendado)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inicializacion-de-un-proyecto-packagejson">
+<span class="md-ellipsis">
+      
+        Inicialización de un proyecto: package.json
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracion-de-typescript-y-tooling">
+<span class="md-ellipsis">
+      
+        Configuración de TypeScript y Tooling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ejemplos-de-codigo_2">
+<span class="md-ellipsis">
+      
+        Ejemplos de Código
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#preguntas-reflexivas_2">
+<span class="md-ellipsis">
+      
+        🧠 Preguntas Reflexivas
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#para-saber-mas">
+<span class="md-ellipsis">
+      
+        🔗 Para Saber Más
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="introduccion-a-nodejs">Introducción a Node.js</h1>
+<h2 id="introduccion-el-chef-multitarea">Introducción: El Chef Multitarea</h2>
+<p>Imaginad una cocina de un restaurante con mucha demanda.</p>
+<p>En el modelo tradicional (<strong>PHP, Java clásico</strong>), tenemos un ejército de cocineros. Cada vez que entra una comanda (petición HTTP), asignamos un cocinero exclusivo a esa mesa. Si el cliente tarda 5 minutos en decidir el vino, ese cocinero se queda de brazos cruzados esperando, bloqueado, sin poder atender a nadie más. Si se llenan las mesas y se acaban los cocineros, la gente espera fuera.</p>
+<p><strong>Node.js es diferente</strong>. Es un solo cocinero, pero es <strong>Flash</strong>. Es increíblemente rápido tomando notas y repartiendo tareas.</p>
+<ol>
+<li>Llega la comanda 1: "Quiero un filete". El Chef (Event Loop) grita al horno: "¡Filete marchando!" y, <strong>sin esperar</strong>, pasa a la siguiente mesa.</li>
+<li>Llega la comanda 2: "Una ensalada". El Chef se pone a cortar lechuga inmediatamente.</li>
+<li>El horno avisa "¡DIN!" (Callback). El Chef deja un segundo la lechuga, saca el filete, lo sirve, y vuelve a la ensalada.</li>
+</ol>
+<p>Este modelo, basado en <strong>eventos y no bloqueo</strong>, es lo que hace que Node.js pueda manejar miles de conexiones concurrentes con muy pocos recursos. Hoy vamos a entender cómo funciona esta magia.</p>
+<hr/>
+<h2 id="1-que-es-nodejs">1. ¿Qué es Node.js?</h2>
+<div class="admonition note">
+<p class="admonition-title">Definición Técnica</p>
+</div>
+<p>Node.js <strong>NO es un lenguaje de programación</strong> ni un framework. Es un <strong>entorno de ejecución (Runtime Environment)</strong> para JavaScript construido sobre el motor V8 de Chrome.</p>
+<p>Históricamente, JavaScript vivía encerrado en la jaula del navegador (Frontend). En 2009, <strong>Ryan Dahl</strong> tuvo la genial idea de arrancar el motor V8 de Chrome, separarlo del navegador y añadirle herramientas para interactuar con el Sistema Operativo (archivos, red, procesos). Así nació Node.js: <strong>JavaScript en el servidor</strong>.</p>
+<h3 id="caracteristicas-principales">Características Principales</h3>
+<ol>
+<li><strong>Motor V8:</strong> Desarrollado por Google, compila JS a código máquina nativo a una velocidad vertiginosa.</li>
+<li><strong>Single-Threaded (Monohilo):</strong> Usa un único hilo principal para ejecutar código JavaScript.</li>
+<li><strong>Non-blocking I/O (Entrada/Salida no bloqueante):</strong> Las operaciones pesadas (leer disco, consultar DB) no detienen la ejecución del programa.</li>
+<li><strong>Full Stack JS:</strong> Permite usar el mismo lenguaje en cliente y servidor, unificando tipos de datos y lógica.</li>
+</ol>
+<h3 id="mapa-mental-del-ecosistema">Mapa Mental del Ecosistema</h3>
+<div class="language-markmap mkdocs-markmap"><markmap-data encoding="base64" hidden="true">IyBOb2RlLmpzCiMjIE7DumNsZW8KLSAqKlY4IEVuZ2luZSoqOiBFamVjdWNpw7NuIGRlIEpTCi0gKipMaWJ1dioqOiBJL08gQXPDrW5jcm9ubwotICoqTcOzZHVsb3MgQ29yZSoqOiBmcywgaHR0cCwgcGF0aCwgZXZlbnRzCiMjIFZlbnRhamFzCi0gKipSZW5kaW1pZW50byoqOiBBbHRvIGVuIEkvTwotICoqRXNjYWxhYmlsaWRhZCoqOiBIb3Jpem9udGFsIHkgdmVydGljYWwKLSAqKlVuaWZpY2FjacOzbioqOiBKUyBlbiBGcm9udCB5IEJhY2sKLSAqKk5QTSoqOiBFbCBtYXlvciByZWdpc3RybyBkZSBsaWJyZXLDrWFzIGRlbCBtdW5kbwojIyBDYXNvcyBkZSBVc28KLSAqKkFQSXMgUkVTVCAvIEdyYXBoUUwqKgotICoqU3RyZWFtaW5nIChOZXRmbGl4KSoqCi0gKipSZWFsLVRpbWUgKENoYXRzLCBKdWVnb3MpKioKLSAqKk1pY3Jvc2VydmljaW9zKioKIyMgTG8gcXVlIE5PIGVzCi0gTm8gZXMgcGFyYSBjw6FsY3VsbyBpbnRlbnNpdm8gZGUgQ1BVCi0gTm8gZXMgdW4gRnJhbWV3b3JrIChjb21vIExhcmF2ZWwgbyBTcHJpbmcp</markmap-data></div>
+<h3 id="tablas-comparativas">Tablas Comparativas</h3>
+<p><strong>Tabla 1: Node.js vs Entornos Tradicionales</strong></p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Node.js</th>
+<th>Servidor Tradicional (ej. Apache/PHP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Modelo de Concurrencia</strong></td>
+<td>Event Loop (Monohilo)</td>
+<td>Multi-hilo (Un hilo por petición)</td>
+</tr>
+<tr>
+<td><strong>Gestión de I/O</strong></td>
+<td>Asíncrono / No bloqueante</td>
+<td>Síncrono / Bloqueante (generalmente)</td>
+</tr>
+<tr>
+<td><strong>Consumo de Memoria</strong></td>
+<td>Bajo (reutiliza el hilo)</td>
+<td>Alto (escala con el nº de clientes)</td>
+</tr>
+<tr>
+<td><strong>Ideal para</strong></td>
+<td>I/O intensivo, Real-time</td>
+<td>CPU intensiva, Lógica secuencial simple</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabla 2: JavaScript: Navegador vs Node.js</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Navegador (Frontend)</th>
+<th>Node.js (Backend)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global Object</strong></td>
+<td><code>window</code></td>
+<td><code>global</code></td>
+</tr>
+<tr>
+<td><strong>Acceso a Ficheros</strong></td>
+<td>Muy restringido (Seguridad)</td>
+<td>Total (<code>fs</code> module)</td>
+</tr>
+<tr>
+<td><strong>Módulos</strong></td>
+<td>ES Modules (<code>import</code>)</td>
+<td>CommonJS (<code>require</code>) y ES Modules</td>
+</tr>
+<tr>
+<td><strong>DOM</strong></td>
+<td>Sí (<code>document.getElementById</code>)</td>
+<td>No existe el DOM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplos-de-codigo">Ejemplos de Código</h3>
+<p><strong>Ejemplo 1.1: Servidor HTTP básico (TypeScript)</strong>
+Este ejemplo muestra lo sencillo que es levantar un servidor sin necesidad de herramientas externas como Apache.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Importamos el módulo nativo 'http'</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">hostname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'127.0.0.1'</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+
+<span class="c1">// Creamos el servidor</span>
+<span class="c1">// req: IncomingMessage (Petición del cliente)</span>
+<span class="c1">// res: ServerResponse (Respuesta nuestra)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">http.IncomingMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">http.ServerResponse</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span><span class="w"> </span><span class="s1">'text/plain'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hola Mundo desde Node.js con TypeScript\n'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="nx">hostname</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor corriendo en http://</span><span class="si">${</span><span class="nx">hostname</span><span class="si">}</span><span class="sb">:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Ejemplo 1.2: Lectura de archivos (La filosofía Node)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'path'</span><span class="p">;</span>
+
+<span class="c1">// Ruta al archivo</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'archivo.txt'</span><span class="p">);</span>
+
+<span class="c1">// FORMA INCORRECTA EN NODE (Bloqueante)</span>
+<span class="c1">// Esto detiene todo el servidor hasta que se lea el archivo</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf8'</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Lectura Síncrona:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// FORMA CORRECTA (No bloqueante)</span>
+<span class="c1">// Pasamos una función (callback) que se ejecutará cuando termine</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span><span class="w"> </span><span class="s1">'utf8'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Error leyendo:'</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Lectura Asíncrona:'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Esto se imprime ANTES que la lectura asíncrona'</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Consejo Profesional</p>
+</div>
+<p>Aunque veas métodos que terminan en <code>Sync</code> (como <code>readFileSync</code>), en un servidor web de producción casi <strong>nunca</strong> debes usarlos, ya que congelarían tu API para todos los usuarios mientras el disco duro gira.</p>
+<h3 id="preguntas-reflexivas">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>Si Node.js es monohilo, ¿por qué dicen que puede hacer muchas cosas a la vez?</li>
+<li>¿Por qué crees que empresas como Netflix migraron de Java a Node.js para sus capas de red?</li>
+<li>Si tienes que hacer un cálculo matemático muy complejo (Cálculo de número Pi con millones de decimales), ¿elegirías Node.js? ¿Por qué?</li>
+</ol>
+<hr/>
+<h2 id="2-arquitectura-interna-de-nodejs">2. Arquitectura interna de Node.js</h2>
+<p>La arquitectura de Node es una obra de ingeniería diseñada para delegar. Se compone principalmente de:</p>
+<ol>
+<li><strong>V8:</strong> El motor de JS.</li>
+<li><strong>Node.js Bindings (API):</strong> El puente entre JS y C++.</li>
+<li><strong>Libuv:</strong> Una librería en C++ que gestiona el <strong>Event Loop</strong> y el <strong>Thread Pool</strong>.</li>
+</ol>
+<h3 id="el-event-loop-bucle-de-eventos">El Event Loop (Bucle de Eventos)</h3>
+<p>Es el corazón de Node.js. Es un bucle infinito que comprueba si hay tareas pendientes.
+Imagina una rotonda. El tráfico (eventos) entra, da vueltas, y sale cuando está listo.</p>
+<div class="admonition danger">
+<p class="admonition-title">El mito del Single Thread</p>
+</div>
+<p>Node.js es monohilo <strong>solo en la ejecución de tu código JavaScript</strong>. Pero por debajo, <strong>Libuv tiene un Thread Pool (piscina de hilos)</strong> (generalmente 4 hilos) para operaciones costosas como manejo de archivos, criptografía o compresión. Node delega el trabajo pesado a C++ y sigue atendiendo peticiones.</p>
+<h4 id="diagrama-de-flujo-del-event-loop">Diagrama de Flujo del Event Loop</h4>
+<pre class="mermaid"><code>graph TD
+    start((Inicio)) --&gt; timers[Fase 1: Timers&lt;br/&gt;setTimeout, setInterval]
+    timers --&gt; pending[Fase 2: Pending Callbacks&lt;br/&gt;Errores de sistema I/O]
+    pending --&gt; idle[Fase 3: Idle, Prepare&lt;br/&gt;Uso interno]
+    idle --&gt; poll[Fase 4: Poll&lt;br/&gt;Recuperar nuevos eventos I/O&lt;br/&gt;y ejecutar su código]
+    poll --&gt; check[Fase 5: Check&lt;br/&gt;setImmediate]
+    check --&gt; close[Fase 6: Close Callbacks&lt;br/&gt;socket.on('close')]
+    close --&gt; exit{¿Hay más referencias?}
+    exit -- Sí --&gt; timers
+    exit -- No --&gt; fin((Salir del proceso))
+
+    style start fill:#f9f,stroke:#333
+    style poll fill:#bbf,stroke:#333,stroke-width:4px
+</code></pre>
+<h3 id="call-stack-vs-callback-queue">Call Stack vs Callback Queue</h3>
+<p>Para entender la asincronía, debemos visualizar tres componentes:</p>
+<ol>
+<li><strong>Call Stack (Pila de llamadas):</strong> Donde se ejecuta el código síncrono (LIFO: Last In, First Out).</li>
+<li><strong>Node APIs:</strong> Donde se ejecutan las tareas delegadas (esperar un temporizador, esperar una respuesta HTTP).</li>
+<li><strong>Callback Queue (Cola de tareas):</strong> Donde esperan las funciones listas para volver al Stack.</li>
+</ol>
+<p>El <strong>Event Loop</strong> simplemente mira: <em>"¿Está vacío el Stack? Sí. ¿Hay algo en la Queue? Sí. ¡Pues muévelo al Stack!"</em></p>
+<h4 id="diagrama-de-secuencia-sincrono-vs-asincrono">Diagrama de Secuencia: Síncrono vs Asíncrono</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Main as Main Thread (JS)
+    participant Libuv as Libuv / OS
+    participant DB as Base de Datos
+
+    Note over Main: Código Síncrono
+    Main-&gt;&gt;Main: Ejecuta console.log('Inicio')
+
+    Note over Main: Operación Asíncrona
+    Main-&gt;&gt;Libuv: Pide datos a DB (Callback)
+    Note right of Main: Main Thread se libera&lt;br/&gt;y sigue trabajando
+    Main-&gt;&gt;Main: Ejecuta console.log('Fin')
+
+    Libuv-&gt;&gt;DB: Consulta SQL
+    DB--&gt;&gt;Libuv: Datos retornados
+    Libuv-&gt;&gt;Main: Pone Callback en Queue
+
+    Note over Main: Event Loop mueve&lt;br/&gt;Callback al Stack
+    Main-&gt;&gt;Main: Ejecuta el Callback con los datos
+</code></pre>
+<h3 id="tablas-comparativas_1">Tablas Comparativas</h3>
+<p><strong>Tabla 3: Tipos de Tareas en el Loop</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Macrotask</strong></td>
+<td>Tareas estándar del loop</td>
+<td><code>setTimeout</code>, <code>setInterval</code>, I/O</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><strong>Microtask</strong></td>
+<td>Tareas que se ejecutan <em>inmediatamente</em> tras la operación actual</td>
+<td><code>Promise.then</code>, <code>process.nextTick</code></td>
+<td>Alta (Se cuelan antes que la siguiente vuelta del loop)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabla 4: Bloqueo del Event Loop</strong></p>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Consecuencia</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>while(true)</code></td>
+<td>CPU al 100%, servidor colgado</td>
+<td>Eliminar bucles infinitos</td>
+</tr>
+<tr>
+<td>JSON.parse (JSON enorme)</td>
+<td>Bloqueo temporal del hilo</td>
+<td>Usar streams o librerías asíncronas</td>
+</tr>
+<tr>
+<td>Procesamiento de Imagen</td>
+<td>Bloqueo severo</td>
+<td>Delegar a <code>Worker Threads</code> o servicio externo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplos-de-codigo_1">Ejemplos de Código</h3>
+<p><strong>Ejemplo 2.1: Orden de Ejecución (El examen clásico)</strong>
+Intenta adivinar el orden antes de ejecutarlo.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'1. Inicio del script'</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'2. Timeout 0ms'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'3. Timeout 100ms'</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+
+<span class="c1">// setImmediate se ejecuta en la fase 'Check', después de I/O</span>
+<span class="nx">setImmediate</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'4. Immediate'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// nextTick tiene prioridad máxima (Microtask)</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'5. Next Tick'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'6. Fin del script'</span><span class="p">);</span>
+
+<span class="cm">/* Salida esperada:</span>
+<span class="cm">1. Inicio del script</span>
+<span class="cm">6. Fin del script</span>
+<span class="cm">5. Next Tick (Microtasks siempre van primero tras limpiar el stack)</span>
+<span class="cm">2. Timeout 0ms (Depende del rendimiento, pero suele ganar a immediate al inicio)</span>
+<span class="cm">4. Immediate</span>
+<span class="cm">3. Timeout 100ms</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<p><strong>Ejemplo 2.2: Bloqueando el Event Loop (Lo que NO hay que hacer)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'http'</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'/bloqueo'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ⚠️ ESTO ES PELIGROSO</span>
+<span class="w">    </span><span class="c1">// Un bucle síncrono pesado congela TODO el servidor</span>
+<span class="w">    </span><span class="c1">// Nadie más puede acceder a ninguna ruta mientras esto corre</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// No hacer nada por 5 segundos</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Bloqueo terminado'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Hola, soy rápido'</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="preguntas-reflexivas_1">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>Si ejecutas un <code>setTimeout</code> de 5 segundos, ¿Node se queda parado 5 segundos esperando? ¿Qué hace mientras tanto?</li>
+<li>¿Cuál es la diferencia real entre <code>process.nextTick()</code> y <code>setImmediate()</code>? (Pista: los nombres son contraintuitivos).</li>
+<li>¿Cómo solucionarías el problema del <strong>Ejemplo 2.2</strong> si realmente necesitas hacer ese cálculo pesado?</li>
+</ol>
+<hr/>
+<h2 id="3-instalacion-y-configuracion-inicial">3. Instalación y configuración inicial</h2>
+<p>Para trabajar profesionalmente, no basta con instalar Node. Necesitamos un entorno robusto, reproducible y tipado.</p>
+<h3 id="instalacion-via-nvm-recomendado">Instalación vía NVM (Recomendado)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Evita los instaladores de 'Siguiente, Siguiente'</p>
+</div>
+<p>Instalar Node.js directamente desde la web oficial en Windows o macOS a veces causa problemas de permisos al instalar paquetes globales (<code>EACCES</code>).</p>
+<p>La mejor práctica profesional es usar <strong>nvm (Node Version Manager)</strong>. Te permite tener múltiples versiones de Node instaladas (ej. la 18 para un proyecto legacy y la 22 para uno nuevo) y cambiar entre ellas al instante.</p>
+<p><strong>Tabla 5: Comandos Esenciales de NVM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nvm install --lts</code></td>
+<td>Instala la última versión LTS (Long Term Support) - <strong>Recomendada</strong></td>
+</tr>
+<tr>
+<td><code>nvm use &lt;versión&gt;</code></td>
+<td>Cambia la versión activa en tu terminal</td>
+</tr>
+<tr>
+<td><code>nvm alias default &lt;versión&gt;</code></td>
+<td>Fija una versión predeterminada al abrir nuevas terminales</td>
+</tr>
+<tr>
+<td><code>nvm list</code></td>
+<td>Muestra las versiones instaladas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inicializacion-de-un-proyecto-packagejson">Inicialización de un proyecto: <code>package.json</code></h3>
+<p>El DNI de tu proyecto. Define quién es, qué necesita y cómo arranca.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>mi-api-node
+<span class="nb">cd</span><span class="w"> </span>mi-api-node
+npm<span class="w"> </span>init<span class="w"> </span>-y<span class="w">  </span><span class="c1"># El flag -y acepta todas las preguntas por defecto</span>
+</code></pre></div>
+<h3 id="configuracion-de-typescript-y-tooling">Configuración de TypeScript y Tooling</h3>
+<p>En 2025, escribir Node.js sin TypeScript es como conducir sin cinturón. Vamos a configurar un entorno profesional con <strong>TypeScript</strong>, <strong>ESLint</strong> (para calidad de código) y <strong>Prettier</strong> (para formato).</p>
+<p><strong>Paso 1: Instalar dependencias</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dependencias de desarrollo (sólo necesarias para programar, no para producción)</span>
+npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>typescript<span class="w"> </span>ts-node<span class="w"> </span>@types/node<span class="w"> </span>nodemon<span class="w"> </span>eslint<span class="w"> </span>prettier
+</code></pre></div>
+<p><strong>Tabla 6: Herramientas del Entorno</strong></p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Función</th>
+<th>Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>npm</strong></td>
+<td>Gestor de paquetes</td>
+<td>El almacén de suministros</td>
+</tr>
+<tr>
+<td><strong>TypeScript</strong></td>
+<td>Lenguaje tipado</td>
+<td>Un corrector gramatical estricto</td>
+</tr>
+<tr>
+<td><strong>@types/node</strong></td>
+<td>Definiciones de tipos para Node</td>
+<td>El diccionario para que TS entienda Node</td>
+</tr>
+<tr>
+<td><strong>ts-node</strong></td>
+<td>Ejecuta TS directamente (dev)</td>
+<td>Traductor simultáneo</td>
+</tr>
+<tr>
+<td><strong>Nodemon</strong></td>
+<td>Reinicia el server al guardar</td>
+<td>Un asistente que vigila cambios</td>
+</tr>
+</tbody>
+</table>
+<p>**Paso 2: Configurar <code>tsconfig.json**</code>
+Este archivo le dice al compilador cómo comportarse.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es2020"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Versión de JS a la que compilamos</span>
+<span class="w">    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonjs"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Sistema de módulos de Node estándar</span>
+<span class="w">    </span><span class="nt">"outDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./dist"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Dónde va el código compilado (JS)</span>
+<span class="w">    </span><span class="nt">"rootDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">          </span><span class="c1">// Dónde está nuestro código fuente (TS)</span>
+<span class="w">    </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">              </span><span class="c1">// Modo estricto activado (Google Style)</span>
+<span class="w">    </span><span class="nt">"esModuleInterop"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">      </span><span class="c1">// Permite importar módulos CommonJS como ES6</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"src/**/*"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"node_modules"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>**Paso 3: Scripts en <code>package.json**</code>
+Automatizamos tareas comunes.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node dist/index.js"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Para producción (código compilado)</span>
+<span class="w">  </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tsc"</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Compilar TS a JS</span>
+<span class="w">  </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodemon src/index.ts"</span><span class="p">,</span><span class="w">        </span><span class="c1">// Para desarrollo (reinicio auto + ts-node)</span>
+<span class="w">  </span><span class="nt">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src/**/*.ts"</span><span class="p">,</span><span class="w">         </span><span class="c1">// Revisar calidad</span>
+<span class="w">  </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prettier --write ."</span><span class="w">        </span><span class="c1">// Formatear código</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ejemplos-de-codigo_2">Ejemplos de Código</h3>
+<p><strong>Ejemplo 3.1: Estructura de carpetas profesional</strong></p>
+<div class="highlight"><pre><span></span><code>mi-proyecto/
+├── node_modules/       # Dependencias (NUNCA se sube a Git)
+├── src/                # Código Fuente TypeScript
+│   ├── index.ts        # Punto de entrada
+│   └── utils/          # Módulos auxiliares
+├── dist/               # Código Compilado JavaScript (Generado por tsc)
+├── .gitignore          # Ignorar node_modules y dist
+├── package.json        # Manifiesto
+└── tsconfig.json       # Configuración TS
+</code></pre></div>
+<p><strong>Ejemplo 3.2: Uso de variables de entorno</strong>
+Nunca hardcodees contraseñas. Usaremos <code>dotenv</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// src/index.ts</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">dotenv</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'dotenv'</span><span class="p">;</span>
+
+<span class="c1">// Cargar variables del fichero .env</span>
+<span class="nx">dotenv</span><span class="p">.</span><span class="nx">config</span><span class="p">();</span>
+
+<span class="c1">// Leer variable o usar valor por defecto</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">DB_PASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PASSWORD</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">DB_PASS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">'⚠️ No se ha configurado la contraseña de BD'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor iniciando en puerto </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="preguntas-reflexivas_2">🧠 Preguntas Reflexivas</h3>
+<ol>
+<li>¿Por qué diferenciamos entre <code>dependencies</code> y <code>devDependencies</code> en el <code>package.json</code>? ¿Qué pasa si pongo <code>typescript</code> en <code>dependencies</code>?</li>
+<li>Si borras la carpeta <code>node_modules</code>, ¿cómo recuperas tu proyecto? ¿Qué papel juega el archivo <code>package-lock.json</code> aquí?</li>
+<li>¿Por qué no subimos la carpeta <code>node_modules</code> a GitHub?</li>
+</ol>
+<hr/>
+<h2 id="para-saber-mas">🔗 Para Saber Más</h2>
+<ul>
+<li><a href="https://nodejs.org/en/docs/">Documentación Oficial de Node.js</a> - La biblia. Siempre actualizada.</li>
+<li><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">Visualización del Event Loop</a> - Charla mítica de Philip Roberts (JSConf) que explica el Event Loop visualmente.</li>
+<li><a href="https://github.com/goldbergyoni/nodebestpractices">Node.js Best Practices</a> - Repositorio colaborativo número 1 sobre buenas prácticas en arquitectura y código.</li>
+<li><a href="https://v8.dev/">Introducción a V8</a> - Para los curiosos que quieren saber cómo funciona el motor por dentro.</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script><script type="text/javascript">(function initializeMarkmap() {
+    const transformer = new markmap.Transformer();
+    const preloadScripts = transformer.plugins
+        .flatMap((plugin) => plugin.config?.preloadScripts || [])
+        .map((item) => transformer.resolveJS(item));
+    const assets = transformer.getAssets();
+    const loading = Promise.all([
+        assets.styles && markmap.loadCSS(assets.styles),
+        markmap.loadJS([...preloadScripts, ...assets.scripts]),
+    ]);
+
+    function parseData(content) {
+        const { root, frontmatter } = transformer.transform(content);
+        let options = markmap.deriveOptions(frontmatter?.markmap);
+        options = Object.assign(
+            {
+                fitRatio: 0.85,
+            },
+            options
+        );
+        return { root, options };
+    }
+
+    function resetMarkmap(m, el) {
+        if (!m.state.rect) return;
+        const { x1, y1, x2, y2 } = m.state.rect;
+        const height = (el.offsetWidth / (x2 - x1)) * (y2 - y1);
+        el.style.height = height + "px";
+        m.fit();
+    }
+
+    function decodeBase64(encoded) {
+        const binary = atob(encoded);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+    }
+
+    function renderMarkmap(el) {
+        const dataEl = el.querySelector("markmap-data");
+        if (!dataEl) return;
+        let content = el.textContent;
+        if (dataEl.getAttribute("encoding") === "base64") {
+            content = decodeBase64(content);
+        }
+        el.innerHTML = "<svg>";
+        svg = el.firstChild;
+        const { root, options } = parseData(content);
+        const m = markmap.Markmap.create(svg, options);
+        m.setData(root);
+        requestAnimationFrame(() => {
+            resetMarkmap(m, el);
+        });
+    }
+
+    function updateMarkmaps(node) {
+        for (const el of node.querySelectorAll(".mkdocs-markmap")) {
+            renderMarkmap(el);
+        }
+    }
+
+    loading.then(() => {
+        const observer = new MutationObserver((mutationList) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.addedNodes) {
+                        updateMarkmaps(node);
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        updateMarkmaps(document);
+    });
+})();
+</script></body></html>

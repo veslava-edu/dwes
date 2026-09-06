@@ -1,0 +1,2995 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://veslava-edu.github.io/dwes/2-PHP/03-Control-Ejercicios/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>03 Control Ejercicios - DWES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><script src="../../toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interactuando-con-el-usuario-formularios-html-y-php" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DWES" class="md-header__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DWES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03 Control Ejercicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura WEB y Servidor
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01-Introduccion/" class="md-tabs__link">
+          
+  
+  
+  PHP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3-NODE/01-IntroNodeJS/" class="md-tabs__link">
+          
+  
+  
+  Node.js
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DWES" class="md-nav__button md-logo" aria-label="DWES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DWES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura WEB y Servidor
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura WEB y Servidor
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1-Arquitectura-Web-y-Software-en-Servidor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 - Arquitectura-Web-y-Software-en-Servidor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.1-Entorno-WAMP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Entorno-WAMP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.2-Virtualizacion-Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Virtualizacion-Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-ArquitecturaWEB/UD1.3-Control-Versiones-GIT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Control-Versiones-GIT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PHP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Estructuras de Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Arrays-Funciones-Strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Arrays, Funciones y Strings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-POO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - POO - Programación Orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Include/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Include y Require
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-GET-POST-Formularios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - GET y POST - Formularios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Gesti%C3%B3n-de-estado-Cookies-Sesiones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Gestión de estado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Navegacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Navegación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-Ficheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-BasesDatos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Bases de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-MVC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - MVC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-Dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 - Dependencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-Servicios-WEB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 - Servicios WEB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 - Documentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-LOGS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 - Logs en PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-WebScraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 - WebScraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 - Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laravel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Node.js
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/01-IntroNodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Intro a Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/02-IntroTypeScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Intro a TypeScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/03-NodeJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - NodeJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/04-Timers-Asincronia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Timers y Asincronia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/05-FileSystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - File System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/06-ModulosHTTP-HTTPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - Módulos HTTP y HTTPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/07-GestionPaquetes-NPM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Gestión de Paquetes y NPM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/08-Nodemon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Nodemon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="#" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nest.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/01-IntroNestJS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 - Introducción a NestJS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/02-CreacionRecursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 - Creación de Recurso REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/03-TypeORM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 - Repositorios SQL con TypeORM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/04-Testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 - Introducción al Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/05-AlacenamientoFicheros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 - Almacenamiento de ficheros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/06-WebSockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 - WebSockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/07-EndpointsAvanzados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 - Resultados avanzados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/08-MongoDB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 - Repositorios NoSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/09-Seguridad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 - Seguridad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/10-Documentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 - Documentación de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/11-Perfiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 - Perfiles y Configuración de entornos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-NODE/NestJS/12-Despliegue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 - Despliegue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#interactuando-con-el-usuario-formularios-html-y-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactuando con el Usuario: Formularios HTML y PHP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactuando con el Usuario: Formularios HTML y PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funciona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo funciona?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo Práctico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-consolidacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Consolidación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Consolidación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-refuerzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Refuerzo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Refuerzo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-ampliacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicios de Ampliación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios de Ampliación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarea-a-realizar_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarea a realizar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aplicacion-en-el-mundo-real_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aplicación en el Mundo Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>03 Control Ejercicios</h1>
+
+<!-- Nombre de archivo sugerido: T03-Bucles-Ejercicios.md --><h3 id="interactuando-con-el-usuario-formularios-html-y-php">Interactuando con el Usuario: Formularios HTML y PHP</h3>
+<p>Para que nuestros ejercicios sean interactivos, necesitamos una forma de que el usuario introduzca datos. La manera más común es a través de formularios HTML. Un formulario es un conjunto de campos (texto, botones, etc.) que el usuario puede rellenar. Cuando pulsa el botón de envío, los datos viajan a un script de PHP para ser procesados.</p>
+<h4 id="como-funciona">¿Cómo funciona?</h4>
+<ol>
+<li>
+<p><strong>El Fichero HTML (<code>.html</code>):</strong> Contiene la estructura del formulario. La etiqueta <code>&lt;form&gt;</code> es la más importante. Sus atributos clave son:</p>
+<ul>
+<li><code>action</code>: Especifica la URL del script PHP que recibirá los datos.</li>
+<li><code>method</code>: Indica cómo se enviarán los datos. Los dos métodos más comunes son:<ul>
+<li><strong><code>GET</code></strong>: Los datos se añaden a la URL. Es visible para el usuario (ej: <code>procesar.php?nombre=Juan&amp;edad=20</code>). Es útil para búsquedas o cuando quieres que la URL se pueda guardar en marcadores.</li>
+<li><strong><code>POST</code></strong>: Los datos se envían en el cuerpo de la petición HTTP, de forma oculta. Es más seguro para enviar información sensible como contraseñas.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>El Fichero PHP (<code>.php</code>):</strong> Contiene la lógica para procesar los datos. PHP pone los datos recibidos en unas variables globales especiales:</p>
+<ul>
+<li><code>$_GET</code>: Un array asociativo con los datos enviados por el método GET.</li>
+<li><code>$_POST</code>: Un array asociativo con los datos enviados por el método POST.</li>
+<li><code>$_REQUEST</code>: Un array que contiene los datos de <code>$_GET</code>, <code>$_POST</code> y <code>$_COOKIE</code>. Es cómodo pero menos específico.</li>
+</ul>
+</li>
+</ol>
+<h4 id="ejemplo-practico">Ejemplo Práctico</h4>
+<p>Vamos a crear un formulario que pide un número y un script PHP que calcula su cuadrado.</p>
+<p><strong>ARCHIVO <code>formulario.html</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Calculadora de Cuadrados<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Introduce un número para calcular su cuadrado<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">"calcular.php"</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"numero"</span><span class="p">&gt;</span>Número:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">id</span><span class="o">=</span><span class="s">"numero"</span> <span class="na">name</span><span class="o">=</span><span class="s">"numero_usuario"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span> <span class="na">value</span><span class="o">=</span><span class="s">"Calcular"</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div><p></p>
+<p><strong>ARCHIVO <code>calcular.php</code></strong>
+</p><div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset="UTF-8"&gt;</span>
+<span class="x">    &lt;title&gt;Resultado&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Resultado del Cálculo&lt;/h1&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+        <span class="c1">// Comprobamos si la variable 'numero_usuario' ha sido enviada</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">"numero_usuario"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">// Recuperamos el número del formulario.</span>
+            <span class="c1">// Lo convertimos a entero para asegurar que es un número.</span>
+            <span class="nv">$n</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">"numero_usuario"</span><span class="p">];</span>
+
+            <span class="c1">// Calculamos el cuadrado</span>
+            <span class="nv">$cuadrado</span> <span class="o">=</span> <span class="nv">$n</span> <span class="o">*</span> <span class="nv">$n</span><span class="p">;</span>
+
+            <span class="c1">// Mostramos el resultado</span>
+            <span class="k">echo</span> <span class="s2">"&lt;p&gt;El cuadrado de </span><span class="si">$n</span><span class="s2"> es: &lt;strong&gt;</span><span class="si">$cuadrado</span><span class="s2">&lt;/strong&gt;&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"&lt;p&gt;No se ha recibido ningún número. Por favor, vuelve al formulario.&lt;/p&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">    &lt;a href="formulario.html"&gt;Volver a calcular&lt;/a&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div><p></p>
+<p>En los siguientes ejercicios, aplicarás esta técnica para recibir datos y procesarlos usando bucles.</p>
+<h2 id="ejercicios-de-consolidacion">Ejercicios de Consolidación</h2>
+<div class="admonition abstract">
+<p class="admonition-title">1) El Generador de Tablas de Multiplicar | Nivel: Fácil</p>
+<h5 id="objetivo">Objetivo</h5>
+<p>Crear un script que genere la tabla de multiplicar de un número proporcionado por el usuario, practicando el uso del bucle <code>for</code>.</p>
+<h5 id="tarea-a-realizar">Tarea a realizar</h5>
+<ol>
+<li>Crea un fichero <code>index.html</code> con un formulario que pida al usuario un número. El formulario enviará los datos a <code>tabla.php</code> mediante el método <code>GET</code>.</li>
+<li>En <code>tabla.php</code>, recupera el número enviado.</li>
+<li>Utiliza un bucle <code>for</code> para iterar del 1 al 10.</li>
+<li>En cada iteración, calcula y muestra una línea de la tabla de multiplicar, por ejemplo: "5 x 3 = 15".</li>
+<li>Muestra los resultados dentro de una tabla HTML para una mejor presentación.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real">Aplicación en el Mundo Real</h5>
+<p>Generar informes dinámicos, listados o calendarios donde se repite un patrón numérico es una tarea común. Por ejemplo, calcular plazos de pago mensuales o proyecciones financieras.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">2) El Sumatorio Automático | Nivel: Fácil</p>
+<h5 id="objetivo_1">Objetivo</h5>
+<p>Calcular la suma de todos los números enteros desde 1 hasta un número N, utilizando un bucle <code>while</code>.</p>
+<h5 id="tarea-a-realizar_1">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número entero positivo (N) y lo envíe a un script PHP mediante <code>POST</code>.</li>
+<li>En el script PHP, inicializa una variable para la suma total en 0 y una variable contador en 1.</li>
+<li>Usa un bucle <code>while</code> que se ejecute mientras el contador sea menor o igual que N.</li>
+<li>En cada iteración, añade el valor del contador a la suma total e incrementa el contador.</li>
+<li>Al finalizar el bucle, muestra el resultado de la suma total.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_1">Aplicación en el Mundo Real</h5>
+<p>Este tipo de cálculo acumulativo es fundamental en estadística (calcular medias), finanzas (cálculo de balances acumulados) y en la optimización de algoritmos.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">3) ¡Contraseña, por favor! | Nivel: Fácil</p>
+<h5 id="objetivo_2">Objetivo</h5>
+<p>Simular un sistema de validación simple usando un bucle <code>do-while</code>, donde se solicita una acción hasta que se cumple una condición.</p>
+<h5 id="tarea-a-realizar_2">Tarea a realizar</h5>
+<p>Vamos a simular un proceso que necesita un "token" para continuar.
+1.  Crea un formulario que pida un token de acceso (será un número). Envíalo a un script PHP.
+2.  El token correcto será <code>1234</code>.
+3.  En el script PHP, recibe el token. Utiliza una estructura <code>do-while</code> (simulada, ya que no podemos hacer un bucle real que espere input del usuario en cada iteración).
+4.  La idea es que si el token es incorrecto, muestres un mensaje de error y el formulario de nuevo. Si es correcto, muestras un mensaje de "Acceso Concedido".
+5.  Para este ejercicio, lo implementaremos todo en un solo fichero PHP que se envía a sí mismo.</p>
+<h5 id="aplicacion-en-el-mundo-real_2">Aplicación en el Mundo Real</h5>
+<p>Los bucles <code>do-while</code> son útiles en validación de entradas, menús interactivos en consola o procesos que deben ejecutarse al menos una vez antes de comprobar la condición de salida.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">4) El Contador de Pares | Nivel: Fácil</p>
+<h5 id="objetivo_3">Objetivo</h5>
+<p>Practicar el bucle <code>for</code> con un incremento diferente de 1.</p>
+<h5 id="tarea-a-realizar_3">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número entero <code>N</code> superior a 10.</li>
+<li>En el script PHP, recibe <code>N</code>.</li>
+<li>Usa un bucle <code>for</code> para mostrar todos los números pares desde 2 hasta <code>N</code>.</li>
+<li>Para ello, en lugar de incrementar el contador de 1 en 1 (<code>$i++</code>), increméntalo de 2 en 2 (<code>$i += 2</code>).</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_3">Aplicación en el Mundo Real</h5>
+<p>Recorrer colecciones de datos saltando elementos (por ejemplo, procesar solo las filas pares de un fichero), o en algoritmos que operan sobre índices específicos.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">5) Arte ASCII: El Cuadrado Perfecto | Nivel: Fácil</p>
+<h5 id="objetivo_4">Objetivo</h5>
+<p>Entender el funcionamiento de los bucles anidados para generar patrones bidimensionales.</p>
+<h5 id="tarea-a-realizar_4">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número <code>N</code> (entre 3 y 15) que representará el lado de un cuadrado.</li>
+<li>En el script PHP, usa un bucle <code>for</code> externo que controle las filas.</li>
+<li>Dentro de él, anida otro bucle <code>for</code> que controle las columnas.</li>
+<li>El bucle interno imprimirá un asterisco (<code>*</code>) <code>N</code> veces en la misma línea.</li>
+<li>El bucle externo, después de que el interno termine, imprimirá un salto de línea (<code>&lt;br&gt;</code>).</li>
+<li>Utiliza una fuente monoespaciada (como <code>monospace</code> o <code>Courier</code>) para que los caracteres se alineen correctamente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_4">Aplicación en el Mundo Real</h5>
+<p>Los bucles anidados son esenciales para procesar estructuras de datos multidimensionales como matrices, tablas, o imágenes (recorrer píxeles por filas y columnas).</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">6) La Fábrica de Factoriales | Nivel: Fácil</p>
+<h5 id="objetivo_5">Objetivo</h5>
+<p>Calcular el factorial de un número usando un bucle <code>for</code> y un acumulador.</p>
+<h5 id="tarea-a-realizar_5">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario para que el usuario introduzca un número entero no negativo.</li>
+<li>El factorial de un número <code>n</code> (escrito <code>n!</code>) es el producto de todos los enteros positivos menores o iguales a <code>n</code>. Ejemplo: <code>5! = 5 * 4 * 3 * 2 * 1 = 120</code>. El factorial de 0 es 1.</li>
+<li>En tu script PHP, inicializa una variable <code>factorial</code> en 1.</li>
+<li>Usa un bucle <code>for</code> que vaya desde <code>n</code> hasta 1.</li>
+<li>En cada iteración, multiplica la variable <code>factorial</code> por el valor actual del contador.</li>
+<li>Muestra el resultado final.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_5">Aplicación en el Mundo Real</h5>
+<p>El cálculo de factoriales es fundamental en combinatoria y probabilidad, áreas de las matemáticas con aplicación en análisis de datos, criptografía y algoritmos.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">7) ¡Encuentra el Bug! La Cuenta Atrás Infinita | Nivel: Fácil</p>
+<h5 id="objetivo_6">Objetivo</h5>
+<p>Desarrollar habilidades de depuración identificando y corrigiendo un error común en la condición o el iterador de un bucle.</p>
+<h5 id="setup-inicial">Setup Inicial</h5>
+<p>El siguiente código intenta mostrar una cuenta atrás desde 10 hasta 1, pero contiene un error que provoca un bucle infinito. Tu navegador probablemente se bloqueará o dará un error de tiempo de ejecución.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang="es"&gt;</span>
+<span class="x">&lt;head&gt;&lt;title&gt;Cuenta Atrás Rota&lt;/title&gt;&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;¡Despegue en...&lt;/h1&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+        <span class="c1">// Bucle con error</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">"</span><span class="si">$i</span><span class="s2">... &lt;br&gt;"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">echo</span> <span class="s2">"¡Despegue!"</span><span class="p">;</span>
+    <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h5 id="tarea-a-realizar_6">Tarea a realizar</h5>
+<ol>
+<li>Copia el código en un fichero PHP.</li>
+<li>Analiza la estructura del bucle <code>for</code>: la inicialización (<code>$i = 10</code>), la condición (<code>$i &gt; 0</code>) y el iterador (<code>$i++</code>).</li>
+<li>Identifica por qué la condición para detener el bucle nunca se cumple.</li>
+<li>Corrige el error para que el programa imprima correctamente la cuenta atrás de 10 a 1.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_6">Aplicación en el Mundo Real</h5>
+<p>La depuración es una de las tareas más importantes de un programador. Un error de lógica en un bucle puede causar desde un bloqueo del programa hasta consumir todos los recursos del servidor.</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">8) Adivina el Número Secreto | Nivel: Fácil</p>
+<h5 id="objetivo_7">Objetivo</h5>
+<p>Integrar la generación de números aleatorios con la lógica de bucles para crear un juego simple.</p>
+<h5 id="setup-inicial_1">Setup Inicial</h5>
+<p>PHP tiene una función muy útil para generar números aleatorios: <code>rand(min, max)</code>.
+*   <strong>Propósito:</strong> Devuelve un número entero aleatorio entre <code>min</code> y <code>max</code> (ambos incluidos).
+*   <strong>Ejemplo:</strong> <code>echo rand(1, 10);</code> podría imprimir 7, 1, 10 o cualquier otro número en ese rango.</p>
+<h5 id="tarea-a-realizar_7">Tarea a realizar</h5>
+<p>Vamos a crear un juego de "Adivina el número" en un solo fichero PHP.
+1.  El script generará un número aleatorio entre 1 y 100 y lo "recordará". Para ello, cuando se muestre el formulario por primera vez, generaremos el número y lo guardaremos en un campo oculto (<code>&lt;input type="hidden"&gt;</code>).
+2.  El formulario pedirá al usuario que introduzca su intento.
+3.  Al enviar el formulario, el script PHP comparará el intento del usuario con el número secreto (que recuperará del campo oculto).
+4.  Mostrará una de estas tres pistas: "Demasiado alto", "Demasiado bajo" o "¡Correcto! ¡Has adivinado!".
+5.  Si el usuario no ha acertado, se volverá a mostrar el formulario para que pueda intentarlo de nuevo, pero manteniendo el mismo número secreto.</p>
+<h5 id="aplicacion-en-el-mundo-real_7">Aplicación en el Mundo Real</h5>
+<p>Esta lógica de comparación y repetición se usa en sistemas de autenticación (verificar PIN), concursos, algoritmos de búsqueda y cualquier proceso que requiera prueba y error.</p>
+</div>
+<h2 id="ejercicios-de-refuerzo">Ejercicios de Refuerzo</h2>
+<div class="admonition warning">
+<p class="admonition-title">9) Arte ASCII: La Pirámide | Nivel: Medio</p>
+<h5 id="objetivo_8">Objetivo</h5>
+<p>Profundizar en el uso de bucles anidados donde la condición del bucle interior depende del iterador del bucle exterior.</p>
+<h5 id="tarea-a-realizar_8">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número para la altura de un triángulo (por ejemplo, 5).</li>
+<li>En el script PHP, utiliza un bucle <code>for</code> externo para las filas, que irá de 1 hasta la altura introducida.</li>
+<li>Dentro, anida otro bucle <code>for</code> para las columnas. La clave es que este bucle interno debe ejecutarse tantas veces como el número de la fila actual.</li>
+<li>Por ejemplo, en la fila 1, imprime 1 asterisco. En la fila 2, imprime 2 asteriscos, y así sucesivamente.</li>
+<li>Recuerda usar una fuente monoespaciada para la correcta visualización.</li>
+<li><strong>Pista:</strong> La condición del bucle interno podría ser <code>$col &lt;= $fila</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_8">Aplicación en el Mundo Real</h5>
+<p>Generación de informes con agrupaciones variables, renderizado de gráficos (como histogramas) o algoritmos de ordenación como el "Bubble Sort" que realizan pasadas cada vez más cortas sobre un conjunto de datos.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">10) El Desafío de Euler: Múltiplos de 3 o 5 | Nivel: Medio</p>
+<h5 id="objetivo_9">Objetivo</h5>
+<p>Combinar bucles con sentencias condicionales (<code>if</code>) y el operador módulo (<code>%</code>) para resolver un problema lógico clásico.</p>
+<h5 id="tarea-a-realizar_9">Tarea a realizar</h5>
+<p>Este es el primer problema del famoso Proyecto Euler.
+1.  Crea un formulario que pida un número <code>N</code>.
+2.  En tu script PHP, calcula la suma de todos los números naturales por debajo de <code>N</code> que son múltiplos de 3 o de 5.
+3.  Por ejemplo, si <code>N</code> es 10, los números son 3, 5, 6 y 9. La suma es 23.
+4.  Utiliza un bucle <code>for</code> para iterar desde 1 hasta <code>N-1</code>.
+5.  Dentro del bucle, usa una condición <code>if</code> para comprobar si el número actual es múltiplo de 3 O (<code>||</code>) múltiplo de 5.
+6.  <strong>Pista:</strong> Para saber si un número <code>$i</code> es múltiplo de 3, la condición es <code>$i % 3 == 0</code>.</p>
+<h5 id="aplicacion-en-el-mundo-real_9">Aplicación en el Mundo Real</h5>
+<p>Filtrado de datos. Por ejemplo, en una tienda online, seleccionar todos los productos que pertenecen a la categoría "electrónica" O tienen un descuento superior al 20%.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">11) Potencia Manual | Nivel: Medio</p>
+<h5 id="objetivo_10">Objetivo</h5>
+<p>Implementar una operación matemática (potenciación) usando un bucle, sin utilizar el operador <code>**</code> o la función <code>pow()</code>.</p>
+<h5 id="tarea-a-realizar_10">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida dos números: la base y el exponente (entero no negativo).</li>
+<li>En el script PHP, recibe ambos números.</li>
+<li>Calcula <code>base</code> elevado al <code>exponente</code> usando un bucle.</li>
+<li>Inicializa una variable <code>resultado</code> en 1.</li>
+<li>Utiliza un bucle <code>for</code> que se repita tantas veces como indique el <code>exponente</code>.</li>
+<li>En cada iteración, multiplica el <code>resultado</code> por la <code>base</code>.</li>
+<li>Maneja el caso especial de que el exponente sea 0 (el resultado siempre es 1).</li>
+<li><strong>Pista:</strong> El bucle puede ir desde 1 hasta el valor del exponente.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_10">Aplicación en el Mundo Real</h5>
+<p>Entender cómo se implementan las operaciones matemáticas a bajo nivel es clave en programación de sistemas, desarrollo de videojuegos (cálculos de físicas) o criptografía, donde a menudo se deben reimplementar funciones por eficiencia o seguridad.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">12) Las Tablas de Multiplicar al Completo | Nivel: Medio</p>
+<h5 id="objetivo_11">Objetivo</h5>
+<p>Generar una estructura de datos bidimensional (una tabla HTML) usando bucles anidados.</p>
+<h5 id="tarea-a-realizar_11">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número <code>N</code> (por ejemplo, 10).</li>
+<li>Tu script PHP deberá generar una tabla de multiplicar completa, desde la tabla del 1 hasta la tabla del <code>N</code>.</li>
+<li>La salida debe ser una tabla HTML.</li>
+<li>Usa un bucle <code>for</code> externo para las filas, que representará cada número del 1 al <code>N</code>.</li>
+<li>Usa un bucle <code>for</code> interno para las columnas, que representará el multiplicador del 1 al 10.</li>
+<li>La celda <code>(fila, columna)</code> contendrá el resultado de <code>fila * columna</code>.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_11">Aplicación en el Mundo Real</h5>
+<p>Esta estructura es la base para generar cualquier tipo de cuadrícula o matriz en una interfaz de usuario: calendarios, tableros de ajedrez, hojas de cálculo, horarios, etc.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">13) El Guardián de los Primos | Nivel: Medio</p>
+<h5 id="objetivo_12">Objetivo</h5>
+<p>Implementar un algoritmo para determinar si un número es primo, combinando bucles y lógica condicional.</p>
+<h5 id="tarea-a-realizar_12">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario un número entero positivo.</li>
+<li>Un número es primo si solo es divisible por 1 y por sí mismo. (Ej: 2, 3, 5, 7, 11).</li>
+<li>En tu script PHP, implementa la lógica para comprobar si el número es primo.</li>
+<li>Asume que el número es primo (<code>$es_primo = true</code>).</li>
+<li>Usa un bucle <code>for</code> que vaya desde 2 hasta la raíz cuadrada del número. ¿Por qué la raíz cuadrada? Porque si un número <code>n</code> tiene un divisor mayor que su raíz cuadrada, obligatoriamente debe tener otro divisor menor.</li>
+<li>Dentro del bucle, comprueba si el número es divisible por el contador actual. Si lo es, cambia la variable <code>$es_primo</code> a <code>false</code> y rompe el bucle con <code>break</code>, ya que no hace falta seguir comprobando.</li>
+<li>Al final, informa al usuario si el número era primo o no.</li>
+<li><strong>Pista:</strong> La función para la raíz cuadrada es <code>sqrt()</code>. Ejemplo: <code>$raiz = sqrt(25);</code></li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_12">Aplicación en el Mundo Real</h5>
+<p>Los números primos son la base de la criptografía moderna (como el algoritmo RSA) que asegura las comunicaciones en internet. Los algoritmos de primalidad son cruciales en ciberseguridad.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">14) El Validador Exigente | Nivel: Medio</p>
+<h5 id="objetivo_13">Objetivo</h5>
+<p>Crear un formulario que se valida a sí mismo, mostrando mensajes de error hasta que la entrada del usuario es correcta, simulando un bucle de validación.</p>
+<h5 id="tarea-a-realizar_13">Tarea a realizar</h5>
+<ol>
+<li>Crea un único fichero PHP que contenga un formulario y la lógica de validación.</li>
+<li>El formulario pedirá al usuario que introduzca su edad.</li>
+<li>La lógica de validación es la siguiente: la edad debe ser un número entre 18 y 65.</li>
+<li>Si el formulario no ha sido enviado, o si la edad es incorrecta, se muestra el formulario. Si hay un error, se debe mostrar un mensaje descriptivo (ej: "La edad debe estar entre 18 y 65").</li>
+<li>Si la edad es correcta, se muestra un mensaje de éxito (ej: "Edad validada correctamente: 30 años").</li>
+<li><strong>Pista:</strong> Puedes usar la variable superglobal <code>$_SERVER["REQUEST_METHOD"]</code> para saber si el formulario se ha enviado.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_13">Aplicación en el Mundo Real</h5>
+<p>La validación de datos de entrada es una de las tareas más importantes en cualquier aplicación web para garantizar la integridad de los datos y la seguridad. Todos los formularios de registro, login o compra la utilizan masivamente.</p>
+</div>
+<h2 id="ejercicios-de-ampliacion">Ejercicios de Ampliación</h2>
+<div class="admonition danger">
+<p class="admonition-title">15) El Algoritmo de Euclides | Nivel: Alto</p>
+<h5 id="objetivo_14">Objetivo</h5>
+<p>Implementar un algoritmo matemático clásico y eficiente para encontrar el máximo común divisor (MCD) de dos números, demostrando un uso avanzado del bucle <code>while</code>.</p>
+<h5 id="tarea-a-realizar_14">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida al usuario dos números enteros positivos, <code>a</code> y <code>b</code>.</li>
+<li>Implementa el algoritmo de Euclides para encontrar el MCD:<ul>
+<li>Mientras <code>b</code> no sea cero, haz lo siguiente:<ul>
+<li>Guarda el valor de <code>b</code> en una variable temporal, <code>temp</code>.</li>
+<li>Actualiza <code>b</code> con el resto de la división de <code>a</code> entre <code>b</code> (<code>a % b</code>).</li>
+<li>Actualiza <code>a</code> con el valor de <code>temp</code>.</li>
+</ul>
+</li>
+<li>Cuando el bucle termina, <code>a</code> contiene el MCD.</li>
+</ul>
+</li>
+<li>Muestra el resultado al usuario.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_14">Aplicación en el Mundo Real</h5>
+<p>El algoritmo de Euclides es uno de los más antiguos y eficientes. Se utiliza en criptografía (en el algoritmo RSA), en la simplificación de fracciones y en la resolución de ecuaciones diofánticas.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">16) Arte ASCII: El Diamante de Asteriscos | Nivel: Alto</p>
+<h5 id="objetivo_15">Objetivo</h5>
+<p>Dominar los bucles anidados complejos para crear patrones simétricos, controlando tanto los caracteres impresos como los espacios en blanco.</p>
+<h5 id="tarea-a-realizar_15">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida un número impar <code>N</code> que será la anchura máxima del diamante.</li>
+<li>El diamante se compone de dos partes: una pirámide superior (creciente) y una pirámide inferior invertida (decreciente).</li>
+<li><strong>Parte Superior:</strong><ul>
+<li>Necesitarás un bucle externo para las filas.</li>
+<li>Dentro, un bucle para imprimir los espacios en blanco iniciales (el número de espacios disminuye a medida que la fila aumenta).</li>
+<li>Y otro bucle para imprimir los asteriscos (el número de asteriscos aumenta en 2 en cada fila).</li>
+</ul>
+</li>
+<li><strong>Parte Inferior:</strong><ul>
+<li>Similar a la superior, pero invirtiendo la lógica: los espacios aumentan y los asteriscos disminuyen.</li>
+</ul>
+</li>
+<li>Es un reto que requiere planificar cuidadosamente las variables y condiciones de cada bucle.</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_15">Aplicación en el Mundo Real</h5>
+<p>Este tipo de control preciso sobre la salida es fundamental en la generación de interfaces de texto (TUI), visualización de datos en consola, y en algoritmos gráficos para renderizar formas y patrones.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">17) Simulador de Inversión a Plazo Fijo | Nivel: Alto</p>
+<h5 id="objetivo_16">Objetivo</h5>
+<p>Aplicar bucles para modelar un proceso financiero a lo largo del tiempo, mostrando una proyección año a año.</p>
+<h5 id="tarea-a-realizar_16">Tarea a realizar</h5>
+<ol>
+<li>Crea un formulario que pida tres datos:<ul>
+<li>Capital inicial (ej: 1000).</li>
+<li>Tasa de interés anual (en %, ej: 5).</li>
+<li>Número de años de la inversión (ej: 10).</li>
+</ul>
+</li>
+<li>En el script PHP, calcula y muestra una tabla con la evolución de la inversión año por año, usando interés simple.</li>
+<li>La tabla debe tener tres columnas: "Año", "Interés Ganado" y "Balance Final".</li>
+<li>Usa un bucle <code>for</code> que itere desde el año 1 hasta el número de años especificado.</li>
+<li>En cada iteración:<ul>
+<li>Calcula el interés ganado ese año: <code>interes = capital_inicial * (tasa / 100)</code>.</li>
+<li>El capital para el cálculo del siguiente año no cambia (es interés simple).</li>
+<li>Calcula el balance acumulado: <code>balance_acumulado = capital_inicial + (interes * año_actual)</code>.</li>
+<li>Muestra una fila en la tabla con los datos del año actual.</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_16">Aplicación en el Mundo Real</h5>
+<p>Los modelos financieros son una aplicación directa de los bucles. Se usan para calcular amortizaciones de hipotecas, planes de pensiones, proyecciones de crecimiento de negocio y cualquier escenario que evolucione en el tiempo a intervalos regulares.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">18) El Enigma de la Conjetura de Collatz | Nivel: Alto</p>
+<h5 id="objetivo_17">Objetivo</h5>
+<p>Implementar un algoritmo basado en una famosa conjetura matemática y realizar una revisión de código por pares para evaluar la claridad y corrección de la solución.</p>
+<h5 id="tarea-a-realizar_17">Tarea a realizar</h5>
+<ol>
+<li>
+<p><strong>Resolución del Problema:</strong></p>
+<ul>
+<li>Crea un formulario que pida un número entero positivo <code>n</code>.</li>
+<li>La Conjetura de Collatz dice que si aplicas repetidamente las siguientes reglas a <code>n</code>, eventualmente llegarás a 1:<ul>
+<li>Si <code>n</code> es par, el siguiente número es <code>n / 2</code>.</li>
+<li>Si <code>n</code> es impar, el siguiente número es <code>3 * n + 1</code>.</li>
+</ul>
+</li>
+<li>Escribe un script PHP que, dado un <code>n</code> inicial, muestre la secuencia completa hasta llegar a 1.</li>
+<li>Ejemplo: Si <code>n = 6</code>, la secuencia es: 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1.</li>
+<li>Usa un bucle <code>while</code> que continúe mientras <code>n</code> sea mayor que 1.</li>
+</ul>
+</li>
+<li>
+<p><strong>Revisión por Pares (Peer Review):</strong></p>
+<ul>
+<li>Una vez que tu solución funcione, intercámbiala con un compañero.</li>
+<li>Analiza el código de tu compañero y responde a las siguientes preguntas por escrito:<ol>
+<li>¿El código resuelve el problema correctamente? Pruébalo con los números 6, 19 y 27.</li>
+<li>¿El código es fácil de leer? ¿Las variables tienen nombres claros? ¿Está bien comentado?</li>
+<li>¿La salida está bien formateada y es fácil de entender para el usuario?</li>
+<li>Sugiere al menos una posible mejora (aunque sea pequeña) en la claridad, eficiencia o formato del código.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="aplicacion-en-el-mundo-real_17">Aplicación en el Mundo Real</h5>
+<p>La revisión de código es una práctica estándar en el desarrollo de software profesional. Ayuda a detectar errores, mejorar la calidad del código, compartir conocimiento y asegurar que el software sea mantenible a largo plazo.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
